@@ -1,56 +1,36 @@
-name: Tagged Release
+name: Semantic Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: Existing release tag to publish
-        required: true
-        type: string
+  push:
+    branches: [master]
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
 
 concurrency:
-  group: tagged-release
+  group: semantic-release
   cancel-in-progress: false
 
 jobs:
-  publish:
-    name: Publish content packages
+  release:
+    name: Semantic release
     runs-on: ubuntu-24.04
     timeout-minutes: 15
-    defaults:
-      run:
-        shell: bash
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ inputs.tag }}
           fetch-depth: 0
-
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
-
-      - name: Validate tag
-        env:
-          RELEASE_TAG: ${{ inputs.tag }}
-        run: |
-          [[ ${RELEASE_TAG} =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
-          git merge-base --is-ancestor HEAD refs/remotes/origin/master
-          test "$(git rev-parse "${RELEASE_TAG}^{commit}")" = "$(git rev-parse HEAD)"
-
-      - name: Build packages
-        env:
-          RELEASE_TAG: ${{ inputs.tag }}
-        run: tools/package-release.sh "${RELEASE_TAG}" build/release
-
-      - name: Publish release
+      - name: Analyze commits and publish
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ inputs.tag }}
-        run: |
-          mapfile -t assets < <(find build/release -maxdepth 1 -type f -print | sort)
-          gh release create "${RELEASE_TAG}" --verify-tag --generate-notes \
-            --title "Atrinik content ${RELEASE_TAG}" "${assets[@]}"
+        run: >-
+          npx --yes
+          --package=semantic-release@25.0.9
+          --package=@semantic-release/exec@7.1.0
+          --package=conventional-changelog-conventionalcommits@10.2.1
+          semantic-release

@@ -6,11 +6,49 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
+
+
+def validate_source_tree(source: Path) -> None:
+    """Reject missing roots, links, and special files before staging content."""
+
+    for component in ("arch", "maps", "tools"):
+        root = source / component
+        if root.is_symlink() or not root.is_dir():
+            raise ValueError(
+                "required source directory is missing or unsafe: {}".format(component)
+            )
+
+        def handle_walk_error(error: OSError) -> None:
+            raise error
+
+        for directory, dirnames, filenames in os.walk(
+            root, followlinks=False, onerror=handle_walk_error
+        ):
+            dirnames.sort()
+            filenames.sort()
+            directory_path = Path(directory)
+            for name in dirnames:
+                path = directory_path / name
+                if path.is_symlink():
+                    raise ValueError(
+                        "symbolic links are not allowed: {}".format(
+                            path.relative_to(source)
+                        )
+                    )
+            for name in filenames:
+                path = directory_path / name
+                if path.is_symlink() or not path.is_file():
+                    raise ValueError(
+                        "links and special files are not allowed: {}".format(
+                            path.relative_to(source)
+                        )
+                    )
 
 
 def copy_attribution(source: Path, output: Path) -> None:
@@ -52,39 +90,59 @@ def create_manifest(output: Path, source_commit: str) -> None:
 
 def build(source: Path, output: Path, source_commit: str) -> None:
     source = source.resolve()
+    output = output.absolute()
+    if output.is_symlink():
+        raise ValueError("output must not be a symbolic link")
     output = output.resolve()
     build_root = source / "build"
-    if output == source or (
+    filesystem_root = Path(output.anchor)
+    if output == filesystem_root or output == source or output in source.parents or (
         source in output.parents
         and output != build_root
         and build_root not in output.parents
     ):
         raise ValueError("output must not replace an authored source directory")
-    if output.exists():
-        shutil.rmtree(output)
+    if output.exists() and not output.is_dir():
+        raise ValueError("output must be a directory")
+    validate_source_tree(source)
     output.parent.mkdir(parents=True, exist_ok=True)
 
-    with tempfile.TemporaryDirectory(prefix="atrinik-content-") as temporary:
-        staging = Path(temporary)
-        for component in ("arch", "maps", "tools"):
-            shutil.copytree(source / component, staging / component)
+    with tempfile.TemporaryDirectory(
+        prefix=".{}-build-".format(output.name), dir=output.parent
+    ) as transaction_directory:
+        transaction = Path(transaction_directory)
+        candidate = transaction / "candidate"
+        with tempfile.TemporaryDirectory(prefix="atrinik-content-") as temporary:
+            staging = Path(temporary)
+            for component in ("arch", "maps", "tools"):
+                shutil.copytree(source / component, staging / component)
 
-        (output / "lib").mkdir(parents=True)
-        subprocess.run(
-            [
-                sys.executable,
-                str(staging / "tools" / "collect.py"),
-                "--dir",
-                str(staging),
-                "--out",
-                str(output / "lib"),
-            ],
-            check=True,
-        )
-        shutil.copytree(staging / "maps", output / "maps")
+            (candidate / "lib").mkdir(parents=True)
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(staging / "tools" / "collect.py"),
+                    "--dir",
+                    str(staging),
+                    "--out",
+                    str(candidate / "lib"),
+                ],
+                check=True,
+            )
+            shutil.copytree(staging / "maps", candidate / "maps")
 
-    copy_attribution(source, output)
-    create_manifest(output, source_commit)
+        copy_attribution(source, candidate)
+        create_manifest(candidate, source_commit)
+
+        previous = transaction / "previous"
+        if output.exists():
+            output.rename(previous)
+        try:
+            candidate.rename(output)
+        except BaseException:
+            if previous.exists():
+                previous.rename(output)
+            raise
 
 
 def main() -> int:

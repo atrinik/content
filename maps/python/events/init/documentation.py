@@ -32,7 +32,7 @@ SOURCE_DIRS = (
     "src/plugins/plugin_python/include",
     "src/include",
 )
-PROTOCOL_HEADER = "../common/toolkit/socket.h"
+PROTOCOL_HEADER = "../protocol/generated/c/include/atrinik/protocol/legacy_commands.h"
 
 
 def getargspec(obj, obj_name):

@@ -164,10 +164,14 @@ class ContentCatalog:
         return any(item.severity == "error" for item in self._diagnostics)
 
     def location(self, path: Path, line: int, column: int = 1) -> SourceLocation:
+        absolute = path.absolute()
         try:
-            relative = path.resolve().relative_to(self.root)
+            relative = absolute.relative_to(self.root)
         except ValueError:
-            relative = path.resolve()
+            # Catalog artifacts must not disclose machine-specific absolute
+            # paths. Loaders reject sources outside the authored root; keep a
+            # fail-safe marker here for diagnostics constructed by API users.
+            return SourceLocation("<outside-root>", line, column)
         return SourceLocation(relative.as_posix(), line, column)
 
     def add_definition(

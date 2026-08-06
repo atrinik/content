@@ -4,11 +4,41 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
 from typing import Optional, Sequence
 
 from .loaders import load_catalog
+from .model import ContentCatalog
+
+
+def _write_catalog(output: Path, catalog: ContentCatalog) -> None:
+    """Atomically publish a valid catalog without exposing partial JSON."""
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w",
+            encoding="utf-8",
+            newline="\n",
+            dir=output.parent,
+            prefix=".{}-".format(output.name),
+            suffix=".tmp",
+            delete=False,
+        ) as destination:
+            temporary_path = Path(destination.name)
+            json.dump(catalog.to_dict(), destination, indent=2, sort_keys=True)
+            destination.write("\n")
+            destination.flush()
+            os.fsync(destination.fileno())
+        os.replace(str(temporary_path), str(output))
+    except BaseException:
+        if temporary_path is not None:
+            temporary_path.unlink(missing_ok=True)
+        raise
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -31,6 +61,9 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = _parser().parse_args(argv)
+    if args.command == "emit" and args.output is None:
+        print("error: emit requires --output", file=sys.stderr)
+        return 2
     root = args.root.resolve()
     catalog = load_catalog(root)
 
@@ -47,14 +80,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
 
     if args.command == "emit":
-        if args.output is None:
-            print("error: emit requires --output", file=sys.stderr)
-            return 2
+        if catalog.has_errors:
+            print("error: invalid catalog was not written", file=sys.stderr)
+            return 1
         output = args.output if args.output.is_absolute() else root / args.output
-        output.parent.mkdir(parents=True, exist_ok=True)
-        with output.open("w", encoding="utf-8", newline="\n") as destination:
-            json.dump(catalog.to_dict(), destination, indent=2, sort_keys=True)
-            destination.write("\n")
+        _write_catalog(output, catalog)
 
     return 1 if catalog.has_errors else 0
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import posixpath
 import re
 from pathlib import Path
@@ -16,6 +17,68 @@ QUEST_PART_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 OBJECT_DOMAINS = ("archetype", "artifact")
 
 
+def _validate_source_roots(
+    catalog: ContentCatalog, roots: Sequence[Path]
+) -> bool:
+    """Reject absent source roots and filesystem indirection before parsing."""
+
+    valid = True
+    for root in roots:
+        if root.is_symlink() or not root.is_dir():
+            code = "unsafe-source-link" if root.is_symlink() else "missing-source-root"
+            message = (
+                "authored source root must not be a symbolic link"
+                if root.is_symlink()
+                else "required authored source root is missing"
+            )
+            catalog.add_diagnostic(code, message, catalog.location(root, 1))
+            valid = False
+            continue
+
+        def handle_walk_error(error: OSError) -> None:
+            nonlocal valid
+            catalog.add_diagnostic(
+                "source-io-error",
+                str(error),
+                catalog.location(Path(error.filename or root), 1),
+            )
+            valid = False
+
+        for directory, dirnames, filenames in os.walk(
+            root, followlinks=False, onerror=handle_walk_error
+        ):
+            dirnames.sort()
+            filenames.sort()
+            directory_path = Path(directory)
+            for name in tuple(dirnames):
+                path = directory_path / name
+                if path.is_symlink():
+                    catalog.add_diagnostic(
+                        "unsafe-source-link",
+                        "symbolic links are not allowed in authored sources",
+                        catalog.location(path, 1),
+                    )
+                    dirnames.remove(name)
+                    valid = False
+            for name in filenames:
+                path = directory_path / name
+                if path.is_symlink():
+                    catalog.add_diagnostic(
+                        "unsafe-source-link",
+                        "symbolic links are not allowed in authored sources",
+                        catalog.location(path, 1),
+                    )
+                    valid = False
+                elif not path.is_file():
+                    catalog.add_diagnostic(
+                        "unsafe-source-file",
+                        "authored sources must be regular files",
+                        catalog.location(path, 1),
+                    )
+                    valid = False
+    return valid
+
+
 def _iter_source_lines(
     path: Path, catalog: ContentCatalog
 ) -> Iterator[Tuple[int, str]]:
@@ -25,6 +88,7 @@ def _iter_source_lines(
     message_line = 0
     with path.open(encoding="utf-8") as source:
         for line_number, raw_line in enumerate(source, 1):
+            raw_line = raw_line.rstrip("\r\n")
             line = raw_line.strip()
             if in_message:
                 if line == "endmsg":
@@ -36,7 +100,7 @@ def _iter_source_lines(
                 continue
             if not line or line.startswith("#"):
                 continue
-            yield line_number, line
+            yield line_number, raw_line
     if in_message:
         catalog.add_diagnostic(
             "unterminated-message",
@@ -47,7 +111,7 @@ def _iter_source_lines(
 
 def _split(line: str) -> Tuple[str, str]:
     parts = line.split(None, 1)
-    return parts[0], parts[1] if len(parts) == 2 else ""
+    return parts[0], parts[1].strip() if len(parts) == 2 else ""
 
 
 def _column(line: str, value: str) -> int:
@@ -69,6 +133,12 @@ def _load_archetypes(catalog: ContentCatalog, arch_root: Path) -> None:
                 multipart_continuation = True
                 continue
             if field == "Object" and value:
+                if inside_object:
+                    catalog.add_diagnostic(
+                        "unterminated-object",
+                        "Object block has no end before the next Object",
+                        current_location or catalog.location(path, line_number),
+                    )
                 inside_object = True
                 current_type = None
                 current_location = catalog.location(path, line_number, _column(line, value))
@@ -137,6 +207,13 @@ def _load_runtime_identity_tables(catalog: ContentCatalog, server_root: Path) ->
     )
     for path, domain, field in table_specs:
         if not path.is_file():
+            continue
+        if path.is_symlink() or catalog.root not in path.resolve().parents:
+            catalog.add_diagnostic(
+                "unsafe-source-link",
+                "runtime identity table resolves outside the source root",
+                catalog.location(path, 1),
+            )
             continue
         seen: Dict[str, SourceLocation] = {}
         with path.open(encoding="utf-8") as source:
@@ -394,21 +471,14 @@ def _add_map_reference(
 
 def _is_map_file(path: Path) -> bool:
     try:
-        with path.open("rb") as source:
-            prefix = source.read(4096)
-    except OSError:
+        with path.open(encoding="utf-8") as source:
+            for raw_line in source:
+                line = raw_line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                return line == "arch map"
+    except (OSError, UnicodeDecodeError):
         return False
-    if b"\0" in prefix:
-        return False
-    try:
-        text = prefix.decode("utf-8")
-    except UnicodeDecodeError:
-        return False
-    for raw_line in text.splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
-            continue
-        return line == "arch map"
     return False
 
 
@@ -504,20 +574,32 @@ class _InterfaceLoader:
         self.quest_key = quest_key
         self.quest_id: Optional[ContentId] = None
         self.part_stack: List[str] = []
+        self.contents = path.read_bytes()
         self.parser = expat.ParserCreate()
         self.parser.StartElementHandler = self._start
         self.parser.EndElementHandler = self._end
 
     def location(self, attribute_value: Optional[str] = None) -> SourceLocation:
+        line = self.parser.CurrentLineNumber
         column = self.parser.CurrentColumnNumber + 1
         if attribute_value:
-            column += 1
-        return self.catalog.location(self.path, self.parser.CurrentLineNumber, column)
+            encoded_value = attribute_value.encode("utf-8")
+            element_start = self.parser.CurrentByteIndex
+            element_end = self.contents.find(b">", element_start)
+            position = self.contents.find(
+                encoded_value,
+                element_start,
+                element_end if element_end >= 0 else len(self.contents),
+            )
+            if position >= 0:
+                line = self.contents.count(b"\n", 0, position) + 1
+                previous_newline = self.contents.rfind(b"\n", 0, position)
+                column = position - previous_newline
+        return self.catalog.location(self.path, line, column)
 
     def parse(self) -> None:
         try:
-            with self.path.open("rb") as source:
-                self.parser.ParseFile(source)
+            self.parser.Parse(self.contents, True)
         except expat.ExpatError as error:
             self.catalog.add_diagnostic(
                 "invalid-xml",
@@ -631,9 +713,12 @@ def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> None:
 def load_catalog(root: Path) -> ContentCatalog:
     """Build and resolve a catalog from an Atrinik source tree."""
 
+    root = root.resolve()
     catalog = ContentCatalog(root)
     arch_root = root / "arch"
     maps_root = root / "maps"
+    if not _validate_source_roots(catalog, (arch_root, maps_root)):
+        return catalog
     _load_archetypes(catalog, arch_root)
     _load_runtime_identity_tables(catalog, root / "server")
     _load_artifacts(catalog, (arch_root, maps_root))

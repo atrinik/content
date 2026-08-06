@@ -14,6 +14,9 @@ The emitted JSON is deterministic, contains repository-relative source
 locations, and belongs under `build/`. Collection runs the same validator
 before writing any aggregate file. `python3 tools/validate.py` runs the catalog
 unit tests and complete validation before building an isolated runtime tree.
+The catalog fails closed when required authored roots are missing or contain
+symbolic links. `emit` does not replace its output when validation fails and
+publishes successful JSON atomically.
 
 Stable IDs are domain-qualified at persistence and interchange boundaries,
 for example `quest:lost_memories`, `quest-part:lost_memories::helping_out`,
@@ -51,6 +54,12 @@ change. A monster's mutable `name` or broad `race` value is not a safe
 substitute. Alchemical formulae likewise have no current authored entries or
 stable recipe key; the first recipe work must add an explicit recipe key rather
 than deriving one from its result title or ingredient order.
+
+The existing quest-interface `cast` attribute contains a spell display name.
+The catalog validates its current conventional mapping to a `spell_*` key, but
+the attribute is not a durable typed identity and must not be persisted or
+exchanged as one. Replacing it with an explicit `spell_id` requires a
+coordinated interface-schema, compiler, and server-consumer change.
 
 ## Rename, removal, and migration policy
 

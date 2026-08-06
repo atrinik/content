@@ -1,11 +1,17 @@
 """Tests for the authored-content identity catalog."""
 
+import contextlib
+import io
 import json
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
 
+from tools.build_runtime import build as build_runtime
 from tools.content_catalog import ContentCatalog, ContentId, load_catalog
+from tools.content_catalog.__main__ import main as catalog_main
 
 
 class ContentCatalogTest(unittest.TestCase):
@@ -252,6 +258,151 @@ This block never ends.
         self.assertIn("unterminated-object", codes)
         self.assertIn("unterminated-treasure", codes)
 
+    def test_reports_object_block_terminated_by_a_second_object(self):
+        self.create_valid_tree()
+        self.write(
+            "arch/broken.arc",
+            """Object first
+type 29
+Object second
+type 1
+end
+""",
+        )
+
+        catalog = load_catalog(self.root)
+
+        self.assertIn(
+            "unterminated-object", {item.code for item in catalog.diagnostics}
+        )
+
+    def test_requires_authored_source_roots(self):
+        shutil.rmtree(self.root / "maps")
+
+        catalog = load_catalog(self.root)
+
+        diagnostics = [
+            item for item in catalog.diagnostics if item.code == "missing-source-root"
+        ]
+        self.assertEqual(1, len(diagnostics))
+        self.assertEqual("maps", diagnostics[0].location.path)
+
+    def test_rejects_symbolic_links_without_disclosing_the_target(self):
+        self.create_valid_tree()
+        with tempfile.TemporaryDirectory() as external_directory:
+            target = Path(external_directory) / "outside.arc"
+            target.write_text("Object outside\ntype 1\nend\n", encoding="utf-8")
+            (self.root / "arch" / "outside.arc").symlink_to(target)
+
+            catalog = load_catalog(self.root)
+
+        diagnostics = [
+            item for item in catalog.diagnostics if item.code == "unsafe-source-link"
+        ]
+        self.assertEqual(1, len(diagnostics))
+        self.assertEqual("arch/outside.arc", diagnostics[0].location.path)
+        self.assertNotIn(external_directory, diagnostics[0].format())
+        self.assertEqual((), catalog.definitions)
+
+    def test_runtime_staging_does_not_dereference_tool_links(self):
+        self.create_valid_tree()
+        (self.root / "tools").mkdir()
+        output = self.root / "build" / "runtime"
+        output.mkdir(parents=True)
+        sentinel = output / "preserve-me"
+        sentinel.write_text("existing output\n", encoding="utf-8")
+        with tempfile.TemporaryDirectory() as external_directory:
+            target = Path(external_directory) / "outside.py"
+            target.write_text("raise RuntimeError\n", encoding="utf-8")
+            (self.root / "tools" / "outside.py").symlink_to(target)
+
+            with self.assertRaisesRegex(ValueError, "links and special files"):
+                build_runtime(
+                    self.root,
+                    output,
+                    "0" * 40,
+                )
+        self.assertEqual("existing output\n", sentinel.read_text(encoding="utf-8"))
+
+    def test_runtime_build_rejects_linked_and_ancestor_outputs(self):
+        self.create_valid_tree()
+        (self.root / "tools").mkdir()
+        with tempfile.TemporaryDirectory() as external_directory:
+            target = Path(external_directory) / "target"
+            target.mkdir()
+            sentinel = target / "preserve-me"
+            sentinel.write_text("existing output\n", encoding="utf-8")
+            linked_output = self.root / "build" / "runtime"
+            linked_output.parent.mkdir()
+            linked_output.symlink_to(target, target_is_directory=True)
+
+            with self.assertRaisesRegex(ValueError, "must not be a symbolic link"):
+                build_runtime(self.root, linked_output, "0" * 40)
+
+            self.assertEqual("existing output\n", sentinel.read_text(encoding="utf-8"))
+
+        with self.assertRaisesRegex(ValueError, "must not replace"):
+            build_runtime(self.root, self.root.parent, "0" * 40)
+
+    def test_runtime_build_preserves_output_when_collection_fails(self):
+        self.create_valid_tree()
+        (self.root / "tools").mkdir()
+        self.write("tools/collect.py", "raise SystemExit(1)\n")
+        output = self.root / "build" / "runtime"
+        output.mkdir(parents=True)
+        sentinel = output / "preserve-me"
+        sentinel.write_text("existing output\n", encoding="utf-8")
+
+        with self.assertRaises(subprocess.CalledProcessError):
+            build_runtime(self.root, output, "0" * 40)
+
+        self.assertEqual("existing output\n", sentinel.read_text(encoding="utf-8"))
+        self.assertEqual([], list(output.parent.glob(".runtime-build-*")))
+
+    def test_recognizes_map_after_a_long_comment_preamble(self):
+        self.create_valid_tree()
+        self.write(
+            "maps/long_preamble",
+            "# {}\narch map\nregion town\nend\narch base\nend\n".format(
+                "x" * 5000
+            ),
+        )
+
+        catalog = load_catalog(self.root)
+
+        self.assertFalse(catalog.has_errors, [item.format() for item in catalog.diagnostics])
+        self.assertIn(
+            ContentId("map", "/long_preamble"),
+            {definition.content_id for definition in catalog.definitions},
+        )
+
+    def test_reports_exact_columns_for_indented_text_fields(self):
+        self.create_valid_tree()
+
+        catalog = load_catalog(self.root)
+
+        reference = next(
+            item
+            for item in catalog.references
+            if item.field == "treasure arch" and item.key == "special_item"
+        )
+        self.assertEqual(8, reference.location.column)
+
+    def test_reports_exact_columns_for_xml_attribute_values(self):
+        self.create_valid_tree()
+
+        catalog = load_catalog(self.root)
+
+        reference = next(
+            item
+            for item in catalog.references
+            if item.field == "teleport" and item.key == "/start"
+        )
+        source_line = (
+            self.root / reference.location.path
+        ).read_text(encoding="utf-8").splitlines()[reference.location.line - 1]
+        self.assertEqual(source_line.index("/start") + 1, reference.location.column)
+
     def test_serialized_catalog_is_deterministic(self):
         self.create_valid_tree()
 
@@ -306,6 +457,52 @@ This block never ends.
         self.assertIn(
             "missing-reference", {item.code for item in catalog.diagnostics}
         )
+
+    def test_emit_does_not_replace_output_with_an_invalid_catalog(self):
+        self.create_valid_tree()
+        self.write("arch/duplicate.arc", "Object base\ntype 1\nend\n")
+        output = self.root / "build" / "catalog.json"
+        output.parent.mkdir()
+        output.write_text("preserve me\n", encoding="utf-8")
+
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(
+            io.StringIO()
+        ):
+            result = catalog_main(
+                [
+                    "emit",
+                    "--root",
+                    str(self.root),
+                    "--output",
+                    str(output),
+                ]
+            )
+
+        self.assertEqual(1, result)
+        self.assertEqual("preserve me\n", output.read_text(encoding="utf-8"))
+        self.assertEqual([], list(output.parent.glob(".catalog.json-*.tmp")))
+
+    def test_emit_atomically_writes_a_valid_catalog(self):
+        self.create_valid_tree()
+        output = self.root / "build" / "catalog.json"
+
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(
+            io.StringIO()
+        ):
+            result = catalog_main(
+                [
+                    "emit",
+                    "--root",
+                    str(self.root),
+                    "--output",
+                    str(output),
+                ]
+            )
+
+        self.assertEqual(0, result)
+        data = json.loads(output.read_text(encoding="utf-8"))
+        self.assertEqual(ContentCatalog.SCHEMA_VERSION, data["schema_version"])
+        self.assertEqual([], list(output.parent.glob(".catalog.json-*.tmp")))
 
 
 if __name__ == "__main__":

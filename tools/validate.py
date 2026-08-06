@@ -24,6 +24,29 @@ def main() -> int:
             if path.is_symlink():
                 raise ValueError(f"symbolic links are not allowed: {path.relative_to(ROOT)}")
 
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "unittest",
+            "tools.tests.test_content_catalog",
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "tools.content_catalog",
+            "validate",
+            "--root",
+            str(ROOT),
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+
     with tempfile.TemporaryDirectory(prefix="atrinik-content-validation-") as temporary:
         output = Path(temporary) / "runtime"
         subprocess.run(
@@ -46,4 +69,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

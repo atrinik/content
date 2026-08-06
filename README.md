@@ -19,3 +19,7 @@ The result contains collected files under `lib/`, compiled map interfaces and
 authored maps under `maps/`, attribution files under `attribution/`, and
 `manifest.json` with the SHA-256 of every packaged file.
 
+The typed content catalog defines stable identities and validates authored
+cross-references before collection. See
+[`docs/CONTENT_IDENTITIES.md`](docs/CONTENT_IDENTITIES.md) for its commands,
+source-of-truth table, and rename/removal policy.

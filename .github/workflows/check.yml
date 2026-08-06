@@ -1,0 +1,33 @@
+name: Check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  content-validation:
+    name: Content validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Validate content and runtime collection
+        run: python3 tools/validate.py
+
+      - name: Ensure collection leaves sources clean
+        run: test -z "$(git status --short)"
+

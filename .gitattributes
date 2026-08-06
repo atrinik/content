@@ -1,0 +1,5 @@
+.gitattributes export-ignore
+.github export-ignore
+release-line.txt export-ignore
+tools/package-release.sh export-ignore
+

@@ -1,0 +1,15 @@
+/build/
+__pycache__/
+*.py[cod]
+
+# Generated collection output.
+/arch/animations
+/arch/archetypes
+/arch/artifacts
+/arch/atrinik.0
+/arch/bmaps
+/arch/factions
+/arch/treasures
+/maps/python/InterfaceQuests.py
+/maps/interfaces/**/*.py
+

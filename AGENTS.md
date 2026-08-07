@@ -10,6 +10,12 @@
 - `tools/content_catalog` is the authoritative identity and cross-reference
   layer. Persist domain-qualified stable IDs, not display names, filesystem
   ordering, or runtime table positions.
+- `schemas/authored-content-v1/source.json` is the authoritative typed field and
+  logical-document source. Edit it rather than generated `FIELDS.md`, JSON, or C
+  header projections; then run `python3 -m tools.content_schema generate --root
+  .`. Keep types, roles, constraints, reference domains, consumer ownership,
+  documentation, and migrations synchronized. Unknown standard fields must fail;
+  extension data uses an explicit non-reserved custom namespace.
 - `contracts/content-v1` owns the legacy ADS grammar/consumer inventory,
   interchange schemas, and lossless parity corpus. Preserve fixture bytes and
   update observations, baselines, documentation, and tests together whenever a
@@ -31,6 +37,7 @@
   output is not generated source.
 - Run `python3 -m tools.content_contracts validate --root .`,
   `python3 -m tools.syntax_evaluation --root .`,
+  `python3 -m tools.content_schema validate --root .`,
   `python3 tools/validate.py`, and
   `python3 tools/build_runtime.py --output build/runtime` for every change. Run
   the focused world audit when relevant and use wrapper builds/topologies for

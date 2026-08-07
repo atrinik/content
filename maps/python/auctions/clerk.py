@@ -438,7 +438,7 @@ def main():
         # Use lowest-to-highest value sort by default.
         sort = Filter.SORT_VALUE
 
-        match = re.match("(\d+) \"([^\"]*)\" (.+)", msg[13:])
+        match = re.match(r'(\d+) "([^"]*)" (.+)', msg[13:])
 
         if not match:
             return

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "kind": "catalog-search",
+  "query": {"kind": "archetype", "text": "oak", "limit": 10},
+  "results": [
+    {
+      "domain": "archetype",
+      "key": "oak_tree",
+      "location": {"path": "arch/example.arc", "line": 1, "column": 8},
+      "metadata": {"name": "oak tree"}
+    }
+  ],
+  "truncated": false
+}

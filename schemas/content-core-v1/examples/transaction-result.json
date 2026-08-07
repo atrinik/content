@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "kind": "transaction-result",
+  "dry_run": true,
+  "applied": false,
+  "files": [
+    {
+      "path": "maps/example",
+      "before_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "after_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "operation_count": 1,
+      "diff": "--- a/maps/example\n+++ b/maps/example\n"
+    }
+  ],
+  "diagnostics": []
+}

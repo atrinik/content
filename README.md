@@ -42,6 +42,12 @@ and the lossless parity corpus live under `contracts/content-v1/`. See
 authoritative server sources, compatibility rules, fixture coverage, and
 read-only inspection command.
 
+`tools/content_core` is the production byte-lossless legacy ADS core. Its
+versioned `tools/atrinik-content` CLI provides bounded inspection, validation,
+semantic comparison, catalog search, and dry-run-first primitive transactions.
+See [`docs/CONTENT_CORE.md`](docs/CONTENT_CORE.md) for the JSON contracts,
+preconditions, safety boundary, exit codes, and examples.
+
 The accepted future authored surface is a strict, bounded JSONC dialect. See
 [`docs/AUTHORED_SYNTAX_DECISION.md`](docs/AUTHORED_SYNTAX_DECISION.md) for the
 decision, parser limits, cross-language implementation constraints, raw

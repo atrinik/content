@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "sha256": "135866c5ba80e30cf83aa0fce8ef6611ee4e48aadd6e9d11170c69b916a66f17",
+  "files": [
+    {
+      "path": "contracts/content-v1/consumer-inventory.json",
+      "bytes": 12926,
+      "sha256": "d9c20d7d646c30dbb92190170a1a85d7dd0eafcc02a049b00e3a33d11bbdcc5a"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/attribution/object.arc",
+      "bytes": 135,
+      "sha256": "85dcb524bc6f55e3f652e4ef33c5f280bb12d54d955d00c6c9a7b1853acf4dc5"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/comments-custom.arc",
+      "bytes": 178,
+      "sha256": "2653ffd4cd9bcaea5f7039b5bbd2bef5cebb603b0eca77baaede7dea3bb0809a"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/malformed-header.map",
+      "bytes": 95,
+      "sha256": "6c1639eaa1bcc6fabcf99f46d52285a0b440e79b241137646a19f5b74606f9a1"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/malformed-nesting.arc",
+      "bytes": 162,
+      "sha256": "224a43d698a068808e2c9f69984ac0d18e035f659d3395a1f8e934d75f60bf4e"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/malformed-unterminated-message.map",
+      "bytes": 74,
+      "sha256": "d2ba564cfd2992f48c9b10a6cbc02014fe41bc2561ea87362216ff154d0f67b0"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/multiline-message.arc",
+      "bytes": 132,
+      "sha256": "3f8e0776b1f4741025243ddcb75ac516b73ae2715cc63cf41a1cac9f59a7f447"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/multipart.arc",
+      "bytes": 121,
+      "sha256": "238ba49acf6d63faffc3a3788f341d1ee7f969ed80d9e4d54a03227c8345b729"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/nested-inventory.map",
+      "bytes": 129,
+      "sha256": "87cd11d0002fff468437b4c38ed07692f9fe740ac7b32dee2ba12e244afc4659"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/stable-identities.arc",
+      "bytes": 119,
+      "sha256": "a850a4a54cc9f4816f72502bcf301102419f7d6fe90474516a3a397a76d6d3af"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/tiled-stacked-exit.map",
+      "bytes": 271,
+      "sha256": "324dbe009f58aeb98fb7d6b70ef36d5b1b2f63593b1fc9aaf51b0b038fd956b6"
+    },
+    {
+      "path": "contracts/content-v1/corpus/fixtures/unknown-map-header.map",
+      "bytes": 57,
+      "sha256": "ef7c5c83e997a9a99d9b7644354f40dae038eb2484955dba1557afc8d7757af5"
+    },
+    {
+      "path": "contracts/content-v1/corpus/manifest.json",
+      "bytes": 15822,
+      "sha256": "08fb041bed919942b5a80d910f1923f46c09270b83c9369badcf4fad91640ad8"
+    },
+    {
+      "path": "contracts/content-v1/grammar-inventory.json",
+      "bytes": 9937,
+      "sha256": "48ce57322609a06a82d6e5d95d3a4862f4b52ede5957588ad6fcbee55927435a"
+    }
+  ]
+}

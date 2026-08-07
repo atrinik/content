@@ -15,6 +15,12 @@
   update observations, baselines, documentation, and tests together whenever a
   loader, writer, checker, collector, analyzer, or grammar behavior changes. Do
   not treat the characterization inspector as a production parser.
+- `docs/AUTHORED_SYNTAX_DECISION.md` and
+  `prototypes/authored-syntax-v1/limits.json` own the selected strict JSONC
+  surface and fail-closed machine limits. Keep the fixed baseline lock,
+  prototype implementation digest, committed measurement evidence, decision
+  text, and Linux/Windows tests synchronized. Do not promote the neutral
+  physical-record comparison model into the final typed schema.
 - Trace every changed map path, archetype, animation, image, artifact, treasure,
   faction, interface, and script reference. Do not mask missing references with
   absolute paths, generated placeholders, or duplicated parsers.
@@ -24,6 +30,7 @@
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source.
 - Run `python3 -m tools.content_contracts validate --root .`,
+  `python3 -m tools.syntax_evaluation --root .`,
   `python3 tools/validate.py`, and
   `python3 tools/build_runtime.py --output build/runtime` for every change. Run
   the focused world audit when relevant and use wrapper builds/topologies for

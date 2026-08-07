@@ -66,6 +66,9 @@ class Jail:
 
         force = player.CreateForce("jail_force", seconds=time)
         force.slaying = "jail_force"
+        pl.MetricAdd("social.jail_sentences")
+        if time > 0:
+            pl.MetricAdd("social.jail_time_sentenced", time)
         pl.DrawInfo("You have been jailed for {} for your actions.".format(
             "life" if time == 0 else datetime.timedelta(seconds=time)),
             COLOR_RED

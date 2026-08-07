@@ -1,6 +1,19 @@
 from Atrinik import *
 from Interface import InterfaceBuilder
 
+
+def clear_bounty(activator, faction, cost):
+    """Clear a paid bounty and record its stable faction telemetry."""
+
+    controller = activator.Controller()
+    controller.FactionClearBounty(faction)
+    controller.MetricAdd("social.bounties_cleared")
+    controller.MetricAdd("economy.bounty_currency_spent", cost)
+    controller.MetricKeyedAdd(
+        "social.bounties_cleared_by_faction", "faction:" + faction
+    )
+
+
 class ThievesBountyEraser(InterfaceBuilder):
     """Bounty eraser."""
 
@@ -65,6 +78,6 @@ class ThievesBountyEraser(InterfaceBuilder):
             if self._activator.PayAmount(cost):
                 self.add_msg("You pay {cost}.", cost=CostString(cost), color=COLOR_YELLOW)
                 self.add_msg("Consider it done. And try to stick to the shadows next time...")
-                self._activator.Controller().FactionClearBounty(msg)
+                clear_bounty(self._activator, msg, cost)
             else:
                 self.add_msg("You do not have enough money...")

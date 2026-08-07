@@ -34,6 +34,9 @@ class QuestManagerSuite(TestSuite):
         self.assertFalse(qm.need_complete_before_start("deliver"))
         self.assertRaises(AssertionError, qm.complete, "deliver")
         qm.start("deliver")
+        self.assertEqual(
+            qm.get_quest_status(), Atrinik.QUEST_STATUS_STARTED
+        )
         self.assertTrue(qm.started("deliver"))
         self.assertFalse(qm.finished("deliver"))
         self.assertFalse(qm.completed("deliver"))
@@ -448,6 +451,42 @@ class QuestManagerSuite(TestSuite):
         self.assertEqual(qm.state_get_int("foo"), 0)
         self.assertTrue(qm.state_get_bool("foo"))
         self.assertAlmostEqual(qm.state_get_float("foo"), 42.69)
+
+    def test_08_failed_quest_is_not_completed(self):
+        quest = {
+            "parts": OrderedDict((("attempt", {
+                "info": "",
+                "uid": "attempt",
+                "name": "Attempt",
+            }),)),
+            "name": "Failure Test Quest",
+            "uid": "failure_test_quest",
+        }
+        qm = QuestManager(activator, quest)
+        qm.start("attempt")
+        self.assertTrue(qm.fail("attempt"))
+        self.assertTrue(qm.failed())
+        self.assertFalse(qm.completed())
+        self.assertFalse(qm.fail("attempt"))
+
+    def test_09_failed_repeat_quest_resets(self):
+        quest = {
+            "parts": OrderedDict((("attempt", {
+                "info": "",
+                "uid": "attempt",
+                "name": "Attempt",
+            }),)),
+            "name": "Repeat Failure Test Quest",
+            "uid": "repeat_failure_test_quest",
+            "repeat": True,
+        }
+        qm = QuestManager(activator, quest)
+        qm.start("attempt")
+        self.assertTrue(qm.fail("attempt"))
+        self.assertTrue(qm.failed())
+
+        qm = QuestManager(activator, quest)
+        self.assertFalse(qm.started())
 
 
 activator = Atrinik.WhoIsActivator()

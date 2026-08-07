@@ -643,6 +643,11 @@ class TagCompilerAction(BaseTagCompiler):
                     "self._activator.CreateObject('region_map').name = {name}",
                     name=repr(val)
                 )
+                self.npc.body.write(
+                    "self._activator.Controller().MetricMarkUnique("
+                    "'exploration.region_maps', {name})",
+                    name=repr("region:" + val)
+                )
             elif attr == "enemy":
                 if val == "player":
                     enemy = "self._activator"

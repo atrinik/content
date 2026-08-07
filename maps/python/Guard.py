@@ -6,7 +6,7 @@ import random
 
 from Atrinik import *
 from Interface import InterfaceBuilder
-from Thieves import ThievesBountyEraser
+from Thieves import ThievesBountyEraser, clear_bounty
 
 
 class Guard(InterfaceBuilder):
@@ -103,7 +103,9 @@ class GuardStop(InterfaceBuilder):
             if self._activator.PayAmount(cost):
                 self.add_msg("You pay {cost}.", cost=CostString(cost), color=COLOR_YELLOW)
                 self.add_msg("Make sure to keep to the Law next time...")
-                self._activator.Controller().FactionClearBounty(self._npc.ReadKey("faction"))
+                clear_bounty(
+                    self._activator, self._npc.ReadKey("faction"), cost
+                )
             else:
                 self.add_msg("You do not have enough money...")
                 self.add_link("<resist arrest>", action="close")

@@ -38,6 +38,10 @@ def main():
 
         elif msg == "buy2":
             if activator.PayAmount(house.get(house.cost)):
+                activator.Controller().MetricAdd("economy.housing_purchases")
+                activator.Controller().MetricAdd(
+                    "economy.housing_currency_spent", house.get(house.cost)
+                )
                 inf.add_msg("You pay {}.".format(CostString(house.get(house.cost))), COLOR_YELLOW)
                 inf.add_msg("Thank you for your business! We hope you enjoy your brand new house.")
                 house.add_house()

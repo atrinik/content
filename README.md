@@ -26,6 +26,16 @@ cross-references before collection. See
 [`docs/CONTENT_IDENTITIES.md`](docs/CONTENT_IDENTITIES.md) for its commands,
 source-of-truth table, and rename/removal policy.
 
+The authoritative field schema closes and types the authored field surface and
+generates loader/compiler, editor, documentation, and parser-neutral logical
+metadata. See [`docs/CONTENT_SCHEMA.md`](docs/CONTENT_SCHEMA.md) for the logical
+model, generated outputs, custom namespace policy, and migration rules. Validate
+the checked-in projections and the entire legacy corpus with:
+
+```sh
+python3 -m tools.content_schema validate --root .
+```
+
 Versioned legacy ADS grammar contracts, consumer ownership, interchange schemas,
 and the lossless parity corpus live under `contracts/content-v1/`. See
 [`docs/CONTENT_GRAMMAR_CONTRACTS.md`](docs/CONTENT_GRAMMAR_CONTRACTS.md) for the

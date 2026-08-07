@@ -23,7 +23,7 @@ def main() -> int:
         if not path.is_file() or path.stat().st_size == 0:
             raise ValueError(f"missing required license file: {path.relative_to(ROOT)}")
 
-    for root_name in ("arch", "contracts", "maps", "editor", "tools"):
+    for root_name in ("arch", "contracts", "maps", "editor", "schemas", "tools"):
         for path in (ROOT / root_name).rglob("*"):
             if path.is_symlink():
                 raise ValueError(f"symbolic links are not allowed: {path.relative_to(ROOT)}")
@@ -35,8 +35,21 @@ def main() -> int:
             "unittest",
             "tools.tests.test_content_catalog",
             "tools.tests.test_content_contracts",
+            "tools.tests.test_content_schema",
             "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "tools.content_schema",
+            "check",
+            "--root",
+            str(ROOT),
         ],
         cwd=ROOT,
         check=True,

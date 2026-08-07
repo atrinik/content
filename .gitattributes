@@ -7,6 +7,8 @@ tools/package-release.sh export-ignore
 /contracts/content-v1/** text eol=lf
 /maps/** text eol=lf
 /prototypes/authored-syntax-v1/** text eol=lf
+/schemas/authored-content-v1/** text eol=lf
+/tools/content_schema/** text eol=lf
 /tools/syntax_evaluation/** text eol=lf
 *.png filter=lfs diff=lfs merge=lfs -text
 *.webp filter=lfs diff=lfs merge=lfs -text

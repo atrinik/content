@@ -438,7 +438,7 @@ def main():
         # Use lowest-to-highest value sort by default.
         sort = Filter.SORT_VALUE
 
-        match = re.match("(\d+) \"([^\"]*)\" (.+)", msg[13:])
+        match = re.match(r'(\d+) "([^"]*)" (.+)', msg[13:])
 
         if not match:
             return
@@ -781,6 +781,7 @@ def main():
             marked.WriteKey("auction_house_id", str(db["uid"]))
             auction_uid_increase()
             m.Insert(marked, x, y)
+            activator.Controller().MetricAdd("economy.auction_listings")
             return
 
         inf.add_msg("I am sorry, it seems we do not accept items like your {} in this Auction House.".format(marked.GetName()))

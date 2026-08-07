@@ -41,6 +41,8 @@ def main():
         if activator.PayAmount(cost):
             inf.add_msg("You pay {}.".format(CostString(cost)), COLOR_YELLOW)
             post.send_item(marked, name)
+            activator.Controller().MetricAdd("social.post_items_sent")
+            activator.Controller().MetricAdd("economy.postage_currency_spent", cost)
             inf.add_msg("The '{}' has been sent to {} successfully.".format(marked.GetName(), name))
             marked.Destroy()
         else:

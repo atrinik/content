@@ -190,6 +190,12 @@ class Seller(Merchant):
             elif not self._activator.PayAmount(cost):
                 self.subdialog_fail_money()
             else:
+                self._activator.Controller().MetricAdd(
+                    "economy.shop_purchases"
+                )
+                self._activator.Controller().MetricAdd(
+                    "economy.shop_currency_spent", cost
+                )
                 clone = obj.Clone()
                 clone.nrof = num
                 clone.WriteKey("stock_nrof")
@@ -438,5 +444,9 @@ class SpellSeller(InterfaceBuilder):
             self.subdialog_fail_money()
             return
 
+        self._activator.Controller().MetricAdd("economy.shop_purchases")
+        self._activator.Controller().MetricAdd(
+            "economy.shop_currency_spent", self.buy_spell.value
+        )
         self._activator.CreateObject(self.buy_spell.arch.name)
         self.subdialog_bought_spell()

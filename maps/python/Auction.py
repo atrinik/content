@@ -137,4 +137,7 @@ def item_buy(activator, obj, nrof, seller):
 
     cont.Destroy()
     item_insert()
+    pl = activator.Controller()
+    pl.MetricAdd("economy.auction_purchases")
+    pl.MetricAdd("economy.auction_currency_spent", cost)
     return "You paid {} for {}.".format(CostString(cost), obj_name)

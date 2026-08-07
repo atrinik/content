@@ -4,6 +4,10 @@
 - Preserve archetype object structure, inheritance, clone behavior, face and
   animation references, material flags, weights, values, and gameplay stats.
   A cosmetic edit must not silently alter behavior.
+- Preserve the byte and semantic behaviors characterized by
+  `contracts/content-v1`; a grammar field, delimiter, message, multipart, custom-
+  field, or serialization change requires an inventory/corpus update and an
+  explicit compatibility decision.
 - Keep identifiers stable and unique in the content catalog. Display names and
   file positions are not persistent identities.
 - Keep graphics and animation references case-correct and portable. Retain

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "path": "maps/example",
+  "base_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "result_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "operations": [
+    {"kind": "replace", "start": 15, "end": 16, "replacement_base64": "Mg=="}
+  ]
+}

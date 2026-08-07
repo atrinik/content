@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "fixtures": [
+    {
+      "id": "attribution-boundary",
+      "format": "archetype",
+      "source": {"path": "corpus/fixtures/attribution/object.arc"},
+      "byte_sha256": "sha256:85dcb524bc6f55e3f652e4ef33c5f280bb12d54d955d00c6c9a7b1853acf4dc5",
+      "features": ["attribution", "comments", "lf"],
+      "load_modes": ["MAP_STYLE", "flex-buffer-mode", "line-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 1,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 1,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The archetype parser ignores the leading comment and reads the object fields."},
+        "server": {"accepted": true, "notes": "MAP_STYLE line mode accepts the object; the adjacent LICENSE is a repository boundary rather than loader input."}
+      }
+    },
+    {
+      "id": "comments-custom-fields",
+      "format": "archetype",
+      "source": {"path": "corpus/fixtures/comments-custom.arc"},
+      "byte_sha256": "sha256:2653ffd4cd9bcaea5f7039b5bbd2bef5cebb603b0eca77baaede7dea3bb0809a",
+      "features": ["comments", "custom-fields", "lf", "unknown-fields"],
+      "load_modes": ["MAP_STYLE", "flex-buffer-mode", "line-mode", "object-single-variable-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 1,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 1,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": ["plugin_owned_field"]
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The checker retains the unknown key as a generic string attribute but does not preserve spacing or comments."},
+        "server": {"accepted": true, "notes": "The Flex fallback stores plugin_owned_field in the object's key/value extension list."}
+      }
+    },
+    {
+      "id": "crlf-map",
+      "format": "map",
+      "source": {"base64": "YXJjaCBtYXANCndpZHRoIDENCmhlaWdodCAxDQplbmQNCg=="},
+      "byte_sha256": "sha256:e0ab6faca7aeb0cad3047ff1e60780c668f09b911c1b0052e4f25c4767a712e8",
+      "features": ["crlf"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode"],
+      "expected": {
+        "accepted": false,
+        "comments": 0,
+        "diagnostic_codes": ["field-outside-block", "field-outside-block", "field-outside-block", "invalid-map-header", "invalid-map-sentinel", "missing-map-header", "unexpected-end"],
+        "exits": 0,
+        "line_endings": "crlf",
+        "maximum_depth": 0,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 0,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": false, "notes": "The classic checker compares the first line to the exact LF string arch map\\n."},
+        "server": {"accepted": false, "notes": "load_map_header also requires the first line to equal the exact LF sentinel arch map\\n."}
+      }
+    },
+    {
+      "id": "malformed-header",
+      "format": "map",
+      "source": {"path": "corpus/fixtures/malformed-header.map"},
+      "byte_sha256": "sha256:6c1639eaa1bcc6fabcf99f46d52285a0b440e79b241137646a19f5b74606f9a1",
+      "features": ["comments", "lf", "malformed"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode"],
+      "expected": {
+        "accepted": false,
+        "comments": 1,
+        "diagnostic_codes": ["field-outside-block", "invalid-map-sentinel", "missing-map-header", "unexpected-end"],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 0,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 0,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": false, "notes": "Any preamble line other than arch map causes load_map to return an empty result."},
+        "server": {"accepted": false, "notes": "load_map_header rejects the first non-map line before invoking the Flex header grammar."}
+      }
+    },
+    {
+      "id": "malformed-nesting",
+      "format": "archetype",
+      "source": {"path": "corpus/fixtures/malformed-nesting.arc"},
+      "byte_sha256": "sha256:224a43d698a068808e2c9f69984ac0d18e035f659d3395a1f8e934d75f60bf4e",
+      "features": ["lf", "malformed", "nested-inventory"],
+      "load_modes": ["MAP_STYLE", "line-mode"],
+      "expected": {
+        "accepted": false,
+        "comments": 0,
+        "diagnostic_codes": ["nesting-depth"],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 11,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 11,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The recursive Python checker has no explicit depth bound and accepts the structure subject to available archetypes."},
+        "server": {"accepted": false, "notes": "The line-mode Flex loader exhausts MAXDEPTH at ten nested inventory levels and currently terminates the process."}
+      }
+    },
+    {
+      "id": "malformed-unterminated-message",
+      "format": "map",
+      "source": {"path": "corpus/fixtures/malformed-unterminated-message.map"},
+      "byte_sha256": "sha256:d2ba564cfd2992f48c9b10a6cbc02014fe41bc2561ea87362216ff154d0f67b0",
+      "features": ["lf", "malformed", "multiline-messages"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode"],
+      "expected": {
+        "accepted": false,
+        "comments": 0,
+        "diagnostic_codes": ["unterminated-block", "unterminated-message"],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 1,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": false, "notes": "The checker reaches EOF with both message and object state incomplete."},
+        "server": {"accepted": false, "notes": "The object loader reaches EOF without endmsg or end and cannot produce LL_NORMAL."}
+      }
+    },
+    {
+      "id": "mixed-line-endings",
+      "format": "map",
+      "source": {"base64": "YXJjaCBtYXAKd2lkdGggMQ0KaGVpZ2h0IDEKZW5kDQo="},
+      "byte_sha256": "sha256:3e6435c295cbc15157026087cdc9484796b6536eb4e3f72a53a13e4fcbbdb240",
+      "features": ["mixed-line-endings"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "mixed",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 0,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": false, "notes": "Exact LF comparisons do not recognize the CRLF header terminator."},
+        "server": {"accepted": true, "notes": "The initial LF sentinel and fields load; EOF is treated as a successful header when CRLF prevents the exact end rule."}
+      }
+    },
+    {
+      "id": "multiline-message",
+      "format": "archetype",
+      "source": {"path": "corpus/fixtures/multiline-message.arc"},
+      "byte_sha256": "sha256:3f8e0776b1f4741025243ddcb75ac516b73ae2715cc63cf41a1cac9f59a7f447",
+      "features": ["lf", "multiline-messages"],
+      "load_modes": ["MAP_STYLE", "flex-buffer-mode", "line-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 1,
+        "multipart_continuations": 0,
+        "objects": 1,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "All lines between exact msg and endmsg markers become one string, including blanks and hashes."},
+        "server": {"accepted": true, "notes": "The MESSAGE Flex state treats field-like text, comments, and end text as raw message bytes."}
+      }
+    },
+    {
+      "id": "multipart-archetype",
+      "format": "archetype",
+      "source": {"path": "corpus/fixtures/multipart.arc"},
+      "byte_sha256": "sha256:238ba49acf6d63faffc3a3788f341d1ee7f969ed80d9e4d54a03227c8345b729",
+      "features": ["lf", "multipart"],
+      "load_modes": ["MAP_STYLE", "flex-buffer-mode", "line-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 1,
+        "objects": 2,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The classic checker parses both Object records but does not model More linkage."},
+        "server": {"accepted": true, "notes": "MAP_STYLE returns LL_MORE and links the continuation to multipart_head."}
+      }
+    },
+    {
+      "id": "nested-inventory",
+      "format": "map",
+      "source": {"path": "corpus/fixtures/nested-inventory.map"},
+      "byte_sha256": "sha256:87cd11d0002fff468437b4c38ed07692f9fe740ac7b32dee2ba12e244afc4659",
+      "features": ["lf", "nested-inventory"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 3,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 3,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The recursive map parser attaches bag to chest and coin to bag when the fixture archetypes exist."},
+        "server": {"accepted": true, "notes": "Line mode inserts each nested arch into its parent and remains below MAXDEPTH."}
+      }
+    },
+    {
+      "id": "no-terminal-newline",
+      "format": "archetype",
+      "source": {"base64": "T2JqZWN0IG5vX25ld2xpbmUKdHlwZSAxCmVuZA=="},
+      "byte_sha256": "sha256:62e024a5f086429f25fc45e945f03ed68b4e6502d29ef721fed42b24e5557fea",
+      "features": ["lf", "no-terminal-newline"],
+      "load_modes": ["MAP_STYLE", "flex-buffer-mode", "line-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 1,
+        "stacked_coordinates": [],
+        "terminal_newline": false,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The archetype dictionary is returned even though the exact end\\n marker is not seen."},
+        "server": {"accepted": false, "notes": "The Flex end rule requires a newline and line mode reaches LL_EOF instead of LL_NORMAL."}
+      }
+    },
+    {
+      "id": "stable-identities",
+      "format": "archetype",
+      "source": {"path": "corpus/fixtures/stable-identities.arc"},
+      "byte_sha256": "sha256:a850a4a54cc9f4816f72502bcf301102419f7d6fe90474516a3a397a76d6d3af",
+      "features": ["lf", "multipart", "stable-identities"],
+      "load_modes": ["MAP_ARTIFACT", "MAP_STYLE", "flex-buffer-mode", "line-mode", "nul-string-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": [],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 1,
+        "objects": 2,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "Stable spell_id and skill_id fields are retained as ordinary attributes on their typed archetype records."},
+        "server": {"accepted": true, "notes": "MAP_STYLE and MAP_ARTIFACT resolve stable spell and skill identities after complete record loading; NUL-string, Flex-buffer, and line scanner entry points share the same field rules."}
+      }
+    },
+    {
+      "id": "tiled-stacked-exit",
+      "format": "map",
+      "source": {"path": "corpus/fixtures/tiled-stacked-exit.map"},
+      "byte_sha256": "sha256:324dbe009f58aeb98fb7d6b70ef36d5b1b2f63593b1fc9aaf51b0b038fd956b6",
+      "features": ["comments", "exits", "lf", "stacked-objects", "tiled-maps"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 1,
+        "diagnostic_codes": [],
+        "exits": 1,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 3,
+        "stacked_coordinates": ["1,2"],
+        "terminal_newline": true,
+        "tile_links": ["north", "west"],
+        "unknown_fields": []
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The checker retains two objects on one tile, resolves tile paths, and interprets slaying plus hp/sp as an exit destination."},
+        "server": {"accepted": true, "notes": "The header links tile slots and MAP_ORIGINAL keeps source order within the bounded tile stack."}
+      }
+    },
+    {
+      "id": "unknown-map-header",
+      "format": "map",
+      "source": {"path": "corpus/fixtures/unknown-map-header.map"},
+      "byte_sha256": "sha256:ef7c5c83e997a9a99d9b7644354f40dae038eb2484955dba1557afc8d7757af5",
+      "features": ["custom-fields", "lf", "unknown-fields"],
+      "load_modes": ["MAP_ORIGINAL", "flex-buffer-mode", "map-header-mode", "map-single-variable-mode"],
+      "expected": {
+        "accepted": true,
+        "comments": 0,
+        "diagnostic_codes": ["unknown-map-header-field"],
+        "exits": 0,
+        "line_endings": "lf",
+        "maximum_depth": 1,
+        "messages": 0,
+        "multipart_continuations": 0,
+        "objects": 0,
+        "stacked_coordinates": [],
+        "terminal_newline": true,
+        "tile_links": [],
+        "unknown_fields": ["plugin_header"]
+      },
+      "legacy_baselines": {
+        "map-checker": {"accepted": true, "notes": "The checker retains the custom header key and value in its generic map-header dictionary."},
+        "server": {"accepted": true, "notes": "The Flex fallback logs the unknown record and returns LL_NORMAL; load_map_header continues with following lines and succeeds at end."}
+      }
+    }
+  ]
+}

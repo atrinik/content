@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/patch.schema.json",
+  "title": "Atrinik content byte patch v1",
+  "description": "A conflict-detecting byte-range patch against an exact source digest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "path", "base_sha256", "result_sha256", "operations"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "path": {"type": "string", "minLength": 1},
+    "base_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "result_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "start", "end", "replacement_base64"],
+        "properties": {
+          "kind": {"enum": ["delete", "insert", "replace"]},
+          "start": {"type": "integer", "minimum": 0},
+          "end": {"type": "integer", "minimum": 0},
+          "replacement_base64": {"type": "string", "pattern": "^[A-Za-z0-9+/]*={0,2}$"}
+        }
+      }
+    }
+  }
+}

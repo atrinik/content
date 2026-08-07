@@ -1,0 +1,15 @@
+arch map
+name Nested inventory parity
+width 4
+height 4
+difficulty 1
+end
+arch chest
+x 1
+y 1
+arch bag
+arch coin
+nrof 3
+end
+end
+end

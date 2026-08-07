@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/inspection.schema.json",
+  "title": "Atrinik content inspection v1",
+  "description": "A byte-addressable read-only inspection of one legacy ADS document.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "document", "nodes", "comments", "unknown_fields", "diagnostics"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "format", "byte_sha256", "size", "line_endings", "terminal_newline"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "format": {"enum": ["archetype", "map"]},
+        "byte_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 0},
+        "line_endings": {"enum": ["crlf", "lf", "mixed", "none"]},
+        "terminal_newline": {"type": "boolean"}
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "name", "start_line", "end_line", "depth", "fields"],
+        "properties": {
+          "kind": {"enum": ["map-header", "object"]},
+          "name": {"type": "string", "minLength": 1},
+          "start_line": {"type": "integer", "minimum": 1},
+          "end_line": {
+            "oneOf": [
+              {"type": "integer", "minimum": 1},
+              {"type": "null"}
+            ]
+          },
+          "depth": {"type": "integer", "minimum": 0},
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "value", "line"],
+              "properties": {
+                "name": {"type": "string", "minLength": 1},
+                "value": {"type": "string"},
+                "line": {"type": "integer", "minimum": 1}
+              }
+            }
+          }
+        }
+      }
+    },
+    "comments": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+    "unknown_fields": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "diagnostics": {"type": "array", "items": {"$ref": "#/$defs/diagnostic"}}
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "line", "column"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1}
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "code", "severity", "message", "location", "related"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "code": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "severity": {"enum": ["error", "info", "warning"]},
+        "message": {"type": "string", "minLength": 1},
+        "location": {"$ref": "#/$defs/location"},
+        "related": {"type": "array", "items": {"$ref": "#/$defs/location"}}
+      }
+    }
+  }
+}

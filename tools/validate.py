@@ -14,12 +14,16 @@ ROOT = Path(__file__).parents[1].resolve()
 
 
 def main() -> int:
-    required = (ROOT / "arch" / "COPYING", ROOT / "maps" / "COPYING", ROOT / "tools" / "COPYING")
+    required = (
+        ROOT / "arch" / "COPYING",
+        ROOT / "maps" / "COPYING",
+        ROOT / "tools" / "COPYING",
+    )
     for path in required:
         if not path.is_file() or path.stat().st_size == 0:
             raise ValueError(f"missing required license file: {path.relative_to(ROOT)}")
 
-    for root_name in ("arch", "maps", "editor", "tools"):
+    for root_name in ("arch", "contracts", "maps", "editor", "tools"):
         for path in (ROOT / root_name).rglob("*"):
             if path.is_symlink():
                 raise ValueError(f"symbolic links are not allowed: {path.relative_to(ROOT)}")
@@ -30,6 +34,7 @@ def main() -> int:
             "-m",
             "unittest",
             "tools.tests.test_content_catalog",
+            "tools.tests.test_content_contracts",
             "tools.tests.test_world_content_audit",
         ],
         cwd=ROOT,
@@ -40,6 +45,18 @@ def main() -> int:
             sys.executable,
             "-m",
             "tools.content_catalog",
+            "validate",
+            "--root",
+            str(ROOT),
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "tools.content_contracts",
             "validate",
             "--root",
             str(ROOT),
@@ -62,7 +79,13 @@ def main() -> int:
             raise ValueError("runtime manifest paths are not canonical and unique")
 
     subprocess.run(
-        [sys.executable, str(ROOT / "arch" / "license_check.py"), "--directory", str(ROOT / "arch"), "--text-only"],
+        [
+            sys.executable,
+            str(ROOT / "arch" / "license_check.py"),
+            "--directory",
+            str(ROOT / "arch"),
+            "--text-only",
+        ],
         check=True,
     )
     return 0

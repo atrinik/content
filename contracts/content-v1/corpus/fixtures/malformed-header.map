@@ -1,0 +1,3 @@
+# A leading comment violates the exact first-line arch map sentinel.
+name Not a map header
+end

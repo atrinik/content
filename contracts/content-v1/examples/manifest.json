@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "examples": [
+    {"kind": "diagnostic", "path": "examples/diagnostic.json"},
+    {"kind": "error", "path": "examples/error.json"},
+    {"kind": "inspection", "path": "examples/inspection.json"},
+    {"kind": "patch", "path": "examples/patch.json"},
+    {"kind": "semantic-comparison", "path": "examples/semantic-comparison.json"}
+  ]
+}

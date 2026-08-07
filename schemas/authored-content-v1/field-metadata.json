@@ -1,0 +1,4722 @@
+{
+  "fields": [
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "activity",
+      "feature": "tools-and-activities",
+      "field_id": "activity.duration_ms",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "timing"
+      ],
+      "status": "reserved",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "activity",
+      "enum_values": [
+        "cancel",
+        "pause",
+        "restart"
+      ],
+      "feature": "tools-and-activities",
+      "field_id": "activity.interruption_policy",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "timing"
+      ],
+      "status": "reserved",
+      "value_kind": "enum"
+    },
+    {
+      "constraints": {},
+      "context": "activity",
+      "feature": "tools-and-activities",
+      "field_id": "activity.required_skill",
+      "legacy_name": null,
+      "reference_domains": [
+        "skill"
+      ],
+      "roles": [
+        "requirement"
+      ],
+      "status": "reserved",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.bg_music",
+      "legacy_name": "bg_music",
+      "reference_domains": [],
+      "roles": [
+        "presentation"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 7,
+        "minimum": -1
+      },
+      "context": "map-header",
+      "field_id": "map-header.darkness",
+      "legacy_name": "darkness",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "map-header",
+      "field_id": "map-header.difficulty",
+      "legacy_name": "difficulty",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "map-header",
+      "field_id": "map-header.enter_x",
+      "legacy_name": "enter_x",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "map-header",
+      "field_id": "map-header.enter_y",
+      "legacy_name": "enter_y",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.fixed_login",
+      "legacy_name": "fixed_login",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.fixed_resettime",
+      "legacy_name": "fixed_resettime",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 1
+      },
+      "context": "map-header",
+      "field_id": "map-header.height",
+      "legacy_name": "height",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.height_diff",
+      "legacy_name": "height_diff",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "map-header",
+      "field_id": "map-header.light",
+      "legacy_name": "light",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.name",
+      "legacy_name": "name",
+      "reference_domains": [],
+      "roles": [
+        "presentation"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.no_harm",
+      "legacy_name": "no_harm",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.no_magic",
+      "legacy_name": "no_magic",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.no_save",
+      "legacy_name": "no_save",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.no_summon",
+      "legacy_name": "no_summon",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.outdoor",
+      "legacy_name": "outdoor",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.player_no_save",
+      "legacy_name": "player_no_save",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.pvp",
+      "legacy_name": "pvp",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.region",
+      "legacy_name": "region",
+      "reference_domains": [
+        "region"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "map-header",
+      "field_id": "map-header.reset_timeout",
+      "legacy_name": "reset_timeout",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "map-header",
+      "field_id": "map-header.swap_time",
+      "legacy_name": "swap_time",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_1",
+      "legacy_name": "tile_path_1",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_10",
+      "legacy_name": "tile_path_10",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_2",
+      "legacy_name": "tile_path_2",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_3",
+      "legacy_name": "tile_path_3",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_4",
+      "legacy_name": "tile_path_4",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_5",
+      "legacy_name": "tile_path_5",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_6",
+      "legacy_name": "tile_path_6",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_7",
+      "legacy_name": "tile_path_7",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_8",
+      "legacy_name": "tile_path_8",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.tile_path_9",
+      "legacy_name": "tile_path_9",
+      "reference_domains": [
+        "map"
+      ],
+      "roles": [
+        "reference",
+        "topology"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.unique",
+      "legacy_name": "unique",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "map-header",
+      "field_id": "map-header.weather",
+      "legacy_name": "weather",
+      "reference_domains": [],
+      "roles": [
+        "presentation"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 1
+      },
+      "context": "map-header",
+      "field_id": "map-header.width",
+      "legacy_name": "width",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.absorb",
+      "legacy_name": "absorb",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.absorb_add",
+      "legacy_name": "absorb_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.ac",
+      "legacy_name": "ac",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.ac_add",
+      "legacy_name": "ac_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.align",
+      "legacy_name": "align",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.alive",
+      "legacy_name": "alive",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 255,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.alpha",
+      "legacy_name": "alpha",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.amask",
+      "legacy_name": "amask",
+      "reference_domains": [
+        "artifact"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.anim_speed",
+      "legacy_name": "anim_speed",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.animation",
+      "legacy_name": "animation",
+      "reference_domains": [
+        "animation"
+      ],
+      "roles": [
+        "reference",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.applied",
+      "legacy_name": "applied",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.artifact",
+      "legacy_name": "artifact",
+      "reference_domains": [
+        "artifact"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_acid",
+      "legacy_name": "attack_acid",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_blind",
+      "legacy_name": "attack_blind",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_chaos",
+      "legacy_name": "attack_chaos",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_cleave",
+      "legacy_name": "attack_cleave",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_cold",
+      "legacy_name": "attack_cold",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_confusion",
+      "legacy_name": "attack_confusion",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_drain",
+      "legacy_name": "attack_drain",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_electricity",
+      "legacy_name": "attack_electricity",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_fire",
+      "legacy_name": "attack_fire",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_force",
+      "legacy_name": "attack_force",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_godpower",
+      "legacy_name": "attack_godpower",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_impact",
+      "legacy_name": "attack_impact",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_internal",
+      "legacy_name": "attack_internal",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_lifesteal",
+      "legacy_name": "attack_lifesteal",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_magic",
+      "legacy_name": "attack_magic",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.attack_move_type",
+      "legacy_name": "attack_move_type",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_paralyze",
+      "legacy_name": "attack_paralyze",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_pierce",
+      "legacy_name": "attack_pierce",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_poison",
+      "legacy_name": "attack_poison",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_slash",
+      "legacy_name": "attack_slash",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_slow",
+      "legacy_name": "attack_slow",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.attack_weaponmagic",
+      "legacy_name": "attack_weaponmagic",
+      "reference_domains": [],
+      "roles": [
+        "attack"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.attacktype",
+      "legacy_name": "attacktype",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.auto_apply",
+      "legacy_name": "auto_apply",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.been_applied",
+      "legacy_name": "been_applied",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.behavior",
+      "legacy_name": "behavior",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.berserk",
+      "legacy_name": "berserk",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.block",
+      "legacy_name": "block",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.block_add",
+      "legacy_name": "block_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.blocksview",
+      "legacy_name": "blocksview",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_cast_spell",
+      "legacy_name": "can_cast_spell",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_pass_thru",
+      "legacy_name": "can_pass_thru",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_reflect_missile",
+      "legacy_name": "can_reflect_missile",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_reflect_spell",
+      "legacy_name": "can_reflect_spell",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_roll",
+      "legacy_name": "can_roll",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_see_in_dark",
+      "legacy_name": "can_see_in_dark",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_stack",
+      "legacy_name": "can_stack",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_armour",
+      "legacy_name": "can_use_armour",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_bow",
+      "legacy_name": "can_use_bow",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_range",
+      "legacy_name": "can_use_range",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_ring",
+      "legacy_name": "can_use_ring",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_scroll",
+      "legacy_name": "can_use_scroll",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_skill",
+      "legacy_name": "can_use_skill",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.can_use_weapon",
+      "legacy_name": "can_use_weapon",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.carrying",
+      "legacy_name": "carrying",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.changing",
+      "legacy_name": "changing",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.con",
+      "legacy_name": "con",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.confused",
+      "legacy_name": "confused",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.connect_no_push",
+      "legacy_name": "connect_no_push",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.connect_no_release",
+      "legacy_name": "connect_no_release",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.connect_reset",
+      "legacy_name": "connect_reset",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.connected",
+      "legacy_name": "connected",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.container",
+      "legacy_name": "container",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "enum_values": [
+        "none",
+        "tiny",
+        "small",
+        "medium",
+        "large",
+        "huge"
+      ],
+      "feature": "container-capacity",
+      "field_id": "object.container_size",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "presentation"
+      ],
+      "status": "reserved",
+      "value_kind": "enum"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.corpse",
+      "legacy_name": "corpse",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.corpse_forced",
+      "legacy_name": "corpse_forced",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.cursed",
+      "legacy_name": "cursed",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.cursed_perm",
+      "legacy_name": "cursed_perm",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.custom_name",
+      "legacy_name": "custom_name",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.dam",
+      "legacy_name": "dam",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.dam_add",
+      "legacy_name": "dam_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.damned",
+      "legacy_name": "damned",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.damned_perm",
+      "legacy_name": "damned_perm",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.dex",
+      "legacy_name": "dex",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 8,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.direction",
+      "legacy_name": "direction",
+      "reference_domains": [],
+      "roles": [
+        "placement",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.door_closed",
+      "legacy_name": "door_closed",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.draw_direction",
+      "legacy_name": "draw_direction",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.draw_double",
+      "legacy_name": "draw_double",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.draw_double_always",
+      "legacy_name": "draw_double_always",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.editor_folder",
+      "legacy_name": "editor_folder",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.exp",
+      "legacy_name": "exp",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.face",
+      "legacy_name": "face",
+      "reference_domains": [
+        "face"
+      ],
+      "roles": [
+        "reference",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.fly_off",
+      "legacy_name": "fly_off",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.fly_on",
+      "legacy_name": "fly_on",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.flying",
+      "legacy_name": "flying",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.food",
+      "legacy_name": "food",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.friendly",
+      "legacy_name": "friendly",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.generator",
+      "legacy_name": "generator",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.glow",
+      "legacy_name": "glow",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.glow_radius",
+      "legacy_name": "glow_radius",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.glow_speed",
+      "legacy_name": "glow_speed",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.has_ready_bow",
+      "legacy_name": "has_ready_bow",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.has_ready_range",
+      "legacy_name": "has_ready_range",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.has_ready_skill",
+      "legacy_name": "has_ready_skill",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.has_ready_weapon",
+      "legacy_name": "has_ready_weapon",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.hidden",
+      "legacy_name": "hidden",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.hitback",
+      "legacy_name": "hitback",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.hp",
+      "legacy_name": "hp",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.identified",
+      "legacy_name": "identified",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.int",
+      "legacy_name": "int",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.inv_animation",
+      "legacy_name": "inv_animation",
+      "reference_domains": [
+        "animation"
+      ],
+      "roles": [
+        "reference",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.inv_face",
+      "legacy_name": "inv_face",
+      "reference_domains": [
+        "face"
+      ],
+      "roles": [
+        "reference",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.inv_locked",
+      "legacy_name": "inv_locked",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.invulnerable",
+      "legacy_name": "invulnerable",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_animated",
+      "legacy_name": "is_animated",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_assassin",
+      "legacy_name": "is_assassin",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_blind",
+      "legacy_name": "is_blind",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_buildable",
+      "legacy_name": "is_buildable",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_cauldron",
+      "legacy_name": "is_cauldron",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_dust",
+      "legacy_name": "is_dust",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_ethereal",
+      "legacy_name": "is_ethereal",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_evil",
+      "legacy_name": "is_evil",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_female",
+      "legacy_name": "is_female",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_floor",
+      "legacy_name": "is_floor",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_good",
+      "legacy_name": "is_good",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_hilly",
+      "legacy_name": "is_hilly",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_indestructible",
+      "legacy_name": "is_indestructible",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_invisible",
+      "legacy_name": "is_invisible",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_magical",
+      "legacy_name": "is_magical",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_male",
+      "legacy_name": "is_male",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_missile",
+      "legacy_name": "is_missile",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_named",
+      "legacy_name": "is_named",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_neutral",
+      "legacy_name": "is_neutral",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_player",
+      "legacy_name": "is_player",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_proof_elemental",
+      "legacy_name": "is_proof_elemental",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_proof_magic",
+      "legacy_name": "is_proof_magic",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_proof_physical",
+      "legacy_name": "is_proof_physical",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_proof_sphere",
+      "legacy_name": "is_proof_sphere",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_spell",
+      "legacy_name": "is_spell",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_thrown",
+      "legacy_name": "is_thrown",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_trapped",
+      "legacy_name": "is_trapped",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_turnable",
+      "legacy_name": "is_turnable",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_used_up",
+      "legacy_name": "is_used_up",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_vul_elemental",
+      "legacy_name": "is_vul_elemental",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_vul_magic",
+      "legacy_name": "is_vul_magic",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_vul_physical",
+      "legacy_name": "is_vul_physical",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_vul_sphere",
+      "legacy_name": "is_vul_sphere",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.is_wooded",
+      "legacy_name": "is_wooded",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_condition",
+      "legacy_name": "item_condition",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_level",
+      "legacy_name": "item_level",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_level_art",
+      "legacy_name": "item_level_art",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_power",
+      "legacy_name": "item_power",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_quality",
+      "legacy_name": "item_quality",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_race",
+      "legacy_name": "item_race",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "enum_values": [
+        "none",
+        "common",
+        "uncommon",
+        "rare",
+        "exceptional",
+        "epic",
+        "mythic",
+        "relic",
+        "legendary"
+      ],
+      "feature": "item-rarity",
+      "field_id": "object.item_rarity",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "presentation"
+      ],
+      "status": "reserved",
+      "value_kind": "enum"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.item_skill",
+      "legacy_name": "item_skill",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.known_cursed",
+      "legacy_name": "known_cursed",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.known_magical",
+      "legacy_name": "known_magical",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.last_eat",
+      "legacy_name": "last_eat",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.last_grace",
+      "legacy_name": "last_grace",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.last_grace_add",
+      "legacy_name": "last_grace_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.last_heal",
+      "legacy_name": "last_heal",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.last_sp",
+      "legacy_name": "last_sp",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.layer",
+      "legacy_name": "layer",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.level",
+      "legacy_name": "level",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.lifesave",
+      "legacy_name": "lifesave",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.luck",
+      "legacy_name": "luck",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.magic",
+      "legacy_name": "magic",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.make_ethereal",
+      "legacy_name": "make_ethereal",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.make_invisible",
+      "legacy_name": "make_invisible",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.match",
+      "legacy_name": "match",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.material",
+      "legacy_name": "material",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.material_real",
+      "legacy_name": "material_real",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.maxhp",
+      "legacy_name": "maxhp",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.maxsp",
+      "legacy_name": "maxsp",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.monster",
+      "legacy_name": "monster",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.move_state",
+      "legacy_name": "move_state",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.movement_type",
+      "legacy_name": "movement_type",
+      "reference_domains": [],
+      "roles": [
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.mpart_id",
+      "legacy_name": "mpart_id",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.mpart_nr",
+      "legacy_name": "mpart_nr",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.name",
+      "legacy_name": "name",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_attack",
+      "legacy_name": "no_attack",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_drop",
+      "legacy_name": "no_drop",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_fix_player",
+      "legacy_name": "no_fix_player",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_magic",
+      "legacy_name": "no_magic",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_pass",
+      "legacy_name": "no_pass",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_pick",
+      "legacy_name": "no_pick",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_pvp",
+      "legacy_name": "no_pvp",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_save",
+      "legacy_name": "no_save",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_skill_ident",
+      "legacy_name": "no_skill_ident",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_steal",
+      "legacy_name": "no_steal",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.no_teleport",
+      "legacy_name": "no_teleport",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.nrof",
+      "legacy_name": "nrof",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.object_int1",
+      "legacy_name": "object_int1",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.object_int2",
+      "legacy_name": "object_int2",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.object_int3",
+      "legacy_name": "object_int3",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.one_drop",
+      "legacy_name": "one_drop",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.one_hit",
+      "legacy_name": "one_hit",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.only_attack",
+      "legacy_name": "only_attack",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.other_arch",
+      "legacy_name": "other_arch",
+      "reference_domains": [
+        "archetype"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.outdoor",
+      "legacy_name": "outdoor",
+      "reference_domains": [],
+      "roles": [
+        "flag",
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.pass_thru",
+      "legacy_name": "pass_thru",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.path_attuned",
+      "legacy_name": "path_attuned",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.path_denied",
+      "legacy_name": "path_denied",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.path_repelled",
+      "legacy_name": "path_repelled",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.player_only",
+      "legacy_name": "player_only",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.pow",
+      "legacy_name": "pow",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_acid",
+      "legacy_name": "protect_acid",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_blind",
+      "legacy_name": "protect_blind",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_body",
+      "legacy_name": "protect_body",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_chaos",
+      "legacy_name": "protect_chaos",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_cleave",
+      "legacy_name": "protect_cleave",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_cold",
+      "legacy_name": "protect_cold",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_confusion",
+      "legacy_name": "protect_confusion",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_corruption",
+      "legacy_name": "protect_corruption",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_death",
+      "legacy_name": "protect_death",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_drain",
+      "legacy_name": "protect_drain",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_electricity",
+      "legacy_name": "protect_electricity",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_fire",
+      "legacy_name": "protect_fire",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_force",
+      "legacy_name": "protect_force",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_godpower",
+      "legacy_name": "protect_godpower",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_impact",
+      "legacy_name": "protect_impact",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_internal",
+      "legacy_name": "protect_internal",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_lifesteal",
+      "legacy_name": "protect_lifesteal",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_magic",
+      "legacy_name": "protect_magic",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_paralyze",
+      "legacy_name": "protect_paralyze",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_pierce",
+      "legacy_name": "protect_pierce",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_poison",
+      "legacy_name": "protect_poison",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_psionic",
+      "legacy_name": "protect_psionic",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_slash",
+      "legacy_name": "protect_slash",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_slow",
+      "legacy_name": "protect_slow",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_spiritual",
+      "legacy_name": "protect_spiritual",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 100,
+        "minimum": -100
+      },
+      "context": "object",
+      "field_id": "object.protect_weaponmagic",
+      "legacy_name": "protect_weaponmagic",
+      "reference_domains": [],
+      "roles": [
+        "protection"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.quest_item",
+      "legacy_name": "quest_item",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.quickslot",
+      "legacy_name": "quickslot",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.race",
+      "legacy_name": "race",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.random_move",
+      "legacy_name": "random_move",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.randomitems",
+      "legacy_name": "randomitems",
+      "reference_domains": [
+        "treasure"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.reflect_missile",
+      "legacy_name": "reflect_missile",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.reflect_spell",
+      "legacy_name": "reflect_spell",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.reflecting",
+      "legacy_name": "reflecting",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.rotate",
+      "legacy_name": "rotate",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.run_away",
+      "legacy_name": "run_away",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.scared",
+      "legacy_name": "scared",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.see_invisible",
+      "legacy_name": "see_invisible",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.skill_id",
+      "legacy_name": "skill_id",
+      "reference_domains": [
+        "skill"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.slaying",
+      "legacy_name": "slaying",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.sleep",
+      "legacy_name": "sleep",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.slow_move",
+      "legacy_name": "slow_move",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.soulbound",
+      "legacy_name": "soulbound",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.sp",
+      "legacy_name": "sp",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.speed",
+      "legacy_name": "speed",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "number"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.speed_left",
+      "legacy_name": "speed_left",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "number"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "object",
+      "feature": "spell-encumbrance",
+      "field_id": "object.spell_encumbrance",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "combat"
+      ],
+      "status": "reserved",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.spell_id",
+      "legacy_name": "spell_id",
+      "reference_domains": [
+        "spell"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.splitting",
+      "legacy_name": "splitting",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.stand_still",
+      "legacy_name": "stand_still",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.startequip",
+      "legacy_name": "startequip",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.state",
+      "legacy_name": "state",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.stealth",
+      "legacy_name": "stealth",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.str",
+      "legacy_name": "str",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.sub_layer",
+      "legacy_name": "sub_layer",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.sub_type",
+      "legacy_name": "sub_type",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.sys_object",
+      "legacy_name": "sys_object",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.tear_down",
+      "legacy_name": "tear_down",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.terrain_flag",
+      "legacy_name": "terrain_flag",
+      "reference_domains": [],
+      "roles": [
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.terrain_type",
+      "legacy_name": "terrain_type",
+      "reference_domains": [],
+      "roles": [
+        "surface"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.title",
+      "legacy_name": "title",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.treasure",
+      "legacy_name": "treasure",
+      "reference_domains": [],
+      "roles": [
+        "legacy"
+      ],
+      "status": "legacy-ignored",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.two_handed",
+      "legacy_name": "two_handed",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.type",
+      "legacy_name": "type",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.unaggressive",
+      "legacy_name": "unaggressive",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.undead",
+      "legacy_name": "undead",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.unique",
+      "legacy_name": "unique",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.unpaid",
+      "legacy_name": "unpaid",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.use_fix_pos",
+      "legacy_name": "use_fix_pos",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.value",
+      "legacy_name": "value",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.walk_off",
+      "legacy_name": "walk_off",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.walk_on",
+      "legacy_name": "walk_on",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.wc",
+      "legacy_name": "wc",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.wc_add",
+      "legacy_name": "wc_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.wc_range",
+      "legacy_name": "wc_range",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.wc_range_add",
+      "legacy_name": "wc_range_add",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.weapon_speed",
+      "legacy_name": "weapon_speed",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "number"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.weight",
+      "legacy_name": "weight",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.x",
+      "legacy_name": "x",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.xrays",
+      "legacy_name": "xrays",
+      "reference_domains": [],
+      "roles": [
+        "flag"
+      ],
+      "status": "active",
+      "value_kind": "boolean"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.y",
+      "legacy_name": "y",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.z",
+      "legacy_name": "z",
+      "reference_domains": [],
+      "roles": [
+        "placement"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.zoom",
+      "legacy_name": "zoom",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.zoom_x",
+      "legacy_name": "zoom_x",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": -9007199254740991
+      },
+      "context": "object",
+      "field_id": "object.zoom_y",
+      "legacy_name": "zoom_y",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "recipe",
+      "feature": "tools-and-activities",
+      "field_id": "recipe.inputs",
+      "legacy_name": null,
+      "reference_domains": [
+        "archetype",
+        "artifact"
+      ],
+      "roles": [
+        "recipe"
+      ],
+      "status": "reserved",
+      "value_kind": "reference-list"
+    },
+    {
+      "constraints": {},
+      "context": "recipe",
+      "feature": "tools-and-activities",
+      "field_id": "recipe.outputs",
+      "legacy_name": null,
+      "reference_domains": [
+        "archetype",
+        "artifact",
+        "reward"
+      ],
+      "roles": [
+        "recipe"
+      ],
+      "status": "reserved",
+      "value_kind": "reference-list"
+    },
+    {
+      "constraints": {},
+      "context": "resource-node",
+      "feature": "tools-and-activities",
+      "field_id": "resource-node.yield_table",
+      "legacy_name": null,
+      "reference_domains": [
+        "reward"
+      ],
+      "roles": [
+        "reward"
+      ],
+      "status": "reserved",
+      "value_kind": "reference"
+    },
+    {
+      "constraints": {
+        "maximum": 9007199254740991,
+        "minimum": 0
+      },
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.cost",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "progression"
+      ],
+      "status": "reserved",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.discipline_requirements",
+      "legacy_name": null,
+      "reference_domains": [
+        "skill"
+      ],
+      "roles": [
+        "requirement"
+      ],
+      "status": "reserved",
+      "value_kind": "reference-list"
+    },
+    {
+      "constraints": {},
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.effect_ids",
+      "legacy_name": null,
+      "reference_domains": [
+        "effect",
+        "mastery",
+        "technique"
+      ],
+      "roles": [
+        "progression"
+      ],
+      "status": "reserved",
+      "value_kind": "reference-list"
+    },
+    {
+      "constraints": {},
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.exclusion_tags",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "progression"
+      ],
+      "status": "reserved",
+      "value_kind": "string-list"
+    },
+    {
+      "constraints": {},
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.layout",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "presentation"
+      ],
+      "status": "reserved",
+      "value_kind": "object"
+    },
+    {
+      "constraints": {},
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.prerequisites",
+      "legacy_name": null,
+      "reference_domains": [
+        "specialization-node"
+      ],
+      "roles": [
+        "progression"
+      ],
+      "status": "reserved",
+      "value_kind": "reference-list"
+    },
+    {
+      "constraints": {},
+      "context": "specialization-node",
+      "feature": "specialization-graph",
+      "field_id": "specialization-node.proficiency_tags",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "requirement"
+      ],
+      "status": "reserved",
+      "value_kind": "string-list"
+    },
+    {
+      "constraints": {},
+      "context": "tool",
+      "feature": "tools-and-activities",
+      "field_id": "tool.action_ids",
+      "legacy_name": null,
+      "reference_domains": [
+        "activity"
+      ],
+      "roles": [
+        "activity"
+      ],
+      "status": "reserved",
+      "value_kind": "reference-list"
+    },
+    {
+      "constraints": {},
+      "context": "tool",
+      "feature": "tools-and-activities",
+      "field_id": "tool.target_tags",
+      "legacy_name": null,
+      "reference_domains": [],
+      "roles": [
+        "activity"
+      ],
+      "status": "reserved",
+      "value_kind": "string-list"
+    },
+    {
+      "constraints": {},
+      "context": "treasure",
+      "feature": "item-rarity",
+      "field_id": "treasure.item_rarity",
+      "legacy_name": null,
+      "reference_domains": [
+        "item-rarity"
+      ],
+      "roles": [
+        "reward"
+      ],
+      "status": "reserved",
+      "value_kind": "reference"
+    }
+  ],
+  "legacy_extensions": {
+    "Wis": {
+      "custom_id": "legacy.wisdom",
+      "owner": "legacy-unused",
+      "status": "remove-after-migration",
+      "value_kind": "integer"
+    },
+    "faction": {
+      "custom_id": "server.faction",
+      "owner": "atrinik/server",
+      "reference_domains": [
+        "faction"
+      ],
+      "status": "migrate",
+      "value_kind": "reference"
+    },
+    "faction_kill_penalty": {
+      "custom_id": "server.faction_kill_penalty",
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "integer"
+    },
+    "faction_rep": {
+      "custom_id": "server.faction_rep",
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "integer"
+    },
+    "notification_action": {
+      "custom_id": "server.notification_action",
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "string"
+    },
+    "notification_delay": {
+      "custom_id": "server.notification_delay",
+      "minimum": 0,
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "integer"
+    },
+    "notification_message": {
+      "custom_id": "server.notification_message",
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "string"
+    },
+    "notification_shortcut": {
+      "custom_id": "server.notification_shortcut",
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "string"
+    },
+    "spawn_time": {
+      "custom_id": "server.spawn_time",
+      "owner": "atrinik/server",
+      "status": "migrate",
+      "value_kind": "string"
+    },
+    "stock": {
+      "custom_id": "script.merchant.stock",
+      "owner": "maps/python/Merchant.py",
+      "status": "migrate",
+      "value_kind": "boolean"
+    }
+  },
+  "limits": {
+    "array_max_items": 250000,
+    "integer_maximum": 9007199254740991,
+    "integer_minimum": -9007199254740991,
+    "object_max_properties": 256,
+    "string_max_bytes": 1048576
+  },
+  "logical_model": {
+    "custom_namespace_pattern": "^[a-z][a-z0-9]*(?:[.-][a-z][a-z0-9_-]*)*$",
+    "document_kinds": [
+      "archetype",
+      "map"
+    ],
+    "object_contexts": [
+      "archetype",
+      "multipart-part",
+      "nested-inventory",
+      "placed-object"
+    ],
+    "ordered_body_records": [
+      "comment",
+      "custom-property",
+      "message",
+      "nested-object",
+      "standard-property"
+    ],
+    "reserved_namespaces": [
+      "atrinik"
+    ]
+  },
+  "registered_features": [
+    {
+      "field_ids": [
+        "object.container_size"
+      ],
+      "id": "container-capacity",
+      "owner": "atrinik/server#34",
+      "status": "reserved"
+    },
+    {
+      "field_ids": [
+        "object.item_rarity",
+        "treasure.item_rarity"
+      ],
+      "id": "item-rarity",
+      "owner": "atrinik/server#6",
+      "status": "reserved"
+    },
+    {
+      "field_ids": [
+        "specialization-node.cost",
+        "specialization-node.discipline_requirements",
+        "specialization-node.effect_ids",
+        "specialization-node.exclusion_tags",
+        "specialization-node.layout",
+        "specialization-node.prerequisites",
+        "specialization-node.proficiency_tags"
+      ],
+      "id": "specialization-graph",
+      "owner": "atrinik/server#9",
+      "status": "reserved"
+    },
+    {
+      "field_ids": [
+        "object.spell_encumbrance"
+      ],
+      "id": "spell-encumbrance",
+      "owner": "atrinik/server#10",
+      "status": "reserved"
+    },
+    {
+      "field_ids": [
+        "activity.duration_ms",
+        "activity.interruption_policy",
+        "activity.required_skill",
+        "recipe.inputs",
+        "recipe.outputs",
+        "resource-node.yield_table",
+        "tool.action_ids",
+        "tool.target_tags"
+      ],
+      "id": "tools-and-activities",
+      "owner": "atrinik/server#35",
+      "status": "reserved"
+    }
+  ],
+  "schema_id": "atrinik-authored-content-v1",
+  "schema_version": 1,
+  "source_sha256": "354b64976d4444de2f4506a4faf15a832e49cca04bc5d69a3e9c1e0b98e1b5bb"
+}

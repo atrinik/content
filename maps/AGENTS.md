@@ -4,6 +4,10 @@
 - Preserve map headers, coordinates, exits, tiled-map links, region membership,
   spawn semantics, event bindings, and reset behavior. Paths are content-root
   relative, case-correct, and portable.
+- Preserve the byte and semantic behaviors characterized by
+  `contracts/content-v1`; a header, nested-object, message, custom-field, line-
+  ending, or serialization change requires an inventory/corpus update and an
+  explicit compatibility decision.
 - Keep quest, NPC, region, faction, and script identities stable. Do not use a
   display name or runtime table position as a durable cross-reference.
 - Embedded Python must keep engine-owned entry points and deterministic state

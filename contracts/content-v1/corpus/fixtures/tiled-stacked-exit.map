@@ -1,0 +1,24 @@
+arch map
+# Gridarta-style authored map with tiling, an exit, and a tile stack.
+name Tiled stack parity
+width 3
+height 3
+difficulty 2
+tile_path_1 north
+tile_path_3 west
+end
+arch floor
+x 1
+y 2
+end
+arch chair
+x 1
+y 2
+end
+arch exit
+x 2
+y 1
+slaying /destination
+hp 5
+sp 6
+end

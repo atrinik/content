@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "document": {
+    "path": "maps/example",
+    "format": "map",
+    "byte_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "size": 23,
+    "line_endings": "lf",
+    "terminal_newline": true
+  },
+  "nodes": [
+    {
+      "kind": "map-header",
+      "name": "map",
+      "start_line": 1,
+      "end_line": 3,
+      "depth": 0,
+      "fields": [{"name": "width", "value": "1", "line": 2}]
+    }
+  ],
+  "comments": [],
+  "unknown_fields": [],
+  "diagnostics": []
+}

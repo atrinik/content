@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/semantic-comparison.schema.json",
+  "title": "Atrinik content semantic comparison v1",
+  "description": "A representation-independent comparison between exact document revisions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "left_sha256", "right_sha256", "equivalent", "ignored_representation", "differences"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "left_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "right_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "equivalent": {"type": "boolean"},
+    "ignored_representation": {
+      "type": "array",
+      "items": {"enum": ["comment", "line-ending", "trailing-whitespace"]}
+    },
+    "differences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "category", "before", "after"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "category": {"enum": ["field", "identity", "inventory", "order", "structure"]},
+          "before": {},
+          "after": {}
+        }
+      }
+    }
+  }
+}

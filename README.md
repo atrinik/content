@@ -2,6 +2,8 @@
 
 This repository owns Atrinik's authored archetypes, maps, editor material, and
 the collection tools that turn those sources into server runtime input.
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the ownership boundaries
+and source-to-runtime validation flow.
 
 The content has heterogeneous licensing. `arch/COPYING`, `maps/COPYING`, and
 the nearest `LICENSE` file for an asset are authoritative; the repository does
@@ -23,6 +25,12 @@ The typed content catalog defines stable identities and validates authored
 cross-references before collection. See
 [`docs/CONTENT_IDENTITIES.md`](docs/CONTENT_IDENTITIES.md) for its commands,
 source-of-truth table, and rename/removal policy.
+
+Versioned legacy ADS grammar contracts, consumer ownership, interchange schemas,
+and the lossless parity corpus live under `contracts/content-v1/`. See
+[`docs/CONTENT_GRAMMAR_CONTRACTS.md`](docs/CONTENT_GRAMMAR_CONTRACTS.md) for the
+authoritative server sources, compatibility rules, fixture coverage, and
+read-only inspection command.
 
 For read-only exploratory inventories of quests, regions, artifacts, maps,
 named objects, and archetype locations, run:

@@ -1,0 +1,797 @@
+{
+  "schema_version": 1,
+  "schema_id": "atrinik-authored-content-v1",
+  "authority": {
+    "issue": "atrinik/content#15",
+    "legacy_grammar": "contracts/content-v1/grammar-inventory.json",
+    "identity_contract": "docs/CONTENT_IDENTITIES.md",
+    "syntax_contract": "docs/AUTHORED_SYNTAX_DECISION.md"
+  },
+  "logical_model": {
+    "document_kinds": [
+      "archetype",
+      "map"
+    ],
+    "object_contexts": [
+      "archetype",
+      "multipart-part",
+      "nested-inventory",
+      "placed-object"
+    ],
+    "ordered_body_records": [
+      "comment",
+      "custom-property",
+      "message",
+      "nested-object",
+      "standard-property"
+    ],
+    "custom_namespace_pattern": "^[a-z][a-z0-9]*(?:[.-][a-z][a-z0-9_-]*)*$",
+    "reserved_namespaces": [
+      "atrinik"
+    ]
+  },
+  "value_limits": {
+    "integer_minimum": -9007199254740991,
+    "integer_maximum": 9007199254740991,
+    "string_max_bytes": 1048576,
+    "array_max_items": 250000,
+    "object_max_properties": 256
+  },
+  "map_header_fields": {
+    "boolean": [
+      "fixed_login",
+      "fixed_resettime",
+      "height_diff",
+      "no_harm",
+      "no_magic",
+      "no_save",
+      "no_summon",
+      "outdoor",
+      "player_no_save",
+      "pvp",
+      "unique"
+    ],
+    "integer": [
+      "darkness",
+      "difficulty",
+      "enter_x",
+      "enter_y",
+      "height",
+      "light",
+      "reset_timeout",
+      "swap_time",
+      "width"
+    ],
+    "string": [
+      "bg_music",
+      "name",
+      "weather"
+    ],
+    "references": {
+      "region": [
+        "region"
+      ]
+    },
+    "patterns": [
+      {
+        "field_id": "map-header.tile_path",
+        "legacy_pattern": "^tile_path_[0-9]{1,2}$",
+        "index_minimum": 1,
+        "index_maximum": 10,
+        "value_kind": "reference",
+        "reference_domains": [
+          "map"
+        ],
+        "role": "topology"
+      }
+    ]
+  },
+  "object_fields": {
+    "boolean": [
+      "applied",
+      "auto_apply",
+      "been_applied",
+      "berserk",
+      "blocksview",
+      "can_cast_spell",
+      "can_pass_thru",
+      "can_reflect_missile",
+      "can_reflect_spell",
+      "can_roll",
+      "can_see_in_dark",
+      "can_stack",
+      "can_use_armour",
+      "can_use_bow",
+      "can_use_weapon",
+      "changing",
+      "confused",
+      "connect_no_push",
+      "connect_no_release",
+      "connect_reset",
+      "corpse",
+      "corpse_forced",
+      "cursed",
+      "cursed_perm",
+      "damned",
+      "damned_perm",
+      "door_closed",
+      "draw_direction",
+      "draw_double",
+      "draw_double_always",
+      "fly_off",
+      "fly_on",
+      "flying",
+      "friendly",
+      "has_ready_bow",
+      "has_ready_weapon",
+      "hidden",
+      "hitback",
+      "identified",
+      "inv_locked",
+      "invulnerable",
+      "is_animated",
+      "is_assassin",
+      "is_blind",
+      "is_buildable",
+      "is_cauldron",
+      "is_dust",
+      "is_ethereal",
+      "is_evil",
+      "is_female",
+      "is_floor",
+      "is_good",
+      "is_indestructible",
+      "is_invisible",
+      "is_magical",
+      "is_male",
+      "is_missile",
+      "is_named",
+      "is_neutral",
+      "is_player",
+      "is_spell",
+      "is_thrown",
+      "is_trapped",
+      "is_turnable",
+      "is_used_up",
+      "lifesave",
+      "make_ethereal",
+      "make_invisible",
+      "monster",
+      "no_attack",
+      "no_drop",
+      "no_fix_player",
+      "no_magic",
+      "no_pass",
+      "no_pick",
+      "no_pvp",
+      "no_save",
+      "no_skill_ident",
+      "no_teleport",
+      "one_drop",
+      "one_hit",
+      "only_attack",
+      "outdoor",
+      "pass_thru",
+      "player_only",
+      "quest_item",
+      "random_move",
+      "reflect_missile",
+      "reflect_spell",
+      "reflecting",
+      "scared",
+      "see_invisible",
+      "sleep",
+      "slow_move",
+      "soulbound",
+      "splitting",
+      "stand_still",
+      "startequip",
+      "stealth",
+      "sys_object",
+      "two_handed",
+      "unaggressive",
+      "undead",
+      "unique",
+      "unpaid",
+      "use_fix_pos",
+      "walk_off",
+      "walk_on",
+      "xrays"
+    ],
+    "integer": [
+      "absorb",
+      "absorb_add",
+      "ac",
+      "ac_add",
+      "align",
+      "alpha",
+      "anim_speed",
+      "attack_acid",
+      "attack_blind",
+      "attack_chaos",
+      "attack_cleave",
+      "attack_cold",
+      "attack_confusion",
+      "attack_drain",
+      "attack_electricity",
+      "attack_fire",
+      "attack_force",
+      "attack_godpower",
+      "attack_impact",
+      "attack_internal",
+      "attack_lifesteal",
+      "attack_magic",
+      "attack_move_type",
+      "attack_paralyze",
+      "attack_pierce",
+      "attack_poison",
+      "attack_slash",
+      "attack_slow",
+      "attack_weaponmagic",
+      "behavior",
+      "block",
+      "block_add",
+      "carrying",
+      "con",
+      "connected",
+      "container",
+      "dam",
+      "dam_add",
+      "dex",
+      "direction",
+      "exp",
+      "food",
+      "glow_radius",
+      "glow_speed",
+      "hp",
+      "int",
+      "item_condition",
+      "item_level",
+      "item_level_art",
+      "item_power",
+      "item_quality",
+      "item_race",
+      "item_skill",
+      "last_eat",
+      "last_grace",
+      "last_grace_add",
+      "last_heal",
+      "last_sp",
+      "layer",
+      "level",
+      "magic",
+      "material",
+      "material_real",
+      "maxhp",
+      "maxsp",
+      "move_state",
+      "movement_type",
+      "mpart_id",
+      "mpart_nr",
+      "nrof",
+      "object_int1",
+      "object_int2",
+      "object_int3",
+      "path_attuned",
+      "path_denied",
+      "path_repelled",
+      "pow",
+      "protect_acid",
+      "protect_blind",
+      "protect_body",
+      "protect_chaos",
+      "protect_cleave",
+      "protect_cold",
+      "protect_confusion",
+      "protect_corruption",
+      "protect_death",
+      "protect_drain",
+      "protect_electricity",
+      "protect_fire",
+      "protect_force",
+      "protect_godpower",
+      "protect_impact",
+      "protect_internal",
+      "protect_lifesteal",
+      "protect_magic",
+      "protect_paralyze",
+      "protect_pierce",
+      "protect_poison",
+      "protect_psionic",
+      "protect_slash",
+      "protect_slow",
+      "protect_spiritual",
+      "protect_weaponmagic",
+      "quickslot",
+      "rotate",
+      "run_away",
+      "sp",
+      "state",
+      "str",
+      "sub_layer",
+      "sub_type",
+      "terrain_flag",
+      "terrain_type",
+      "type",
+      "value",
+      "wc",
+      "wc_add",
+      "wc_range",
+      "wc_range_add",
+      "weight",
+      "x",
+      "y",
+      "z",
+      "zoom",
+      "zoom_x",
+      "zoom_y"
+    ],
+    "number": [
+      "speed",
+      "speed_left",
+      "weapon_speed"
+    ],
+    "string": [
+      "custom_name",
+      "glow",
+      "match",
+      "name",
+      "race",
+      "slaying",
+      "title"
+    ],
+    "references": {
+      "amask": [
+        "artifact"
+      ],
+      "animation": [
+        "animation"
+      ],
+      "artifact": [
+        "artifact"
+      ],
+      "face": [
+        "face"
+      ],
+      "inv_animation": [
+        "animation"
+      ],
+      "inv_face": [
+        "face"
+      ],
+      "other_arch": [
+        "archetype"
+      ],
+      "randomitems": [
+        "treasure"
+      ],
+      "skill_id": [
+        "skill"
+      ],
+      "spell_id": [
+        "spell"
+      ]
+    },
+    "legacy_ignored": [
+      "alive",
+      "attacktype",
+      "can_use_range",
+      "can_use_ring",
+      "can_use_scroll",
+      "can_use_skill",
+      "editor_folder",
+      "generator",
+      "has_ready_range",
+      "has_ready_skill",
+      "is_hilly",
+      "is_proof_elemental",
+      "is_proof_magic",
+      "is_proof_physical",
+      "is_proof_sphere",
+      "is_vul_elemental",
+      "is_vul_magic",
+      "is_vul_physical",
+      "is_vul_sphere",
+      "is_wooded",
+      "known_cursed",
+      "known_magical",
+      "luck",
+      "no_steal",
+      "tear_down",
+      "treasure"
+    ]
+  },
+  "roles": {
+    "attack": [
+      "attack_acid",
+      "attack_blind",
+      "attack_chaos",
+      "attack_cleave",
+      "attack_cold",
+      "attack_confusion",
+      "attack_drain",
+      "attack_electricity",
+      "attack_fire",
+      "attack_force",
+      "attack_godpower",
+      "attack_impact",
+      "attack_internal",
+      "attack_lifesteal",
+      "attack_magic",
+      "attack_paralyze",
+      "attack_pierce",
+      "attack_poison",
+      "attack_slash",
+      "attack_slow",
+      "attack_weaponmagic"
+    ],
+    "placement": [
+      "connected",
+      "direction",
+      "mpart_id",
+      "mpart_nr",
+      "x",
+      "y",
+      "z"
+    ],
+    "protection": [
+      "protect_acid",
+      "protect_blind",
+      "protect_body",
+      "protect_chaos",
+      "protect_cleave",
+      "protect_cold",
+      "protect_confusion",
+      "protect_corruption",
+      "protect_death",
+      "protect_drain",
+      "protect_electricity",
+      "protect_fire",
+      "protect_force",
+      "protect_godpower",
+      "protect_impact",
+      "protect_internal",
+      "protect_lifesteal",
+      "protect_magic",
+      "protect_paralyze",
+      "protect_pierce",
+      "protect_poison",
+      "protect_psionic",
+      "protect_slash",
+      "protect_slow",
+      "protect_spiritual",
+      "protect_weaponmagic"
+    ],
+    "render": [
+      "alpha",
+      "anim_speed",
+      "animation",
+      "direction",
+      "draw_direction",
+      "draw_double",
+      "draw_double_always",
+      "face",
+      "glow",
+      "glow_radius",
+      "glow_speed",
+      "inv_animation",
+      "inv_face",
+      "is_animated",
+      "layer",
+      "rotate",
+      "sub_layer",
+      "zoom",
+      "zoom_x",
+      "zoom_y"
+    ],
+    "surface": [
+      "blocksview",
+      "is_buildable",
+      "is_floor",
+      "movement_type",
+      "no_pass",
+      "outdoor",
+      "terrain_flag",
+      "terrain_type"
+    ]
+  },
+  "field_constraints": {
+    "map-header.darkness": {
+      "minimum": -1,
+      "maximum": 7
+    },
+    "map-header.enter_x": {
+      "minimum": 0
+    },
+    "map-header.enter_y": {
+      "minimum": 0
+    },
+    "map-header.height": {
+      "minimum": 1
+    },
+    "map-header.width": {
+      "minimum": 1
+    },
+    "object.alpha": {
+      "minimum": 0,
+      "maximum": 255
+    },
+    "object.direction": {
+      "minimum": 0,
+      "maximum": 8
+    },
+    "object.layer": {
+      "minimum": 0
+    },
+    "object.sub_layer": {
+      "minimum": 0
+    }
+  },
+  "role_constraints": {
+    "attack": {
+      "minimum": 0,
+      "maximum": 100
+    },
+    "protection": {
+      "minimum": -100,
+      "maximum": 100
+    }
+  },
+  "legacy_extensions": {
+    "Wis": {
+      "custom_id": "legacy.wisdom",
+      "value_kind": "integer",
+      "owner": "legacy-unused",
+      "status": "remove-after-migration"
+    },
+    "faction": {
+      "custom_id": "server.faction",
+      "value_kind": "reference",
+      "reference_domains": [
+        "faction"
+      ],
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "faction_kill_penalty": {
+      "custom_id": "server.faction_kill_penalty",
+      "value_kind": "integer",
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "faction_rep": {
+      "custom_id": "server.faction_rep",
+      "value_kind": "integer",
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "notification_action": {
+      "custom_id": "server.notification_action",
+      "value_kind": "string",
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "notification_delay": {
+      "custom_id": "server.notification_delay",
+      "value_kind": "integer",
+      "minimum": 0,
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "notification_message": {
+      "custom_id": "server.notification_message",
+      "value_kind": "string",
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "notification_shortcut": {
+      "custom_id": "server.notification_shortcut",
+      "value_kind": "string",
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "spawn_time": {
+      "custom_id": "server.spawn_time",
+      "value_kind": "string",
+      "owner": "atrinik/server",
+      "status": "migrate"
+    },
+    "stock": {
+      "custom_id": "script.merchant.stock",
+      "value_kind": "boolean",
+      "owner": "maps/python/Merchant.py",
+      "status": "migrate"
+    }
+  },
+  "registered_features": [
+    {
+      "id": "container-capacity",
+      "owner": "atrinik/server#34",
+      "status": "reserved",
+      "fields": [
+        {
+          "field_id": "object.container_size",
+          "value_kind": "enum",
+          "values": [
+            "none",
+            "tiny",
+            "small",
+            "medium",
+            "large",
+            "huge"
+          ],
+          "role": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "spell-encumbrance",
+      "owner": "atrinik/server#10",
+      "status": "reserved",
+      "fields": [
+        {
+          "field_id": "object.spell_encumbrance",
+          "value_kind": "integer",
+          "minimum": 0,
+          "role": "combat"
+        }
+      ]
+    },
+    {
+      "id": "item-rarity",
+      "owner": "atrinik/server#6",
+      "status": "reserved",
+      "fields": [
+        {
+          "field_id": "object.item_rarity",
+          "value_kind": "enum",
+          "values": [
+            "none",
+            "common",
+            "uncommon",
+            "rare",
+            "exceptional",
+            "epic",
+            "mythic",
+            "relic",
+            "legendary"
+          ],
+          "role": "presentation"
+        },
+        {
+          "field_id": "treasure.item_rarity",
+          "value_kind": "reference",
+          "reference_domains": [
+            "item-rarity"
+          ],
+          "role": "reward"
+        }
+      ]
+    },
+    {
+      "id": "tools-and-activities",
+      "owner": "atrinik/server#35",
+      "status": "reserved",
+      "fields": [
+        {
+          "field_id": "tool.action_ids",
+          "value_kind": "reference-list",
+          "reference_domains": [
+            "activity"
+          ],
+          "role": "activity"
+        },
+        {
+          "field_id": "tool.target_tags",
+          "value_kind": "string-list",
+          "role": "activity"
+        },
+        {
+          "field_id": "activity.duration_ms",
+          "value_kind": "integer",
+          "minimum": 0,
+          "role": "timing"
+        },
+        {
+          "field_id": "activity.interruption_policy",
+          "value_kind": "enum",
+          "values": [
+            "cancel",
+            "pause",
+            "restart"
+          ],
+          "role": "timing"
+        },
+        {
+          "field_id": "activity.required_skill",
+          "value_kind": "reference",
+          "reference_domains": [
+            "skill"
+          ],
+          "role": "requirement"
+        },
+        {
+          "field_id": "resource-node.yield_table",
+          "value_kind": "reference",
+          "reference_domains": [
+            "reward"
+          ],
+          "role": "reward"
+        },
+        {
+          "field_id": "recipe.inputs",
+          "value_kind": "reference-list",
+          "reference_domains": [
+            "archetype",
+            "artifact"
+          ],
+          "role": "recipe"
+        },
+        {
+          "field_id": "recipe.outputs",
+          "value_kind": "reference-list",
+          "reference_domains": [
+            "archetype",
+            "artifact",
+            "reward"
+          ],
+          "role": "recipe"
+        }
+      ]
+    },
+    {
+      "id": "specialization-graph",
+      "owner": "atrinik/server#9",
+      "status": "reserved",
+      "fields": [
+        {
+          "field_id": "specialization-node.cost",
+          "value_kind": "integer",
+          "minimum": 0,
+          "role": "progression"
+        },
+        {
+          "field_id": "specialization-node.prerequisites",
+          "value_kind": "reference-list",
+          "reference_domains": [
+            "specialization-node"
+          ],
+          "role": "progression"
+        },
+        {
+          "field_id": "specialization-node.discipline_requirements",
+          "value_kind": "reference-list",
+          "reference_domains": [
+            "skill"
+          ],
+          "role": "requirement"
+        },
+        {
+          "field_id": "specialization-node.effect_ids",
+          "value_kind": "reference-list",
+          "reference_domains": [
+            "effect",
+            "mastery",
+            "technique"
+          ],
+          "role": "progression"
+        },
+        {
+          "field_id": "specialization-node.proficiency_tags",
+          "value_kind": "string-list",
+          "role": "requirement"
+        },
+        {
+          "field_id": "specialization-node.exclusion_tags",
+          "value_kind": "string-list",
+          "role": "progression"
+        },
+        {
+          "field_id": "specialization-node.layout",
+          "value_kind": "object",
+          "role": "presentation"
+        }
+      ]
+    }
+  ]
+}

@@ -50,3 +50,6 @@ jobs:
 
       - name: Exercise bounded YAML and JSONC prototypes
         run: python -m unittest tools.tests.test_syntax_evaluation
+
+      - name: Verify authoritative schema projections
+        run: python -m unittest tools.tests.test_content_schema

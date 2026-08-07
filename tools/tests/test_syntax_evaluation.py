@@ -12,6 +12,7 @@ from tools.content_contracts.corpus import inspect_document
 from tools.syntax_evaluation import SELECTED_SYNTAX
 from tools.syntax_evaluation import jsonc, yaml12
 from tools.syntax_evaluation.benchmark import (
+    _implementation_digest,
     _parse_server_output,
     _summary,
     select_representative_maps,
@@ -242,6 +243,53 @@ class SyntaxEvaluationTest(unittest.TestCase):
         )
         self.assertEqual(4, len({entry["logical_id"] for entry in first}))
         self.assertTrue(all(entry["objects"] > 0 for entry in first))
+
+    def test_committed_measurement_baseline_matches_locked_inputs(self):
+        report = load_json(
+            ROOT
+            / "prototypes"
+            / "authored-syntax-v1"
+            / "measurement-baseline.json"
+        )
+        selected = [
+            {key: value for key, value in entry.items() if not key.startswith("_")}
+            for entry in select_representative_maps(ROOT)
+        ]
+
+        self.assertEqual(1, report["schema_version"])
+        self.assertEqual("Linux", report["environment"]["system"])
+        self.assertEqual(
+            validate_baseline_lock(ROOT)["sha256"],
+            report["inputs"]["content_v1_baseline_sha256"],
+        )
+        self.assertEqual(
+            _implementation_digest(ROOT),
+            report["inputs"]["syntax_implementation_sha256"],
+        )
+        self.assertEqual(selected, report["representative_maps"])
+        self.assertTrue(
+            all(
+                not component["dirty"]
+                for component in report["inputs"]["topology_components"].values()
+            )
+        )
+        self.assertEqual(20, report["prototype"]["iterations_per_map"])
+        self.assertEqual(3, report["collection"]["iterations"])
+        self.assertEqual(5, report["checker"]["iterations_per_map"])
+        self.assertEqual(5, report["server"]["process_runs"])
+        self.assertEqual(9, report["server"]["iterations_per_map_per_run"])
+
+        def check_summaries(value):
+            if isinstance(value, dict):
+                if "raw" in value:
+                    self.assertEqual(_summary(value["raw"]), value)
+                for child in value.values():
+                    check_summaries(child)
+            elif isinstance(value, list):
+                for child in value:
+                    check_summaries(child)
+
+        check_summaries(report)
 
     def test_measurement_summaries_and_server_records_fail_closed(self):
         self.assertEqual(

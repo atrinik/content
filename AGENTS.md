@@ -10,6 +10,11 @@
 - `tools/content_catalog` is the authoritative identity and cross-reference
   layer. Persist domain-qualified stable IDs, not display names, filesystem
   ordering, or runtime table positions.
+- `contracts/content-v1` owns the legacy ADS grammar/consumer inventory,
+  interchange schemas, and lossless parity corpus. Preserve fixture bytes and
+  update observations, baselines, documentation, and tests together whenever a
+  loader, writer, checker, collector, analyzer, or grammar behavior changes. Do
+  not treat the characterization inspector as a production parser.
 - Trace every changed map path, archetype, animation, image, artifact, treasure,
   faction, interface, and script reference. Do not mask missing references with
   absolute paths, generated placeholders, or duplicated parsers.
@@ -18,7 +23,8 @@
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source.
-- Run `python3 tools/validate.py` and
+- Run `python3 -m tools.content_contracts validate --root .`,
+  `python3 tools/validate.py`, and
   `python3 tools/build_runtime.py --output build/runtime` for every change. Run
   the focused world audit when relevant and use wrapper builds/topologies for
   gameplay verification.

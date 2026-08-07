@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "survey": {
+    "scope": "All Atrinik organization consumers and producers of legacy map, nested-object, archetype, artifact, treasure, region, faction, and interface syntax",
+    "method": "Reviewed server Flex and C entry points plus Python, PHP, Java-lineage, and collection code in the content and tools repositories",
+    "reviewed_repositories": ["atrinik/content", "atrinik/editor", "atrinik/server", "atrinik/tools"]
+  },
+  "consumers": [
+    {
+      "id": "content/build-runtime",
+      "repository": "atrinik/content",
+      "locations": ["tools/build_runtime.py"],
+      "roles": ["collector"],
+      "formats": ["all-authored-content"],
+      "status": "active",
+      "behavior": "Stages tracked tools and authored sources, invokes collection in isolation, and emits a digest manifest.",
+      "parity_requirement": "A replacement must preserve source immutability, attribution, atomic publication, and deterministic runtime bytes."
+    },
+    {
+      "id": "content/content-catalog",
+      "repository": "atrinik/content",
+      "locations": ["tools/content_catalog/loaders.py", "tools/content_catalog/model.py"],
+      "roles": ["analyzer", "loader"],
+      "formats": ["archetype", "artifact", "faction", "interface-xml", "map", "region", "treasure"],
+      "status": "active",
+      "behavior": "Reads significant lines and XML into typed stable definitions, references, and deterministic diagnostics; it intentionally does not preserve representation.",
+      "parity_requirement": "The lossless core must reproduce catalog definitions, references, source locations, and errors before this partial parser is removed."
+    },
+    {
+      "id": "content/interface-compiler",
+      "repository": "atrinik/content",
+      "locations": ["tools/compilers/interface_compiler.py"],
+      "roles": ["collector", "loader", "writer"],
+      "formats": ["interface-xml", "python"],
+      "status": "active",
+      "behavior": "Parses ADS-1 XML interfaces and writes generated embedded Python and the quest registry.",
+      "parity_requirement": "Schema validation, XML source locations, quest-part UIDs, and generated behavior must remain equivalent."
+    },
+    {
+      "id": "content/resource-collector",
+      "repository": "atrinik/content",
+      "locations": ["tools/collect.py", "tools/utils.py"],
+      "roles": ["collector", "writer"],
+      "formats": ["animation", "archetype", "artifact", "faction", "interface-xml", "treasure"],
+      "status": "active",
+      "behavior": "Concatenates nested authored definitions into top-level runtime aggregates and invokes the interface compiler.",
+      "parity_requirement": "Ordering, comments required by runtime readers, generated aggregate bytes, and source-clean operation require golden comparisons."
+    },
+    {
+      "id": "content/world-content-audit",
+      "repository": "atrinik/content",
+      "locations": ["tools/world_content_audit.py"],
+      "roles": ["analyzer", "loader"],
+      "formats": ["artifact", "interface-xml", "map", "region"],
+      "status": "active-review-only",
+      "behavior": "Uses multiple simple line parsers for exploratory deterministic reports and strips multiline-message representation.",
+      "parity_requirement": "Every reported quest, region, artifact, map, object, and source location must be reproduced before consolidating it."
+    },
+    {
+      "id": "server/archetype-loader",
+      "repository": "atrinik/server",
+      "locations": ["src/loaders/object.l", "src/server/arch.c"],
+      "roles": ["loader"],
+      "formats": ["archetype", "nested-object"],
+      "status": "active-authority",
+      "behavior": "Loads collected Object records and More multipart continuations in MAP_STYLE line mode through the case-insensitive Flex object grammar.",
+      "parity_requirement": "Object defaults, multipart linkage, custom fields, stable IDs, messages, case folding, and LL_MORE/LL_NORMAL/LL_ERROR outcomes are authoritative."
+    },
+    {
+      "id": "server/artifact-loader",
+      "repository": "atrinik/server",
+      "locations": ["src/loaders/object.l", "src/server/artifact.c"],
+      "roles": ["loader"],
+      "formats": ["artifact", "nested-object"],
+      "status": "active-authority",
+      "behavior": "Parses artifact headers in C, then delegates Object bodies to the Flex loader in MAP_ARTIFACT mode.",
+      "parity_requirement": "Allowed masks, chance fields, copy behavior, embedded object text, and error boundaries must match."
+    },
+    {
+      "id": "server/map-loader",
+      "repository": "atrinik/server",
+      "locations": ["src/loaders/map_header.l", "src/loaders/object.l", "src/server/map.c"],
+      "roles": ["loader"],
+      "formats": ["map", "nested-object"],
+      "status": "active-authority",
+      "behavior": "Requires the exact LF arch-map sentinel, parses a case-insensitive header, then recursively loads object inventories with MAP_ORIGINAL side effects.",
+      "parity_requirement": "Header defaults and flags, tiling, object stacks, inventory depth, exit fields, custom fields, and loader return codes are authoritative."
+    },
+    {
+      "id": "server/map-writer",
+      "repository": "atrinik/server",
+      "locations": ["src/loaders/map_header.l", "src/server/map.c"],
+      "roles": ["writer"],
+      "formats": ["map", "nested-object"],
+      "status": "active-authority",
+      "behavior": "Writes normalized LF map headers and object differences; it does not preserve comments, field order, whitespace, or original line endings.",
+      "parity_requirement": "Runtime save/reload semantics must compare equal even though authored no-op editing must use the later lossless writer."
+    },
+    {
+      "id": "server/object-loader",
+      "repository": "atrinik/server",
+      "locations": ["src/include/loader.h", "src/loaders/object.l"],
+      "roles": ["loader"],
+      "formats": ["nested-object"],
+      "status": "active-authority",
+      "behavior": "The common case-insensitive Flex grammar supports file, buffer, NUL-string, and single-variable modes, raw messages, and arbitrary key/value extensions; only FILE line mode has the ten-entry object stack bound.",
+      "parity_requirement": "All known fields, unknown fields, identity validation, nesting, messages, line endings, and mode-specific return codes require differential tests."
+    },
+    {
+      "id": "server/object-writer",
+      "repository": "atrinik/server",
+      "locations": ["src/loaders/object.l#get_ob_diff"],
+      "roles": ["writer"],
+      "formats": ["nested-object"],
+      "status": "active-authority",
+      "behavior": "Serializes differences from an archetype in a fixed normalized field order and writes custom key/value extensions first.",
+      "parity_requirement": "Every persisted field and recursive inventory must survive load-save-load semantic comparison."
+    },
+    {
+      "id": "server/player-save",
+      "repository": "atrinik/server",
+      "locations": ["src/loaders/object.l", "src/types/player.c"],
+      "roles": ["loader", "writer"],
+      "formats": ["nested-object", "player-save"],
+      "status": "active-persistent",
+      "behavior": "Uses the common object grammar for durable player objects and inventories, adding migration-sensitive stable spell and skill IDs.",
+      "parity_requirement": "Existing durable saves must load identically and repeated migration/save cycles must be stable."
+    },
+    {
+      "id": "server/region-loader",
+      "repository": "atrinik/server",
+      "locations": ["src/server/region.c"],
+      "roles": ["loader"],
+      "formats": ["region"],
+      "status": "active-authority",
+      "behavior": "Uses a bespoke line reader with msg/endmsg, parent links, jail coordinates, and strict block endings.",
+      "parity_requirement": "Region hierarchy, inherited text/map metadata, message bytes, and malformed-block errors must match."
+    },
+    {
+      "id": "server/treasure-loader",
+      "repository": "atrinik/server",
+      "locations": ["src/server/treasure.c"],
+      "roles": ["loader"],
+      "formats": ["treasure"],
+      "status": "active-authority",
+      "behavior": "Uses a recursive bespoke line parser for treasure, treasureone, list links, item attributes, and yes/no branching.",
+      "parity_requirement": "Entry order, probabilities, recursion, list references, attributes, and malformed-input diagnostics must match."
+    },
+    {
+      "id": "tools/classic-map-checker",
+      "repository": "atrinik/tools",
+      "locations": ["map-checker/map-checker.py"],
+      "roles": ["checker", "loader"],
+      "formats": ["archetype", "artifact", "map", "nested-object", "region"],
+      "status": "legacy-active",
+      "behavior": "Uses exact LF and case-sensitive line parsing, recursively materializes inventories, and emits severity-ranked gameplay/content diagnostics.",
+      "parity_requirement": "The corpus freezes accepted/rejected boundaries and diagnostic meaning before this duplicate parser is retired."
+    },
+    {
+      "id": "tools/gridarta",
+      "repository": "external/Gridarta",
+      "locations": ["editor/INSTALL", "editor/build.sh"],
+      "roles": ["loader", "writer"],
+      "formats": ["all-authored-content"],
+      "status": "superseded-external",
+      "behavior": "The historical Java editor source is external and only a build/download wrapper remains in the content repository.",
+      "parity_requirement": "Representative Gridarta-produced maps are corpus inputs; no unreviewed external parser may define the new syntax."
+    },
+    {
+      "id": "tools/map-checker-qt",
+      "repository": "atrinik/tools",
+      "locations": ["map-checker-qt/system/parser.py", "map-checker-qt/system/saver.py"],
+      "roles": ["checker", "loader", "writer"],
+      "formats": ["archetype", "artifact", "map", "nested-object", "region"],
+      "status": "legacy",
+      "behavior": "Provides a second recursive parser/object model and a normalizing map saver for checker auto-fixes and the interface editor.",
+      "parity_requirement": "Inventory structure, attributes, diagnostics, and intended auto-fixes must be represented as shared inspection and byte-patch contracts."
+    },
+    {
+      "id": "tools/map-maker",
+      "repository": "atrinik/tools",
+      "locations": ["map-maker/build.py"],
+      "roles": ["collector"],
+      "formats": ["all-authored-content"],
+      "status": "legacy",
+      "behavior": "Copies an existing maps tree and other release inputs byte-for-byte into the historical map-maker package; it does not parse or generate ADS records.",
+      "parity_requirement": "Collection must not rewrite authored content, and any revived packager must consume the shared runtime collection boundary instead of acquiring a parser."
+    },
+    {
+      "id": "tools/mapset",
+      "repository": "atrinik/tools",
+      "locations": ["mapset/mapset.py"],
+      "roles": ["loader", "writer"],
+      "formats": ["map"],
+      "status": "legacy",
+      "behavior": "Writes map grids and rewrites tile_path fields with exact LF byte assumptions and whole-file truncation.",
+      "parity_requirement": "Tiling topology must compare semantically and any future patch must be conflict-detecting and preserve unrelated bytes."
+    },
+    {
+      "id": "tools/world-content-audit",
+      "repository": "atrinik/tools",
+      "locations": ["world_content_audit.py"],
+      "roles": ["analyzer", "loader"],
+      "formats": ["artifact", "interface-xml", "map", "region"],
+      "status": "duplicate-snapshot",
+      "behavior": "A copied exploratory analyzer duplicates the content-owned tool and its partial line parsers.",
+      "parity_requirement": "Remove this copy after the content-owned analyzer and shared contracts cover every report consumer."
+    },
+    {
+      "id": "tools/worldviewer",
+      "repository": "atrinik/tools",
+      "locations": ["worldviewer/src/parser.php", "worldviewer/src/renderer.php"],
+      "roles": ["loader"],
+      "formats": ["animation", "archetype", "artifact", "map", "nested-object"],
+      "status": "legacy",
+      "behavior": "Uses PHP sscanf and exact-line loops to load collected archetypes and maps for a web renderer, ignoring many fields and representation details.",
+      "parity_requirement": "Rendered object placement, multipart geometry, faces, animations, and artifact overlays need scene-level comparison before removal."
+    }
+  ],
+  "reviewed_non_consumers": [
+    {
+      "repository": "atrinik/client",
+      "reason": "Consumes streamed protocol state and collected graphics, not authored ADS files."
+    },
+    {
+      "repository": "atrinik/editor",
+      "reason": "The standalone repository is currently an empty native-editor shell; the historical Gridarta wrapper remains under atrinik/content/editor."
+    },
+    {
+      "repository": "atrinik/protocol",
+      "reason": "Owns wire contracts only and has no authored-content file parser."
+    }
+  ]
+}

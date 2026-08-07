@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/diagnostic.schema.json",
+  "title": "Atrinik content diagnostic v1",
+  "description": "A deterministic, source-located content diagnostic.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "code", "severity", "message", "location", "related"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "code": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "severity": {"enum": ["error", "info", "warning"]},
+    "message": {"type": "string", "minLength": 1},
+    "location": {"$ref": "#/$defs/location"},
+    "related": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/location"}
+    }
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "line", "column"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

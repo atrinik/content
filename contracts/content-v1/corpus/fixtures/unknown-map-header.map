@@ -1,0 +1,5 @@
+arch map
+width 1
+plugin_header opaque value
+height 1
+end

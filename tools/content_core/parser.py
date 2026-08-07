@@ -11,11 +11,11 @@ from typing import Any, Dict, Mapping, Optional, Sequence
 from tools.content_contracts.contracts import (
     ContractError,
     confined_file,
-    load_json,
     safe_relative_path,
 )
 from tools.syntax_evaluation.limits import DEFAULT_LIMITS
 
+from .authority import load_field_authority
 from .errors import ContentSafetyError, ContentSyntaxError
 from .model import (
     Document,
@@ -69,32 +69,13 @@ def _logical_id(path: str, format_name: str) -> str:
     return "archetype-file:" + path.removeprefix("arch/")
 
 
-def _load_field_authority(schema_root: Path) -> Mapping[str, Any]:
-    path = confined_file(
-        schema_root.resolve(strict=True),
-        "schemas/authored-content-v1/field-metadata.json",
-        "content field metadata",
-    )
-    metadata = load_json(path)
-    if not isinstance(metadata, dict) or metadata.get("schema_version") != 1:
-        raise ContentSyntaxError(
-            "content field metadata has an unsupported version",
-            code="unsupported-field-metadata",
-        )
-    return metadata
-
-
 class LegacyParser:
     """Parse legacy ADS while retaining every input byte and semantic span."""
 
     def __init__(self, schema_root: Path = PACKAGE_ROOT):
-        metadata = _load_field_authority(schema_root)
-        self._fields = {
-            (field["context"], field["legacy_name"].casefold()): field
-            for field in metadata["fields"]
-            if field["legacy_name"] is not None
-        }
-        self._extensions = metadata["legacy_extensions"]
+        authority = load_field_authority(schema_root)
+        self._fields = authority.by_legacy
+        self._extensions = authority.legacy_extensions
 
     def parse(
         self,
@@ -455,6 +436,11 @@ class LegacyParser:
             )
 
         self._duplicate_diagnostics(nodes, path, diagnostics)
+        if len(diagnostics) > DEFAULT_LIMITS.max_collection_items:
+            raise ContentSyntaxError(
+                "content diagnostics exceed the shared parser limit",
+                code="content-diagnostic-limit",
+            )
         return Document(
             path=path,
             format=format_name,
@@ -528,13 +514,18 @@ class LegacyParser:
                             "tile path index must be between 1 and 10",
                         )
                     )
+                field_id = (
+                    "map-header.tile_path_{}".format(index)
+                    if 1 <= index <= 10
+                    else "map-header.tile_path"
+                )
                 typed = self._typed_value(
                     value,
                     "reference",
                     {},
                     path,
                     value_span,
-                    "map-header.tile_path",
+                    field_id,
                     diagnostics,
                 )
                 return FieldRecord(
@@ -543,7 +534,7 @@ class LegacyParser:
                     line.span,
                     name_span,
                     value_span,
-                    field_id="map-header.tile_path",
+                    field_id=field_id,
                     value_kind="reference",
                     typed_value=typed,
                     status="active",

@@ -65,18 +65,80 @@ def parse_blocks(path: Path) -> dict:
 
 
 def _audit_node(document: Document, node: Node) -> dict:
-    attrs: dict[str, list[str]] = defaultdict(list)
-    for record in node.fields:
-        attrs[record.name].append(record.value)
+    attrs = _audit_attrs(node)
     return {
         "arch": node.name,
-        "attrs": dict(attrs),
+        "attrs": attrs,
         "children": [
             _audit_node(document, document.node(handle))
             for handle in node.child_handles
         ],
         "line": node.opener_span.line,
     }
+
+
+def _audit_attrs(node: Node) -> dict[str, list[str]]:
+    """Retain the audit's field and multiline-message attribute shape."""
+
+    attrs: dict[str, list[str]] = defaultdict(list)
+    for record in node.fields:
+        attrs[record.name].append(record.value)
+    for message in node.messages:
+        if message.terminated:
+            attrs["msg"].append(message.text.strip())
+    return dict(attrs)
+
+
+def _legacy_archetype_attrs(
+    document: Document, node: Node
+) -> dict[str, list[str]]:
+    """Adapt the model to the audit's historical first-`end` field window."""
+
+    descendants = []
+    pending = [node]
+    while pending:
+        current = pending.pop()
+        descendants.append(current)
+        pending.extend(
+            document.node(handle) for handle in reversed(current.child_handles)
+        )
+    closers = [
+        current.closer_span.start_byte
+        for current in descendants
+        if current.closer_span is not None
+    ]
+    cutoff = min(closers, default=node.span.end_byte)
+    events = []
+    for current in descendants:
+        if current is not node and current.opener_span.start_byte < cutoff:
+            events.append((current.opener_span.start_byte, "line", current.opener_span))
+        events.extend(
+            (record.span.start_byte, "line", record.span)
+            for record in current.fields
+            if record.span.start_byte < cutoff
+        )
+        events.extend(
+            (message.span.start_byte, "message", message)
+            for message in current.messages
+            if message.span.start_byte < cutoff and message.terminated
+        )
+    events.extend(
+        (span.start_byte, "line", span)
+        for span in document.comments
+        if node.opener_span.end_byte <= span.start_byte < cutoff
+    )
+
+    attrs: dict[str, list[str]] = defaultdict(list)
+    for _, event_kind, record in sorted(events, key=lambda event: event[0]):
+        if event_kind == "message":
+            attrs["msg"].append(record.text.strip())
+            continue
+        raw = document.source[record.start_byte : record.end_byte].decode("utf-8")
+        line = raw.rstrip("\n")
+        key, separator, value = line.partition(" ")
+        if separator:
+            attrs[key].append(value.strip())
+    return dict(attrs)
 
 
 def map_files() -> list[Path]:
@@ -103,9 +165,7 @@ def load_archetypes() -> dict[str, dict]:
         for node in document.nodes:
             if node.depth != 0:
                 continue
-            attrs: dict[str, list[str]] = defaultdict(list)
-            for record in node.fields:
-                attrs[record.name].append(record.value)
+            attrs = _legacy_archetype_attrs(document, node)
             out[node.name] = {
                 "path": str(path.relative_to(ROOT)),
                 "attrs": {key: vals[-1] for key, vals in attrs.items() if vals},
@@ -264,7 +324,11 @@ def world_inventory() -> dict:
             obj_type = one(attrs, "type", base.get("type"))
             explicit_name = one(attrs, "name")
             base_name = base.get("name")
-            is_monster = obj_type in {"80", "83"} or base.get("is_male") == "1" or base.get("is_female") == "1"
+            is_monster = (
+                obj_type in {"80", "83"}
+                or base.get("is_male") == "1"
+                or base.get("is_female") == "1"
+            )
             entry = {
                 "name": explicit_name,
                 "arch": arch,
@@ -306,7 +370,11 @@ def world_inventory() -> dict:
             }
             if is_monster and explicit_name and explicit_name != base_name:
                 named_monsters.append(entry)
-            elif explicit_name and obj_type and obj_type not in {"0", "1", "2", "8", "20", "21", "66"}:
+            elif (
+                explicit_name
+                and obj_type
+                and obj_type not in {"0", "1", "2", "8", "20", "21", "66"}
+            ):
                 named_items.append(entry)
     region_stats = {}
     grouped: dict[str, list[dict]] = defaultdict(list)

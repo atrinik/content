@@ -11,7 +11,7 @@
     "document": {"$ref": "#/$defs/document"},
     "nodes": {
       "type": "array",
-      "maxItems": 1000000,
+      "maxItems": 250000,
       "items": {"$ref": "#/$defs/node"}
     },
     "top_level": {
@@ -19,7 +19,7 @@
       "maxItems": 250000,
       "items": {"type": "string", "pattern": "^node-[0-9]{6}$"}
     },
-    "multipart_continuations": {"type": "integer", "minimum": 0},
+    "multipart_continuations": {"type": "integer", "minimum": 0, "maximum": 250000},
     "comments": {
       "type": "array",
       "maxItems": 100000,
@@ -41,7 +41,7 @@
         "format": {"enum": ["archetype", "map"]},
         "logical_id": {"type": "string", "minLength": 1},
         "byte_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
-        "size": {"type": "integer", "minimum": 0},
+        "size": {"type": "integer", "minimum": 0, "maximum": 67108864},
         "line_endings": {"enum": ["crlf", "lf", "mixed", "none"]},
         "terminal_newline": {"type": "boolean"},
         "valid": {"type": "boolean"}
@@ -83,12 +83,12 @@
         "fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
         "kind": {"enum": ["map-header", "object"]},
         "name": {"type": "string", "minLength": 1},
-        "depth": {"type": "integer", "minimum": 0},
+        "depth": {"type": "integer", "minimum": 0, "maximum": 64},
         "parent_handle": {"oneOf": [{"type": "string", "pattern": "^node-[0-9]{6}$"}, {"type": "null"}]},
         "span": {"$ref": "#/$defs/span"},
         "properties": {
           "type": "array",
-          "maxItems": 250000,
+          "maxItems": 256,
           "items": {"$ref": "#/$defs/property"}
         },
         "messages": {

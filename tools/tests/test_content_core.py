@@ -15,7 +15,11 @@ from unittest import mock
 
 from tools import world_content_audit
 from tools.content_catalog import ContentCatalog, SourceLocation
-from tools.content_contracts.contracts import load_json
+from tools.content_contracts.contracts import (
+    load_json,
+    validate_contract_document,
+    validate_contracts,
+)
 from tools.content_core import (
     ContentConflictError,
     ContentCoreError,
@@ -30,7 +34,13 @@ from tools.content_core import (
     result_digest,
     semantic_comparison,
 )
-from tools.content_core.cli import EXIT_SUCCESS, EXIT_SYNTAX, main
+from tools.content_core.cli import (
+    EXIT_CONFLICT,
+    EXIT_DIFFERENT,
+    EXIT_SUCCESS,
+    EXIT_SYNTAX,
+    main,
+)
 from tools.content_core.contracts import (
     validate_core_contracts,
     validate_core_document,
@@ -118,6 +128,24 @@ class ContentCoreTest(unittest.TestCase):
             set(first),
         )
 
+    def test_field_authority_refuses_stale_generated_metadata(self):
+        shutil.copy2(
+            ROOT / "schemas" / "authored-content-v1" / "field-metadata.json",
+            self.root
+            / "schemas"
+            / "authored-content-v1"
+            / "field-metadata.json",
+        )
+
+        with self.assertRaises(ContentCoreError) as caught:
+            parse_bytes(
+                b"Object example\ntype 1\nend\n",
+                path="arch/example.arc",
+                format_name="archetype",
+                schema_root=self.root,
+            )
+        self.assertEqual("stale-field-metadata", caught.exception.code)
+
     def test_every_legacy_fixture_is_exact_and_matches_the_parity_oracle(self):
         manifest = load_json(CORPUS_ROOT / "corpus" / "manifest.json")
 
@@ -196,7 +224,7 @@ class ContentCoreTest(unittest.TestCase):
         )
 
         self.assertEqual(
-            ["map-header.tile_path", "map-header.tile_path"],
+            ["map-header.tile_path_1", "map-header.tile_path"],
             [field.field_id for field in document.map_header.fields],
         )
         self.assertEqual(
@@ -292,6 +320,29 @@ class ContentCoreTest(unittest.TestCase):
             self.document("maps/example", "map").serialize(),
         )
 
+    def test_semantic_noop_validates_without_replacing_the_file(self):
+        source = b"arch map\nwidth 1\nheight 1\nend\n"
+        path = self.write("maps/noop", source)
+        document = self.document("maps/noop", "map")
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "maps/noop",
+                    "map",
+                    source,
+                    [self.set_property(document, "map-header.width", 1)],
+                )
+            ]
+        )
+
+        with mock.patch("tools.content_core.transaction.os.replace") as replace:
+            result = apply_transaction(
+                self.root, transaction, apply=True, schema_root=ROOT
+            )
+        replace.assert_not_called()
+        self.assertEqual("", result["files"][0]["diff"])
+        self.assertEqual(source, path.read_bytes())
+
     def test_targeted_edit_never_churns_adjacent_attribution(self):
         source = b"Object example\nname Before\ntype 1\nend\n"
         path = self.write("arch/example/object.arc", source)
@@ -317,6 +368,27 @@ class ContentCoreTest(unittest.TestCase):
             b"Object example\nname After\ntype 1\nend\n", path.read_bytes()
         )
         self.assertEqual(b"Original attribution bytes\r\n", license_path.read_bytes())
+
+    def test_property_writes_reject_lossy_or_non_unicode_text(self):
+        source = b"Object example\nname Before\ntype 1\nend\n"
+        path = self.write("arch/text.arc", source)
+        document = self.document("arch/text.arc", "archetype")
+
+        for value in (" After ", "\ud800"):
+            with self.subTest(value=repr(value)):
+                transaction = self.transaction(
+                    [
+                        self.entry(
+                            "arch/text.arc",
+                            "archetype",
+                            source,
+                            [self.set_property(document, "object.name", value)],
+                        )
+                    ]
+                )
+                with self.assertRaises(ContentCoreError):
+                    apply_transaction(self.root, transaction, schema_root=ROOT)
+                self.assertEqual(source, path.read_bytes())
 
     def test_primitive_add_remove_and_unset_preserve_unrelated_content(self):
         source = (
@@ -364,6 +436,42 @@ class ContentCoreTest(unittest.TestCase):
         self.assertNotIn(b"Remove me", result)
         self.assertTrue(self.document("maps/primitives", "map").valid)
 
+    def test_removing_multipart_archetype_part_removes_one_separator_only(self):
+        source = (
+            b"Object head\ntype 1\nend\n"
+            b"More\n"
+            b"# attribution for the surviving part\n"
+            b"Object tail\ntype 1\nend\n"
+        )
+        path = self.write("arch/multipart.arc", source)
+        document = self.document("arch/multipart.arc", "archetype")
+        head = document.nodes[0]
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "arch/multipart.arc",
+                    "archetype",
+                    source,
+                    [
+                        {
+                            "kind": "remove-object",
+                            "node_handle": head.handle,
+                            "node_fingerprint": head.fingerprint,
+                        }
+                    ],
+                )
+            ]
+        )
+
+        apply_transaction(
+            self.root, transaction, apply=True, schema_root=ROOT
+        )
+        self.assertEqual(
+            b"# attribution for the surviving part\n"
+            b"Object tail\ntype 1\nend\n",
+            path.read_bytes(),
+        )
+
     def test_stale_digest_or_node_precondition_never_changes_any_file(self):
         first = b"arch map\nwidth 1\nheight 1\nend\n"
         second = b"arch map\nwidth 2\nheight 2\nend\n"
@@ -386,6 +494,41 @@ class ContentCoreTest(unittest.TestCase):
         )
 
         with self.assertRaises(ContentConflictError):
+            apply_transaction(
+                self.root, transaction, apply=True, schema_root=ROOT
+            )
+        self.assertEqual(first, first_path.read_bytes())
+        self.assertEqual(second, second_path.read_bytes())
+
+    def test_invalid_multifile_result_fails_before_the_first_write(self):
+        first = b"arch map\nwidth 1\nheight 1\nend\n"
+        second = b"arch map\nwidth 2\nheight 2\nend\n"
+        first_path = self.write("maps/a-valid", first)
+        second_path = self.write("maps/z-invalid", second)
+        first_doc = self.document("maps/a-valid", "map")
+        second_doc = self.document("maps/z-invalid", "map")
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "maps/a-valid",
+                    "map",
+                    first,
+                    [self.set_property(first_doc, "map-header.width", 3)],
+                ),
+                self.entry(
+                    "maps/z-invalid",
+                    "map",
+                    second,
+                    [
+                        self.set_property(
+                            second_doc, "map-header.width", "not-an-integer"
+                        )
+                    ],
+                ),
+            ]
+        )
+
+        with self.assertRaises(ContentCoreError):
             apply_transaction(
                 self.root, transaction, apply=True, schema_root=ROOT
             )
@@ -611,6 +754,24 @@ class ContentCoreTest(unittest.TestCase):
         self.assertEqual(EXIT_SYNTAX, exit_code)
         self.assertFalse(json.loads(output.getvalue())["document"]["valid"])
 
+        output = io.StringIO()
+        with redirect_stdout(output):
+            exit_code = main(
+                [
+                    "--root",
+                    str(ROOT),
+                    "diff",
+                    "contracts/content-v1/corpus/fixtures/comments-custom.arc",
+                    "contracts/content-v1/corpus/fixtures/multiline-message.arc",
+                    "--format",
+                    "archetype",
+                    "--semantic",
+                    "--json",
+                ]
+            )
+        self.assertEqual(EXIT_DIFFERENT, exit_code)
+        self.assertFalse(json.loads(output.getvalue())["equivalent"])
+
     def test_cli_apply_is_a_dry_run_unless_explicitly_published(self):
         shutil.copytree(
             ROOT / "schemas" / "content-core-v1",
@@ -621,7 +782,11 @@ class ContentCoreTest(unittest.TestCase):
             ROOT / "schemas" / "authored-content-v1" / "field-metadata.json",
             authored / "field-metadata.json",
         )
-        source = b"arch map\nwidth 1\nheight 1\nend\n"
+        shutil.copy2(
+            ROOT / "schemas" / "authored-content-v1" / "source.json",
+            authored / "source.json",
+        )
+        source = b"arch map\nname Caf\xc3\xa9\nwidth 1\nheight 1\nend\n"
         path = self.write("maps/cli", source)
         document = self.document("maps/cli", "map")
         transaction = self.transaction(
@@ -653,6 +818,7 @@ class ContentCoreTest(unittest.TestCase):
             )
         self.assertEqual(EXIT_SUCCESS, exit_code, error.getvalue())
         self.assertTrue(json.loads(output.getvalue())["dry_run"])
+        self.assertIn("Caf\\u00e9", output.getvalue())
         self.assertEqual(source, path.read_bytes())
 
         with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
@@ -669,13 +835,35 @@ class ContentCoreTest(unittest.TestCase):
             )
         self.assertEqual(EXIT_SUCCESS, exit_code)
         self.assertEqual(
-            b"arch map\nwidth 2\nheight 1\nend\n", path.read_bytes()
+            b"arch map\nname Caf\xc3\xa9\nwidth 2\nheight 1\nend\n",
+            path.read_bytes(),
+        )
+
+        output = io.StringIO()
+        with redirect_stdout(output), redirect_stderr(io.StringIO()):
+            exit_code = main(
+                [
+                    "--root",
+                    str(self.root),
+                    "apply",
+                    "--patch",
+                    "patch.json",
+                    "--json",
+                ]
+            )
+        self.assertEqual(EXIT_CONFLICT, exit_code)
+        error_payload = json.loads(output.getvalue())
+        self.assertEqual("conflict", error_payload["kind"])
+        validate_contract_document(
+            "error", error_payload, validate_contracts(ROOT)
         )
 
     def test_world_audit_uses_the_common_parser_without_report_churn(self):
         source = (
-            b"arch map\nname Example\nwidth 1\nheight 1\nend\n"
-            b"arch base\nname Placed\nx 0\ny 0\n"
+            b"arch map\nname Example\nwidth 1\nheight 1\nmsg\n"
+            b"Header message.\nendmsg\nend\n"
+            b"arch base\nname Placed\nx 0\ny 0\nmsg\n"
+            b"Object message.\nendmsg\n"
             b"arch item\nname Nested\nend\nend\n"
         )
         path = self.write("maps/audit", source)
@@ -687,8 +875,37 @@ class ContentCoreTest(unittest.TestCase):
 
         common_parser.assert_called_once()
         self.assertEqual("map", result["header"]["arch"])
+        self.assertEqual("Header message.", result["header"]["attrs"]["msg"][-1])
         self.assertEqual("Placed", result["objects"][0]["attrs"]["name"][-1])
+        self.assertEqual(
+            "Object message.", result["objects"][0]["attrs"]["msg"][-1]
+        )
         self.assertEqual("Nested", result["objects"][0]["children"][0]["attrs"]["name"][-1])
+
+    def test_world_audit_retains_historical_archetype_attribute_window(self):
+        self.write(
+            "arch/nested.arc",
+            b"Object parent\n"
+            b"name Parent\n"
+            b"# Child override.\n"
+            b"arch child\n"
+            b"name Child\n"
+            b"race nested\n"
+            b"end\n"
+            b"hp 5\n"
+            b"end\n",
+        )
+
+        with mock.patch.object(world_content_audit, "ROOT", self.root), mock.patch.object(
+            world_content_audit, "ARCH_ROOT", self.root / "arch"
+        ):
+            result = world_content_audit.load_archetypes()["parent"]["attrs"]
+
+        self.assertEqual("Child", result["name"])
+        self.assertEqual("child", result["arch"])
+        self.assertEqual("nested", result["race"])
+        self.assertEqual("Child override.", result["#"])
+        self.assertNotIn("hp", result)
 
 
 if __name__ == "__main__":

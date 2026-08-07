@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from pathlib import Path
+import re
 from typing import Any, Dict, Mapping, Optional, Sequence
 
 from tools.content_catalog import ContentCatalog, load_catalog
@@ -16,6 +17,9 @@ from tools.content_contracts.contracts import (
 from .errors import ContentCoreError, ContentSafetyError
 from .model import Document
 from .parser import LegacyParser, PACKAGE_ROOT, parse_bytes
+
+
+CATALOG_KIND_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 
 
 def audit_project(
@@ -33,7 +37,16 @@ def audit_project(
             code="missing-authored-source-root",
         )
 
-    archetypes = sorted(arch_root.rglob("*.arc"))
+    archetypes = []
+    for path in sorted(arch_root.rglob("*")):
+        if path.is_symlink():
+            raise ContentSafetyError(
+                "project audit refuses symbolic links: {}".format(
+                    path.relative_to(root).as_posix()
+                )
+            )
+        if path.is_file() and path.suffix == ".arc":
+            archetypes.append(path)
     maps = []
     for path in sorted(maps_root.rglob("*")):
         if path.is_symlink():
@@ -142,10 +155,17 @@ class ProjectIndex:
         text: str,
         limit: int = 50,
     ) -> Mapping[str, Any]:
+        try:
+            text_bytes = text.encode("utf-8") if isinstance(text, str) else b""
+        except UnicodeEncodeError as error:
+            raise ContentCoreError(
+                "catalog search text must be valid Unicode",
+                code="invalid-catalog-query",
+            ) from error
         if (
             not isinstance(text, str)
             or text != text.strip()
-            or len(text.encode("utf-8")) > 256
+            or len(text_bytes) > 256
         ):
             raise ContentCoreError(
                 "catalog search text must be trimmed and at most 256 UTF-8 bytes",
@@ -157,10 +177,12 @@ class ProjectIndex:
                 code="invalid-catalog-limit",
             )
         if kind is not None and (
-            not isinstance(kind, str) or not kind or kind != kind.strip()
+            not isinstance(kind, str)
+            or CATALOG_KIND_RE.fullmatch(kind) is None
+            or len(kind) > 128
         ):
             raise ContentCoreError(
-                "catalog kind must be non-empty trimmed text",
+                "catalog kind must be a portable identifier of at most 128 characters",
                 code="invalid-catalog-kind",
             )
         needle = text.casefold()

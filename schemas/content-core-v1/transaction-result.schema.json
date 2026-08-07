@@ -16,7 +16,7 @@
       "maxItems": 64,
       "items": {"$ref": "#/$defs/file-result"}
     },
-    "diagnostics": {"type": "array", "items": {"$ref": "#/$defs/diagnostic"}}
+    "diagnostics": {"type": "array", "maxItems": 250000, "items": {"$ref": "#/$defs/diagnostic"}}
   },
   "$defs": {
     "file-result": {
@@ -27,7 +27,7 @@
         "path": {"type": "string", "minLength": 1},
         "before_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
         "after_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
-        "operation_count": {"type": "integer", "minimum": 1},
+        "operation_count": {"type": "integer", "minimum": 1, "maximum": 10000},
         "diff": {"type": "string"}
       }
     },

@@ -10,9 +10,9 @@ from pathlib import Path
 import re
 from typing import Any, Mapping, Optional, Sequence
 
-from tools.content_contracts.contracts import confined_file, load_json
 from tools.syntax_evaluation.limits import DEFAULT_LIMITS
 
+from .authority import load_field_authority
 from .errors import ContentConflictError, ContentCoreError, ContentSyntaxError
 from .model import Document, Node
 
@@ -36,13 +36,7 @@ class FieldRegistry:
     """Read the generated field metadata used by all semantic operations."""
 
     def __init__(self, root: Path):
-        path = confined_file(
-            root.resolve(strict=True),
-            "schemas/authored-content-v1/field-metadata.json",
-            "content field metadata",
-        )
-        metadata = load_json(path)
-        self._fields = {field["field_id"]: field for field in metadata["fields"]}
+        self._fields = load_field_authority(root).by_id
 
     def legacy_field(
         self, field_id: object, context: str
@@ -97,8 +91,12 @@ class FieldRegistry:
                 )
             text = str(value)
         elif kind in ("reference", "string"):
-            if not isinstance(value, str) or not value:
-                self._wrong_type(field, "non-empty string")
+            if (
+                not isinstance(value, str)
+                or not value
+                or value != value.strip()
+            ):
+                self._wrong_type(field, "a non-empty trimmed string")
             text = value
         else:
             raise ContentCoreError(
@@ -129,7 +127,13 @@ class FieldRegistry:
                 "{} exceeds {}".format(field["field_id"], maximum),
                 code="field-above-maximum",
             )
-        encoded = text.encode("utf-8")
+        try:
+            encoded = text.encode("utf-8")
+        except UnicodeEncodeError as error:
+            raise ContentCoreError(
+                "property value must be valid Unicode",
+                code="invalid-property-text",
+            ) from error
         if len(encoded) > DEFAULT_LIMITS.max_line_bytes:
             raise ContentCoreError(
                 "property value exceeds the line byte limit",
@@ -175,6 +179,36 @@ def _checked_node(
             code="object-node-required",
         )
     return node
+
+
+def _multipart_separator(document: Document, node: Node):
+    """Find the one top-level More record adjacent to an archetype part."""
+
+    if document.format != "archetype" or node.depth != 0:
+        return None
+
+    def significant(line) -> bool:
+        return bool(line.content.strip()) and not line.content.startswith(b"#")
+
+    for line in reversed(document.lines):
+        if line.end_byte > node.opener_span.start_byte or not significant(line):
+            continue
+        if (
+            not line.content.startswith((b" ", b"\t"))
+            and line.content.strip().lower() == b"more"
+        ):
+            return line.span
+        break
+    for line in document.lines:
+        if line.start_byte < node.span.end_byte or not significant(line):
+            continue
+        if (
+            not line.content.startswith((b" ", b"\t"))
+            and line.content.strip().lower() == b"more"
+        ):
+            return line.span
+        break
+    return None
 
 
 def operation_edits(
@@ -300,6 +334,19 @@ def operation_edits(
                     sequence,
                 )
             )
+            separator = _multipart_separator(document, node)
+            if separator is not None:
+                edits.append(
+                    ByteEdit(
+                        separator.start_byte,
+                        separator.end_byte,
+                        b"",
+                        "remove multipart separator for {}".format(
+                            node.handle
+                        ),
+                        sequence,
+                    )
+                )
         elif kind == "add-object":
             expected = {
                 "kind",
@@ -362,7 +409,11 @@ def operation_edits(
                 block.extend(registry.encode(field, properties[field_id]))
                 block.extend(ending)
             block.extend(b"end" + ending)
-            position = parent.closer_span.start_byte if parent is not None else len(document.source)
+            position = (
+                parent.closer_span.start_byte
+                if parent is not None
+                else len(document.source)
+            )
             if position and parent is None and not document.source.endswith((b"\n", b"\r")):
                 block = bytearray(ending) + block
             edits.append(

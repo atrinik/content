@@ -33,9 +33,9 @@ deterministic JSON when `--json` is present.
 
 ```sh
 tools/atrinik-content --version
-tools/atrinik-content --root . inspect maps/world_0_0 --json
-tools/atrinik-content --root . validate arch/monsters/example.arc --json
-tools/atrinik-content --root . diff arch/a.arc arch/b.arc --semantic --json
+tools/atrinik-content --root . inspect maps/hall_of_dms --json
+tools/atrinik-content --root . validate arch/indoor/quill_pen.arc --json
+tools/atrinik-content --root . diff arch/indoor/quill_pen.arc arch/indoor/rubbish.arc --semantic --json
 tools/atrinik-content --root . catalog search --kind archetype --text goblin --limit 20 --json
 tools/atrinik-content --root . apply --patch build/change.json --json
 tools/atrinik-content --root . apply --patch build/change.json --apply --json
@@ -47,10 +47,10 @@ and exits nonzero for invalid content. `diff` compares ordered typed trees while
 ignoring only comments, line-ending style, and trailing whitespace. `catalog
 search` returns bounded stable catalog entries.
 
-Exit status `0` is success, `1` is a semantic difference, `3` is invalid syntax
-or encoding, `4` is a stale precondition or concurrent change, `5` is a safety
-refusal, `6` is an I/O publication failure, and `7` is an invalid JSON contract
-or other schema error.
+Exit status `0` is success, `1` is a semantic difference, `2` is command-line
+usage, `3` is invalid syntax or encoding, `4` is a stale precondition or
+concurrent change, `5` is a safety refusal, `6` is an I/O publication failure,
+and `7` is an invalid JSON contract or other schema error.
 
 ## Transaction boundary
 

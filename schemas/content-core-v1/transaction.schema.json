@@ -40,15 +40,6 @@
         {"$ref": "#/$defs/remove-object"}
       ]
     },
-    "node-precondition": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["node_handle", "node_fingerprint"],
-      "properties": {
-        "node_handle": {"type": "string", "pattern": "^node-[0-9]{6}$"},
-        "node_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
-      }
-    },
     "set-property": {
       "type": "object",
       "additionalProperties": false,

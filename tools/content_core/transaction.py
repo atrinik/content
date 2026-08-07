@@ -305,6 +305,20 @@ def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
         raise
 
 
+def _sync_directories(directories: Sequence[Path]) -> None:
+    """Persist rename metadata where the platform exposes directory fsync."""
+
+    if os.name == "nt":
+        return
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
+    for directory in sorted(set(directories)):
+        descriptor = os.open(directory, flags)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+
+
 def publish_transaction(
     root: Path,
     prepared: PreparedTransaction,
@@ -317,6 +331,7 @@ def publish_transaction(
     _verify_source_root(root)
     staged: dict[str, tuple[Path, Path]] = {}
     replaced: list[PreparedFile] = []
+    changed_files = [item for item in prepared.files if item.before != item.after]
     try:
         for item in prepared.files:
             current = _safe_target(root, item.relative, item.format_name)
@@ -327,9 +342,10 @@ def publish_transaction(
                     "{} changed after transaction preparation".format(item.relative),
                     code="concurrent-file-change",
                 )
+        for item in changed_files:
             staged[item.relative] = _stage_file(item)
 
-        for index, item in enumerate(prepared.files):
+        for index, item in enumerate(changed_files):
             current = _safe_target(root, item.relative, item.format_name)
             if result_digest(current.read_bytes()) != result_digest(item.before):
                 raise ContentConflictError(
@@ -341,15 +357,9 @@ def publish_transaction(
             if failure_after is not None and index == failure_after:
                 raise OSError("injected transaction publication failure")
             stage, _ = staged[item.relative]
-            os.replace(stage, item.path)
             replaced.append(item)
-        if os.name != "nt":
-            for directory in sorted({item.path.parent for item in prepared.files}):
-                descriptor = os.open(directory, os.O_RDONLY)
-                try:
-                    os.fsync(descriptor)
-                finally:
-                    os.close(descriptor)
+            os.replace(stage, item.path)
+        _sync_directories([item.path.parent for item in changed_files])
     except BaseException as error:
         rollback_failures = []
         for item in reversed(replaced):
@@ -359,6 +369,13 @@ def publish_transaction(
             except OSError as rollback_error:
                 rollback_failures.append(
                     "{}: {}".format(item.relative, rollback_error)
+                )
+        if replaced and not rollback_failures:
+            try:
+                _sync_directories([item.path.parent for item in replaced])
+            except OSError as rollback_error:
+                rollback_failures.append(
+                    "directory synchronization: {}".format(rollback_error)
                 )
         if rollback_failures:
             raise ContentCoreError(

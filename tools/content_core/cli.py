@@ -23,10 +23,11 @@ from .contracts import (
 from .errors import ContentCoreError
 from .operations import semantic_comparison
 from .project import ProjectIndex
-from .transaction import apply_transaction
+from .transaction import prepare_transaction, publish_transaction
 
 
 EXIT_SUCCESS = 0
+EXIT_DIFFERENT = 1
 EXIT_SYNTAX = 3
 EXIT_CONFLICT = 4
 EXIT_SAFETY = 5
@@ -77,7 +78,13 @@ def _parser() -> argparse.ArgumentParser:
 
 
 def _json(value: object) -> str:
-    return json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    return json.dumps(
+        value,
+        allow_nan=False,
+        ensure_ascii=True,
+        indent=2,
+        sort_keys=True,
+    ) + "\n"
 
 
 def _emit(value: Mapping[str, Any], *, json_mode: bool, human: str) -> None:
@@ -136,10 +143,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return EXIT_SUCCESS if document.valid else EXIT_SYNTAX
 
         if options.command == "diff":
+            contract_schemas = validate_contracts(root)
             left = project.document(options.left, format_name=options.format)
             right = project.document(options.right, format_name=options.format)
             comparison = semantic_comparison(left, right)
-            contract_schemas = validate_contracts(root)
             validate_contract_document(
                 "semantic-comparison", comparison, contract_schemas
             )
@@ -152,7 +159,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     else _json(comparison)
                 ),
             )
-            return EXIT_SUCCESS if comparison["equivalent"] else 1
+            return EXIT_SUCCESS if comparison["equivalent"] else EXIT_DIFFERENT
 
         if options.command == "catalog":
             result = project.search(
@@ -176,13 +183,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         patch_path = confined_file(root, options.patch, "transaction input")
         transaction = load_json(patch_path)
         validate_core_document("transaction", transaction, core_schemas)
-        result = apply_transaction(
-            root,
-            transaction,
-            apply=options.apply,
-            schema_root=root,
-        )
+        prepared = prepare_transaction(root, transaction, schema_root=root)
+        result = prepared.result(dry_run=not options.apply, applied=options.apply)
         validate_core_document("transaction-result", result, core_schemas)
+        if options.apply:
+            publish_transaction(root, prepared)
         if json_mode:
             sys.stdout.write(_json(result))
         else:

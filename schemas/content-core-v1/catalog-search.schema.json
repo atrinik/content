@@ -22,7 +22,7 @@
       "additionalProperties": false,
       "required": ["kind", "text", "limit"],
       "properties": {
-        "kind": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "kind": {"oneOf": [{"type": "string", "minLength": 1, "pattern": "^[a-z][a-z0-9-]*$"}, {"type": "null"}]},
         "text": {"type": "string"},
         "limit": {"type": "integer", "minimum": 1, "maximum": 100}
       }

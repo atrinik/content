@@ -55,9 +55,13 @@ def main() -> int:
             )
         )
     print(
-        "Lossless content core: {} archetypes and {} maps are valid.".format(
-            core_audit["archetypes"], core_audit["maps"]
-        )
+        "Lossless content core: {} archetypes and {} maps are valid "
+        "(diagnostics: {}).".format(
+            core_audit["archetypes"],
+            core_audit["maps"],
+            json.dumps(core_audit["diagnostics"], sort_keys=True),
+        ),
+        flush=True,
     )
     subprocess.run(
         [

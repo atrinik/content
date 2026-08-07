@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 from typing import Any, Dict, Mapping
 
 from tools.content_contracts.contracts import (
@@ -48,10 +49,25 @@ def validate_core_document(
         document_path = safe_relative_path(
             value["document"]["path"], "inspection path"
         )
+        expected_logical_id = (
+            "/" + document_path.removeprefix("maps/")
+            if value["document"]["format"] == "map"
+            else "archetype-file:" + document_path.removeprefix("arch/")
+        )
+        if value["document"]["logical_id"] != expected_logical_id:
+            raise ContractError(
+                "inspection logical ID disagrees with its path and format"
+            )
         document_size = value["document"]["size"]
         handles = [node["handle"] for node in value["nodes"]]
-        if handles != sorted(set(handles)):
-            raise ContractError("inspection node handles must be ordered and unique")
+        expected_handles = [
+            "node-{:06d}".format(index)
+            for index in range(1, len(handles) + 1)
+        ]
+        if handles != expected_handles:
+            raise ContractError(
+                "inspection node handles must be sequential and source ordered"
+            )
         by_handle = {node["handle"]: node for node in value["nodes"]}
         handle_positions = {handle: index for index, handle in enumerate(handles)}
         expected_top_level = [
@@ -98,6 +114,11 @@ def validate_core_document(
                 child_node = by_handle.get(child)
                 if child_node is None or child_node["parent_handle"] != node["handle"]:
                     raise ContractError("inspection child relationship is inconsistent")
+                if (
+                    child_node["span"]["start_byte"] < span["start_byte"]
+                    or child_node["span"]["end_byte"] > span["end_byte"]
+                ):
+                    raise ContractError("inspection child span escapes its parent")
             for field in node["properties"]:
                 field_span = field["span"]
                 value_span = field["value_span"]
@@ -114,14 +135,22 @@ def validate_core_document(
                     )
             for message in node["messages"]:
                 message_span = message["span"]
+                try:
+                    message_size = len(message["text"].encode("utf-8"))
+                except UnicodeEncodeError as error:
+                    raise ContractError(
+                        "inspection message is not valid Unicode"
+                    ) from error
                 if (
                     message_span["start_byte"] < span["start_byte"]
                     or message_span["end_byte"] > span["end_byte"]
                     or message["body_start_byte"] < message_span["start_byte"]
                     or message["body_end_byte"] < message["body_start_byte"]
                     or message["body_end_byte"] > message_span["end_byte"]
-                    or len(message["text"].encode("utf-8"))
+                    or message_size
                     != message["body_end_byte"] - message["body_start_byte"]
+                    or message["terminated"]
+                    == (message["body_end_byte"] == message_span["end_byte"])
                 ):
                     raise ContractError("inspection message has invalid source spans")
 
@@ -224,6 +253,12 @@ def validate_core_document(
                     raise ContractError(
                         "add-object parent preconditions must both be null or both present"
                     )
+                if operation["kind"] == "add-object" and len(
+                    operation["properties"]
+                ) > 256:
+                    raise ContractError(
+                        "add-object exceeds the property count limit"
+                    )
         if operation_count > 10_000:
             raise ContractError(
                 "transaction exceeds the cumulative operation count limit"
@@ -241,8 +276,28 @@ def validate_core_document(
         for path in paths:
             safe_relative_path(path, "transaction result path")
     elif kind == "catalog-search":
+        query_text = value["query"]["text"]
+        try:
+            query_bytes = query_text.encode("utf-8")
+        except UnicodeEncodeError as error:
+            raise ContractError("catalog query text is not valid Unicode") from error
+        if (
+            query_text != query_text.strip()
+            or len(query_bytes) > 256
+        ):
+            raise ContractError("catalog query text is not bounded and trimmed")
+        query_kind = value["query"]["kind"]
+        if query_kind is not None and (
+            len(query_kind) > 128
+            or re.fullmatch(r"[a-z][a-z0-9-]*", query_kind) is None
+        ):
+            raise ContractError("catalog query kind is not a portable identifier")
         if len(value["results"]) > value["query"]["limit"]:
             raise ContractError("catalog results exceed the requested limit")
+        if value["truncated"] and len(value["results"]) != value["query"]["limit"]:
+            raise ContractError(
+                "truncated catalog results must fill the requested limit"
+            )
         results = value["results"]
         keys = [
             (

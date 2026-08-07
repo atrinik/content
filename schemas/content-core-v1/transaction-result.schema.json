@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/core-transaction-result.schema.json",
+  "title": "Atrinik content transaction result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "dry_run", "applied", "files", "diagnostics"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "transaction-result"},
+    "dry_run": {"type": "boolean"},
+    "applied": {"type": "boolean"},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {"$ref": "#/$defs/file-result"}
+    },
+    "diagnostics": {"type": "array", "maxItems": 250000, "items": {"$ref": "#/$defs/diagnostic"}}
+  },
+  "$defs": {
+    "file-result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "before_sha256", "after_sha256", "operation_count", "diff"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "before_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "after_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "operation_count": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "diff": {"type": "string"}
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "line", "column"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1}
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "code", "severity", "message", "location", "related"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "code": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "severity": {"enum": ["error", "info", "warning"]},
+        "message": {"type": "string", "minLength": 1},
+        "location": {"$ref": "#/$defs/location"},
+        "related": {"type": "array", "items": {"$ref": "#/$defs/location"}}
+      }
+    }
+  }
+}

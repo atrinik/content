@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "document-inspection",
+  "document": {
+    "path": "maps/example",
+    "format": "map",
+    "logical_id": "/example",
+    "byte_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "size": 13,
+    "line_endings": "lf",
+    "terminal_newline": true,
+    "valid": true
+  },
+  "nodes": [],
+  "top_level": [],
+  "multipart_continuations": 0,
+  "comments": [],
+  "diagnostics": []
+}

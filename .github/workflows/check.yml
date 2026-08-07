@@ -53,3 +53,6 @@ jobs:
 
       - name: Verify authoritative schema projections
         run: python -m unittest tools.tests.test_content_schema
+
+      - name: Exercise lossless content core and safe transactions
+        run: python -m unittest tools.tests.test_content_core

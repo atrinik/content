@@ -105,8 +105,8 @@ class QuestManager:
         if self.get_qp_remaining() == 0:
             return
 
-        # The quest must be completed.
-        if not self.completed():
+        # The quest must have reached a terminal state.
+        if not self.completed() and not self.failed():
             return
 
         # Enough time must pass before the quest can be repeated.
@@ -465,8 +465,16 @@ class QuestManager:
         """
 
         self.ensure_quest_object()
+        new_quest = (
+            self.quest_object.magic == Atrinik.QUEST_STATUS_INVALID
+        )
         part, quest = self.get_part(part)
         self.create_quest_object(self.quest_object, quest, part)
+        if new_quest:
+            self.quest_object.magic = Atrinik.QUEST_STATUS_STARTED
+            self.activator.Controller().QuestStatus(
+                self.quest["uid"], Atrinik.QUEST_STATUS_STARTED
+            )
         self.sound(sound)
 
     def complete(self, part, sound="learnspell.ogg"):
@@ -485,7 +493,7 @@ class QuestManager:
 
         part, quest = self.get_part(part)
         obj = self.quest_object.FindObject(name=part)
-        if not obj:
+        if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
             return False
 
         # Mark the quest part as completed.
@@ -501,6 +509,9 @@ class QuestManager:
         # Complete the quest itself now.
         self.quest_object.magic = Atrinik.QUEST_STATUS_COMPLETED
         self.use_qp()
+        self.activator.Controller().QuestStatus(
+            self.quest["uid"], Atrinik.QUEST_STATUS_COMPLETED
+        )
         return True
 
     def fail(self, part, sound="warning_statdown.ogg"):
@@ -519,7 +530,7 @@ class QuestManager:
 
         part, quest = self.get_part(part)
         obj = self.quest_object.FindObject(name=part)
-        if not obj:
+        if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
             return False
 
         # Mark the quest part as failed.
@@ -533,8 +544,11 @@ class QuestManager:
             return False
 
         # Fail the quest itself now.
-        self.quest_object.magic = Atrinik.QUEST_STATUS_COMPLETED
+        self.quest_object.magic = Atrinik.QUEST_STATUS_FAILED
         self.use_qp()
+        self.activator.Controller().QuestStatus(
+            self.quest["uid"], Atrinik.QUEST_STATUS_FAILED
+        )
         return True
 
     def finished(self, part):

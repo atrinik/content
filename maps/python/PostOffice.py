@@ -67,6 +67,7 @@ class PostOffice:
             return False
 
         tmp.InsertInto(activator)
+        pl.MetricAdd("social.post_items_received")
         msgs.append("You receive '{}' from {}.".format(item["name"], item["from"]))
         return True
 

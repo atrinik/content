@@ -102,6 +102,28 @@ class PlayerMethodsSuite(PlayerCommonSuite):
         self.assertEqual(skill.exp, 500)
         self.assertEqual(skill.level, 1)
 
+    def test_Metrics(self):
+        self.assertRaises(TypeError, self.pl.MetricAdd)
+        self.assertRaises(ValueError, self.pl.MetricAdd, "unknown.metric")
+        self.assertRaises(ValueError, self.pl.MetricAdd,
+                          "progression.highest_level")
+        self.assertIsNone(self.pl.MetricAdd("social.post_items_sent"))
+        self.assertIsNone(self.pl.MetricAdd("social.post_items_sent", 3))
+
+        self.assertRaises(TypeError, self.pl.MetricMarkUnique)
+        self.assertRaises(ValueError, self.pl.MetricMarkUnique,
+                          "combat.bosses", "invalid subject")
+        self.assertIsNone(self.pl.MetricMarkUnique("combat.bosses",
+                                                    "test-boss"))
+
+        self.assertRaises(TypeError, self.pl.QuestStatus)
+        self.assertRaises(ValueError, self.pl.QuestStatus,
+                          "test_quest", Atrinik.QUEST_STATUS_INVALID)
+        self.assertRaises(ValueError, self.pl.QuestStatus,
+                          "invalid quest", Atrinik.QUEST_STATUS_STARTED)
+        self.assertIsNone(self.pl.QuestStatus(
+            "test_quest", Atrinik.QUEST_STATUS_STARTED))
+
     def test_BankDeposit(self):
         self.assertRaises(TypeError, self.pl.BankDeposit)
         self.assertRaises(TypeError, self.pl.BankDeposit, 1, 2)

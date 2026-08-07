@@ -19,6 +19,10 @@ def main():
 
         # Paid successfully?
         if activator.PayAmount(cost):
+            activator.Controller().MetricAdd("economy.housing_fees_paid")
+            activator.Controller().MetricAdd(
+                "economy.housing_currency_spent", cost
+            )
             pl.DrawInfo("You have paid {} as your daily fee.".format(CostString(cost)), COLOR_GREEN)
             # Reset it to the current time.
             house.fees_reset()

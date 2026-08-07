@@ -47,6 +47,7 @@ def main():
         if not approved:
             inf.add_msg("Your membership application request has been canceled.")
         else:
+            activator.Controller().MetricAdd("social.guild_departures")
             inf.add_msg("You have left the guild.")
 
     elif msg == "dorequest":
@@ -57,6 +58,7 @@ def main():
             inf.add_msg("You are already a member of another guild. In order to join a new guild, you must first leave your old one.")
         else:
             guild.member_add(activator.name, guild.member_requested)
+            activator.Controller().MetricAdd("social.guild_applications")
             inf.add_msg("You have been accepted to the guild. Before you are a fully qualified member however, you must wait for an approval from a guild administrator.")
 
 main()

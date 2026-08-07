@@ -52,6 +52,11 @@ def main():
             return
 
         if activator.PayAmount(apartment["apartments"][name]["price"]):
+            price = apartment["apartments"][name]["price"]
+            activator.Controller().MetricAdd("economy.housing_purchases")
+            activator.Controller().MetricAdd(
+                "economy.housing_currency_spent", price
+            )
             inf.add_msg("You pay {}.".format(CostString(apartment["apartments"][name]["price"])), COLOR_YELLOW)
             inf.add_msg("Congratulations! You're now the proud owner of the {} apartment in this region.".format(name))
 

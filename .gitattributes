@@ -8,5 +8,8 @@ tools/package-release.sh export-ignore
 /maps/** text eol=lf
 /prototypes/authored-syntax-v1/** text eol=lf
 /schemas/authored-content-v1/** text eol=lf
+/schemas/content-core-v1/** text eol=lf
+/tools/atrinik-content text eol=lf
+/tools/content_core/** text eol=lf
 /tools/content_schema/** text eol=lf
 /tools/syntax_evaluation/** text eol=lf

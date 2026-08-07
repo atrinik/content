@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/core-transaction.schema.json",
+  "title": "Atrinik safe content transaction v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "files"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "content-transaction"},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {"$ref": "#/$defs/file"}
+    }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "format", "base_sha256", "operations"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "format": {"enum": ["archetype", "map"]},
+        "base_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "items": {"$ref": "#/$defs/operation"}
+        }
+      }
+    },
+    "operation": {
+      "oneOf": [
+        {"$ref": "#/$defs/set-property"},
+        {"$ref": "#/$defs/unset-property"},
+        {"$ref": "#/$defs/add-object"},
+        {"$ref": "#/$defs/remove-object"}
+      ]
+    },
+    "set-property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "node_handle", "node_fingerprint", "field_id", "value"],
+      "properties": {
+        "kind": {"const": "set-property"},
+        "node_handle": {"type": "string", "pattern": "^node-[0-9]{6}$"},
+        "node_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "field_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*\\.[a-z][a-z0-9_]*$"},
+        "value": {}
+      }
+    },
+    "unset-property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "node_handle", "node_fingerprint", "field_id"],
+      "properties": {
+        "kind": {"const": "unset-property"},
+        "node_handle": {"type": "string", "pattern": "^node-[0-9]{6}$"},
+        "node_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "field_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*\\.[a-z][a-z0-9_]*$"}
+      }
+    },
+    "add-object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "parent_handle", "parent_fingerprint", "archetype_id", "properties"],
+      "properties": {
+        "kind": {"const": "add-object"},
+        "parent_handle": {"oneOf": [{"type": "string", "pattern": "^node-[0-9]{6}$"}, {"type": "null"}]},
+        "parent_fingerprint": {"oneOf": [{"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}, {"type": "null"}]},
+        "archetype_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+        "properties": {"type": "object", "additionalProperties": {}}
+      }
+    },
+    "remove-object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "node_handle", "node_fingerprint"],
+      "properties": {
+        "kind": {"const": "remove-object"},
+        "node_handle": {"type": "string", "pattern": "^node-[0-9]{6}$"},
+        "node_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

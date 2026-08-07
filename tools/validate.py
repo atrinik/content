@@ -9,6 +9,10 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from tools.content_core import audit_project
+
 
 ROOT = Path(__file__).parents[1].resolve()
 
@@ -35,12 +39,29 @@ def main() -> int:
             "unittest",
             "tools.tests.test_content_catalog",
             "tools.tests.test_content_contracts",
+            "tools.tests.test_content_core",
             "tools.tests.test_content_schema",
             "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
         ],
         cwd=ROOT,
         check=True,
+    )
+    core_audit = audit_project(ROOT, schema_root=ROOT)
+    if core_audit["invalid_files"]:
+        raise ValueError(
+            "lossless content core rejected authored sources: {}".format(
+                json.dumps(core_audit["invalid_files"], sort_keys=True)
+            )
+        )
+    print(
+        "Lossless content core: {} archetypes and {} maps are valid "
+        "(diagnostics: {}).".format(
+            core_audit["archetypes"],
+            core_audit["maps"],
+            json.dumps(core_audit["diagnostics"], sort_keys=True),
+        ),
+        flush=True,
     )
     subprocess.run(
         [

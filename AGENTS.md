@@ -27,6 +27,13 @@
   prototype implementation digest, committed measurement evidence, decision
   text, and Linux/Windows tests synchronized. Do not promote the neutral
   physical-record comparison model into the final typed schema.
+- `tools/content_core` is the production lossless parser, typed source view,
+  project index, and targeted writer for legacy maps and archetypes. New content
+  analyzers and editors must consume it instead of adding another ADS parser.
+  Keep `schemas/content-core-v1`, CLI output, transaction preconditions, safety
+  rules, Linux/Windows tests, and `docs/CONTENT_CORE.md` synchronized. Writes are
+  dry-run-first and limited to authored source roots and `arch/*.arc` or `maps/`
+  targets; never weaken digest/fingerprint checks or output/runtime refusals.
 - Trace every changed map path, archetype, animation, image, artifact, treasure,
   faction, interface, and script reference. Do not mask missing references with
   absolute paths, generated placeholders, or duplicated parsers.
@@ -34,7 +41,8 @@
   output directory, never in source. Do not overwrite mutable server state.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
-  output is not generated source.
+  output is not generated source. Its map/archetype traversal must use the
+  common lossless core.
 - Run `python3 -m tools.content_contracts validate --root .`,
   `python3 -m tools.syntax_evaluation --root .`,
   `python3 -m tools.content_schema validate --root .`,

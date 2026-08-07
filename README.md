@@ -23,3 +23,14 @@ The typed content catalog defines stable identities and validates authored
 cross-references before collection. See
 [`docs/CONTENT_IDENTITIES.md`](docs/CONTENT_IDENTITIES.md) for its commands,
 source-of-truth table, and rename/removal policy.
+
+For read-only exploratory inventories of quests, regions, artifacts, maps,
+named objects, and archetype locations, run:
+
+```sh
+python3 tools/world_content_audit.py all > build/world-content-audit.json
+```
+
+Pass `quests`, `regions`, `artifacts`, or `world` for a focused report. The
+audit emits deterministic JSON and never modifies authored content. It is a
+review aid, not a replacement for `tools/validate.py` or the typed catalog.

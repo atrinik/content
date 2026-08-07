@@ -30,6 +30,7 @@ def main() -> int:
             "-m",
             "unittest",
             "tools.tests.test_content_catalog",
+            "tools.tests.test_world_content_audit",
         ],
         cwd=ROOT,
         check=True,

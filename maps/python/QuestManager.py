@@ -491,6 +491,7 @@ class QuestManager:
 
         assert self.quest_object
 
+        part_path = [part] if isinstance(part, str) else list(part)
         part, quest = self.get_part(part)
         obj = self.quest_object.FindObject(name=part)
         if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
@@ -500,6 +501,16 @@ class QuestManager:
         obj.magic = Atrinik.QUEST_STATUS_COMPLETED
         self.sound(sound)
         self.remove_quest_items(quest, obj)
+        qualified_part = "{}::{}".format(
+            self.quest["uid"], "::".join(part_path)
+        )
+        controller = self.activator.Controller()
+        controller.MetricMarkUnique(
+            "quests.completed_parts", qualified_part
+        )
+        controller.MetricKeyedAdd(
+            "quests.part_completions_by_id", qualified_part
+        )
 
         # Check all quest parts. If all are completed, complete the
         # entire quest.
@@ -509,9 +520,11 @@ class QuestManager:
         # Complete the quest itself now.
         self.quest_object.magic = Atrinik.QUEST_STATUS_COMPLETED
         self.use_qp()
-        self.activator.Controller().QuestStatus(
+        controller.QuestStatus(
             self.quest["uid"], Atrinik.QUEST_STATUS_COMPLETED
         )
+        if self.quest.get("repeat", False):
+            controller.MetricAdd("quests.repeatable_completed")
         return True
 
     def fail(self, part, sound="warning_statdown.ogg"):

@@ -110,6 +110,14 @@ class PlayerMethodsSuite(PlayerCommonSuite):
         self.assertIsNone(self.pl.MetricAdd("social.post_items_sent"))
         self.assertIsNone(self.pl.MetricAdd("social.post_items_sent", 3))
 
+        self.assertRaises(TypeError, self.pl.MetricKeyedAdd)
+        self.assertRaises(ValueError, self.pl.MetricKeyedAdd,
+                          "unknown.metric", "stable-id")
+        self.assertRaises(ValueError, self.pl.MetricKeyedAdd,
+                          "quests.part_completions_by_id", "invalid subject")
+        self.assertIsNone(self.pl.MetricKeyedAdd(
+            "quests.part_completions_by_id", "test_quest::part"))
+
         self.assertRaises(TypeError, self.pl.MetricMarkUnique)
         self.assertRaises(ValueError, self.pl.MetricMarkUnique,
                           "combat.bosses", "invalid subject")

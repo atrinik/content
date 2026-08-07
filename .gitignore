@@ -1,6 +1,7 @@
 /build/
 __pycache__/
 *.py[cod]
+*:Zone.Identifier
 
 # Generated collection output.
 /arch/animations
@@ -12,4 +13,3 @@ __pycache__/
 /arch/treasures
 /maps/python/InterfaceQuests.py
 /maps/interfaces/**/*.py
-

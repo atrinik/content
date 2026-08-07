@@ -3,3 +3,8 @@
 release-line.txt export-ignore
 tools/package-release.sh export-ignore
 
+# These inputs are byte-sensitive and must not be rewritten by Windows Git.
+/contracts/content-v1/** text eol=lf
+/maps/** text eol=lf
+/prototypes/authored-syntax-v1/** text eol=lf
+/tools/syntax_evaluation/** text eol=lf

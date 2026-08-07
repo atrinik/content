@@ -23,6 +23,14 @@ characterize the external server and checker boundaries that a future shared
 lossless implementation must satisfy; they do not transfer implementation
 ownership into this repository.
 
+The future typed authored surface is the strict JSONC dialect selected in
+[`AUTHORED_SYNTAX_DECISION.md`](AUTHORED_SYNTAX_DECISION.md). Its limits,
+logical-ID independence from physical suffixes, explicit custom namespace,
+comment/span requirements, representative measurements, and cross-language
+adapter constraints are authoritative inputs to schema and lossless-core work.
+The syntax prototypes and physical-record model remain evaluation/migration
+oracles; they are not another production parser or content IR.
+
 Generated runtime files are outputs, never authored sources. Exploratory reports
 from `tools/world_content_audit.py` are review artifacts, not another identity or
 grammar authority. A new loader, writer, checker, collector, or analyzer must use

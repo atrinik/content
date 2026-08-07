@@ -35,6 +35,7 @@ def main() -> int:
             "unittest",
             "tools.tests.test_content_catalog",
             "tools.tests.test_content_contracts",
+            "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
         ],
         cwd=ROOT,
@@ -58,6 +59,17 @@ def main() -> int:
             "-m",
             "tools.content_contracts",
             "validate",
+            "--root",
+            str(ROOT),
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "tools.syntax_evaluation",
             "--root",
             str(ROOT),
         ],

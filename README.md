@@ -32,6 +32,16 @@ and the lossless parity corpus live under `contracts/content-v1/`. See
 authoritative server sources, compatibility rules, fixture coverage, and
 read-only inspection command.
 
+The accepted future authored surface is a strict, bounded JSONC dialect. See
+[`docs/AUTHORED_SYNTAX_DECISION.md`](docs/AUTHORED_SYNTAX_DECISION.md) for the
+decision, parser limits, cross-language implementation constraints, raw
+measurements, and reproduction workflow. Evaluate the locked parity corpus
+without changing authored sources:
+
+```sh
+python3 -m tools.syntax_evaluation --root . --json
+```
+
 For read-only exploratory inventories of quests, regions, artifacts, maps,
 named objects, and archetype locations, run:
 

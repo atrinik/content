@@ -501,7 +501,7 @@ class QuestManager:
         obj.magic = Atrinik.QUEST_STATUS_COMPLETED
         self.sound(sound)
         self.remove_quest_items(quest, obj)
-        qualified_part = "{}::{}".format(
+        qualified_part = "quest-part:{}::{}".format(
             self.quest["uid"], "::".join(part_path)
         )
         controller = self.activator.Controller()

@@ -116,7 +116,7 @@ class PlayerMethodsSuite(PlayerCommonSuite):
         self.assertRaises(ValueError, self.pl.MetricKeyedAdd,
                           "quests.part_completions_by_id", "invalid subject")
         self.assertIsNone(self.pl.MetricKeyedAdd(
-            "quests.part_completions_by_id", "test_quest::part"))
+            "quests.part_completions_by_id", "quest-part:test_quest::part"))
 
         self.assertRaises(TypeError, self.pl.MetricMarkUnique)
         self.assertRaises(ValueError, self.pl.MetricMarkUnique,

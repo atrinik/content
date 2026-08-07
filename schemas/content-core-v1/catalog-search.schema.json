@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/core-catalog-search.schema.json",
+  "title": "Atrinik content catalog search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "query", "results", "truncated"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "catalog-search"},
+    "query": {"$ref": "#/$defs/query"},
+    "results": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {"$ref": "#/$defs/result"}
+    },
+    "truncated": {"type": "boolean"}
+  },
+  "$defs": {
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "text", "limit"],
+      "properties": {
+        "kind": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "text": {"type": "string"},
+        "limit": {"type": "integer", "minimum": 1, "maximum": 100}
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "line", "column"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domain", "key", "location", "metadata"],
+      "properties": {
+        "domain": {"type": "string", "minLength": 1},
+        "key": {"type": "string", "minLength": 1},
+        "location": {"$ref": "#/$defs/location"},
+        "metadata": {"type": "object", "additionalProperties": {}}
+      }
+    }
+  }
+}

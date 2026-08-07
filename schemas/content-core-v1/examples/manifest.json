@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "examples": [
+    {"kind": "catalog-search", "path": "examples/catalog-search.json"},
+    {"kind": "inspection", "path": "examples/inspection.json"},
+    {"kind": "transaction", "path": "examples/transaction.json"},
+    {"kind": "transaction-result", "path": "examples/transaction-result.json"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "content-transaction",
+  "files": [
+    {
+      "path": "maps/example",
+      "format": "map",
+      "base_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "operations": [
+        {
+          "kind": "set-property",
+          "node_handle": "node-000001",
+          "node_fingerprint": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "field_id": "map-header.width",
+          "value": 24
+        }
+      ]
+    }
+  ]
+}

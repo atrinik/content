@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/core-inspection.schema.json",
+  "title": "Atrinik lossless content inspection v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "document", "nodes", "top_level", "multipart_continuations", "comments", "diagnostics"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "document-inspection"},
+    "document": {"$ref": "#/$defs/document"},
+    "nodes": {
+      "type": "array",
+      "maxItems": 1000000,
+      "items": {"$ref": "#/$defs/node"}
+    },
+    "top_level": {
+      "type": "array",
+      "maxItems": 250000,
+      "items": {"type": "string", "pattern": "^node-[0-9]{6}$"}
+    },
+    "multipart_continuations": {"type": "integer", "minimum": 0},
+    "comments": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {"$ref": "#/$defs/span"}
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 250000,
+      "items": {"$ref": "#/$defs/diagnostic"}
+    }
+  },
+  "$defs": {
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "format", "logical_id", "byte_sha256", "size", "line_endings", "terminal_newline", "valid"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "format": {"enum": ["archetype", "map"]},
+        "logical_id": {"type": "string", "minLength": 1},
+        "byte_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 0},
+        "line_endings": {"enum": ["crlf", "lf", "mixed", "none"]},
+        "terminal_newline": {"type": "boolean"},
+        "valid": {"type": "boolean"}
+      }
+    },
+    "span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_byte", "end_byte", "line", "column"],
+      "properties": {
+        "start_byte": {"type": "integer", "minimum": 0},
+        "end_byte": {"type": "integer", "minimum": 0},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1}
+      }
+    },
+    "property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "field_id", "custom_id", "raw_value", "typed_value", "value_kind", "status", "span", "value_span"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "field_id": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "custom_id": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "raw_value": {"type": "string"},
+        "typed_value": {},
+        "value_kind": {"enum": ["boolean", "enum", "integer", "number", "object", "reference", "reference-list", "string", "string-list"]},
+        "status": {"enum": ["active", "custom", "legacy-ignored", "migrate", "remove-after-migration", "reserved"]},
+        "span": {"$ref": "#/$defs/span"},
+        "value_span": {"$ref": "#/$defs/span"}
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handle", "fingerprint", "kind", "name", "depth", "parent_handle", "span", "properties", "messages", "children", "body_order"],
+      "properties": {
+        "handle": {"type": "string", "pattern": "^node-[0-9]{6}$"},
+        "fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "kind": {"enum": ["map-header", "object"]},
+        "name": {"type": "string", "minLength": 1},
+        "depth": {"type": "integer", "minimum": 0},
+        "parent_handle": {"oneOf": [{"type": "string", "pattern": "^node-[0-9]{6}$"}, {"type": "null"}]},
+        "span": {"$ref": "#/$defs/span"},
+        "properties": {
+          "type": "array",
+          "maxItems": 250000,
+          "items": {"$ref": "#/$defs/property"}
+        },
+        "messages": {
+          "type": "array",
+          "maxItems": 250000,
+          "items": {"$ref": "#/$defs/message"}
+        },
+        "children": {
+          "type": "array",
+          "maxItems": 250000,
+          "items": {"type": "string", "pattern": "^node-[0-9]{6}$"}
+        },
+        "body_order": {
+          "type": "array",
+          "maxItems": 250000,
+          "items": {"$ref": "#/$defs/body-entry"}
+        }
+      }
+    },
+    "message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["span", "body_start_byte", "body_end_byte", "text", "terminated"],
+      "properties": {
+        "span": {"$ref": "#/$defs/span"},
+        "body_start_byte": {"type": "integer", "minimum": 0},
+        "body_end_byte": {"type": "integer", "minimum": 0},
+        "text": {"type": "string"},
+        "terminated": {"type": "boolean"}
+      }
+    },
+    "body-entry": {
+      "oneOf": [
+        {"$ref": "#/$defs/indexed-body-entry"},
+        {"$ref": "#/$defs/child-body-entry"}
+      ]
+    },
+    "indexed-body-entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "index"],
+      "properties": {
+        "kind": {"enum": ["comment", "message", "property"]},
+        "index": {"type": "integer", "minimum": 0}
+      }
+    },
+    "child-body-entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "handle"],
+      "properties": {
+        "kind": {"const": "child"},
+        "handle": {"type": "string", "pattern": "^node-[0-9]{6}$"}
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "line", "column"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1}
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "code", "severity", "message", "location", "related"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "code": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "severity": {"enum": ["error", "info", "warning"]},
+        "message": {"type": "string", "minLength": 1},
+        "location": {"$ref": "#/$defs/location"},
+        "related": {"type": "array", "items": {"$ref": "#/$defs/location"}}
+      }
+    }
+  }
+}

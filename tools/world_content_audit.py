@@ -12,7 +12,12 @@ import json
 import re
 from collections import defaultdict
 from pathlib import Path
+import sys
 import xml.etree.ElementTree as ET
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from tools.content_core import Document, Node, parse_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -44,34 +49,34 @@ def fields(lines: list[str]) -> dict[str, list[str]]:
 
 
 def parse_blocks(path: Path) -> dict:
-    """Parse an Atrinik map into a header and nested arch objects."""
-    stack: list[dict] = []
-    roots: list[dict] = []
-    header: dict | None = None
-    with path.open(errors="replace") as handle:
-        for lineno, raw in enumerate(handle, 1):
-            line = raw.rstrip("\n")
-            if line.startswith("arch "):
-                node = {
-                    "arch": line[5:],
-                    "attrs_raw": [],
-                    "children": [],
-                    "line": lineno,
-                }
-                if stack:
-                    stack[-1]["children"].append(node)
-                else:
-                    roots.append(node)
-                stack.append(node)
-            elif line == "end":
-                if stack:
-                    node = stack.pop()
-                    node["attrs"] = fields(node.pop("attrs_raw"))
-                    if node["arch"] == "map" and header is None:
-                        header = node
-            elif stack:
-                stack[-1]["attrs_raw"].append(raw)
-    return {"header": header, "objects": [obj for obj in roots if obj is not header]}
+    """Adapt the common lossless model to the audit's historical report shape."""
+
+    relative = path.relative_to(ROOT).as_posix()
+    document = parse_bytes(
+        path.read_bytes(), path=relative, format_name="map"
+    )
+    header = _audit_node(document, document.map_header) if document.map_header else None
+    objects = [
+        _audit_node(document, document.node(handle))
+        for handle in document.top_level_handles
+        if document.node(handle).kind == "object"
+    ]
+    return {"header": header, "objects": objects}
+
+
+def _audit_node(document: Document, node: Node) -> dict:
+    attrs: dict[str, list[str]] = defaultdict(list)
+    for record in node.fields:
+        attrs[record.name].append(record.value)
+    return {
+        "arch": node.name,
+        "attrs": dict(attrs),
+        "children": [
+            _audit_node(document, document.node(handle))
+            for handle in node.child_handles
+        ],
+        "line": node.opener_span.line,
+    }
 
 
 def map_files() -> list[Path]:
@@ -91,24 +96,20 @@ def map_files() -> list[Path]:
 def load_archetypes() -> dict[str, dict]:
     out = {}
     for path in sorted(ARCH_ROOT.rglob("*.arc")):
-        lines = path.read_text(errors="replace").splitlines()
-        i = 0
-        while i < len(lines):
-            if not lines[i].startswith("Object "):
-                i += 1
+        relative = path.relative_to(ROOT).as_posix()
+        document = parse_bytes(
+            path.read_bytes(), path=relative, format_name="archetype"
+        )
+        for node in document.nodes:
+            if node.depth != 0:
                 continue
-            arch = lines[i][7:]
-            i += 1
-            block = []
-            while i < len(lines) and lines[i] != "end":
-                block.append(lines[i] + "\n")
-                i += 1
-            attrs = fields(block)
-            out[arch] = {
+            attrs: dict[str, list[str]] = defaultdict(list)
+            for record in node.fields:
+                attrs[record.name].append(record.value)
+            out[node.name] = {
                 "path": str(path.relative_to(ROOT)),
                 "attrs": {key: vals[-1] for key, vals in attrs.items() if vals},
             }
-            i += 1
     return out
 
 

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "max_input_bytes": 67108864,
+  "max_depth": 64,
+  "max_nodes": 1000000,
+  "max_collection_items": 250000,
+  "max_object_keys": 256,
+  "max_string_bytes": 1048576,
+  "max_number_bytes": 128,
+  "max_safe_integer": 9007199254740991,
+  "max_comments": 100000,
+  "max_comment_bytes": 4194304,
+  "max_line_bytes": 1048576,
+  "max_lines": 250000,
+  "jsonc": {
+    "comments": ["line", "block"],
+    "trailing_commas": false,
+    "non_json_numbers": false,
+    "duplicate_keys": false
+  },
+  "yaml12": {
+    "aliases": false,
+    "anchors": false,
+    "custom_tags": false,
+    "directives": false,
+    "document_streams": false,
+    "duplicate_keys": false,
+    "flow_collections": false,
+    "implicit_scalars": false,
+    "indent_spaces": 2,
+    "mapping_keys": "^[a-z][a-z0-9_]*$"
+  }
+}

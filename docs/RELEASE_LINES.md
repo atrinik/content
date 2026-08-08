@@ -27,6 +27,10 @@ wrapper's distinct `content-1x` checkout and never share output with `content`.
 
 ## Releases
 
+`release-line.txt` is `2.0` on `main` and remains `1.0` on branch `1.x`.
+Validation treats either value appearing on the wrong branch as a release
+boundary defect.
+
 Semantic-release treats `1.x` as maintenance range `1.x` on channel `1.x` and
 uses `vMAJOR.MINOR.PATCH` tags. Before the first post-fork maintenance release,
 `main` must publish the replacement line's next major version; this establishes

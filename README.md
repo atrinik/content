@@ -18,9 +18,10 @@ It does not relicense the corpus or authorize copying implementation from the
 historical Python sources.
 
 `main` and maintained classic branch `1.x` have distinct ownership and release
-contracts. See [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target
-selection, linked backport/forward-port policy, compatibility metadata, and the
-bounded maintenance channel.
+contracts. Main uses release line `2.0`; classic maintenance remains on `1.0`.
+See [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target selection,
+linked backport/forward-port policy, compatibility metadata, and the bounded
+maintenance channel.
 
 Build and validate a runtime tree without modifying authored sources:
 

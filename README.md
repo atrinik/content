@@ -10,6 +10,13 @@ the nearest `LICENSE` file for an asset are authoritative; the repository does
 not apply one blanket license to every file. Releases preserve those notices
 and include a machine-readable digest manifest.
 
+The clean-room replacement boundary is recorded under
+[`provenance/m1`](provenance/m1/README.md). It inventories every Python behavior
+at the immutable main/1.x fork, assigns one non-Python replacement owner and
+acceptance scenario, and provides exact reusable-material package allowlists.
+It does not relicense the corpus or authorize copying implementation from the
+historical Python sources.
+
 Build and validate a runtime tree without modifying authored sources:
 
 ```sh

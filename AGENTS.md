@@ -34,6 +34,13 @@
   rules, Linux/Windows tests, and `docs/CONTENT_CORE.md` synchronized. Writes are
   dry-run-first and limited to authored source roots and `arch/*.arc` or `maps/`
   targets; never weaken digest/fingerprint checks or output/runtime refusals.
+- `provenance/m1` is the fail-closed clean-room behavior and reusable-material
+  boundary pinned to the `v1.8.1` main/1.x fork. Regenerate it only from a
+  complete Git history with `python3 tools/m1_foundations.py generate --root
+  .`. A behavior assignment is not permission to copy GPL Python. Only exact
+  ID/digest rows in a package allowlist may cross into replacement owners, and
+  every historical MIT grant row must cite the root registry revision and
+  preserve the unchanged 1.x copy and terms.
 - Trace every changed map path, archetype, animation, image, artifact, treasure,
   faction, interface, and script reference. Do not mask missing references with
   absolute paths, generated placeholders, or duplicated parsers.

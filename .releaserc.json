@@ -1,8 +1,8 @@
 {
-  "branches": ["main", {"name": "1.x", "range": "1.x", "channel": "1.x"}],
+  "branches": [{"name": "1.x", "range": "1.x", "channel": "1.x"}, "main"],
   "tagFormat": "v${version}",
   "plugins": [
-    ["@semantic-release/commit-analyzer", {"preset": "conventionalcommits", "releaseRules": [{"breaking": true, "release": "major"}, {"type": "feat", "release": "minor"}, {"type": "*", "release": "patch"}]}],
+    ["@semantic-release/commit-analyzer", {"preset": "conventionalcommits", "releaseRules": [{"breaking": true, "release": "major"}, {"type": "feat", "scope": "release", "subject": "establish classic content maintenance line*", "release": "patch"}, {"type": "build", "release": "patch"}, {"type": "chore", "release": "patch"}, {"type": "ci", "release": "patch"}, {"type": "docs", "release": "patch"}, {"type": "refactor", "release": "patch"}, {"type": "revert", "release": "patch"}, {"type": "style", "release": "patch"}, {"type": "test", "release": "patch"}]}],
     ["@semantic-release/release-notes-generator", {"preset": "conventionalcommits"}],
     ["@semantic-release/exec", {"publishCmd": "tools/build-release-assets.sh ${nextRelease.version}"}],
     ["@semantic-release/github", {"assets": [{"path": "build/release/*"}]}]

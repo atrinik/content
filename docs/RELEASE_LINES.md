@@ -28,11 +28,14 @@ wrapper's distinct `content-1x` checkout and never share output with `content`.
 ## Releases
 
 Semantic-release treats `1.x` as maintenance range `1.x` on channel `1.x` and
-uses `vMAJOR.MINOR.PATCH` tags. Before the first post-fork maintenance release,
-`main` must publish the replacement line's next major version; this establishes
-an upper release boundary and prevents the maintenance analyzer from consuming
-or overwriting a `main` release. A dry run must show a next version satisfying
-`>=1.0.0 <2.0.0` and channel `1.x` before publication.
+uses `vMAJOR.MINOR.PATCH` tags. `main` published `v1.9.0` after this branch's
+`v1.8.1` fork and owns that version permanently, so the maintenance line is
+bounded to `>=1.8.1 <1.9.0` even though `main` has since established the 2.x
+replacement line. The historical `feat(release)` bootstrap commit is classified
+as a patch by one exact analyzer rule; this permits the first maintenance
+release at `v1.8.2` without weakening normal feature or breaking-change
+classification. Future `1.x` changes are maintenance fixes, not features. A dry
+run must show `v1.8.2` on channel `1.x` before the first publication.
 
 The release has three integrity layers:
 

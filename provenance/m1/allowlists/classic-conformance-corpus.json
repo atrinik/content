@@ -1,0 +1,11 @@
+{
+  "materials": [
+    {
+      "decision": "excluded_from_mit_contract_packages",
+      "material_id": "material:classic-stable-identity-fixture",
+      "sha256": "a850a4a54cc9f4816f72502bcf301102419f7d6fe90474516a3a397a76d6d3af"
+    }
+  ],
+  "package": "classic-conformance-corpus",
+  "schema_version": 1
+}

@@ -34,11 +34,23 @@
   rules, Linux/Windows tests, and `docs/CONTENT_CORE.md` synchronized. Writes are
   dry-run-first and limited to authored source roots and `arch/*.arc` or `maps/`
   targets; never weaken digest/fingerprint checks or output/runtime refusals.
+- `provenance/m1` is the fail-closed clean-room behavior and reusable-material
+  boundary pinned to the `v1.8.1` main/1.x fork. Regenerate it only from a
+  complete Git history with `python3 tools/m1_foundations.py generate --root
+  .`. A behavior assignment is not permission to copy GPL Python. Only exact
+  ID/digest rows in a package allowlist may cross into replacement owners, and
+  every historical MIT grant row must cite the root registry revision and
+  preserve the unchanged 1.x copy and terms.
 - Trace every changed map path, archetype, animation, image, artifact, treasure,
   faction, interface, and script reference. Do not mask missing references with
   absolute paths, generated placeholders, or duplicated parsers.
 - Generated runtime collection belongs under `build/` or another isolated
   output directory, never in source. Do not overwrite mutable server state.
+- `main` owns replacement forward authoring. Branch `1.x` is the separately
+  maintained classic line described by `contracts/release-lines/classic-1x.json`
+  and `docs/RELEASE_LINES.md`; never merge branches wholesale after formats
+  diverge. Changes that apply to both use separately validated, linked pull
+  requests and preserve attribution.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
@@ -52,6 +64,9 @@
   gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release.
+- `1.x` releases use semantic-release maintenance range/channel `1.x`. Main
+  must establish the next major version before the first post-fork maintenance
+  release; the classic artifact is explicitly not replacement-ready.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

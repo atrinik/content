@@ -1,0 +1,16 @@
+{
+  "materials": [
+    {
+      "decision": "admitted_mit_grant",
+      "material_id": "material:authored-jsonc-limits-v1",
+      "sha256": "d87ef7a7c3b9c0462fa86a3b4d2be93bd4a63df47be5c8f01f2026d1fc58896c"
+    },
+    {
+      "decision": "admitted_mit_grant",
+      "material_id": "material:legacy-diagnostic-schema-v1",
+      "sha256": "161c35caed2f143c3ceeb9b155eb9cb530b0450432255bf44bf6af319534e758"
+    }
+  ],
+  "package": "content-toolkit-mit",
+  "schema_version": 1
+}

@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 from pathlib import Path, PurePath
+import re
 import shutil
 import subprocess
 import sys
@@ -86,6 +87,7 @@ def create_manifest(
     output: Path,
     source_commit: str,
     source_branch: str,
+    release_version: str,
     release_contract: dict[str, object],
 ) -> None:
     files = []
@@ -108,6 +110,7 @@ def create_manifest(
             "commit": source_commit,
         },
         "release_line": "1.x",
+        "release_version": release_version,
         "content_format": release_contract["content_format"],
         "artifact_format": release_contract["artifact_format"],
         "compatible_classic_releases": release_contract["compatible_classic_releases"],
@@ -131,6 +134,7 @@ def build(
     output: Path,
     source_commit: str,
     source_branch: str = "1.x",
+    release_version: str = "unreleased",
 ) -> None:
     source = source.resolve()
     output = output.absolute()
@@ -151,6 +155,8 @@ def build(
     release_contract = load_release_contract(source)
     if source_branch != release_contract["branch"]:
         raise ValueError("runtime branch does not match the classic release contract")
+    if release_version != "unreleased" and re.fullmatch(r"1\.[0-9]+\.[0-9]+", release_version) is None:
+        raise ValueError("classic runtime release version must satisfy 1.x")
     output.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory(
@@ -182,7 +188,13 @@ def build(
             source / "contracts" / "release-lines" / "classic-1x.json",
             candidate / "compatibility.json",
         )
-        create_manifest(candidate, source_commit, source_branch, release_contract)
+        create_manifest(
+            candidate,
+            source_commit,
+            source_branch,
+            release_version,
+            release_contract,
+        )
 
         previous = transaction / "previous"
         if output.exists():
@@ -201,6 +213,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--source-commit")
     parser.add_argument("--source-branch", default="1.x", choices=("1.x",))
+    parser.add_argument("--release-version", default="unreleased")
     args = parser.parse_args()
 
     source = args.source.resolve()
@@ -215,7 +228,13 @@ def main() -> int:
     if len(source_commit) != 40 or any(c not in "0123456789abcdef" for c in source_commit):
         parser.error("source commit must be a 40-character lowercase Git object ID")
 
-    build(source, args.output, source_commit, args.source_branch)
+    build(
+        source,
+        args.output,
+        source_commit,
+        args.source_branch,
+        args.release_version,
+    )
     return 0
 
 

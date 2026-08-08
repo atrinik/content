@@ -3,6 +3,7 @@
 set -euo pipefail
 
 if [[ $# -eq 2 ]]; then
+  production_release=true
   revision=$1
   output_directory=$2
   if [[ ! ${revision} =~ ^v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
@@ -11,6 +12,7 @@ if [[ $# -eq 2 ]]; then
   fi
   version=${BASH_REMATCH[1]}
 elif [[ $# -eq 5 && $1 == --version && $3 == --revision ]]; then
+  production_release=false
   version=$2
   revision=$4
   output_directory=$5
@@ -26,6 +28,11 @@ fi
 
 source_commit=$(git rev-parse "${revision}^{commit}")
 source_epoch=$(git show -s --format=%ct "${revision}^{commit}")
+if [[ ${production_release} == true ]] && ! git merge-base --is-ancestor \
+  "${source_commit}" refs/heads/1.x; then
+  echo "release tag is not on the protected 1.x line: ${revision}" >&2
+  exit 1
+fi
 package=atrinik-content-${version}
 if [[ -e ${output_directory} ]]; then
   echo "release output already exists: ${output_directory}" >&2
@@ -39,7 +46,8 @@ git archive --format=tar.gz --prefix="${package}/" \
 runtime_directory=$(mktemp -d)
 trap 'rm -rf -- "${runtime_directory}"' EXIT
 python3 tools/build_runtime.py --output "${runtime_directory}/${package}-runtime" \
-  --source-commit "${source_commit}" --source-branch 1.x
+  --source-commit "${source_commit}" --source-branch 1.x \
+  --release-version "${version}"
 tar --sort=name --mtime="@${source_epoch}" --owner=0 --group=0 --numeric-owner \
   -czf "${output_directory}/${package}-runtime.tar.gz" \
   -C "${runtime_directory}" "${package}-runtime"

@@ -126,6 +126,7 @@ def main() -> int:
             or manifest["source"]["branch"] != "1.x"
             or len(manifest["source"]["commit"]) != 40
             or manifest["release_line"] != "1.x"
+            or manifest["release_version"] != "unreleased"
             or manifest["replacement_ready"] is not False
             or manifest["replacement_toolkit_package"] is not False
             or manifest["consumers"]

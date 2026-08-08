@@ -33,6 +33,7 @@ jq -e \
     .source.branch == "1.x" and
     .source.commit == $commit and
     .release_line == "1.x" and
+    .release_version == "1.8.2" and
     .content_format == "classic-ads-v1" and
     .artifact_format == "atrinik-classic-runtime-content-v1" and
     .compatible_classic_releases == ">=1.0.0 <2.0.0" and

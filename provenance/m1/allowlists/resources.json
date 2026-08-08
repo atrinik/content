@@ -1,0 +1,16 @@
+{
+  "materials": [
+    {
+      "decision": "admitted_existing_terms",
+      "material_id": "material:painting:cave_entrance",
+      "sha256": "869f37597531782904d2ad333bebb08f89e6707e441f12c5f21d8d6ac333110f"
+    },
+    {
+      "decision": "admitted_existing_terms",
+      "material_id": "material:painting:canopy",
+      "sha256": "bee62ab315460bfc0c4d3e2636a5924fe92f6f5487fb90b51fbe3bbed3c88c3f"
+    }
+  ],
+  "package": "resources",
+  "schema_version": 1
+}

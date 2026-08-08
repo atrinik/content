@@ -81,6 +81,12 @@ class M1FoundationTests(unittest.TestCase):
             release["branches"],
         )
 
+    def test_main_establishes_the_replacement_major_boundary(self) -> None:
+        self.assertEqual(
+            (ROOT / "release-line.txt").read_text(encoding="utf-8"),
+            "2.0\n",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

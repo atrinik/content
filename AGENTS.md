@@ -46,6 +46,11 @@
   absolute paths, generated placeholders, or duplicated parsers.
 - Generated runtime collection belongs under `build/` or another isolated
   output directory, never in source. Do not overwrite mutable server state.
+- `main` owns replacement forward authoring. Branch `1.x` is the separately
+  maintained classic line described by `contracts/release-lines/classic-1x.json`
+  and `docs/RELEASE_LINES.md`; never merge branches wholesale after formats
+  diverge. Changes that apply to both use separately validated, linked pull
+  requests and preserve attribution.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
@@ -59,6 +64,9 @@
   gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release.
+- `1.x` releases use semantic-release maintenance range/channel `1.x`. Main
+  must establish the next major version before the first post-fork maintenance
+  release; the classic artifact is explicitly not replacement-ready.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

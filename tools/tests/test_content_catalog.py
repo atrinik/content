@@ -58,8 +58,9 @@ More
 Object multipart_tail
 type 1
 end
-""",
+            """,
         )
+
         self.write(
             "arch/items.art",
             """Allowed all
@@ -136,6 +137,28 @@ end
   </quest>
 </interfaces>
 """,
+        )
+
+    def create_release_contract(self):
+        self.write(
+            "contracts/release-lines/classic-1x.json",
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "repository": "atrinik/content",
+                    "branch": "1.x",
+                    "content_format": "classic-ads-v1",
+                    "artifact_format": "atrinik-classic-runtime-content-v1",
+                    "compatible_classic_releases": ">=1.0.0 <2.0.0",
+                    "consumers": [
+                        "classic/client",
+                        "classic/editor",
+                        "classic/server",
+                    ],
+                    "replacement_ready": False,
+                    "replacement_toolkit_package": False,
+                }
+            ),
         )
 
     def test_loads_domain_qualified_definitions_and_references(self):
@@ -346,6 +369,7 @@ end
 
     def test_runtime_build_preserves_output_when_collection_fails(self):
         self.create_valid_tree()
+        self.create_release_contract()
         (self.root / "tools").mkdir()
         self.write("tools/collect.py", "raise SystemExit(1)\n")
         output = self.root / "build" / "runtime"

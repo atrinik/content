@@ -43,6 +43,7 @@ def main() -> int:
             "tools.tests.test_content_schema",
             "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
+            "tools.tests.test_release_line",
         ],
         cwd=ROOT,
         check=True,
@@ -118,11 +119,25 @@ def main() -> int:
             check=True,
         )
         manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
-        if manifest["schema_version"] != 1 or not manifest["files"]:
+        if manifest["schema_version"] != 2 or not manifest["files"]:
             raise ValueError("runtime manifest is incomplete")
+        if (
+            manifest["source"]["repository"] != "atrinik/content"
+            or manifest["source"]["branch"] != "1.x"
+            or len(manifest["source"]["commit"]) != 40
+            or manifest["release_line"] != "1.x"
+            or manifest["replacement_ready"] is not False
+            or manifest["replacement_toolkit_package"] is not False
+            or manifest["consumers"]
+            != ["classic/client", "classic/editor", "classic/server"]
+        ):
+            raise ValueError("runtime release-line metadata is invalid")
         paths = [entry["path"] for entry in manifest["files"]]
         if paths != sorted(paths) or len(paths) != len(set(paths)):
             raise ValueError("runtime manifest paths are not canonical and unique")
+        license_paths = [entry["path"] for entry in manifest["license_files"]]
+        if not license_paths or not set(license_paths) <= set(paths):
+            raise ValueError("runtime license manifest is incomplete")
 
     subprocess.run(
         [
@@ -132,6 +147,11 @@ def main() -> int:
             str(ROOT / "arch"),
             "--text-only",
         ],
+        check=True,
+    )
+    subprocess.run(
+        [str(ROOT / "tools" / "validate-release-line.sh")],
+        cwd=ROOT,
         check=True,
     )
     return 0

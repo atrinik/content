@@ -51,10 +51,12 @@
       ],
       "decision": "admitted_mit_grant",
       "destination": {
+        "branch": "feat/content-provenance-contracts",
         "path": "policy/classic-authored-limits.json",
         "repository": "atrinik/content-toolkit",
-        "status": "approved_for_linked_change",
-        "transformation": "copy the machine contract and adapt only repository-local schema references"
+        "revision": "d9856fd820cb95b62730adc41c5eeff3b6cc9e7a",
+        "status": "implemented_in_linked_change",
+        "transformation": "byte-identical copy; no content transformation"
       },
       "grant": {
         "destination_license": "MIT",
@@ -113,10 +115,12 @@
       ],
       "decision": "admitted_mit_grant",
       "destination": {
+        "branch": "feat/content-provenance-contracts",
         "path": "schemas/classic-diagnostic.schema.json",
         "repository": "atrinik/content-toolkit",
-        "status": "approved_for_linked_change",
-        "transformation": "copy the machine contract and adapt only repository-local schema references"
+        "revision": "d9856fd820cb95b62730adc41c5eeff3b6cc9e7a",
+        "status": "implemented_in_linked_change",
+        "transformation": "byte-identical copy; no content transformation"
       },
       "grant": {
         "destination_license": "MIT",
@@ -148,11 +152,31 @@
       ],
       "author": "Alex \"Cleo\" Tokar",
       "classification": "compatible_third_party_work",
+      "complete_history": [
+        {
+          "email": "admin@atokar.net",
+          "name": "Alex Tokar",
+          "path": "paintings/cave_entrance.jpg",
+          "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64"
+        }
+      ],
       "decision": "admitted_existing_terms",
       "derivative_base_chain": [],
+      "integrity": {
+        "height": 500,
+        "maximum_dimension": 8192,
+        "maximum_file_bytes": 67108864,
+        "media_type": "image/jpeg",
+        "size_bytes": 286857,
+        "width": 750
+      },
       "license": "CC-BY-SA-3.0",
       "material_id": "material:painting:cave_entrance",
-      "notice": "atrinik/resources:paintings/LICENSE",
+      "notice": {
+        "path": "paintings/LICENSE",
+        "repository": "atrinik/resources",
+        "sha256": "3cabd6ec1db66713b5c97e4fe205230810b31a60603196148b02002bfb5d1bcc"
+      },
       "source": {
         "path": "paintings/cave_entrance.jpg",
         "repository": "atrinik/resources",
@@ -171,6 +195,20 @@
       ],
       "author": "Alex \"Cleo\" Tokar",
       "classification": "derivative_with_retained_terms",
+      "complete_history": [
+        {
+          "email": "admin@atokar.net",
+          "name": "Alex Tokar",
+          "path": "paintings/canopy.jpg",
+          "revision": "d629f89f1ae4cbffdfd201009ae1b1821c8c3f1f"
+        },
+        {
+          "email": "admin@atokar.net",
+          "name": "Alex Tokar",
+          "path": "paintings/canopy.png",
+          "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64"
+        }
+      ],
       "decision": "admitted_existing_terms",
       "derivative_base_chain": [
         {
@@ -179,9 +217,21 @@
           "sha256": "305aac7ab9538662fb1afc773a9abad943b50cc01c2bc168555f1951babb4d71"
         }
       ],
+      "integrity": {
+        "height": 500,
+        "maximum_dimension": 8192,
+        "maximum_file_bytes": 67108864,
+        "media_type": "image/jpeg",
+        "size_bytes": 227415,
+        "width": 750
+      },
       "license": "CC-BY-SA-3.0",
       "material_id": "material:painting:canopy",
-      "notice": "atrinik/resources:paintings/LICENSE",
+      "notice": {
+        "path": "paintings/LICENSE",
+        "repository": "atrinik/resources",
+        "sha256": "3cabd6ec1db66713b5c97e4fe205230810b31a60603196148b02002bfb5d1bcc"
+      },
       "source": {
         "path": "paintings/canopy.jpg",
         "repository": "atrinik/resources",

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import unittest
 
 from tools import m1_foundations
@@ -13,12 +14,30 @@ class M1FoundationTests(unittest.TestCase):
     def test_static_observations_are_bounded_and_sorted(self) -> None:
         observations = m1_foundations.static_observations(
             "import zeta\nfrom alpha.beta import thing\n"
-            "def public_name():\n    Atrinik.Map()\n    return EVENT_LOGIN\n"
+            "# import ignored\n"
+            "def public_name():\n"
+            "    ignored = 'Atrinik.Fake() EVENT_FAKE'\n"
+            "    Atrinik.Map()\n"
+            "    return EVENT_LOGIN\n"
         )
         self.assertEqual(observations["imports"], ["alpha", "zeta"])
         self.assertEqual(observations["public_symbols"], ["public_name"])
         self.assertEqual(observations["engine_calls"], ["Map"])
         self.assertEqual(observations["event_tokens"], ["EVENT_LOGIN"])
+
+    def test_capability_profile_is_evidence_bounded(self) -> None:
+        profile = m1_foundations.capability_profile(
+            "maps/python/quests/example.py",
+            {
+                "imports": ["QuestManager"],
+                "public_symbols": [],
+                "engine_calls": ["WhoAmI", "PlayerMessage"],
+                "event_tokens": ["EVENT_SAY"],
+            },
+        )
+        self.assertIn("quest", profile["state_domains"])
+        self.assertIn("player", profile["state_domains"])
+        self.assertIn("diagnostic-or-player-output", profile["observable_effect_classes"])
 
     def test_every_assignment_is_explicit(self) -> None:
         for path in (
@@ -42,6 +61,25 @@ class M1FoundationTests(unittest.TestCase):
             ["4aa4aebc5c88dffdf57657a34ae20306a57fbebd"],
         )
         self.assertEqual(history[0]["changes"][0]["status"], "A")
+
+    def test_classic_release_line_is_bounded_and_excluded(self) -> None:
+        contract = json.loads(
+            (ROOT / "contracts/release-lines/classic-1x.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(contract["branch"], "1.x")
+        self.assertEqual(
+            contract["consumers"],
+            ["classic/client", "classic/editor", "classic/server"],
+        )
+        self.assertFalse(contract["replacement_ready"])
+        self.assertFalse(contract["replacement_toolkit_package"])
+        release = json.loads((ROOT / ".releaserc.json").read_text(encoding="utf-8"))
+        self.assertIn(
+            {"name": "1.x", "range": "1.x", "channel": "1.x"},
+            release["branches"],
+        )
 
 
 if __name__ == "__main__":

@@ -5,12 +5,14 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
 import tempfile
+import tokenize
 from typing import Any
 
 
@@ -97,38 +99,107 @@ def path_history(root: Path, path: str) -> list[dict[str, Any]]:
 
 
 def static_observations(source: str) -> dict[str, list[str]]:
-    imports = sorted(
-        {
-            match.group(1).split(".")[0]
-            for match in re.finditer(
-                r"^\s*(?:from|import)\s+([A-Za-z_][A-Za-z0-9_.]*)",
-                source,
-                re.MULTILINE,
-            )
-        }
-    )
-    symbols = sorted(
-        {
-            match.group(1)
-            for match in re.finditer(
-                r"^\s*(?:def|class)\s+([A-Za-z_][A-Za-z0-9_]*)",
-                source,
-                re.MULTILINE,
-            )
-        }
-    )
-    engine_calls = sorted(
-        {
-            match.group(1)
-            for match in re.finditer(r"\bAtrinik\.([A-Za-z_][A-Za-z0-9_]*)", source)
-        }
-    )
-    event_tokens = sorted(set(re.findall(r"\b(?:EVENT|HOOK)_[A-Z0-9_]+\b", source)))
+    tokens = [
+        item
+        for item in tokenize.generate_tokens(io.StringIO(source).readline)
+        if item.type not in {tokenize.COMMENT, tokenize.STRING, tokenize.ENCODING}
+    ]
+    imports: set[str] = set()
+    symbols: set[str] = set()
+    engine_calls: set[str] = set()
+    event_tokens: set[str] = set()
+    from_import_indexes: set[int] = set()
+    for index, item in enumerate(tokens):
+        if item.type != tokenize.NAME:
+            continue
+        if item.string == "from":
+            for following in tokens[index + 1 :]:
+                if following.type == tokenize.NAME:
+                    imports.add(following.string)
+                    break
+                if following.type not in {tokenize.NL, tokenize.NEWLINE, tokenize.INDENT}:
+                    break
+            for following_index in range(index + 1, len(tokens)):
+                following = tokens[following_index]
+                if following.type == tokenize.NAME and following.string == "import":
+                    from_import_indexes.add(following_index)
+                    break
+                if following.type in {tokenize.NEWLINE, tokenize.ENDMARKER}:
+                    break
+        elif item.string == "import" and index not in from_import_indexes:
+            for following in tokens[index + 1 :]:
+                if following.type == tokenize.NAME:
+                    imports.add(following.string)
+                    break
+                if following.type not in {tokenize.NL, tokenize.NEWLINE, tokenize.INDENT}:
+                    break
+        elif item.string in {"def", "class"}:
+            for following in tokens[index + 1 :]:
+                if following.type == tokenize.NAME:
+                    symbols.add(following.string)
+                    break
+                if following.type not in {tokenize.NL, tokenize.NEWLINE, tokenize.INDENT}:
+                    break
+        elif re.fullmatch(r"(?:EVENT|HOOK)_[A-Z0-9_]+", item.string):
+            event_tokens.add(item.string)
+        if (
+            item.string == "Atrinik"
+            and index + 2 < len(tokens)
+            and tokens[index + 1].string == "."
+            and tokens[index + 2].type == tokenize.NAME
+        ):
+            engine_calls.add(tokens[index + 2].string)
     return {
-        "imports": imports,
-        "public_symbols": symbols,
-        "engine_calls": engine_calls,
-        "event_tokens": event_tokens,
+        "imports": sorted(imports),
+        "public_symbols": sorted(symbols),
+        "engine_calls": sorted(engine_calls),
+        "event_tokens": sorted(event_tokens),
+    }
+
+
+def capability_profile(path: str, observations: dict[str, list[str]]) -> dict[str, Any]:
+    evidence = " ".join(
+        [path, *observations["imports"], *observations["engine_calls"], *observations["event_tokens"]]
+    ).lower()
+    domains = sorted(
+        domain
+        for domain, terms in {
+            "account": ("account", "login", "connection"),
+            "auction": ("auction",),
+            "economy": ("bank", "merchant", "shop", "money", "coin"),
+            "guild": ("guild",),
+            "housing": ("house", "apartment"),
+            "interface": ("interface", "markup", "packet"),
+            "justice": ("guard", "jail", "crime"),
+            "map": ("map", "region", "waypoint", "teleport"),
+            "object": ("object", "item", "archetype", "createobject"),
+            "party": ("party",),
+            "player": ("player", "activator", "whoami"),
+            "quest": ("quest",),
+        }.items()
+        if any(term in evidence for term in terms)
+    )
+    call_text = " ".join(observations["engine_calls"]).lower()
+    effects = sorted(
+        effect
+        for effect, terms in {
+            "diagnostic-or-player-output": ("message", "say", "write", "print"),
+            "map-transition-or-placement": ("map", "teleport", "move"),
+            "object-lifecycle": ("object", "create", "destroy", "remove"),
+            "permission-or-command-result": ("command", "permission"),
+            "time-or-scheduling": ("time", "timer", "event"),
+        }.items()
+        if any(term in call_text for term in terms)
+    )
+    persistence = sorted(
+        domain for domain in domains if domain in {"account", "auction", "economy", "guild", "housing", "player", "quest"}
+    )
+    return {
+        "state_domains": domains or ["unclassified_dynamic_state"],
+        "observable_effect_classes": effects or ["requires_dynamic_characterization"],
+        "persistence_domains": persistence,
+        "evidence_basis": ["source path", "code-token imports", "engine-call names", "event constants"],
+        "semantic_status": "characterization_required",
     }
 
 
@@ -208,6 +279,7 @@ def behavior_record(root: Path, path: str, history: list[dict[str, Any]]) -> dic
     data = git_bytes(root, BASE_REVISION, path)
     source = data.decode("utf-8", errors="replace")
     observations = static_observations(source)
+    capabilities = capability_profile(path, observations)
     migration = assignment(path)
     notice_path = "tools/COPYING" if path.startswith("tools/") else (
         "arch/COPYING" if path.startswith("arch/") else "maps/COPYING"
@@ -240,10 +312,9 @@ def behavior_record(root: Path, path: str, history: list[dict[str, Any]]) -> dic
         "provenance_status": "approved_grantor_review_required" if approved_only else "mixed_or_non_grantor_excluded",
         "observations": observations,
         "authored_behavior": {
-            "state": "player, object, map, account, or tool state reachable through the recorded symbols and engine calls",
+            **capabilities,
             "events": observations["event_tokens"],
             "effects": observations["engine_calls"],
-            "persistence": "requires characterization" if migration["kind"] not in {"offline_toolkit", "deliberate_retirement"} else "not runtime-owned",
             "ambiguity": "static evidence is not a semantic specification; scenario characterization must settle dynamic and error behavior",
         },
         "migration": {
@@ -254,7 +325,11 @@ def behavior_record(root: Path, path: str, history: list[dict[str, Any]]) -> dic
             "replacement_path": None,
             "python_compatibility_plugin": False,
         },
-        "acceptance_scenario": scenario(path, migration, observations),
+        "acceptance_scenario": {
+            **scenario(path, migration, observations),
+            "status": "defined_not_yet_executed",
+            "runner_issue": migration["issue"],
+        },
     }
 
 
@@ -318,9 +393,11 @@ def selected_materials(root: Path) -> dict[str, Any]:
                 },
                 "destination": {
                     "repository": "atrinik/content-toolkit",
+                    "branch": "feat/content-provenance-contracts",
+                    "revision": "d9856fd820cb95b62730adc41c5eeff3b6cc9e7a",
                     "path": destination,
-                    "transformation": "copy the machine contract and adapt only repository-local schema references",
-                    "status": "approved_for_linked_change",
+                    "transformation": "byte-identical copy; no content transformation",
+                    "status": "implemented_in_linked_change",
                 },
                 "allowed_packages": ["content-toolkit-mit"],
                 "attribution": "Copyright Zoey Rose; used under the recorded historical MIT provenance grant",
@@ -341,7 +418,27 @@ def selected_materials(root: Path) -> dict[str, Any]:
                 },
                 "author": "Alex \"Cleo\" Tokar",
                 "license": "CC-BY-SA-3.0",
-                "notice": "atrinik/resources:paintings/LICENSE",
+                "notice": {
+                    "repository": "atrinik/resources",
+                    "path": "paintings/LICENSE",
+                    "sha256": "3cabd6ec1db66713b5c97e4fe205230810b31a60603196148b02002bfb5d1bcc",
+                },
+                "integrity": {
+                    "media_type": "image/jpeg",
+                    "size_bytes": 286857,
+                    "width": 750,
+                    "height": 500,
+                    "maximum_file_bytes": 67108864,
+                    "maximum_dimension": 8192,
+                },
+                "complete_history": [
+                    {
+                        "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64",
+                        "name": "Alex Tokar",
+                        "email": "admin@atokar.net",
+                        "path": "paintings/cave_entrance.jpg",
+                    }
+                ],
                 "derivative_base_chain": [],
                 "transformations": [],
                 "allowed_packages": ["client", "editor", "resources", "renderer-test", "website"],
@@ -358,7 +455,33 @@ def selected_materials(root: Path) -> dict[str, Any]:
                 },
                 "author": "Alex \"Cleo\" Tokar",
                 "license": "CC-BY-SA-3.0",
-                "notice": "atrinik/resources:paintings/LICENSE",
+                "notice": {
+                    "repository": "atrinik/resources",
+                    "path": "paintings/LICENSE",
+                    "sha256": "3cabd6ec1db66713b5c97e4fe205230810b31a60603196148b02002bfb5d1bcc",
+                },
+                "integrity": {
+                    "media_type": "image/jpeg",
+                    "size_bytes": 227415,
+                    "width": 750,
+                    "height": 500,
+                    "maximum_file_bytes": 67108864,
+                    "maximum_dimension": 8192,
+                },
+                "complete_history": [
+                    {
+                        "revision": "d629f89f1ae4cbffdfd201009ae1b1821c8c3f1f",
+                        "name": "Alex Tokar",
+                        "email": "admin@atokar.net",
+                        "path": "paintings/canopy.jpg",
+                    },
+                    {
+                        "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64",
+                        "name": "Alex Tokar",
+                        "email": "admin@atokar.net",
+                        "path": "paintings/canopy.png",
+                    },
+                ],
                 "derivative_base_chain": [
                     {
                         "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64",
@@ -493,6 +616,16 @@ def validate(root: Path, evidence: Path) -> None:
             raise FoundationError(f"invalid replacement assignment: {record['behavior_id']}")
         if not record["complete_history"] or not record["acceptance_scenario"]["expected"]:
             raise FoundationError(f"incomplete behavior evidence: {record['behavior_id']}")
+        if (
+            record["acceptance_scenario"].get("status") != "defined_not_yet_executed"
+            or not record["acceptance_scenario"].get("runner_issue")
+            or record["authored_behavior"].get("semantic_status")
+            != "characterization_required"
+            or not record["authored_behavior"].get("state_domains")
+        ):
+            raise FoundationError(f"behavior verification contract is incomplete: {record['behavior_id']}")
+        if record["branch_status"] != "shared_fork_baseline" and not record.get("predecessor_behavior_id"):
+            raise FoundationError(f"changed branch row lacks an explicit predecessor: {record['behavior_id']}")
         if record["source"]["sha256"] != record["classic_baseline"]["sha256"]:
             raise FoundationError(f"fork baseline mismatch: {record['behavior_id']}")
 
@@ -502,6 +635,9 @@ def validate(root: Path, evidence: Path) -> None:
             raise FoundationError(f"admitted material has no package: {material['material_id']}")
         if material["decision"].startswith(("blocked", "excluded")) and material.get("allowed_packages") not in ([], ["classic-conformance-corpus"]):
             raise FoundationError(f"excluded material entered a replacement package: {material['material_id']}")
+        if material["classification"] in {"compatible_third_party_work", "derivative_with_retained_terms"}:
+            if not material.get("complete_history") or not material.get("integrity") or not material.get("notice", {}).get("sha256"):
+                raise FoundationError(f"external visual evidence is incomplete: {material['material_id']}")
 
 
 def main() -> int:
@@ -516,7 +652,15 @@ def main() -> int:
             generate(root, evidence)
         else:
             validate(root, evidence)
-    except (FoundationError, OSError, subprocess.CalledProcessError, KeyError, ValueError, json.JSONDecodeError) as error:
+    except (
+        FoundationError,
+        OSError,
+        subprocess.CalledProcessError,
+        KeyError,
+        ValueError,
+        json.JSONDecodeError,
+        tokenize.TokenError,
+    ) as error:
         print(f"M1 foundation evidence error: {error}", file=sys.stderr)
         return 1
     return 0

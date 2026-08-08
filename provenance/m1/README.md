@@ -32,3 +32,7 @@ python3 tools/m1_foundations.py validate --root .
 Later `1.x` maintenance is compared against these exact rows. A branch-only
 change must create a new evidence row or explicit exclusion; it never silently
 widens replacement scope or changes the historical file's terms.
+
+Behavior IDs identify the immutable baseline coordinate. If a later branch
+renames or replaces a source, its new row must declare an explicit predecessor
+ID; generators must not silently reinterpret a path-derived baseline identity.

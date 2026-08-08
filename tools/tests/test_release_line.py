@@ -33,6 +33,28 @@ class ReleaseLineTests(unittest.TestCase):
             maintenance,
             [{"name": "1.x", "range": "1.x", "channel": "1.x"}],
         )
+        self.assertEqual(configuration["branches"], [maintenance[0], "main"])
+        analyzer = configuration["plugins"][0]
+        self.assertEqual(analyzer[0], "@semantic-release/commit-analyzer")
+        bootstrap_rules = [
+            rule
+            for rule in analyzer[1]["releaseRules"]
+            if rule.get("subject") == "establish classic content maintenance line*"
+        ]
+        self.assertEqual(
+            bootstrap_rules,
+            [
+                {
+                    "type": "feat",
+                    "scope": "release",
+                    "subject": "establish classic content maintenance line*",
+                    "release": "patch",
+                }
+            ],
+        )
+        self.assertNotIn(
+            {"type": "feat", "release": "minor"}, analyzer[1]["releaseRules"]
+        )
 
 
 if __name__ == "__main__":

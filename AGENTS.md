@@ -50,13 +50,11 @@
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
   common lossless core.
-- Run `python3 -m tools.content_contracts validate --root .`,
-  `python3 -m tools.syntax_evaluation --root .`,
-  `python3 -m tools.content_schema validate --root .`,
-  `python3 tools/validate.py`, and
-  `python3 tools/build_runtime.py --output build/runtime` for every change. Run
-  the focused world audit when relevant and use wrapper builds/topologies for
-  gameplay verification.
+- Run `python3 tools/validate.py` and `git diff --check` for every change. The
+  aggregate validator already runs contracts, schema/syntax/catalog checks,
+  lossless-core tests/audit, release-line/license gates, and an isolated runtime
+  build. Run focused commands or the read-only world audit only when relevant;
+  use wrapper builds/topologies for gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release.
 - `1.x` releases use semantic-release maintenance range/channel `1.x`. Because

@@ -5,6 +5,12 @@ the collection tools that turn those sources into server runtime input.
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the ownership boundaries
 and source-to-runtime validation flow.
 
+This checkout's `1.x` branch is the maintained classic release line. See
+[`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target selection,
+backport/forward-port rules, the bounded semantic-release channel, and exact
+runtime compatibility metadata. `1.x` packages are explicitly not
+replacement-ready.
+
 The content has heterogeneous licensing. `arch/COPYING`, `maps/COPYING`, and
 the nearest `LICENSE` file for an asset are authoritative; the repository does
 not apply one blanket license to every file. Releases preserve those notices

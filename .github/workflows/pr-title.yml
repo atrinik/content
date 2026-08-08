@@ -2,6 +2,9 @@ name: Pull Request Policy
 
 on:
   pull_request_target:
+    branches:
+      - main
+      - 1.x
     types:
       - opened
       - edited
@@ -27,4 +30,3 @@ jobs:
             echo "  type(scope)!: concise description" >&2
             exit 1
           fi
-

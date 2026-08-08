@@ -7,7 +7,8 @@ import argparse
 import hashlib
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePath
+import re
 import shutil
 import subprocess
 import sys
@@ -65,7 +66,30 @@ def copy_attribution(source: Path, output: Path) -> None:
             shutil.copyfile(copying, target)
 
 
-def create_manifest(output: Path, source_commit: str) -> None:
+def load_release_contract(source: Path) -> dict[str, object]:
+    path = source / "contracts" / "release-lines" / "classic-1x.json"
+    contract = json.loads(path.read_text(encoding="utf-8"))
+    if (
+        contract.get("schema_version") != 1
+        or contract.get("repository") != "atrinik/content"
+        or contract.get("branch") != "1.x"
+        or contract.get("replacement_ready") is not False
+        or contract.get("replacement_toolkit_package") is not False
+    ):
+        raise ValueError("classic 1.x release contract is invalid")
+    consumers = contract.get("consumers")
+    if consumers != ["classic/client", "classic/editor", "classic/server"]:
+        raise ValueError("classic 1.x consumer contract is invalid")
+    return contract
+
+
+def create_manifest(
+    output: Path,
+    source_commit: str,
+    source_branch: str,
+    release_version: str,
+    release_contract: dict[str, object],
+) -> None:
     files = []
     paths = sorted(output.rglob("*"), key=lambda path: path.relative_to(output).as_posix())
     for path in paths:
@@ -79,8 +103,25 @@ def create_manifest(output: Path, source_commit: str) -> None:
             }
         )
     manifest = {
-        "schema_version": 1,
-        "source_commit": source_commit,
+        "schema_version": 2,
+        "source": {
+            "repository": release_contract["repository"],
+            "branch": source_branch,
+            "commit": source_commit,
+        },
+        "release_line": "1.x",
+        "release_version": release_version,
+        "content_format": release_contract["content_format"],
+        "artifact_format": release_contract["artifact_format"],
+        "compatible_classic_releases": release_contract["compatible_classic_releases"],
+        "consumers": release_contract["consumers"],
+        "replacement_ready": False,
+        "replacement_toolkit_package": False,
+        "license_files": [
+            entry for entry in files
+            if entry["path"].startswith("attribution/")
+            and PurePath(entry["path"]).name in {"COPYING", "LICENSE"}
+        ],
         "files": files,
     }
     (output / "manifest.json").write_text(
@@ -88,7 +129,13 @@ def create_manifest(output: Path, source_commit: str) -> None:
     )
 
 
-def build(source: Path, output: Path, source_commit: str) -> None:
+def build(
+    source: Path,
+    output: Path,
+    source_commit: str,
+    source_branch: str = "1.x",
+    release_version: str = "unreleased",
+) -> None:
     source = source.resolve()
     output = output.absolute()
     if output.is_symlink():
@@ -105,6 +152,11 @@ def build(source: Path, output: Path, source_commit: str) -> None:
     if output.exists() and not output.is_dir():
         raise ValueError("output must be a directory")
     validate_source_tree(source)
+    release_contract = load_release_contract(source)
+    if source_branch != release_contract["branch"]:
+        raise ValueError("runtime branch does not match the classic release contract")
+    if release_version != "unreleased" and re.fullmatch(r"1\.[0-9]+\.[0-9]+", release_version) is None:
+        raise ValueError("classic runtime release version must satisfy 1.x")
     output.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory(
@@ -132,7 +184,17 @@ def build(source: Path, output: Path, source_commit: str) -> None:
             shutil.copytree(staging / "maps", candidate / "maps")
 
         copy_attribution(source, candidate)
-        create_manifest(candidate, source_commit)
+        shutil.copyfile(
+            source / "contracts" / "release-lines" / "classic-1x.json",
+            candidate / "compatibility.json",
+        )
+        create_manifest(
+            candidate,
+            source_commit,
+            source_branch,
+            release_version,
+            release_contract,
+        )
 
         previous = transaction / "previous"
         if output.exists():
@@ -150,6 +212,8 @@ def main() -> int:
     parser.add_argument("--source", type=Path, default=Path(__file__).parents[1])
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--source-commit")
+    parser.add_argument("--source-branch", default="1.x", choices=("1.x",))
+    parser.add_argument("--release-version", default="unreleased")
     args = parser.parse_args()
 
     source = args.source.resolve()
@@ -164,7 +228,13 @@ def main() -> int:
     if len(source_commit) != 40 or any(c not in "0123456789abcdef" for c in source_commit):
         parser.error("source commit must be a 40-character lowercase Git object ID")
 
-    build(source, args.output, source_commit)
+    build(
+        source,
+        args.output,
+        source_commit,
+        args.source_branch,
+        args.release_version,
+    )
     return 0
 
 

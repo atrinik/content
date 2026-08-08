@@ -1,0 +1,280 @@
+{
+  "baseline": {
+    "repository": "atrinik/content",
+    "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+    "tag": "v1.8.1"
+  },
+  "grant_registry": {
+    "approved_grantors": [
+      "Zoey Rose",
+      "Daniel Liptrot"
+    ],
+    "path": "AGENTS.md",
+    "repository": "atrinik/atrinik",
+    "revision": "d64a8e958ca2adad783ad8912493d468a805f3fd"
+  },
+  "materials": [
+    {
+      "allowed_packages": [
+        "content-toolkit-mit"
+      ],
+      "attribution": "Copyright Zoey Rose; used under the recorded historical MIT provenance grant",
+      "author_identity_evidence": {
+        "api_evidence": "https://api.github.com/repos/atrinik/content/commits/4aa4aebc5c88dffdf57657a34ae20306a57fbebd",
+        "github_login": "zoeyrose",
+        "github_user_id": 3865595,
+        "signature_verified": true,
+        "verified_commit": "4aa4aebc5c88dffdf57657a34ae20306a57fbebd"
+      },
+      "author_identity_review": "all commits are solely Zoey Rose using the verified GitHub noreply identity",
+      "classic_copy": {
+        "branch": "1.x",
+        "path": "prototypes/authored-syntax-v1/limits.json",
+        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "terms_changed": false
+      },
+      "classification": "approved_grantor_original_sole_work",
+      "complete_history": [
+        {
+          "changes": [
+            {
+              "paths": [
+                "prototypes/authored-syntax-v1/limits.json"
+              ],
+              "status": "A"
+            }
+          ],
+          "email": "3865595+zoeyrose@users.noreply.github.com",
+          "name": "Zoey Rose",
+          "revision": "4aa4aebc5c88dffdf57657a34ae20306a57fbebd"
+        }
+      ],
+      "decision": "admitted_mit_grant",
+      "destination": {
+        "branch": "feat/content-provenance-contracts",
+        "path": "policy/classic-authored-limits.json",
+        "repository": "atrinik/content-toolkit",
+        "revision": "d9856fd820cb95b62730adc41c5eeff3b6cc9e7a",
+        "status": "implemented_in_linked_change",
+        "transformation": "byte-identical copy; no content transformation"
+      },
+      "grant": {
+        "destination_license": "MIT",
+        "grantor": "Zoey Rose",
+        "operation": "copy and translate",
+        "registry_path": "AGENTS.md",
+        "registry_repository": "atrinik/atrinik",
+        "registry_revision": "d64a8e958ca2adad783ad8912493d468a805f3fd"
+      },
+      "material_id": "material:authored-jsonc-limits-v1",
+      "originality_review": "machine contract was introduced in the reviewed commit and contains no copied prose, code, artwork, or generated third-party input",
+      "source": {
+        "branch": "main",
+        "path": "prototypes/authored-syntax-v1/limits.json",
+        "repository": "atrinik/content",
+        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "sha256": "d87ef7a7c3b9c0462fa86a3b4d2be93bd4a63df47be5c8f01f2026d1fc58896c",
+        "tag": "v1.8.1"
+      },
+      "third_party_review": "no embedded or derivative third-party material"
+    },
+    {
+      "allowed_packages": [
+        "content-toolkit-mit"
+      ],
+      "attribution": "Copyright Zoey Rose; used under the recorded historical MIT provenance grant",
+      "author_identity_evidence": {
+        "api_evidence": "https://api.github.com/repos/atrinik/content/commits/66c73ba9d8bfc7c42aa58593372acf977adf7541",
+        "github_login": "zoeyrose",
+        "github_user_id": 3865595,
+        "signature_verified": true,
+        "verified_commit": "66c73ba9d8bfc7c42aa58593372acf977adf7541"
+      },
+      "author_identity_review": "all commits are solely Zoey Rose using the verified GitHub noreply identity",
+      "classic_copy": {
+        "branch": "1.x",
+        "path": "contracts/content-v1/schemas/diagnostic.schema.json",
+        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "terms_changed": false
+      },
+      "classification": "approved_grantor_original_sole_work",
+      "complete_history": [
+        {
+          "changes": [
+            {
+              "paths": [
+                "contracts/content-v1/schemas/diagnostic.schema.json"
+              ],
+              "status": "A"
+            }
+          ],
+          "email": "3865595+zoeyrose@users.noreply.github.com",
+          "name": "Zoey Rose",
+          "revision": "66c73ba9d8bfc7c42aa58593372acf977adf7541"
+        }
+      ],
+      "decision": "admitted_mit_grant",
+      "destination": {
+        "branch": "feat/content-provenance-contracts",
+        "path": "schemas/classic-diagnostic.schema.json",
+        "repository": "atrinik/content-toolkit",
+        "revision": "d9856fd820cb95b62730adc41c5eeff3b6cc9e7a",
+        "status": "implemented_in_linked_change",
+        "transformation": "byte-identical copy; no content transformation"
+      },
+      "grant": {
+        "destination_license": "MIT",
+        "grantor": "Zoey Rose",
+        "operation": "copy and translate",
+        "registry_path": "AGENTS.md",
+        "registry_repository": "atrinik/atrinik",
+        "registry_revision": "d64a8e958ca2adad783ad8912493d468a805f3fd"
+      },
+      "material_id": "material:legacy-diagnostic-schema-v1",
+      "originality_review": "machine contract was introduced in the reviewed commit and contains no copied prose, code, artwork, or generated third-party input",
+      "source": {
+        "branch": "main",
+        "path": "contracts/content-v1/schemas/diagnostic.schema.json",
+        "repository": "atrinik/content",
+        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "sha256": "161c35caed2f143c3ceeb9b155eb9cb530b0450432255bf44bf6af319534e758",
+        "tag": "v1.8.1"
+      },
+      "third_party_review": "no embedded or derivative third-party material"
+    },
+    {
+      "allowed_packages": [
+        "client",
+        "editor",
+        "resources",
+        "renderer-test",
+        "website"
+      ],
+      "author": "Alex \"Cleo\" Tokar",
+      "classification": "compatible_third_party_work",
+      "complete_history": [
+        {
+          "email": "admin@atokar.net",
+          "name": "Alex Tokar",
+          "path": "paintings/cave_entrance.jpg",
+          "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64"
+        }
+      ],
+      "decision": "admitted_existing_terms",
+      "derivative_base_chain": [],
+      "integrity": {
+        "height": 500,
+        "maximum_dimension": 8192,
+        "maximum_file_bytes": 67108864,
+        "media_type": "image/jpeg",
+        "size_bytes": 286857,
+        "width": 750
+      },
+      "license": "CC-BY-SA-3.0",
+      "material_id": "material:painting:cave_entrance",
+      "notice": {
+        "path": "paintings/LICENSE",
+        "repository": "atrinik/resources",
+        "sha256": "3cabd6ec1db66713b5c97e4fe205230810b31a60603196148b02002bfb5d1bcc"
+      },
+      "source": {
+        "path": "paintings/cave_entrance.jpg",
+        "repository": "atrinik/resources",
+        "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64",
+        "sha256": "869f37597531782904d2ad333bebb08f89e6707e441f12c5f21d8d6ac333110f"
+      },
+      "transformations": []
+    },
+    {
+      "allowed_packages": [
+        "client",
+        "editor",
+        "resources",
+        "renderer-test",
+        "website"
+      ],
+      "author": "Alex \"Cleo\" Tokar",
+      "classification": "derivative_with_retained_terms",
+      "complete_history": [
+        {
+          "email": "admin@atokar.net",
+          "name": "Alex Tokar",
+          "path": "paintings/canopy.jpg",
+          "revision": "d629f89f1ae4cbffdfd201009ae1b1821c8c3f1f"
+        },
+        {
+          "email": "admin@atokar.net",
+          "name": "Alex Tokar",
+          "path": "paintings/canopy.png",
+          "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64"
+        }
+      ],
+      "decision": "admitted_existing_terms",
+      "derivative_base_chain": [
+        {
+          "path": "paintings/canopy.png",
+          "revision": "f9c0850b7deabacb3cc14875256caac9fb90ab64",
+          "sha256": "305aac7ab9538662fb1afc773a9abad943b50cc01c2bc168555f1951babb4d71"
+        }
+      ],
+      "integrity": {
+        "height": 500,
+        "maximum_dimension": 8192,
+        "maximum_file_bytes": 67108864,
+        "media_type": "image/jpeg",
+        "size_bytes": 227415,
+        "width": 750
+      },
+      "license": "CC-BY-SA-3.0",
+      "material_id": "material:painting:canopy",
+      "notice": {
+        "path": "paintings/LICENSE",
+        "repository": "atrinik/resources",
+        "sha256": "3cabd6ec1db66713b5c97e4fe205230810b31a60603196148b02002bfb5d1bcc"
+      },
+      "source": {
+        "path": "paintings/canopy.jpg",
+        "repository": "atrinik/resources",
+        "revision": "d629f89f1ae4cbffdfd201009ae1b1821c8c3f1f",
+        "sha256": "bee62ab315460bfc0c4d3e2636a5924fe92f6f5487fb90b51fbe3bbed3c88c3f"
+      },
+      "transformations": [
+        "lossy PNG-to-JPEG conversion"
+      ]
+    },
+    {
+      "allowed_packages": [],
+      "classification": "excluded_unknown",
+      "decision": "blocked_missing_license",
+      "license": null,
+      "material_id": "material:content:unmatched-ladder-down",
+      "notice": null,
+      "reason": "one of the 526 visuals with no matching legacy attribution declaration",
+      "source": {
+        "branch": "main",
+        "path": "arch/connect/exits/ladder/ladder_down.111.png",
+        "repository": "atrinik/content",
+        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "sha256": "deb967165aa86bb443e651f1c767de38207bf72bbc41c598a62e3d782d5e5577"
+      }
+    },
+    {
+      "allowed_packages": [
+        "classic-conformance-corpus"
+      ],
+      "classification": "content_data_existing_terms",
+      "decision": "excluded_from_mit_contract_packages",
+      "license": "LicenseRef-Atrinik-content-mixed",
+      "material_id": "material:classic-stable-identity-fixture",
+      "reason": "authored corpus data remains under its content terms and is not relicensed with the MIT parser/schema",
+      "source": {
+        "branch": "main",
+        "path": "contracts/content-v1/corpus/fixtures/stable-identities.arc",
+        "repository": "atrinik/content",
+        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "sha256": "a850a4a54cc9f4816f72502bcf301102419f7d6fe90474516a3a397a76d6d3af"
+      }
+    }
+  ],
+  "schema_version": 1
+}

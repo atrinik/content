@@ -12,6 +12,7 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from tools.content_core import audit_project
+from tools.m1_foundations import validate as validate_m1_foundations
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -43,6 +44,7 @@ def main() -> int:
             "tools.tests.test_content_schema",
             "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
+            "tools.tests.test_m1_foundations",
         ],
         cwd=ROOT,
         check=True,
@@ -134,6 +136,7 @@ def main() -> int:
         ],
         check=True,
     )
+    validate_m1_foundations(ROOT, ROOT / "provenance" / "m1")
     return 0
 
 

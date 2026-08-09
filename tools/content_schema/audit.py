@@ -9,6 +9,7 @@ from typing import Any, Dict, Mapping
 
 from tools.content_contracts.contracts import ContractError, confined_file, load_json
 from tools.content_contracts.corpus import inspect_document
+from tools.content_constraints import text_constraint_violation
 
 from .model import SchemaError, field_definitions, load_schema_source
 
@@ -52,11 +53,11 @@ def _validate_value(
     else:
         raise SchemaError("legacy field {} has unsupported value kind".format(field_id))
     constraints = field["constraints"]
-    pattern = constraints.get("pattern")
-    if pattern is not None and re.fullmatch(pattern, parsed) is None:
-        raise SchemaError(
-            "{}:{}: {} does not match {}".format(path, line, field_id, pattern)
-        )
+    if isinstance(parsed, str):
+        violation = text_constraint_violation(parsed, constraints, field_id)
+        if violation is not None:
+            _, message = violation
+            raise SchemaError("{}:{}: {}".format(path, line, message))
     minimum = constraints.get("minimum")
     maximum = constraints.get("maximum")
     if minimum is not None and parsed < minimum:
@@ -95,7 +96,7 @@ def _authored_documents(root: Path) -> list[tuple[Path, str]]:
     return documents
 
 
-def audit_artifact_fields(
+def _audit_artifact_text_constraints(
     root: Path, *, schema_root: Path | None = None
 ) -> Mapping[str, Any]:
     """Validate schema-constrained object fields embedded in artifact files."""
@@ -111,7 +112,7 @@ def audit_artifact_fields(
         and field["value_kind"] in ("reference", "string")
     }
     file_count = 0
-    property_count = 0
+    check_count = 0
     for tree in ("arch", "maps"):
         directory = root / tree
         if not directory.exists():
@@ -148,12 +149,12 @@ def audit_artifact_fields(
                             continue
                         value = parts[1].strip() if len(parts) == 2 else ""
                         _validate_value(value, field, relative, line_number)
-                        property_count += 1
+                        check_count += 1
             except (OSError, UnicodeError) as error:
                 raise SchemaError(
                     "cannot inspect authored artifact {}".format(relative)
                 ) from error
-    return {"files": file_count, "properties": property_count}
+    return {"checks": check_count, "files": file_count}
 
 
 def audit_corpus(root: Path) -> Mapping[str, Any]:
@@ -233,9 +234,8 @@ def audit_corpus(root: Path) -> Mapping[str, Any]:
                 _validate_value(record["value"], field, relative, record["line"])
                 field_counts[field["field_id"]] = field_counts.get(field["field_id"], 0) + 1
 
-    artifact_report = audit_artifact_fields(root)
+    artifact_report = _audit_artifact_text_constraints(root)
     file_counts["artifact"] = artifact_report["files"]
-    property_count += artifact_report["properties"]
 
     unused_extensions = sorted(
         name for name, count in extension_counts.items() if count == 0
@@ -249,6 +249,7 @@ def audit_corpus(root: Path) -> Mapping[str, Any]:
         "files": dict(sorted(file_counts.items())),
         "objects": object_count,
         "properties": property_count,
+        "artifact_constraint_checks": artifact_report["checks"],
         "typed_field_ids_used": len(field_counts),
         "legacy_extensions": dict(sorted(extension_counts.items())),
         "unexplained_fields": [],

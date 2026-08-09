@@ -62,9 +62,9 @@
   use wrapper builds/topologies for gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release.
-- `1.x` releases use semantic-release maintenance range/channel `1.x`. Main
-  must establish the next major version before the first post-fork maintenance
-  release; the classic artifact is explicitly not replacement-ready.
+- `1.x` releases use semantic-release maintenance range/channel `1.x` and stay
+  in `>=1.8.1 <1.9.0` below main's `v1.9.0`; the classic artifact is explicitly
+  not replacement-ready.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

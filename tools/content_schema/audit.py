@@ -9,6 +9,7 @@ from typing import Any, Dict, Mapping
 
 from tools.content_contracts.contracts import ContractError, confined_file, load_json
 from tools.content_contracts.corpus import inspect_document
+from tools.content_constraints import text_constraint_violation
 
 from .model import SchemaError, field_definitions, load_schema_source
 
@@ -34,7 +35,7 @@ def _validate_value(
     if kind == "boolean":
         if value not in ("0", "1"):
             raise SchemaError("{}:{}: {} is not legacy boolean 0/1".format(path, line, field_id))
-        parsed: int | float = int(value)
+        parsed: int | float | str = int(value)
     elif kind == "integer":
         if INTEGER_RE.fullmatch(value) is None:
             raise SchemaError("{}:{}: {} is not a strict integer".format(path, line, field_id))
@@ -48,11 +49,17 @@ def _validate_value(
     elif kind in ("reference", "string"):
         if not value:
             raise SchemaError("{}:{}: {} is empty".format(path, line, field_id))
-        return
+        parsed = value
     else:
         raise SchemaError("legacy field {} has unsupported value kind".format(field_id))
-    minimum = field["constraints"].get("minimum")
-    maximum = field["constraints"].get("maximum")
+    constraints = field["constraints"]
+    if isinstance(parsed, str):
+        violation = text_constraint_violation(parsed, constraints, field_id)
+        if violation is not None:
+            _, message = violation
+            raise SchemaError("{}:{}: {}".format(path, line, message))
+    minimum = constraints.get("minimum")
+    maximum = constraints.get("maximum")
     if minimum is not None and parsed < minimum:
         raise SchemaError("{}:{}: {} is below {}".format(path, line, field_id, minimum))
     if maximum is not None and parsed > maximum:
@@ -87,6 +94,67 @@ def _authored_documents(root: Path) -> list[tuple[Path, str]]:
                     "cannot inspect authored document {}".format(path)
                 ) from error
     return documents
+
+
+def _audit_artifact_text_constraints(
+    root: Path, *, schema_root: Path | None = None
+) -> Mapping[str, Any]:
+    """Validate schema-constrained object fields embedded in artifact files."""
+
+    root = root.resolve(strict=True)
+    source = load_schema_source((schema_root or root).resolve(strict=True))
+    constrained_fields = {
+        field["legacy_name"]: field
+        for field in field_definitions(source)
+        if field["context"] == "object"
+        and field["legacy_name"] is not None
+        and field["constraints"]
+        and field["value_kind"] in ("reference", "string")
+    }
+    file_count = 0
+    check_count = 0
+    for tree in ("arch", "maps"):
+        directory = root / tree
+        if not directory.exists():
+            continue
+        if directory.is_symlink() or not directory.is_dir():
+            raise SchemaError("authored content root is unsafe: {}".format(tree))
+        for path in sorted(directory.rglob("*.art")):
+            if path.is_symlink() or not path.is_file():
+                raise SchemaError(
+                    "authored artifact must be a regular file: {}".format(
+                        path.relative_to(root)
+                    )
+                )
+            relative = path.relative_to(root).as_posix()
+            file_count += 1
+            in_message = False
+            try:
+                with path.open(encoding="utf-8") as artifact_file:
+                    for line_number, raw_line in enumerate(artifact_file, 1):
+                        line = raw_line.strip()
+                        if in_message:
+                            if line.casefold() == "endmsg":
+                                in_message = False
+                            continue
+                        if line.casefold() == "msg":
+                            in_message = True
+                            continue
+                        if not line or line.startswith("#"):
+                            continue
+                        parts = line.split(None, 1)
+                        legacy_name = parts[0].casefold()
+                        field = constrained_fields.get(legacy_name)
+                        if field is None:
+                            continue
+                        value = parts[1].strip() if len(parts) == 2 else ""
+                        _validate_value(value, field, relative, line_number)
+                        check_count += 1
+            except (OSError, UnicodeError) as error:
+                raise SchemaError(
+                    "cannot inspect authored artifact {}".format(relative)
+                ) from error
+    return {"checks": check_count, "files": file_count}
 
 
 def audit_corpus(root: Path) -> Mapping[str, Any]:
@@ -166,6 +234,9 @@ def audit_corpus(root: Path) -> Mapping[str, Any]:
                 _validate_value(record["value"], field, relative, record["line"])
                 field_counts[field["field_id"]] = field_counts.get(field["field_id"], 0) + 1
 
+    artifact_report = _audit_artifact_text_constraints(root)
+    file_counts["artifact"] = artifact_report["files"]
+
     unused_extensions = sorted(
         name for name, count in extension_counts.items() if count == 0
     )
@@ -178,6 +249,7 @@ def audit_corpus(root: Path) -> Mapping[str, Any]:
         "files": dict(sorted(file_counts.items())),
         "objects": object_count,
         "properties": property_count,
+        "artifact_constraint_checks": artifact_report["checks"],
         "typed_field_ids_used": len(field_counts),
         "legacy_extensions": dict(sorted(extension_counts.items())),
         "unexplained_fields": [],

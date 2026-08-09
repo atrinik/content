@@ -48,10 +48,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         elif report is not None:
             print(
                 "Content schema: {} fields, {} archetype files, {} maps, "
-                "{} properties, {} unexplained fields".format(
+                "{} artifact files, {} properties, {} unexplained fields".format(
                     len(fields),
                     report["files"]["archetype"],
                     report["files"]["map"],
+                    report["files"]["artifact"],
                     report["properties"],
                     len(report["unexplained_fields"]),
                 )

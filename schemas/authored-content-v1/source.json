@@ -520,6 +520,9 @@
       "minimum": 0,
       "maximum": 8
     },
+    "object.glow": {
+      "pattern": "^[0-9A-Fa-f]{6}$"
+    },
     "object.layer": {
       "minimum": 0
     },

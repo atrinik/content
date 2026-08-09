@@ -3484,6 +3484,7 @@
             },
             "value": {
               "minLength": 1,
+              "pattern": "^[0-9A-Fa-f]{6}$",
               "type": "string"
             }
           },

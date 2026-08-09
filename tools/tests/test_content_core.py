@@ -390,6 +390,42 @@ class ContentCoreTest(unittest.TestCase):
                     apply_transaction(self.root, transaction, schema_root=ROOT)
                 self.assertEqual(source, path.read_bytes())
 
+    def test_glow_constraints_apply_to_lossless_reads_and_writes(self):
+        malformed = parse_bytes(
+            b"Object example\nglow #dbce3b\nend\n",
+            path="arch/malformed-glow.arc",
+            format_name="archetype",
+            schema_root=ROOT,
+        )
+        self.assertEqual(
+            ["field-above-max-length"],
+            [item["code"] for item in malformed.diagnostics],
+        )
+
+        source = b"Object example\nglow dbce3b\nend\n"
+        path = self.write("arch/glow.arc", source)
+        document = self.document("arch/glow.arc", "archetype")
+        self.assertTrue(document.valid)
+        for value, code in (
+            ("0dbce3b", "field-above-max-length"),
+            ("gggggg", "field-pattern-mismatch"),
+        ):
+            with self.subTest(value=value):
+                transaction = self.transaction(
+                    [
+                        self.entry(
+                            "arch/glow.arc",
+                            "archetype",
+                            source,
+                            [self.set_property(document, "object.glow", value)],
+                        )
+                    ]
+                )
+                with self.assertRaises(ContentCoreError) as caught:
+                    apply_transaction(self.root, transaction, schema_root=ROOT)
+                self.assertEqual(code, caught.exception.code)
+                self.assertEqual(source, path.read_bytes())
+
     def test_primitive_add_remove_and_unset_preserve_unrelated_content(self):
         source = (
             b"arch map\nwidth 1\nheight 1\nend\n"

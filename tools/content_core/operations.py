@@ -11,6 +11,7 @@ import re
 from typing import Any, Mapping, Optional, Sequence
 
 from tools.syntax_evaluation.limits import DEFAULT_LIMITS
+from tools.content_constraints import text_constraint_violation
 
 from .authority import load_field_authority
 from .errors import ContentConflictError, ContentCoreError, ContentSyntaxError
@@ -110,6 +111,13 @@ class FieldRegistry:
                 "single-line property values cannot contain CR, LF, or NUL",
                 code="invalid-property-text",
             )
+        if isinstance(value, str):
+            violation = text_constraint_violation(
+                value, field["constraints"], field["field_id"]
+            )
+            if violation is not None:
+                code, message = violation
+                raise ContentCoreError(message, code=code)
         number = (
             value
             if isinstance(value, (int, float)) and not isinstance(value, bool)

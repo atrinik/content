@@ -3483,7 +3483,8 @@
               "$ref": "#/$defs/source-span"
             },
             "value": {
-              "minLength": 1,
+              "maxLength": 6,
+              "minLength": 6,
               "pattern": "^[0-9A-Fa-f]{6}$",
               "type": "string"
             }

@@ -167,6 +167,24 @@ class ContentContractTest(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "pattern is invalid"):
             validate_schema(malformed_pattern, "diagnostic")
 
+        bounded_text = copy.deepcopy(schema)
+        bounded_text["properties"]["code"]["minLength"] = 2
+        bounded_text["properties"]["code"]["maxLength"] = 8
+        validate_schema(bounded_text, "diagnostic")
+        validate_instance(
+            "valid", {"type": "string", "minLength": 2, "maxLength": 8}
+        )
+        with self.assertRaisesRegex(ContractError, "longer than permitted"):
+            validate_instance(
+                "overlong", {"type": "string", "minLength": 2, "maxLength": 7}
+            )
+
+        reversed_lengths = copy.deepcopy(schema)
+        reversed_lengths["properties"]["code"]["minLength"] = 2
+        reversed_lengths["properties"]["code"]["maxLength"] = 1
+        with self.assertRaisesRegex(ContractError, "length bounds are reversed"):
+            validate_schema(reversed_lengths, "diagnostic")
+
         missing_reference = copy.deepcopy(schema)
         missing_reference["properties"]["location"] = {"$ref": "#/$defs/missing"}
         validated = validate_schema(missing_reference, "diagnostic")

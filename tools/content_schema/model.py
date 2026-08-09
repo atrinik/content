@@ -389,12 +389,71 @@ def load_schema_source(root: Path) -> Mapping[str, Any]:
         if field_id not in valid_ids:
             raise SchemaError("constraint names unknown field {}".format(field_id))
         value = _closed(value, set(value), "{} constraints".format(field_id))
-        if set(value) - {"maximum", "minimum"} or not value:
+        if set(value) - {
+            "maximum",
+            "maxLength",
+            "minimum",
+            "minLength",
+            "pattern",
+        } or not value:
             raise SchemaError("{} has invalid constraints".format(field_id))
-        if kinds_by_id[field_id] not in ("integer", "number"):
-            raise SchemaError("{} applies numeric bounds to a non-number".format(field_id))
+        kind = kinds_by_id[field_id]
         minimum = value.get("minimum")
         maximum = value.get("maximum")
+        minimum_length = value.get("minLength")
+        maximum_length = value.get("maxLength")
+        pattern_value = value.get("pattern")
+        if kind in ("integer", "number"):
+            if any(
+                item is not None
+                for item in (minimum_length, maximum_length, pattern_value)
+            ):
+                raise SchemaError(
+                    "{} applies text constraints to a number".format(field_id)
+                )
+        elif kind in ("reference", "string"):
+            if (
+                minimum is not None
+                or maximum is not None
+                or all(
+                    item is None
+                    for item in (minimum_length, maximum_length, pattern_value)
+                )
+            ):
+                raise SchemaError("{} has invalid text constraints".format(field_id))
+            for name, length in (
+                ("minLength", minimum_length),
+                ("maxLength", maximum_length),
+            ):
+                if length is not None and (
+                    not isinstance(length, int) or isinstance(length, bool) or length < 0
+                ):
+                    raise SchemaError(
+                        "{} {} must be a non-negative integer".format(field_id, name)
+                    )
+                if length is not None and length > limits["string_max_bytes"]:
+                    raise SchemaError(
+                        "{} {} exceeds the parser string limit".format(field_id, name)
+                    )
+            if (
+                minimum_length is not None
+                and maximum_length is not None
+                and minimum_length > maximum_length
+            ):
+                raise SchemaError("{} has reversed text lengths".format(field_id))
+            if pattern_value is not None:
+                if (
+                    not isinstance(pattern_value, str)
+                    or not pattern_value.startswith("^")
+                    or not pattern_value.endswith("$")
+                ):
+                    raise SchemaError("{} pattern must be anchored text".format(field_id))
+                try:
+                    re.compile(pattern_value)
+                except re.error as error:
+                    raise SchemaError("{} pattern is invalid".format(field_id)) from error
+        else:
+            raise SchemaError("{} has constraints for an unsupported kind".format(field_id))
         if minimum is not None:
             _number(minimum, "{} minimum".format(field_id))
         if maximum is not None:

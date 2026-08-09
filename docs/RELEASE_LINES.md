@@ -34,8 +34,9 @@ bounded to `>=1.8.1 <1.9.0` even though `main` has since established the 2.x
 replacement line. The historical `feat(release)` bootstrap commit is classified
 as a patch by one exact analyzer rule; this permits the first maintenance
 release at `v1.8.2` without weakening normal feature or breaking-change
-classification. Future `1.x` changes are maintenance fixes, not features. A dry
-run must show `v1.8.2` on channel `1.x` before the first publication.
+classification. Future `1.x` changes are maintenance fixes, not features.
+Published releases and dry runs must remain in `>=1.8.1 <1.9.0` on channel
+`1.x`.
 
 The release has three integrity layers:
 

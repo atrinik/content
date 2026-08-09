@@ -61,8 +61,8 @@
   `main` owns the post-fork `v1.9.0` tag, this line can publish only patch
   versions in `>=1.8.1 <1.9.0`. Keep the one exact analyzer exception for the
   historical `feat(release)` bootstrap commit; do not weaken ordinary feature
-  or breaking-change classification. A dry run must prove `v1.8.2` on channel
-  `1.x` before the first publication.
+  or breaking-change classification. Published releases and dry runs must stay
+  in that range on channel `1.x`.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

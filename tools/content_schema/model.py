@@ -389,12 +389,30 @@ def load_schema_source(root: Path) -> Mapping[str, Any]:
         if field_id not in valid_ids:
             raise SchemaError("constraint names unknown field {}".format(field_id))
         value = _closed(value, set(value), "{} constraints".format(field_id))
-        if set(value) - {"maximum", "minimum"} or not value:
+        if set(value) - {"maximum", "minimum", "pattern"} or not value:
             raise SchemaError("{} has invalid constraints".format(field_id))
-        if kinds_by_id[field_id] not in ("integer", "number"):
-            raise SchemaError("{} applies numeric bounds to a non-number".format(field_id))
+        kind = kinds_by_id[field_id]
         minimum = value.get("minimum")
         maximum = value.get("maximum")
+        pattern_value = value.get("pattern")
+        if kind in ("integer", "number"):
+            if pattern_value is not None:
+                raise SchemaError("{} applies a pattern to a number".format(field_id))
+        elif kind in ("reference", "string"):
+            if minimum is not None or maximum is not None or pattern_value is None:
+                raise SchemaError("{} has invalid text constraints".format(field_id))
+            if (
+                not isinstance(pattern_value, str)
+                or not pattern_value.startswith("^")
+                or not pattern_value.endswith("$")
+            ):
+                raise SchemaError("{} pattern must be anchored text".format(field_id))
+            try:
+                re.compile(pattern_value)
+            except re.error as error:
+                raise SchemaError("{} pattern is invalid".format(field_id)) from error
+        else:
+            raise SchemaError("{} has constraints for an unsupported kind".format(field_id))
         if minimum is not None:
             _number(minimum, "{} minimum".format(field_id))
         if maximum is not None:

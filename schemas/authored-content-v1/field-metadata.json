@@ -1747,7 +1747,9 @@
       "value_kind": "string"
     },
     {
-      "constraints": {},
+      "constraints": {
+        "pattern": "^[0-9A-Fa-f]{6}$"
+      },
       "context": "object",
       "field_id": "object.glow",
       "legacy_name": "glow",
@@ -4718,5 +4720,5 @@
   ],
   "schema_id": "atrinik-authored-content-v1",
   "schema_version": 1,
-  "source_sha256": "354b64976d4444de2f4506a4faf15a832e49cca04bc5d69a3e9c1e0b98e1b5bb"
+  "source_sha256": "0f11f5b0cc702e07f9cba7a3b32f38521fa0eae9b94f2f25bc7e08918e9b2c8c"
 }

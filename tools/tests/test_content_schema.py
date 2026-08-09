@@ -13,6 +13,7 @@ import unittest
 from tools.content_contracts.contracts import load_json, validate_schema
 from tools.content_schema import (
     SchemaError,
+    audit_artifact_fields,
     audit_corpus,
     check_outputs,
     dump_logical_document,
@@ -293,6 +294,55 @@ class ContentSchemaTest(unittest.TestCase):
             set(report["legacy_extensions"]),
         )
         self.assertTrue(all(report["legacy_extensions"].values()))
+
+    def test_incuna_tonic_glow_is_classic_wire_compatible(self):
+        source = load_schema_source(ROOT)
+        glow = next(
+            field
+            for field in field_definitions(source)
+            if field["field_id"] == "object.glow"
+        )
+        self.assertEqual({"pattern": "^[0-9A-Fa-f]{6}$"}, glow["constraints"])
+
+        report = audit_artifact_fields(ROOT)
+        self.assertGreater(report["files"], 0)
+        self.assertGreater(report["properties"], 0)
+
+        logical = self.valid_map()
+        logical["body"][0]["object"]["body"].append(
+            standard("object.glow", "dbce3b", 241, 250)
+        )
+        validate_logical_document(ROOT, logical)
+        for malformed in ("#dbce3b", "0dbce3b", "dbce3"):
+            logical["body"][0]["object"]["body"][-1]["value"] = malformed
+            with self.assertRaises(ValueError):
+                validate_logical_document(ROOT, logical)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            fixture_root = Path(temporary)
+            fixture = (
+                fixture_root
+                / "maps"
+                / "shattered_islands"
+                / "incuna"
+                / "artifacts.art"
+            )
+            fixture.parent.mkdir(parents=True)
+            fixture.write_text(
+                "Allowed none\n"
+                "artifact incuna_angelas_tonic\n"
+                "def_arch potion_generic\n"
+                "Object\n"
+                "glow #dbce3b\n"
+                "end\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(
+                SchemaError,
+                r"maps/shattered_islands/incuna/artifacts\.art:5: "
+                r"object\.glow does not match",
+            ):
+                audit_artifact_fields(fixture_root, schema_root=ROOT)
 
     def test_schema_source_rejects_a_linked_parent_directory(self):
         with tempfile.TemporaryDirectory() as temporary:

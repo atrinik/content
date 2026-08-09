@@ -38,6 +38,7 @@ SUPPORTED_SCHEMA_KEYS = {
     "enum",
     "items",
     "maxItems",
+    "maxLength",
     "maximum",
     "minItems",
     "minimum",
@@ -231,7 +232,7 @@ def validate_schema(schema: object, expected_name: str) -> Mapping[str, Any]:
             {json.dumps(item, sort_keys=True) for item in enumeration}
         ) != len(enumeration):
             raise ContractError("{} schema enum must be unique".format(context))
-        for key in ("minItems", "maxItems", "minLength"):
+        for key in ("minItems", "maxItems", "minLength", "maxLength"):
             if key in current and (
                 not isinstance(current[key], int)
                 or isinstance(current[key], bool)
@@ -254,6 +255,12 @@ def validate_schema(schema: object, expected_name: str) -> Mapping[str, Any]:
             and current["minItems"] > current["maxItems"]
         ):
             raise ContractError("{} schema item bounds are reversed".format(context))
+        if (
+            isinstance(current.get("minLength"), int)
+            and isinstance(current.get("maxLength"), int)
+            and current["minLength"] > current["maxLength"]
+        ):
+            raise ContractError("{} schema length bounds are reversed".format(context))
         if (
             isinstance(current.get("minimum"), (int, float))
             and isinstance(current.get("maximum"), (int, float))
@@ -403,8 +410,11 @@ def validate_instance(
 
     if isinstance(value, str):
         minimum = schema.get("minLength")
+        maximum = schema.get("maxLength")
         if isinstance(minimum, int) and len(value) < minimum:
             raise ContractError("{} is shorter than permitted".format(context))
+        if isinstance(maximum, int) and len(value) > maximum:
+            raise ContractError("{} is longer than permitted".format(context))
         pattern = schema.get("pattern")
         if isinstance(pattern, str) and re.search(pattern, value) is None:
             raise ContractError("{} does not match its required pattern".format(context))

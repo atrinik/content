@@ -13,7 +13,6 @@ import unittest
 from tools.content_contracts.contracts import load_json, validate_schema
 from tools.content_schema import (
     SchemaError,
-    audit_artifact_fields,
     audit_corpus,
     check_outputs,
     dump_logical_document,
@@ -24,6 +23,7 @@ from tools.content_schema import (
     render_outputs,
     validate_logical_document,
 )
+from tools.content_schema.audit import _audit_artifact_text_constraints
 
 
 ROOT = Path(__file__).parents[2].resolve()
@@ -302,20 +302,35 @@ class ContentSchemaTest(unittest.TestCase):
             for field in field_definitions(source)
             if field["field_id"] == "object.glow"
         )
-        self.assertEqual({"pattern": "^[0-9A-Fa-f]{6}$"}, glow["constraints"])
+        self.assertEqual(
+            {
+                "maxLength": 6,
+                "minLength": 6,
+                "pattern": "^[0-9A-Fa-f]{6}$",
+            },
+            glow["constraints"],
+        )
 
-        report = audit_artifact_fields(ROOT)
+        report = _audit_artifact_text_constraints(ROOT)
         self.assertGreater(report["files"], 0)
-        self.assertGreater(report["properties"], 0)
+        self.assertGreater(report["checks"], 0)
 
         logical = self.valid_map()
         logical["body"][0]["object"]["body"].append(
             standard("object.glow", "dbce3b", 241, 250)
         )
         validate_logical_document(ROOT, logical)
-        for malformed in ("#dbce3b", "0dbce3b", "dbce3"):
+        for malformed in (
+            "#dbce3b",
+            "0dbce3b",
+            "dbce3",
+            "dbce3b\n",
+            "gggggg",
+        ):
             logical["body"][0]["object"]["body"][-1]["value"] = malformed
-            with self.assertRaises(ValueError):
+            with self.assertRaisesRegex(
+                SchemaError, "must match exactly one schema alternative"
+            ):
                 validate_logical_document(ROOT, logical)
 
         with tempfile.TemporaryDirectory() as temporary:
@@ -340,9 +355,9 @@ class ContentSchemaTest(unittest.TestCase):
             with self.assertRaisesRegex(
                 SchemaError,
                 r"maps/shattered_islands/incuna/artifacts\.art:5: "
-                r"object\.glow does not match",
+                r"object\.glow is longer than 6",
             ):
-                audit_artifact_fields(fixture_root, schema_root=ROOT)
+                _audit_artifact_text_constraints(fixture_root, schema_root=ROOT)
 
     def test_schema_source_rejects_a_linked_parent_directory(self):
         with tempfile.TemporaryDirectory() as temporary:

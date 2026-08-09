@@ -1748,6 +1748,8 @@
     },
     {
       "constraints": {
+        "maxLength": 6,
+        "minLength": 6,
         "pattern": "^[0-9A-Fa-f]{6}$"
       },
       "context": "object",
@@ -4720,5 +4722,5 @@
   ],
   "schema_id": "atrinik-authored-content-v1",
   "schema_version": 1,
-  "source_sha256": "0f11f5b0cc702e07f9cba7a3b32f38521fa0eae9b94f2f25bc7e08918e9b2c8c"
+  "source_sha256": "2edc87fe007248e3c116a20ca4d95d3806371281339830eb7b2052285de7210f"
 }

@@ -13,6 +13,7 @@ from tools.content_contracts.contracts import (
     confined_file,
     safe_relative_path,
 )
+from tools.content_constraints import text_constraint_violation
 from tools.syntax_evaluation.limits import DEFAULT_LIMITS
 
 from .authority import load_field_authority
@@ -657,9 +658,14 @@ class LegacyParser:
                 if not math.isfinite(parsed):
                     code = "invalid-number"
                     message = "{} must be a strict finite number".format(label)
-        elif kind in ("reference", "string") and not value:
-            code = "empty-field-value"
-            message = "{} requires a value".format(label)
+        elif kind in ("reference", "string"):
+            if not value:
+                code = "empty-field-value"
+                message = "{} requires a value".format(label)
+            else:
+                violation = text_constraint_violation(value, constraints, label)
+                if violation is not None:
+                    code, message = violation
 
         if code is None and isinstance(parsed, (int, float)) and not isinstance(
             parsed, bool

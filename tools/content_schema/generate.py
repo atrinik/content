@@ -68,7 +68,7 @@ def _value_schema(field: Mapping[str, Any]) -> Mapping[str, Any]:
     if kind == "number":
         return {"type": "number", **constraints}
     if kind in ("string", "reference"):
-        return {"type": "string", "minLength": 1}
+        return {"type": "string", "minLength": 1, **constraints}
     if kind == "enum":
         return {"type": "string", "enum": field["enum_values"]}
     if kind in ("string-list", "reference-list"):

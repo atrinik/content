@@ -9,4 +9,5 @@ value 0
 msg
 This spell allows you to set up magic portals from one place to another.
 endmsg
+name_pl town portal
 end

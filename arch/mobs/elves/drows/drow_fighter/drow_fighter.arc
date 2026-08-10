@@ -32,4 +32,5 @@ speed -0.059
 weight 72500
 faction monsters
 int 20
+name_pl drow fighters
 end

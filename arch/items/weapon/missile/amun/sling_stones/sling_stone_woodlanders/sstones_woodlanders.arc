@@ -21,4 +21,5 @@ material 64
 material_real 385
 can_stack 1
 is_named 1
+name_pl woodlander sling stones
 end

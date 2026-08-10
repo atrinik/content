@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm2
 name leaves
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm3
 name leaves
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm4
 name leaves
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm5
 name leaves
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm6
 name leaves
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm7
 name leaves
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm8
 name leaves
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm9
 name leaves
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm10
 name leaves
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm11
 name leaves
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm12
 name leaves
@@ -93,6 +104,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm13
 name leaves
@@ -101,6 +113,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end
 Object grass_leafm14
 name leaves
@@ -109,4 +122,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl leaves
 end

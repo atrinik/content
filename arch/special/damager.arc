@@ -6,4 +6,5 @@ lifesave 1
 dam 3
 level 127
 speed 0.2
+name_pl damager
 end

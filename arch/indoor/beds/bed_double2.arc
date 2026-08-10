@@ -8,6 +8,7 @@ animation bed_double2
 is_turnable 1
 direction 1
 no_pick 1
+name_pl beds
 end
 More
 Object bed_double2_b

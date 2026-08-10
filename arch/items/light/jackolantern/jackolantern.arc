@@ -16,4 +16,5 @@ last_eat 1
 last_sp 5
 item_quality 100
 item_condition 100
+name_pl jack-o'-lanterns
 end

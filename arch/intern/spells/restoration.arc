@@ -9,4 +9,5 @@ value 70000
 msg
 Heals the target or the caster, restores food and removes any disease, confusion and poison.
 endmsg
+name_pl restoration
 end

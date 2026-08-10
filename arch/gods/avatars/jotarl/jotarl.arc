@@ -42,4 +42,5 @@ msg
 Father of giants, Lord Troll, The Titan King, Dwarf crusher
 endmsg
 weight 1
+name_pl Jotarl
 end

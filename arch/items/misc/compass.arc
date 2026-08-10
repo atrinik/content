@@ -8,4 +8,5 @@ weight 100
 item_quality 100
 item_condition 100
 identified 1
+name_pl compasses
 end

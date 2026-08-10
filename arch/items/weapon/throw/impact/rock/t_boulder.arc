@@ -21,4 +21,5 @@ material 64
 item_condition 100
 item_quality 100
 can_stack 1
+name_pl boulders
 end

@@ -14,4 +14,5 @@ protect_cleave 28
 protect_pierce 28
 weight 5100
 value 152500
+name_pl armour
 end

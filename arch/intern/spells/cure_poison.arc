@@ -9,4 +9,5 @@ value 25000
 msg
 This spell cures all poison from your character.
 endmsg
+name_pl cure poison
 end

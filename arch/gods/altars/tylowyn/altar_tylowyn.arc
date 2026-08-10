@@ -11,4 +11,5 @@ direction 1
 type 56
 level 120
 no_pick 1
+name_pl Altars of Tylowyn
 end

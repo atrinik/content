@@ -10,6 +10,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl graves
 end
 Object grave2.111
 name grave
@@ -23,6 +24,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl graves
 end
 Object grave_open.111
 name open grave
@@ -36,4 +38,5 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl open graves
 end

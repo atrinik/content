@@ -7,4 +7,5 @@ race /python/generic/guard_drunk.py
 no_pick 1
 no_drop 1
 sys_object 1
+name_pl Python
 end

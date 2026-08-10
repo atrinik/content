@@ -14,4 +14,5 @@ weight 800
 material 2
 item_condition 100
 item_quality 100
+name_pl horns
 end

@@ -8,4 +8,5 @@ level 1
 msg
 Allows you to wield cleave melee weapons. Progressing in levels will increase your damage with this type of weapons.
 endmsg
+name_pl cleave weapons
 end

@@ -32,4 +32,5 @@ speed -0.061
 weight 52500
 faction monsters
 int 9
+name_pl goblins
 end

@@ -8,6 +8,7 @@ type 77
 layer 5
 no_pick 1
 glow_radius 5
+name_pl yellow force fields
 end
 
 Object forcefield_yellow_1
@@ -20,6 +21,7 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
+name_pl yellow force fields
 end
 
 Object forcefield_yellow_3
@@ -32,6 +34,7 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
+name_pl yellow force fields
 end
 
 Object forcefield_yellow_4
@@ -44,6 +47,7 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
+name_pl yellow force fields
 end
 
 Object forcefield_yellow_8
@@ -56,4 +60,5 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
+name_pl yellow force fields
 end

@@ -9,4 +9,5 @@ value 6000
 msg
 This spell fires a magical bullet which does not track but instead flies in one direction until it hits something.
 endmsg
+name_pl magic bullet
 end

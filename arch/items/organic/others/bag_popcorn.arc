@@ -10,4 +10,5 @@ type 6
 value 20
 weight 50
 can_stack 1
+name_pl bags of popcorn
 end

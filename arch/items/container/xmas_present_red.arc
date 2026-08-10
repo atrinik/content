@@ -12,6 +12,7 @@ value 13
 weight 250
 container 75000
 weapon_speed 1.0
+name_pl Christmas Presents
 end
 Object xmas_present_red_open
 name Christmas Present
@@ -27,4 +28,5 @@ value 13
 weight 250
 container 75000
 weapon_speed 1.0
+name_pl Christmas Presents
 end

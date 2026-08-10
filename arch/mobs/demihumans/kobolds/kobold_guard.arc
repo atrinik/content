@@ -32,4 +32,5 @@ speed -0.061
 weight 45500
 faction monsters
 int 6
+name_pl kobold guards
 end

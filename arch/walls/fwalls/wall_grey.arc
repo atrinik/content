@@ -7,6 +7,7 @@ layer 5
 type 77
 no_pick 1
 draw_double 1
+name_pl walls
 end
 Object fwall_grey2
 name wall
@@ -17,4 +18,5 @@ layer 5
 type 77
 no_pick 1
 draw_double 1
+name_pl walls
 end

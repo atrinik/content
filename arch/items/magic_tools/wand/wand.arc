@@ -12,4 +12,5 @@ weight 450
 material 16
 item_condition 100
 item_quality 100
+name_pl wands
 end

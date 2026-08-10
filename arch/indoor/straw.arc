@@ -5,6 +5,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl straw
 end
 
 Object straw2.111
@@ -19,4 +20,5 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl straw
 end

@@ -8,4 +8,5 @@ level 1
 msg
 This skill can be used to disarm previously located traps (using the find traps skill).
 endmsg
+name_pl remove traps
 end

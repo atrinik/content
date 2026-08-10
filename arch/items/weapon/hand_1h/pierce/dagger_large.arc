@@ -14,4 +14,5 @@ weight 520
 value 150
 block 1
 absorb 2
+name_pl large daggers
 end

@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.111
@@ -18,6 +19,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.121
@@ -27,6 +29,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.131
@@ -36,6 +39,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.141
@@ -45,6 +49,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.151
@@ -54,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.161
@@ -63,6 +69,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.171
@@ -72,6 +79,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_EW.181
@@ -81,6 +89,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.101
@@ -92,6 +101,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.171
@@ -103,6 +113,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.111
@@ -112,6 +123,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.121
@@ -121,6 +133,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.131
@@ -130,6 +143,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.141
@@ -139,6 +153,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.151
@@ -148,6 +163,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.161
@@ -157,6 +173,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_NS.181
@@ -166,6 +183,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_corner.121
@@ -177,6 +195,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_corner.141
@@ -188,6 +207,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_corner.161
@@ -199,6 +219,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_corner.181
@@ -210,6 +231,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_01
@@ -219,6 +241,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_02
@@ -228,6 +251,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_03
@@ -237,6 +261,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl wood bridges
 end
 
 Object bridge_wood_04
@@ -248,6 +273,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_05
@@ -259,6 +285,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_06
@@ -270,6 +297,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end
 
 Object bridge_wood_07
@@ -281,4 +309,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl wood bridges
 end

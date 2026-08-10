@@ -16,4 +16,5 @@ weight 1500
 value 175
 block 5
 absorb 8
+name_pl eye shields
 end

@@ -8,4 +8,5 @@ race /interfaces/guards/stop.xml
 no_pick 1
 no_drop 1
 sys_object 1
+name_pl Python
 end

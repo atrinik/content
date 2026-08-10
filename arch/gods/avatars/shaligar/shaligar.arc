@@ -43,4 +43,5 @@ msg
 Chaos God of slaughter and terror, Consuming worm, Greedy gut
 endmsg
 weight 1
+name_pl Shaligar
 end

@@ -9,6 +9,7 @@ mpart_id 6
 layer 5
 no_pick 1
 no_pass 1
+name_pl ballistas
 end
 More
 Object ballista_a

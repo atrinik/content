@@ -7,4 +7,5 @@ item_condition 100
 type 6
 weight 250
 value 400
+name_pl demon's heads
 end

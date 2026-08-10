@@ -34,4 +34,5 @@ speed -0.060
 weight 6500
 faction monsters
 int 20
+name_pl fairies
 end

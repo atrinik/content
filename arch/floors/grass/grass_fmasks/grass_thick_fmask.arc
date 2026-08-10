@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm2
 name grass
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm3
 name grass
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm4
 name grass
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm5
 name grass
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm6
 name grass
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm7
 name grass
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_thickm8
 name grass
@@ -61,4 +68,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end

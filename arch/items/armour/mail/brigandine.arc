@@ -15,4 +15,5 @@ protect_slash 15
 protect_pierce 30
 weight 13500
 value 1420
+name_pl brigandines
 end

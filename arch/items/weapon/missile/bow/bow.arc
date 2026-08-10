@@ -16,4 +16,5 @@ face bow.101
 weight 1300
 value 450
 sp 6
+name_pl bows
 end

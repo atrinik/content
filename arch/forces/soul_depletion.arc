@@ -11,4 +11,5 @@ applied 1
 msg
 Depletion of various statistics resulting from equipping items with item power higher than your character's limit.
 endmsg
+name_pl soul depletion
 end

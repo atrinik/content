@@ -9,4 +9,5 @@ value 200000
 msg
 Similar to the spell of asteroid, but this spell fires a bunch of asteroids in front of you, which then explode into cones of ice if they hit something.
 endmsg
+name_pl frost nova
 end

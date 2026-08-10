@@ -32,4 +32,5 @@ speed -0.053
 weight 22500
 faction monsters
 int 25
+name_pl whims
 end

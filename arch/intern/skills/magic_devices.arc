@@ -8,4 +8,5 @@ level 1
 msg
 Allows you to use magic devices such as wands, rods and horns. Some magic devices perform better the higher your level in this skill.
 endmsg
+name_pl magic devices
 end

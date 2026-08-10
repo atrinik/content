@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-0b
 name knot
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-1a
 name knot
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-1b
 name knot
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-1c
 name knot
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-1d
 name knot
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-2a
 name knot
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-2b
 name knot
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-2c
 name knot
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-2d
 name knot
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-3a
 name knot
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-3b
 name knot
@@ -93,6 +104,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-3c
 name knot
@@ -101,6 +113,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-3d
 name knot
@@ -109,6 +122,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-4a
 name knot
@@ -117,6 +131,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-4b
 name knot
@@ -125,6 +140,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-4c
 name knot
@@ -133,6 +149,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end
 Object knot-4d
 name knot
@@ -141,4 +158,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl knots
 end

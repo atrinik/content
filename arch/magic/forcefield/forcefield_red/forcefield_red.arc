@@ -9,6 +9,7 @@ layer 5
 no_pick 1
 glow_radius 5
 light_color ff3030
+name_pl red force fields
 end
 
 Object forcefield_red_1
@@ -22,6 +23,7 @@ layer 5
 no_pick 1
 glow_radius 4
 light_color ff3030
+name_pl red force fields
 end
 
 Object forcefield_red_3
@@ -35,6 +37,7 @@ layer 5
 no_pick 1
 glow_radius 4
 light_color ff3030
+name_pl red force fields
 end
 
 Object forcefield_red_4
@@ -48,6 +51,7 @@ layer 5
 no_pick 1
 glow_radius 4
 light_color ff3030
+name_pl red force fields
 end
 
 Object forcefield_red_8
@@ -61,4 +65,5 @@ layer 5
 no_pick 1
 glow_radius 4
 light_color ff3030
+name_pl red force fields
 end

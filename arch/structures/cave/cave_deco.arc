@@ -5,6 +5,7 @@ no_teleport 1
 layer 3
 type 79
 no_pick 1
+name_pl caves
 end
 
 Object cave_deco_full
@@ -20,6 +21,7 @@ layer 3
 type 79
 no_pick 1
 draw_direction 1
+name_pl caves
 end
 
 Object cave_deco1
@@ -34,6 +36,7 @@ no_teleport 1
 layer 3
 type 79
 no_pick 1
+name_pl caves
 end
 
 Object cave_deco2
@@ -48,6 +51,7 @@ no_teleport 1
 layer 3
 type 79
 no_pick 1
+name_pl caves
 end
 
 Object cave_deco3
@@ -62,4 +66,5 @@ no_teleport 1
 layer 3
 type 79
 no_pick 1
+name_pl caves
 end

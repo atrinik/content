@@ -32,4 +32,5 @@ speed -0.053
 weight 72500
 faction monsters
 int 2
+name_pl ant queens
 end

@@ -39,6 +39,7 @@ speed -0.061
 weight 200000
 faction monsters
 int 28
+name_pl black dragons
 end
 More
 Object dragon_black_d_b

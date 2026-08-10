@@ -10,4 +10,5 @@ type 66
 no_pick 1
 walk_on 1
 fly_on 1
+name_pl stairs going down
 end

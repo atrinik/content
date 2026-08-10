@@ -8,6 +8,7 @@ value 1
 type 73
 weight 800
 layer 3
+name_pl river stones
 end
 
 Object mountain_stone
@@ -20,6 +21,7 @@ value 1
 type 73
 weight 800
 layer 3
+name_pl mountain stones
 end
 
 Object field_stone
@@ -32,4 +34,5 @@ weight 800
 item_condition 100
 item_quality 100
 layer 3
+name_pl field stones
 end

@@ -5,6 +5,7 @@ type 79
 face sewer_close.101
 no_pass 1
 no_pick 1
+name_pl closed sewer holes
 end
 Object sewer_plate.101
 name sewer hole plate
@@ -13,6 +14,7 @@ type 79
 face sewer_plate.101
 no_pass 1
 no_pick 1
+name_pl sewer hole plates
 end
 Object sewer_plate2.101
 name sewer hole plate
@@ -21,6 +23,7 @@ type 79
 face sewer_plate2.101
 no_pass 1
 no_pick 1
+name_pl sewer hole plates
 end
 Object sewer_plate3.101
 name sewer hole plate
@@ -29,4 +32,5 @@ type 79
 face sewer_plate3.101
 no_pass 1
 no_pick 1
+name_pl sewer hole plates
 end

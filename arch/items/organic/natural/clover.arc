@@ -10,4 +10,5 @@ type 6
 value 5
 weight 10
 can_stack 1
+name_pl lucky clovers
 end

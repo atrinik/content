@@ -35,4 +35,5 @@ dex 13
 con 13
 int 13
 pow 13
+name_pl human_males
 end

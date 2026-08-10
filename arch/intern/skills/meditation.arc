@@ -8,4 +8,5 @@ stand_still 1
 msg
 The meditation skill passively increases your character's health and mana regeneration when out of combat.
 endmsg
+name_pl meditation
 end

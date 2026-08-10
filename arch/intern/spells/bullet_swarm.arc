@@ -9,4 +9,5 @@ value 175000
 msg
 Fires 5 magic bullets in front of you at once.
 endmsg
+name_pl bullet swarm
 end

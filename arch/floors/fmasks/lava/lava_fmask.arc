@@ -5,6 +5,7 @@ name fmask
 face lava_fmask.111
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask2
@@ -14,6 +15,7 @@ name fmask
 face lava_fmask.121
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask3
@@ -23,6 +25,7 @@ name fmask
 face lava_fmask.131
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask4
@@ -32,6 +35,7 @@ name fmask
 face lava_fmask.141
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask5
@@ -41,6 +45,7 @@ name fmask
 face lava_fmask.151
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask6
@@ -50,6 +55,7 @@ name fmask
 face lava_fmask.161
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask7
@@ -59,6 +65,7 @@ name fmask
 face lava_fmask.171
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object lava_fmask8
@@ -68,4 +75,5 @@ name fmask
 face lava_fmask.181
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end

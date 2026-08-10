@@ -31,4 +31,5 @@ level 1
 weight 65000
 faction npcs
 int 20
+name_pl agnes
 end

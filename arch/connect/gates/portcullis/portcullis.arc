@@ -13,6 +13,7 @@ no_teleport 1
 no_pick 1
 pass_thru 1
 maxsp 1
+name_pl portcullises
 end
 
 Object portcullis_closed
@@ -32,4 +33,5 @@ pass_thru 1
 wc 7
 state 7
 no_pass 1
+name_pl portcullises
 end

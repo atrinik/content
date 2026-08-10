@@ -11,4 +11,5 @@ material 2
 value 10
 weight 150
 identified 1
+name_pl glass runes
 end

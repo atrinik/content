@@ -44,4 +44,5 @@ arch ability_firestorm
 sp 2
 hp 2
 end
+name_pl elvish shamans
 end

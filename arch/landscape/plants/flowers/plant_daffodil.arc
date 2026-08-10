@@ -4,6 +4,7 @@ layer 4
 face plant_daffodil_magenta.101
 no_pick 1
 type 79
+name_pl daffodils
 end
 
 Object plant_daffodil_red
@@ -12,6 +13,7 @@ layer 4
 face plant_daffodil_red.101
 no_pick 1
 type 79
+name_pl daffodils
 end
 
 Object plant_daffodil_white
@@ -20,6 +22,7 @@ layer 4
 face plant_daffodil_white.101
 no_pick 1
 type 79
+name_pl daffodils
 end
 
 Object plant_daffodil_yellow
@@ -28,4 +31,5 @@ layer 4
 face plant_daffodil_yellow.101
 no_pick 1
 type 79
+name_pl daffodils
 end

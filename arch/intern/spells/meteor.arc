@@ -9,4 +9,5 @@ value 75000
 msg
 Fires a meteor in front of you, which explodes into a cone of fire if it hits an object.
 endmsg
+name_pl meteor
 end

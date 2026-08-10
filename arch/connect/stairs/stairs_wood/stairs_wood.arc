@@ -14,6 +14,7 @@ last_heal 9
 xrays 1
 type 66
 no_pick 1
+name_pl stairs going up
 end
 
 Object stairs_wood_up2
@@ -33,6 +34,7 @@ type 66
 no_pick 1
 walk_on 1
 fly_on 1
+name_pl stairs going up
 end
 
 Object stairs_wood_down
@@ -51,4 +53,5 @@ last_heal 10
 xrays 1
 type 66
 no_pick 1
+name_pl stairs going down
 end

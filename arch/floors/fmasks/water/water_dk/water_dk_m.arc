@@ -7,6 +7,7 @@ animation water_dk_m
 is_turnable 1
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object water_dk2_m
@@ -18,6 +19,7 @@ animation water_dk2_m
 is_turnable 1
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object water_dk3_m
@@ -29,6 +31,7 @@ animation water_dk3_m
 is_turnable 1
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object water_dk4_m
@@ -40,6 +43,7 @@ animation water_dk4_m
 is_turnable 1
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end
 
 Object water_dk5_m
@@ -51,4 +55,5 @@ animation water_dk5_m
 is_turnable 1
 no_teleport 1
 no_pick 1
+name_pl fmasks
 end

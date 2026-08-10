@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked2
@@ -18,6 +19,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked3
@@ -29,6 +31,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked4
@@ -40,6 +43,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked5
@@ -51,6 +55,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked6
@@ -62,6 +67,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked7
@@ -73,6 +79,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked8
@@ -84,6 +91,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked9
@@ -95,6 +103,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked10
@@ -106,6 +115,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked11
@@ -117,6 +127,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked12
@@ -128,6 +139,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked13
@@ -139,6 +151,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked14
@@ -150,6 +163,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object floor_cracked15
@@ -161,4 +175,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end

@@ -4,6 +4,7 @@ face basin1.101
 no_pick 1
 type 79
 layer 4
+name_pl basins
 end
 
 Object basin1_full.101
@@ -12,4 +13,5 @@ face basin1_full.101
 no_pick 1
 type 79
 layer 4
+name_pl basins
 end

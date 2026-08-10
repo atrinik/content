@@ -15,4 +15,5 @@ weight 1300
 value 350
 block 3
 absorb 5
+name_pl gladii
 end

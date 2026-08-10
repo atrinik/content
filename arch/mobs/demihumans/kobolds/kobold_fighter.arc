@@ -32,4 +32,5 @@ speed -0.060
 weight 43500
 faction monsters
 int 7
+name_pl kobold fighters
 end

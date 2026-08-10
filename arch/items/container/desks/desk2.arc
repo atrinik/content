@@ -16,4 +16,5 @@ value 350
 container 45000
 weight 15000
 weapon_speed 1.0
+name_pl desks
 end

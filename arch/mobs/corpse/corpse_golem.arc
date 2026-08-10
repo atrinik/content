@@ -15,4 +15,5 @@ food 20
 speed 0.01
 is_used_up 1
 invulnerable 1
+name_pl golem corpses
 end

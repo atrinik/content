@@ -32,4 +32,5 @@ speed -0.08
 weight 72500
 faction monsters
 int 20
+name_pl driders
 end

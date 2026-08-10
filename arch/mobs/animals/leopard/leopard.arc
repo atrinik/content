@@ -31,4 +31,5 @@ speed -0.06
 weight 30000
 faction monsters
 int 12
+name_pl leopards
 end

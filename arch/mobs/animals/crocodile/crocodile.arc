@@ -31,4 +31,5 @@ speed -0.06
 weight 75000
 faction monsters
 int 7
+name_pl crocodiles
 end

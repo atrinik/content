@@ -20,4 +20,5 @@ value 15
 material 64
 material_real 385
 can_stack 1
+name_pl sling stones
 end

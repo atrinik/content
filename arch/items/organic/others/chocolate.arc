@@ -9,4 +9,5 @@ layer 3
 type 6
 value 10
 weight 100
+name_pl Asterian chocolates
 end

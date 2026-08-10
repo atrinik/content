@@ -9,4 +9,5 @@ value 125000
 msg
 Fires 3 magic bullets in front of you at once.
 endmsg
+name_pl bullet storm
 end

@@ -32,4 +32,5 @@ speed -0.048
 weight 122500
 faction monsters
 int 12
+name_pl orc berserkers
 end

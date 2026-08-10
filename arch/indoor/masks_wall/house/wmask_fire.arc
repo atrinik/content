@@ -10,6 +10,7 @@ no_pick 1
 type 77
 layer 7
 draw_direction 1
+name_pl fire places
 end
 
 Object wmask_fire_off_1
@@ -24,4 +25,5 @@ no_pick 1
 layer 7
 type 77
 draw_direction 1
+name_pl fire places
 end

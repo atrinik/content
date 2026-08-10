@@ -6,6 +6,7 @@ mpart_id 3
 face tent_small.131
 no_pass 1
 no_pick 1
+name_pl small tents
 end
 More
 Object tent_small_a
@@ -50,6 +51,7 @@ mpart_id 3
 face tent_small.151
 no_pass 1
 no_pick 1
+name_pl small tents
 end
 More
 Object tent_small2_a
@@ -94,6 +96,7 @@ mpart_id 3
 face tent_large.131
 no_pass 1
 no_pick 1
+name_pl large tents
 end
 More
 Object tent_large_a
@@ -138,6 +141,7 @@ mpart_id 3
 face tent_large.151
 no_pass 1
 no_pick 1
+name_pl large tents
 end
 More
 Object tent_large2_a

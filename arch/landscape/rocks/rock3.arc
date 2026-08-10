@@ -8,6 +8,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big1_snow
@@ -20,6 +21,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big1_snow2
@@ -32,6 +34,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big1_snow3
@@ -44,6 +47,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big2
@@ -56,6 +60,7 @@ weight 1500000
 no_pass 1
 blocksview 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big3
@@ -68,6 +73,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big3_snow
@@ -80,6 +86,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big3_snow2
@@ -92,6 +99,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big3_snow3
@@ -104,6 +112,7 @@ material 64
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big4
@@ -115,6 +124,7 @@ type 79
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 Object rock_big6
@@ -126,6 +136,7 @@ mpart_id 1
 layer 5
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 
 More
@@ -150,4 +161,5 @@ type 79
 weight 1500000
 no_pass 1
 no_pick 1
+name_pl rocks
 end

@@ -20,4 +20,5 @@ value 20
 material 16
 material_real 257
 can_stack 1
+name_pl elven arrows
 end

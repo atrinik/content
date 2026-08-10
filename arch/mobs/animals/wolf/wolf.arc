@@ -30,4 +30,5 @@ speed -0.06
 weight 20000
 faction monsters
 int 13
+name_pl wolves
 end

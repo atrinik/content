@@ -40,4 +40,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 25
+name_pl raas
 end

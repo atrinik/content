@@ -9,4 +9,5 @@ material 32
 type 86
 weight 1300
 value 150
+name_pl wolf pelts
 end

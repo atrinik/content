@@ -10,4 +10,5 @@ value 8
 weight 75
 level 1
 exp 10
+name_pl notes
 end

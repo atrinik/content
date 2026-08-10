@@ -9,6 +9,7 @@ item_quality 100
 type 73
 value 77
 weight 5000
+name_pl piles
 end
 
 Object duf6pile
@@ -22,6 +23,7 @@ item_quality 100
 type 73
 value 5
 weight 5000
+name_pl piles
 end
 
 Object euf6pile
@@ -35,5 +37,6 @@ item_quality 100
 type 73
 value 200
 weight 5000
+name_pl piles
 end
 

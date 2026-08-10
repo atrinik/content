@@ -5,6 +5,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl boxes
 end
 Object box2.101
 name box
@@ -13,6 +14,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl boxes
 end
 Object box_big.101
 name big box
@@ -21,4 +23,5 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl big boxes
 end

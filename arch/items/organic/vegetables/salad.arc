@@ -10,4 +10,5 @@ type 6
 value 8
 weight 150
 can_stack 1
+name_pl vegetable salads
 end

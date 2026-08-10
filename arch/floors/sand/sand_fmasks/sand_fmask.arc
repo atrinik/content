@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm2
 name sand
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm3
 name sand
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm4
 name sand
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm5
 name sand
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm6
 name sand
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm7
 name sand
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm8
 name sand
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm9
 name sand
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm10
 name sand
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm11
 name sand
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm12
 name sand
@@ -93,6 +104,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm13
 name sand
@@ -101,6 +113,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm14
 name sand
@@ -109,6 +122,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm15
 name sand
@@ -117,6 +131,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm16
 name sand
@@ -125,6 +140,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm17
 name sand
@@ -133,6 +149,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm18
 name sand
@@ -141,6 +158,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm19
 name sand
@@ -149,6 +167,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm20
 name sand
@@ -157,6 +176,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm21
 name sand
@@ -165,6 +185,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end
 Object sand_dm22
 name sand
@@ -173,4 +194,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl sand
 end

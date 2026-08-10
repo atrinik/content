@@ -42,4 +42,5 @@ int 17
 weight 85000
 unaggressive 1
 str 25
+name_pl cupids
 end

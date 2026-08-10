@@ -11,4 +11,5 @@ container 500000
 weight 60000
 no_pick 1
 invulnerable 1
+name_pl player corpses
 end

@@ -21,4 +21,5 @@ wc 200
 wc_range 20
 dam 5
 flying 1
+name_pl magic missiles
 end

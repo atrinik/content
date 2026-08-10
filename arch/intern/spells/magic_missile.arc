@@ -9,4 +9,5 @@ value 75000
 msg
 Fires a missile at currently selected target, following the target wherever they go.
 endmsg
+name_pl magic missile
 end

@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl dirt
 end
 Object dirt_floor2
 name dirt
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl dirt
 end
 Object dirt_floor3
 name dirt
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl dirt
 end
 Object dirt_floor4
 name dirt
@@ -29,4 +32,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl dirt
 end

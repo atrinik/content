@@ -7,4 +7,5 @@ item_condition 100
 type 6
 weight 4
 value 2200
+name_pl brains
 end

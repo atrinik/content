@@ -13,4 +13,5 @@ protect_pierce 8
 protect_cleave 8
 material_real 193
 material 8
+name_pl cloaks
 end

@@ -662,6 +662,10 @@ def _open_recovery_journal(root: Path) -> tuple[set[str], str]:
             or value.get("manifest_sha256") != REVIEWED_MANIFEST_SHA256
             or not isinstance(value.get("artifact_token"), str)
             or len(value["artifact_token"]) != 32
+            or any(
+                character not in "0123456789abcdef"
+                for character in value["artifact_token"]
+            )
             or not isinstance(value.get("preexisting_artifacts"), list)
             or any(not isinstance(item, str) for item in value["preexisting_artifacts"])
         ):

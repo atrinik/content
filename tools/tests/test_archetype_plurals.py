@@ -352,6 +352,29 @@ class ArchetypePluralTest(unittest.TestCase):
             with self.assertRaisesRegex(PluralMigrationError, "another plural"):
                 migrate(self.root, self.manifest, check_git=False)
 
+        foreign = self.root / "arch" / (
+            ".foreign-content-stage-{}-x.tmp".format("b" * 32)
+        )
+        foreign.write_bytes(b"foreign")
+        journal = self.root / RECOVERY_JOURNAL_PATH
+        journal.parent.mkdir(parents=True)
+        journal.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "kind": "archetype-plural-recovery-journal",
+                    "manifest_sha256": REVIEWED_MANIFEST_SHA256,
+                    "artifact_token": "*" * 32,
+                    "preexisting_artifacts": [],
+                }
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(PluralMigrationError, "journal is invalid"):
+            recover(self.root, self.manifest, apply=True, check_git=False)
+        self.assertTrue(foreign.exists())
+
         dry_run_output = self.root / "dry-run.json"
         with redirect_stderr(io.StringIO()):
             self.assertEqual(

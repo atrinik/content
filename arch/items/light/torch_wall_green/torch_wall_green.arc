@@ -6,6 +6,7 @@ type 74
 face torch_wall_green.110
 other_arch torch_wall_green_unlit
 glow_radius 5
+light_color 66ff66
 is_animated 1
 animation torch_wall_green
 is_turnable 1

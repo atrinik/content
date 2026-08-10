@@ -5,6 +5,7 @@ type 74
 face torch_wall.110
 other_arch torch_wall_1_unlit
 glow_radius 5
+light_color ffc080
 is_animated 1
 animation torch_wall_1
 is_turnable 1

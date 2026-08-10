@@ -24,6 +24,7 @@ from tools.archetype_plurals import (
     load_manifest,
     migrate,
     propose_plural,
+    recover,
 )
 
 
@@ -141,6 +142,29 @@ class ArchetypePluralTest(unittest.TestCase):
         )
         with self.assertRaisesRegex(PluralMigrationError, "singular/type drift"):
             migrate(self.root, drifted, check_git=False)
+
+    def test_explicit_recovery_removes_only_reviewed_partial_additions(self) -> None:
+        path = self.root / "arch" / "objects.arc"
+        original = path.read_bytes()
+        path.write_text(
+            path.read_text(encoding="utf-8").replace(
+                "name torch\n", "name torch\nname_pl torches\n"
+            ),
+            encoding="utf-8",
+        )
+
+        prepared = recover(self.root, self.manifest, check_git=False)
+        self.assertEqual("prepared", prepared["status"])
+        self.assertEqual(1, prepared["archetypes"])
+        self.assertNotEqual(original, path.read_bytes())
+        recovered = recover(
+            self.root, self.manifest, apply=True, check_git=False
+        )
+        self.assertEqual("recovered", recovered["status"])
+        self.assertEqual(original, path.read_bytes())
+        self.assertEqual(
+            "prepared", migrate(self.root, self.manifest, check_git=False)["status"]
+        )
 
     def test_publish_failure_after_first_batch_rolls_back_every_file(self) -> None:
         (self.root / "arch" / "objects.arc").unlink()

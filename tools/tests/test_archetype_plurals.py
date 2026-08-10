@@ -205,6 +205,16 @@ class ArchetypePluralTest(unittest.TestCase):
             self.root / "arch" / ".foreign-content-stage-concurrent.tmp"
         )
         concurrent_artifact.write_bytes(b"foreign transaction")
+        with mock.patch(
+            "tools.archetype_plurals.prepare_transaction",
+            side_effect=ContentCoreError("injected recovery preparation failure"),
+        ):
+            with self.assertRaisesRegex(
+                ContentCoreError, "recovery preparation failure"
+            ):
+                recover(self.root, self.manifest, apply=True, check_git=False)
+        self.assertTrue(owned_artifact.exists())
+        self.assertTrue(journal.exists())
         recovered = recover(
             self.root, self.manifest, apply=True, check_git=False
         )

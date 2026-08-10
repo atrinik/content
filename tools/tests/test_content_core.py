@@ -283,6 +283,42 @@ class ContentCoreTest(unittest.TestCase):
         self.assertEqual("string", plural[0].value_kind)
         self.assertEqual(source, document.serialize())
 
+    def test_plural_name_insert_and_update_change_only_the_target_record(self):
+        source = b"Object torch\nname torch\ntype 78\nend\n"
+        path = self.write("arch/torch.arc", source)
+        document = self.document("arch/torch.arc", "archetype")
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "arch/torch.arc",
+                    "archetype",
+                    source,
+                    [self.set_property(document, "object.name_pl", "torches")],
+                )
+            ]
+        )
+
+        apply_transaction(self.root, transaction, apply=True, schema_root=ROOT)
+        inserted = b"Object torch\nname torch\ntype 78\nname_pl torches\nend\n"
+        self.assertEqual(inserted, path.read_bytes())
+
+        document = self.document("arch/torch.arc", "archetype")
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "arch/torch.arc",
+                    "archetype",
+                    inserted,
+                    [self.set_property(document, "object.name_pl", "hand torches")],
+                )
+            ]
+        )
+        apply_transaction(self.root, transaction, apply=True, schema_root=ROOT)
+        self.assertEqual(
+            inserted.replace(b"name_pl torches", b"name_pl hand torches"),
+            path.read_bytes(),
+        )
+
     def test_targeted_edit_changes_only_the_value_bytes(self):
         source = (
             b"arch map\n"

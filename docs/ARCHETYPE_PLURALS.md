@@ -26,7 +26,9 @@ pins the reviewed manifest digest and rejects source-tree, catalog, singular,
 type, duplicate, partial, or existing-value drift. Every apply prepares and
 dry-runs all deterministic batches of at most 64 files before one
 migration-wide publication; a failure in any later batch rolls back all prior
-replacements. A fully satisfied rerun is a no-op.
+replacements. Migration and recovery previews are stdout-only: `--output`
+requires `--apply`, preserving their zero-write guarantee. A fully satisfied
+rerun is a no-op.
 
 ```sh
 python3 tools/archetype_plurals.py inventory --root .

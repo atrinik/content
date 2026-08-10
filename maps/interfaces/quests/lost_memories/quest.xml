@@ -95,21 +95,6 @@
                 <object arch="incuna_western_gate_key" nrof="1"/>
             </dialog>
         </interface>
-        <part name="Speak with Sam Goodberry" uid="speak_sam">
-            <info>You have reached Incuna. Speak with Sam Goodberry on the ship's main deck.</info>
-            <interface inherit="arrival" npc="Sam Goodberry" state="need_start">
-                <code>
-def dialog_hello(self):
-    if self.qm.started():
-        InterfaceDialog.dialog_hello(self)
-        return
-
-    self.qm.start("speak_sam")
-    super().dialog_hello()
-                </code>
-            </interface>
-            <interface inherit="arrival" npc="Sam Goodberry" state="need_complete"/>
-        </part>
         <part name="The Priest" uid="speak_priest">
             <info>You have reached Incuna, and have started the attempt to get back your lost memories. Sam Goodberry has suggested that you go speak to the local church priest, who may be able to help you.</info>
             <interface npc="Sam Goodberry" state="need_complete">
@@ -944,6 +929,21 @@ if talisman and not talisman.f_applied:
                     <close/>
                 </dialog>
             </interface>
+        </part>
+        <part name="Speak with Sam Goodberry" uid="speak_sam">
+            <info>You have reached Incuna. Speak with Sam Goodberry on the ship's main deck.</info>
+            <interface inherit="arrival" npc="Sam Goodberry" state="need_start">
+                <code>
+def dialog_hello(self):
+    if self.qm.started():
+        InterfaceDialog.dialog_hello(self)
+        return
+
+    self.qm.start("speak_sam")
+    super().dialog_hello()
+                </code>
+            </interface>
+            <interface inherit="arrival" npc="Sam Goodberry" state="need_complete"/>
         </part>
     </quest>
 </interfaces>

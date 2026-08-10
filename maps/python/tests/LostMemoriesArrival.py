@@ -1,9 +1,10 @@
 import unittest
 
 import Atrinik
+from Interface import InterfaceBuilder
 from InterfaceQuests import escaping_deserted_island, lost_memories
 from QuestManager import QuestManager
-from tests import TestSuite
+from tests import TestSuite, ib_wrapper
 
 
 ARRIVAL_MAPS = (
@@ -16,11 +17,15 @@ class LostMemoriesArrivalSuite(TestSuite):
     def setUp(self):
         super().setUp()
         self.quest_items = []
+        self.npc = activator.map.CreateObject(
+            "ranger", activator.x, activator.y
+        )
 
     def tearDown(self):
         for obj in self.quest_items:
             if obj:
                 obj.Destroy()
+        self.npc.Destroy()
         activator.TeleportTo("/emergency")
         super().tearDown()
 
@@ -100,6 +105,31 @@ class LostMemoriesArrivalSuite(TestSuite):
                     Atrinik.QUEST_STATUS_STARTED,
                     current.get_quest_status("speak_priest"),
                 )
+
+    def test_legacy_sam_state_precedes_arrival_fallback(self):
+        memories = QuestManager(activator, lost_memories)
+        memories.start("broken_spirit")
+
+        # noinspection PyPep8Naming
+        class InterfaceDialog_need_complete_broken_spirit(InterfaceBuilder):
+            @ib_wrapper
+            def dialog_hello(self):
+                pass
+
+        # noinspection PyPep8Naming
+        class InterfaceDialog_need_start_speak_sam(InterfaceBuilder):
+            @ib_wrapper
+            def dialog_hello(self):
+                pass
+
+        ib = InterfaceBuilder(activator, self.npc)
+        ib.set_quest(memories)
+        ib.finish(locals(), "hello")
+
+        self.IB_test(
+            "InterfaceDialog_need_complete_broken_spirit.dialog_hello"
+        )
+        self.assertFalse(memories.started("speak_sam"))
 
 
 activator = Atrinik.WhoIsActivator()

@@ -1723,14 +1723,39 @@ class ObjectFieldsSuite(TestSuite):
         for invalid in (-1, 0x1000000, 0xffffffff):
             with self.assertRaises(OverflowError):
                 self.obj.light_color = invalid
+            self.assertEqual(self.obj.light_color, 0xffffff)
 
-        self.obj.light_color = 0x123456
-        self.assertEqual(self.obj.light_color, 0x123456)
+        self.obj.light_color = 0
+        self.assertEqual(self.obj.light_color, 0)
         saved = self.obj.Save()
-        self.assertEqual(saved, "arch sword\nlight_color 123456\nend\n")
+        self.assertEqual(saved, "arch sword\nlight_color 000000\nend\n")
         loaded = Atrinik.LoadObject(saved)
-        self.assertEqual(loaded.light_color, 0x123456)
+        self.assertEqual(loaded.light_color, 0)
         loaded.Destroy()
+
+        self.obj.light_color = 0xffffff
+        self.assertEqual(self.obj.light_color, 0xffffff)
+        self.assertEqual(self.obj.Save(), "arch sword\nend\n")
+
+        self.obj.glow_radius = 8
+        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-light-color")
+        m.Insert(self.obj, 2, 2)
+        for color in (0xff0000, 0x0000ff, 0xff0000):
+            self.obj.light_color = color
+            self.assertEqual(self.obj.light_color, color)
+        self.obj.Remove()
+
+        self.obj.InsertInto(activator)
+        self.obj.item_level = 0
+        self.obj.item_skill = 0
+        activator.Apply(self.obj)
+        self.assertTrue(self.obj.f_applied)
+        for color in (0x0000ff, 0xff0000):
+            self.obj.light_color = color
+            self.assertEqual(self.obj.light_color, color)
+            self.assertEqual(activator.light_color, color)
+        activator.Apply(self.obj)
+        self.assertFalse(self.obj.f_applied)
 
     def test_move_status(self):
         self.field_test_int("move_status", 8)

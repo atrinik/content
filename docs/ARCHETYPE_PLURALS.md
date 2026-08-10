@@ -47,9 +47,11 @@ delivery evidence so it does not reject legitimate future archetype edits.
 Ordinary migration rejects a partial corpus. If a process or host terminates
 outside the transaction rollback handler, `recover` first verifies that the
 partial baseline diff contains only exact reviewed plural additions, then
-removes those additions. Recovery is dry-run-first and safely repeatable after
-another interruption; rerun the migration only after recovery reaches the
-reviewed baseline.
+removes those additions. A durable ignored journal also identifies transaction
+stage/backup files created after publication began, so recovery removes only
+migration-owned artifacts and preserves anything that predates the journal.
+Recovery is dry-run-first and safely repeatable after another interruption;
+rerun the migration only after recovery reaches the reviewed baseline.
 
 ```sh
 python3 tools/archetype_plurals.py recover --root .

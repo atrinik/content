@@ -25,6 +25,7 @@ from tools.content_core.transaction import PreparedTransaction
 
 MANIFEST_PATH = Path("tools/archetype-plurals-v1.json")
 COMPARISON_PATH = Path("tools/archetype-plurals-cross-line-v1.json")
+RECOVERY_JOURNAL_PATH = Path("build/archetype-plural-migration-recovery-v1.json")
 REVIEWED_MANIFEST_SHA256 = "6c4eede454e239911049bb87c9ce5f96aeb328d0d11b6d7d9468ffb8c9569660"
 LINES = {
     "1.x": {
@@ -593,10 +594,59 @@ def _publish_prepared(
     prepared: Sequence[PreparedTransaction],
     failure_after: int | None = None,
 ) -> None:
+    preexisting = _open_recovery_journal(root)
     combined = PreparedTransaction(
         tuple(item for transaction in prepared for item in transaction.files)
     )
-    publish_transaction(root, combined, failure_after=failure_after)
+    try:
+        publish_transaction(root, combined, failure_after=failure_after)
+    finally:
+        _close_recovery_journal(root, preexisting)
+
+
+def _transaction_artifacts(root: Path) -> set[str]:
+    artifacts = set()
+    for pattern in (".*-content-stage-*.tmp", ".*-content-backup-*.tmp"):
+        for path in (root / "arch").rglob(pattern):
+            if path.is_symlink() or not path.is_file():
+                raise PluralMigrationError(
+                    "unsafe transaction artifact at {}".format(path)
+                )
+            artifacts.add(path.relative_to(root).as_posix())
+    return artifacts
+
+
+def _open_recovery_journal(root: Path) -> set[str]:
+    path = root / RECOVERY_JOURNAL_PATH
+    if path.exists():
+        value = _load_json(path)
+        if (
+            not isinstance(value, dict)
+            or value.get("schema_version") != 1
+            or value.get("kind") != "archetype-plural-recovery-journal"
+            or value.get("manifest_sha256") != REVIEWED_MANIFEST_SHA256
+            or not isinstance(value.get("preexisting_artifacts"), list)
+            or any(not isinstance(item, str) for item in value["preexisting_artifacts"])
+        ):
+            raise PluralMigrationError("plural recovery journal is invalid")
+        return set(value["preexisting_artifacts"])
+    preexisting = _transaction_artifacts(root)
+    _atomic_json(
+        path,
+        {
+            "schema_version": 1,
+            "kind": "archetype-plural-recovery-journal",
+            "manifest_sha256": REVIEWED_MANIFEST_SHA256,
+            "preexisting_artifacts": sorted(preexisting),
+        },
+    )
+    return preexisting
+
+
+def _close_recovery_journal(root: Path, preexisting: set[str]) -> None:
+    for relative in sorted(_transaction_artifacts(root) - preexisting):
+        (root / relative).unlink()
+    (root / RECOVERY_JOURNAL_PATH).unlink(missing_ok=True)
 
 
 def migrate(
@@ -684,6 +734,10 @@ def recover(
             "recovery input differs from the repository-owned reviewed manifest"
         )
     line = identify_line(root) if check_git else "fixture"
+    journal = root / RECOVERY_JOURNAL_PATH
+    interrupted_publication = journal.exists()
+    if interrupted_publication:
+        _close_recovery_journal(root, _open_recovery_journal(root))
     entries, rows = _checked_rows(root, manifest)
     present = sum(bool(entry["plurals"]) for entry in entries.values())
     if present == 0:
@@ -695,6 +749,18 @@ def recover(
             "applied": False,
             "status": "already-recovered",
             "archetypes": 0,
+            "files": 0,
+            "batches": 0,
+        }
+    if present == len(entries) and interrupted_publication:
+        return {
+            "schema_version": 1,
+            "kind": "archetype-plural-recovery",
+            "line": line,
+            "dry_run": not apply,
+            "applied": False,
+            "status": "publication-complete",
+            "archetypes": present,
             "files": 0,
             "batches": 0,
         }

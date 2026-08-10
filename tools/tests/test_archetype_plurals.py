@@ -17,6 +17,8 @@ from tools.archetype_plurals import (
     COMPARISON_PATH,
     LINES,
     MANIFEST_PATH,
+    RECOVERY_JOURNAL_PATH,
+    REVIEWED_MANIFEST_SHA256,
     PluralMigrationError,
     _assert_comparison_lines,
     audit,
@@ -146,6 +148,26 @@ class ArchetypePluralTest(unittest.TestCase):
     def test_explicit_recovery_removes_only_reviewed_partial_additions(self) -> None:
         path = self.root / "arch" / "objects.arc"
         original = path.read_bytes()
+        preserved_artifact = self.root / "arch" / ".preserved-content-stage-a.tmp"
+        owned_artifact = self.root / "arch" / ".owned-content-backup-b.tmp"
+        preserved_artifact.write_bytes(b"pre-existing")
+        owned_artifact.write_bytes(b"interrupted migration")
+        journal = self.root / RECOVERY_JOURNAL_PATH
+        journal.parent.mkdir(parents=True)
+        journal.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "kind": "archetype-plural-recovery-journal",
+                    "manifest_sha256": REVIEWED_MANIFEST_SHA256,
+                    "preexisting_artifacts": [
+                        preserved_artifact.relative_to(self.root).as_posix()
+                    ],
+                }
+            )
+            + "\n",
+            encoding="utf-8",
+        )
         path.write_text(
             path.read_text(encoding="utf-8").replace(
                 "name torch\n", "name torch\nname_pl torches\n"
@@ -162,6 +184,9 @@ class ArchetypePluralTest(unittest.TestCase):
         )
         self.assertEqual("recovered", recovered["status"])
         self.assertEqual(original, path.read_bytes())
+        self.assertTrue(preserved_artifact.exists())
+        self.assertFalse(owned_artifact.exists())
+        self.assertFalse(journal.exists())
         repeated = recover(
             self.root, self.manifest, apply=True, check_git=False
         )

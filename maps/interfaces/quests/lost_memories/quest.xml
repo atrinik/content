@@ -77,9 +77,9 @@
                 <object arch="incuna_western_gate_key" nrof="1"/>
             </dialog>
         </interface>
-        <part name="The Priest" uid="speak_priest">
-            <info>You have reached Incuna, and have started the attempt to get back your lost memories. Sam Goodberry has suggested that you go speak to the local church priest, who may be able to help you.</info>
-            <interface npc="Sam Goodberry" state="need_start">
+        <part name="Speak with Sam Goodberry" uid="speak_sam">
+            <info>You have reached Incuna. Speak with Sam Goodberry on the ship's main deck.</info>
+            <interface npc="Sam Goodberry" state="need_complete">
                 <dialog name="hello">
                     <message>There you are! I didn't wake you up when we arrived in Incuna, because it seemed like you needed a good rest. You certainly did - you've been sleeping for quite a while now. I even had time to replace the cabin door down in the lower deck!</message>
                     <message>At any rate, we did it - we managed to reach Incuna. We should resupply and head to Strakewood at last - but don't worry, I'll handle that and anything else we may need.</message>
@@ -93,9 +93,13 @@
                     <object arch="sack" message="sack with mushroom supplies"/>
                     <notification action="/help basics_containers" delay="90000" message="Tutorial Available: Containers" shortcut="?HELP"/>
                     <action start="speak_priest"/>
+                    <action complete="speak_sam"/>
                     <response action="close" message="I'll do that."/>
                 </dialog>
             </interface>
+        </part>
+        <part name="The Priest" uid="speak_priest">
+            <info>You have reached Incuna, and have started the attempt to get back your lost memories. Sam Goodberry has suggested that you go speak to the local church priest, who may be able to help you.</info>
             <interface npc="Sam Goodberry" state="need_complete">
                 <dialog name="hello">
                     <message>Ah, {activator.name}! You're back. How did it go with the priest, Brelend?</message>

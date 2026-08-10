@@ -118,6 +118,10 @@ You have reached Incuna.
 endmsg
 x 2
 y 2
+arch event_obj
+sub_type 10
+race /shattered_islands/scripts/incuna/start_lost_memories.py
+end
 end
 arch ship_floor_we_1
 x 2

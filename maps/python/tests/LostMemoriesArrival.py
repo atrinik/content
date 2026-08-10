@@ -1,3 +1,5 @@
+import os
+import runpy
 import unittest
 
 import Atrinik
@@ -10,6 +12,11 @@ from tests import TestSuite, ib_wrapper
 ARRIVAL_MAPS = (
     "/shattered_islands/incuna/ship_lower_deck",
     "/shattered_islands/incuna/ship_lower_deck_to_incuna",
+)
+MAPS_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+SAM_INTERFACE = os.path.join(
+    MAPS_ROOT,
+    "interfaces/quests/lost_memories/sam_goodberry.py",
 )
 
 
@@ -47,6 +54,27 @@ class LostMemoriesArrivalSuite(TestSuite):
 
     def quest_parts(self, qm):
         return sorted((obj.name, obj.magic) for obj in qm.quest_object.inv)
+
+    def find_incuna_sam(self):
+        activator.TeleportTo("/shattered_islands/world_4_85", 4, 12)
+
+        for x in range(activator.map.width):
+            for y in range(activator.map.height):
+                for obj in activator.map.Objects(x, y):
+                    if obj.name == "Sam Goodberry":
+                        return obj
+                    sam = obj.FindObject(name="Sam Goodberry")
+                    if sam:
+                        return sam
+
+        self.fail("Could not find Incuna's Sam Goodberry")
+
+    def run_sam_interface(self, sam, msg):
+        runpy.run_path(SAM_INTERFACE, init_globals={
+            "activator": activator,
+            "me": sam,
+            "msg": msg,
+        })
 
     def test_arrival_starts_speak_sam(self):
         for path in ARRIVAL_MAPS:
@@ -105,6 +133,95 @@ class LostMemoriesArrivalSuite(TestSuite):
                     Atrinik.QUEST_STATUS_STARTED,
                     current.get_quest_status("speak_priest"),
                 )
+
+    def test_actual_incuna_sam_advances_to_priest_once(self):
+        memories = QuestManager(activator, lost_memories)
+        memories.start("speak_sam")
+        sam = self.find_incuna_sam()
+        event = sam.FindObject(archname="event_obj")
+        self.assertIsNotNone(event)
+        self.assertEqual(
+            "/interfaces/quests/lost_memories/quest.xml",
+            event.race,
+        )
+
+        packets = activator.Controller().s_packets
+        packets.clear()
+        self.run_sam_interface(sam, "hello")
+        self.assertTrue(any(
+            b"There you are!" in packet
+            for packet in packets
+        ))
+
+        sacks_before = activator.FindObjects(archname="sack")
+        try:
+            self.run_sam_interface(sam, "remember")
+            sacks_after = activator.FindObjects(archname="sack")
+            rewards = [obj for obj in sacks_after if obj not in sacks_before]
+            self.assertEqual(1, len(rewards))
+            mushrooms = rewards[0].FindObject(archname="mushroom1")
+            self.assertIsNotNone(mushrooms)
+            self.assertEqual(14, mushrooms.nrof)
+            self.assertEqual(
+                Atrinik.QUEST_STATUS_STARTED,
+                memories.get_quest_status(),
+            )
+            self.assertEqual(
+                [
+                    ("speak_priest", Atrinik.QUEST_STATUS_STARTED),
+                    ("speak_sam", Atrinik.QUEST_STATUS_COMPLETED),
+                ],
+                self.quest_parts(memories),
+            )
+
+            state_after = (
+                memories.get_quest_status(),
+                self.quest_parts(memories),
+            )
+            self.run_sam_interface(sam, "remember")
+            self.assertEqual(
+                state_after,
+                (memories.get_quest_status(), self.quest_parts(memories)),
+            )
+            self.assertEqual(
+                len(sacks_after),
+                len(activator.FindObjects(archname="sack")),
+            )
+        finally:
+            for obj in activator.FindObjects(archname="sack"):
+                if obj not in sacks_before:
+                    obj.Destroy()
+
+    def test_arrival_preserves_legacy_lost_memories_states(self):
+        states = (
+            ("active", Atrinik.QUEST_STATUS_STARTED, None),
+            ("completed", Atrinik.QUEST_STATUS_COMPLETED, "complete"),
+            ("failed", Atrinik.QUEST_STATUS_FAILED, "fail"),
+        )
+
+        for label, status, transition in states:
+            for path in ARRIVAL_MAPS:
+                with self.subTest(state=label, path=path):
+                    self.clear_quests()
+                    self.complete_escape()
+                    memories = QuestManager(activator, lost_memories)
+                    memories.start("broken_spirit")
+                    if transition:
+                        self.assertTrue(
+                            getattr(memories, transition)("broken_spirit")
+                        )
+                    quest_object = memories.quest_object
+                    parts = self.quest_parts(memories)
+                    self.assertEqual(status, memories.get_quest_status())
+                    self.assertFalse(memories.started("speak_sam"))
+
+                    activator.TeleportTo(path, 2, 2)
+
+                    current = QuestManager(activator, lost_memories)
+                    self.assertEqual(quest_object, current.quest_object)
+                    self.assertEqual(status, current.get_quest_status())
+                    self.assertEqual(parts, self.quest_parts(current))
+                    self.assertFalse(current.started("speak_sam"))
 
     def test_legacy_sam_state_precedes_arrival_fallback(self):
         memories = QuestManager(activator, lost_memories)

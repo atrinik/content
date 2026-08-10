@@ -78,22 +78,38 @@ def obj_assign_attribs (obj, attribs):
     if not attribs:
         return
 
-    matches = re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
-    tokens = re.findall(r'"[^"]*"|\S+', attribs)
+    tokens = re.findall(r'"[^"]*"(?=\s|$)|\S+', attribs)
 
-    for pos in range(0, len(tokens), 2):
-        if tokens[pos] == "light_color" and (
-            pos + 1 == len(tokens) or tokens[pos + 1] == '""'
-        ):
+    if "light_color" in tokens:
+        if len(tokens) % 2:
             raise ValueError(
                 "light_color must be exactly six hexadecimal digits (RRGGBB)."
             )
 
+        pairs = []
+
+        for pos in range(0, len(tokens), 2):
+            attrib = tokens[pos]
+            val = tokens[pos + 1]
+
+            if not re.fullmatch(r'\w+', attrib):
+                raise ValueError(
+                    "light_color must be exactly six hexadecimal digits (RRGGBB)."
+                )
+
+            if val.startswith('"') and val.endswith('"'):
+                val = val[1:-1] or '""'
+
+            pairs.append((attrib, val))
+    else:
+        pairs = [
+            (t[0], t[1] or t[2])
+            for t in re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
+        ]
+
     parsed = []
 
-    for t in matches:
-        attrib = t[0]
-        val = t[1] or t[2]
+    for attrib, val in pairs:
 
         if attrib == "light_color":
             if not re.fullmatch(r'[0-9A-Fa-f]{6}', val):

@@ -1717,6 +1717,21 @@ class ObjectFieldsSuite(TestSuite):
     def test_glow_radius(self):
         self.field_test_int("glow_radius", 8)
 
+    def test_light_color(self):
+        with self.assertRaises(TypeError):
+            self.obj.light_color = "ffffff"
+        for invalid in (-1, 0x1000000, 0xffffffff):
+            with self.assertRaises(OverflowError):
+                self.obj.light_color = invalid
+
+        self.obj.light_color = 0x123456
+        self.assertEqual(self.obj.light_color, 0x123456)
+        saved = self.obj.Save()
+        self.assertEqual(saved, "arch sword\nlight_color 123456\nend\n")
+        loaded = Atrinik.LoadObject(saved)
+        self.assertEqual(loaded.light_color, 0x123456)
+        loaded.Destroy()
+
     def test_move_status(self):
         self.field_test_int("move_status", 8)
 

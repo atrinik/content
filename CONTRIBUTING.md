@@ -11,10 +11,9 @@ single-line exception must record explicit evidence and rationale explaining
 why the other line is unaffected or incompatible, such as replacement-only
 schemas or tooling, Classic-only formats or consumers, runtime incompatibility,
 or provenance or attribution constraints. The sole applicable pull request is
-canonical: a `main` pull request uses a closing keyword; a `1.x` pull request
-links without one, and the issue is closed manually after merge. Never merge
-branches wholesale or share generated output between worktrees. Branch
-ownership, port linkage, conflict
+canonical and uses the issue-closing reference, whether it targets `main` or
+`1.x`. Never merge branches wholesale or share generated output between
+worktrees. Branch ownership, port linkage, conflict
 handling, and release safety rules are in
 [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md).
 

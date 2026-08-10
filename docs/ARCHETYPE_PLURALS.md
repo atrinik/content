@@ -22,9 +22,11 @@ nouns, proper names, spell/action labels, all internal controllers, and every
 Object-ID fallback.
 
 The migration is bound to the reviewed `main` and `1.x` baseline SHAs. It
-rejects catalog, singular, type, duplicate, partial, or existing-value drift.
-Every apply prepares and dry-runs all deterministic batches of at most 64 files
-before publishing any batch. A fully satisfied rerun is a no-op.
+pins the reviewed manifest digest and rejects source-tree, catalog, singular,
+type, duplicate, partial, or existing-value drift. Every apply prepares and
+dry-runs all deterministic batches of at most 64 files before one
+migration-wide publication; a failure in any later batch rolls back all prior
+replacements. A fully satisfied rerun is a no-op.
 
 ```sh
 python3 tools/archetype_plurals.py inventory --root .
@@ -53,7 +55,9 @@ python3 tools/archetype_plurals.py compare --root . \
 
 At the reviewed baselines all 3,559 IDs, singulars, types, and approved plurals
 are shared, with no branch-only rows or differences. The committed comparison
-is machine-readable proof of that result.
+is machine-readable proof of that result. Comparison verifies the `main` and
+`1.x` checkout identities and both baseline-bound source deltas before labelling
+the result, so same-root or swapped inputs fail closed.
 
 ## Classic consumer gate
 

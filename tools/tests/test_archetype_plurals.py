@@ -23,6 +23,7 @@ from tools.archetype_plurals import (
     REVIEWED_MANIFEST_SHA256,
     PluralMigrationError,
     _assert_comparison_lines,
+    _operation_lock,
     audit,
     inventory,
     load_manifest,
@@ -160,8 +161,13 @@ class ArchetypePluralTest(unittest.TestCase):
     def test_explicit_recovery_removes_only_reviewed_partial_additions(self) -> None:
         path = self.root / "arch" / "objects.arc"
         original = path.read_bytes()
+        artifact_token = "a" * 32
         preserved_artifact = self.root / "arch" / ".preserved-content-stage-a.tmp"
-        owned_artifact = self.root / "arch" / ".owned-content-backup-b.tmp"
+        owned_artifact = (
+            self.root
+            / "arch"
+            / ".owned-content-backup-{}-b.tmp".format(artifact_token)
+        )
         preserved_artifact.write_bytes(b"pre-existing")
         owned_artifact.write_bytes(b"interrupted migration")
         journal = self.root / RECOVERY_JOURNAL_PATH
@@ -172,6 +178,7 @@ class ArchetypePluralTest(unittest.TestCase):
                     "schema_version": 1,
                     "kind": "archetype-plural-recovery-journal",
                     "manifest_sha256": REVIEWED_MANIFEST_SHA256,
+                    "artifact_token": artifact_token,
                     "preexisting_artifacts": [
                         preserved_artifact.relative_to(self.root).as_posix()
                     ],
@@ -194,12 +201,17 @@ class ArchetypePluralTest(unittest.TestCase):
         self.assertTrue(preserved_artifact.exists())
         self.assertTrue(owned_artifact.exists())
         self.assertTrue(journal.exists())
+        concurrent_artifact = (
+            self.root / "arch" / ".foreign-content-stage-concurrent.tmp"
+        )
+        concurrent_artifact.write_bytes(b"foreign transaction")
         recovered = recover(
             self.root, self.manifest, apply=True, check_git=False
         )
         self.assertEqual("recovered", recovered["status"])
         self.assertEqual(original, path.read_bytes())
         self.assertTrue(preserved_artifact.exists())
+        self.assertTrue(concurrent_artifact.exists())
         self.assertFalse(owned_artifact.exists())
         self.assertFalse(journal.exists())
         repeated = recover(
@@ -336,6 +348,10 @@ class ArchetypePluralTest(unittest.TestCase):
         self.assertEqual([], comparison["differences"])
 
     def test_manifest_digest_and_comparison_coordinates_fail_closed(self) -> None:
+        with _operation_lock(self.root):
+            with self.assertRaisesRegex(PluralMigrationError, "another plural"):
+                migrate(self.root, self.manifest, check_git=False)
+
         dry_run_output = self.root / "dry-run.json"
         with redirect_stderr(io.StringIO()):
             self.assertEqual(

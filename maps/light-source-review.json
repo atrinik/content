@@ -11677,7 +11677,7 @@
     }
   },
   "render_context": {
-    "content_commit": "21d7f942b6a54b061c061e09b90f4b23d0234f6e",
+    "content_commit": "69f33fc7b57c8ddfd0c3dcb9ed53d7d003c9ddef",
     "classic_commit": "832facbf7712eef74dcc272d1f2495c5da366c9a",
     "resources_commit": "266ac693e5567e1c253384bff1d490f1e37fedca",
     "profile": "issue-65-light-colors",

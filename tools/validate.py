@@ -51,6 +51,8 @@ def main() -> int:
             "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
             "tools.tests.test_m1_foundations",
+            "tools.tests.test_release_guidance",
+            "tools.tests.test_python_commands",
         ],
         cwd=ROOT,
         check=True,

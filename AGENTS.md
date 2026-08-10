@@ -54,9 +54,10 @@
   single-line exception must record explicit evidence and rationale explaining
   why the other line is unaffected or incompatible, such as replacement-only
   schemas or tooling, Classic-only formats or consumers, runtime
-  incompatibility, or provenance or attribution constraints; its sole
-  applicable pull request is canonical. Never merge branches wholesale or
-  share generated output between worktrees. Port linkage and review rules are
+  incompatibility, or provenance or attribution constraints. The sole
+  applicable pull request is canonical and uses the issue-closing reference,
+  whether it targets `main` or `1.x`. Never merge branches wholesale or share
+  generated output between worktrees. Port linkage and review rules are
   documented in `docs/RELEASE_LINES.md`.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its

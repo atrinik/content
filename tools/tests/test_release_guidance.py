@@ -20,7 +20,7 @@ REQUIRED_POLICY = (
     "`1.x` companion links both the issue and canonical pull request without using a closing keyword",
     "single-line exception must record explicit evidence and rationale",
     "replacement-only schemas or tooling, Classic-only formats or consumers, runtime incompatibility, or provenance or attribution constraints",
-    "sole applicable pull request is canonical",
+    "The sole applicable pull request is canonical and uses the issue-closing reference, whether it targets `main` or `1.x`",
     "Never merge branches wholesale or share generated output between worktrees",
 )
 

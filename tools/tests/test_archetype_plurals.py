@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import copy
+from contextlib import redirect_stderr
 import hashlib
+import io
 import json
 from pathlib import Path
 import shutil
@@ -24,6 +26,7 @@ from tools.archetype_plurals import (
     audit,
     inventory,
     load_manifest,
+    main as plurals_main,
     migrate,
     propose_plural,
     recover,
@@ -104,7 +107,16 @@ class ArchetypePluralTest(unittest.TestCase):
         self.assertEqual(2, prepared["operations"])
         self.assertEqual(before, (self.root / "arch" / "objects.arc").read_bytes())
 
-        applied = migrate(self.root, self.manifest, apply=True, check_git=False)
+        with mock.patch(
+            "tools.archetype_plurals._sync_directory", wraps=lambda path: None
+        ) as sync_directory:
+            applied = migrate(
+                self.root, self.manifest, apply=True, check_git=False
+            )
+        self.assertIn(
+            mock.call((self.root / "arch").resolve()),
+            sync_directory.call_args_list,
+        )
         self.assertEqual("applied", applied["status"])
         source = (self.root / "arch" / "objects.arc").read_text(encoding="utf-8")
         self.assertIn("name_pl torches\nend\nMore\n", source)
@@ -314,6 +326,22 @@ class ArchetypePluralTest(unittest.TestCase):
         self.assertEqual([], comparison["differences"])
 
     def test_manifest_digest_and_comparison_coordinates_fail_closed(self) -> None:
+        dry_run_output = self.root / "dry-run.json"
+        with redirect_stderr(io.StringIO()):
+            self.assertEqual(
+                1,
+                plurals_main(
+                    [
+                        "migrate",
+                        "--root",
+                        str(self.root),
+                        "--output",
+                        str(dry_run_output),
+                    ]
+                ),
+            )
+        self.assertFalse(dry_run_output.exists())
+
         drifted = self.root / "tools" / "drifted-manifest.json"
         drifted.write_text(
             (ROOT / MANIFEST_PATH).read_text(encoding="utf-8").replace(

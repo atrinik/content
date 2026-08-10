@@ -604,7 +604,11 @@ def _publish_prepared(
     try:
         publish_transaction(root, combined, failure_after=failure_after)
     finally:
-        _close_recovery_journal(root, preexisting)
+        _close_recovery_journal(
+            root,
+            preexisting,
+            {item.path.parent for item in combined.files},
+        )
 
 
 def _transaction_artifacts(root: Path) -> set[str]:
@@ -671,8 +675,12 @@ def _sync_directory(directory: Path) -> None:
         os.close(descriptor)
 
 
-def _close_recovery_journal(root: Path, preexisting: set[str]) -> None:
-    directories = set()
+def _close_recovery_journal(
+    root: Path,
+    preexisting: set[str],
+    sync_directories: set[Path] | None = None,
+) -> None:
+    directories = set(sync_directories or ())
     for relative in sorted(_transaction_artifacts(root) - preexisting):
         path = root / relative
         path.unlink()
@@ -1035,6 +1043,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     root = options.root.resolve()
     manifest_path = options.manifest or root / MANIFEST_PATH
     try:
+        if (
+            options.command in {"migrate", "recover"}
+            and not options.apply
+            and options.output is not None
+        ):
+            raise PluralMigrationError(
+                "migration and recovery dry-runs are stdout-only; --output requires --apply"
+            )
         if options.command == "inventory":
             result = inventory(root)
         elif options.command == "propose":

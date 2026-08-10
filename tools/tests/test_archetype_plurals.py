@@ -179,6 +179,9 @@ class ArchetypePluralTest(unittest.TestCase):
         self.assertEqual("prepared", prepared["status"])
         self.assertEqual(1, prepared["archetypes"])
         self.assertNotEqual(original, path.read_bytes())
+        self.assertTrue(preserved_artifact.exists())
+        self.assertTrue(owned_artifact.exists())
+        self.assertTrue(journal.exists())
         recovered = recover(
             self.root, self.manifest, apply=True, check_git=False
         )

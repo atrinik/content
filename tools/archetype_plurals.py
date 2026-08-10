@@ -26,6 +26,9 @@ from tools.content_core.transaction import PreparedTransaction
 MANIFEST_PATH = Path("tools/archetype-plurals-v1.json")
 COMPARISON_PATH = Path("tools/archetype-plurals-cross-line-v1.json")
 RECOVERY_JOURNAL_PATH = Path("build/archetype-plural-migration-recovery-v1.json")
+RECOVERY_JOURNAL_PENDING_PATH = Path(
+    "build/archetype-plural-migration-recovery-v1.pending"
+)
 REVIEWED_MANIFEST_SHA256 = "6c4eede454e239911049bb87c9ce5f96aeb328d0d11b6d7d9468ffb8c9569660"
 LINES = {
     "1.x": {
@@ -618,7 +621,12 @@ def _transaction_artifacts(root: Path) -> set[str]:
 
 def _open_recovery_journal(root: Path) -> set[str]:
     path = root / RECOVERY_JOURNAL_PATH
+    pending = root / RECOVERY_JOURNAL_PENDING_PATH
     if path.exists():
+        if pending.exists():
+            raise PluralMigrationError(
+                "plural recovery journal has a conflicting pending write"
+            )
         value = _load_json(path)
         if (
             not isinstance(value, dict)
@@ -630,23 +638,50 @@ def _open_recovery_journal(root: Path) -> set[str]:
         ):
             raise PluralMigrationError("plural recovery journal is invalid")
         return set(value["preexisting_artifacts"])
+    if pending.exists():
+        pending.unlink()
+        _sync_directory(pending.parent)
     preexisting = _transaction_artifacts(root)
-    _atomic_json(
-        path,
-        {
-            "schema_version": 1,
-            "kind": "archetype-plural-recovery-journal",
-            "manifest_sha256": REVIEWED_MANIFEST_SHA256,
-            "preexisting_artifacts": sorted(preexisting),
-        },
-    )
+    value = {
+        "schema_version": 1,
+        "kind": "archetype-plural-recovery-journal",
+        "manifest_sha256": REVIEWED_MANIFEST_SHA256,
+        "preexisting_artifacts": sorted(preexisting),
+    }
+    pending.parent.mkdir(parents=True, exist_ok=True)
+    with pending.open("x", encoding="utf-8", newline="\n") as destination:
+        json.dump(value, destination, indent=2)
+        destination.write("\n")
+        destination.flush()
+        os.fsync(destination.fileno())
+    os.replace(pending, path)
+    _sync_directory(path.parent)
     return preexisting
 
 
+def _sync_directory(directory: Path) -> None:
+    if os.name == "nt":
+        return
+    descriptor = os.open(
+        directory, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
+    )
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
 def _close_recovery_journal(root: Path, preexisting: set[str]) -> None:
+    directories = set()
     for relative in sorted(_transaction_artifacts(root) - preexisting):
-        (root / relative).unlink()
-    (root / RECOVERY_JOURNAL_PATH).unlink(missing_ok=True)
+        path = root / relative
+        path.unlink()
+        directories.add(path.parent)
+    for directory in sorted(directories):
+        _sync_directory(directory)
+    journal = root / RECOVERY_JOURNAL_PATH
+    journal.unlink(missing_ok=True)
+    _sync_directory(journal.parent)
 
 
 def migrate(
@@ -736,11 +771,14 @@ def recover(
     line = identify_line(root) if check_git else "fixture"
     journal = root / RECOVERY_JOURNAL_PATH
     interrupted_publication = journal.exists()
-    if interrupted_publication:
-        _close_recovery_journal(root, _open_recovery_journal(root))
+    preexisting = (
+        _open_recovery_journal(root) if interrupted_publication else set()
+    )
     entries, rows = _checked_rows(root, manifest)
     present = sum(bool(entry["plurals"]) for entry in entries.values())
     if present == 0:
+        if apply and interrupted_publication:
+            _close_recovery_journal(root, preexisting)
         return {
             "schema_version": 1,
             "kind": "archetype-plural-recovery",
@@ -753,6 +791,8 @@ def recover(
             "batches": 0,
         }
     if present == len(entries) and interrupted_publication:
+        if apply:
+            _close_recovery_journal(root, preexisting)
         return {
             "schema_version": 1,
             "kind": "archetype-plural-recovery",
@@ -798,6 +838,8 @@ def recover(
             raise PluralMigrationError(
                 "partial recovery diff does not match reviewed plural additions"
             )
+    if apply and interrupted_publication:
+        _close_recovery_journal(root, preexisting)
     transactions = _recovery_transactions(entries, rows)
     prepared = [
         prepare_transaction(root, transaction, schema_root=root)

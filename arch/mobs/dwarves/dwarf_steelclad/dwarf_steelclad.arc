@@ -34,4 +34,5 @@ maxhp 80
 level 1
 speed -0.047
 weight 75500
+name_pl dwarf steelclads
 end

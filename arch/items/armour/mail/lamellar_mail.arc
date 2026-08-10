@@ -15,4 +15,5 @@ protect_cleave 15
 protect_pierce 15
 weight 14000
 value 1400
+name_pl lamellar mail
 end

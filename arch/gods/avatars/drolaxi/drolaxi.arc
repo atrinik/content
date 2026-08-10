@@ -42,4 +42,5 @@ msg
 Chaos Goddess of many tentacles, Sea Serpent, Ocean Wave
 endmsg
 weight 1
+name_pl Drolaxi
 end

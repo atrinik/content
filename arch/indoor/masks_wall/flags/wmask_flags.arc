@@ -10,6 +10,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl big flags
 end
 
 Object flag_02
@@ -24,6 +25,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl big flags
 end
 
 Object flag_03
@@ -38,6 +40,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl big flags
 end
 
 Object flag_04
@@ -52,6 +55,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl big flags
 end
 
 Object flag_05
@@ -66,6 +70,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl big flags
 end
 
 Object flag_kobold
@@ -80,6 +85,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl kobold flags
 end
 
 Object flag_eagle
@@ -94,6 +100,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl eagle flags
 end
 
 Object flag_rockforge
@@ -106,4 +113,5 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl Rockforge flags
 end

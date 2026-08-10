@@ -15,4 +15,5 @@ protect_slash 30
 protect_pierce 15
 weight 11000
 value 1400
+name_pl chain mail
 end

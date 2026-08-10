@@ -19,4 +19,5 @@ material_real 65
 weight 20
 value 35
 can_stack 1
+name_pl throwing stars of david
 end

@@ -32,4 +32,5 @@ speed -0.061
 weight 77500
 faction monsters
 int 21
+name_pl drow captains
 end

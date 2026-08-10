@@ -44,4 +44,5 @@ int 20
 str 25
 can_use_armour 1
 can_use_weapon 1
+name_pl guards
 end

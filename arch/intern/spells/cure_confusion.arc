@@ -9,4 +9,5 @@ value 5000
 msg
 Cures any confusion your target or yourself may have.
 endmsg
+name_pl cure confusion
 end

@@ -15,4 +15,5 @@ food 20
 identified 1
 speed 0.01
 is_used_up 1
+name_pl decaying insect corpses
 end

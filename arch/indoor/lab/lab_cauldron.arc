@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl small cauldrons
 end
 Object lab_cauld_brk
 name small broken cauldron
@@ -16,4 +17,5 @@ face lab_cauld_brk.101
 no_pick 1
 type 79
 layer 4
+name_pl small broken cauldrons
 end

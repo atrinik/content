@@ -7,6 +7,7 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+name_pl lava
 end
 
 Object floor_lava_2
@@ -18,6 +19,7 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+name_pl lava
 end
 
 Object floor_lava_3
@@ -29,6 +31,7 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+name_pl lava
 end
 
 Object floor_lava_4
@@ -40,4 +43,5 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+name_pl lava
 end

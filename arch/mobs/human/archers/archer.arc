@@ -44,4 +44,5 @@ int 20
 str 25
 can_use_bow 1
 dex 1
+name_pl archers
 end

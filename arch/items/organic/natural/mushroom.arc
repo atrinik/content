@@ -10,6 +10,7 @@ type 6
 value 5
 weight 50
 can_stack 1
+name_pl wild white mushrooms
 end
 
 Object mushroom2
@@ -24,6 +25,7 @@ type 6
 value 6
 weight 50
 can_stack 1
+name_pl wild red mushrooms
 end
 
 Object mushroom3
@@ -38,5 +40,6 @@ type 6
 value 7
 weight 50
 can_stack 1
+name_pl wild blue mushrooms
 end
 

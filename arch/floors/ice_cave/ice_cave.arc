@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object icefloor_cave2
@@ -18,6 +19,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object icefloor_cave3
@@ -29,6 +31,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object icefloor_cave4
@@ -40,6 +43,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object icefloor_cave5
@@ -51,6 +55,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object icefloor_cave6
@@ -62,4 +67,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end

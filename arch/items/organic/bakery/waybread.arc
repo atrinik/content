@@ -10,4 +10,5 @@ type 6
 value 30
 weight 125
 can_stack 1
+name_pl elvish waybread
 end

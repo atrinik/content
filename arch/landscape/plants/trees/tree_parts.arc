@@ -4,6 +4,7 @@ layer 4
 face tree_branch1.101
 no_pick 1
 type 79
+name_pl branches
 end
 
 Object tree_branch2
@@ -12,6 +13,7 @@ layer 4
 face tree_branch2.101
 no_pick 1
 type 79
+name_pl branches
 end
 
 Object tree_branch3
@@ -20,4 +22,5 @@ layer 4
 face tree_branch3.101
 no_pick 1
 type 79
+name_pl branches
 end

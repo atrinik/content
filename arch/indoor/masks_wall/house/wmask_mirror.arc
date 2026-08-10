@@ -8,4 +8,5 @@ no_pick 1
 type 77
 layer 7
 draw_direction 1
+name_pl mirrors
 end

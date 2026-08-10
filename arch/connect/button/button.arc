@@ -8,4 +8,5 @@ no_pick 1
 walk_on 1
 walk_off 1
 weight 1
+name_pl button
 end

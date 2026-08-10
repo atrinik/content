@@ -10,4 +10,5 @@ type 6
 value 20
 weight 300
 can_stack 1
+name_pl sizzling weasels on a stick
 end

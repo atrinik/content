@@ -5,6 +5,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_round2
@@ -14,6 +15,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_small1
@@ -22,6 +24,7 @@ face table_small1.101
 no_pick 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_small1b
@@ -30,6 +33,7 @@ face table_small1b.101
 no_pick 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_poker1
@@ -39,6 +43,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_round5
@@ -48,6 +53,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_poker2
@@ -57,4 +63,5 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end

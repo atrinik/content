@@ -9,4 +9,5 @@ identified 1
 item_quality 80
 item_condition 80
 is_magical 1
+name_pl smoking pipes
 end

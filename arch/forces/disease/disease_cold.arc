@@ -24,4 +24,5 @@ You develop a sniffle.
 endmsg
 race *
 level 2
+name_pl cold
 end

@@ -10,6 +10,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_lab2.111
@@ -24,6 +25,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end
 
 Object table_lab3.111
@@ -38,4 +40,5 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl tables
 end

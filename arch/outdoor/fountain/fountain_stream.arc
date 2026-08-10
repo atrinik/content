@@ -9,6 +9,7 @@ mpart_id 6
 layer 7
 no_pick 1
 no_pass 1
+name_pl streams
 end
 More
 Object fountain_stream_a

@@ -31,4 +31,5 @@ level 1
 weight 355000
 faction monsters
 int 5
+name_pl quickwoods
 end

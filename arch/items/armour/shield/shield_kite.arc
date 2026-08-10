@@ -16,4 +16,5 @@ weight 1350
 value 115
 block 3
 absorb 5
+name_pl kite shields
 end

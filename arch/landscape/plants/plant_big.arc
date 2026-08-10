@@ -8,6 +8,7 @@ layer 5
 no_pass 1
 blocksview 1
 no_pick 1
+name_pl plants
 end
 More
 Object plant_big1b

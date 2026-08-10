@@ -15,4 +15,5 @@ weight 1500
 value 20
 block 1
 absorb 3
+name_pl bucklers
 end

@@ -15,4 +15,5 @@ weight 1075
 value 350
 block 5
 absorb 7
+name_pl rapiers
 end

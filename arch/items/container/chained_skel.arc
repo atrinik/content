@@ -15,4 +15,5 @@ value 3500
 container 25000
 weight 15000
 weapon_speed 1.0
+name_pl chained skeletons
 end

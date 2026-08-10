@@ -11,4 +11,5 @@ type 73
 material 16
 weight 100
 value 400
+name_pl piles
 end

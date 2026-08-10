@@ -32,4 +32,5 @@ speed -0.049
 weight 82500
 faction monsters
 int 15
+name_pl orc warlords
 end

@@ -16,4 +16,5 @@ item_condition 100
 item_quality 100
 hp 3
 maxhp 3
+name_pl rods
 end

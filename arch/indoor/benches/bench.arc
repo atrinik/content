@@ -7,6 +7,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl benches
 end
 
 Object bench1b.111
@@ -18,6 +19,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl benches
 end
 
 Object bench2.111
@@ -29,6 +31,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl benches
 end
 
 Object bench3
@@ -40,4 +43,5 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl benches
 end

@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_e_high_corner_n
@@ -14,6 +15,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_e_low
@@ -23,6 +25,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_e_low_corner_n
@@ -32,6 +35,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_1
@@ -41,6 +45,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_2
@@ -50,6 +55,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_3
@@ -59,6 +65,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_3_dark
@@ -68,6 +75,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_3_light
@@ -77,6 +85,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_strokeside_1
@@ -86,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_strokeside_1_dark
@@ -95,6 +105,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_strokeside_1_light
@@ -104,6 +115,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_strokeside_2
@@ -113,6 +125,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_strokeside_2_dark
@@ -122,6 +135,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_front_strokeside_2_light
@@ -131,6 +145,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_rear_1
@@ -140,6 +155,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_rear_2
@@ -149,6 +165,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_rear_3
@@ -158,6 +175,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_rear_4
@@ -167,6 +185,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_rear_5
@@ -176,6 +195,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_e_rear_6
@@ -185,6 +205,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_s_high
@@ -194,6 +215,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_s_high_corner_w
@@ -203,6 +225,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_s_low
@@ -212,6 +235,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_s_low_corner_w
@@ -221,6 +245,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_1
@@ -230,6 +255,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_2
@@ -239,6 +265,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_3
@@ -248,6 +275,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_3_dark
@@ -257,6 +285,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_3_light
@@ -266,6 +295,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_starboard_1
@@ -275,6 +305,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_starboard_1_dark
@@ -284,6 +315,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_starboard_1_light
@@ -293,6 +325,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_starboard_2
@@ -302,6 +335,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_starboard_2_dark
@@ -311,6 +345,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_front_starboard_2_light
@@ -320,6 +355,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_rear_1
@@ -329,6 +365,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_rear_2
@@ -338,6 +375,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_rear_3
@@ -347,6 +385,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_rear_4
@@ -356,6 +395,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_rear_5
@@ -365,6 +405,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_s_rear_6
@@ -374,6 +415,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_se_high
@@ -383,6 +425,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_se_low_astern_e
@@ -392,6 +435,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_se_low_astern_s
@@ -401,6 +445,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_1
@@ -410,6 +455,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_1_dark
@@ -419,6 +465,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_1_light
@@ -428,6 +475,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_2
@@ -437,6 +485,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_3
@@ -446,6 +495,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_3_dark
@@ -455,6 +505,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_3_light
@@ -464,6 +515,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_starboard
@@ -473,6 +525,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_starboard_dark
@@ -482,6 +535,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_front_starboard_light
@@ -491,6 +545,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_rear_1
@@ -500,6 +555,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_rear_2
@@ -509,6 +565,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_rear_3
@@ -518,6 +575,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_rear_4
@@ -527,6 +585,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_rear_4_dark
@@ -536,6 +595,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_w_rear_4_light
@@ -545,6 +605,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_1
@@ -554,6 +615,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_1_dark
@@ -563,6 +625,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_1_light
@@ -572,6 +635,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_2
@@ -581,6 +645,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_3
@@ -590,6 +655,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_3_dark
@@ -599,6 +665,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_3_light
@@ -608,6 +675,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_strokeside
@@ -617,6 +685,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_strokeside_dark
@@ -626,6 +695,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_front_strokeside_light
@@ -635,6 +705,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_rear_1
@@ -644,6 +715,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_rear_2
@@ -653,6 +725,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_rear_3
@@ -662,6 +735,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_rear_4
@@ -671,6 +745,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_rear_4_dark
@@ -680,6 +755,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end
 
 Object ship_hull_prow_n_rear_4_light
@@ -689,4 +765,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl hulls
 end

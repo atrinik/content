@@ -31,4 +31,5 @@ speed -0.06
 weight 7000
 faction monsters
 int 11
+name_pl cats
 end

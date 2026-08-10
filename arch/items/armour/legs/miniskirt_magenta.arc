@@ -11,4 +11,5 @@ protect_cleave 3
 type 35
 material_real 193
 material 8
+name_pl miniskirts
 end

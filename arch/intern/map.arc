@@ -9,4 +9,5 @@ hp 1
 sp 2
 value 300
 weight 7200
+name_pl maps
 end

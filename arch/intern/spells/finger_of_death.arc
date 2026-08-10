@@ -9,4 +9,5 @@ value 30000
 msg
 You point your finger at targeted creature, and it gets struck by a magical power.
 endmsg
+name_pl finger of death
 end

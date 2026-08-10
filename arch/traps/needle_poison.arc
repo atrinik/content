@@ -18,4 +18,5 @@ attack_poison 100
 dam 4
 int 20
 sp -1
+name_pl poison needle
 end

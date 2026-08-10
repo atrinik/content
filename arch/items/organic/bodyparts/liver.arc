@@ -7,4 +7,5 @@ item_condition 100
 type 6
 weight 4
 value 1200
+name_pl livers
 end

@@ -8,4 +8,5 @@ level 1
 msg
 This skill can be used to look for traps embedded in nearby chests, corpses, doors, etc.
 endmsg
+name_pl find traps
 end

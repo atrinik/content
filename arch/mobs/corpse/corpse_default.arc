@@ -14,4 +14,5 @@ speed 0.01
 identified 1
 no_pick 1
 invulnerable 1
+name_pl decaying corpses
 end

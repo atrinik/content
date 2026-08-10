@@ -9,4 +9,5 @@ layer 3
 type 6
 value 5
 weight 125
+name_pl quarter-pound cheeseburgers
 end

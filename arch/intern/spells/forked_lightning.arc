@@ -9,4 +9,5 @@ value 80000
 msg
 Lightning is fired in straight line. Each part of it can hit enemies only once and it will bounce off of walls. The main line of lightning may create forks of lightning, which will do less damage.
 endmsg
+name_pl forked lightning
 end

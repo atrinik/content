@@ -11,4 +11,5 @@ animation teleporter
 is_animated 1
 anim_speed 3
 race teleport.ogg
+name_pl teleporters
 end

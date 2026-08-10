@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl Rockforge fmasks
 end
 
 Object fmask_rockforge2
@@ -15,6 +16,7 @@ layer 2
 type 79
 no_pick 1
 mpart_id 3
+name_pl Rockforge fmasks
 end
 More
 Object fmask_rockforge2_b
@@ -52,4 +54,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snowflakes
 end

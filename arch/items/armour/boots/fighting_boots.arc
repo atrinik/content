@@ -14,4 +14,5 @@ last_heal 4
 material_real 193
 material 8
 type 99
+name_pl fighting boots
 end

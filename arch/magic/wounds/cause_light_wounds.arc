@@ -20,4 +20,5 @@ level 1
 attack_weaponmagic 100
 terrain_flag 32767
 flying 1
+name_pl cause light wounds
 end

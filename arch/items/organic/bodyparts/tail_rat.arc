@@ -9,4 +9,5 @@ material 32
 type 86
 weight 450
 value 120
+name_pl rat's tails
 end

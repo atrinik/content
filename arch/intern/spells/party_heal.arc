@@ -9,4 +9,5 @@ value 40000
 msg
 Heals all nearby party members, including the caster.
 endmsg
+name_pl party heal
 end

@@ -11,4 +11,5 @@ type 71
 no_pick 1
 is_floor 1
 glow_radius 3
+name_pl lava
 end

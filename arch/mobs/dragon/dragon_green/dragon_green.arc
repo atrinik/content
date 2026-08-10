@@ -38,6 +38,7 @@ speed -0.061
 weight 200000
 faction monsters
 int 26
+name_pl green dragons
 end
 More
 Object dragon_green_d_b

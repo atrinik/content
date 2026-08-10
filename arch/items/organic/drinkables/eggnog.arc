@@ -10,4 +10,5 @@ type 54
 value 150
 weight 500
 can_stack 1
+name_pl strong eggnogs
 end

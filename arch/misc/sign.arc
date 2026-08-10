@@ -4,6 +4,7 @@ face sign.111
 type 98
 layer 4
 no_pick 1
+name_pl signs
 end
 
 Object wallsign_pub
@@ -15,6 +16,7 @@ direction 3
 type 98
 layer 4
 no_pick 1
+name_pl signs
 end
 
 Object wallsign_cross
@@ -26,6 +28,7 @@ direction 3
 type 98
 layer 4
 no_pick 1
+name_pl signs
 end
 
 Object wallsign_potion
@@ -37,6 +40,7 @@ direction 3
 type 98
 layer 4
 no_pick 1
+name_pl signs
 end
 
 Object wallsign_weapon
@@ -48,6 +52,7 @@ direction 3
 type 98
 layer 4
 no_pick 1
+name_pl signs
 end
 
 Object wallsign_text
@@ -59,4 +64,5 @@ direction 3
 type 98
 layer 4
 no_pick 1
+name_pl signs
 end

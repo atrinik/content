@@ -32,4 +32,5 @@ speed -0.048
 weight 72500
 faction monsters
 int 13
+name_pl orc fighters
 end

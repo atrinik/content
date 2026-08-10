@@ -9,4 +9,5 @@ material 32
 type 86
 weight 500
 value 200
+name_pl hearts
 end

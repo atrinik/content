@@ -15,4 +15,5 @@ weight 100
 food 1
 is_magical 1
 last_sp 5
+name_pl mithril lamps
 end

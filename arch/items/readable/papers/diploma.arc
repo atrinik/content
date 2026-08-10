@@ -10,4 +10,5 @@ value 25
 weight 50
 level 1
 exp 10
+name_pl diplomas
 end

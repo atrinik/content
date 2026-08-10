@@ -16,4 +16,5 @@ weight 1250
 value 110
 block 5
 absorb 8
+name_pl heater shields
 end

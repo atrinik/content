@@ -10,4 +10,5 @@ type 6
 value 15
 weight 300
 can_stack 1
+name_pl smoked fish
 end

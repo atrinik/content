@@ -16,4 +16,5 @@ value 350
 container 30000
 weight 15000
 weapon_speed 1.0
+name_pl drawers
 end

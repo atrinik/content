@@ -12,4 +12,5 @@ value 5
 weight 50
 material 4
 can_stack 1
+name_pl jewels
 end

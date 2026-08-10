@@ -6,4 +6,5 @@ face icon_consecrate.101
 no_drop 1
 level 1
 value 0
+name_pl consecrate
 end

@@ -7,6 +7,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2b
 name floor
@@ -17,6 +18,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2c
 name floor
@@ -27,6 +29,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2d
 name floor
@@ -37,6 +40,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2e
 name floor
@@ -47,6 +51,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2f
 name floor
@@ -57,6 +62,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2g
 name floor
@@ -67,6 +73,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2h
 name floor
@@ -77,6 +84,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2i
 name floor
@@ -87,6 +95,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_fstone2j
 name floor
@@ -97,4 +106,5 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end

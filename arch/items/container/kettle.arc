@@ -14,4 +14,5 @@ weight 800
 container 2500
 weapon_speed 1.0
 value 25
+name_pl kettles
 end

@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 77
 layer 7
+name_pl runes
 end
 Object wmask_ruin1b.111
 name runes
@@ -21,4 +22,5 @@ direction 1
 no_pick 1
 type 77
 layer 7
+name_pl runes
 end

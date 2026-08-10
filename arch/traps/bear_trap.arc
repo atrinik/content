@@ -18,4 +18,5 @@ attack_cleave 100
 dam 8
 int 20
 sp -1
+name_pl bear trap
 end

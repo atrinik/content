@@ -15,4 +15,5 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl small wagons
 end

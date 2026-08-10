@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl beds
 end
 Object prison_deco2.131
 name bed
@@ -21,6 +22,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl beds
 end
 Object prison_deco3.131
 name bed
@@ -33,4 +35,5 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl beds
 end

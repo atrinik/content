@@ -9,4 +9,5 @@ value 50000
 msg
 Raises your protection to cold. The protection raised by this spell depends on the caster's level.
 endmsg
+name_pl protection from cold
 end

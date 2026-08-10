@@ -10,6 +10,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl caves
 end
 
 Object cave_deco_wall2
@@ -24,6 +25,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl caves
 end
 
 Object cave_deco_wall3
@@ -38,6 +40,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl caves
 end
 
 Object cave_deco_wall4
@@ -52,6 +55,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl caves
 end
 
 Object cave_deco_wall5
@@ -66,4 +70,5 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl caves
 end

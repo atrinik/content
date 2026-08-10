@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl piles of dirt
 end
 Object pile_floor2
 name pile of dirt
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl piles of dirt
 end
 Object pile_floor3
 name pile of dirt
@@ -21,4 +23,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl piles of dirt
 end

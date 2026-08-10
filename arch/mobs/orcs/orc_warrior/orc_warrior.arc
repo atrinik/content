@@ -32,4 +32,5 @@ speed -0.048
 weight 76500
 faction monsters
 int 14
+name_pl orc warriors
 end

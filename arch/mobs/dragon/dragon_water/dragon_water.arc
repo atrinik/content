@@ -32,4 +32,5 @@ level 1
 weight 295500
 faction monsters
 int 25
+name_pl small water dragons
 end

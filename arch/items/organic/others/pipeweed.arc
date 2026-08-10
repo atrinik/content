@@ -10,4 +10,5 @@ type 6
 value 100
 weight 32
 can_stack 1
+name_pl dried pipeweed
 end

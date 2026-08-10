@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl grass
 end
 Object grass_flowers2
 name grass
@@ -17,6 +18,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl grass
 end
 Object grass_flowers3
 name grass
@@ -27,4 +29,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl grass
 end

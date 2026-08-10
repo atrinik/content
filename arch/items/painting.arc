@@ -8,4 +8,5 @@ material 128
 is_named 1
 value 900
 weight 1250
+name_pl paintings
 end

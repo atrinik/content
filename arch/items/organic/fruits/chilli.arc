@@ -10,4 +10,5 @@ type 6
 value 6
 weight 100
 can_stack 1
+name_pl red chillies
 end

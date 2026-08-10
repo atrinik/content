@@ -7,4 +7,5 @@ sp -1
 face rope_up.101
 layer 5
 no_pick 1
+name_pl ropes
 end

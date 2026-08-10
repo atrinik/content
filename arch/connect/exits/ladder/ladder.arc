@@ -11,6 +11,7 @@ sp -1
 last_heal 10
 layer 5
 no_pick 1
+name_pl ladders going down
 end
 
 Object ladder_down2
@@ -28,6 +29,7 @@ sp -1
 last_heal 10
 layer 5
 no_pick 1
+name_pl ladders going down
 end
 
 Object ladder_down3
@@ -45,6 +47,7 @@ sp -1
 last_heal 10
 layer 5
 no_pick 1
+name_pl ladders going down
 end
 
 Object ladder_up
@@ -59,4 +62,5 @@ is_turnable 1
 direction 1
 type 66
 no_pick 1
+name_pl ladders going up
 end

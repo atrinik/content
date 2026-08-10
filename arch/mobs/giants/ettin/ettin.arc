@@ -32,4 +32,5 @@ speed -0.058
 weight 522500
 faction monsters
 int 11
+name_pl ettins
 end

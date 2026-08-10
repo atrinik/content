@@ -42,4 +42,5 @@ msg
 Lord of Storms, King of Thunder and Lightning, Sky Lord
 endmsg
 weight 1
+name_pl Rogroth
 end

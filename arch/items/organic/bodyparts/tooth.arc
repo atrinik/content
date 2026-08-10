@@ -11,4 +11,5 @@ type 86
 weight 1
 value 10
 can_stack 1
+name_pl teeth
 end

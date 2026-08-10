@@ -12,4 +12,5 @@ maxsp 1
 no_pick 1
 sys_object 1
 dam -1
+name_pl magic wall
 end

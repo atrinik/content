@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end
 
 Object chair2_111
@@ -22,6 +23,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end
 
 Object chair3
@@ -35,6 +37,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end
 
 Object chair1_drop_111
@@ -43,6 +46,7 @@ face chair1_drop.111
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end
 
 Object chair1_drop_171
@@ -51,6 +55,7 @@ face chair1_drop.171
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end
 
 Object chair_small2
@@ -59,6 +64,7 @@ face chair_small2.101
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end
 
 Object chair_small
@@ -67,4 +73,5 @@ face chair_small.101
 no_pick 1
 type 79
 layer 4
+name_pl chairs
 end

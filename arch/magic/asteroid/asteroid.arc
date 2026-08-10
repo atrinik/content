@@ -21,4 +21,5 @@ level 1
 attack_cold 100
 terrain_flag 32767
 flying 1
+name_pl asteroids
 end

@@ -10,4 +10,5 @@ speed 1
 is_used_up 1
 no_pick 1
 food 9
+name_pl magical sparkles
 end

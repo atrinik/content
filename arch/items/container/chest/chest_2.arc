@@ -18,4 +18,5 @@ value 350
 container 350000
 weight 22500
 weapon_speed 1.0
+name_pl chests
 end

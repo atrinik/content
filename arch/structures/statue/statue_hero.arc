@@ -5,6 +5,7 @@ type 79
 layer 5
 no_pass 1
 no_pick 1
+name_pl statues
 end
 
 Object statue_hero_b
@@ -14,6 +15,7 @@ type 79
 layer 5
 no_pass 1
 no_pick 1
+name_pl statues
 end
 
 Object statue_hero_c
@@ -23,4 +25,5 @@ type 79
 layer 5
 no_pass 1
 no_pick 1
+name_pl statues
 end

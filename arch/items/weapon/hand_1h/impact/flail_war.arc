@@ -15,4 +15,5 @@ weight 1900
 value 350
 block 5
 absorb 7
+name_pl war flails
 end

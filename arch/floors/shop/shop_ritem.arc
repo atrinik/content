@@ -10,4 +10,5 @@ no_magic 1
 type 68
 auto_apply 1
 randomitems empty
+name_pl floors
 end

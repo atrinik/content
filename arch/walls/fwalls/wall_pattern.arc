@@ -7,6 +7,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern2
 name wall
@@ -17,6 +18,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern3
 name wall
@@ -27,6 +29,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern4
 name wall
@@ -37,6 +40,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern5
 name wall
@@ -47,6 +51,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern6
 name wall
@@ -57,6 +62,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern7
 name wall
@@ -67,6 +73,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern8
 name wall
@@ -77,6 +84,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern9
 name wall
@@ -87,6 +95,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern10
 name wall
@@ -97,6 +106,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern11
 name wall
@@ -107,6 +117,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern12
 name wall
@@ -117,6 +128,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern13
 name wall
@@ -127,6 +139,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern14
 name wall
@@ -137,6 +150,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern15
 name wall
@@ -147,6 +161,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern16
 name wall
@@ -157,6 +172,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern17
 name wall
@@ -167,6 +183,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern18
 name wall
@@ -177,6 +194,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_pattern19
 name wall
@@ -187,4 +205,5 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end

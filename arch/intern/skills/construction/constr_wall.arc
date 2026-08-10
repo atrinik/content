@@ -12,4 +12,5 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl wood wall materials
 end

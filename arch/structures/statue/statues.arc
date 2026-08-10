@@ -6,6 +6,7 @@ layer 5
 type 79
 face statue_black1.101
 no_pick 1
+name_pl statues
 end
 Object statue_black_big1
 name statue
@@ -15,6 +16,7 @@ layer 5
 type 79
 face statue_black_big1.101
 no_pick 1
+name_pl statues
 end
 Object statue_black_small1
 name statue
@@ -24,6 +26,7 @@ layer 5
 type 79
 face statue_black_small1.101
 no_pick 1
+name_pl statues
 end
 Object statue_white
 name statue
@@ -33,6 +36,7 @@ no_pass 1
 layer 5
 type 79
 no_pick 1
+name_pl statues
 end
 Object statue_white2
 name statue
@@ -47,6 +51,7 @@ no_pass 1
 layer 5
 type 79
 no_pick 1
+name_pl statues
 end
 Object statue_white3
 name statue
@@ -61,4 +66,5 @@ no_pass 1
 layer 5
 type 79
 no_pick 1
+name_pl statues
 end

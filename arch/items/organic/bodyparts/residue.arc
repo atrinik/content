@@ -10,4 +10,5 @@ weight 50
 value 200
 food 0
 identified 1
+name_pl residues
 end

@@ -27,4 +27,5 @@ You have aches and fever, and you feel nauseous.
 endmsg
 race *
 level 2
+name_pl flu
 end

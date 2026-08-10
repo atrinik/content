@@ -6,4 +6,5 @@ layer 0
 no_pick 1
 hp -1
 sp -1
+name_pl magic_mirror
 end

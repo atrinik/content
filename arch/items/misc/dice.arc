@@ -8,4 +8,5 @@ material_real 705
 value 10
 weight 150
 identified 1
+name_pl dice
 end

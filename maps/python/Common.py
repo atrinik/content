@@ -78,23 +78,44 @@ def obj_assign_attribs (obj, attribs):
     if not attribs:
         return
 
-    for t in re.findall(r'(\w+) (?:(?:"([^"]+)")|([^ ]+))', attribs):
+    matches = re.findall(r'(\w+) (?:(?:"([^"]+)")|([^ ]+))', attribs)
+    light_color_count = len(re.findall(r'(?<!\S)light_color(?!\S)', attribs))
+
+    if light_color_count != sum(t[0] == "light_color" for t in matches):
+        raise ValueError(
+            "light_color must be exactly six hexadecimal digits (RRGGBB)."
+        )
+
+    parsed = []
+
+    for t in matches:
         attrib = t[0]
         val = t[1] or t[2]
 
-        # Try to create an integer or a float from the value if possible.
-        try:
-            val = int(val)
-        except ValueError:
+        if attrib == "light_color":
+            if not re.fullmatch(r'[0-9A-Fa-f]{6}', val):
+                raise ValueError(
+                    "light_color must be exactly six hexadecimal digits (RRGGBB)."
+                )
+
+            val = int(val, 16)
+        else:
+            # Try to create an integer or a float from the value if possible.
             try:
-                val = float(val)
+                val = int(val)
             except ValueError:
-                pass
+                try:
+                    val = float(val)
+                except ValueError:
+                    pass
 
         # Translate None string to literal None
         if val == "None":
             val = None
 
+        parsed.append((attrib, val))
+
+    for attrib, val in parsed:
         # If the object has the attribute, set it directly
         if hasattr(obj, attrib):
             setattr(obj, attrib, val)
@@ -104,4 +125,3 @@ def obj_assign_attribs (obj, attribs):
         # Otherwise attempt to use the Load method
         else:
             obj.Load("{} {}".format(attrib, "NONE" if val is None else val))
-

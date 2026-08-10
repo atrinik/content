@@ -48,9 +48,17 @@
   output directory, never in source. Do not overwrite mutable server state.
 - `main` owns replacement forward authoring. Branch `1.x` is the separately
   maintained classic line described by `contracts/release-lines/classic-1x.json`
-  and `docs/RELEASE_LINES.md`; never merge branches wholesale after formats
-  diverge. Changes that apply to both use separately validated, linked pull
-  requests and preserve attribution.
+  and `docs/RELEASE_LINES.md`.
+- Assess every issue-driven fix against both `main` and `1.x`; a fix discovered
+  on `1.x` must also reach `main` whenever compatible. Compatible shared fixes
+  normally ship to both lines through separate worktrees, validation runs,
+  commits, and linked pull requests. For paired delivery, the canonical `main`
+  pull request is the only one that closes the issue; its `1.x` companion links
+  both the issue and canonical pull request without using a closing keyword. A
+  single-line exception must record explicit evidence and rationale explaining
+  why the other line is unaffected or incompatible; its sole applicable pull
+  request is canonical. Never merge branches wholesale or share generated
+  output between worktrees.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the

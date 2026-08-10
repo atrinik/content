@@ -8,4 +8,5 @@ animation lava_blob
 is_animated 1
 anim_speed 3
 no_pick 1
+light_color ff6030
 end

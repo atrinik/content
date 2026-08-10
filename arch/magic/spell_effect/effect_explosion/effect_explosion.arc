@@ -15,6 +15,7 @@ is_used_up 1
 no_pick 1
 z 10
 align -5
+light_color ff6030
 end
 More
 Object effect_explosion_a
@@ -26,6 +27,7 @@ mpart_nr 1
 x 1
 no_pick 1
 glow_radius 3
+light_color ff6030
 end
 More
 Object effect_explosion_b
@@ -37,6 +39,7 @@ mpart_nr 2
 y 1
 no_pick 1
 glow_radius 3
+light_color ff6030
 end
 More
 Object effect_explosion_c
@@ -49,4 +52,5 @@ x 1
 y 1
 no_pick 1
 glow_radius 3
+light_color ff6030
 end

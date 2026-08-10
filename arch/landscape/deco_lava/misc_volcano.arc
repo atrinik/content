@@ -30,6 +30,7 @@ glow_radius 3
 layer 5
 no_pick 1
 no_pass 1
+light_color ff6030
 end
 
 Object obstacle_volcano_4
@@ -54,6 +55,7 @@ glow_radius 3
 animation obstacle_volcano_5
 is_animated 1
 anim_speed 3
+light_color ff6030
 end
 
 Object obstacle_volcano_6
@@ -65,4 +67,5 @@ layer 5
 glow_radius 3
 no_pick 1
 no_pass 1
+light_color ff6030
 end

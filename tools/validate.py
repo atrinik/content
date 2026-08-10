@@ -67,6 +67,16 @@ def main() -> int:
     subprocess.run(
         [
             sys.executable,
+            str(ROOT / "tools" / "world_content_audit.py"),
+            "lights",
+            "--check",
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [
+            sys.executable,
             "-m",
             "tools.content_schema",
             "check",

@@ -33,4 +33,5 @@ speed -0.053
 weight 22500
 faction monsters
 int 2
+light_color c0ff60
 end

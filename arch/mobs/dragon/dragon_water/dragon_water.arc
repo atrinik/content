@@ -32,4 +32,5 @@ level 1
 weight 295500
 faction monsters
 int 25
+light_color 80c0ff
 end

@@ -5,4 +5,5 @@ face lantern_black.101
 layer 5
 type 79
 no_pick 1
+light_color ffd080
 end

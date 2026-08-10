@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+light_color ff6030
 end
 Object lab_cauld_brk
 name small broken cauldron

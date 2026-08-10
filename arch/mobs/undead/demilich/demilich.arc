@@ -38,4 +38,5 @@ weight 22500
 undead 1
 faction monsters
 int 17
+light_color 80c0ff
 end

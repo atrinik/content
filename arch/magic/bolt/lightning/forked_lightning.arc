@@ -24,4 +24,5 @@ wc_range 20
 flying 1
 dex 30
 con 50
+light_color c0e0ff
 end

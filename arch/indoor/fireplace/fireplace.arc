@@ -9,6 +9,7 @@ is_animated 1
 anim_speed 1
 no_pick 1
 no_pass 1
+light_color ff6030
 end
 More
 Object fireplace_rightb
@@ -55,6 +56,7 @@ is_animated 1
 anim_speed 1
 no_pick 1
 no_pass 1
+light_color ff6030
 end
 More
 Object fireplace_leftb

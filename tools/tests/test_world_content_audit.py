@@ -104,6 +104,166 @@ end
 
         self.assertEqual([earlier, later], audit.map_files())
 
+    def test_light_inventory_resolves_inheritance_overrides_and_reviews(self):
+        self.write(
+            "arch/lights.arc",
+            """Object colored_lamp
+name colored lamp
+face lamp.101
+glow_radius 4
+light_color ff8040
+end
+Object light2
+name light
+face light_bulb_2.111
+glow_radius 2
+no_pick 1
+sys_object 1
+type 78
+end
+Object inert
+name inert
+end
+""",
+        )
+        self.write(
+            "arch/lights.art",
+            """artifact glowing_reward
+def_arch inert
+Object
+glow_radius 1
+end
+""",
+        )
+        self.write(
+            "maps/scene",
+            """arch map
+name Reviewed Scene
+region sample
+darkness 3
+end
+arch colored_lamp
+x 2
+y 3
+end
+arch light2
+x 4
+y 5
+end
+arch inert
+x 6
+y 7
+glow_radius 3
+light_color 4060ff
+end
+""",
+        )
+        self.write(
+            "maps/light-source-review.json",
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "review_method": "test semantic and rendered inspection",
+                    "rendered_batches": {
+                        "sample-interior": {
+                            "artifact": "sample.png",
+                            "method": "test renderer",
+                        }
+                    },
+                    "palette": {
+                        "4060ff": {"rationale": "focused blue magic"},
+                        "ff8040": {"rationale": "warm lamp flame"},
+                    },
+                    "archetypes": {
+                        "colored_lamp": {
+                            "uncolored_disposition": "neutral",
+                            "rationale": "Warm visible lamp flame.",
+                        },
+                        "light2": {
+                            "uncolored_disposition": "neutral",
+                            "rationale": "Neutral invisible composition light.",
+                        },
+                    },
+                    "artifacts": {
+                        "glowing_reward": {
+                            "uncolored_disposition": "neutral",
+                            "rationale": "Neutral reward glow preserves its art.",
+                        }
+                    },
+                    "maps": {
+                        "maps/scene": {
+                            "uncolored_disposition": "neutral",
+                            "rationale": "Rendered room keeps neutral fill around colored accents.",
+                            "rendered_batch": "sample-interior",
+                            "checks": [
+                                "overlap",
+                                "linked-depth",
+                                "horizontal-boundary",
+                                "dark-interior",
+                                "outdoor-transition",
+                                "fog-roof",
+                                "navigation",
+                            ],
+                        }
+                    },
+                }
+            ),
+        )
+
+        report = audit.light_inventory()
+
+        self.assertEqual(
+            {
+                "archetypes": 2,
+                "artifacts": 1,
+                "maps": 1,
+                "map_instances": 3,
+                "visible_map_instances": 2,
+                "invisible_map_instances": 1,
+                "explicit_color": 3,
+                "intentional_neutral": 3,
+                "unreviewed": 0,
+                "colors": ["4060ff", "ff8040"],
+            },
+            report["summary"],
+        )
+        self.assertEqual([], audit.validate_light_inventory(report))
+        scene = report["maps"][0]
+        self.assertEqual("3", scene["darkness"])
+        self.assertEqual("intentional-neutral", scene["emitters"][1]["disposition"])
+        self.assertFalse(scene["emitters"][1]["visible"])
+        artifact = report["artifacts"][0]
+        self.assertTrue(artifact["visible"])
+        self.assertIsNone(artifact["face"])
+
+        review_path = self.root / "maps/light-source-review.json"
+        review = json.loads(review_path.read_text())
+        review["maps"]["maps/scene"]["checks"] = None
+        review_path.write_text(json.dumps(review))
+        self.assertIn(
+            "map maps/scene must record every contextual lighting check",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+
+    def test_light_review_check_rejects_missing_baseline_rows(self):
+        self.write(
+            "arch/light.arc",
+            """Object light1
+glow_radius 1
+sys_object 1
+type 78
+end
+""",
+        )
+
+        report = audit.light_inventory()
+        errors = audit.validate_light_inventory(report)
+
+        self.assertIn("light-source review must use schema_version 1", errors)
+        self.assertIn("light-source review needs a concise review_method", errors)
+        self.assertIn("light-source review archetypes must be an object", errors)
+        self.assertIn("1 effective light sources remain unreviewed", errors)
+
 
 if __name__ == "__main__":
     unittest.main()

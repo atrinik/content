@@ -126,6 +126,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 60d0ff
 end
 
 Object crystal11
@@ -136,6 +137,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 60d0ff
 end
 
 Object crystal12
@@ -146,6 +148,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 60d0ff
 end
 
 Object crystal13
@@ -156,6 +159,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 60d0ff
 end
 
 Object crystal14
@@ -166,4 +170,5 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 60d0ff
 end

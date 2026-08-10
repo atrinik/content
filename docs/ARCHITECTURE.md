@@ -13,8 +13,9 @@ The source-to-runtime flow is:
    generates shared loader/compiler, editor, and logical-document metadata;
 4. `tools/content_core` provides the byte-lossless production parser, typed
    source-located views, project index, and transaction-safe targeted writer;
-5. `tools/validate.py` runs catalog, schema, grammar-contract, corpus, collection,
-   and licensing checks without modifying authored sources; and
+5. `tools/validate.py` runs catalog, schema, grammar-contract, corpus, checked
+   effective-light review, collection, and licensing checks without modifying
+   authored sources; and
 6. `tools/build_runtime.py` creates an isolated runtime tree and digest manifest
    below `build/` or another explicit output path.
 
@@ -49,7 +50,10 @@ documented in [`CONTENT_CORE.md`](CONTENT_CORE.md).
 
 Generated runtime files are outputs, never authored sources. Exploratory reports
 from `tools/world_content_audit.py` are review artifacts, not another identity or
-grammar authority. Its map and archetype traversal uses the common core. A new
+grammar authority. Its map and archetype traversal uses the common core. The
+checked light-source review baseline records art-direction dispositions and
+render evidence, while effective fields remain authored runtime data; see
+[`LIGHT_SOURCE_AUDIT.md`](LIGHT_SOURCE_AUDIT.md). A new
 loader, writer, checker, collector, or analyzer must use the existing catalog,
 lossless core, and versioned contract boundaries instead of introducing a
 duplicate parser or inventory.

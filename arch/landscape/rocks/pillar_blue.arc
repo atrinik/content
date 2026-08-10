@@ -322,6 +322,7 @@ type 79
 face pillar_blue9.101
 no_pass 1
 no_pick 1
+light_color 60d0ff
 end
 Object pillar_blue10
 name blue pillar

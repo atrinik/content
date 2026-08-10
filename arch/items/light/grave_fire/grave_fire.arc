@@ -11,4 +11,5 @@ material 64
 last_sp 5
 weight 100000
 food 1
+light_color ff6030
 end

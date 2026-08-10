@@ -9,4 +9,5 @@ value 0
 msg
 Teleports you to your house, apartment, or wherever you applied a bed to reality. This spell takes a while to complete, but is faster the higher level you are.
 endmsg
+name_pl word of recall
 end

@@ -5,4 +5,5 @@ no_pick 1
 no_drop 1
 sys_object 1
 type 118
+name_pl Python
 end

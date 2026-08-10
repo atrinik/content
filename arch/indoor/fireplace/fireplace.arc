@@ -9,6 +9,7 @@ is_animated 1
 anim_speed 1
 no_pick 1
 no_pass 1
+name_pl fireplaces
 end
 More
 Object fireplace_rightb
@@ -30,6 +31,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl fireplaces
 end
 More
 Object fireplace_right_offb
@@ -55,6 +57,7 @@ is_animated 1
 anim_speed 1
 no_pick 1
 no_pass 1
+name_pl fireplaces
 end
 More
 Object fireplace_leftb
@@ -76,6 +79,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl fireplaces
 end
 More
 Object fireplace_left_offb

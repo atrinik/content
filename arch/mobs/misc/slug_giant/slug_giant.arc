@@ -34,4 +34,5 @@ no_pick 1
 level 1
 faction monsters
 int 10
+name_pl giant slugs
 end

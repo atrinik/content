@@ -9,4 +9,5 @@ layer 5
 no_pick 1
 hidden 1
 z -4
+name_pl wood roofs
 end

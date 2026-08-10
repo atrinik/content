@@ -15,4 +15,5 @@ weight 3000
 value 50
 block 3
 absorb 5
+name_pl spiked clubs
 end

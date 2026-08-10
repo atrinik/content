@@ -42,4 +42,5 @@ msg
 Demon King, Lord of Hell, Temptor and Tormentor
 endmsg
 weight 1
+name_pl Rashindel
 end

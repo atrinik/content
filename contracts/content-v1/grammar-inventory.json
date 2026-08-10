@@ -196,6 +196,7 @@
       "mpart_id",
       "mpart_nr",
       "name",
+      "name_pl",
       "no_attack",
       "no_drop",
       "no_fix_player",

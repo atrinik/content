@@ -39,7 +39,7 @@ The active server is authoritative for the accepted legacy grammar:
 - `atrinik/server:src/loaders/object.l#get_ob_diff` defines object serialization.
 - `atrinik/server:src/server/map.c#new_save_map` defines map serialization.
 
-`grammar-inventory.json` captures those source locations, 281 known object
+`grammar-inventory.json` captures those source locations, 282 known object
 fields, the map-header fields and tiled-map key pattern, object and header
 delimiters, all four object scanner entry modes, both map-header scanner entry
 modes, the three observable load flags, byte/line-ending behavior, and the

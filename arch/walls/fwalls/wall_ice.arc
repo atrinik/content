@@ -6,6 +6,7 @@ layer 5
 blocksview 1
 no_pass 1
 no_pick 1
+name_pl icewalls
 end
 
 Object fwall_ice_d
@@ -17,6 +18,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object fwall_ice_transparent
@@ -27,4 +29,5 @@ layer 5
 blocksview 1
 no_pass 1
 no_pick 1
+name_pl walls
 end

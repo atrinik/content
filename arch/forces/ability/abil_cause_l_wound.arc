@@ -10,4 +10,5 @@ no_drop 1
 no_pick 1
 sp 11
 hp 11
+name_pl ability cause light wounds
 end

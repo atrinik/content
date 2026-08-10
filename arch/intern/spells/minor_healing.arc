@@ -9,4 +9,5 @@ value 5000
 msg
 This spell heals minor wounds on either the caster or the target.
 endmsg
+name_pl minor healing
 end

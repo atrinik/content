@@ -10,4 +10,5 @@ type 54
 value 10
 weight 150
 can_stack 1
+name_pl cups of tea
 end

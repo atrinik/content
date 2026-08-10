@@ -9,6 +9,7 @@ direction 1
 type 77
 no_pick 1
 layer 7
+name_pl drains
 end
 Object wall_drain2
 name drain
@@ -21,6 +22,7 @@ direction 1
 type 77
 no_pick 1
 layer 7
+name_pl drains
 end
 Object wall_drain3
 name drain
@@ -33,6 +35,7 @@ direction 1
 type 77
 no_pick 1
 layer 7
+name_pl drains
 end
 Object wall_drain4
 name drain
@@ -45,4 +48,5 @@ direction 1
 type 77
 no_pick 1
 layer 7
+name_pl drains
 end

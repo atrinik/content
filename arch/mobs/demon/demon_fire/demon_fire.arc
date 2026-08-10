@@ -34,4 +34,5 @@ speed -0.060
 weight 200000
 faction monsters
 int 20
+name_pl fire demons
 end

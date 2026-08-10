@@ -9,4 +9,5 @@ layer 1
 type 71
 is_floor 1
 no_pick 1
+name_pl pools of quicksilver
 end

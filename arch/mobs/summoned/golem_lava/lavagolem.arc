@@ -34,4 +34,5 @@ speed -0.045
 weight 225000
 faction monsters
 int 8
+name_pl lava golems
 end

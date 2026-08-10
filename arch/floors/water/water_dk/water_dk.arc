@@ -7,6 +7,7 @@ terrain_type 2
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object water_dk2
@@ -18,6 +19,7 @@ terrain_type 2
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object water_dk3
@@ -29,6 +31,7 @@ terrain_type 2
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 
 Object water_dk4
@@ -40,4 +43,5 @@ terrain_type 2
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end

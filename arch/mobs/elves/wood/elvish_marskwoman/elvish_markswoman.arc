@@ -43,4 +43,5 @@ is_magical 1
 identified 1
 sys_object 1
 end
+name_pl elvish markswomen
 end

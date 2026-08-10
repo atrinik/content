@@ -15,4 +15,5 @@ protect_cleave 20
 protect_pierce 40
 weight 24000
 value 4150
+name_pl breastplates
 end

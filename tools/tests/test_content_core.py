@@ -271,6 +271,54 @@ class ContentCoreTest(unittest.TestCase):
             apply_transaction(self.root, transaction, schema_root=ROOT)
         self.assertEqual(source, path.read_bytes())
 
+    def test_plural_name_is_typed_without_changing_source_bytes(self):
+        source = b"Object torch\nname torch\nname_pl torches\ntype 78\nend\n"
+        self.write("arch/torch.arc", source)
+
+        document = self.document("arch/torch.arc", "archetype")
+        plural = document.objects[0].field_ids("object.name_pl")
+
+        self.assertEqual(1, len(plural))
+        self.assertEqual("torches", plural[0].typed_value)
+        self.assertEqual("string", plural[0].value_kind)
+        self.assertEqual(source, document.serialize())
+
+    def test_plural_name_insert_and_update_change_only_the_target_record(self):
+        source = b"Object torch\nname torch\ntype 78\nend\n"
+        path = self.write("arch/torch.arc", source)
+        document = self.document("arch/torch.arc", "archetype")
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "arch/torch.arc",
+                    "archetype",
+                    source,
+                    [self.set_property(document, "object.name_pl", "torches")],
+                )
+            ]
+        )
+
+        apply_transaction(self.root, transaction, apply=True, schema_root=ROOT)
+        inserted = b"Object torch\nname torch\ntype 78\nname_pl torches\nend\n"
+        self.assertEqual(inserted, path.read_bytes())
+
+        document = self.document("arch/torch.arc", "archetype")
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "arch/torch.arc",
+                    "archetype",
+                    inserted,
+                    [self.set_property(document, "object.name_pl", "hand torches")],
+                )
+            ]
+        )
+        apply_transaction(self.root, transaction, apply=True, schema_root=ROOT)
+        self.assertEqual(
+            inserted.replace(b"name_pl torches", b"name_pl hand torches"),
+            path.read_bytes(),
+        )
+
     def test_targeted_edit_changes_only_the_value_bytes(self):
         source = (
             b"arch map\n"
@@ -605,6 +653,42 @@ class ContentCoreTest(unittest.TestCase):
         for relative, source in sources.items():
             self.assertEqual(source, (self.root / relative).read_bytes())
         self.assertEqual([], list(self.root.rglob(".*-content-*-*.tmp")))
+
+    def test_incomplete_rollback_retains_recovery_artifacts(self):
+        sources = {
+            "maps/a": b"arch map\nwidth 1\nheight 1\nend\n",
+            "maps/b": b"arch map\nwidth 2\nheight 2\nend\n",
+        }
+        entries = []
+        for index, (relative, source) in enumerate(sorted(sources.items()), 3):
+            self.write(relative, source)
+            document = self.document(relative, "map")
+            entries.append(
+                self.entry(
+                    relative,
+                    "map",
+                    source,
+                    [self.set_property(document, "map-header.width", index)],
+                )
+            )
+        prepared = prepare_transaction(
+            self.root, self.transaction(entries), schema_root=ROOT
+        )
+        real_replace = os.replace
+
+        def fail_backup_restore(source, target):
+            if "-content-backup-" in Path(source).name:
+                raise OSError("injected rollback failure")
+            return real_replace(source, target)
+
+        with mock.patch(
+            "tools.content_core.transaction.os.replace",
+            side_effect=fail_backup_restore,
+        ):
+            with self.assertRaises(ContentCoreError) as caught:
+                publish_transaction(self.root, prepared, failure_after=1)
+        self.assertEqual("transaction-rollback-failed", caught.exception.code)
+        self.assertTrue(list(self.root.rglob(".*-content-*-*.tmp")))
 
     def test_transactions_refuse_non_authored_and_symlink_targets(self):
         source = b"arch map\nwidth 1\nheight 1\nend\n"

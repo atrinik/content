@@ -7,4 +7,5 @@ no_pick 1
 animation god_hammer
 is_animated 1
 anim_speed 2
+name_pl god hammers
 end

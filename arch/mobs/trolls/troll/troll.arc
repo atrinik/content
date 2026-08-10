@@ -41,6 +41,7 @@ weight 950000
 run_away 6
 faction monsters
 int 9
+name_pl trolls
 end
 More
 Object troll_b

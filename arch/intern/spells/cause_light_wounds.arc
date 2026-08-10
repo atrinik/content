@@ -9,4 +9,5 @@ value 4000
 msg
 This spell creates a missile which inflicts damage to your enemies.
 endmsg
+name_pl cause light wounds
 end

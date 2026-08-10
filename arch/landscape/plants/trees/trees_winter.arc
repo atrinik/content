@@ -6,6 +6,7 @@ face snowy_pinetree1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_pinetree2
@@ -16,6 +17,7 @@ face snowy_pinetree2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object tree_big5_winter
@@ -26,6 +28,7 @@ type 79
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_autree2
@@ -36,6 +39,7 @@ face snowy_autree2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_burnedtree1
@@ -46,6 +50,7 @@ face snowy_burnedtree1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_burnedtree2
@@ -56,6 +61,7 @@ face snowy_burnedtree2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_tree1
@@ -66,6 +72,7 @@ face snowy_tree1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_tree2
@@ -76,6 +83,7 @@ face snowy_tree2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_tree_big1
@@ -86,6 +94,7 @@ face snowy_tree_big1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_tree_big2
@@ -96,6 +105,7 @@ face snowy_tree_big2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_tree_bigb1
@@ -106,6 +116,7 @@ face snowy_tree_bigb1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_tree_bigb2
@@ -116,6 +127,7 @@ face snowy_tree_bigb2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object snowy_treeb1
@@ -126,4 +138,5 @@ face snowy_treeb1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end

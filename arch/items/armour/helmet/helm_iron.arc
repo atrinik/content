@@ -13,4 +13,5 @@ protect_pierce 5
 value 30
 material_real 65
 material 2
+name_pl helms
 end

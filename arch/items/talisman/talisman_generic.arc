@@ -7,4 +7,5 @@ material_real 641
 material 1024
 weight 10
 value 900
+name_pl talismans
 end

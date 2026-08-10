@@ -7,6 +7,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_01
@@ -21,6 +22,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_02
@@ -35,6 +37,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_03
@@ -49,6 +52,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_04
@@ -63,6 +67,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_05
@@ -77,6 +82,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_06
@@ -91,6 +97,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_07
@@ -105,6 +112,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_08
@@ -116,6 +124,7 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_palace2_09
@@ -128,6 +137,7 @@ direction 1
 layer 5
 no_pass 1
 no_pick 1
+name_pl walls
 end
 
 Object wall_palace2_10
@@ -140,6 +150,7 @@ direction 1
 layer 5
 no_pass 1
 no_pick 1
+name_pl walls
 end
 
 Object wall_palace2_11
@@ -152,6 +163,7 @@ direction 1
 layer 5
 no_pass 1
 no_pick 1
+name_pl walls
 end
 
 Object wall_palace2_12
@@ -164,6 +176,7 @@ direction 1
 layer 5
 no_pass 1
 no_pick 1
+name_pl walls
 end
 
 Object wall_palace2_13
@@ -176,6 +189,7 @@ direction 1
 layer 5
 no_pass 1
 no_pick 1
+name_pl walls
 end
 
 Object wall_palace2_14
@@ -187,4 +201,5 @@ blocksview 1
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl walls
 end

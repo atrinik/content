@@ -31,4 +31,5 @@ level 1
 weight 25500
 faction monsters
 int 5
+name_pl giant frogs
 end

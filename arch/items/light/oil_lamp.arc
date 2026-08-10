@@ -12,4 +12,5 @@ weight 400
 food 800
 nrof 1
 can_stack 1
+name_pl lamp oil
 end

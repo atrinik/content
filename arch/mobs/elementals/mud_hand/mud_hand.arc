@@ -30,4 +30,5 @@ level 1
 weight 35500
 faction monsters
 int 9
+name_pl mud hands
 end

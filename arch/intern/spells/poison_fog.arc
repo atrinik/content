@@ -6,4 +6,5 @@ face info.101
 no_drop 1
 level 5
 value 0
+name_pl poison fog
 end

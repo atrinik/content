@@ -11,4 +11,5 @@ value 100
 weight 5
 identified 1
 no_drop 1
+name_pl strange keys
 end

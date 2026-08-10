@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object abyss_n2
@@ -14,6 +15,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object abyss_nw1
@@ -23,6 +25,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object abyss_nw2
@@ -32,6 +35,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object abyss_w1
@@ -41,6 +45,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object abyss_w2
@@ -50,6 +55,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_e1
@@ -59,6 +65,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_n1
@@ -68,6 +75,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_ne1
@@ -77,6 +85,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_ne2
@@ -86,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_nw1
@@ -95,6 +105,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_nw2
@@ -104,6 +115,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_s1
@@ -113,6 +125,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_se1
@@ -122,6 +135,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_se2
@@ -131,6 +145,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_sw1
@@ -140,6 +155,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_sw2
@@ -149,6 +165,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 
 Object border_abyss_w1
@@ -158,5 +175,6 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl abysses
 end
 

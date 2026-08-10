@@ -17,4 +17,5 @@ arch event_obj
 sub_type 1
 race /python/items/silmedsen_potion_bottle.py
 end
+name_pl Silmedsen's potion bottles
 end

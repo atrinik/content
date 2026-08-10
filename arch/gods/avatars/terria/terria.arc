@@ -42,4 +42,5 @@ msg
 Goddess of peace, Guardian of life, Mother of nature
 endmsg
 weight 1
+name_pl Terria
 end

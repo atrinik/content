@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "kind": "archetype-plural-cross-line-comparison",
+  "issue": "atrinik/content#62",
+  "left_baseline": "440b45a85603642f6edd37bb5bf45c2034ed0410",
+  "right_baseline": "ead72ef831444c874f65da841498924bab625e99",
+  "shared_archetypes": 3559,
+  "left_only": [],
+  "right_only": [],
+  "differences": []
+}

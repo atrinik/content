@@ -10,4 +10,5 @@ food 15
 speed 0.01
 is_used_up 1
 weight 20
+name_pl stinking puddles of diarrhea
 end

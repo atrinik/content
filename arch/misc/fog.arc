@@ -16,6 +16,7 @@ changing 1
 speed -0.003
 speed_left -1.0
 blocksview 1
+name_pl fog
 end
 Object fog_glow1
 name strange glowing fog
@@ -36,6 +37,7 @@ changing 1
 speed -0.003
 speed_left -1.0
 blocksview 0
+name_pl strange glowing fog
 end
 Object fog_glow2
 name strange glowing fog
@@ -56,4 +58,5 @@ changing 1
 speed -0.003
 speed_left -1.0
 blocksview 0
+name_pl strange glowing fog
 end

@@ -9,4 +9,5 @@ item_quality 100
 type 73
 value 2
 weight 5000
+name_pl piles
 end

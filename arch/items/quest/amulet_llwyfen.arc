@@ -11,4 +11,5 @@ no_drop 1
 is_magical 1
 is_named 1
 weight 100
+name_pl Maplevale's amulets of Llwyfen
 end

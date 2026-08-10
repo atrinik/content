@@ -15,4 +15,5 @@ protect_slash 25
 protect_pierce 15
 weight 12000
 value 125
+name_pl ring mail
 end

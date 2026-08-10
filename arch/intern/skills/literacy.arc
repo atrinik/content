@@ -9,4 +9,5 @@ level 1
 msg
 Allows you to read books written in the common tongue. Progressing in this skill will allow you to read ever higher level books.
 endmsg
+name_pl literacy
 end

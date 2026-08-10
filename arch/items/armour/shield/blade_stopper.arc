@@ -16,4 +16,5 @@ weight 1350
 value 320
 block 7
 absorb 15
+name_pl blade stoppers
 end

@@ -16,4 +16,5 @@ weight 1300
 value 150
 block 5
 absorb 10
+name_pl high shields
 end

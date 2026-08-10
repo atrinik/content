@@ -9,4 +9,5 @@ value 3000
 msg
 This spell will increase your strength by some amount. Recasting while in effect will refresh the duration.
 endmsg
+name_pl strength self
 end

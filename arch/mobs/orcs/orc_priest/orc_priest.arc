@@ -37,4 +37,5 @@ speed -0.047
 weight 52500
 faction monsters
 int 15
+name_pl orc priests
 end

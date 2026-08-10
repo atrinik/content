@@ -6,4 +6,5 @@ sys_object 1
 no_pick 1
 type 55
 walk_on 1
+name_pl marker
 end

@@ -15,4 +15,5 @@ protect_cleave 20
 protect_pierce 20
 weight 24500
 value 4250
+name_pl plate mail
 end

@@ -6,6 +6,7 @@ face pillar_dark_s.d.101
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl dark pillars
 end
 
 Object pillar_dark2a
@@ -16,6 +17,7 @@ face pillar_dark2a.d.101
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl dark pillars
 end
 
 Object pillar_dark2b
@@ -26,6 +28,7 @@ face pillar_dark2b.d.101
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl dark pillars
 end
 
 Object pillar_dark2c
@@ -36,4 +39,5 @@ face pillar_dark2c.d.101
 no_pass 1
 no_pick 1
 draw_double 1
+name_pl dark pillars
 end

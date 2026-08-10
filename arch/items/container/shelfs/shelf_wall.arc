@@ -15,6 +15,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf1_wall.111
 name shelf
@@ -33,6 +34,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf2_wall.111
 name shelf
@@ -51,6 +53,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf3_wall.111
 name shelf
@@ -69,6 +72,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf4_wall.111
 name shelf
@@ -87,6 +91,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf5_wall.111
 name shelf
@@ -105,6 +110,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf6_wall.111
 name shelf
@@ -123,6 +129,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl shelves
 end
 Object shelf_wall_dem1.111
 name demolished shelf
@@ -141,6 +148,7 @@ value 3
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl demolished shelves
 end
 Object shelf_wall_dem2.111
 name demolished shelf
@@ -159,6 +167,7 @@ value 3
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl demolished shelves
 end
 Object shelf_wall_dem3.111
 name demolished shelf
@@ -177,4 +186,5 @@ value 3
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl demolished shelves
 end

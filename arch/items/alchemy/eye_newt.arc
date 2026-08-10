@@ -9,4 +9,5 @@ type 73
 material 32
 weight 150
 value 300
+name_pl newt's eyes
 end

@@ -12,4 +12,5 @@ item_quality 100
 weight 250
 value 175
 can_stack 1
+name_pl balms
 end

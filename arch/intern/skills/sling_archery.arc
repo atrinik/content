@@ -8,4 +8,5 @@ level 1
 msg
 Allows you to shoot stones from slings. Progressing in levels will increase the damage your shots do.
 endmsg
+name_pl sling archery
 end

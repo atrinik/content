@@ -19,4 +19,5 @@ attack_pierce 100
 dam 1
 int 20
 sp -1
+name_pl diseased needle
 end

@@ -42,6 +42,7 @@ weight 85000
 str 25
 faction monsters
 int 25
+name_pl retributioners
 end
 More
 Object retributioner_b

@@ -14,4 +14,5 @@ weight 250
 container 20000
 weapon_speed 1.0
 food 13
+name_pl stone quivers
 end

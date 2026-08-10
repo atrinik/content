@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_wood4b
 name floor
@@ -17,6 +18,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_wood4c
 name floor
@@ -27,6 +29,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_wood4d
 name floor
@@ -37,4 +40,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end

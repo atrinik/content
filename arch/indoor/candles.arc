@@ -4,6 +4,7 @@ face candlelight1.101
 no_pick 1
 type 79
 layer 4
+name_pl candlelight
 end
 
 Object candlelight2.101
@@ -12,6 +13,7 @@ face candlelight2.101
 no_pick 1
 type 79
 layer 4
+name_pl candlelight
 end
 
 Object candlelight3.101
@@ -20,6 +22,7 @@ face candlelight3.101
 no_pick 1
 type 79
 layer 4
+name_pl candlelight
 end
 
 Object candlelight4.101
@@ -28,6 +31,7 @@ face candlelight4.101
 no_pick 1
 type 79
 layer 4
+name_pl candlelight
 end
 
 Object candle_on
@@ -36,6 +40,7 @@ type 79
 face candle_on.101
 layer 4
 no_pick 1
+name_pl candles
 end
 
 Object candle_off
@@ -44,6 +49,7 @@ type 79
 face candle_off.101
 layer 4
 no_pick 1
+name_pl candles
 end
 
 Object candle2_on
@@ -52,6 +58,7 @@ type 79
 face candle2_on.101
 layer 4
 no_pick 1
+name_pl candles
 end
 
 Object candle2_off
@@ -60,4 +67,5 @@ type 79
 face candle2_off.101
 layer 4
 no_pick 1
+name_pl candles
 end

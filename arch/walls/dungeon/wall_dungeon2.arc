@@ -7,6 +7,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end
 
 Object wall_dungeon2_3
@@ -18,6 +19,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end
 
 Object wall_dungeon2_4
@@ -29,6 +31,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end
 
 Object wall_dungeon2_8
@@ -40,6 +43,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end
 
 Object wall_dungeon2b_1
@@ -51,6 +55,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end
 
 Object wall_dungeon2b_3
@@ -62,6 +67,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end
 
 Object wall_dungeon2b_4
@@ -73,4 +79,5 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl dungeon walls
 end

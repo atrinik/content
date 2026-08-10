@@ -30,4 +30,5 @@ faction npcs
 int 20
 speed -0.058
 weight 72500
+name_pl dwarf nobles
 end

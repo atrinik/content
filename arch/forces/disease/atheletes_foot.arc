@@ -22,4 +22,5 @@ Your feet itch.  They burn.
 endmsg
 race *
 level 5
+name_pl athelete's foot
 end

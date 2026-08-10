@@ -16,4 +16,5 @@ protect_cleave 30
 protect_pierce 30
 weight 34500
 value 252600
+name_pl crystal mail
 end

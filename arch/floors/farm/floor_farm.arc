@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1b
 name field
@@ -17,6 +18,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1c
 name field
@@ -27,6 +29,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1d
 name field
@@ -37,6 +40,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1e
 name field
@@ -47,6 +51,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1f
 name field
@@ -57,6 +62,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1g
 name field
@@ -67,6 +73,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1h
 name field
@@ -77,6 +84,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1i
 name field
@@ -87,6 +95,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1j
 name field
@@ -97,6 +106,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1k
 name field
@@ -107,6 +117,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1l
 name field
@@ -117,6 +128,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1m
 name field
@@ -127,6 +139,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1n
 name field
@@ -137,6 +150,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1o
 name field
@@ -147,6 +161,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end
 Object floor_farm1p
 name field
@@ -157,4 +172,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl fields
 end

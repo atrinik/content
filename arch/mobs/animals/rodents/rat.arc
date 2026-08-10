@@ -31,6 +31,7 @@ level 1
 weight 25500
 faction monsters
 int 1
+name_pl big rats
 end
 
 Object rat_b
@@ -66,6 +67,7 @@ level 1
 weight 25500
 faction monsters
 int 1
+name_pl big rats
 end
 
 Object rat_c
@@ -101,6 +103,7 @@ level 1
 weight 25500
 faction monsters
 int 1
+name_pl big rats
 end
 
 Object rat_d
@@ -136,4 +139,5 @@ level 1
 weight 25500
 faction monsters
 int 1
+name_pl big rats
 end

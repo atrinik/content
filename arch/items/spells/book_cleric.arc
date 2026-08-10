@@ -11,4 +11,5 @@ item_quality 100
 value 150
 weight 500
 nrof 1
+name_pl prayerbooks
 end

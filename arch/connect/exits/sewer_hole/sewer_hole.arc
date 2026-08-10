@@ -7,6 +7,7 @@ sp -1
 no_teleport 1
 type 66
 no_pick 1
+name_pl sewer holes
 end
 Object sewer_hole2
 name sewer hole
@@ -17,4 +18,5 @@ sp -1
 no_teleport 1
 type 66
 no_pick 1
+name_pl sewer holes
 end

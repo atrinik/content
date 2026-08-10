@@ -35,4 +35,5 @@ dex 13
 con 11
 int 15
 pow 15
+name_pl thelra_females
 end

@@ -40,4 +40,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 27
+name_pl lom lobons
 end

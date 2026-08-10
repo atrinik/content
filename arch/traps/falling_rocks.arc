@@ -18,4 +18,5 @@ attack_impact 100
 dam 10
 int 20
 sp -1
+name_pl falling rocks trap
 end

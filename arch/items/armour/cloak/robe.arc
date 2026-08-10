@@ -11,4 +11,5 @@ protect_pierce 3
 protect_cleave 3
 material_real 449
 material 128
+name_pl robes
 end

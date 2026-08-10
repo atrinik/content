@@ -11,4 +11,5 @@ is_used_up 1
 msg
 Your movement speed is decreased.
 endmsg
+name_pl slowness
 end

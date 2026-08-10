@@ -16,4 +16,5 @@ weight 1500
 value 110
 block 7
 absorb 15
+name_pl demon shields
 end

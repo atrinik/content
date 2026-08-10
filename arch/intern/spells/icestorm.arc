@@ -9,4 +9,5 @@ value 50000
 msg
 A cone of ice which freezes monsters facing the caster. This spell gains power with level, so it remains useful even at high level.
 endmsg
+name_pl icestorm
 end

@@ -10,4 +10,5 @@ type 6
 value 10
 weight 10
 can_stack 1
+name_pl perforated teabags
 end

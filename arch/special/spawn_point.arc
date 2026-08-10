@@ -9,4 +9,5 @@ last_sp -1
 last_heal 9
 sys_object 1
 no_pick 1
+name_pl spawn_point
 end

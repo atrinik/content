@@ -14,4 +14,5 @@ weight 1200
 value 750
 material_real 65
 material 2
+name_pl full helmets
 end

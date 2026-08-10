@@ -12,4 +12,5 @@ protect_slash 4
 type 99
 material_real 193
 material 8
+name_pl sandals
 end

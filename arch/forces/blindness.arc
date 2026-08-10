@@ -11,4 +11,5 @@ is_used_up 1
 msg
 Your vision is severely crippled.
 endmsg
+name_pl blindness
 end

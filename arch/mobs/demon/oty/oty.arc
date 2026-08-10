@@ -33,4 +33,5 @@ speed -0.06
 weight 225000
 faction monsters
 int 17
+name_pl oties
 end

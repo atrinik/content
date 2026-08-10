@@ -5553,6 +5553,31 @@
           "additionalProperties": false,
           "properties": {
             "field_id": {
+              "const": "object.name_pl"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
               "const": "object.no_attack"
             },
             "kind": {

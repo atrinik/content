@@ -16,4 +16,5 @@ weight 1550
 value 100
 block 7
 absorb 15
+name_pl war shields
 end

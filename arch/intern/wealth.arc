@@ -5,4 +5,5 @@ sys_object 1
 no_pick 1
 layer 0
 type 125
+name_pl wealth
 end

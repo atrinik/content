@@ -9,4 +9,5 @@ value 200000
 msg
 Similar to the spell of meteor, but this spell fires a bunch of meteors in front of you, which then explode into cones of fire if they hit something.
 endmsg
+name_pl meteor swarm
 end

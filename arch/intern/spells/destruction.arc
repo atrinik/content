@@ -9,4 +9,5 @@ value 40000
 msg
 Creatures around you get struck by a magical power.
 endmsg
+name_pl destruction
 end

@@ -7,6 +7,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_sand_d2
 name floor
@@ -17,6 +18,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_sand_d3
 name floor
@@ -27,6 +29,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_sand_d4
 name floor
@@ -37,4 +40,5 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end

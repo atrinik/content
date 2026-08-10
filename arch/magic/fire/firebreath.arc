@@ -19,4 +19,5 @@ attack_fire 100
 terrain_flag 32767
 flying 1
 no_pick 1
+name_pl fire
 end

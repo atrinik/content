@@ -5,6 +5,7 @@ type 79
 face pillar_white1a.101
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white1b
 name white pillar
@@ -13,6 +14,7 @@ type 79
 face pillar_white1b.101
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white1c
 name white pillar
@@ -26,6 +28,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white1d
 name white pillar
@@ -39,6 +42,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white2a
 name white pillar
@@ -47,6 +51,7 @@ type 79
 face pillar_white2a.101
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white2b
 name white pillar
@@ -55,6 +60,7 @@ type 79
 face pillar_white2b.101
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white2c
 name white pillar
@@ -68,6 +74,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl white pillars
 end
 Object pillar_white2d
 name white pillar
@@ -81,4 +88,5 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl white pillars
 end

@@ -9,6 +9,7 @@ item_quality 100
 type 73
 value 40
 weight 2500
+name_pl bottles
 end
 
 Object salt
@@ -23,6 +24,7 @@ type 6
 food 1
 value 100
 weight 500
+name_pl piles
 end
 
 Object sulfur
@@ -36,6 +38,7 @@ item_quality 100
 type 73
 value 15
 weight 500
+name_pl piles
 end
 
 Object graphite
@@ -49,6 +52,7 @@ item_quality 100
 type 73
 value 1
 weight 500
+name_pl piles
 end
 
 Object phosphorus
@@ -61,6 +65,7 @@ item_condition 100
 item_quality 100
 type 73
 value 45
+name_pl piles
 end
 
 Object cinnabar
@@ -74,6 +79,7 @@ item_quality 100
 type 73
 value 70
 weight 300
+name_pl piles
 end
 
 Object pyrite
@@ -87,6 +93,7 @@ item_quality 100
 type 73
 value 8
 weight 200
+name_pl piles
 end
 
 Object gypsum
@@ -100,4 +107,5 @@ item_quality 100
 type 73
 value 9
 weight 150
+name_pl piles
 end

@@ -12,6 +12,7 @@ weight 450
 level 1
 exp 10
 no_pick 0
+name_pl books
 end
 
 Object book_green
@@ -28,6 +29,7 @@ weight 450
 level 1
 exp 10
 no_pick 0
+name_pl books
 end
 
 Object book_red
@@ -44,6 +46,7 @@ weight 450
 level 1
 exp 10
 no_pick 0
+name_pl books
 end
 
 Object book_blue
@@ -60,6 +63,7 @@ weight 450
 level 1
 exp 10
 no_pick 0
+name_pl books
 end
 
 Object book_pink
@@ -76,4 +80,5 @@ weight 450
 level 1
 exp 10
 no_pick 0
+name_pl books
 end

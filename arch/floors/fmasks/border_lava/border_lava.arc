@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_s1
@@ -14,6 +15,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_e1
@@ -23,6 +25,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_w1
@@ -32,6 +35,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_ne1
@@ -41,6 +45,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_ne21
@@ -50,6 +55,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_se1
@@ -59,6 +65,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_se2
@@ -68,6 +75,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_nw1
@@ -77,6 +85,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_nw2
@@ -86,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_sw1
@@ -95,6 +105,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 
 Object border_lava_sw2
@@ -104,5 +115,6 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl lavaborders
 end
 

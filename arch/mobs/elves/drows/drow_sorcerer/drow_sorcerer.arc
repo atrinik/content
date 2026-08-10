@@ -37,4 +37,5 @@ speed -0.061
 weight 62500
 faction monsters
 int 23
+name_pl drow sorcerers
 end

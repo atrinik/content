@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_blue2
 name floor
@@ -17,6 +18,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_blue3
 name floor
@@ -27,4 +29,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end

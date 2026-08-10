@@ -9,4 +9,5 @@ item_quality 100
 value 65
 layer 3
 identified 1
+name_pl ten kilogram weights
 end

@@ -10,4 +10,5 @@ is_turnable 1
 direction 1
 type 66
 no_pick 1
+name_pl ladders going up
 end

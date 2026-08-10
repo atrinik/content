@@ -13,4 +13,5 @@ value 75
 material_real 65
 material 2
 weight 250
+name_pl bracers
 end

@@ -21,4 +21,5 @@ speed 1
 wc 200
 wc_range 20
 flying 1
+name_pl frostbolts
 end

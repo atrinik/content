@@ -44,4 +44,5 @@ con 6
 # Icestorm.
 arch ability_icestorm
 end
+name_pl elvish sylphs
 end

@@ -15,4 +15,5 @@ weight 1250
 value 35
 block 3
 absorb 5
+name_pl war cleavers
 end

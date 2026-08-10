@@ -9,4 +9,5 @@ type 73
 material 32
 value 300
 weight 125
+name_pl blackroots
 end

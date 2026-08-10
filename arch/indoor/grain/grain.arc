@@ -4,6 +4,7 @@ face grain1.101
 no_pick 1
 type 79
 layer 4
+name_pl grain
 end
 
 Object grain2.101
@@ -12,6 +13,7 @@ face grain2.101
 no_pick 1
 type 79
 layer 4
+name_pl grain
 end
 
 Object grain3.101
@@ -20,6 +22,7 @@ face grain3.101
 no_pick 1
 type 79
 layer 4
+name_pl grain
 end
 
 Object grain4.101
@@ -28,6 +31,7 @@ face grain4.101
 no_pick 1
 type 79
 layer 4
+name_pl grain
 end
 
 Object grain5.101
@@ -36,4 +40,5 @@ face grain5.101
 no_pick 1
 type 79
 layer 4
+name_pl grain
 end

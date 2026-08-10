@@ -14,4 +14,5 @@ protect_cleave 30
 protect_pierce 30
 weight 7500
 value 252500
+name_pl coats
 end

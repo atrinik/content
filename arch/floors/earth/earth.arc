@@ -7,6 +7,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_earth1b
 name floor
@@ -17,6 +18,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_earth1c
 name floor
@@ -27,6 +29,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_earth1d
 name floor
@@ -37,6 +40,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_earth1e
 name floor
@@ -47,6 +51,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_brown1
 name floor
@@ -57,6 +62,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_brown2
 name floor
@@ -67,6 +73,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_brown3
 name floor
@@ -77,6 +84,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_brown4
 name floor
@@ -87,6 +95,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_dark1
 name floor
@@ -97,6 +106,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_dark2
 name floor
@@ -107,6 +117,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object earth_dark3
 name floor
@@ -117,6 +128,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_earth_light1a
 name floor
@@ -127,6 +139,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_earth_light1b
 name floor
@@ -137,4 +150,5 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end

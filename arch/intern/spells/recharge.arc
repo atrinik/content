@@ -9,4 +9,5 @@ value 0
 msg
 Recharges marked wand in your inventory. There is a slight chance that the wand will be destroyed when using this spell.
 endmsg
+name_pl recharge
 end

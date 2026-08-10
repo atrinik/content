@@ -38,4 +38,5 @@ weight 42500
 undead 1
 faction monsters
 int 20
+name_pl skeleton mages
 end

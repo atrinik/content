@@ -16,4 +16,5 @@ weight 1300
 value 100
 block 5
 absorb 8
+name_pl shields
 end

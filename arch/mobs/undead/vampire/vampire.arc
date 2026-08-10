@@ -31,4 +31,5 @@ weight 200000
 undead 1
 faction monsters
 int 21
+name_pl vampires
 end

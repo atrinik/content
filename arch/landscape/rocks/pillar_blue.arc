@@ -6,6 +6,7 @@ mpart_id 3
 face pillar_blue.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue_a
@@ -49,6 +50,7 @@ mpart_id 3
 face pillar_blue1.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue1_a
@@ -92,6 +94,7 @@ mpart_id 3
 face pillar_blue2.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue2_a
@@ -135,6 +138,7 @@ mpart_id 3
 face pillar_blue3.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue3_a
@@ -178,6 +182,7 @@ mpart_id 3
 face pillar_blue4.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue4_a
@@ -221,6 +226,7 @@ mpart_id 3
 face pillar_blue5.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue5_a
@@ -264,6 +270,7 @@ mpart_id 3
 face pillar_blue6.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 More
 Object pillar_blue6_a
@@ -306,6 +313,7 @@ type 79
 face pillar_blue7.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 Object pillar_blue8
 name blue pillar
@@ -314,6 +322,7 @@ type 79
 face pillar_blue8.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 Object pillar_blue9
 name blue pillar
@@ -322,6 +331,7 @@ type 79
 face pillar_blue9.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end
 Object pillar_blue10
 name blue pillar
@@ -330,4 +340,5 @@ type 79
 face pillar_blue10.101
 no_pass 1
 no_pick 1
+name_pl blue pillars
 end

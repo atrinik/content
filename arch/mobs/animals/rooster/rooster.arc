@@ -29,4 +29,5 @@ speed -0.06
 weight 3000
 faction monsters
 int 4
+name_pl roosters
 end

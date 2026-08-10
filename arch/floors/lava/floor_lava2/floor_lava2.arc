@@ -8,6 +8,7 @@ terrain_type 8
 no_pick 1
 is_floor 1
 glow_radius 3
+name_pl lava
 end
 
 Object floor_lava2_2
@@ -20,6 +21,7 @@ terrain_type 8
 no_pick 1
 is_floor 1
 glow_radius 3
+name_pl lava
 end
 
 Object floor_lava2_3
@@ -32,6 +34,7 @@ terrain_type 8
 no_pick 1
 is_floor 1
 glow_radius 3
+name_pl lava
 end
 
 Object floor_lava2_4
@@ -44,4 +47,5 @@ terrain_type 8
 no_pick 1
 is_floor 1
 glow_radius 3
+name_pl lava
 end

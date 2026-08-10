@@ -16,4 +16,5 @@ weight 1500
 value 324
 block 7
 absorb 15
+name_pl defenders
 end

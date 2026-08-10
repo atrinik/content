@@ -13,4 +13,5 @@ protect_cleave 8
 type 35
 material_real 65
 material 2
+name_pl chausses
 end

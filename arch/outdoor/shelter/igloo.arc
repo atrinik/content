@@ -6,6 +6,7 @@ mpart_id 3
 face igloo.151
 no_pass 1
 no_pick 1
+name_pl igloos
 end
 More
 Object igloo2_a
@@ -50,6 +51,7 @@ mpart_id 3
 face igloo.131
 no_pass 1
 no_pick 1
+name_pl igloos
 end
 More
 Object igloo_a

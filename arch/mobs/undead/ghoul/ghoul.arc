@@ -34,4 +34,5 @@ weight 122500
 undead 1
 faction monsters
 int 15
+name_pl ghouls
 end

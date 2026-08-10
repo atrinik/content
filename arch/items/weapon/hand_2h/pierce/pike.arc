@@ -16,4 +16,5 @@ weight 2500
 value 875
 block 10
 absorb 15
+name_pl pikes
 end

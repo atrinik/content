@@ -4,6 +4,7 @@ face seashell.101
 layer 4
 type 79
 no_pick 1
+name_pl seashells
 end
 
 Object seashell2
@@ -12,6 +13,7 @@ face seashell2.101
 layer 4
 type 79
 no_pick 1
+name_pl seashells
 end
 
 Object seashell3
@@ -20,4 +22,5 @@ face seashell3.101
 layer 4
 type 79
 no_pick 1
+name_pl seashells
 end

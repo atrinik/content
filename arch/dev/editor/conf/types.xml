@@ -130,6 +130,10 @@
 	<attribute arch="name" editor="name" type="string">
 		This is the name of the object, displayed to the player.
 	</attribute>
+	<attribute arch="name_pl" editor="plural name" type="string">
+		This is the plural name of the object, displayed to the player when
+		referring to more than one instance.
+	</attribute>
 	<attribute arch="title" editor="title" type="string">
 		This is the object's title. Once an object is identified the
 		title is attached to the name. Typical titles are "of Yordan",

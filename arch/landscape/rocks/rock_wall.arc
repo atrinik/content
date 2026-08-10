@@ -5,6 +5,7 @@ type 79
 face rock_wall1.101
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 Object rock_wall2
 name rocks
@@ -14,6 +15,7 @@ mpart_id 3
 face rock_wall2.101
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 More
 Object rock_wall2_a
@@ -57,6 +59,7 @@ mpart_id 3
 face rock_wall3.101
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 More
 Object rock_wall3_a
@@ -100,6 +103,7 @@ mpart_id 3
 face rock_wall4.101
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 More
 Object rock_wall4_a
@@ -143,6 +147,7 @@ mpart_id 3
 face rock_wall5.101
 no_pass 1
 no_pick 1
+name_pl rocks
 end
 More
 Object rock_wall5_a
@@ -187,6 +192,7 @@ face rock_wall6.101
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl rocks
 end
 More
 Object rock_wall6_a
@@ -234,6 +240,7 @@ face rock_wall7.101
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl rocks
 end
 More
 Object rock_wall7_a
@@ -281,6 +288,7 @@ face rock_wall8.101
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl rocks
 end
 More
 Object rock_wall8_a

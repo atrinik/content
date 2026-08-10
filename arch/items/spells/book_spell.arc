@@ -12,4 +12,5 @@ item_quality 100
 value 1150
 weight 500
 can_stack 1
+name_pl spellbooks
 end

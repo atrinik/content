@@ -32,4 +32,5 @@ speed -0.06
 weight 225000
 faction monsters
 int 20
+name_pl green demons
 end

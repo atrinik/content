@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_cave2
 name floor
@@ -17,6 +18,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_cave3
 name floor
@@ -27,6 +29,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_cave4
 name floor
@@ -37,6 +40,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_cave5
 name floor
@@ -47,6 +51,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_cave6
 name floor
@@ -57,4 +62,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end

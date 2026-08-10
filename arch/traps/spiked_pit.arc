@@ -18,4 +18,5 @@ attack_impact 100
 dam 9
 int 15
 sp -1
+name_pl spiked pit
 end

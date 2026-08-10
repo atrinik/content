@@ -34,6 +34,7 @@ speed -0.06
 weight 225000
 faction monsters
 int 24
+name_pl big otyoughs
 end
 More
 Object otyough_big_b

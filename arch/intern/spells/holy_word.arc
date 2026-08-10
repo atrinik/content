@@ -9,4 +9,5 @@ value 60000
 msg
 Cone of holy power that will damage all undead creatures it hits.
 endmsg
+name_pl holy word
 end

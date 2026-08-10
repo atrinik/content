@@ -15,4 +15,5 @@ speed 0.01
 is_used_up 1
 no_pick 1
 invulnerable 1
+name_pl decaying half-elf corpses
 end

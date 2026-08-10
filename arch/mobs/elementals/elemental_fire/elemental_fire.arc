@@ -31,4 +31,5 @@ speed -0.050
 weight 13500
 faction monsters
 int 17
+name_pl fire elementals
 end

@@ -30,5 +30,6 @@ level 1
 weight 6000
 faction monsters
 int 4
+name_pl mandragoras
 end
 

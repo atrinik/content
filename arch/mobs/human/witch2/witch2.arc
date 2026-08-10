@@ -41,4 +41,5 @@ weight 85000
 faction npcs
 int 25
 str 25
+name_pl witches
 end

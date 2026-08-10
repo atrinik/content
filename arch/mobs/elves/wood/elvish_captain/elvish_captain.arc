@@ -32,4 +32,5 @@ level 1
 speed -0.047
 weight 91500
 reflect_missile 1
+name_pl elvish captains
 end

@@ -12,6 +12,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl art materials
 end
 
 Object constr_art2
@@ -28,6 +29,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl art materials
 end
 
 Object constr_art3
@@ -44,6 +46,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl art materials
 end
 
 Object constr_art4
@@ -60,6 +63,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl art materials
 end
 
 Object constr_art5
@@ -76,4 +80,5 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl art materials
 end

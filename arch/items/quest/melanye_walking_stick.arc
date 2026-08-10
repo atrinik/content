@@ -15,4 +15,5 @@ is_named 1
 msg
 This walking stick appears to be emitting a soft glow.
 endmsg
+name_pl Melanye's Walking Sticks
 end

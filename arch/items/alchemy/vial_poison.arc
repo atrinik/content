@@ -15,4 +15,5 @@ msg
 A poison of some sort.
 Maybe it could be used to taint someone's food.
 endmsg
+name_pl vials
 end

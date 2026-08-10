@@ -271,6 +271,18 @@ class ContentCoreTest(unittest.TestCase):
             apply_transaction(self.root, transaction, schema_root=ROOT)
         self.assertEqual(source, path.read_bytes())
 
+    def test_plural_name_is_typed_without_changing_source_bytes(self):
+        source = b"Object torch\nname torch\nname_pl torches\ntype 78\nend\n"
+        self.write("arch/torch.arc", source)
+
+        document = self.document("arch/torch.arc", "archetype")
+        plural = document.objects[0].field_ids("object.name_pl")
+
+        self.assertEqual(1, len(plural))
+        self.assertEqual("torches", plural[0].typed_value)
+        self.assertEqual("string", plural[0].value_kind)
+        self.assertEqual(source, document.serialize())
+
     def test_targeted_edit_changes_only_the_value_bytes(self):
         source = (
             b"arch map\n"

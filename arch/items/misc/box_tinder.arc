@@ -9,4 +9,5 @@ item_condition 100
 value 100
 weight 400
 identified 1
+name_pl tinder boxes
 end

@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_e
 name grass
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_e_edge
 name grass
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_se
 name grass
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_s
 name grass
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_s_edge
 name grass
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_sw
 name grass
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_w
 name grass
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_w_edge
 name grass
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_nw
 name grass
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_n
 name grass
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_n_edge
 name grass
@@ -93,6 +104,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end
 Object grass_scarce
 name grass
@@ -101,4 +113,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl grass
 end

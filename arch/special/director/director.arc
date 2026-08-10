@@ -9,4 +9,5 @@ no_pick 1
 maxsp 1
 fly_on 1
 sys_object 1
+name_pl director
 end

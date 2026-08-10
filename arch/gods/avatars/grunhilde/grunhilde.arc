@@ -42,4 +42,5 @@ msg
 Goddess of the Brave, the Just, Deathbringer
 endmsg
 weight 1
+name_pl Grunhilde
 end

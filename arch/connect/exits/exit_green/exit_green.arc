@@ -14,4 +14,5 @@ anim_speed 5
 walk_on 1
 fly_on 1
 race teleport.ogg
+name_pl exits
 end

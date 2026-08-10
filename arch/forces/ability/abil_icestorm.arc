@@ -10,4 +10,5 @@ last_grace 10
 no_pick 1
 sp 1
 hp 1
+name_pl ability icestorm
 end

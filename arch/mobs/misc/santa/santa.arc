@@ -31,4 +31,5 @@ speed -0.06
 weight 225000
 faction monsters
 int 30
+name_pl santas
 end

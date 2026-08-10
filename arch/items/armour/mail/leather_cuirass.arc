@@ -15,4 +15,5 @@ weight 8450
 value 1400
 material_real 194
 material 8
+name_pl cuirasses
 end

@@ -9,4 +9,5 @@ value 25000
 msg
 This spell cures all diseases from your character.
 endmsg
+name_pl cure disease
 end

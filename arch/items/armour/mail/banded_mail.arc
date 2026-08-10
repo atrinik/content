@@ -15,4 +15,5 @@ protect_cleave 17
 protect_pierce 17
 weight 20500
 value 2600
+name_pl banded mail
 end

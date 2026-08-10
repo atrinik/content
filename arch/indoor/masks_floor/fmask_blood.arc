@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl blood
 end
 Object blood_floor2
 name blood
@@ -13,4 +14,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl blood
 end

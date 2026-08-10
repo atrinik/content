@@ -14,4 +14,5 @@ invulnerable 1
 material 1
 speed 0.01
 blocksview 1
+name_pl fog
 end

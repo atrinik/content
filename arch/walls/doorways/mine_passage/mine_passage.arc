@@ -5,6 +5,7 @@ type 79
 mpart_id 2
 layer 7
 no_pick 1
+name_pl passages
 end
 More
 Object mine_passage_1b
@@ -23,6 +24,7 @@ type 79
 mpart_id 1
 layer 7
 no_pick 1
+name_pl passages
 end
 More
 Object mine_passage_3b

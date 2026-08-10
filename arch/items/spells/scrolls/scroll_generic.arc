@@ -12,4 +12,5 @@ item_quality 100
 weight 20
 value 3
 can_stack 1
+name_pl scrolls
 end

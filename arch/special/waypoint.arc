@@ -7,4 +7,5 @@ cursed 0
 type 119
 face waypoint.101
 sys_object 1
+name_pl waypoint
 end

@@ -11,4 +11,5 @@ no_pick 1
 level 1
 maxsp 1
 hp 1
+name_pl mover
 end

@@ -4,4 +4,5 @@ type 88
 level 127
 attack_impact 100
 sys_object 1
+name_pl falling
 end

@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.111
@@ -14,6 +15,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.121
@@ -23,6 +25,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.131
@@ -32,6 +35,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.141
@@ -41,6 +45,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.151
@@ -50,6 +55,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.161
@@ -59,6 +65,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.171
@@ -68,6 +75,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end
 
 Object carpet1.181
@@ -77,4 +85,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl carpets
 end

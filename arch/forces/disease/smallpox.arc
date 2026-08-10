@@ -27,4 +27,5 @@ pustules?
 endmsg
 race goblin,human,troll,giant,dwarf
 level 20
+name_pl smallpox
 end

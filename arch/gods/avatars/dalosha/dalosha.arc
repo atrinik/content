@@ -42,4 +42,5 @@ msg
 Drow goddess, Queen of Spiders, Mistress of poisons, Patron of assassins
 endmsg
 weight 1
+name_pl Dalosha
 end

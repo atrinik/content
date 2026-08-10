@@ -6,4 +6,5 @@ type 79
 no_drop 1
 no_pick 1
 identified 1
+name_pl close the key ring
 end

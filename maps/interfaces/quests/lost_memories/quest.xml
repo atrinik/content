@@ -98,10 +98,15 @@
         <part name="Speak with Sam Goodberry" uid="speak_sam">
             <info>You have reached Incuna. Speak with Sam Goodberry on the ship's main deck.</info>
             <interface inherit="arrival" npc="Sam Goodberry" state="need_start">
-                <dialog name="hello">
-                    <action start="speak_sam"/>
-                    <inherit/>
-                </dialog>
+                <code>
+def dialog_hello(self):
+    if self.qm.started():
+        InterfaceDialog.dialog_hello(self)
+        return
+
+    self.qm.start("speak_sam")
+    super().dialog_hello()
+                </code>
             </interface>
             <interface inherit="arrival" npc="Sam Goodberry" state="need_complete"/>
         </part>

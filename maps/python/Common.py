@@ -78,7 +78,7 @@ def obj_assign_attribs (obj, attribs):
     if not attribs:
         return
 
-    matches = re.findall(r'(\w+) (?:(?:"([^"]+)")|([^ ]+))', attribs)
+    matches = re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
     tokens = re.findall(r'"[^"]*"|\S+', attribs)
 
     for pos in range(0, len(tokens), 2):

@@ -12,6 +12,7 @@ direction 1
 no_teleport 1
 no_pick 1
 last_sp 5
+light_color 66ff66
 weight 1250
 material 144
 food 1

@@ -1,6 +1,9 @@
 """Tests for deterministic Classic client light-review evidence generation."""
 
+import hashlib
+import json
 import tempfile
+from types import SimpleNamespace
 import unittest
 from pathlib import Path
 
@@ -50,6 +53,70 @@ class LightReviewEvidenceTest(unittest.TestCase):
 
             self.assertEqual(first.read_bytes(), second.read_bytes())
             self.assertEqual((2, 2, pixels), evidence.read_png(first))
+
+    def test_build_validates_captures_and_replaces_stale_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            output = root / "maps" / "light-source-evidence"
+            output.mkdir(parents=True)
+            (output / "stale.png").write_bytes(b"stale")
+            captures = root / "captures"
+            captures.mkdir()
+            screenshot = captures / "scene.png"
+            evidence.write_png(screenshot, 1024, 768, bytes(1024 * 768 * 3))
+            digest = hashlib.sha256(screenshot.read_bytes()).hexdigest()
+            semantic = "a" * 64
+            commit = "b" * 40
+            inventory = {
+                "archetypes": [],
+                "artifacts": [],
+                "color_sources": [],
+                "toggle_states": [],
+                "maps": [{
+                    "path": "maps/scene",
+                    "semantic_sha256": semantic,
+                    "emitters": [{"x": 1, "y": 2, "visible": True}],
+                }],
+            }
+            inventory_path = root / "inventory.json"
+            inventory_path.write_text(json.dumps(inventory))
+            context_path = root / "context.json"
+            context_path.write_text(json.dumps({"content_commit": commit}))
+            representatives_path = root / "representatives.json"
+            representatives_path.write_text("{}")
+            rows = [{
+                "artifact": "scene.png",
+                "map": "maps/scene",
+                "map_semantic_sha256": semantic,
+                "content_commit": commit,
+                "sha256": digest,
+                "x": 1,
+                "y": 2,
+            }]
+            smooth = captures / "smooth.json"
+            discrete = captures / "discrete.json"
+            smooth.write_text(json.dumps(rows))
+            discrete.write_text(json.dumps(rows))
+            args = SimpleNamespace(
+                inventory=inventory_path,
+                smooth_manifest=smooth,
+                discrete_manifest=discrete,
+                context=context_path,
+                representatives=representatives_path,
+                output=output,
+                dry_run=False,
+            )
+            original_root = evidence.audit.ROOT
+            evidence.audit.ROOT = root
+            try:
+                result = evidence.build_evidence(args)
+            finally:
+                evidence.audit.ROOT = original_root
+
+            self.assertEqual(2, result["sheets"])
+            self.assertFalse((output / "stale.png").exists())
+            self.assertTrue((output / "smooth-001.png").is_file())
+            self.assertEqual(2, json.loads((output / "manifest.json").read_text())["schema_version"])
 
 
 if __name__ == "__main__":

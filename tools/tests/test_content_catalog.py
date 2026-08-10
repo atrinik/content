@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.build_runtime import build as build_runtime
+from tools.build_runtime import build as build_runtime, review_only_map_entries
 from tools.content_catalog import ContentCatalog, ContentId, load_catalog
 from tools.content_catalog.__main__ import main as catalog_main
 
@@ -326,6 +326,23 @@ end
         self.assertEqual("arch/outside.arc", diagnostics[0].location.path)
         self.assertNotIn(external_directory, diagnostics[0].format())
         self.assertEqual((), catalog.definitions)
+
+    def test_runtime_collection_excludes_light_review_artifacts(self):
+        maps = self.root / "maps"
+        self.assertEqual(
+            {"light-source-evidence", "light-source-review.json"},
+            review_only_map_entries(
+                str(maps),
+                ["world", "light-source-evidence", "light-source-review.json"],
+                maps,
+            ),
+        )
+        self.assertEqual(
+            set(),
+            review_only_map_entries(
+                str(maps / "nested"), ["light-source-evidence"], maps
+            ),
+        )
 
     def test_runtime_staging_does_not_dereference_tool_links(self):
         self.create_valid_tree()

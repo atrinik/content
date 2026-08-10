@@ -15,6 +15,17 @@ import sys
 import tempfile
 
 
+REVIEW_ONLY_MAP_ENTRIES = {"light-source-evidence", "light-source-review.json"}
+
+
+def review_only_map_entries(directory: str, names: list[str], map_root: Path) -> set[str]:
+    """Return review-only root entries excluded from playable runtime maps."""
+
+    if Path(directory) == map_root:
+        return set(names) & REVIEW_ONLY_MAP_ENTRIES
+    return set()
+
+
 def validate_source_tree(source: Path) -> None:
     """Reject missing roots, links, and special files before staging content."""
 
@@ -181,7 +192,13 @@ def build(
                 ],
                 check=True,
             )
-            shutil.copytree(staging / "maps", candidate / "maps")
+            shutil.copytree(
+                staging / "maps",
+                candidate / "maps",
+                ignore=lambda directory, names: review_only_map_entries(
+                    directory, names, staging / "maps"
+                ),
+            )
 
         copy_attribution(source, candidate)
         shutil.copyfile(

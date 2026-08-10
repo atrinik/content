@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from tools import light_review_evidence as evidence_tools
 from tools import world_content_audit as audit
 
 
@@ -110,6 +111,7 @@ end
             """Object colored_lamp
 name colored lamp
 face lamp.101
+animation lamp
 glow_radius 4
 light_color ff8040
 end
@@ -123,6 +125,8 @@ type 78
 end
 Object inert
 name inert
+animation inert
+light_color 4060ff
 end
 """,
         )
@@ -155,6 +159,7 @@ arch inert
 x 6
 y 7
 face orb.101
+animation orb
 glow_radius 3
 light_color 4060ff
 end
@@ -164,7 +169,7 @@ end
             "maps/light-source-review.json",
             json.dumps(
                 {
-                    "schema_version": 3,
+                    "schema_version": 4,
                     "review_method": "test semantic and rendered inspection",
                     "palette": {
                         "4060ff": {"rationale": "focused blue magic"},
@@ -184,27 +189,41 @@ end
                         "glowing_reward": {
                             "uncolored_disposition": "neutral",
                             "rationale": "Neutral reward glow preserves its art.",
-                        }
+                        },
                     },
                     "color_sources": {
                         "colored_lamp": {
                             "rationale": "Warm orange follows this lamp's flame art."
+                        },
+                        "inert": {
+                            "rationale": "Blue follows the inherited inert crystal art."
                         }
+                    },
+                    "toggle_states": {},
+                    "context_checks": {
+                        check: {
+                            "status": "pass",
+                            "views": ["smooth-scene", "discrete-scene"],
+                            "rationale": "Compared the scene in both lighting modes.",
+                        }
+                        for check in (
+                            "overlap",
+                            "linked-depth",
+                            "horizontal-boundary",
+                            "dark-interior",
+                            "outdoor-transition",
+                            "fog-roof",
+                            "navigation",
+                        )
                     },
                     "maps": {
                         "maps/scene": {
                             "uncolored_disposition": "neutral",
                             "rationale": "Rendered room keeps neutral fill around colored accents.",
                             "visible_neutral": {},
-                            "checks": [
-                                "overlap",
-                                "linked-depth",
-                                "horizontal-boundary",
-                                "dark-interior",
-                                "outdoor-transition",
-                                "fog-roof",
-                                "navigation",
-                            ],
+                            "art_overrides": {
+                                "14": "Blue orb art intentionally overrides the inert base."
+                            },
                         }
                     },
                 }
@@ -217,6 +236,7 @@ end
             ("archetypes", "id"),
             ("artifacts", "id"),
             ("color_sources", "id"),
+            ("toggle_states", "id"),
             ("maps", "path"),
         ):
             for row in report[section]:
@@ -229,14 +249,11 @@ end
         evidence_dir.mkdir()
         smooth = evidence_dir / "smooth.png"
         discrete = evidence_dir / "discrete.png"
-        image = bytes.fromhex(
-            "89504e470d0a1a0a0000000d494844520000000100000001"
-            "08060000001f15c4890000000049454e44ae426082"
-        )
-        smooth.write_bytes(image)
-        discrete.write_bytes(image)
+        evidence_tools.write_png(smooth, 1, 1, b"\x00\x00\x00")
+        evidence_tools.write_png(discrete, 1, 1, b"\x00\x00\x00")
+        image = smooth.read_bytes()
         evidence = {
-            "schema_version": 1,
+            "schema_version": 2,
             "render_context": {
                 "content_commit": "1" * 40,
                 "classic_client_commit": "2" * 40,
@@ -285,6 +302,8 @@ end
                     "sheet": "smooth",
                     "tile": 0,
                     "mode": "smooth",
+                    "capture_sha256": "5" * 64,
+                    "content_commit": "1" * 40,
                 },
                 {
                     "id": "discrete-scene",
@@ -295,6 +314,8 @@ end
                     "sheet": "discrete",
                     "tile": 0,
                     "mode": "discrete",
+                    "capture_sha256": "6" * 64,
+                    "content_commit": "1" * 40,
                 },
             ],
             "representative_checks": {
@@ -312,6 +333,7 @@ end
                     "navigation",
                 )
             },
+            "active_states": {},
         }
         self.write("maps/light-source-evidence/manifest.json", json.dumps(evidence))
 
@@ -319,13 +341,14 @@ end
             {
                 "archetypes": 2,
                 "artifacts": 1,
-                "color_sources": 1,
+                "color_sources": 2,
+                "toggle_states": 0,
                 "maps": 1,
                 "map_instances": 3,
                 "visible_map_instances": 2,
                 "invisible_map_instances": 1,
-                "explicit_color": 3,
-                "intentional_neutral": 3,
+                "explicit_color": 4,
+                "intentional_neutral": 2,
                 "unreviewed": 0,
                 "colors": ["4060ff", "ff8040"],
             },
@@ -339,16 +362,21 @@ end
         artifact = report["artifacts"][0]
         self.assertTrue(artifact["visible"])
         self.assertEqual("reward.101", artifact["face"])
+        self.assertEqual("4060ff", artifact["color"])
+        self.assertEqual("inert", artifact["color_source"]["object"])
         self.assertEqual("artifact", artifact["radius_source"]["kind"])
         self.assertEqual("glow_radius", artifact["radius_source"]["field"])
         lamp = report["archetypes"][0]
         self.assertEqual("glow_radius", lamp["radius_source"]["field"])
-        self.assertEqual(4, lamp["radius_source"]["field_line"])
+        self.assertEqual(5, lamp["radius_source"]["field_line"])
         self.assertEqual("archetype", scene["emitters"][0]["color_source"]["kind"])
         override = scene["emitters"][2]
         self.assertEqual("map", override["radius_source"]["kind"])
         self.assertEqual("maps/scene", override["radius_source"]["path"])
         self.assertEqual("light_color", override["color_source"]["field"])
+        self.assertEqual("orb", override["animation"])
+        self.assertEqual("map", override["animation_source"]["kind"])
+        self.assertEqual(["face", "animation"], override["art_override_fields"])
 
         broken_report = audit.light_inventory()
         broken_report["maps"][0]["emitters"][0]["radius_source"] = None
@@ -358,22 +386,14 @@ end
         )
 
         review = json.loads(review_path.read_text())
-        review["maps"]["maps/scene"]["checks"] = None
+        review["context_checks"]["overlap"]["status"] = "not-applicable"
         review_path.write_text(json.dumps(review))
         self.assertIn(
-            "map maps/scene must record every contextual lighting check",
+            "contextual lighting check overlap must record pass",
             audit.validate_light_inventory(audit.light_inventory()),
         )
 
-        review["maps"]["maps/scene"]["checks"] = [
-            "overlap",
-            "linked-depth",
-            "horizontal-boundary",
-            "dark-interior",
-            "outdoor-transition",
-            "fog-roof",
-            "navigation",
-        ]
+        review["context_checks"]["overlap"]["status"] = "pass"
         review_path.write_text(json.dumps(review))
         smooth.write_bytes(b"changed evidence")
         self.assertIn(
@@ -432,10 +452,6 @@ end
             "map maps/scene changed since its lighting review",
             errors,
         )
-        self.assertIn(
-            "map maps/scene needs a visible-neutral rationale for inert",
-            errors,
-        )
 
     def test_light_inventory_preserves_black_and_marks_faceless_emitters_invisible(self):
         self.write(
@@ -488,6 +504,7 @@ end
             "arch/toggle.arc",
             """Object toggle_lamp
 face lamp.101
+animation lamp
 type 74
 last_sp 5
 light_color ffc080
@@ -517,6 +534,12 @@ end
         self.assertEqual((3, 4), (emitter["x"], emitter["y"]))
         self.assertEqual("archetype", emitter["radius_source"]["kind"])
         self.assertEqual("light_color", emitter["color_source"]["field"])
+        self.assertEqual("lamp", emitter["animation"])
+        self.assertEqual(1, len(report["toggle_states"]))
+        self.assertEqual(
+            {"archetype", "map"},
+            {row["kind"] for row in report["toggle_states"][0]["sources"]},
+        )
 
     def test_light_review_check_rejects_missing_baseline_rows(self):
         self.write(
@@ -532,7 +555,7 @@ end
         report = audit.light_inventory()
         errors = audit.validate_light_inventory(report)
 
-        self.assertIn("light-source review must use schema_version 3", errors)
+        self.assertIn("light-source review must use schema_version 4", errors)
         self.assertIn("light-source review needs a concise review_method", errors)
         self.assertIn("light-source review archetypes must be an object", errors)
         self.assertIn("1 effective light sources remain unreviewed", errors)

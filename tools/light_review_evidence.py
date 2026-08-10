@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import struct
 import sys
+import tempfile
 import zlib
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -208,70 +209,137 @@ def _render_sheet(job: tuple[str, list[str]]) -> tuple[str, str]:
 
 
 def build_evidence(args) -> dict:
+    expected_output = (audit.ROOT / "maps" / "light-source-evidence").resolve()
+    if args.output.is_symlink() or args.output.resolve() != expected_output:
+        raise ValueError("output must be maps/light-source-evidence in this checkout")
     report = json.loads(args.inventory.read_text())
     map_rows = {row["path"]: row for row in report["maps"]}
+    toggle_states = {row["id"]: row for row in report["toggle_states"]}
+    context = json.loads(args.context.read_text())
     modes = {
         "smooth": _load_captures(args.smooth_manifest, "smooth"),
         "discrete": _load_captures(args.discrete_manifest, "discrete"),
     }
     sheet_count = sum((len(rows) + 24) // 25 for rows in modes.values())
+    for mode, rows in modes.items():
+        for row in rows:
+            if row["map"] not in map_rows:
+                raise ValueError("capture references stale map: {}".format(row["map"]))
+            if row.get("map_semantic_sha256") != map_rows[row["map"]]["semantic_sha256"]:
+                raise ValueError("capture references stale map semantics: {}".format(row["map"]))
+            if row.get("content_commit") != context.get("content_commit"):
+                raise ValueError("capture content commit disagrees with render context")
+            actual_sha256 = hashlib.sha256(row["_path"].read_bytes()).hexdigest()
+            if row.get("sha256") != actual_sha256:
+                raise ValueError("capture digest changed: {}".format(row["_path"]))
+            state_id = row.get("active_state_id")
+            if state_id is not None and state_id not in toggle_states:
+                raise ValueError("capture references stale toggle state: {}".format(state_id))
+            if state_id is not None and not isinstance(row.get("runtime_command"), str):
+                raise ValueError("active-state capture needs its exact runtime command")
+            width, height, _ = read_png(row["_path"])
+            if (width, height) != (1024, 768):
+                raise ValueError(
+                    "{} capture must be a 1024x768 Classic screenshot: {}".format(
+                        mode, row["_path"]
+                    )
+                )
     if args.dry_run:
         return {
             "captures": {mode: len(rows) for mode, rows in modes.items()},
             "sheets": sheet_count,
             "output": str(args.output),
         }
-    args.output.mkdir(parents=True, exist_ok=True)
-    sheets = {}
-    views = []
-    jobs = []
-    for mode, rows in modes.items():
-        for offset in range(0, len(rows), 25):
-            number = offset // 25 + 1
-            identifier = f"{mode}-{number:03d}"
-            for tile, row in enumerate(rows[offset:offset + 25]):
-                if row["map"] not in map_rows:
-                    raise ValueError("capture references stale map: {}".format(row["map"]))
-                views.append({
-                    "id": f"{mode}-{offset + tile + 1:04d}",
-                    "map": row["map"],
-                    "map_semantic_sha256": map_rows[row["map"]]["semantic_sha256"],
-                    "x": row["x"],
-                    "y": row["y"],
-                    "sheet": identifier,
-                    "tile": tile,
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        prefix=".{}-build-".format(args.output.name), dir=args.output.parent
+    ) as transaction_name:
+        transaction = Path(transaction_name)
+        candidate = transaction / "candidate"
+        candidate.mkdir()
+        sheets = {}
+        views = []
+        jobs = []
+        for mode, rows in modes.items():
+            for offset in range(0, len(rows), 25):
+                number = offset // 25 + 1
+                identifier = f"{mode}-{number:03d}"
+                for tile, row in enumerate(rows[offset:offset + 25]):
+                    views.append({
+                        "id": f"{mode}-{offset + tile + 1:04d}",
+                        "map": row["map"],
+                        "map_semantic_sha256": map_rows[row["map"]]["semantic_sha256"],
+                        "x": row["x"],
+                        "y": row["y"],
+                        "sheet": identifier,
+                        "tile": tile,
+                        "mode": mode,
+                        "capture_sha256": row["sha256"],
+                        "content_commit": row["content_commit"],
+                        **(
+                            {
+                                "active_state_id": row["active_state_id"],
+                                "runtime_command": row["runtime_command"],
+                            }
+                            if row.get("active_state_id") else {}
+                        ),
+                    })
+                artifact_name = f"{identifier}.png"
+                jobs.append((str(candidate / artifact_name), [
+                    str(row["_path"])
+                    for row in rows[offset:offset + 25]
+                ]))
+                final_artifact = (args.output / artifact_name).resolve()
+                sheets[identifier] = {
+                    "artifact": final_artifact.relative_to(
+                        audit.ROOT.resolve()
+                    ).as_posix(),
+                    "sha256": None,
+                    "columns": COLUMNS,
+                    "rows": ROWS,
+                    "pixel_width": COLUMNS * TILE_WIDTH,
+                    "pixel_height": ROWS * TILE_HEIGHT,
                     "mode": mode,
-                })
-            artifact = (args.output / f"{identifier}.png").resolve()
-            jobs.append((str(artifact), [
-                str(row["_path"])
-                for row in rows[offset:offset + 25]
-            ]))
-            sheets[identifier] = {
-                "artifact": artifact.resolve().relative_to(audit.ROOT.resolve()).as_posix(),
-                "sha256": None,
-                "columns": COLUMNS,
-                "rows": ROWS,
-                "pixel_width": COLUMNS * TILE_WIDTH,
-                "pixel_height": ROWS * TILE_HEIGHT,
-                "mode": mode,
+                }
+        workers = min(len(jobs), 4, os.cpu_count() or 1)
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            rendered = dict(executor.map(_render_sheet, jobs))
+        for identifier, entry in sheets.items():
+            candidate_artifact = candidate / Path(entry["artifact"]).name
+            entry["sha256"] = rendered[str(candidate_artifact)]
+        context["inventory_sha256"] = audit._inventory_semantic_sha256(report)
+        active_states = {
+            row["id"]: {
+                "semantic_sha256": row["semantic_sha256"],
+                "views": [
+                    view["id"]
+                    for view in views
+                    if view.get("active_state_id") == row["id"]
+                ],
+                "rationale": row["rationale"],
             }
-    workers = min(len(jobs), 4, os.cpu_count() or 1)
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        rendered = dict(executor.map(_render_sheet, jobs))
-    for identifier, entry in sheets.items():
-        artifact = str(audit.ROOT / entry["artifact"])
-        entry["sha256"] = rendered[artifact]
-    context = json.loads(args.context.read_text())
-    context["inventory_sha256"] = audit._inventory_semantic_sha256(report)
-    manifest = {
-        "schema_version": 1,
-        "render_context": context,
-        "sheets": sheets,
-        "views": views,
-        "representative_checks": json.loads(args.representatives.read_text()),
-    }
-    (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+            for row in report["toggle_states"]
+        }
+        manifest = {
+            "schema_version": 2,
+            "render_context": context,
+            "sheets": sheets,
+            "views": views,
+            "representative_checks": json.loads(args.representatives.read_text()),
+            "active_states": active_states,
+        }
+        (candidate / "manifest.json").write_text(
+            json.dumps(manifest, indent=2) + "\n"
+        )
+        previous = transaction / "previous"
+        if args.output.exists():
+            args.output.rename(previous)
+        try:
+            candidate.rename(args.output)
+        except BaseException:
+            if previous.exists():
+                previous.rename(args.output)
+            raise
     return {"captures": {mode: len(rows) for mode, rows in modes.items()}, "sheets": sheet_count}
 
 

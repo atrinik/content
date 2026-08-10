@@ -14,6 +14,7 @@ maxhp 2000
 food 2000
 last_eat 1
 last_sp 5
+light_color ff8030
 item_quality 100
 item_condition 100
 end

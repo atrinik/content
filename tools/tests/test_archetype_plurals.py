@@ -162,6 +162,11 @@ class ArchetypePluralTest(unittest.TestCase):
         )
         self.assertEqual("recovered", recovered["status"])
         self.assertEqual(original, path.read_bytes())
+        repeated = recover(
+            self.root, self.manifest, apply=True, check_git=False
+        )
+        self.assertEqual("already-recovered", repeated["status"])
+        self.assertFalse(repeated["applied"])
         self.assertEqual(
             "prepared", migrate(self.root, self.manifest, check_git=False)["status"]
         )

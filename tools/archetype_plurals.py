@@ -686,7 +686,19 @@ def recover(
     line = identify_line(root) if check_git else "fixture"
     entries, rows = _checked_rows(root, manifest)
     present = sum(bool(entry["plurals"]) for entry in entries.values())
-    if present in (0, len(entries)):
+    if present == 0:
+        return {
+            "schema_version": 1,
+            "kind": "archetype-plural-recovery",
+            "line": line,
+            "dry_run": not apply,
+            "applied": False,
+            "status": "already-recovered",
+            "archetypes": 0,
+            "files": 0,
+            "batches": 0,
+        }
+    if present == len(entries):
         raise PluralMigrationError(
             "recovery requires a partial reviewed migration, found {}/{}".format(
                 present, len(entries)

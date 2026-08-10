@@ -98,6 +98,7 @@ class PythonCommandTests(unittest.TestCase):
             'count 2 label "junk light_color ff0000',
             'count 2 label junk" light_color ff0000',
             'count 2 label "junk"light_color ff0000',
+            'count 2 "light_color" ff0000',
         ):
             with self.subTest(attribs=attribs):
                 obj = FakeObject()
@@ -123,10 +124,15 @@ class PythonCommandTests(unittest.TestCase):
         self.assertEqual(["custom fallback"], obj.loaded)
 
         self.common.obj_assign_attribs(
-            obj, 'label "quoted light_color value" custom light_color'
+            obj,
+            'label "quoted light_color value" custom light_color '
+            'custom_light_color fallback',
         )
         self.assertEqual("quoted light_color value", obj.label)
-        self.assertEqual(["custom fallback", "custom light_color"], obj.loaded)
+        self.assertEqual(
+            ["custom fallback", "custom light_color", "custom_light_color fallback"],
+            obj.loaded,
+        )
 
     def command_module(self, message, obj):
         recorder = DrawInfoRecorder()
@@ -153,6 +159,7 @@ class PythonCommandTests(unittest.TestCase):
             'torch count 2 label "junk light_color ff0000',
             'torch count 2 label junk" light_color ff0000',
             'torch count 2 label "junk"light_color ff0000',
+            'torch count 2 "light_color" ff0000',
         ):
             with self.subTest(message=message):
                 obj = FakeObject()
@@ -216,6 +223,7 @@ class PythonCommandTests(unittest.TestCase):
             'me count 2 label "junk light_color ff0000',
             'me count 2 label junk" light_color ff0000',
             'me count 2 label "junk"light_color ff0000',
+            'me count 2 "light_color" ff0000',
         ):
             with self.subTest(message=message):
                 obj = FakeObject()

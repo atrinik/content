@@ -558,6 +558,10 @@ def migrate(
     check_git: bool = True,
     publish_failure_after: int | None = None,
 ) -> Mapping[str, Any]:
+    if check_git and manifest != load_manifest(root / MANIFEST_PATH):
+        raise PluralMigrationError(
+            "migration input differs from the repository-owned reviewed manifest"
+        )
     line = identify_line(root) if check_git else "fixture"
     entries, rows = _checked_rows(root, manifest)
     present = sum(bool(entry["plurals"]) for entry in entries.values())

@@ -74,6 +74,12 @@ review criterion. Every distinct toggle-active state was also created or
 reached, applied, and captured in the isolated scenario. Those views record
 the exact state ID and runtime command, proving active radius, color, face, and
 animation instead of merely showing resting art.
+Before ordinary smooth or discrete capture, the reviewer must emit no light and
+all carried toggle lights must be explicitly extinguished and unapplied. The
+evidence context records that clean player-state precondition so a test light
+cannot tint unrelated map views. A linked-map viewport can render the same
+reviewer representation more than once; this is acceptable only when the
+scenario contains no second server-side player object or saved gravestone.
 
 `maps/light-source-evidence/` commits 1,130 views as 46 numbered 5-by-5 contact
 sheets. The evidence manifest maps every tile back to its map semantic digest,

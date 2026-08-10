@@ -273,6 +273,7 @@ end
                 "profile": "test-light-review",
                 "command": "test Classic client screenshot command",
                 "settings": "seventeen by seventeen viewport with frozen lighting modes",
+                "ordinary_state": "all carried toggle lights are inactive",
             },
             "sheets": {
                 "smooth": {
@@ -427,11 +428,13 @@ end
         broken_evidence = json.loads(evidence_path.read_text())
         broken_evidence["render_context"]["content_commit"] = "not-a-commit"
         broken_evidence["render_context"]["inventory_sha256"] = "0" * 64
+        broken_evidence["render_context"].pop("ordinary_state")
         broken_evidence["sheets"]["smooth"]["pixel_width"] = 2
         broken_evidence["views"][0]["x"] = 100
         evidence_path.write_text(json.dumps(broken_evidence))
         evidence_errors = audit.validate_light_inventory(audit.light_inventory())
         self.assertIn("light-source evidence needs a content_commit SHA", evidence_errors)
+        self.assertIn("light-source evidence needs ordinary_state", evidence_errors)
         self.assertIn(
             "light-source evidence inventory changed since rendered review",
             evidence_errors,

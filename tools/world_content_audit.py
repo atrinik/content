@@ -594,7 +594,7 @@ def validate_light_evidence(report: dict) -> list[str]:
         value = context.get(field)
         if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
             errors.append("light-source evidence needs a {} SHA".format(field))
-    for field in ("profile", "command", "settings"):
+    for field in ("profile", "command", "settings", "ordinary_state"):
         value = context.get(field)
         if not isinstance(value, str) or len(value.strip()) < 12:
             errors.append("light-source evidence needs {}".format(field))

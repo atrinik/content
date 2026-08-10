@@ -426,6 +426,37 @@ class ContentCoreTest(unittest.TestCase):
                 self.assertEqual(code, caught.exception.code)
                 self.assertEqual(source, path.read_bytes())
 
+    def test_light_color_constraints_apply_to_lossless_reads_and_writes(self):
+        malformed = parse_bytes(
+            b"Object example\nlight_color #ffc080\nend\n",
+            path="arch/malformed-light-color.arc",
+            format_name="archetype",
+            schema_root=ROOT,
+        )
+        self.assertEqual(
+            ["field-above-max-length"],
+            [item["code"] for item in malformed.diagnostics],
+        )
+
+        source = b"Object example\nlight_color ffc080\nend\n"
+        path = self.write("arch/light-color.arc", source)
+        document = self.document("arch/light-color.arc", "archetype")
+        self.assertTrue(document.valid)
+        transaction = self.transaction(
+            [
+                self.entry(
+                    "arch/light-color.arc",
+                    "archetype",
+                    source,
+                    [self.set_property(document, "object.light_color", "gggggg")],
+                )
+            ]
+        )
+        with self.assertRaises(ContentCoreError) as caught:
+            apply_transaction(self.root, transaction, schema_root=ROOT)
+        self.assertEqual("field-pattern-mismatch", caught.exception.code)
+        self.assertEqual(source, path.read_bytes())
+
     def test_primitive_add_remove_and_unset_preserve_unrelated_content(self):
         source = (
             b"arch map\nwidth 1\nheight 1\nend\n"

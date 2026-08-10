@@ -108,7 +108,7 @@
   },
   "inputs": {
     "content_commit": "0aa5954be27131277a203ad3493fa9ee5a61b6ac",
-    "content_v1_baseline_sha256": "135866c5ba80e30cf83aa0fce8ef6611ee4e48aadd6e9d11170c69b916a66f17",
+    "content_v1_baseline_sha256": "8992734d7bd14a22a26c5852bcecfc5cf7eb115d72419f169cd81279bea53994",
     "profile": "syntax-decision",
     "state": "syntax-benchmark",
     "syntax_implementation_sha256": "887e626ed604f5aea2b3150f21b0e912bd76cdc48cec0351038b277e6738fde0",

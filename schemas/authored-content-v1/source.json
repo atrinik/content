@@ -334,6 +334,7 @@
     "string": [
       "custom_name",
       "glow",
+      "light_color",
       "match",
       "name",
       "race",
@@ -478,6 +479,7 @@
       "inv_face",
       "is_animated",
       "layer",
+      "light_color",
       "rotate",
       "sub_layer",
       "zoom",
@@ -527,6 +529,11 @@
     },
     "object.layer": {
       "minimum": 0
+    },
+    "object.light_color": {
+      "maxLength": 6,
+      "minLength": 6,
+      "pattern": "^[0-9A-Fa-f]{6}$"
     },
     "object.sub_layer": {
       "minimum": 0

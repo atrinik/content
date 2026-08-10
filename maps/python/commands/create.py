@@ -46,7 +46,12 @@ def main():
             obj.type = Type.MONSTER
             obj.f_monster = True
 
-        obj_assign_attribs(obj, attribs)
+        try:
+            obj_assign_attribs(obj, attribs)
+        except ValueError as err:
+            obj.Destroy()
+            pl.DrawInfo(str(err), COLOR_RED)
+            break
 
         if obj.f_monster:
             activator.map.Insert(obj, activator.x, activator.y)

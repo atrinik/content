@@ -6,6 +6,7 @@ tools/package-release.sh export-ignore
 # These inputs are byte-sensitive and must not be rewritten by Windows Git.
 /contracts/content-v1/** text eol=lf
 /maps/** text eol=lf
+/maps/light-source-evidence/*.jpg binary
 /prototypes/authored-syntax-v1/** text eol=lf
 /schemas/authored-content-v1/** text eol=lf
 /schemas/content-core-v1/** text eol=lf

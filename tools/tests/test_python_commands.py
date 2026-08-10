@@ -93,6 +93,8 @@ class PythonCommandTests(unittest.TestCase):
         for attribs in (
             "count 2 light_color  gg0000",
             "count 2 light_color\tgg0000",
+            'count 2 light_color "ff0000"junk',
+            'count 2 "junk" light_color',
         ):
             with self.subTest(attribs=attribs):
                 obj = FakeObject()
@@ -141,23 +143,35 @@ class PythonCommandTests(unittest.TestCase):
         return atrinik, recorder
 
     def test_create_destroys_object_after_malformed_color(self):
-        obj = FakeObject()
-        atrinik, recorder = self.command_module(
-            "torch count 2 light_color  gg0000", obj
-        )
-
-        with mock.patch.dict(
-            sys.modules, {"Atrinik": atrinik, "Common": self.common}
+        for message in (
+            "torch count 2 light_color  gg0000",
+            'torch count 2 light_color "ff0000"junk',
+            'torch count 2 "junk" light_color',
         ):
-            runpy.run_path(str(COMMANDS_PATH / "create.py"), run_name="create_test")
+            with self.subTest(message=message):
+                obj = FakeObject()
+                atrinik, recorder = self.command_module(message, obj)
 
-        self.assertTrue(obj.destroyed)
-        self.assertFalse(obj.inserted)
-        self.assertEqual(1, obj.count)
-        self.assertEqual(
-            [("light_color must be exactly six hexadecimal digits (RRGGBB).", 1)],
-            recorder.messages,
-        )
+                with mock.patch.dict(
+                    sys.modules, {"Atrinik": atrinik, "Common": self.common}
+                ):
+                    runpy.run_path(
+                        str(COMMANDS_PATH / "create.py"), run_name="create_test"
+                    )
+
+                self.assertTrue(obj.destroyed)
+                self.assertFalse(obj.inserted)
+                self.assertEqual(1, obj.count)
+                self.assertEqual(
+                    [
+                        (
+                            "light_color must be exactly six hexadecimal digits "
+                            "(RRGGBB).",
+                            1,
+                        )
+                    ],
+                    recorder.messages,
+                )
 
     def test_create_assigns_hexadecimal_color(self):
         obj = FakeObject()
@@ -189,20 +203,34 @@ class PythonCommandTests(unittest.TestCase):
         self.assertEqual([], recorder.messages)
 
     def test_patch_reports_malformed_color_without_mutation(self):
-        obj = FakeObject()
-        atrinik, recorder = self.command_module("me count 2 light_color  gg0000", obj)
-
-        with mock.patch.dict(
-            sys.modules, {"Atrinik": atrinik, "Common": self.common}
+        for message in (
+            "me count 2 light_color  gg0000",
+            'me count 2 light_color "ff0000"junk',
+            'me count 2 "junk" light_color',
         ):
-            runpy.run_path(str(COMMANDS_PATH / "patch.py"), run_name="patch_test")
+            with self.subTest(message=message):
+                obj = FakeObject()
+                atrinik, recorder = self.command_module(message, obj)
 
-        self.assertEqual(0xffffff, obj.light_color)
-        self.assertEqual(1, obj.count)
-        self.assertEqual(
-            [("light_color must be exactly six hexadecimal digits (RRGGBB).", 1)],
-            recorder.messages,
-        )
+                with mock.patch.dict(
+                    sys.modules, {"Atrinik": atrinik, "Common": self.common}
+                ):
+                    runpy.run_path(
+                        str(COMMANDS_PATH / "patch.py"), run_name="patch_test"
+                    )
+
+                self.assertEqual(0xffffff, obj.light_color)
+                self.assertEqual(1, obj.count)
+                self.assertEqual(
+                    [
+                        (
+                            "light_color must be exactly six hexadecimal digits "
+                            "(RRGGBB).",
+                            1,
+                        )
+                    ],
+                    recorder.messages,
+                )
 
     def test_patch_assigns_hexadecimal_color(self):
         obj = FakeObject()

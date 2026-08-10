@@ -2642,6 +2642,22 @@
       "value_kind": "boolean"
     },
     {
+      "constraints": {
+        "maxLength": 6,
+        "minLength": 6,
+        "pattern": "^[0-9A-Fa-f]{6}$"
+      },
+      "context": "object",
+      "field_id": "object.light_color",
+      "legacy_name": "light_color",
+      "reference_domains": [],
+      "roles": [
+        "render"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
       "constraints": {},
       "context": "object",
       "field_id": "object.luck",
@@ -4734,5 +4750,5 @@
   ],
   "schema_id": "atrinik-authored-content-v1",
   "schema_version": 1,
-  "source_sha256": "d0e81ee929fe071a196298cb9b02e32e62395309a32adf3d2653e6859cd24065"
+  "source_sha256": "fd578c61370cc8c5ca54dac03bb97411ef30a6ea62a0e194683313d22e2809a9"
 }

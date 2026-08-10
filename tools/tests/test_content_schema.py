@@ -387,6 +387,16 @@ class ContentSchemaTest(unittest.TestCase):
             ):
                 validate_logical_document(ROOT, logical)
 
+    def test_gridarta_projection_exposes_light_color(self):
+        gridarta_types = (
+            ROOT / "arch" / "dev" / "editor" / "conf" / "types.xml"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            '<attribute arch="light_color" editor="light color" type="string">',
+            gridarta_types,
+        )
+        self.assertIn("hexadecimal digits in RRGGBB form", gridarta_types)
+
     def test_schema_source_rejects_a_linked_parent_directory(self):
         with tempfile.TemporaryDirectory() as temporary:
             temporary_root = Path(temporary)

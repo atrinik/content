@@ -229,6 +229,10 @@
 		value between 0 and 4, the higher, the more light does the object
 		emit.
 	</attribute>
+	<attribute arch="light_color" editor="light color" type="string">
+		The color emitted by a glowing object, written as exactly six
+		hexadecimal digits in RRGGBB form (for example, ffc080).
+	</attribute>
 	<attribute arch="z" editor="height" type="int">
 		Adjusts Y position of the object as it appears on the map.
 	</attribute>

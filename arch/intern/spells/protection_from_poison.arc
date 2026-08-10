@@ -9,4 +9,5 @@ value 50000
 msg
 Raises your protection to poison. The protection raised by this spell depends on the caster's level.
 endmsg
+name_pl protection from poison
 end

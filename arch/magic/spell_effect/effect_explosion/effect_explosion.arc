@@ -15,6 +15,7 @@ is_used_up 1
 no_pick 1
 z 10
 align -5
+name_pl explosions
 end
 More
 Object effect_explosion_a

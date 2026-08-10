@@ -11,4 +11,5 @@ type 79
 no_pick 1
 no_drop 1
 identified 1
+name_pl open chests
 end

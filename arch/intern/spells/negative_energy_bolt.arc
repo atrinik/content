@@ -9,4 +9,5 @@ value 0
 msg
 A blast of negative energy is fired in straight line. Each part of it can hit enemies only once and it will bounce off of walls.
 endmsg
+name_pl negative energy bolt
 end

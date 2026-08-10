@@ -11,6 +11,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl big wagons
 end
 More
 Object wagon_big_a

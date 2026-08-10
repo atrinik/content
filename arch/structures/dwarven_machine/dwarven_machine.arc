@@ -7,6 +7,7 @@ layer 4
 no_pick 1
 no_pass 1
 hidden 1
+name_pl dwarven machines
 end
 More
 Object dwarven_machine_a

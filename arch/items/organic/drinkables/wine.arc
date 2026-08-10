@@ -10,4 +10,5 @@ type 54
 value 110
 weight 300
 can_stack 1
+name_pl bottles of wine
 end

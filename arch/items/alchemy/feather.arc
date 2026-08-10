@@ -10,4 +10,5 @@ type 73
 material 32
 weight 10
 value 100
+name_pl feathers
 end

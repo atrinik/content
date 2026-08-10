@@ -8,6 +8,7 @@ no_pick 1
 type 79
 layer 4
 no_pass 1
+name_pl forges
 end
 
 Object forge_on
@@ -20,4 +21,5 @@ no_pick 1
 type 79
 layer 4
 no_pass 1
+name_pl forges
 end

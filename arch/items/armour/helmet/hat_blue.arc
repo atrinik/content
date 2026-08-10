@@ -11,4 +11,5 @@ protect_pierce 1
 value 25
 material 128
 material_real 450
+name_pl blue colored hats
 end

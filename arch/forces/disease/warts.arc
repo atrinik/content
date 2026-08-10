@@ -21,4 +21,5 @@ You have warts.  They are ugly and annoying.
 endmsg
 race *
 level 5
+name_pl warts
 end

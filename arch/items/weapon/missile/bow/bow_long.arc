@@ -16,4 +16,5 @@ face bow_long.101
 weight 1700
 value 1450
 sp 7
+name_pl long bows
 end

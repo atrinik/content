@@ -30,4 +30,5 @@ speed -0.06
 weight 225000
 faction monsters
 int 8
+name_pl doggies
 end

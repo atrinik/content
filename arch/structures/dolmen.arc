@@ -7,6 +7,7 @@ mpart_id 5
 layer 5
 no_pass 1
 no_pick 1
+name_pl dolmens
 end
 More
 Object dolmen_a

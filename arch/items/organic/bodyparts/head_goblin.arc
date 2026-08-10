@@ -8,4 +8,5 @@ type 6
 food 30
 weight 25
 value 15
+name_pl goblin's heads
 end

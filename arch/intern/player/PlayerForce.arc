@@ -6,4 +6,5 @@ layer 0
 face force.101
 no_drop 1
 speed 0
+name_pl player_force
 end

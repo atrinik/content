@@ -4,6 +4,7 @@ face metal_bucket.101
 no_pick 1
 type 79
 layer 4
+name_pl metal buckets
 end
 
 Object bucket_water
@@ -12,4 +13,5 @@ face bucket_water.101
 no_pick 1
 type 79
 layer 4
+name_pl metal buckets
 end

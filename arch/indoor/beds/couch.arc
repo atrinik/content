@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl beds
 end
 Object couch1b
 name bed
@@ -21,4 +22,5 @@ direction 1
 no_pick 1
 type 79
 layer 4
+name_pl beds
 end

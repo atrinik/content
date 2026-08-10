@@ -7,4 +7,5 @@ item_quality 100
 item_condition 100
 weight 10
 value 20
+name_pl insect's stingers
 end

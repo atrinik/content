@@ -10,4 +10,5 @@ type 54
 value 8
 weight 300
 can_stack 1
+name_pl bottles of booze
 end

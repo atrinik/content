@@ -12,6 +12,11 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from tools.content_core import audit_project
+from tools.archetype_plurals import (
+    MANIFEST_PATH,
+    audit as audit_archetype_plurals,
+    load_manifest,
+)
 from tools.m1_foundations import validate as validate_m1_foundations
 
 
@@ -39,6 +44,7 @@ def main() -> int:
             "-m",
             "unittest",
             "tools.tests.test_content_catalog",
+            "tools.tests.test_archetype_plurals",
             "tools.tests.test_content_contracts",
             "tools.tests.test_content_core",
             "tools.tests.test_content_schema",
@@ -50,6 +56,16 @@ def main() -> int:
         ],
         cwd=ROOT,
         check=True,
+    )
+    plural_report = audit_archetype_plurals(
+        ROOT, load_manifest(ROOT / MANIFEST_PATH)
+    )
+    print(
+        "Archetype plurals: {} canonical definitions complete; {} multipart or "
+        "nested objects excluded.".format(
+            plural_report["canonical_archetypes"], plural_report["excluded_objects"]
+        ),
+        flush=True,
     )
     core_audit = audit_project(ROOT, schema_root=ROOT)
     if core_audit["invalid_files"]:
@@ -127,6 +143,21 @@ def main() -> int:
         paths = [entry["path"] for entry in manifest["files"]]
         if paths != sorted(paths) or len(paths) != len(set(paths)):
             raise ValueError("runtime manifest paths are not canonical and unique")
+        authored_plurals = []
+        for path in sorted((ROOT / "arch").rglob("*.arc")):
+            with path.open("rb") as source:
+                authored_plurals.extend(
+                    line.rstrip(b"\r\n")
+                    for line in source
+                    if line.startswith(b"name_pl ")
+                )
+        runtime_plurals = [
+            line.rstrip(b"\r\n")
+            for line in (output / "lib" / "archetypes").read_bytes().splitlines()
+            if line.startswith(b"name_pl ")
+        ]
+        if runtime_plurals != authored_plurals:
+            raise ValueError("runtime collection did not preserve authored name_pl lines")
 
     subprocess.run(
         [

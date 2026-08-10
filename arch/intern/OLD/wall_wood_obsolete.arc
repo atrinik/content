@@ -7,6 +7,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 
 Object wall_wood1_3
@@ -18,4 +19,5 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end

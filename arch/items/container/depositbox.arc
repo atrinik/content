@@ -14,4 +14,5 @@ weight 525
 value 4000
 container 40000
 weapon_speed 1.0
+name_pl deposit boxes
 end

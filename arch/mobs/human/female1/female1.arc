@@ -42,4 +42,5 @@ faction npcs
 int 20
 unaggressive 1
 str 25
+name_pl women
 end

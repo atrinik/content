@@ -9,4 +9,5 @@ value 20000
 msg
 An improved version of minor healing, this spell heals wounds on either the caster or the target.
 endmsg
+name_pl greater healing
 end

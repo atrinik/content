@@ -10,4 +10,5 @@ type 86
 weight 450
 value 120
 can_stack 1
+name_pl ant queen heads
 end

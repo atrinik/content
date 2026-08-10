@@ -9,4 +9,5 @@ value 75000
 msg
 Fires an asteroid in front of you, which explodes into a cone of ice if it hits an object.
 endmsg
+name_pl asteroid
 end

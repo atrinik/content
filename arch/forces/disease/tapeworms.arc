@@ -23,4 +23,5 @@ to refer to yourself in plural.
 endmsg
 race *
 level 5
+name_pl tapeworms
 end

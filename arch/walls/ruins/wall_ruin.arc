@@ -7,6 +7,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1b_111
 name ruin
@@ -17,6 +18,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1c_111
 name ruin
@@ -27,6 +29,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1d_111
 name ruin
@@ -37,6 +40,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1e_111
 name ruin
@@ -47,6 +51,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1a_131
 name ruin
@@ -57,6 +62,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1b_131
 name ruin
@@ -67,6 +73,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1c_131
 name ruin
@@ -77,6 +84,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1d_131
 name ruin
@@ -87,6 +95,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1a_141
 name ruin
@@ -97,6 +106,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1b_141
 name ruin
@@ -107,6 +117,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin1a_181
 name ruin
@@ -117,6 +128,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object fwall_ruin1a
 name ruin
@@ -127,6 +139,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object fwall_ruin1b
 name ruin
@@ -137,6 +150,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object fwall_ruin1c
 name ruin
@@ -147,6 +161,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl ruins
 end
 Object wall_ruin_c1a
 name ruin
@@ -156,6 +171,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl ruins
 end
 Object wall_ruin_c1b
 name ruin
@@ -165,6 +181,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl ruins
 end
 Object wall_ruin_c2a
 name ruin
@@ -174,6 +191,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl ruins
 end
 Object wall_ruin_c2b
 name ruin
@@ -183,6 +201,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl ruins
 end
 Object wall_ruin_c3a
 name ruin
@@ -192,6 +211,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl ruins
 end
 Object wall_ruin_c3b
 name ruin
@@ -201,4 +221,5 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl ruins
 end

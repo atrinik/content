@@ -33,4 +33,5 @@ weight 49500
 undead 1
 faction monsters
 int 16
+name_pl skeleton fighters
 end

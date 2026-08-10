@@ -10,4 +10,5 @@ type 6
 value 10
 weight 250
 can_stack 1
+name_pl pasteurised cheeses
 end

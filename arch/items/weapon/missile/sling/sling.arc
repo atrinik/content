@@ -16,4 +16,5 @@ last_sp 4
 weight 300
 value 350
 sp 5
+name_pl slings
 end

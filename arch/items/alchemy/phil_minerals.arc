@@ -9,6 +9,7 @@ item_quality 100
 type 73
 value 2800
 weight 500
+name_pl bottles
 end
 
 Object sulfur_phil
@@ -25,6 +26,7 @@ item_quality 100
 type 73
 value 1100
 weight 500
+name_pl piles
 end
 
 Object phosphorus_phil
@@ -41,6 +43,7 @@ item_quality 100
 type 73
 value 3500
 weight 100
+name_pl piles
 end
 
 Object salt_phil
@@ -58,4 +61,5 @@ type 6
 food 7
 value 800
 weight 500
+name_pl piles
 end

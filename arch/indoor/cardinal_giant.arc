@@ -6,6 +6,7 @@ layer 5
 type 79
 face cardinal_giant.131
 no_pick 1
+name_pl cardinal statues
 end
 
 Object cardinal_giant_b
@@ -16,6 +17,7 @@ layer 5
 type 79
 face cardinal_giant.151
 no_pick 1
+name_pl cardinal statues
 end
 
 Object cardinal_giant_c
@@ -26,6 +28,7 @@ layer 5
 type 79
 face cardinal_giant.231
 no_pick 1
+name_pl cardinal statues
 end
 
 Object cardinal_giant_d
@@ -36,4 +39,5 @@ layer 5
 type 79
 face cardinal_giant.251
 no_pick 1
+name_pl cardinal statues
 end

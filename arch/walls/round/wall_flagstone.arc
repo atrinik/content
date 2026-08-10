@@ -7,6 +7,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_fstone_round.102
@@ -18,6 +19,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_fstone_round.104
@@ -29,6 +31,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_fstone_round.106
@@ -40,6 +43,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 
 Object wall_fstone_round.108
@@ -51,4 +55,5 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end

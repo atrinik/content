@@ -9,4 +9,5 @@ value 0
 msg
 Creates food in your inventory which you may eat, but will vanish if dropped.
 endmsg
+name_pl create food
 end

@@ -4,6 +4,7 @@ face wood_pile.101
 no_pick 1
 type 79
 layer 4
+name_pl piles of wood
 end
 
 Object trash_wood1.101
@@ -12,6 +13,7 @@ face trash_wood1.101
 no_pick 1
 type 79
 layer 4
+name_pl wood
 end
 
 Object trash_wood2.101
@@ -20,4 +22,5 @@ face trash_wood2.101
 no_pick 1
 type 79
 layer 4
+name_pl wood
 end

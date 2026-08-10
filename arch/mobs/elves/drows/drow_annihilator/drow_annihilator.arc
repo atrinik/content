@@ -37,4 +37,5 @@ speed -0.061
 weight 62500
 faction monsters
 int 24
+name_pl drow annihilators
 end

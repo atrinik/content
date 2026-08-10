@@ -9,4 +9,5 @@ type 73
 material 64
 weight 200
 value 500
+name_pl mandrake roots
 end

@@ -14,4 +14,5 @@ is_animated 1
 anim_speed 2
 player_only 1
 race teleport.ogg
+name_pl red portals
 end

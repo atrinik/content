@@ -7,6 +7,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl sand
 end
 Object floor_ruin2
 name sand
@@ -17,6 +18,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl sand
 end
 Object floor_ruin3
 name sand
@@ -27,6 +29,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl sand
 end
 Object floor_ruin4
 name sand
@@ -37,6 +40,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl sand
 end
 Object floor_ruin5
 name sand
@@ -47,6 +51,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl sand
 end
 Object floor_ruin6
 name sand
@@ -57,4 +62,5 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl sand
 end

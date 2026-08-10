@@ -30,4 +30,5 @@ maxhp 70
 level 1
 speed -0.047
 weight 65500
+name_pl elvish ladies
 end

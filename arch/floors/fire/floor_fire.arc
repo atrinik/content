@@ -7,6 +7,7 @@ terrain_type 8
 type 71
 no_pick 1
 is_floor 1
+name_pl fire
 end
 Object floor_fire1b
 name fire
@@ -17,6 +18,7 @@ terrain_type 8
 type 71
 no_pick 1
 is_floor 1
+name_pl fire
 end
 Object floor_fire1c
 name fire
@@ -27,4 +29,5 @@ terrain_type 8
 type 71
 no_pick 1
 is_floor 1
+name_pl fire
 end

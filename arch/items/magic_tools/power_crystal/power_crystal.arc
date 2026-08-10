@@ -13,4 +13,5 @@ material 64
 item_condition 100
 item_quality 100
 is_magical 1
+name_pl Glowing Crystals
 end

@@ -32,4 +32,5 @@ speed -0.061
 weight 62500
 faction monsters
 int 7
+name_pl hobgoblins
 end

@@ -8,6 +8,7 @@ sp -1
 last_heal 10
 type 66
 no_pick 1
+name_pl stairs going down
 end
 
 Object stairs_spiral_stone_up
@@ -20,4 +21,5 @@ sp -1
 last_heal 9
 type 66
 no_pick 1
+name_pl stairs going up
 end

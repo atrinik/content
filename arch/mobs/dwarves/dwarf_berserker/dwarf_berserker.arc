@@ -30,4 +30,5 @@ maxhp 76
 level 1
 speed -0.05
 weight 53500
+name_pl dwarf berserkers
 end

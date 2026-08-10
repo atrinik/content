@@ -14,4 +14,5 @@ protect_pierce 8
 value 38
 material_real 65
 material 2
+name_pl scale coifs
 end

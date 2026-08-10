@@ -8,4 +8,5 @@ identified 1
 weight 750
 item_condition 80
 item_quality 80
+name_pl saws
 end

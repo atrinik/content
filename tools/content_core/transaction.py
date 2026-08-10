@@ -267,7 +267,10 @@ def prepare_transaction(
     return PreparedTransaction(tuple(prepared))
 
 
-def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
+def _stage_file(
+    item: PreparedFile, *, artifact_token: Optional[str] = None
+) -> tuple[Path, Path]:
+    token = "{}-".format(artifact_token) if artifact_token else ""
     mode = stat.S_IMODE(item.path.stat().st_mode)
     staged = None
     backup = None
@@ -275,7 +278,7 @@ def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
         with tempfile.NamedTemporaryFile(
             "wb",
             dir=item.path.parent,
-            prefix=".{}-content-stage-".format(item.path.name),
+            prefix=".{}-content-stage-{}".format(item.path.name, token),
             suffix=".tmp",
             delete=False,
         ) as destination:
@@ -287,7 +290,7 @@ def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
         with tempfile.NamedTemporaryFile(
             "wb",
             dir=item.path.parent,
-            prefix=".{}-content-backup-".format(item.path.name),
+            prefix=".{}-content-backup-{}".format(item.path.name, token),
             suffix=".tmp",
             delete=False,
         ) as destination:
@@ -324,6 +327,7 @@ def publish_transaction(
     prepared: PreparedTransaction,
     *,
     failure_after: Optional[int] = None,
+    artifact_token: Optional[str] = None,
 ) -> None:
     """Publish all staged files, rolling back every replacement on failure."""
 
@@ -331,6 +335,7 @@ def publish_transaction(
     _verify_source_root(root)
     staged: dict[str, tuple[Path, Path]] = {}
     replaced: list[PreparedFile] = []
+    retain_artifacts = False
     changed_files = [item for item in prepared.files if item.before != item.after]
     try:
         for item in prepared.files:
@@ -343,7 +348,9 @@ def publish_transaction(
                     code="concurrent-file-change",
                 )
         for item in changed_files:
-            staged[item.relative] = _stage_file(item)
+            staged[item.relative] = _stage_file(
+                item, artifact_token=artifact_token
+            )
 
         for index, item in enumerate(changed_files):
             current = _safe_target(root, item.relative, item.format_name)
@@ -378,6 +385,7 @@ def publish_transaction(
                     "directory synchronization: {}".format(rollback_error)
                 )
         if rollback_failures:
+            retain_artifacts = True
             raise ContentCoreError(
                 "transaction failed and rollback was incomplete: {}".format(
                     "; ".join(rollback_failures)
@@ -396,9 +404,10 @@ def publish_transaction(
             retryable=True,
         ) from error
     finally:
-        for stage, backup in staged.values():
-            stage.unlink(missing_ok=True)
-            backup.unlink(missing_ok=True)
+        if not retain_artifacts:
+            for stage, backup in staged.values():
+                stage.unlink(missing_ok=True)
+                backup.unlink(missing_ok=True)
 
 
 def apply_transaction(

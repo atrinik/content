@@ -10,6 +10,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl chains
 end
 
 Object chains2.151
@@ -24,6 +25,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl chains
 end
 
 Object chains3.151
@@ -38,4 +40,5 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl chains
 end

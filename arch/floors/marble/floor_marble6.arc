@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_marble6b
 name floor
@@ -17,6 +18,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_marble6c
 name floor
@@ -27,6 +29,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_marble6d
 name floor
@@ -37,6 +40,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_marble6e
 name floor
@@ -47,6 +51,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object floor_marble6f
 name floor
@@ -57,4 +62,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl floors
 end

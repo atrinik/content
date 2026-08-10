@@ -10,4 +10,5 @@ sys_object 1
 no_pick 1
 walk_on 1
 fly_on 1
+name_pl invis_exit
 end

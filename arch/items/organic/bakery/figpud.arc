@@ -13,4 +13,5 @@ type 6
 value 150
 weight 600
 can_stack 1
+name_pl large green fig puddings
 end

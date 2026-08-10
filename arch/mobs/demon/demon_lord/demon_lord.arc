@@ -31,4 +31,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 22
+name_pl demon lords
 end

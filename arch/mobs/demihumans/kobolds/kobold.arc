@@ -32,4 +32,5 @@ speed -0.061
 weight 42500
 faction monsters
 int 8
+name_pl kobolds
 end

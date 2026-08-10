@@ -42,6 +42,7 @@ mpart_id 3
 run_away 6
 faction monsters
 int 20
+name_pl pit fiends
 end
 More
 Object demon_red_b

@@ -20,4 +20,5 @@ value 20
 material 2
 material_real 65
 can_stack 1
+name_pl bolts
 end

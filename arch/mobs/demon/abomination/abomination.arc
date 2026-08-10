@@ -30,4 +30,5 @@ speed -0.03
 weight 95000
 faction monsters
 int 11
+name_pl abominations
 end

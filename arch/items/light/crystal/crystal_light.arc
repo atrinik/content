@@ -12,4 +12,5 @@ material 256
 value 35
 weight 100
 food 1
+name_pl crystals
 end

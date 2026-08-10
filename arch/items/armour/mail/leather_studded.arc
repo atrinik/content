@@ -15,4 +15,5 @@ weight 6450
 value 120
 material_real 194
 material 8
+name_pl studded armour
 end

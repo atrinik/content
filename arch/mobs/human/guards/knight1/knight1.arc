@@ -34,4 +34,5 @@ faction npcs
 int 20
 can_use_armour 1
 can_use_weapon 1
+name_pl knights
 end

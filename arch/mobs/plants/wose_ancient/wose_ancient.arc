@@ -40,4 +40,5 @@ speed -0.036
 weight 823000
 faction monsters
 int 13
+name_pl ancient woses
 end

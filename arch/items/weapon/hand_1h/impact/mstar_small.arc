@@ -14,4 +14,5 @@ weight 1900
 value 350
 block 1
 absorb 2
+name_pl small morningstars
 end

@@ -7,4 +7,5 @@ is_animated 1
 anim_speed 4
 no_pick 1
 type 79
+name_pl mushrooms
 end

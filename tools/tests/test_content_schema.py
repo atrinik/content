@@ -270,6 +270,19 @@ class ContentSchemaTest(unittest.TestCase):
         with self.assertRaisesRegex(SchemaError, "source order"):
             validate_logical_document(ROOT, multipart_order)
 
+    def test_plural_name_requires_a_non_empty_string(self):
+        value = self.valid_archetype()
+        body = value["definitions"][0]["parts"][0]["body"]
+        body.append(standard("object.name_pl", "Examples", 21, 30))
+        validate_logical_document(ROOT, value)
+
+        for malformed in ("", 2, None):
+            body[-1]["value"] = malformed
+            with self.assertRaisesRegex(
+                SchemaError, "must match exactly one schema alternative"
+            ):
+                validate_logical_document(ROOT, value)
+
     def test_whole_corpus_has_no_unexplained_or_untyped_fields(self):
         report = audit_corpus(ROOT)
 

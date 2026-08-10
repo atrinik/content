@@ -13,4 +13,5 @@ weight 900
 value 25
 material_real 65
 material 2
+name_pl horned helms
 end

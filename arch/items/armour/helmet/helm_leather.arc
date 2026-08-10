@@ -13,4 +13,5 @@ protect_pierce 4
 value 15
 material_real 193
 material 8
+name_pl caps
 end

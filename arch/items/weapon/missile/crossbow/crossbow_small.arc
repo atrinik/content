@@ -14,4 +14,5 @@ wc 4
 wc_range 17
 last_sp 4
 value 250
+name_pl small crossbows
 end

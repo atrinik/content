@@ -15,4 +15,5 @@ item_quality 100
 weight 200
 value 28
 can_stack 1
+name_pl potions
 end

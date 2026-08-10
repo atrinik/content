@@ -10,4 +10,5 @@ no_pick 1
 slow_move 1
 walk_on 1
 exp 3
+name_pl spider webs
 end

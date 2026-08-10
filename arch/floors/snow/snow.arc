@@ -7,6 +7,7 @@ type 71
 is_floor 1
 no_teleport 1
 no_pick 1
+name_pl snow
 end
 
 Object snow2
@@ -18,6 +19,7 @@ type 71
 is_floor 1
 no_teleport 1
 no_pick 1
+name_pl snow
 end
 
 Object snow3
@@ -29,6 +31,7 @@ type 71
 is_floor 1
 no_teleport 1
 no_pick 1
+name_pl snow
 end
 
 Object snow4
@@ -40,6 +43,7 @@ type 71
 is_floor 1
 no_teleport 1
 no_pick 1
+name_pl snow
 end
 
 Object snow5
@@ -51,6 +55,7 @@ type 71
 is_floor 1
 no_teleport 1
 no_pick 1
+name_pl snow
 end
 
 Object snow6
@@ -62,4 +67,5 @@ type 71
 is_floor 1
 no_teleport 1
 no_pick 1
+name_pl snow
 end

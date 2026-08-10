@@ -31,4 +31,5 @@ speed -0.06
 weight 187000
 faction monsters
 int 7
+name_pl polar bears
 end

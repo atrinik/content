@@ -11,4 +11,5 @@ weight 200
 container 50000
 weapon_speed 1.0
 value 20
+name_pl bags
 end

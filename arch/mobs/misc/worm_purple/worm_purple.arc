@@ -39,6 +39,7 @@ weight 350000
 run_away 6
 faction monsters
 int 11
+name_pl purple worms
 end
 More
 Object worm_purple_b

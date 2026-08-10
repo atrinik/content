@@ -42,4 +42,5 @@ msg
 Soul Eater, Bringer of Death, Unspeakable Lord of the Tomb
 endmsg
 weight 1
+name_pl Zechna
 end

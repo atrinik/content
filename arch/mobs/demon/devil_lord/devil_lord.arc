@@ -37,4 +37,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 23
+name_pl devil lords
 end

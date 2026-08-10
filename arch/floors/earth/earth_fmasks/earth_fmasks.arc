@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m2
 name earth
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m3
 name earth
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m4
 name earth
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m5
 name earth
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m6
 name earth
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m7
 name earth
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m8
 name earth
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m9
 name earth
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m10
 name earth
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m11
 name earth
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m12
 name earth
@@ -93,6 +104,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m13
 name earth
@@ -101,6 +113,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m14
 name earth
@@ -109,6 +122,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m15
 name earth
@@ -117,6 +131,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m16
 name earth
@@ -125,6 +140,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m17
 name earth
@@ -133,6 +149,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m18
 name earth
@@ -141,6 +158,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m19
 name earth
@@ -149,6 +167,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m20
 name earth
@@ -157,6 +176,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m21
 name earth
@@ -165,6 +185,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end
 Object earth_m22
 name earth
@@ -173,4 +194,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl earth
 end

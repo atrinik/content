@@ -6,4 +6,5 @@ no_drop 1
 type 79
 layer 0
 face info.101
+name_pl player_info
 end

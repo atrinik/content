@@ -15,6 +15,7 @@ value 3500
 container 250000
 weight 15000
 weapon_speed 1.0
+name_pl weapon racks
 end
 
 Object rack2
@@ -34,6 +35,7 @@ value 3500
 container 250000
 weight 15000
 weapon_speed 1.0
+name_pl weapon racks
 end
 
 Object rack3
@@ -53,4 +55,5 @@ value 3500
 container 250000
 weight 15000
 weapon_speed 1.0
+name_pl weapon racks
 end

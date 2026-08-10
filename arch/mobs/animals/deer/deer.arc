@@ -30,4 +30,5 @@ speed -0.06
 weight 70000
 faction monsters
 int 5
+name_pl deer
 end

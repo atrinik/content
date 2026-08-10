@@ -31,4 +31,5 @@ speed -0.06
 weight 225000
 faction monsters
 int 7
+name_pl grey bears
 end

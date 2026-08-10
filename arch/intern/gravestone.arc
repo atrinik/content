@@ -13,4 +13,5 @@ material 64
 weight 200000
 value 40
 nrof 1
+name_pl gravestones
 end

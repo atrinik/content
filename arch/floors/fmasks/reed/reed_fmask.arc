@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm2
 name reed
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm3
 name reed
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm4
 name reed
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm5
 name reed
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm6
 name reed
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm7
 name reed
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm8
 name reed
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm9
 name reed
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm10
 name reed
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end
 Object reed_sm11
 name reed
@@ -85,4 +95,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl reeds
 end

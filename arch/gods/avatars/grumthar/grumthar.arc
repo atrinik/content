@@ -42,4 +42,5 @@ msg
 Dwarven deity of metal smithing and warcraft, Giant basher, Delver of secrets
 endmsg
 weight 1
+name_pl Grumthar
 end

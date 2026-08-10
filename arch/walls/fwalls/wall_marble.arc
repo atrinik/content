@@ -7,6 +7,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble1b
 name wall
@@ -17,6 +18,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble1c
 name wall
@@ -27,6 +29,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble2a
 name wall
@@ -37,6 +40,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble2b
 name wall
@@ -47,6 +51,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble2c
 name wall
@@ -57,6 +62,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble3a
 name wall
@@ -67,6 +73,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble3b
 name wall
@@ -77,6 +84,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_marble3c
 name wall
@@ -87,4 +95,5 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end

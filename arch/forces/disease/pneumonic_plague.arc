@@ -26,4 +26,5 @@ You cough up some nasty green phlegm.
 endmsg
 race *
 level 15
+name_pl pneumonic plague
 end

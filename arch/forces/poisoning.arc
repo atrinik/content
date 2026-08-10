@@ -12,4 +12,5 @@ level 1
 attack_internal 100
 is_used_up 1
 no_drop 1
+name_pl poison
 end

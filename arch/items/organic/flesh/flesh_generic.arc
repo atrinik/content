@@ -10,4 +10,5 @@ food 75
 weight 75
 value 10
 can_stack 1
+name_pl pieces of flesh
 end

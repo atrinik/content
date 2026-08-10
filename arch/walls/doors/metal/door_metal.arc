@@ -16,4 +16,5 @@ direction 1
 msg
 You need a special key to open this door.
 endmsg
+name_pl metal doors
 end

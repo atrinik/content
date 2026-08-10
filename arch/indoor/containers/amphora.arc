@@ -5,6 +5,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl amphoras
 end
 
 Object amphora2.101
@@ -14,6 +15,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl amphoras
 end
 
 Object amphora1_water
@@ -23,6 +25,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl amphoras
 end
 
 Object amphora2_water
@@ -32,4 +35,5 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl amphoras
 end

@@ -10,6 +10,7 @@ can_stack 1
 material 32
 weight 100
 value 300
+name_pl seeds
 end
 
 Object seed_b
@@ -24,4 +25,5 @@ type 73
 material 32
 weight 120
 value 350
+name_pl seeds
 end

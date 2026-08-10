@@ -30,4 +30,5 @@ level 1
 weight 46000
 faction npcs
 int 15
+name_pl children
 end

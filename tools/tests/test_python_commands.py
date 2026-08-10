@@ -100,6 +100,12 @@ class PythonCommandTests(unittest.TestCase):
         self.assertFalse(obj.f_enabled)
         self.assertEqual(["custom fallback"], obj.loaded)
 
+        self.common.obj_assign_attribs(
+            obj, 'label "quoted light_color value" custom light_color'
+        )
+        self.assertEqual("quoted light_color value", obj.label)
+        self.assertEqual(["custom fallback", "custom light_color"], obj.loaded)
+
     def command_module(self, message, obj):
         recorder = DrawInfoRecorder()
         atrinik = types.ModuleType("Atrinik")
@@ -145,6 +151,22 @@ class PythonCommandTests(unittest.TestCase):
         self.assertTrue(obj.inserted)
         self.assertEqual([], recorder.messages)
 
+    def test_create_preserves_light_color_in_unrelated_values(self):
+        obj = FakeObject()
+        atrinik, recorder = self.command_module(
+            'torch label "quoted light_color value" custom light_color', obj
+        )
+
+        with mock.patch.dict(
+            sys.modules, {"Atrinik": atrinik, "Common": self.common}
+        ):
+            runpy.run_path(str(COMMANDS_PATH / "create.py"), run_name="create_test")
+
+        self.assertEqual("quoted light_color value", obj.label)
+        self.assertEqual(["custom light_color"], obj.loaded)
+        self.assertTrue(obj.inserted)
+        self.assertEqual([], recorder.messages)
+
     def test_patch_reports_malformed_color_without_mutation(self):
         obj = FakeObject()
         atrinik, recorder = self.command_module("me light_color gg0000", obj)
@@ -170,6 +192,21 @@ class PythonCommandTests(unittest.TestCase):
             runpy.run_path(str(COMMANDS_PATH / "patch.py"), run_name="patch_test")
 
         self.assertEqual(0x00ff7f, obj.light_color)
+        self.assertEqual([], recorder.messages)
+
+    def test_patch_preserves_light_color_in_unrelated_values(self):
+        obj = FakeObject()
+        atrinik, recorder = self.command_module(
+            'me label "quoted light_color value" custom light_color', obj
+        )
+
+        with mock.patch.dict(
+            sys.modules, {"Atrinik": atrinik, "Common": self.common}
+        ):
+            runpy.run_path(str(COMMANDS_PATH / "patch.py"), run_name="patch_test")
+
+        self.assertEqual("quoted light_color value", obj.label)
+        self.assertEqual(["custom light_color"], obj.loaded)
         self.assertEqual([], recorder.messages)
 
 

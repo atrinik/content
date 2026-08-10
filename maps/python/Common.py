@@ -79,12 +79,15 @@ def obj_assign_attribs (obj, attribs):
         return
 
     matches = re.findall(r'(\w+) (?:(?:"([^"]+)")|([^ ]+))', attribs)
-    light_color_count = len(re.findall(r'(?<!\S)light_color(?!\S)', attribs))
+    tokens = re.findall(r'"[^"]*"|\S+', attribs)
 
-    if light_color_count != sum(t[0] == "light_color" for t in matches):
-        raise ValueError(
-            "light_color must be exactly six hexadecimal digits (RRGGBB)."
-        )
+    for pos in range(0, len(tokens), 2):
+        if tokens[pos] == "light_color" and (
+            pos + 1 == len(tokens) or tokens[pos + 1] == '""'
+        ):
+            raise ValueError(
+                "light_color must be exactly six hexadecimal digits (RRGGBB)."
+            )
 
     parsed = []
 

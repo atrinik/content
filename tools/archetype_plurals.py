@@ -930,10 +930,6 @@ def recover(
             raise PluralMigrationError(
                 "partial recovery diff does not match reviewed plural additions"
             )
-    if apply and interrupted_publication:
-        _close_recovery_journal(
-            root, preexisting, artifact_token=artifact_token
-        )
     transactions = _recovery_transactions(entries, rows)
     prepared = [
         prepare_transaction(root, transaction, schema_root=root)

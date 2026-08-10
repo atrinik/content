@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -19,10 +20,12 @@ from tools.content_core import parse_bytes, prepare_transaction, publish_transac
 from tools.content_core.errors import ContentCoreError
 from tools.content_core.operations import result_digest
 from tools.content_core.transaction import MAX_TRANSACTION_FILES
+from tools.content_core.transaction import PreparedTransaction
 
 
 MANIFEST_PATH = Path("tools/archetype-plurals-v1.json")
 COMPARISON_PATH = Path("tools/archetype-plurals-cross-line-v1.json")
+REVIEWED_MANIFEST_SHA256 = "6c4eede454e239911049bb87c9ce5f96aeb328d0d11b6d7d9468ffb8c9569660"
 LINES = {
     "1.x": {
         "baseline_sha": "ead72ef831444c874f65da841498924bab625e99",
@@ -49,7 +52,7 @@ def _git(root: Path, *args: str, check: bool = True) -> str:
     return result.stdout.strip()
 
 
-def identify_line(root: Path) -> str:
+def identify_line(root: Path, *, migration: bool = True) -> str:
     """Bind the migration to one exact reviewed baseline and delivery branch."""
 
     branch = _git(root, "branch", "--show-current")
@@ -71,11 +74,13 @@ def identify_line(root: Path) -> str:
             "HEAD must descend from exactly one reviewed plural baseline"
         )
     line = matches[0]
-    expected_branch = LINES[line]["delivery_branch"]
-    if branch != expected_branch:
+    expected_branches = {LINES[line]["delivery_branch"]}
+    if not migration:
+        expected_branches.add(line)
+    if branch not in expected_branches:
         raise PluralMigrationError(
-            "reviewed plural migration for {} requires branch {}, found {}".format(
-                line, expected_branch, branch or "detached HEAD"
+            "reviewed plural operation for {} requires one of branches {}, found {}".format(
+                line, sorted(expected_branches), branch or "detached HEAD"
             )
         )
     return line
@@ -423,6 +428,8 @@ def _load_json(path: Path) -> Any:
 
 
 def load_manifest(path: Path) -> Mapping[str, Any]:
+    if hashlib.sha256(path.read_bytes()).hexdigest() != REVIEWED_MANIFEST_SHA256:
+        raise PluralMigrationError("plural manifest does not match the reviewed digest")
     manifest = _load_json(path)
     if not isinstance(manifest, dict) or set(manifest) != {
         "schema_version", "kind", "issue", "lines", "rows"
@@ -544,7 +551,12 @@ def _transactions(
 
 
 def migrate(
-    root: Path, manifest: Mapping[str, Any], *, apply: bool = False, check_git: bool = True
+    root: Path,
+    manifest: Mapping[str, Any],
+    *,
+    apply: bool = False,
+    check_git: bool = True,
+    publish_failure_after: int | None = None,
 ) -> Mapping[str, Any]:
     line = identify_line(root) if check_git else "fixture"
     entries, rows = _checked_rows(root, manifest)
@@ -567,11 +579,33 @@ def migrate(
             "files": 0,
             "batches": 0,
         }
+    if check_git:
+        baseline = LINES[line]["baseline_sha"]
+        if _git(root, "rev-parse", "HEAD") != baseline:
+            raise PluralMigrationError(
+                "unapplied migration requires exact reviewed baseline {}".format(
+                    baseline
+                )
+            )
+        unchanged = subprocess.run(
+            ["git", "-C", str(root), "diff", "--quiet", baseline, "--", "arch"],
+            check=False,
+        )
+        if unchanged.returncode == 1:
+            raise PluralMigrationError(
+                "archetype sources differ from the exact reviewed baseline"
+            )
+        if unchanged.returncode != 0:
+            raise PluralMigrationError("cannot verify exact reviewed archetype sources")
     transactions = _transactions(entries, rows)
     prepared = [prepare_transaction(root, transaction, schema_root=root) for transaction in transactions]
     if apply:
-        for transaction in prepared:
-            publish_transaction(root, transaction)
+        combined = PreparedTransaction(
+            tuple(item for transaction in prepared for item in transaction.files)
+        )
+        publish_transaction(
+            root, combined, failure_after=publish_failure_after
+        )
     return {
         "schema_version": 1,
         "kind": "archetype-plural-migration",
@@ -630,7 +664,7 @@ def audit(root: Path, manifest: Mapping[str, Any]) -> Mapping[str, Any]:
 def audit_source_delta(root: Path, manifest: Mapping[str, Any]) -> Mapping[str, Any]:
     """Prove every archetype-source change is one reviewed name_pl addition."""
 
-    line = identify_line(root)
+    line = identify_line(root, migration=False)
     baseline = LINES[line]["baseline_sha"]
     result = subprocess.run(
         [
@@ -682,7 +716,19 @@ def audit_source_delta(root: Path, manifest: Mapping[str, Any]) -> Mapping[str, 
     }
 
 
+def _assert_comparison_lines(left_line: str, right_line: str) -> None:
+    if (left_line, right_line) != ("main", "1.x"):
+        raise PluralMigrationError(
+            "cross-line comparison requires main as --root and 1.x as --other-root"
+        )
+
+
 def compare(root: Path, other_root: Path) -> Mapping[str, Any]:
+    left_line = identify_line(root, migration=False)
+    right_line = identify_line(other_root, migration=False)
+    _assert_comparison_lines(left_line, right_line)
+    audit_source_delta(root, load_manifest(root / MANIFEST_PATH))
+    audit_source_delta(other_root, load_manifest(other_root / MANIFEST_PATH))
     left = {row["archetype_id"]: row for row in inventory(root)["rows"]}
     right = {row["archetype_id"]: row for row in inventory(other_root)["rows"]}
     shared = sorted(set(left) & set(right))
@@ -702,8 +748,8 @@ def compare(root: Path, other_root: Path) -> Mapping[str, Any]:
         "schema_version": 1,
         "kind": "archetype-plural-cross-line-comparison",
         "issue": "atrinik/content#62",
-        "left_baseline": LINES["main"]["baseline_sha"],
-        "right_baseline": LINES["1.x"]["baseline_sha"],
+        "left_baseline": LINES[left_line]["baseline_sha"],
+        "right_baseline": LINES[right_line]["baseline_sha"],
         "shared_archetypes": len(shared),
         "left_only": sorted(set(left) - set(right)),
         "right_only": sorted(set(right) - set(left)),

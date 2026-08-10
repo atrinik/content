@@ -7,14 +7,18 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import tempfile
 import unittest
+from unittest import mock
 
+from tools.content_core import ContentCoreError
 from tools.archetype_plurals import (
     COMPARISON_PATH,
     LINES,
     MANIFEST_PATH,
     PluralMigrationError,
+    _assert_comparison_lines,
     audit,
     inventory,
     load_manifest,
@@ -138,6 +142,81 @@ class ArchetypePluralTest(unittest.TestCase):
         with self.assertRaisesRegex(PluralMigrationError, "singular/type drift"):
             migrate(self.root, drifted, check_git=False)
 
+    def test_publish_failure_after_first_batch_rolls_back_every_file(self) -> None:
+        (self.root / "arch" / "objects.arc").unlink()
+        rows = []
+        for index in range(65):
+            archetype_id = "object_{:02d}".format(index)
+            (self.root / "arch" / "{}.arc".format(archetype_id)).write_text(
+                "Object {}\nname object {}\ntype 79\nend\n".format(
+                    archetype_id, index
+                ),
+                encoding="utf-8",
+            )
+            rows.append(
+                {
+                    "archetype_id": archetype_id,
+                    "singular": "object {}".format(index),
+                    "object_type": "79",
+                    "name_pl": "objects {}".format(index),
+                    "classification": "review:test",
+                }
+            )
+        manifest = {**self.manifest, "rows": rows}
+
+        with self.assertRaisesRegex(ContentCoreError, "rolled back"):
+            migrate(
+                self.root,
+                manifest,
+                apply=True,
+                check_git=False,
+                publish_failure_after=64,
+            )
+        self.assertTrue(
+            all(
+                b"name_pl " not in path.read_bytes()
+                for path in (self.root / "arch").glob("*.arc")
+            )
+        )
+
+    def test_unapplied_migration_rejects_archetype_source_baseline_drift(self) -> None:
+        subprocess.run(
+            ["git", "init", "-b", "review-plurals"], cwd=self.root, check=True,
+            capture_output=True,
+        )
+        subprocess.run(
+            ["git", "config", "user.email", "fixture@example.invalid"],
+            cwd=self.root, check=True,
+        )
+        subprocess.run(
+            ["git", "config", "user.name", "Fixture"], cwd=self.root, check=True,
+        )
+        subprocess.run(["git", "add", "."], cwd=self.root, check=True)
+        subprocess.run(
+            ["git", "commit", "-m", "fixture baseline"], cwd=self.root,
+            check=True, capture_output=True,
+        )
+        baseline = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=self.root, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+        path = self.root / "arch" / "objects.arc"
+        path.write_text(
+            path.read_text(encoding="utf-8").replace("type 78\n", "type 78\nweight 1\n"),
+            encoding="utf-8",
+        )
+        coordinates = {
+            "fixture": {
+                "baseline_sha": baseline,
+                "delivery_branch": "review-plurals",
+            }
+        }
+        with mock.patch.dict(LINES, coordinates, clear=True):
+            with self.assertRaisesRegex(
+                PluralMigrationError, "sources differ from the exact reviewed baseline"
+            ):
+                migrate(self.root, self.manifest)
+
     def test_proposals_cover_required_compounds_irregulars_and_labels(self) -> None:
         self.assertEqual(("torches", "review:required-issue-vocabulary"), propose_plural("torch", "78", True))
         self.assertEqual(("burnt out torches", "review:required-issue-vocabulary"), propose_plural("burnt out torch", "78", True))
@@ -174,6 +253,23 @@ class ArchetypePluralTest(unittest.TestCase):
         self.assertEqual([], comparison["left_only"])
         self.assertEqual([], comparison["right_only"])
         self.assertEqual([], comparison["differences"])
+
+    def test_manifest_digest_and_comparison_coordinates_fail_closed(self) -> None:
+        drifted = self.root / "tools" / "drifted-manifest.json"
+        drifted.write_text(
+            (ROOT / MANIFEST_PATH).read_text(encoding="utf-8").replace(
+                '"name_pl": "torches"', '"name_pl": "wrong"', 1
+            ),
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(PluralMigrationError, "reviewed digest"):
+            load_manifest(drifted)
+
+        for lines in (("main", "main"), ("1.x", "main"), ("1.x", "1.x")):
+            with self.assertRaisesRegex(
+                PluralMigrationError, "requires main as --root and 1.x"
+            ):
+                _assert_comparison_lines(*lines)
 
 
 if __name__ == "__main__":

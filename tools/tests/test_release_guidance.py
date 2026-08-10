@@ -13,13 +13,13 @@ GUIDANCE_PATHS = (
     Path("docs/RELEASE_LINES.md"),
 )
 REQUIRED_POLICY = (
-    "Assess every issue-driven fix against both `main` and `1.x`",
+    "Assess every issue-driven authored-content fix against both `main` and `1.x`",
     "a fix discovered on `1.x` must also reach `main` whenever compatible",
     "separate worktrees, validation runs, commits, and linked pull requests",
     "For paired delivery, the canonical `main` pull request is the only one that closes the issue",
-    "`1.x` companion links both the issue and canonical pull request",
-    "without using a closing keyword",
+    "`1.x` companion links both the issue and canonical pull request without using a closing keyword",
     "single-line exception must record explicit evidence and rationale",
+    "replacement-only schemas or tooling, Classic-only formats or consumers, runtime incompatibility, or provenance or attribution constraints",
     "sole applicable pull request is canonical",
     "Never merge branches wholesale or share generated output between worktrees",
 )

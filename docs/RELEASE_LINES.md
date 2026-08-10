@@ -8,13 +8,13 @@ license or attribution.
 
 ## Choosing a target
 
-- Assess every issue-driven fix against both `main` and `1.x`; a fix discovered
-  on `1.x` must also reach `main` whenever compatible.
+- Assess every issue-driven authored-content fix against both `main` and `1.x`;
+  a fix discovered on `1.x` must also reach `main` whenever compatible.
 - Use `1.x` for compatible Classic-maintenance changes, including shared
   authored-content defects and Classic-only compatibility, security,
   attribution, or data-loss fixes that work with its ADS/Python consumers.
-- Use `main` for replacement schemas, compiled artifacts, content-toolkit
-  adoption, and forward authoring.
+- Use `main` for compatible shared authored-content defects and for replacement
+  schemas, compiled artifacts, content-toolkit adoption, and forward authoring.
 - Compatible shared fixes normally ship to both lines through separate
   worktrees, validation runs, commits, and linked pull requests. Preserve the
   original author and explain any conflict resolution independently.
@@ -22,7 +22,9 @@ license or attribution.
   closes the issue; its `1.x` companion links both the issue and canonical pull
   request without using a closing keyword.
 - A single-line exception must record explicit evidence and rationale
-  explaining why the other line is unaffected or incompatible; its sole
+  explaining why the other line is unaffected or incompatible, such as
+  replacement-only schemas or tooling, Classic-only formats or consumers,
+  runtime incompatibility, or provenance or attribution constraints; its sole
   applicable pull request is canonical.
 - Never merge branches wholesale or share generated output between worktrees.
 - Identify a companion as a `backport to 1.x` when it originates on `main`, or

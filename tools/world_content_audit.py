@@ -8,6 +8,7 @@ report complements, but does not replace, tools.validate or content_catalog.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from collections import defaultdict
@@ -25,7 +26,7 @@ MAP_ROOT = ROOT / "maps"
 ARCH_ROOT = ROOT / "arch"
 LIGHT_REVIEW_NAME = "light-source-review.json"
 LIGHT_COLOR_RE = re.compile(r"^[0-9a-f]{6}$")
-INVISIBLE_LIGHT_RE = re.compile(r"^light[1-9]$")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 def fields(lines: list[str]) -> dict[str, list[str]]:
@@ -304,14 +305,69 @@ def _nonzero_radius(value) -> int | None:
 
 
 def _effective_color(value) -> str | None:
-    """Normalize an authored RGB tint; zero retains Classic neutral lighting."""
+    """Normalize an authored RGB tint; absence retains Classic neutral white."""
 
     if value is None:
         return None
-    color = str(value).lower()
-    if color == "000000":
-        return None
-    return color
+    return str(value).lower()
+
+
+def _visible_emitter(face, type_, sys_object) -> bool:
+    """Return whether an effective emitter has independently rendered art."""
+
+    return bool(face and not str(face).startswith("blank.")) and not (
+        type_ == "78" and sys_object == "1"
+    )
+
+
+def _semantic_sha256(value) -> str:
+    encoded = json.dumps(
+        value, ensure_ascii=True, separators=(",", ":"), sort_keys=True
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def _source_semantic_sha256(row: dict) -> str:
+    return _semantic_sha256(
+        {
+            key: row.get(key)
+            for key in (
+                "id", "path", "archetype", "radius", "color", "visible", "face"
+            )
+        }
+    )
+
+
+def _map_semantic_sha256(row: dict) -> str:
+    emitters = [
+        {
+            key: emitter.get(key)
+            for key in (
+                "archetype",
+                "x",
+                "y",
+                "radius",
+                "radius_source",
+                "color",
+                "color_source",
+                "visible",
+                "face",
+                "review_scope",
+            )
+        }
+        for emitter in row["emitters"]
+    ]
+    emitters.sort(key=lambda emitter: json.dumps(emitter, sort_keys=True))
+    return _semantic_sha256(
+        {
+            "source_sha256": row.get("source_sha256"),
+            "name": row.get("name"),
+            "region": row.get("region"),
+            "outdoor": row.get("outdoor"),
+            "darkness": row.get("darkness"),
+            "emitters": emitters,
+        }
+    )
 
 
 def _light_review() -> dict:
@@ -344,20 +400,22 @@ def light_inventory() -> dict:
         disposition, resolved_color = _review_disposition(
             review.get("archetypes", {}).get(archetype), color
         )
-        archetype_rows.append({
+        row = {
             "id": archetype,
             "path": definition["path"],
             "radius": radius,
             "color": resolved_color,
-            "visible": not (
-                attrs.get("type") == "78" and attrs.get("sys_object") == "1"
+            "visible": _visible_emitter(
+                attrs.get("face"), attrs.get("type"), attrs.get("sys_object")
             ),
             "face": attrs.get("face"),
             "disposition": disposition,
             "rationale": review.get("archetypes", {}).get(archetype, {}).get(
                 "rationale"
             ),
-        })
+        }
+        row["semantic_sha256"] = _source_semantic_sha256(row)
+        archetype_rows.append(row)
 
     artifact_rows = []
     for artifact in artifact_inventory():
@@ -370,21 +428,26 @@ def light_inventory() -> dict:
         disposition, resolved_color = _review_disposition(
             review.get("artifacts", {}).get(artifact["id"]), color
         )
-        artifact_rows.append({
+        face = attrs.get("face", base.get("face"))
+        row = {
             "id": artifact["id"],
             "path": artifact["path"],
             "archetype": artifact["def_arch"],
             "radius": radius,
             "color": resolved_color,
-            "visible": not (
-                base.get("type") == "78" and base.get("sys_object") == "1"
+            "visible": _visible_emitter(
+                face,
+                attrs.get("type", base.get("type")),
+                attrs.get("sys_object", base.get("sys_object")),
             ),
-            "face": attrs.get("face", base.get("face")),
+            "face": face,
             "disposition": disposition,
             "rationale": review.get("artifacts", {}).get(artifact["id"], {}).get(
                 "rationale"
             ),
-        })
+        }
+        row["semantic_sha256"] = _source_semantic_sha256(row)
+        artifact_rows.append(row)
 
     map_rows = []
     reviewed_maps = {}
@@ -400,12 +463,36 @@ def light_inventory() -> dict:
             if radius is None:
                 continue
             color = _effective_color(one(attrs, "light_color", base.get("light_color")))
+            face = one(attrs, "face", base.get("face"))
+            visible = _visible_emitter(
+                face,
+                one(attrs, "type", base.get("type")),
+                one(attrs, "sys_object", base.get("sys_object")),
+            )
+            review_scope = "archetype"
             source_review = review.get("archetypes", {}).get(node["arch"])
             if node["arch"] not in archetypes or "glow_radius" in attrs:
-                source_review = map_review
+                review_scope = "map"
+                if visible and color is None:
+                    rationale = (
+                        map_review.get("visible_neutral", {}).get(node["arch"])
+                        if map_review else None
+                    )
+                    source_review = (
+                        {"uncolored_disposition": "neutral", "rationale": rationale}
+                        if isinstance(rationale, str) else None
+                    )
+                else:
+                    source_review = map_review
             disposition, resolved_color = _review_disposition(source_review, color)
             x = one(attrs, "x", one(parent["attrs"], "x") if parent else None)
             y = one(attrs, "y", one(parent["attrs"], "y") if parent else None)
+            if "light_color" in attrs:
+                color_source = "map"
+            elif node["arch"] in archetypes:
+                color_source = "archetype"
+            else:
+                color_source = "absent"
             emitters.append({
                 "id": "{}:{}".format(relative, node["line"]),
                 "line": node["line"],
@@ -413,12 +500,12 @@ def light_inventory() -> dict:
                 "x": int(x) if x is not None else None,
                 "y": int(y) if y is not None else None,
                 "radius": radius,
+                "radius_source": "map" if "glow_radius" in attrs else "archetype",
                 "color": resolved_color,
-                "visible": not (
-                    INVISIBLE_LIGHT_RE.fullmatch(node["arch"]) is not None
-                    or (base.get("type") == "78" and base.get("sys_object") == "1")
-                ),
-                "face": one(attrs, "face", base.get("face")),
+                "color_source": color_source,
+                "visible": visible,
+                "face": face,
+                "review_scope": review_scope,
                 "disposition": disposition,
                 "rationale": (
                     source_review.get("rationale") if source_review else None
@@ -427,7 +514,7 @@ def light_inventory() -> dict:
         if not emitters:
             continue
         header = parsed["header"]["attrs"] if parsed["header"] else {}
-        reviewed_maps[relative] = {
+        row = {
             "path": relative,
             "name": one(header, "name"),
             "region": one(header, "region"),
@@ -437,6 +524,9 @@ def light_inventory() -> dict:
             "rationale": map_review.get("rationale") if map_review else None,
             "emitters": emitters,
         }
+        row["source_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        row["semantic_sha256"] = _map_semantic_sha256(row)
+        reviewed_maps[relative] = row
         map_rows.extend(emitters)
 
     rows = archetype_rows + artifact_rows + map_rows
@@ -472,8 +562,8 @@ def validate_light_inventory(report: dict) -> list[str]:
 
     errors = []
     review = _light_review()
-    if review.get("schema_version") != 1:
-        errors.append("light-source review must use schema_version 1")
+    if review.get("schema_version") != 2:
+        errors.append("light-source review must use schema_version 2")
     if (
         not isinstance(review.get("review_method"), str)
         or len(review["review_method"].strip()) < 12
@@ -484,6 +574,23 @@ def validate_light_inventory(report: dict) -> list[str]:
         "artifacts": {row["id"] for row in report["artifacts"]},
         "maps": {row["path"] for row in report["maps"]},
     }
+    semantic_rows = {
+        "archetypes": {row["id"]: row for row in report["archetypes"]},
+        "artifacts": {row["id"]: row for row in report["artifacts"]},
+        "maps": {row["path"]: row for row in report["maps"]},
+    }
+    render_context = review.get("render_context")
+    if not isinstance(render_context, dict):
+        errors.append("light-source review render_context must be an object")
+    else:
+        for field in ("content_commit", "classic_commit", "resources_commit"):
+            value = render_context.get(field)
+            if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
+                errors.append("light-source render_context needs a {} SHA".format(field))
+        for field in ("profile", "command", "settings"):
+            value = render_context.get(field)
+            if not isinstance(value, str) or len(value.strip()) < 4:
+                errors.append("light-source render_context needs {}".format(field))
     batches = review.get("rendered_batches")
     if not isinstance(batches, dict):
         errors.append("light-source rendered_batches must be an object")
@@ -498,6 +605,10 @@ def validate_light_inventory(report: dict) -> list[str]:
             errors.append("rendered batch {} needs a PNG artifact".format(identifier))
         if not isinstance(entry.get("method"), str) or len(entry["method"].strip()) < 12:
             errors.append("rendered batch {} needs a concise method".format(identifier))
+        if not isinstance(entry.get("sha256"), str) or SHA256_RE.fullmatch(
+            entry["sha256"]
+        ) is None:
+            errors.append("rendered batch {} needs an artifact SHA-256".format(identifier))
     required_checks = {
         "overlap",
         "linked-depth",
@@ -529,6 +640,15 @@ def validate_light_inventory(report: dict) -> list[str]:
                 )
             if not isinstance(entry.get("rationale"), str) or len(entry["rationale"].strip()) < 12:
                 errors.append("{} {} needs a concise rationale".format(section[:-1], identifier))
+            expected_sha256 = semantic_rows[section].get(identifier, {}).get(
+                "semantic_sha256"
+            )
+            if entry.get("semantic_sha256") != expected_sha256:
+                errors.append(
+                    "{} {} changed since its lighting review".format(
+                        section[:-1], identifier
+                    )
+                )
             if section == "maps" and not isinstance(entry.get("rendered_batch"), str):
                 errors.append("map {} needs rendered_batch evidence".format(identifier))
             elif section == "maps" and entry["rendered_batch"] not in batches:
@@ -541,6 +661,45 @@ def validate_light_inventory(report: dict) -> list[str]:
                             identifier
                         )
                     )
+                expected_visible_neutral = {
+                    emitter["archetype"]
+                    for emitter in semantic_rows[section].get(identifier, {}).get(
+                        "emitters", ()
+                    )
+                    if emitter["review_scope"] == "map"
+                    and emitter["visible"]
+                    and emitter["color"] is None
+                }
+                visible_neutral = entry.get("visible_neutral", {})
+                if not isinstance(visible_neutral, dict):
+                    errors.append(
+                        "map {} visible_neutral must be an object".format(identifier)
+                    )
+                else:
+                    actual_visible_neutral = set(visible_neutral)
+                    for missing in sorted(
+                        expected_visible_neutral - actual_visible_neutral
+                    ):
+                        errors.append(
+                            "map {} needs a visible-neutral rationale for {}".format(
+                                identifier, missing
+                            )
+                        )
+                    for stale in sorted(
+                        actual_visible_neutral - expected_visible_neutral
+                    ):
+                        errors.append(
+                            "map {} has stale visible-neutral review for {}".format(
+                                identifier, stale
+                            )
+                        )
+                    for archetype, rationale in sorted(visible_neutral.items()):
+                        if not isinstance(rationale, str) or len(rationale.strip()) < 12:
+                            errors.append(
+                                "map {} visible-neutral {} needs a concise rationale".format(
+                                    identifier, archetype
+                                )
+                            )
     map_entries = review.get("maps")
     referenced_batches = {
         entry.get("rendered_batch")

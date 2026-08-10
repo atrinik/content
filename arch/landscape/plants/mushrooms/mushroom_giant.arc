@@ -4,6 +4,7 @@ layer 4
 face mushroom_giant1.101
 no_pick 1
 type 79
+light_color c0ff60
 end
 
 Object mushroom_giant2
@@ -12,6 +13,7 @@ layer 4
 face mushroom_giant2.101
 no_pick 1
 type 79
+light_color ffd080
 end
 
 Object mushroom_giant3
@@ -20,6 +22,7 @@ layer 4
 face mushroom_giant3.101
 no_pick 1
 type 79
+light_color 60d0ff
 end
 
 Object mushroom_giant4
@@ -28,6 +31,7 @@ layer 4
 face mushroom_giant4.101
 no_pick 1
 type 79
+light_color c0ff60
 end
 
 Object mushroom_giant5

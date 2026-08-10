@@ -34,4 +34,5 @@ speed -0.060
 weight 6500
 faction monsters
 int 20
+light_color ffe060
 end

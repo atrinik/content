@@ -132,6 +132,7 @@ end
 def_arch inert
 Object
 glow_radius 1
+face reward.101
 end
 """,
         )
@@ -153,21 +154,31 @@ end
 arch inert
 x 6
 y 7
+face orb.101
 glow_radius 3
 light_color 4060ff
 end
 """,
         )
-        self.write(
+        review_path = self.write(
             "maps/light-source-review.json",
             json.dumps(
                 {
-                    "schema_version": 1,
+                    "schema_version": 2,
                     "review_method": "test semantic and rendered inspection",
+                    "render_context": {
+                        "content_commit": "1" * 40,
+                        "classic_commit": "2" * 40,
+                        "resources_commit": "3" * 40,
+                        "profile": "test-light-review",
+                        "command": "test worldmaker command",
+                        "settings": "test pixel size and regional roots",
+                    },
                     "rendered_batches": {
                         "sample-interior": {
                             "artifact": "sample.png",
                             "method": "test renderer",
+                            "sha256": "0" * 64,
                         }
                     },
                     "palette": {
@@ -195,6 +206,7 @@ end
                             "uncolored_disposition": "neutral",
                             "rationale": "Rendered room keeps neutral fill around colored accents.",
                             "rendered_batch": "sample-interior",
+                            "visible_neutral": {},
                             "checks": [
                                 "overlap",
                                 "linked-depth",
@@ -210,6 +222,18 @@ end
             ),
         )
 
+        report = audit.light_inventory()
+        review = json.loads(review_path.read_text())
+        for section, identity in (
+            ("archetypes", "id"),
+            ("artifacts", "id"),
+            ("maps", "path"),
+        ):
+            for row in report[section]:
+                review[section][row[identity]]["semantic_sha256"] = row[
+                    "semantic_sha256"
+                ]
+        review_path.write_text(json.dumps(review))
         report = audit.light_inventory()
 
         self.assertEqual(
@@ -234,9 +258,8 @@ end
         self.assertFalse(scene["emitters"][1]["visible"])
         artifact = report["artifacts"][0]
         self.assertTrue(artifact["visible"])
-        self.assertIsNone(artifact["face"])
+        self.assertEqual("reward.101", artifact["face"])
 
-        review_path = self.root / "maps/light-source-review.json"
         review = json.loads(review_path.read_text())
         review["maps"]["maps/scene"]["checks"] = None
         review_path.write_text(json.dumps(review))
@@ -244,6 +267,70 @@ end
             "map maps/scene must record every contextual lighting check",
             audit.validate_light_inventory(audit.light_inventory()),
         )
+
+        review["maps"]["maps/scene"]["checks"] = [
+            "overlap",
+            "linked-depth",
+            "horizontal-boundary",
+            "dark-interior",
+            "outdoor-transition",
+            "fog-roof",
+            "navigation",
+        ]
+        review["rendered_batches"]["sample-interior"]["sha256"] = "invalid"
+        review_path.write_text(json.dumps(review))
+        self.assertIn(
+            "rendered batch sample-interior needs an artifact SHA-256",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+
+        review["rendered_batches"]["sample-interior"]["sha256"] = "0" * 64
+        review_path.write_text(json.dumps(review))
+        archetype_path = self.root / "arch/lights.arc"
+        archetype_source = archetype_path.read_text()
+        archetype_path.write_text(archetype_source.replace("glow_radius 4", "glow_radius 5"))
+        self.assertIn(
+            "archetype colored_lamp changed since its lighting review",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        archetype_path.write_text(archetype_source)
+
+        scene_path = self.root / "maps/scene"
+        scene_path.write_text(
+            scene_path.read_text()
+            .replace("x 6\n", "x 8\n")
+            .replace("light_color 4060ff\n", "")
+        )
+        errors = audit.validate_light_inventory(audit.light_inventory())
+        self.assertIn(
+            "map maps/scene changed since its lighting review",
+            errors,
+        )
+        self.assertIn(
+            "map maps/scene needs a visible-neutral rationale for inert",
+            errors,
+        )
+
+    def test_light_inventory_preserves_black_and_marks_faceless_emitters_invisible(self):
+        self.write(
+            "arch/lights.arc",
+            """Object black_light
+face black_light.101
+glow_radius 2
+light_color 000000
+end
+Object faceless_satellite
+glow_radius 2
+end
+""",
+        )
+
+        report = audit.light_inventory()
+        rows = {row["id"]: row for row in report["archetypes"]}
+
+        self.assertEqual("000000", rows["black_light"]["color"])
+        self.assertEqual("explicit-color", rows["black_light"]["disposition"])
+        self.assertFalse(rows["faceless_satellite"]["visible"])
 
     def test_light_review_check_rejects_missing_baseline_rows(self):
         self.write(
@@ -259,7 +346,7 @@ end
         report = audit.light_inventory()
         errors = audit.validate_light_inventory(report)
 
-        self.assertIn("light-source review must use schema_version 1", errors)
+        self.assertIn("light-source review must use schema_version 2", errors)
         self.assertIn("light-source review needs a concise review_method", errors)
         self.assertIn("light-source review archetypes must be an object", errors)
         self.assertIn("1 effective light sources remain unreviewed", errors)

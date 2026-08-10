@@ -43,9 +43,23 @@
   `contracts/release-lines/classic-1x.json`; runtime manifests must identify
   exact branch/commit, classic formats and consumers, licenses, and
   `replacement_ready: false`. Never merge replacement `main` wholesale into
-  this branch or accept replacement-only formats/tooling. Use separate linked
-  backport/forward-port pull requests as documented in
-  `docs/RELEASE_LINES.md`.
+  this branch or accept replacement-only formats/tooling.
+- Assess every issue-driven authored-content fix against both `main` and `1.x`;
+  a fix discovered on `1.x` must also reach `main` whenever compatible.
+  Compatible shared fixes
+  normally ship to both lines through separate worktrees, validation runs,
+  commits, and linked pull requests. For paired delivery, the canonical `main`
+  pull request is the only one that closes the issue; its `1.x` companion links
+  both the issue and canonical pull request without using a closing keyword. A
+  single-line exception must record explicit evidence and rationale explaining
+  why the other line is unaffected or incompatible, such as replacement-only
+  schemas or tooling, Classic-only formats or consumers, runtime
+  incompatibility, or provenance or attribution constraints. The sole
+  applicable pull request is canonical: a `main` pull request uses a closing
+  keyword; a `1.x` pull request links without one, and the issue is closed
+  manually after merge. Never merge branches wholesale or share generated
+  output between worktrees. Port linkage and review rules are
+  documented in `docs/RELEASE_LINES.md`.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the

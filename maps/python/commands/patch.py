@@ -39,6 +39,9 @@ def main():
         pl.DrawInfo("No such object found.", COLOR_RED)
         return
 
-    obj_assign_attribs(obj, attribs)
+    try:
+        obj_assign_attribs(obj, attribs)
+    except ValueError as err:
+        pl.DrawInfo(str(err), COLOR_RED)
 
 main()

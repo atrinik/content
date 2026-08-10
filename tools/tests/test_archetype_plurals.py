@@ -211,7 +211,9 @@ class ArchetypePluralTest(unittest.TestCase):
                 "delivery_branch": "review-plurals",
             }
         }
-        with mock.patch.dict(LINES, coordinates, clear=True):
+        with mock.patch.dict(LINES, coordinates, clear=True), mock.patch(
+            "tools.archetype_plurals.load_manifest", return_value=self.manifest
+        ):
             with self.assertRaisesRegex(
                 PluralMigrationError, "sources differ from the exact reviewed baseline"
             ):
@@ -264,6 +266,10 @@ class ArchetypePluralTest(unittest.TestCase):
         )
         with self.assertRaisesRegex(PluralMigrationError, "reviewed digest"):
             load_manifest(drifted)
+        alternate = copy.deepcopy(load_manifest(ROOT / MANIFEST_PATH))
+        alternate["rows"][0]["name_pl"] = "unreviewed"
+        with self.assertRaisesRegex(PluralMigrationError, "repository-owned"):
+            migrate(ROOT, alternate)
 
         for lines in (("main", "main"), ("1.x", "main"), ("1.x", "1.x")):
             with self.assertRaisesRegex(

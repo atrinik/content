@@ -34,6 +34,7 @@ class FakeObject:
         self.type = 0
         self.f_monster = False
         self.randomitems = None
+        self.optional = "present"
         self.inserted = False
 
     def Load(self, value):
@@ -67,6 +68,9 @@ class PythonCommandTests(unittest.TestCase):
         self.common.obj_assign_attribs(obj, "light_color 00FF7f")
         self.assertEqual(0x00ff7f, obj.light_color)
 
+        self.common.obj_assign_attribs(obj, "light_color\tabcdef")
+        self.assertEqual(0xabcdef, obj.light_color)
+
     def test_light_color_rejects_malformed_input_before_assignment(self):
         for value in ("#ff0000", "ff000", "ff00000", "gg0000"):
             with self.subTest(value=value):
@@ -86,18 +90,31 @@ class PythonCommandTests(unittest.TestCase):
                 self.assertEqual(1, obj.count)
                 self.assertEqual(0xffffff, obj.light_color)
 
+        for attribs in (
+            "count 2 light_color  gg0000",
+            "count 2 light_color\tgg0000",
+        ):
+            with self.subTest(attribs=attribs):
+                obj = FakeObject()
+                with self.assertRaisesRegex(ValueError, "six hexadecimal digits"):
+                    self.common.obj_assign_attribs(obj, attribs)
+                self.assertEqual(1, obj.count)
+                self.assertEqual(0xffffff, obj.light_color)
+
     def test_unrelated_attribute_coercion_is_unchanged(self):
         obj = FakeObject()
 
         self.common.obj_assign_attribs(
             obj,
-            'count 12 ratio 1.5 label "quoted value" enabled 0 custom fallback',
+            'count 12 ratio 1.5 label "quoted value" enabled 0 '
+            'optional None custom fallback',
         )
 
         self.assertEqual(12, obj.count)
         self.assertEqual(1.5, obj.ratio)
         self.assertEqual("quoted value", obj.label)
         self.assertFalse(obj.f_enabled)
+        self.assertIsNone(obj.optional)
         self.assertEqual(["custom fallback"], obj.loaded)
 
         self.common.obj_assign_attribs(
@@ -125,7 +142,9 @@ class PythonCommandTests(unittest.TestCase):
 
     def test_create_destroys_object_after_malformed_color(self):
         obj = FakeObject()
-        atrinik, recorder = self.command_module("torch light_color gg0000", obj)
+        atrinik, recorder = self.command_module(
+            "torch count 2 light_color  gg0000", obj
+        )
 
         with mock.patch.dict(
             sys.modules, {"Atrinik": atrinik, "Common": self.common}
@@ -133,6 +152,8 @@ class PythonCommandTests(unittest.TestCase):
             runpy.run_path(str(COMMANDS_PATH / "create.py"), run_name="create_test")
 
         self.assertTrue(obj.destroyed)
+        self.assertFalse(obj.inserted)
+        self.assertEqual(1, obj.count)
         self.assertEqual(
             [("light_color must be exactly six hexadecimal digits (RRGGBB).", 1)],
             recorder.messages,
@@ -169,7 +190,7 @@ class PythonCommandTests(unittest.TestCase):
 
     def test_patch_reports_malformed_color_without_mutation(self):
         obj = FakeObject()
-        atrinik, recorder = self.command_module("me light_color gg0000", obj)
+        atrinik, recorder = self.command_module("me count 2 light_color  gg0000", obj)
 
         with mock.patch.dict(
             sys.modules, {"Atrinik": atrinik, "Common": self.common}
@@ -177,6 +198,7 @@ class PythonCommandTests(unittest.TestCase):
             runpy.run_path(str(COMMANDS_PATH / "patch.py"), run_name="patch_test")
 
         self.assertEqual(0xffffff, obj.light_color)
+        self.assertEqual(1, obj.count)
         self.assertEqual(
             [("light_color must be exactly six hexadecimal digits (RRGGBB).", 1)],
             recorder.messages,

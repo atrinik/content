@@ -8,17 +8,31 @@ license or attribution.
 
 ## Choosing a target
 
-- Use `1.x` only for a classic compatibility, security, attribution, or
-  data-loss fix that works with the classic ADS/Python consumer contract.
-- Use `main` for replacement schemas, compiled artifacts, content-toolkit
-  adoption, and forward authoring.
-- When a fix applies to both, open two linked pull requests. Do not merge one
-  branch wholesale into the other and do not copy generated output. Preserve
-  the original author and explain any conflict resolution independently.
-- Label the first change `backport-1.x` when it originates on `main`, or
-  `forward-port-main` when it originates on `1.x`. Add `security` or
-  `data-loss` when expedited review is required. An ambiguous destination or
-  an incomplete attribution record blocks the change.
+- Assess every issue-driven authored-content fix against both `main` and `1.x`;
+  a fix discovered on `1.x` must also reach `main` whenever compatible.
+- Use `1.x` for compatible Classic-maintenance changes, including shared
+  authored-content defects and Classic-only compatibility, security,
+  attribution, or data-loss fixes that work with its ADS/Python consumers.
+- Use `main` for compatible shared authored-content defects and for replacement
+  schemas, compiled artifacts, content-toolkit adoption, and forward authoring.
+- Compatible shared fixes normally ship to both lines through separate
+  worktrees, validation runs, commits, and linked pull requests. Preserve the
+  original author and explain any conflict resolution independently.
+- For paired delivery, the canonical `main` pull request is the only one that
+  closes the issue; its `1.x` companion links both the issue and canonical pull
+  request without using a closing keyword.
+- A single-line exception must record explicit evidence and rationale
+  explaining why the other line is unaffected or incompatible, such as
+  replacement-only schemas or tooling, Classic-only formats or consumers,
+  runtime incompatibility, or provenance or attribution constraints. The sole
+  applicable pull request is canonical: a `main` pull request uses a closing
+  keyword; a `1.x` pull request links without one, and the issue is closed
+  manually after merge.
+- Never merge branches wholesale or share generated output between worktrees.
+- Identify a companion as a `backport to 1.x` when it originates on `main`, or
+  a `forward-port to main` when it originates on `1.x`, and link the source
+  pull request in its body. An ambiguous destination or incomplete attribution
+  record blocks the change.
 
 Every `1.x` pull request runs the stable `Content validation` and
 `Conventional PR title` checks. Direct pushes, force pushes, deletion, and

@@ -78,23 +78,75 @@ def obj_assign_attribs (obj, attribs):
     if not attribs:
         return
 
-    for t in re.findall(r'(\w+) (?:(?:"([^"]+)")|([^ ]+))', attribs):
-        attrib = t[0]
-        val = t[1] or t[2]
+    tokens = re.findall(r'"[^"]*"(?=\s|$)|\S+', attribs)
+    legacy_pairs = [
+        (t[0], t[1] or t[2])
+        for t in re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
+    ]
 
-        # Try to create an integer or a float from the value if possible.
-        try:
-            val = int(val)
-        except ValueError:
+    if any("light_color" in token for token in tokens) or any(
+        attrib == "light_color" for attrib, _ in legacy_pairs
+    ):
+        if len(tokens) % 2:
+            raise ValueError(
+                "light_color must be exactly six hexadecimal digits (RRGGBB)."
+            )
+
+        pairs = []
+
+        for pos in range(0, len(tokens), 2):
+            attrib = tokens[pos]
+            val = tokens[pos + 1]
+
+            if not re.fullmatch(r'\w+', attrib):
+                raise ValueError(
+                    "light_color must be exactly six hexadecimal digits (RRGGBB)."
+                )
+
+            if '"' in val:
+                if not (
+                    val.startswith('"')
+                    and val.endswith('"')
+                    and val.count('"') == 2
+                ):
+                    raise ValueError(
+                        "light_color must be exactly six hexadecimal digits (RRGGBB)."
+                    )
+
+                val = val[1:-1] or '""'
+
+            pairs.append((attrib, val))
+    else:
+        pairs = legacy_pairs
+
+    parsed = []
+
+    for attrib, val in pairs:
+
+        if attrib == "light_color":
+            if not re.fullmatch(r'[0-9A-Fa-f]{6}', val):
+                raise ValueError(
+                    "light_color must be exactly six hexadecimal digits (RRGGBB)."
+                )
+
+            val = int(val, 16)
+        else:
+            # Try to create an integer or a float from the value if possible.
             try:
-                val = float(val)
+                val = int(val)
             except ValueError:
-                pass
+                try:
+                    val = float(val)
+                except ValueError:
+                    pass
 
         # Translate None string to literal None
         if val == "None":
             val = None
 
+        parsed.append((attrib, val))
+
+    for attrib, val in parsed:
         # If the object has the attribute, set it directly
         if hasattr(obj, attrib):
             setattr(obj, attrib, val)
@@ -104,4 +156,3 @@ def obj_assign_attribs (obj, attribs):
         # Otherwise attempt to use the Load method
         else:
             obj.Load("{} {}".format(attrib, "NONE" if val is None else val))
-

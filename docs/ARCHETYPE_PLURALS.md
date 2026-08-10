@@ -80,10 +80,10 @@ the result, so same-root or swapped inputs fail closed.
 
 ## Classic consumer gate
 
-The `1.x` runtime collection preserves every authored plural, but publication
-and merge remain gated on an actually published `atrinik/classic` release that
-supports `name_pl` and on truthful synchronization of
-`contracts/release-lines/classic-1x.json`. The gate is tracked by
-[`atrinik/classic#63`](https://github.com/atrinik/classic/issues/63). This
-repository does not infer compatibility from the current broad range, guess a
-future version, or predeclare support before that release exists.
+The `1.x` runtime collection preserves every authored plural. Published
+`atrinik/classic` release
+[`v5.10.1`](https://github.com/atrinik/classic/releases/tag/v5.10.1) is the
+first release containing `name_pl` loader, server, and client support, so
+`contracts/release-lines/classic-1x.json` records `>=5.10.1 <6.0.0` as the
+truthful compatibility boundary. The completed consumer gate is tracked by
+[`atrinik/classic#63`](https://github.com/atrinik/classic/issues/63).

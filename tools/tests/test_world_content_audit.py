@@ -186,6 +186,11 @@ end
                             "rationale": "Neutral reward glow preserves its art.",
                         }
                     },
+                    "color_sources": {
+                        "colored_lamp": {
+                            "rationale": "Warm orange follows this lamp's flame art."
+                        }
+                    },
                     "maps": {
                         "maps/scene": {
                             "uncolored_disposition": "neutral",
@@ -211,6 +216,7 @@ end
         for section, identity in (
             ("archetypes", "id"),
             ("artifacts", "id"),
+            ("color_sources", "id"),
             ("maps", "path"),
         ):
             for row in report[section]:
@@ -313,6 +319,7 @@ end
             {
                 "archetypes": 2,
                 "artifacts": 1,
+                "color_sources": 1,
                 "maps": 1,
                 "map_instances": 3,
                 "visible_map_instances": 2,
@@ -332,6 +339,23 @@ end
         artifact = report["artifacts"][0]
         self.assertTrue(artifact["visible"])
         self.assertEqual("reward.101", artifact["face"])
+        self.assertEqual("artifact", artifact["radius_source"]["kind"])
+        self.assertEqual("glow_radius", artifact["radius_source"]["field"])
+        lamp = report["archetypes"][0]
+        self.assertEqual("glow_radius", lamp["radius_source"]["field"])
+        self.assertEqual(4, lamp["radius_source"]["field_line"])
+        self.assertEqual("archetype", scene["emitters"][0]["color_source"]["kind"])
+        override = scene["emitters"][2]
+        self.assertEqual("map", override["radius_source"]["kind"])
+        self.assertEqual("maps/scene", override["radius_source"]["path"])
+        self.assertEqual("light_color", override["color_source"]["field"])
+
+        broken_report = audit.light_inventory()
+        broken_report["maps"][0]["emitters"][0]["radius_source"] = None
+        self.assertIn(
+            "map emitter maps/scene:6 has invalid radius provenance",
+            audit.validate_light_inventory(broken_report),
+        )
 
         review = json.loads(review_path.read_text())
         review["maps"]["maps/scene"]["checks"] = None
@@ -458,6 +482,41 @@ end
             [(0, 0), (2, 0), (0, 3), (7, 8)],
             [(row["x"], row["y"]) for row in report["maps"][0]["emitters"]],
         )
+
+    def test_light_inventory_includes_toggle_active_type_74_state(self):
+        self.write(
+            "arch/toggle.arc",
+            """Object toggle_lamp
+face lamp.101
+type 74
+last_sp 5
+light_color ffc080
+end
+""",
+        )
+        self.write(
+            "maps/toggle",
+            """arch map
+name Toggle Lamp
+end
+arch toggle_lamp
+x 3
+y 4
+end
+""",
+        )
+
+        report = audit.light_inventory()
+
+        source = report["archetypes"][0]
+        self.assertEqual("toggle-active", source["activation"])
+        self.assertEqual(5, source["radius"])
+        self.assertEqual("last_sp", source["radius_source"]["field"])
+        emitter = report["maps"][0]["emitters"][0]
+        self.assertEqual("toggle-active", emitter["activation"])
+        self.assertEqual((3, 4), (emitter["x"], emitter["y"]))
+        self.assertEqual("archetype", emitter["radius_source"]["kind"])
+        self.assertEqual("light_color", emitter["color_source"]["field"])
 
     def test_light_review_check_rejects_missing_baseline_rows(self):
         self.write(

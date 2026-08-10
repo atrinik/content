@@ -75,6 +75,10 @@ def _audit_node(document: Document, node: Node) -> dict:
     return {
         "arch": node.name,
         "attrs": attrs,
+        "field_lines": {
+            record.name: record.span.line
+            for record in node.fields
+        },
         "children": [
             _audit_node(document, document.node(handle))
             for handle in node.child_handles
@@ -97,7 +101,7 @@ def _audit_attrs(node: Node) -> dict[str, list[str]]:
 
 def _legacy_archetype_attrs(
     document: Document, node: Node
-) -> dict[str, list[str]]:
+) -> tuple[dict[str, list[str]], dict[str, int]]:
     """Adapt the model to the audit's historical first-`end` field window."""
 
     descendants = []
@@ -135,6 +139,7 @@ def _legacy_archetype_attrs(
     )
 
     attrs: dict[str, list[str]] = defaultdict(list)
+    field_lines = {}
     for _, event_kind, record in sorted(events, key=lambda event: event[0]):
         if event_kind == "message":
             attrs["msg"].append(record.text.strip())
@@ -144,7 +149,8 @@ def _legacy_archetype_attrs(
         key, separator, value = line.partition(" ")
         if separator:
             attrs[key].append(value.strip())
-    return dict(attrs)
+            field_lines[key] = record.line
+    return dict(attrs), field_lines
 
 
 def map_files() -> list[Path]:
@@ -171,10 +177,12 @@ def load_archetypes() -> dict[str, dict]:
         for node in document.nodes:
             if node.depth != 0:
                 continue
-            attrs = _legacy_archetype_attrs(document, node)
+            attrs, field_lines = _legacy_archetype_attrs(document, node)
             out[node.name] = {
                 "path": str(path.relative_to(ROOT)),
                 "attrs": {key: vals[-1] for key, vals in attrs.items() if vals},
+                "field_lines": field_lines,
+                "object_line": node.opener_span.line,
             }
     return out
 
@@ -300,19 +308,29 @@ def artifact_inventory() -> list[dict]:
             chunk = lines[start:i]
             attrs = fields([x + "\n" for x in chunk])
             object_attrs = {}
+            object_field_lines = {}
+            object_line = None
             if "Object" in chunk:
                 oi = chunk.index("Object") + 1
+                object_line = start + oi
                 try:
                     oe = chunk.index("end", oi)
                 except ValueError:
                     oe = len(chunk)
                 object_attrs = fields([x + "\n" for x in chunk[oi:oe]])
+                for offset, raw in enumerate(chunk[oi:oe], start + oi + 1):
+                    key, separator, _ = raw.partition(" ")
+                    if separator:
+                        object_field_lines[key] = offset
             artifacts.append({
                 "id": artifact_id,
                 "path": str(path.relative_to(ROOT)),
+                "artifact_line": start + 1,
+                "object_line": object_line,
                 "def_arch": one(attrs, "def_arch"),
                 "chance": one(attrs, "chance"),
                 "attrs": {key: vals[-1] for key, vals in object_attrs.items() if vals},
+                "field_lines": object_field_lines,
             })
     return artifacts
 
@@ -325,6 +343,83 @@ def _nonzero_radius(value) -> int | None:
     except (TypeError, ValueError):
         return None
     return radius if radius != 0 else None
+
+
+def _effective_radius(attrs: dict, base: dict | None = None):
+    """Resolve a continuous radius or the lit state of a toggleable light."""
+
+    base = base or {}
+    radius = _nonzero_radius(attrs.get("glow_radius", base.get("glow_radius")))
+    if radius is not None:
+        return radius, "glow_radius", "continuous"
+    type_ = attrs.get("type", base.get("type"))
+    if type_ == "74":
+        radius = _nonzero_radius(attrs.get("last_sp", base.get("last_sp")))
+        if radius is not None:
+            return radius, "last_sp", "toggle-active"
+    return None, None, None
+
+
+def _source_location(
+    kind: str,
+    path: str,
+    identity: str,
+    object_line: int,
+    field: str,
+    field_line: int,
+) -> dict:
+    """Return a stable, source-located field provenance record."""
+
+    return {
+        "kind": kind,
+        "path": path,
+        "object": identity,
+        "object_line": object_line,
+        "field": field,
+        "field_line": field_line,
+    }
+
+
+def _archetype_source(definition: dict, identity: str, field: str) -> dict | None:
+    line = definition.get("field_lines", {}).get(field)
+    if line is None:
+        return None
+    return _source_location(
+        "archetype",
+        definition["path"],
+        identity,
+        definition["object_line"],
+        field,
+        line,
+    )
+
+
+def _artifact_source(artifact: dict, field: str) -> dict | None:
+    line = artifact.get("field_lines", {}).get(field)
+    if line is None:
+        return None
+    return _source_location(
+        "artifact",
+        artifact["path"],
+        artifact["id"],
+        artifact.get("object_line") or artifact["artifact_line"],
+        field,
+        line,
+    )
+
+
+def _map_source(path: str, node: dict, field: str) -> dict | None:
+    line = node.get("field_lines", {}).get(field)
+    if line is None:
+        return None
+    return _source_location(
+        "map",
+        path,
+        node["arch"],
+        node["line"],
+        field,
+        line,
+    )
 
 
 def _effective_color(value) -> str | None:
@@ -355,7 +450,17 @@ def _source_semantic_sha256(row: dict) -> str:
         {
             key: row.get(key)
             for key in (
-                "id", "path", "archetype", "radius", "color", "visible", "face"
+                "id",
+                "path",
+                "archetype",
+                "activation",
+                "radius",
+                "radius_source",
+                "color",
+                "color_source",
+                "visible",
+                "face",
+                "face_source",
             )
         }
     )
@@ -371,10 +476,12 @@ def _map_semantic_sha256(row: dict) -> str:
                 "y",
                 "radius",
                 "radius_source",
+                "activation",
                 "color",
                 "color_source",
                 "visible",
                 "face",
+                "face_source",
                 "review_scope",
             )
         }
@@ -417,6 +524,7 @@ def _inventory_semantic_sha256(report: dict) -> str:
             for section, identity in (
                 ("archetypes", "id"),
                 ("artifacts", "id"),
+                ("color_sources", "id"),
                 ("maps", "path"),
             )
         }
@@ -683,6 +791,22 @@ def validate_light_evidence(report: dict) -> list[str]:
     return errors
 
 
+def _valid_source_location(source: object) -> bool:
+    """Return whether a provenance record identifies one exact authored field."""
+
+    return (
+        isinstance(source, dict)
+        and source.get("kind") in {"archetype", "artifact", "map"}
+        and isinstance(source.get("path"), str)
+        and isinstance(source.get("object"), str)
+        and isinstance(source.get("object_line"), int)
+        and source["object_line"] > 0
+        and isinstance(source.get("field"), str)
+        and isinstance(source.get("field_line"), int)
+        and source["field_line"] > 0
+    )
+
+
 def _review_disposition(review: dict | None, color: str | None) -> tuple[str, str | None]:
     if color is not None:
         return "explicit-color", color
@@ -699,7 +823,7 @@ def light_inventory() -> dict:
     archetype_rows = []
     for archetype, definition in sorted(archetypes.items()):
         attrs = definition["attrs"]
-        radius = _nonzero_radius(attrs.get("glow_radius"))
+        radius, radius_field, activation = _effective_radius(attrs)
         if radius is None:
             continue
         color = _effective_color(attrs.get("light_color"))
@@ -709,12 +833,17 @@ def light_inventory() -> dict:
         row = {
             "id": archetype,
             "path": definition["path"],
+            "object_line": definition["object_line"],
+            "activation": activation,
             "radius": radius,
+            "radius_source": _archetype_source(definition, archetype, radius_field),
             "color": resolved_color,
+            "color_source": _archetype_source(definition, archetype, "light_color"),
             "visible": _visible_emitter(
                 attrs.get("face"), attrs.get("type"), attrs.get("sys_object")
             ),
             "face": attrs.get("face"),
+            "face_source": _archetype_source(definition, archetype, "face"),
             "disposition": disposition,
             "rationale": review.get("archetypes", {}).get(archetype, {}).get(
                 "rationale"
@@ -726,8 +855,9 @@ def light_inventory() -> dict:
     artifact_rows = []
     for artifact in artifact_inventory():
         base = archetypes.get(artifact["def_arch"], {}).get("attrs", {})
+        base_definition = archetypes.get(artifact["def_arch"], {})
         attrs = artifact["attrs"]
-        radius = _nonzero_radius(attrs.get("glow_radius", base.get("glow_radius")))
+        radius, radius_field, activation = _effective_radius(attrs, base)
         if radius is None:
             continue
         color = _effective_color(attrs.get("light_color", base.get("light_color")))
@@ -735,18 +865,38 @@ def light_inventory() -> dict:
             review.get("artifacts", {}).get(artifact["id"]), color
         )
         face = attrs.get("face", base.get("face"))
+        radius_source = (
+            _artifact_source(artifact, radius_field)
+            if radius_field in attrs
+            else _archetype_source(base_definition, artifact["def_arch"], radius_field)
+        )
+        color_source = (
+            _artifact_source(artifact, "light_color")
+            if "light_color" in attrs
+            else _archetype_source(base_definition, artifact["def_arch"], "light_color")
+        )
+        face_source = (
+            _artifact_source(artifact, "face")
+            if "face" in attrs
+            else _archetype_source(base_definition, artifact["def_arch"], "face")
+        )
         row = {
             "id": artifact["id"],
             "path": artifact["path"],
             "archetype": artifact["def_arch"],
+            "object_line": artifact.get("object_line"),
+            "activation": activation,
             "radius": radius,
+            "radius_source": radius_source,
             "color": resolved_color,
+            "color_source": color_source,
             "visible": _visible_emitter(
                 face,
                 attrs.get("type", base.get("type")),
                 attrs.get("sys_object", base.get("sys_object")),
             ),
             "face": face,
+            "face_source": face_source,
             "disposition": disposition,
             "rationale": review.get("artifacts", {}).get(artifact["id"], {}).get(
                 "rationale"
@@ -764,8 +914,14 @@ def light_inventory() -> dict:
         emitters = []
         for node, parent, x, y in flatten_map_objects(parsed["objects"]):
             attrs = node["attrs"]
-            base = archetypes.get(node["arch"], {}).get("attrs", {})
-            radius = _nonzero_radius(one(attrs, "glow_radius", base.get("glow_radius")))
+            definition = archetypes.get(node["arch"], {})
+            base = definition.get("attrs", {})
+            overrides = {
+                field: one(attrs, field)
+                for field in ("glow_radius", "last_sp", "type")
+                if field in attrs
+            }
+            radius, radius_field, activation = _effective_radius(overrides, base)
             if radius is None:
                 continue
             color = _effective_color(one(attrs, "light_color", base.get("light_color")))
@@ -777,7 +933,7 @@ def light_inventory() -> dict:
             )
             review_scope = "archetype"
             source_review = review.get("archetypes", {}).get(node["arch"])
-            if node["arch"] not in archetypes or "glow_radius" in attrs:
+            if node["arch"] not in archetypes or radius_field in attrs:
                 review_scope = "map"
                 if visible and color is None:
                     rationale = (
@@ -791,24 +947,41 @@ def light_inventory() -> dict:
                 else:
                     source_review = map_review
             disposition, resolved_color = _review_disposition(source_review, color)
-            if "light_color" in attrs:
-                color_source = "map"
-            elif node["arch"] in archetypes:
-                color_source = "archetype"
-            else:
-                color_source = "absent"
+            radius_source = (
+                _map_source(relative, node, radius_field)
+                if radius_field in attrs
+                else _archetype_source(definition, node["arch"], radius_field)
+            )
+            color_source = (
+                _map_source(relative, node, "light_color")
+                if "light_color" in attrs
+                else _archetype_source(definition, node["arch"], "light_color")
+            )
+            color_review = review.get("color_sources", {}).get(node["arch"], {})
+            face_source = (
+                _map_source(relative, node, "face")
+                if "face" in attrs
+                else _archetype_source(definition, node["arch"], "face")
+            )
             emitters.append({
                 "id": "{}:{}".format(relative, node["line"]),
                 "line": node["line"],
                 "archetype": node["arch"],
                 "x": x,
                 "y": y,
+                "activation": activation,
                 "radius": radius,
-                "radius_source": "map" if "glow_radius" in attrs else "archetype",
+                "radius_source": radius_source,
                 "color": resolved_color,
                 "color_source": color_source,
+                "color_rationale": (
+                    color_review.get("rationale")
+                    if color_source and color_source["kind"] == "archetype"
+                    else None
+                ),
                 "visible": visible,
                 "face": face,
+                "face_source": face_source,
                 "review_scope": review_scope,
                 "disposition": disposition,
                 "rationale": (
@@ -833,6 +1006,36 @@ def light_inventory() -> dict:
         map_rows.extend(emitters)
 
     rows = archetype_rows + artifact_rows + map_rows
+    color_source_ids = {
+        row["id"]
+        for row in archetype_rows
+        if row["color"] is not None
+    }
+    color_source_ids.update(
+        row["archetype"]
+        for row in map_rows
+        if row["color"] is not None
+        and (row.get("color_source") or {}).get("kind") == "archetype"
+    )
+    color_source_rows = []
+    for archetype in sorted(color_source_ids):
+        definition = archetypes[archetype]
+        color = _effective_color(definition["attrs"].get("light_color"))
+        row = {
+            "id": archetype,
+            "path": definition["path"],
+            "object_line": definition["object_line"],
+            "color": color,
+            "color_source": _archetype_source(definition, archetype, "light_color"),
+            "rationale": review.get("color_sources", {}).get(archetype, {}).get(
+                "rationale"
+            ),
+        }
+        row["semantic_sha256"] = _semantic_sha256({
+            key: row[key]
+            for key in ("id", "path", "object_line", "color", "color_source")
+        })
+        color_source_rows.append(row)
     colors = sorted({row["color"] for row in rows if row["color"] is not None})
     return {
         "schema_version": 1,
@@ -841,6 +1044,7 @@ def light_inventory() -> dict:
         "summary": {
             "archetypes": len(archetype_rows),
             "artifacts": len(artifact_rows),
+            "color_sources": len(color_source_rows),
             "maps": len(reviewed_maps),
             "map_instances": len(map_rows),
             "visible_map_instances": sum(row["visible"] for row in map_rows),
@@ -856,6 +1060,7 @@ def light_inventory() -> dict:
         },
         "archetypes": archetype_rows,
         "artifacts": artifact_rows,
+        "color_sources": color_source_rows,
         "maps": [reviewed_maps[path] for path in sorted(reviewed_maps)],
     }
 
@@ -875,13 +1080,50 @@ def validate_light_inventory(report: dict) -> list[str]:
     expected = {
         "archetypes": {row["id"] for row in report["archetypes"]},
         "artifacts": {row["id"] for row in report["artifacts"]},
+        "color_sources": {row["id"] for row in report["color_sources"]},
         "maps": {row["path"] for row in report["maps"]},
     }
     semantic_rows = {
         "archetypes": {row["id"]: row for row in report["archetypes"]},
         "artifacts": {row["id"]: row for row in report["artifacts"]},
+        "color_sources": {row["id"]: row for row in report["color_sources"]},
         "maps": {row["path"]: row for row in report["maps"]},
     }
+    for section in ("archetypes", "artifacts"):
+        for row in report[section]:
+            for field in ("radius", "color", "face"):
+                source = row.get(field + "_source")
+                if (row.get(field) is not None) != _valid_source_location(source):
+                    errors.append(
+                        "{} {} has invalid {} provenance".format(
+                            section[:-1], row["id"], field
+                        )
+                    )
+            if row.get("activation") not in {"continuous", "toggle-active"}:
+                errors.append(
+                    "{} {} has invalid activation mode".format(
+                        section[:-1], row["id"]
+                    )
+                )
+    for row in report["color_sources"]:
+        if not _valid_source_location(row.get("color_source")):
+            errors.append(
+                "color source {} has invalid field provenance".format(row["id"])
+            )
+    for map_row in report["maps"]:
+        for emitter in map_row["emitters"]:
+            for field in ("radius", "color", "face"):
+                source = emitter.get(field + "_source")
+                if (emitter.get(field) is not None) != _valid_source_location(source):
+                    errors.append(
+                        "map emitter {} has invalid {} provenance".format(
+                            emitter["id"], field
+                        )
+                    )
+            if emitter.get("activation") not in {"continuous", "toggle-active"}:
+                errors.append(
+                    "map emitter {} has invalid activation mode".format(emitter["id"])
+                )
     errors.extend(validate_light_evidence(report))
     required_checks = {
         "overlap",
@@ -906,7 +1148,10 @@ def validate_light_inventory(report: dict) -> list[str]:
             if not isinstance(entry, dict):
                 errors.append("{} {} review must be an object".format(section[:-1], identifier))
                 continue
-            if entry.get("uncolored_disposition") != "neutral":
+            if (
+                section != "color_sources"
+                and entry.get("uncolored_disposition") != "neutral"
+            ):
                 errors.append(
                     "{} {} must intentionally classify uncolored light as neutral".format(
                         section[:-1], identifier

@@ -2867,6 +2867,18 @@
     {
       "constraints": {},
       "context": "object",
+      "field_id": "object.name_pl",
+      "legacy_name": "name_pl",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {},
+      "context": "object",
       "field_id": "object.no_attack",
       "legacy_name": "no_attack",
       "reference_domains": [],
@@ -4738,5 +4750,5 @@
   ],
   "schema_id": "atrinik-authored-content-v1",
   "schema_version": 1,
-  "source_sha256": "b1171af74a2c7e038dcbbedd44042f94e1395b0122ff24360b7a5eb45288e11c"
+  "source_sha256": "fd578c61370cc8c5ca54dac03bb97411ef30a6ea62a0e194683313d22e2809a9"
 }

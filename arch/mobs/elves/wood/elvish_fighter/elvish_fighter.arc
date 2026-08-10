@@ -31,4 +31,5 @@ maxhp 80
 level 1
 speed -0.047
 weight 83500
+name_pl elvish fighters
 end

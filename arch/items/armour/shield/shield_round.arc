@@ -16,4 +16,5 @@ weight 1600
 value 115
 block 3
 absorb 5
+name_pl round shields
 end

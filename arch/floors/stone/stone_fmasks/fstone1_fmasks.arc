@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m2
 name stones
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m3
 name stones
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m4
 name stones
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m5
 name stones
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m6
 name stones
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m7
 name stones
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m8
 name stones
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m9
 name stones
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m10
 name stones
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m11
 name stones
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end
 Object fstone1m12
 name stones
@@ -93,4 +104,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl stones
 end

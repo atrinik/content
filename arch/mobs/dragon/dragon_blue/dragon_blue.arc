@@ -38,6 +38,7 @@ speed -0.061
 weight 200000
 faction monsters
 int 28
+name_pl blue dragons
 end
 More
 Object dragon_blue_d_b

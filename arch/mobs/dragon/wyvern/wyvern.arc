@@ -44,6 +44,7 @@ weight 950000
 run_away 6
 faction monsters
 int 18
+name_pl wyverns
 end
 More
 Object wyvern_b

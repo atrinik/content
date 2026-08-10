@@ -11,4 +11,5 @@ item_condition 100
 value 40
 weight 10
 can_stack 1
+name_pl pearls
 end

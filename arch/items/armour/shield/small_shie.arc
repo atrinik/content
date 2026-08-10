@@ -14,4 +14,5 @@ weight 940
 value 25
 block 2
 absorb 4
+name_pl small shields
 end

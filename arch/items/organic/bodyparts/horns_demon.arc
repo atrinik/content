@@ -10,4 +10,5 @@ can_stack 1
 type 86
 weight 450
 value 120
+name_pl demon's horns
 end

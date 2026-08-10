@@ -5,6 +5,7 @@ type 79
 face pillar_black1a.101
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black1b
 name dark pillar
@@ -13,6 +14,7 @@ type 79
 face pillar_black1b.101
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black1c
 name dark pillar
@@ -26,6 +28,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black1d
 name dark pillar
@@ -39,6 +42,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black2a
 name dark pillar
@@ -47,6 +51,7 @@ type 79
 face pillar_black2a.101
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black2b
 name dark pillar
@@ -55,6 +60,7 @@ type 79
 face pillar_black2b.101
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black2c
 name dark pillar
@@ -68,6 +74,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end
 Object pillar_black2d
 name dark pillar
@@ -81,4 +88,5 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl dark pillars
 end

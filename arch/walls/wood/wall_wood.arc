@@ -7,6 +7,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood_8
 name wood wall
@@ -17,6 +18,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood_1
 name wood wall
@@ -27,6 +29,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood_3
 name wood wall
@@ -37,6 +40,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood2_1
 name wood wall
@@ -47,6 +51,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood2_3
 name wood wall
@@ -57,6 +62,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood3_1
 name wood wall
@@ -67,6 +73,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood3_3
 name wood wall
@@ -77,6 +84,7 @@ layer 5
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl wood walls
 end
 Object wall_wood_w_1
 name wood wall
@@ -85,6 +93,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl wood walls
 end
 Object wall_wood_w_3
 name wood wall
@@ -93,4 +102,5 @@ type 77
 layer 5
 no_pick 1
 no_pass 1
+name_pl wood walls
 end

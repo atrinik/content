@@ -9,4 +9,5 @@ value 5000
 msg
 Probe will invoke a magic ball which will give you information about the monster it hits. Probe tells you about the monster's level, the damage it does, and so on. A probe will be invisible to the monster and will invoke no aggression.
 endmsg
+name_pl probe
 end

@@ -10,4 +10,5 @@ layer 5
 no_pick 1
 no_pass 1
 light_color 60d0ff
+name_pl runic crystals
 end

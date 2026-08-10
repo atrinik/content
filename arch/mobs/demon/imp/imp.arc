@@ -39,4 +39,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 15
+name_pl imps
 end

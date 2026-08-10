@@ -13,4 +13,5 @@ value 35
 weight 100
 food 1
 light_color fff0c0
+name_pl crystals
 end

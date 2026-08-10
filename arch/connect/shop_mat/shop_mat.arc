@@ -14,4 +14,5 @@ speed 0.02
 race teleport.ogg
 hp -1
 sp -1
+name_pl shop mats
 end

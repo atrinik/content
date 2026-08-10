@@ -16,4 +16,5 @@ light_color ffd080
 weight 1250
 material 144
 food 1
+name_pl attached lamps
 end

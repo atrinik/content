@@ -9,4 +9,5 @@ value 40000
 msg
 This spell heals all friends around and below the caster, excluding the caster.
 endmsg
+name_pl rain of healing
 end

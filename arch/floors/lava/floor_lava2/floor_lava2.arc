@@ -9,6 +9,7 @@ no_pick 1
 is_floor 1
 glow_radius 3
 light_color ff6030
+name_pl lava
 end
 
 Object floor_lava2_2
@@ -22,6 +23,7 @@ no_pick 1
 is_floor 1
 glow_radius 3
 light_color ff6030
+name_pl lava
 end
 
 Object floor_lava2_3
@@ -35,6 +37,7 @@ no_pick 1
 is_floor 1
 glow_radius 3
 light_color ff6030
+name_pl lava
 end
 
 Object floor_lava2_4
@@ -48,4 +51,5 @@ no_pick 1
 is_floor 1
 glow_radius 3
 light_color ff6030
+name_pl lava
 end

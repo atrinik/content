@@ -22,4 +22,5 @@ wc 200
 wc_range 20
 flying 1
 light_color ff6030
+name_pl firebolts
 end

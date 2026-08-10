@@ -8,4 +8,5 @@ level 1
 msg
 Allows you to cast wizardry spells. Progressing in levels will increase the damage of your offensive spells, the duration of your defensive spells, the effectiveness of your healing spells, etc.
 endmsg
+name_pl wizardry spells
 end

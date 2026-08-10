@@ -9,4 +9,5 @@ weight 4000
 can_stack 1
 nrof 1
 identified 1
+name_pl small bombs
 end

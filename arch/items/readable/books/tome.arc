@@ -11,6 +11,7 @@ weight 750
 level 1
 exp 10
 no_pick 0
+name_pl tomes
 end
 
 Object tome_black
@@ -27,6 +28,7 @@ weight 750
 level 1
 exp 10
 no_pick 0
+name_pl tomes
 end
 
 Object tome_blue
@@ -43,6 +45,7 @@ weight 750
 level 1
 exp 10
 no_pick 0
+name_pl tomes
 end
 
 Object tome_indigo
@@ -59,6 +62,7 @@ weight 750
 level 1
 exp 10
 no_pick 0
+name_pl tomes
 end
 
 Object tome_cyan
@@ -75,4 +79,5 @@ weight 750
 level 1
 exp 10
 no_pick 0
+name_pl tomes
 end

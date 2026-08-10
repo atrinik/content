@@ -7,4 +7,5 @@ item_quality 100
 value 1000
 type 73
 weight 5000
+name_pl lead
 end

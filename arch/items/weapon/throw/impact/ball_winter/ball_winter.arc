@@ -19,4 +19,5 @@ material 8
 weight 15
 value 3
 can_stack 1
+name_pl winter balls
 end

@@ -32,4 +32,5 @@ speed -0.06
 weight 225000
 faction monsters
 int 15
+name_pl snowmen
 end

@@ -10,6 +10,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl blood
 end
 
 Object wall_blood2
@@ -24,6 +25,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl blood
 end
 
 Object wall_blood3
@@ -38,6 +40,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl blood
 end
 
 Object wall_blood4
@@ -52,4 +55,5 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl blood
 end

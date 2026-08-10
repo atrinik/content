@@ -31,4 +31,5 @@ level 1
 weight 355000
 faction monsters
 int 4
+name_pl evil treants
 end

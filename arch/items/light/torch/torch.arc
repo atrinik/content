@@ -19,6 +19,7 @@ last_eat 1
 last_sp 3
 light_color ffc080
 can_stack 1
+name_pl torches
 end
 
 Object torch_burnt
@@ -37,4 +38,5 @@ weight 425
 food 0
 nrof 1
 can_stack 1
+name_pl burnt out torches
 end

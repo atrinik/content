@@ -37,4 +37,5 @@ speed -0.047
 weight 52500
 faction monsters
 int 16
+name_pl orc sorcerers
 end

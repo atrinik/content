@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m2
 name swamp
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m3
 name swamp
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m4
 name swamp
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m5
 name swamp
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m6
 name swamp
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m7
 name swamp
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m8
 name swamp
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m9
 name swamp
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end
 Object swamp1m10
 name swamp
@@ -77,4 +86,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl swamps
 end

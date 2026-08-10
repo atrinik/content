@@ -12,4 +12,5 @@ is_dust 1
 weight 100
 value 300
 can_stack 1
+name_pl piles
 end

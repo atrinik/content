@@ -8,6 +8,7 @@ is_turnable 1
 direction 1
 no_teleport 1
 no_pick 1
+name_pl borders
 end
 
 Object palace_wall_border_2
@@ -20,6 +21,7 @@ is_turnable 1
 direction 1
 no_teleport 1
 no_pick 1
+name_pl borders
 end
 
 Object palace_wall_border_3
@@ -32,4 +34,5 @@ is_turnable 1
 direction 1
 no_teleport 1
 no_pick 1
+name_pl borders
 end

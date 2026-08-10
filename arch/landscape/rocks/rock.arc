@@ -6,6 +6,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl rocks
 end
 Object rock2
 name rocks
@@ -15,6 +16,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl rocks
 end
 Object rock3
 name rocks
@@ -24,6 +26,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl rocks
 end
 Object rock4
 name rocks
@@ -33,6 +36,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl rocks
 end
 Object rock5
 name rocks
@@ -42,6 +46,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl rocks
 end
 Object rock6
 name rocks
@@ -51,4 +56,5 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl rocks
 end

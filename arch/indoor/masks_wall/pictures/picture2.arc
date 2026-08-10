@@ -10,6 +10,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture8
@@ -24,6 +25,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture9
@@ -38,6 +40,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture10
@@ -52,6 +55,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture11
@@ -66,6 +70,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture12
@@ -80,6 +85,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture13
@@ -94,6 +100,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture14
@@ -108,6 +115,7 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end
 
 Object picture15
@@ -122,4 +130,5 @@ type 77
 no_pick 1
 layer 7
 draw_direction 1
+name_pl pictures
 end

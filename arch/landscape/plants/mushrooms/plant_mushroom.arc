@@ -5,6 +5,7 @@ face plant_mushroom1.101
 no_pick 1
 type 79
 light_color ff60c0
+name_pl mushrooms
 end
 
 Object plant_mushroom2
@@ -14,6 +15,7 @@ face plant_mushroom2.101
 no_pick 1
 type 79
 light_color ff60c0
+name_pl mushrooms
 end
 
 Object plant_mushroom3
@@ -23,6 +25,7 @@ face plant_mushroom3.101
 no_pick 1
 type 79
 light_color ff60c0
+name_pl mushrooms
 end
 
 Object plant_mushroom4
@@ -31,6 +34,7 @@ layer 4
 face plant_mushroom4.101
 no_pick 1
 type 79
+name_pl mushrooms
 end
 
 Object plant_mushroom5
@@ -39,4 +43,5 @@ layer 4
 face plant_mushroom5.101
 no_pick 1
 type 79
+name_pl mushrooms
 end

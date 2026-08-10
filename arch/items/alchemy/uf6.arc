@@ -8,4 +8,5 @@ item_quality 100
 value 155
 weight 11500
 name uranium hexafluoride gas
+name_pl uranium hexafluoride gas
 end

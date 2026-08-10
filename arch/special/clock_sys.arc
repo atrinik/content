@@ -5,4 +5,5 @@ no_pick 1
 type 9
 speed 0.037
 sys_object 1
+name_pl system clock
 end

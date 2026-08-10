@@ -30,4 +30,5 @@ speed -0.06
 weight 90000
 faction monsters
 int 11
+name_pl white horses
 end

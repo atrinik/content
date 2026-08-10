@@ -18,6 +18,7 @@ no_pick 1
 value 50
 weight 50000
 randomitems chest
+name_pl treasure chests
 end
 Object random_chest_black
 name treasure chest
@@ -39,6 +40,7 @@ material 18
 value 50
 weight 50000
 randomitems chest
+name_pl treasure chests
 end
 Object random_chest_metal
 name chest
@@ -60,4 +62,5 @@ material 18
 value 50
 weight 50000
 randomitems chest
+name_pl chests
 end

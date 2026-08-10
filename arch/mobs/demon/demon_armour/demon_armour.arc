@@ -40,4 +40,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 18
+name_pl armoured demons
 end

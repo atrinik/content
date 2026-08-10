@@ -149,7 +149,7 @@ end
                     "branch": "1.x",
                     "content_format": "classic-ads-v1",
                     "artifact_format": "atrinik-classic-runtime-content-v1",
-                    "compatible_classic_releases": ">=1.0.0 <2.0.0",
+                    "compatible_classic_releases": ">=5.10.1 <6.0.0",
                     "consumers": [
                         "classic/client",
                         "classic/editor",

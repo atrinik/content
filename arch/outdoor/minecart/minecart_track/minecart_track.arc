@@ -7,4 +7,5 @@ animation minecart_track
 is_turnable 1
 direction 1
 no_pick 1
+name_pl tracks
 end

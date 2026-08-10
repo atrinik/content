@@ -9,4 +9,5 @@ is_animated 0
 anim_speed 1
 is_turnable 1
 direction 1
+name_pl big levers
 end

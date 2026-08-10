@@ -7,4 +7,5 @@ hp 1
 sys_object 1
 type 42
 no_pick 1
+name_pl creator
 end

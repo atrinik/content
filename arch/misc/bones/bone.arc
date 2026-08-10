@@ -4,6 +4,7 @@ face bone_broken.101
 no_pick 1
 type 79
 layer 4
+name_pl broken bones
 end
 
 Object bone_skull
@@ -12,6 +13,7 @@ face bone_skull.101
 no_pick 1
 type 79
 layer 4
+name_pl skulls
 end
 
 Object bones1
@@ -20,6 +22,7 @@ face bones1.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones2
@@ -28,6 +31,7 @@ face bones2.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones3
@@ -36,6 +40,7 @@ face bones3.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones4
@@ -45,6 +50,7 @@ no_pass 1
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones5
@@ -53,6 +59,7 @@ face bones5.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones6
@@ -61,6 +68,7 @@ face bones6.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones7
@@ -69,6 +77,7 @@ face bones7.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones8
@@ -77,6 +86,7 @@ face bones8.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones9
@@ -85,6 +95,7 @@ face bones9.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones10
@@ -93,6 +104,7 @@ face bones10.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones11
@@ -101,6 +113,7 @@ face bones11.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object bones12
@@ -109,6 +122,7 @@ face bones12.101
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end
 
 Object pile_skulls
@@ -118,4 +132,5 @@ no_pass 1
 no_pick 1
 type 79
 layer 4
+name_pl bones
 end

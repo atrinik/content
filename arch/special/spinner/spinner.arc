@@ -10,4 +10,5 @@ walk_on 1
 fly_on 1
 animation spinner
 is_turnable 1
+name_pl spinner
 end

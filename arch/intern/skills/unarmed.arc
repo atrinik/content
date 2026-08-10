@@ -11,4 +11,5 @@ level 1
 msg
 This is your primary hand-to-hand combat skill, and is automatically used in melee combat when you don't have a weapon equipped. Progressing in levels will increase the melee damage.
 endmsg
+name_pl unarmed
 end

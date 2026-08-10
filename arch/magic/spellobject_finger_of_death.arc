@@ -5,4 +5,5 @@ no_pick 1
 layer 0
 sys_object 1
 attack_godpower 100
+name_pl finger of death
 end

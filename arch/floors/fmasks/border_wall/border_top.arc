@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_ne1
@@ -14,6 +15,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_ne2
@@ -23,6 +25,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_e1
@@ -32,6 +35,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_se1
@@ -41,6 +45,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_se2
@@ -50,6 +55,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_s1
@@ -59,6 +65,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_sw1
@@ -68,6 +75,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_sw2
@@ -77,6 +85,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_w1
@@ -86,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_nw1
@@ -95,6 +105,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end
 
 Object border_top_nw2
@@ -104,4 +115,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl borders
 end

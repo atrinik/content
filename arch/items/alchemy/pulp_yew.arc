@@ -10,4 +10,5 @@ type 73
 material 64
 weight 200
 value 300
+name_pl yew tree pulp
 end

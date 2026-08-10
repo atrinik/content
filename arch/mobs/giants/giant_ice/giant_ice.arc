@@ -31,4 +31,5 @@ speed -0.054
 weight 200000
 faction monsters
 int 11
+name_pl ice giants
 end

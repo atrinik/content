@@ -9,6 +9,7 @@ no_pass 1
 draw_double 1
 glow_radius 3
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1b
@@ -22,6 +23,7 @@ no_pass 1
 draw_double 1
 glow_radius 3
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1c
@@ -35,6 +37,7 @@ no_pass 1
 draw_double 1
 glow_radius 3
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1d
@@ -48,6 +51,7 @@ no_pass 1
 draw_double 1
 glow_radius 4
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1e
@@ -61,6 +65,7 @@ no_pass 1
 draw_double 1
 glow_radius 4
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1f
@@ -74,6 +79,7 @@ no_pass 1
 draw_double 1
 glow_radius 4
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1g
@@ -87,6 +93,7 @@ no_pass 1
 draw_double 1
 glow_radius 5
 light_color ff6030
+name_pl walls
 end
 
 Object fwall_lava1h
@@ -100,4 +107,5 @@ no_pass 1
 draw_double 1
 glow_radius 5
 light_color ff6030
+name_pl walls
 end

@@ -8,4 +8,5 @@ is_turnable 1
 direction 5
 no_pass 1
 no_pick 1
+name_pl statues
 end

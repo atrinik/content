@@ -39,4 +39,5 @@ undead 1
 faction monsters
 int 17
 light_color 80c0ff
+name_pl demiliches
 end

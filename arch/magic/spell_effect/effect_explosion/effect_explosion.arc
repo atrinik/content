@@ -16,6 +16,7 @@ no_pick 1
 z 10
 align -5
 light_color ff6030
+name_pl explosions
 end
 More
 Object effect_explosion_a

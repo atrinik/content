@@ -9,4 +9,5 @@ value 0
 msg
 This spell identifies some items in your inventory. Number of items identified is your literacy level and your Intelligence stat combined.
 endmsg
+name_pl identify
 end

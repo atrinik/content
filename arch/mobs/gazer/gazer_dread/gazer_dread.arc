@@ -45,6 +45,7 @@ weight 1350000
 run_away 6
 faction monsters
 int 25
+name_pl dread gazers
 end
 More
 Object gazer_d_b

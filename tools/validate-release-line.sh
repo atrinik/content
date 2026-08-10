@@ -36,7 +36,7 @@ jq -e \
     .release_version == "1.8.2" and
     .content_format == "classic-ads-v1" and
     .artifact_format == "atrinik-classic-runtime-content-v1" and
-    .compatible_classic_releases == ">=1.0.0 <2.0.0" and
+    .compatible_classic_releases == ">=5.10.1 <6.0.0" and
     .consumers == ["classic/client", "classic/editor", "classic/server"] and
     .replacement_ready == false and
     .replacement_toolkit_package == false and

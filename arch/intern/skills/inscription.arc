@@ -9,4 +9,5 @@ level 1
 msg
 Allows you to write messages in books, parchments, etc.
 endmsg
+name_pl inscription
 end

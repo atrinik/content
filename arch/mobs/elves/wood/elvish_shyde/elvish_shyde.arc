@@ -44,4 +44,5 @@ arch ability_icestorm
 hp 21
 sp 21
 end
+name_pl elvish shydes
 end

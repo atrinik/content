@@ -8,4 +8,5 @@ is_magical 1
 no_drop 1
 last_grace 10
 no_pick 1
+name_pl ability firestorm
 end

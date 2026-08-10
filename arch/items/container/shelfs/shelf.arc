@@ -15,6 +15,7 @@ value 350
 container 100000
 weight 15000
 weapon_speed 1.0
+name_pl cabinets
 end
 
 Object shelf2.111
@@ -34,6 +35,7 @@ value 350
 container 100000
 weight 15000
 weapon_speed 1.0
+name_pl cabinets
 end
 
 Object shelf3.111
@@ -53,6 +55,7 @@ value 350
 container 140000
 weight 15000
 weapon_speed 1.0
+name_pl bookcases
 end
 
 Object shelf3a.111
@@ -72,6 +75,7 @@ value 350
 container 140000
 weight 15000
 weapon_speed 1.0
+name_pl bookcases
 end
 
 Object shelf3b.111
@@ -91,6 +95,7 @@ value 350
 container 140000
 weight 15000
 weapon_speed 1.0
+name_pl bookcases
 end
 
 Object shelf3c.111
@@ -110,6 +115,7 @@ value 350
 container 140000
 weight 15000
 weapon_speed 1.0
+name_pl bookcases
 end
 
 Object shelf3_dem1.111
@@ -129,6 +135,7 @@ value 350
 container 20000
 weight 15000
 weapon_speed 1.0
+name_pl demolished bookcases
 end
 
 Object shelf3_dem2.111
@@ -148,6 +155,7 @@ value 350
 container 20000
 weight 15000
 weapon_speed 1.0
+name_pl demolished bookcases
 end
 
 Object shelf3_dem3.111
@@ -167,4 +175,5 @@ value 350
 container 20000
 weight 15000
 weapon_speed 1.0
+name_pl demolished bookcases
 end

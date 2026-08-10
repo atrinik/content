@@ -7,6 +7,7 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+name_pl lava
 end
 
 Object floor_lava_2
@@ -18,6 +19,7 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+name_pl lava
 end
 
 Object floor_lava_3
@@ -30,6 +32,7 @@ terrain_type 8
 no_pick 1
 is_floor 1
 light_color ff6030
+name_pl lava
 end
 
 Object floor_lava_4
@@ -42,4 +45,5 @@ terrain_type 8
 no_pick 1
 is_floor 1
 light_color ff6030
+name_pl lava
 end

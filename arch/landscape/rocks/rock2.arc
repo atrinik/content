@@ -8,6 +8,7 @@ layer 5
 no_pass 1
 blocksview 1
 no_pick 1
+name_pl big rocks
 end
 More
 Object rock_big5b
@@ -30,6 +31,7 @@ type 79
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl big rocks
 end
 More
 Object rock_big8b
@@ -102,6 +104,7 @@ mpart_id 5
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl big rocks
 end
 More
 Object rock_big9b
@@ -174,6 +177,7 @@ type 79
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl big rocks
 end
 More
 Object rock_big10b

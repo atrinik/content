@@ -10,4 +10,5 @@ type 54
 value 8
 weight 350
 can_stack 1
+name_pl large boozes
 end

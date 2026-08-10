@@ -15,4 +15,5 @@ walk_on 1
 fly_on 1
 race teleport.ogg
 light_color 40ff60
+name_pl exits
 end

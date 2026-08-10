@@ -13,4 +13,5 @@ material_real 646
 value 10000
 weight 10
 can_stack 1
+name_pl coins
 end

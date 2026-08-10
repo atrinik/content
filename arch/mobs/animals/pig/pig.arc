@@ -29,4 +29,5 @@ speed -0.06
 weight 85000
 faction monsters
 int 3
+name_pl pigs
 end

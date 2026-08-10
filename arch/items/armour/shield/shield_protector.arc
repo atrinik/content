@@ -16,4 +16,5 @@ weight 1600
 value 150
 block 7
 absorb 15
+name_pl protectors
 end

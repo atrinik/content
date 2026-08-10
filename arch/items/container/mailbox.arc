@@ -12,4 +12,5 @@ value 250
 weapon_speed 1.0
 container 1500
 weight 1500
+name_pl mailboxes
 end

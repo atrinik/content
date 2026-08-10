@@ -4,6 +4,7 @@ type 79
 face kitchen_bottle10.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle
@@ -12,6 +13,7 @@ type 79
 face kitchen_bottle.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle11
@@ -20,6 +22,7 @@ type 79
 face kitchen_bottle11.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle12
@@ -28,6 +31,7 @@ type 79
 face kitchen_bottle12.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle13
@@ -36,6 +40,7 @@ type 79
 face kitchen_bottle13.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle14
@@ -44,6 +49,7 @@ type 79
 face kitchen_bottle14.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle15
@@ -52,6 +58,7 @@ type 79
 face kitchen_bottle15.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle16
@@ -60,6 +67,7 @@ type 79
 face kitchen_bottle16.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle17
@@ -68,6 +76,7 @@ type 79
 face kitchen_bottle17.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle18
@@ -76,6 +85,7 @@ type 79
 face kitchen_bottle18.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle19
@@ -84,6 +94,7 @@ type 79
 face kitchen_bottle19.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle20
@@ -92,6 +103,7 @@ type 79
 face kitchen_bottle20.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle2
@@ -100,6 +112,7 @@ type 79
 face kitchen_bottle2.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle21
@@ -108,6 +121,7 @@ type 79
 face kitchen_bottle21.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle22
@@ -116,6 +130,7 @@ type 79
 face kitchen_bottle22.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle3
@@ -124,6 +139,7 @@ type 79
 face kitchen_bottle3.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle4
@@ -132,6 +148,7 @@ type 79
 face kitchen_bottle4.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle5
@@ -140,6 +157,7 @@ type 79
 face kitchen_bottle5.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle6
@@ -148,6 +166,7 @@ type 79
 face kitchen_bottle6.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle7
@@ -156,6 +175,7 @@ type 79
 face kitchen_bottle7.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle8
@@ -164,6 +184,7 @@ type 79
 face kitchen_bottle8.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bottle9
@@ -172,6 +193,7 @@ type 79
 face kitchen_bottle9.101
 layer 4
 no_pick 1
+name_pl bottles
 end
 
 Object kitchen_bowl
@@ -180,6 +202,7 @@ type 79
 face kitchen_bowl.101
 layer 4
 no_pick 1
+name_pl bowls
 end
 
 Object kitchen_bowl2
@@ -188,6 +211,7 @@ type 79
 face kitchen_bowl2.101
 layer 4
 no_pick 1
+name_pl bowls
 end
 
 Object kitchen_bowl3
@@ -196,6 +220,7 @@ type 79
 face kitchen_bowl3.101
 layer 4
 no_pick 1
+name_pl bowls
 end
 
 Object kitchen_bowl4
@@ -204,6 +229,7 @@ type 79
 face kitchen_bowl4.101
 layer 4
 no_pick 1
+name_pl bowls
 end
 
 Object kitchen_bowl5
@@ -212,6 +238,7 @@ type 79
 face kitchen_bowl5.101
 layer 4
 no_pick 1
+name_pl bowls
 end
 
 Object kitchen_bowl6
@@ -220,6 +247,7 @@ type 79
 face kitchen_bowl6.101
 layer 4
 no_pick 1
+name_pl bowls
 end
 
 Object kitchen_cup
@@ -228,6 +256,7 @@ type 79
 face kitchen_cup.101
 layer 4
 no_pick 1
+name_pl cups
 end
 
 Object kitchen_cup2
@@ -236,6 +265,7 @@ type 79
 face kitchen_cup2.101
 layer 4
 no_pick 1
+name_pl cups
 end
 
 Object kitchen_cup3
@@ -244,6 +274,7 @@ type 79
 face kitchen_cup3.101
 layer 4
 no_pick 1
+name_pl cups
 end
 
 Object kitchen_cup4
@@ -252,6 +283,7 @@ type 79
 face kitchen_cup4.101
 layer 4
 no_pick 1
+name_pl cups
 end
 
 Object kitchen_goblet
@@ -260,6 +292,7 @@ type 79
 face kitchen_goblet.101
 layer 4
 no_pick 1
+name_pl goblets
 end
 
 Object kitchen_goblet2
@@ -268,6 +301,7 @@ type 79
 face kitchen_goblet2.101
 layer 4
 no_pick 1
+name_pl goblets
 end
 
 Object kitchen_goblet3
@@ -276,6 +310,7 @@ type 79
 face kitchen_goblet3.101
 layer 4
 no_pick 1
+name_pl goblets
 end
 
 Object kitchen_goblet4
@@ -284,6 +319,7 @@ type 79
 face kitchen_goblet4.101
 layer 4
 no_pick 1
+name_pl goblets
 end
 
 Object kitchen_goblet5
@@ -292,6 +328,7 @@ type 79
 face kitchen_goblet5.101
 layer 4
 no_pick 1
+name_pl goblets
 end
 
 Object kitchen_pan
@@ -300,6 +337,7 @@ type 79
 face kitchen_pan.101
 layer 4
 no_pick 1
+name_pl pans
 end
 
 Object kitchen_plate10
@@ -308,6 +346,7 @@ type 79
 face kitchen_plate10.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate
@@ -316,6 +355,7 @@ type 79
 face kitchen_plate.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate11
@@ -324,6 +364,7 @@ type 79
 face kitchen_plate11.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate12
@@ -332,6 +373,7 @@ type 79
 face kitchen_plate12.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate13
@@ -340,6 +382,7 @@ type 79
 face kitchen_plate13.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate14
@@ -348,6 +391,7 @@ type 79
 face kitchen_plate14.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate2
@@ -356,6 +400,7 @@ type 79
 face kitchen_plate2.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate3
@@ -364,6 +409,7 @@ type 79
 face kitchen_plate3.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate4
@@ -372,6 +418,7 @@ type 79
 face kitchen_plate4.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate5
@@ -380,6 +427,7 @@ type 79
 face kitchen_plate5.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate6
@@ -388,6 +436,7 @@ type 79
 face kitchen_plate6.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate7
@@ -396,6 +445,7 @@ type 79
 face kitchen_plate7.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate8
@@ -404,6 +454,7 @@ type 79
 face kitchen_plate8.101
 layer 4
 no_pick 1
+name_pl plates
 end
 
 Object kitchen_plate9
@@ -412,6 +463,7 @@ type 79
 face kitchen_plate9.101
 layer 4
 no_pick 1
+name_pl plates
 end
 Object kitchen_cleaver
 name cleaver
@@ -422,6 +474,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl cleavers
 end
 
 Object kitchen_fork
@@ -433,6 +486,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl forks
 end
 
 Object kitchen_knife
@@ -444,6 +498,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl knives
 end
 
 Object kitchen_knife2
@@ -455,6 +510,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl knives
 end
 
 Object kitchen_plate_wall
@@ -466,6 +522,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl plate_walls
 end
 
 Object kitchen_plate_wall2
@@ -477,6 +534,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl plate_walls
 end
 
 Object kitchen_spoon
@@ -488,4 +546,5 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl spoons
 end

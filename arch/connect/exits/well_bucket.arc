@@ -7,4 +7,5 @@ sp -1
 face well_bucket.101
 layer 5
 no_pick 1
+name_pl well buckets
 end

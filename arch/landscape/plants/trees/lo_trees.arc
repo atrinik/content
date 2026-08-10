@@ -6,6 +6,7 @@ face lo_tree1.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object lo_tree2
@@ -16,6 +17,7 @@ face lo_tree2.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object lo_tree3
@@ -26,6 +28,7 @@ face lo_tree3.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object lo_tree4
@@ -36,6 +39,7 @@ face lo_tree4.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object lo_tree5
@@ -46,6 +50,7 @@ face lo_tree5.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
 end
 
 Object lo_tree6
@@ -57,6 +62,7 @@ face lo_tree6.101
 no_pass 1
 no_pick 1
 blocksview 1
+name_pl trees
 end
 More
 Object lo_tree6_a
@@ -103,6 +109,7 @@ type 79
 mpart_id 15
 face lo_tree7.101
 no_pick 1
+name_pl trees
 end
 More
 Object lo_tree7_a

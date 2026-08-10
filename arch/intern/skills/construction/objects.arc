@@ -12,6 +12,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl rack container materials
 end
 
 Object constr_chest
@@ -28,6 +29,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl large chest materials
 end
 
 Object constr_bookshelf
@@ -44,6 +46,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl bookshelf materials
 end
 
 Object constr_desk
@@ -60,6 +63,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl desk materials
 end
 
 Object constr_sign
@@ -76,6 +80,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl sign materials
 end
 
 Object constr_altar
@@ -92,6 +97,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl altar materials
 end
 
 Object constr_fireplace
@@ -108,6 +114,7 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl fireplace materials
 end
 
 Object constr_carpet
@@ -124,4 +131,5 @@ can_stack 1
 item_condition 100
 item_quality 100
 identified 1
+name_pl carpet materials
 end

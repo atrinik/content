@@ -17,4 +17,5 @@ last_sp 5
 light_color ff8030
 item_quality 100
 item_condition 100
+name_pl jack-o'-lanterns
 end

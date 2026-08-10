@@ -5,4 +5,5 @@ face cauldron_open.101
 type 79
 no_pick 1
 no_drop 1
+name_pl close the cauldron
 end

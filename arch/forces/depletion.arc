@@ -9,4 +9,5 @@ Temporary depletion of stats; use the remove depletion spell or see a priest to 
 endmsg
 glow ff0000
 glow_speed 7
+name_pl depletion
 end

@@ -6,6 +6,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl volcano obstacles
 end
 
 Object obstacle_volcano_2
@@ -19,6 +20,7 @@ no_pass 1
 animation obstacle_volcano_2
 is_animated 1
 anim_speed 3
+name_pl volcano obstacles
 end
 
 Object obstacle_volcano_3
@@ -31,6 +33,7 @@ layer 5
 no_pick 1
 no_pass 1
 light_color ff6030
+name_pl volcano obstacles
 end
 
 Object obstacle_volcano_4
@@ -41,6 +44,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl volcano obstacles
 end
 
 Object obstacle_volcano_5
@@ -56,6 +60,7 @@ animation obstacle_volcano_5
 is_animated 1
 anim_speed 3
 light_color ff6030
+name_pl volcano obstacles
 end
 
 Object obstacle_volcano_6
@@ -68,4 +73,5 @@ glow_radius 3
 no_pick 1
 no_pass 1
 light_color ff6030
+name_pl volcano obstacles
 end

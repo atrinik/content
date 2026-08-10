@@ -33,4 +33,5 @@ speed -0.045
 weight 225000
 faction monsters
 int 7
+name_pl ice golems
 end

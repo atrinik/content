@@ -25,4 +25,5 @@ flying 1
 dex 30
 con 50
 light_color c0e0ff
+name_pl lightning
 end

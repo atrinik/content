@@ -8,4 +8,5 @@ value 1
 no_pick 1
 no_magic 1
 damned 1
+name_pl save beds
 end

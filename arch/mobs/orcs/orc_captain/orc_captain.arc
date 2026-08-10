@@ -32,4 +32,5 @@ speed -0.0485
 weight 72500
 faction monsters
 int 13
+name_pl orc captains
 end

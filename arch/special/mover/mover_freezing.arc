@@ -14,4 +14,5 @@ hp 1
 sp 1
 walk_on 1
 is_magical 1
+name_pl freezing mover
 end

@@ -9,6 +9,7 @@ is_turnable 1
 direction 1
 no_pick 1
 no_pass 1
+name_pl sarcophagi
 end
 More
 Object sarcophagus_a_b
@@ -32,6 +33,7 @@ is_turnable 1
 direction 3
 no_pick 1
 no_pass 1
+name_pl sarcophagi
 end
 More
 Object sarcophagus_b_b

@@ -10,6 +10,7 @@ attack_impact 100
 no_teleport 1
 no_pick 1
 maxsp 1
+name_pl pistons
 end
 
 Object piston_up
@@ -26,4 +27,5 @@ no_pick 1
 wc 1
 state 1
 no_pass 1
+name_pl pistons
 end

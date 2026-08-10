@@ -15,4 +15,5 @@ weight 520
 value 150
 block 3
 absorb 5
+name_pl daggers
 end

@@ -9,6 +9,7 @@ item_quality 100
 type 73
 value 25
 weight 5000
+name_pl piles
 end
 
 Object enriched_uranium_pile
@@ -24,6 +25,7 @@ glow_radius 1
 value 4000
 weight 5000
 light_color 80ff40
+name_pl piles
 end
 
 Object depleted_uranium_pile
@@ -37,4 +39,5 @@ item_quality 100
 type 73
 value 10
 weight 5000
+name_pl piles
 end

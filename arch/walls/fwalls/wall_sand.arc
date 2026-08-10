@@ -7,6 +7,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_sand1b
 name wall
@@ -17,4 +18,5 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end

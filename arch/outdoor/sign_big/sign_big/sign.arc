@@ -9,6 +9,7 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl big signs
 end
 
 Object sign_pub
@@ -22,4 +23,5 @@ is_turnable 1
 direction 1
 layer 4
 no_pick 1
+name_pl big signs
 end

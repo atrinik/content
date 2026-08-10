@@ -9,4 +9,5 @@ direction 1
 no_pick 1
 type 77
 layer 7
+name_pl passages
 end

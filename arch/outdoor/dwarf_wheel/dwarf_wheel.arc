@@ -8,6 +8,7 @@ animation dwarf_wheel
 is_animated 1
 anim_speed 1
 no_pick 1
+name_pl dwarf wheels
 end
 More
 Object dwarf_wheelb
@@ -29,6 +30,7 @@ animation dwarf_wheel_2
 is_animated 1
 anim_speed 1
 no_pick 1
+name_pl dwarf wheels
 end
 More
 Object dwarf_wheelb_2

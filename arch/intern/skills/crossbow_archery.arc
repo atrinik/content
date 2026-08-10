@@ -8,4 +8,5 @@ level 1
 msg
 Allows you to shoot bolts from crossbows. Progressing in levels will increase the damage your shots do.
 endmsg
+name_pl crossbow archery
 end

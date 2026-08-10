@@ -337,6 +337,7 @@
       "light_color",
       "match",
       "name",
+      "name_pl",
       "race",
       "slaying",
       "title"

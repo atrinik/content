@@ -16,4 +16,5 @@ light_color ffc080
 weight 1250
 material 144
 food 1
+name_pl attached torches
 end

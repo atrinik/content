@@ -15,4 +15,5 @@ protect_cleave 17
 protect_pierce 17
 weight 21500
 value 2650
+name_pl chainmail hauberks
 end

@@ -8,4 +8,5 @@ is_turnable 1
 direction 1
 type 79
 layer 3
+name_pl stone thrones
 end

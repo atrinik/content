@@ -5,6 +5,7 @@ face stone1.101
 type 79
 material 64
 no_pick 1
+name_pl stones
 end
 Object stone2
 layer 5
@@ -13,6 +14,7 @@ face stone2.101
 type 79
 material 64
 no_pick 1
+name_pl stones
 end
 Object stone3
 layer 5
@@ -21,6 +23,7 @@ face stone3.101
 type 79
 material 64
 no_pick 1
+name_pl stones
 end
 Object stone4
 layer 5
@@ -29,6 +32,7 @@ face stone4.101
 type 79
 material 64
 no_pick 1
+name_pl stones
 end
 Object stone5
 layer 5
@@ -37,6 +41,7 @@ face stone5.101
 type 79
 material 64
 no_pick 1
+name_pl stones
 end
 Object stone6
 layer 5
@@ -45,6 +50,7 @@ face stone6.101
 type 79
 material 64
 no_pick 1
+name_pl stones
 end
 Object small_stones
 layer 5
@@ -53,6 +59,7 @@ face small_stones.101
 type 79
 material 64
 no_pick 1
+name_pl small stones
 end
 Object stone_1
 layer 5
@@ -62,6 +69,7 @@ type 79
 material 64
 no_pass 1
 no_pick 1
+name_pl polished rocks
 end
 Object stone_2
 name polished rock
@@ -71,4 +79,5 @@ face rock_bb2.101
 material 64
 no_pass 1
 no_pick 1
+name_pl polished rocks
 end

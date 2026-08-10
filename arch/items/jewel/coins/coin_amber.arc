@@ -13,4 +13,5 @@ material_real 141
 value 100000000
 weight 3
 can_stack 1
+name_pl coins
 end

@@ -30,4 +30,5 @@ speed -0.044
 weight 189000
 faction monsters
 int 14
+name_pl minotaurs
 end

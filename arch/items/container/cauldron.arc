@@ -13,6 +13,7 @@ container 250000
 is_cauldron 1
 weapon_speed 1.0
 value 100000
+name_pl cauldrons
 end
 
 Object bad_cauldron
@@ -29,4 +30,5 @@ weight 30000
 container 250000
 weapon_speed 1.5
 value 5
+name_pl cracked cauldrons
 end

@@ -22,4 +22,5 @@ wc 200
 wc_range 20
 flying 1
 light_color 80c0ff
+name_pl frostbolts
 end

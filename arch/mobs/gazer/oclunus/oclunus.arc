@@ -45,6 +45,7 @@ weight 1158000
 run_away 6
 faction monsters
 int 25
+name_pl ocluni
 end
 More
 Object oclunus_d_b

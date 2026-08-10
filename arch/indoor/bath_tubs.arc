@@ -4,6 +4,7 @@ face bath_tub1.101
 no_pick 1
 type 79
 layer 4
+name_pl bath tubs
 end
 
 Object bath_tub2
@@ -12,6 +13,7 @@ face bath_tub2.101
 no_pick 1
 type 79
 layer 4
+name_pl bath tubs
 end
 
 Object bath_tub3
@@ -20,6 +22,7 @@ face bath_tub3.101
 no_pick 1
 type 79
 layer 4
+name_pl bath tubs
 end
 
 Object bath_tub_big1
@@ -28,6 +31,7 @@ face bath_tub_big1.101
 no_pick 1
 type 79
 layer 4
+name_pl bath tubs
 end
 
 Object bath_tub_big2
@@ -36,4 +40,5 @@ face bath_tub_big2.101
 no_pick 1
 type 79
 layer 4
+name_pl bath tubs
 end

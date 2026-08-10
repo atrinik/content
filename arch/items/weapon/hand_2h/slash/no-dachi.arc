@@ -16,4 +16,5 @@ weight 2150
 value 750
 block 10
 absorb 15
+name_pl no-dachis
 end

@@ -16,4 +16,5 @@ last_sp 5
 weight 400
 value 850
 sp 6
+name_pl heavy slings
 end

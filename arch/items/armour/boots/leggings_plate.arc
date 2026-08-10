@@ -14,4 +14,5 @@ protect_cleave 10
 type 99
 material 2
 material_real 65
+name_pl plate leggings
 end

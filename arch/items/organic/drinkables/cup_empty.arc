@@ -9,4 +9,5 @@ type 79
 value 10
 weight 400
 can_stack 1
+name_pl empty cups
 end

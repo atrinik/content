@@ -31,4 +31,5 @@ level 1
 weight 85000
 faction npcs
 int 20
+name_pl pirate captains
 end

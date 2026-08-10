@@ -14,4 +14,5 @@ protect_cleave 22
 protect_pierce 22
 weight 6100
 value 12500
+name_pl ringmails
 end

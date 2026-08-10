@@ -23,4 +23,5 @@ wc 200
 wc_range 20
 flying 1
 light_color 8040ff
+name_pl negative energy bolts
 end

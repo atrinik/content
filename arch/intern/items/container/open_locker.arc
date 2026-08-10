@@ -15,6 +15,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl open lockers
 end
 
 Object close_locker2
@@ -34,6 +35,7 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl open lockers
 end
 
 Object close_locker3
@@ -53,4 +55,5 @@ value 350
 container 15000
 weight 15000
 weapon_speed 1.0
+name_pl open lockers
 end

@@ -15,4 +15,5 @@ speed 1
 hp 14
 flying 1
 no_pick 1
+name_pl probebullets
 end

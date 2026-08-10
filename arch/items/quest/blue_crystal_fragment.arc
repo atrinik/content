@@ -10,4 +10,5 @@ layer 3
 weight 100
 identified 1
 startequip 1
+name_pl blue crystal fragments
 end

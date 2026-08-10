@@ -9,6 +9,7 @@ is_animated 1
 anim_speed 1
 no_pass 1
 no_pick 1
+name_pl teleporters
 end
 More
 Object dwarven_teleporter_b

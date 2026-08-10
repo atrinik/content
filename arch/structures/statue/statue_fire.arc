@@ -10,6 +10,7 @@ layer 5
 type 79
 no_pick 1
 light_color ff6030
+name_pl statues
 end
 
 Object statue_fire_black1
@@ -23,4 +24,5 @@ no_pass 1
 layer 5
 type 79
 no_pick 1
+name_pl statues
 end

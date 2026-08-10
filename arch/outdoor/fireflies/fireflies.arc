@@ -9,4 +9,5 @@ layer 4
 glow_radius 3
 no_pick 1
 light_color c0ff60
+name_pl fireflies
 end

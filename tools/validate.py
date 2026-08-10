@@ -15,7 +15,6 @@ from tools.content_core import audit_project
 from tools.archetype_plurals import (
     MANIFEST_PATH,
     audit as audit_archetype_plurals,
-    audit_source_delta,
     load_manifest,
 )
 
@@ -58,17 +57,11 @@ def main() -> int:
     plural_report = audit_archetype_plurals(
         ROOT, load_manifest(ROOT / MANIFEST_PATH)
     )
-    plural_delta = audit_source_delta(ROOT, load_manifest(ROOT / MANIFEST_PATH))
     print(
         "Archetype plurals: {} canonical definitions complete; {} multipart or "
         "nested objects excluded.".format(
             plural_report["canonical_archetypes"], plural_report["excluded_objects"]
         ),
-        flush=True,
-    )
-    print(
-        "Archetype plural source delta: {} reviewed additions and no other "
-        "archetype-source changes.".format(plural_delta["additions"]),
         flush=True,
     )
     core_audit = audit_project(ROOT, schema_root=ROOT)

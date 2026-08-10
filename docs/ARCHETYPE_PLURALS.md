@@ -38,8 +38,10 @@ The source-delta audit proves that the archetype corpus differs from the
 reviewed branch baseline only by its 3,559 approved `name_pl` additions. The
 semantic audit permanently requires exactly one matching plural on every
 canonical definition and rejects plurals on the 234 excluded multipart or
-nested objects. `python3 tools/validate.py` runs both audits and verifies that
-runtime collection preserves every authored `name_pl` line byte-for-byte.
+nested objects. `python3 tools/validate.py` runs the permanent semantic audit
+and verifies that runtime collection preserves every authored `name_pl` line
+byte-for-byte. The baseline-bound source-delta audit above is separate one-time
+delivery evidence so it does not reject legitimate future archetype edits.
 
 Cross-line review compares each branch's independently resolved inventory:
 

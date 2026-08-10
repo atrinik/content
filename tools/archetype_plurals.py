@@ -603,7 +603,16 @@ def _publish_prepared(
     )
     try:
         publish_transaction(root, combined, failure_after=failure_after)
-    finally:
+    except ContentCoreError as error:
+        if error.code == "transaction-rollback-failed":
+            raise
+        _close_recovery_journal(
+            root,
+            preexisting,
+            {item.path.parent for item in combined.files},
+        )
+        raise
+    else:
         _close_recovery_journal(
             root,
             preexisting,

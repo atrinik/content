@@ -331,6 +331,7 @@ def publish_transaction(
     _verify_source_root(root)
     staged: dict[str, tuple[Path, Path]] = {}
     replaced: list[PreparedFile] = []
+    retain_artifacts = False
     changed_files = [item for item in prepared.files if item.before != item.after]
     try:
         for item in prepared.files:
@@ -378,6 +379,7 @@ def publish_transaction(
                     "directory synchronization: {}".format(rollback_error)
                 )
         if rollback_failures:
+            retain_artifacts = True
             raise ContentCoreError(
                 "transaction failed and rollback was incomplete: {}".format(
                     "; ".join(rollback_failures)
@@ -396,9 +398,10 @@ def publish_transaction(
             retryable=True,
         ) from error
     finally:
-        for stage, backup in staged.values():
-            stage.unlink(missing_ok=True)
-            backup.unlink(missing_ok=True)
+        if not retain_artifacts:
+            for stage, backup in staged.values():
+                stage.unlink(missing_ok=True)
+                backup.unlink(missing_ok=True)
 
 
 def apply_transaction(

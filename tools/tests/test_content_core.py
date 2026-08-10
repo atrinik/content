@@ -654,6 +654,42 @@ class ContentCoreTest(unittest.TestCase):
             self.assertEqual(source, (self.root / relative).read_bytes())
         self.assertEqual([], list(self.root.rglob(".*-content-*-*.tmp")))
 
+    def test_incomplete_rollback_retains_recovery_artifacts(self):
+        sources = {
+            "maps/a": b"arch map\nwidth 1\nheight 1\nend\n",
+            "maps/b": b"arch map\nwidth 2\nheight 2\nend\n",
+        }
+        entries = []
+        for index, (relative, source) in enumerate(sorted(sources.items()), 3):
+            self.write(relative, source)
+            document = self.document(relative, "map")
+            entries.append(
+                self.entry(
+                    relative,
+                    "map",
+                    source,
+                    [self.set_property(document, "map-header.width", index)],
+                )
+            )
+        prepared = prepare_transaction(
+            self.root, self.transaction(entries), schema_root=ROOT
+        )
+        real_replace = os.replace
+
+        def fail_backup_restore(source, target):
+            if "-content-backup-" in Path(source).name:
+                raise OSError("injected rollback failure")
+            return real_replace(source, target)
+
+        with mock.patch(
+            "tools.content_core.transaction.os.replace",
+            side_effect=fail_backup_restore,
+        ):
+            with self.assertRaises(ContentCoreError) as caught:
+                publish_transaction(self.root, prepared, failure_after=1)
+        self.assertEqual("transaction-rollback-failed", caught.exception.code)
+        self.assertTrue(list(self.root.rglob(".*-content-*-*.tmp")))
+
     def test_transactions_refuse_non_authored_and_symlink_targets(self):
         source = b"arch map\nwidth 1\nheight 1\nend\n"
         original = self.write("maps/original", source)

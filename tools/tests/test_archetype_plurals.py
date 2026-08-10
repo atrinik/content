@@ -247,6 +247,16 @@ class ArchetypePluralTest(unittest.TestCase):
                 for path in (self.root / "arch").glob("*.arc")
             )
         )
+        incomplete = ContentCoreError(
+            "incomplete rollback", code="transaction-rollback-failed"
+        )
+        with mock.patch(
+            "tools.archetype_plurals.publish_transaction",
+            side_effect=incomplete,
+        ):
+            with self.assertRaisesRegex(ContentCoreError, "incomplete rollback"):
+                migrate(self.root, manifest, apply=True, check_git=False)
+        self.assertTrue((self.root / RECOVERY_JOURNAL_PATH).exists())
 
     def test_unapplied_migration_rejects_archetype_source_baseline_drift(self) -> None:
         subprocess.run(

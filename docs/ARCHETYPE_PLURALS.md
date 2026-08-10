@@ -52,6 +52,8 @@ partial baseline diff contains only exact reviewed plural additions, then
 removes those additions. A durable ignored journal also identifies transaction
 stage/backup files created after publication began, so recovery removes only
 migration-owned artifacts and preserves anything that predates the journal.
+If the content core reports an incomplete rollback, both its remaining backup
+artifacts and the ownership journal are retained for explicit recovery.
 Recovery is dry-run-first and safely repeatable after another interruption;
 rerun the migration only after recovery reaches the reviewed baseline.
 

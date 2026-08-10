@@ -164,23 +164,8 @@ end
             "maps/light-source-review.json",
             json.dumps(
                 {
-                    "schema_version": 2,
+                    "schema_version": 3,
                     "review_method": "test semantic and rendered inspection",
-                    "render_context": {
-                        "content_commit": "1" * 40,
-                        "classic_commit": "2" * 40,
-                        "resources_commit": "3" * 40,
-                        "profile": "test-light-review",
-                        "command": "test worldmaker command",
-                        "settings": "test pixel size and regional roots",
-                    },
-                    "rendered_batches": {
-                        "sample-interior": {
-                            "artifact": "sample.png",
-                            "method": "test renderer",
-                            "sha256": "0" * 64,
-                        }
-                    },
                     "palette": {
                         "4060ff": {"rationale": "focused blue magic"},
                         "ff8040": {"rationale": "warm lamp flame"},
@@ -205,7 +190,6 @@ end
                         "maps/scene": {
                             "uncolored_disposition": "neutral",
                             "rationale": "Rendered room keeps neutral fill around colored accents.",
-                            "rendered_batch": "sample-interior",
                             "visible_neutral": {},
                             "checks": [
                                 "overlap",
@@ -235,6 +219,95 @@ end
                 ]
         review_path.write_text(json.dumps(review))
         report = audit.light_inventory()
+        evidence_dir = self.root / "maps/light-source-evidence"
+        evidence_dir.mkdir()
+        smooth = evidence_dir / "smooth.png"
+        discrete = evidence_dir / "discrete.png"
+        image = bytes.fromhex(
+            "89504e470d0a1a0a0000000d494844520000000100000001"
+            "08060000001f15c4890000000049454e44ae426082"
+        )
+        smooth.write_bytes(image)
+        discrete.write_bytes(image)
+        evidence = {
+            "schema_version": 1,
+            "render_context": {
+                "content_commit": "1" * 40,
+                "classic_client_commit": "2" * 40,
+                "classic_server_commit": "4" * 40,
+                "resources_commit": "3" * 40,
+                "content_source": "https://github.com/atrinik/content/tree/" + "1" * 40,
+                "classic_client_source": (
+                    "https://github.com/atrinik/classic/tree/" + "2" * 40
+                ),
+                "classic_server_source": (
+                    "https://github.com/atrinik/classic/tree/" + "4" * 40
+                ),
+                "resources_source": "https://github.com/atrinik/resources/tree/" + "3" * 40,
+                "inventory_sha256": audit._inventory_semantic_sha256(report),
+                "profile": "test-light-review",
+                "command": "test Classic client screenshot command",
+                "settings": "seventeen by seventeen viewport with frozen lighting modes",
+            },
+            "sheets": {
+                "smooth": {
+                    "artifact": "maps/light-source-evidence/smooth.png",
+                    "sha256": audit.hashlib.sha256(smooth.read_bytes()).hexdigest(),
+                    "columns": 1,
+                    "rows": 1,
+                    "pixel_width": 1,
+                    "pixel_height": 1,
+                    "mode": "smooth",
+                },
+                "discrete": {
+                    "artifact": "maps/light-source-evidence/discrete.png",
+                    "sha256": audit.hashlib.sha256(discrete.read_bytes()).hexdigest(),
+                    "columns": 1,
+                    "rows": 1,
+                    "pixel_width": 1,
+                    "pixel_height": 1,
+                    "mode": "discrete",
+                },
+            },
+            "views": [
+                {
+                    "id": "smooth-scene",
+                    "map": "maps/scene",
+                    "map_semantic_sha256": report["maps"][0]["semantic_sha256"],
+                    "x": 4,
+                    "y": 5,
+                    "sheet": "smooth",
+                    "tile": 0,
+                    "mode": "smooth",
+                },
+                {
+                    "id": "discrete-scene",
+                    "map": "maps/scene",
+                    "map_semantic_sha256": report["maps"][0]["semantic_sha256"],
+                    "x": 4,
+                    "y": 5,
+                    "sheet": "discrete",
+                    "tile": 0,
+                    "mode": "discrete",
+                },
+            ],
+            "representative_checks": {
+                check: {
+                    "views": ["smooth-scene", "discrete-scene"],
+                    "rationale": "Compared the scene in both lighting modes.",
+                }
+                for check in (
+                    "overlap",
+                    "linked-depth",
+                    "horizontal-boundary",
+                    "dark-interior",
+                    "outdoor-transition",
+                    "fog-roof",
+                    "navigation",
+                )
+            },
+        }
+        self.write("maps/light-source-evidence/manifest.json", json.dumps(evidence))
 
         self.assertEqual(
             {
@@ -277,15 +350,44 @@ end
             "fog-roof",
             "navigation",
         ]
-        review["rendered_batches"]["sample-interior"]["sha256"] = "invalid"
         review_path.write_text(json.dumps(review))
+        smooth.write_bytes(b"changed evidence")
         self.assertIn(
-            "rendered batch sample-interior needs an artifact SHA-256",
+            "light-source evidence sheet smooth artifact hash changed",
             audit.validate_light_inventory(audit.light_inventory()),
         )
 
-        review["rendered_batches"]["sample-interior"]["sha256"] = "0" * 64
-        review_path.write_text(json.dumps(review))
+        smooth.write_bytes(image)
+        smooth.unlink()
+        self.assertIn(
+            "light-source evidence sheet smooth artifact is missing",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        smooth.write_bytes(image)
+
+        evidence_path = evidence_dir / "manifest.json"
+        broken_evidence = json.loads(evidence_path.read_text())
+        broken_evidence["render_context"]["content_commit"] = "not-a-commit"
+        broken_evidence["render_context"]["inventory_sha256"] = "0" * 64
+        broken_evidence["sheets"]["smooth"]["pixel_width"] = 2
+        broken_evidence["views"][0]["x"] = 100
+        evidence_path.write_text(json.dumps(broken_evidence))
+        evidence_errors = audit.validate_light_inventory(audit.light_inventory())
+        self.assertIn("light-source evidence needs a content_commit SHA", evidence_errors)
+        self.assertIn(
+            "light-source evidence inventory changed since rendered review",
+            evidence_errors,
+        )
+        self.assertIn(
+            "light-source evidence sheet smooth dimensions changed",
+            evidence_errors,
+        )
+        self.assertIn(
+            "map maps/scene emitter light2 at 4,5 lacks smooth runtime evidence",
+            evidence_errors,
+        )
+        evidence_path.write_text(json.dumps(evidence))
+
         archetype_path = self.root / "arch/lights.arc"
         archetype_source = archetype_path.read_text()
         archetype_path.write_text(archetype_source.replace("glow_radius 4", "glow_radius 5"))
@@ -324,6 +426,27 @@ glow_radius 2
 end
 """,
         )
+        self.write(
+            "maps/coordinates",
+            """arch map
+name Coordinate Defaults
+end
+arch black_light
+end
+arch black_light
+x 2
+end
+arch black_light
+y 3
+end
+arch inert
+x 7
+y 8
+arch black_light
+end
+end
+""",
+        )
 
         report = audit.light_inventory()
         rows = {row["id"]: row for row in report["archetypes"]}
@@ -331,6 +454,10 @@ end
         self.assertEqual("000000", rows["black_light"]["color"])
         self.assertEqual("explicit-color", rows["black_light"]["disposition"])
         self.assertFalse(rows["faceless_satellite"]["visible"])
+        self.assertEqual(
+            [(0, 0), (2, 0), (0, 3), (7, 8)],
+            [(row["x"], row["y"]) for row in report["maps"][0]["emitters"]],
+        )
 
     def test_light_review_check_rejects_missing_baseline_rows(self):
         self.write(
@@ -346,7 +473,7 @@ end
         report = audit.light_inventory()
         errors = audit.validate_light_inventory(report)
 
-        self.assertIn("light-source review must use schema_version 2", errors)
+        self.assertIn("light-source review must use schema_version 3", errors)
         self.assertIn("light-source review needs a concise review_method", errors)
         self.assertIn("light-source review archetypes must be an object", errors)
         self.assertIn("1 effective light sources remain unreviewed", errors)

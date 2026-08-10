@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import re
+import struct
 from collections import defaultdict
 from pathlib import Path
 import sys
@@ -25,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAP_ROOT = ROOT / "maps"
 ARCH_ROOT = ROOT / "arch"
 LIGHT_REVIEW_NAME = "light-source-review.json"
+LIGHT_EVIDENCE_NAME = "light-source-evidence/manifest.json"
 LIGHT_COLOR_RE = re.compile(r"^[0-9a-f]{6}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
@@ -186,6 +188,27 @@ def flatten(nodes: list[dict], parent: dict | None = None):
     for node in nodes:
         yield node, parent
         yield from flatten(node["children"], node)
+
+
+def flatten_map_objects(nodes: list[dict]):
+    """Yield map objects with their effective containing map coordinates."""
+
+    def descendants(node: dict, parent: dict | None, x: int, y: int):
+        yield node, parent, x, y
+        for child in node["children"]:
+            yield from descendants(child, node, x, y)
+
+    for node in nodes:
+        attrs = node["attrs"]
+        try:
+            x = int(one(attrs, "x", "0"))
+        except ValueError:
+            x = 0
+        try:
+            y = int(one(attrs, "y", "0"))
+        except ValueError:
+            y = 0
+        yield from descendants(node, None, x, y)
 
 
 def quest_inventory() -> list[dict]:
@@ -377,6 +400,289 @@ def _light_review() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _light_evidence() -> dict:
+    path = MAP_ROOT / LIGHT_EVIDENCE_NAME
+    if not path.is_file():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _inventory_semantic_sha256(report: dict) -> str:
+    return _semantic_sha256(
+        {
+            section: [
+                (row[identity], row["semantic_sha256"])
+                for row in report[section]
+            ]
+            for section, identity in (
+                ("archetypes", "id"),
+                ("artifacts", "id"),
+                ("maps", "path"),
+            )
+        }
+    )
+
+
+def _image_dimensions(path: Path) -> tuple[int, int] | None:
+    """Read dimensions from a PNG or JPEG evidence artifact."""
+
+    data = path.read_bytes()
+    if len(data) >= 24 and data.startswith(b"\x89PNG\r\n\x1a\n"):
+        if data[12:16] != b"IHDR":
+            return None
+        return struct.unpack(">II", data[16:24])
+    if len(data) < 4 or data[:2] != b"\xff\xd8" or data[-2:] != b"\xff\xd9":
+        return None
+    offset = 2
+    while offset + 4 <= len(data):
+        if data[offset] != 0xff:
+            return None
+        marker = data[offset + 1]
+        offset += 2
+        if marker in {0x01, 0xd8, 0xd9} or 0xd0 <= marker <= 0xd7:
+            continue
+        length = int.from_bytes(data[offset:offset + 2], "big")
+        if length < 2 or offset + length > len(data):
+            return None
+        if marker in {0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf}:
+            if length < 7:
+                return None
+            height = int.from_bytes(data[offset + 3:offset + 5], "big")
+            width = int.from_bytes(data[offset + 5:offset + 7], "big")
+            return width, height
+        offset += length
+    return None
+
+
+def validate_light_evidence(report: dict) -> list[str]:
+    """Validate durable Classic client renders and invisible-emitter coverage."""
+
+    errors = []
+    evidence = _light_evidence()
+    if evidence.get("schema_version") != 1:
+        errors.append("light-source evidence must use schema_version 1")
+    context = evidence.get("render_context")
+    if not isinstance(context, dict):
+        errors.append("light-source evidence render_context must be an object")
+        context = {}
+    for field in (
+        "content_commit",
+        "classic_client_commit",
+        "classic_server_commit",
+        "resources_commit",
+    ):
+        value = context.get(field)
+        if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
+            errors.append("light-source evidence needs a {} SHA".format(field))
+    for field in ("profile", "command", "settings"):
+        value = context.get(field)
+        if not isinstance(value, str) or len(value.strip()) < 12:
+            errors.append("light-source evidence needs {}".format(field))
+    for field, repository, commit_field in (
+        ("content_source", "content", "content_commit"),
+        ("classic_client_source", "classic", "classic_client_commit"),
+        ("classic_server_source", "classic", "classic_server_commit"),
+        ("resources_source", "resources", "resources_commit"),
+    ):
+        expected_url = "https://github.com/atrinik/{}/tree/{}".format(
+            repository, context.get(commit_field)
+        )
+        if context.get(field) != expected_url:
+            errors.append("light-source evidence needs immutable {}".format(field))
+    if context.get("inventory_sha256") != _inventory_semantic_sha256(report):
+        errors.append("light-source evidence inventory changed since rendered review")
+
+    sheets = evidence.get("sheets")
+    if not isinstance(sheets, dict):
+        errors.append("light-source evidence sheets must be an object")
+        sheets = {}
+    capacities = {}
+    for identifier, entry in sorted(sheets.items()):
+        if not isinstance(entry, dict):
+            errors.append("light-source evidence sheet {} must be an object".format(identifier))
+            continue
+        artifact = entry.get("artifact")
+        if not isinstance(artifact, str):
+            errors.append("light-source evidence sheet {} needs an artifact".format(identifier))
+            continue
+        path = ROOT / artifact
+        expected_parent = (MAP_ROOT / "light-source-evidence").resolve()
+        try:
+            contained = path.resolve().parent == expected_parent
+        except OSError:
+            contained = False
+        if not contained or path.suffix.lower() not in {".jpg", ".png"}:
+            errors.append(
+                "light-source evidence sheet {} has an invalid artifact path".format(
+                    identifier
+                )
+            )
+        elif not path.is_file():
+            errors.append("light-source evidence sheet {} artifact is missing".format(identifier))
+        else:
+            actual = hashlib.sha256(path.read_bytes()).hexdigest()
+            if entry.get("sha256") != actual:
+                errors.append(
+                    "light-source evidence sheet {} artifact hash changed".format(
+                        identifier
+                    )
+                )
+            dimensions = _image_dimensions(path)
+            if dimensions is None:
+                errors.append(
+                    "light-source evidence sheet {} is not a valid image".format(
+                        identifier
+                    )
+                )
+            elif dimensions != (entry.get("pixel_width"), entry.get("pixel_height")):
+                errors.append(
+                    "light-source evidence sheet {} dimensions changed".format(
+                        identifier
+                    )
+                )
+        columns = entry.get("columns")
+        rows = entry.get("rows")
+        if (
+            not isinstance(columns, int) or isinstance(columns, bool) or columns < 1
+            or not isinstance(rows, int) or isinstance(rows, bool) or rows < 1
+        ):
+            errors.append(
+                "light-source evidence sheet {} needs positive dimensions".format(
+                    identifier
+                )
+            )
+        else:
+            capacities[identifier] = columns * rows
+        if entry.get("mode") not in {"smooth", "discrete"}:
+            errors.append("light-source evidence sheet {} needs a lighting mode".format(identifier))
+
+    map_rows = {row["path"]: row for row in report["maps"]}
+    views = evidence.get("views")
+    if not isinstance(views, list):
+        errors.append("light-source evidence views must be an array")
+        views = []
+    view_ids = {}
+    occupied = set()
+    referenced_sheets = set()
+    smooth_by_map: dict[str, list[dict]] = defaultdict(list)
+    for view in views:
+        if not isinstance(view, dict):
+            errors.append("light-source evidence view must be an object")
+            continue
+        identifier = view.get("id")
+        if not isinstance(identifier, str) or not identifier:
+            errors.append("light-source evidence view needs an id")
+            continue
+        if identifier in view_ids:
+            errors.append("duplicate light-source evidence view: {}".format(identifier))
+        view_ids[identifier] = view
+        map_path = view.get("map")
+        row = map_rows.get(map_path)
+        if row is None:
+            errors.append("light-source evidence view {} references a stale map".format(identifier))
+        elif view.get("map_semantic_sha256") != row["semantic_sha256"]:
+            errors.append(
+                "light-source evidence view {} has stale map semantics".format(identifier)
+            )
+        if (
+            not isinstance(view.get("x"), int) or isinstance(view.get("x"), bool)
+            or not isinstance(view.get("y"), int) or isinstance(view.get("y"), bool)
+        ):
+            errors.append(
+                "light-source evidence view {} needs integer coordinates".format(
+                    identifier
+                )
+            )
+        sheet = view.get("sheet")
+        tile = view.get("tile")
+        if sheet not in sheets:
+            errors.append(
+                "light-source evidence view {} references an unknown sheet".format(
+                    identifier
+                )
+            )
+        elif (
+            not isinstance(tile, int) or isinstance(tile, bool)
+            or tile < 0 or tile >= capacities.get(sheet, 0)
+        ):
+            errors.append(
+                "light-source evidence view {} has an invalid sheet tile".format(
+                    identifier
+                )
+            )
+        elif (sheet, tile) in occupied:
+            errors.append("duplicate light-source evidence sheet tile: {} {}".format(sheet, tile))
+        else:
+            occupied.add((sheet, tile))
+            referenced_sheets.add(sheet)
+        mode = view.get("mode")
+        if sheet in sheets and mode != sheets[sheet].get("mode"):
+            errors.append(
+                "light-source evidence view {} mode disagrees with its sheet".format(
+                    identifier
+                )
+            )
+        if mode == "smooth" and row is not None:
+            smooth_by_map[map_path].append(view)
+    for identifier in sorted(set(sheets) - referenced_sheets):
+        errors.append("stale light-source evidence sheet: {}".format(identifier))
+
+    for map_path, row in sorted(map_rows.items()):
+        map_views = smooth_by_map.get(map_path, [])
+        invisible = [emitter for emitter in row["emitters"] if not emitter["visible"]]
+        targets = invisible or row["emitters"][:1]
+        for emitter in targets:
+            if not any(
+                abs(emitter["x"] - view.get("x", 10**9)) <= 8
+                and abs(emitter["y"] - view.get("y", 10**9)) <= 8
+                for view in map_views
+            ):
+                errors.append(
+                    "map {} emitter {} at {},{} lacks smooth runtime evidence".format(
+                        map_path,
+                        emitter["archetype"],
+                        emitter["x"],
+                        emitter["y"],
+                    )
+                )
+
+    required_checks = {
+        "overlap", "linked-depth", "horizontal-boundary", "dark-interior",
+        "outdoor-transition", "fog-roof", "navigation",
+    }
+    representative = evidence.get("representative_checks")
+    if not isinstance(representative, dict):
+        errors.append("light-source evidence representative_checks must be an object")
+        representative = {}
+    for check in sorted(set(representative) - required_checks):
+        errors.append("stale light-source evidence representative check: {}".format(check))
+    for check in sorted(required_checks):
+        entry = representative.get(check)
+        if not isinstance(entry, dict):
+            errors.append("light-source evidence needs representative {} review".format(check))
+            continue
+        identifiers = entry.get("views")
+        if not isinstance(identifiers, list) or not identifiers:
+            errors.append("light-source evidence needs representative {} views".format(check))
+            continue
+        if not isinstance(entry.get("rationale"), str) or len(entry["rationale"].strip()) < 12:
+            errors.append("light-source evidence {} needs a concise rationale".format(check))
+        modes = {
+            view_ids[identifier].get("mode")
+            for identifier in identifiers
+            if identifier in view_ids
+        }
+        if any(identifier not in view_ids for identifier in identifiers):
+            errors.append("light-source evidence {} references an unknown view".format(check))
+        if modes != {"smooth", "discrete"}:
+            errors.append(
+                "light-source evidence {} must cover smooth and discrete modes".format(
+                    check
+                )
+            )
+    return errors
+
+
 def _review_disposition(review: dict | None, color: str | None) -> tuple[str, str | None]:
     if color is not None:
         return "explicit-color", color
@@ -456,7 +762,7 @@ def light_inventory() -> dict:
         relative = path.relative_to(ROOT).as_posix()
         map_review = review.get("maps", {}).get(relative)
         emitters = []
-        for node, parent in flatten(parsed["objects"]):
+        for node, parent, x, y in flatten_map_objects(parsed["objects"]):
             attrs = node["attrs"]
             base = archetypes.get(node["arch"], {}).get("attrs", {})
             radius = _nonzero_radius(one(attrs, "glow_radius", base.get("glow_radius")))
@@ -485,8 +791,6 @@ def light_inventory() -> dict:
                 else:
                     source_review = map_review
             disposition, resolved_color = _review_disposition(source_review, color)
-            x = one(attrs, "x", one(parent["attrs"], "x") if parent else None)
-            y = one(attrs, "y", one(parent["attrs"], "y") if parent else None)
             if "light_color" in attrs:
                 color_source = "map"
             elif node["arch"] in archetypes:
@@ -497,8 +801,8 @@ def light_inventory() -> dict:
                 "id": "{}:{}".format(relative, node["line"]),
                 "line": node["line"],
                 "archetype": node["arch"],
-                "x": int(x) if x is not None else None,
-                "y": int(y) if y is not None else None,
+                "x": x,
+                "y": y,
                 "radius": radius,
                 "radius_source": "map" if "glow_radius" in attrs else "archetype",
                 "color": resolved_color,
@@ -520,7 +824,6 @@ def light_inventory() -> dict:
             "region": one(header, "region"),
             "outdoor": one(header, "outdoor") == "1",
             "darkness": one(header, "darkness"),
-            "rendered_batch": map_review.get("rendered_batch") if map_review else None,
             "rationale": map_review.get("rationale") if map_review else None,
             "emitters": emitters,
         }
@@ -562,8 +865,8 @@ def validate_light_inventory(report: dict) -> list[str]:
 
     errors = []
     review = _light_review()
-    if review.get("schema_version") != 2:
-        errors.append("light-source review must use schema_version 2")
+    if review.get("schema_version") != 3:
+        errors.append("light-source review must use schema_version 3")
     if (
         not isinstance(review.get("review_method"), str)
         or len(review["review_method"].strip()) < 12
@@ -579,36 +882,7 @@ def validate_light_inventory(report: dict) -> list[str]:
         "artifacts": {row["id"]: row for row in report["artifacts"]},
         "maps": {row["path"]: row for row in report["maps"]},
     }
-    render_context = review.get("render_context")
-    if not isinstance(render_context, dict):
-        errors.append("light-source review render_context must be an object")
-    else:
-        for field in ("content_commit", "classic_commit", "resources_commit"):
-            value = render_context.get(field)
-            if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
-                errors.append("light-source render_context needs a {} SHA".format(field))
-        for field in ("profile", "command", "settings"):
-            value = render_context.get(field)
-            if not isinstance(value, str) or len(value.strip()) < 4:
-                errors.append("light-source render_context needs {}".format(field))
-    batches = review.get("rendered_batches")
-    if not isinstance(batches, dict):
-        errors.append("light-source rendered_batches must be an object")
-        batches = {}
-    for identifier, entry in sorted(batches.items()):
-        if not isinstance(entry, dict):
-            errors.append("rendered batch {} must be an object".format(identifier))
-            continue
-        if not isinstance(entry.get("artifact"), str) or not entry["artifact"].endswith(
-            ".png"
-        ):
-            errors.append("rendered batch {} needs a PNG artifact".format(identifier))
-        if not isinstance(entry.get("method"), str) or len(entry["method"].strip()) < 12:
-            errors.append("rendered batch {} needs a concise method".format(identifier))
-        if not isinstance(entry.get("sha256"), str) or SHA256_RE.fullmatch(
-            entry["sha256"]
-        ) is None:
-            errors.append("rendered batch {} needs an artifact SHA-256".format(identifier))
+    errors.extend(validate_light_evidence(report))
     required_checks = {
         "overlap",
         "linked-depth",
@@ -649,10 +923,6 @@ def validate_light_inventory(report: dict) -> list[str]:
                         section[:-1], identifier
                     )
                 )
-            if section == "maps" and not isinstance(entry.get("rendered_batch"), str):
-                errors.append("map {} needs rendered_batch evidence".format(identifier))
-            elif section == "maps" and entry["rendered_batch"] not in batches:
-                errors.append("map {} references an unknown rendered batch".format(identifier))
             if section == "maps":
                 checks = entry.get("checks")
                 if not isinstance(checks, list) or set(checks) != required_checks:
@@ -700,14 +970,6 @@ def validate_light_inventory(report: dict) -> list[str]:
                                     identifier, archetype
                                 )
                             )
-    map_entries = review.get("maps")
-    referenced_batches = {
-        entry.get("rendered_batch")
-        for entry in map_entries.values()
-        if isinstance(entry, dict) and isinstance(entry.get("rendered_batch"), str)
-    } if isinstance(map_entries, dict) else set()
-    for identifier in sorted(set(batches) - referenced_batches):
-        errors.append("stale rendered light-review batch: {}".format(identifier))
     palette = review.get("palette")
     if not isinstance(palette, dict):
         errors.append("light-source review palette must be an object")

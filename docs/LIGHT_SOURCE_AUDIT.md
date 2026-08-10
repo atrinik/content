@@ -25,8 +25,10 @@ repository-relative.
 - one contextual review record for every map containing an effective emitter;
 - a semantic SHA-256 for every source and map (including sorted effective
   emitter provenance, positions, radii, colors, faces, and visibility);
-- the Classic worldmaker batch used to inspect the rendered scene, its PNG
-  SHA-256, and exact content/server/resources/profile inputs; and
+- a separate durable Classic client evidence manifest whose committed contact
+  sheets, exact content/Classic client/Classic server/resources inputs,
+  inventory digest, map semantic digests, viewport coordinates, lighting modes,
+  and artifact SHA-256 values are all checked locally; and
 - checks for overlaps, linked depths, horizontal boundaries, dark interiors,
   outdoor transitions, fog/roofs, and navigation cues.
 
@@ -49,22 +51,35 @@ or map context also invalidate its semantic digest. Do not refresh a digest or
 copy an old disposition without opening the map in a current Classic render.
 
 For this baseline, the wrapper profile `issue-65-light-colors` selected the
-issue's `content-1x` worktree. `./atrinik build server --profile
-issue-65-light-colors --test` ran the Classic server tests and worldmaker. Its
-stitched region images covered outdoor boundaries and linked world/depth
-layouts; focused temporary worldmaker roots rendered disconnected interiors
-individually. Those temporary roots were review inputs only and are not
-authored content. The baseline retains the exact renderer commits/settings and
-SHA-256 of every reviewed PNG so regenerated evidence can be checked without
-committing generated images.
+issue's `content-1x` worktree and the isolated `issue-65-lighting` scenario.
+The Classic client at the commit recorded in
+`maps/light-source-evidence/manifest.json` connected to that profile, enabled
+its default smooth RGB renderer, teleported an invulnerable review character
+to the recorded coordinates, and saved the primary map surface with
+`/screenshot map`. A greedy 17-by-17 viewport cover produced at least one
+smooth runtime view around every invisible emitter; maps without an invisible
+emitter retain a representative view. Selected scenes were rendered again with
+smooth lighting disabled so both client lighting paths cover every contextual
+review criterion.
+
+`maps/light-source-evidence/` commits those views as numbered 5-by-5 contact
+sheets. The evidence manifest maps every tile back to its map semantic digest,
+coordinates, and lighting mode. `lights --check` re-hashes each sheet, verifies
+its encoded dimensions, rejects stale or duplicate tiles, checks the aggregate
+inventory digest, and proves that every invisible emitter lies inside a
+recorded smooth viewport. This makes the rendered pixels retrievable while
+keeping generated full-resolution screenshots out of authored content.
 
 When refreshing the review:
 
 1. regenerate the inventory and inspect all new or changed rows;
-2. render affected maps with a profile selecting the exact content worktree;
+2. render affected maps with the Classic client and a profile selecting the
+   exact content worktree, retaining a 17-by-17 view around every invisible
+   emitter;
 3. compare overlaps and adjacent/depth-linked scenes in both smooth and
    discrete lighting where a color changes;
-4. update only the affected palette and review records; and
+4. rebuild the affected contact sheets and evidence-manifest tiles, then
+   update only the affected palette and review records; and
 5. run `python3 tools/validate.py` and `git diff --check`.
 
 The baseline is a review contract, not a second parser, renderer, or generated

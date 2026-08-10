@@ -84,7 +84,7 @@ def obj_assign_attribs (obj, attribs):
         for t in re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
     ]
 
-    if "light_color" in tokens or any(
+    if any("light_color" in token for token in tokens) or any(
         attrib == "light_color" for attrib, _ in legacy_pairs
     ):
         if len(tokens) % 2:

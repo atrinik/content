@@ -267,7 +267,10 @@ def prepare_transaction(
     return PreparedTransaction(tuple(prepared))
 
 
-def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
+def _stage_file(
+    item: PreparedFile, *, artifact_token: Optional[str] = None
+) -> tuple[Path, Path]:
+    token = "{}-".format(artifact_token) if artifact_token else ""
     mode = stat.S_IMODE(item.path.stat().st_mode)
     staged = None
     backup = None
@@ -275,7 +278,7 @@ def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
         with tempfile.NamedTemporaryFile(
             "wb",
             dir=item.path.parent,
-            prefix=".{}-content-stage-".format(item.path.name),
+            prefix=".{}-content-stage-{}".format(item.path.name, token),
             suffix=".tmp",
             delete=False,
         ) as destination:
@@ -287,7 +290,7 @@ def _stage_file(item: PreparedFile) -> tuple[Path, Path]:
         with tempfile.NamedTemporaryFile(
             "wb",
             dir=item.path.parent,
-            prefix=".{}-content-backup-".format(item.path.name),
+            prefix=".{}-content-backup-{}".format(item.path.name, token),
             suffix=".tmp",
             delete=False,
         ) as destination:
@@ -324,6 +327,7 @@ def publish_transaction(
     prepared: PreparedTransaction,
     *,
     failure_after: Optional[int] = None,
+    artifact_token: Optional[str] = None,
 ) -> None:
     """Publish all staged files, rolling back every replacement on failure."""
 
@@ -344,7 +348,9 @@ def publish_transaction(
                     code="concurrent-file-change",
                 )
         for item in changed_files:
-            staged[item.relative] = _stage_file(item)
+            staged[item.relative] = _stage_file(
+                item, artifact_token=artifact_token
+            )
 
         for index, item in enumerate(changed_files):
             current = _safe_target(root, item.relative, item.format_name)

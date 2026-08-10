@@ -51,7 +51,9 @@ outside the transaction rollback handler, `recover` first verifies that the
 partial baseline diff contains only exact reviewed plural additions, then
 removes those additions. A durable ignored journal also identifies transaction
 stage/backup files created after publication began, so recovery removes only
-migration-owned artifacts and preserves anything that predates the journal.
+migration-owned artifacts and preserves anything that predates or runs outside
+the journal. Each operation is cross-process serialized, and its journal token
+is embedded in every owned artifact name.
 If the content core reports an incomplete rollback, both its remaining backup
 artifacts and the ownership journal are retained for explicit recovery.
 Recovery is dry-run-first and safely repeatable after another interruption;

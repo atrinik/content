@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+from contextlib import contextmanager
+from functools import wraps
 import hashlib
 import json
 import os
@@ -11,6 +13,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import secrets
 from typing import Any, Mapping, Sequence
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -597,12 +600,17 @@ def _publish_prepared(
     prepared: Sequence[PreparedTransaction],
     failure_after: int | None = None,
 ) -> None:
-    preexisting = _open_recovery_journal(root)
+    preexisting, artifact_token = _open_recovery_journal(root)
     combined = PreparedTransaction(
         tuple(item for transaction in prepared for item in transaction.files)
     )
     try:
-        publish_transaction(root, combined, failure_after=failure_after)
+        publish_transaction(
+            root,
+            combined,
+            failure_after=failure_after,
+            artifact_token=artifact_token,
+        )
     except ContentCoreError as error:
         if error.code == "transaction-rollback-failed":
             raise
@@ -610,6 +618,7 @@ def _publish_prepared(
             root,
             preexisting,
             {item.path.parent for item in combined.files},
+            artifact_token,
         )
         raise
     else:
@@ -617,12 +626,17 @@ def _publish_prepared(
             root,
             preexisting,
             {item.path.parent for item in combined.files},
+            artifact_token,
         )
 
 
-def _transaction_artifacts(root: Path) -> set[str]:
+def _transaction_artifacts(root: Path, artifact_token: str | None = None) -> set[str]:
     artifacts = set()
-    for pattern in (".*-content-stage-*.tmp", ".*-content-backup-*.tmp"):
+    token = "{}-".format(artifact_token) if artifact_token else ""
+    for pattern in (
+        ".*-content-stage-{}*.tmp".format(token),
+        ".*-content-backup-{}*.tmp".format(token),
+    ):
         for path in (root / "arch").rglob(pattern):
             if path.is_symlink() or not path.is_file():
                 raise PluralMigrationError(
@@ -632,7 +646,7 @@ def _transaction_artifacts(root: Path) -> set[str]:
     return artifacts
 
 
-def _open_recovery_journal(root: Path) -> set[str]:
+def _open_recovery_journal(root: Path) -> tuple[set[str], str]:
     path = root / RECOVERY_JOURNAL_PATH
     pending = root / RECOVERY_JOURNAL_PENDING_PATH
     if path.exists():
@@ -646,19 +660,23 @@ def _open_recovery_journal(root: Path) -> set[str]:
             or value.get("schema_version") != 1
             or value.get("kind") != "archetype-plural-recovery-journal"
             or value.get("manifest_sha256") != REVIEWED_MANIFEST_SHA256
+            or not isinstance(value.get("artifact_token"), str)
+            or len(value["artifact_token"]) != 32
             or not isinstance(value.get("preexisting_artifacts"), list)
             or any(not isinstance(item, str) for item in value["preexisting_artifacts"])
         ):
             raise PluralMigrationError("plural recovery journal is invalid")
-        return set(value["preexisting_artifacts"])
+        return set(value["preexisting_artifacts"]), value["artifact_token"]
     if pending.exists():
         pending.unlink()
         _sync_directory(pending.parent)
     preexisting = _transaction_artifacts(root)
+    artifact_token = secrets.token_hex(16)
     value = {
         "schema_version": 1,
         "kind": "archetype-plural-recovery-journal",
         "manifest_sha256": REVIEWED_MANIFEST_SHA256,
+        "artifact_token": artifact_token,
         "preexisting_artifacts": sorted(preexisting),
     }
     pending.parent.mkdir(parents=True, exist_ok=True)
@@ -669,7 +687,7 @@ def _open_recovery_journal(root: Path) -> set[str]:
         os.fsync(destination.fileno())
     os.replace(pending, path)
     _sync_directory(path.parent)
-    return preexisting
+    return preexisting, artifact_token
 
 
 def _sync_directory(directory: Path) -> None:
@@ -688,9 +706,12 @@ def _close_recovery_journal(
     root: Path,
     preexisting: set[str],
     sync_directories: set[Path] | None = None,
+    artifact_token: str | None = None,
 ) -> None:
     directories = set(sync_directories or ())
-    for relative in sorted(_transaction_artifacts(root) - preexisting):
+    for relative in sorted(
+        _transaction_artifacts(root, artifact_token) - preexisting
+    ):
         path = root / relative
         path.unlink()
         directories.add(path.parent)
@@ -701,6 +722,49 @@ def _close_recovery_journal(
     _sync_directory(journal.parent)
 
 
+@contextmanager
+def _operation_lock(root: Path):
+    identity = hashlib.sha256(str(root.resolve()).encode("utf-8")).hexdigest()
+    path = Path(tempfile.gettempdir()) / "atrinik-plural-{}.lock".format(identity)
+    with path.open("a+b") as lock:
+        lock.seek(0)
+        if lock.read(1) == b"":
+            lock.write(b"\0")
+            lock.flush()
+        lock.seek(0)
+        try:
+            if os.name == "nt":
+                import msvcrt
+
+                msvcrt.locking(lock.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+
+                fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as error:
+            raise PluralMigrationError(
+                "another plural migration or recovery is active"
+            ) from error
+        try:
+            yield
+        finally:
+            lock.seek(0)
+            if os.name == "nt":
+                msvcrt.locking(lock.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+
+
+def _serialized_operation(function):
+    @wraps(function)
+    def serialized(root: Path, *args, **kwargs):
+        with _operation_lock(root):
+            return function(root, *args, **kwargs)
+
+    return serialized
+
+
+@_serialized_operation
 def migrate(
     root: Path,
     manifest: Mapping[str, Any],
@@ -772,6 +836,7 @@ def migrate(
     }
 
 
+@_serialized_operation
 def recover(
     root: Path,
     manifest: Mapping[str, Any],
@@ -788,14 +853,18 @@ def recover(
     line = identify_line(root) if check_git else "fixture"
     journal = root / RECOVERY_JOURNAL_PATH
     interrupted_publication = journal.exists()
-    preexisting = (
-        _open_recovery_journal(root) if interrupted_publication else set()
+    preexisting, artifact_token = (
+        _open_recovery_journal(root)
+        if interrupted_publication
+        else (set(), None)
     )
     entries, rows = _checked_rows(root, manifest)
     present = sum(bool(entry["plurals"]) for entry in entries.values())
     if present == 0:
         if apply and interrupted_publication:
-            _close_recovery_journal(root, preexisting)
+            _close_recovery_journal(
+                root, preexisting, artifact_token=artifact_token
+            )
         return {
             "schema_version": 1,
             "kind": "archetype-plural-recovery",
@@ -809,7 +878,9 @@ def recover(
         }
     if present == len(entries) and interrupted_publication:
         if apply:
-            _close_recovery_journal(root, preexisting)
+            _close_recovery_journal(
+                root, preexisting, artifact_token=artifact_token
+            )
         return {
             "schema_version": 1,
             "kind": "archetype-plural-recovery",
@@ -856,7 +927,9 @@ def recover(
                 "partial recovery diff does not match reviewed plural additions"
             )
     if apply and interrupted_publication:
-        _close_recovery_journal(root, preexisting)
+        _close_recovery_journal(
+            root, preexisting, artifact_token=artifact_token
+        )
     transactions = _recovery_transactions(entries, rows)
     prepared = [
         prepare_transaction(root, transaction, schema_root=root)

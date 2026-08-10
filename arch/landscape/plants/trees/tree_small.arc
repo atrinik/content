@@ -4,6 +4,7 @@ face tree_small.101
 layer 4
 type 79
 no_pick 1
+name_pl small trees
 end
 
 Object tree_small_dead
@@ -12,4 +13,5 @@ face tree_smalld.101
 layer 4
 type 79
 no_pick 1
+name_pl small dead trees
 end

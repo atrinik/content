@@ -32,4 +32,5 @@ weight 84000
 undead 1
 faction monsters
 int 12
+name_pl zombies
 end

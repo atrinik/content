@@ -38,4 +38,5 @@ speed -0.061
 weight 39500
 faction monsters
 int 8
+name_pl kobold shamans
 end

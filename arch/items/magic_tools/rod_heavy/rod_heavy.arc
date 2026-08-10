@@ -16,4 +16,5 @@ item_condition 100
 item_quality 100
 hp 6
 maxhp 6
+name_pl heavy rods
 end

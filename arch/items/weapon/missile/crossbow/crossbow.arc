@@ -16,4 +16,5 @@ wc_range 20
 dam 1
 last_sp 5
 value 450
+name_pl crossbows
 end

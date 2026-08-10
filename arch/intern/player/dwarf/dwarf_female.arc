@@ -35,4 +35,5 @@ dex 11
 con 14
 int 13
 pow 12
+name_pl dwarf_females
 end

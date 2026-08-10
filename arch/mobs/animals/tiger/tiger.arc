@@ -31,4 +31,5 @@ speed -0.06
 weight 30000
 faction monsters
 int 10
+name_pl tigers
 end

@@ -14,4 +14,5 @@ weight 1100
 value 400
 material_real 65
 material 2
+name_pl plate helms
 end

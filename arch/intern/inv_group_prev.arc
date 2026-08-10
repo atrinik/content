@@ -3,4 +3,5 @@ name Previous group of items
 face inv_group_prev.101
 type 79
 sys_object 1
+name_pl Previous group of items
 end

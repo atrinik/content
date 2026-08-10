@@ -7,6 +7,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end
 Object desert.102
 name desert
@@ -17,6 +18,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end
 Object desert.103
 name desert
@@ -27,6 +29,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end
 Object desert.104
 name desert
@@ -37,6 +40,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end
 Object desert.105
 name desert
@@ -47,6 +51,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end
 Object desert.106
 name desert
@@ -57,6 +62,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end
 Object desert.107
 name desert
@@ -67,4 +73,5 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl deserts
 end

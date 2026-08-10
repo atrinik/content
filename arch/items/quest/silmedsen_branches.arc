@@ -10,4 +10,5 @@ layer 3
 identified 1
 startequip 1
 weight 100
+name_pl Silmedsen's branches
 end

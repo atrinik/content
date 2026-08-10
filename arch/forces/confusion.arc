@@ -11,4 +11,5 @@ is_used_up 1
 msg
 Your movement has a high chance to choose a random direction.
 endmsg
+name_pl confusion
 end

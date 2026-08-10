@@ -31,4 +31,5 @@ faction monsters
 int 20
 speed -0.058
 weight 83500
+name_pl angel warriors
 end

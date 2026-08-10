@@ -8,6 +8,7 @@ material 512
 item_condition 100
 item_quality 100
 identified 1
+name_pl mercury
 end
 
 Object fix_mercury
@@ -24,4 +25,5 @@ value 4000
 layer 3
 type 73
 weight 4000
+name_pl blocks
 end

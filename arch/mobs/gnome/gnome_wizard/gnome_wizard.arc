@@ -41,4 +41,5 @@ faction npcs
 int 23
 arch ability_firestorm
 end
+name_pl gnome wizards
 end

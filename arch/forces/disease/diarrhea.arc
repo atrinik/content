@@ -20,4 +20,5 @@ You can't control your sphincter.
 endmsg
 race *
 level 5
+name_pl the runs
 end

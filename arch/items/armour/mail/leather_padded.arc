@@ -13,4 +13,5 @@ weight 2200
 value 15
 material 8
 material_real 193
+name_pl padded armour
 end

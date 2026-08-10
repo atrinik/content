@@ -10,4 +10,5 @@ type 54
 value 7
 weight 350
 can_stack 1
+name_pl large bottles of water
 end

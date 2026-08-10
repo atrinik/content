@@ -32,4 +32,5 @@ speed -0.053
 weight 16000
 faction monsters
 int 13
+name_pl black widows
 end

@@ -8,4 +8,5 @@ stand_still 1
 msg
 This skill can be used to build walls, furniture, chests and so on in your player house.
 endmsg
+name_pl construction
 end

@@ -40,4 +40,5 @@ weight 85000
 faction npcs
 int 20
 str 25
+name_pl priests
 end

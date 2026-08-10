@@ -19,4 +19,5 @@ level 1
 attack_fire 100
 terrain_flag 32767
 flying 1
+name_pl meteors
 end

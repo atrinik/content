@@ -4,4 +4,5 @@ layer 0
 sys_object 1
 face info.101
 no_pick 1
+name_pl client_map_info
 end

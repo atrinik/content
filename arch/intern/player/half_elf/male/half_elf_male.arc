@@ -35,4 +35,5 @@ dex 14
 con 13
 int 12
 pow 12
+name_pl half_elf_males
 end

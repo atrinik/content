@@ -4,6 +4,7 @@ layer 4
 face plant_bush1.101
 no_pick 1
 type 79
+name_pl plants
 end
 
 Object plant_bush2
@@ -12,6 +13,7 @@ layer 4
 face plant_bush2.101
 no_pick 1
 type 79
+name_pl plants
 end
 
 Object plant_bush3
@@ -20,4 +22,5 @@ layer 4
 face plant_bush3.101
 no_pick 1
 type 79
+name_pl plants
 end

@@ -5,6 +5,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end
 
 Object mast_n_long
@@ -14,6 +15,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end
 
 Object mast_s_long
@@ -23,6 +25,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end
 
 Object mast_w_long
@@ -32,6 +35,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end
 
 Object mast_e_short
@@ -41,6 +45,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl mast_e_shorts
 end
 
 Object mast_n_short
@@ -50,6 +55,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end
 
 Object mast_s_short
@@ -59,6 +65,7 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end
 
 Object mast_w_short
@@ -68,4 +75,5 @@ type 79
 layer 5
 no_pick 1
 no_pass 1
+name_pl masts
 end

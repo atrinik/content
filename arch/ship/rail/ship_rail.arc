@@ -5,6 +5,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_n_hole
@@ -14,6 +15,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_n_bow_1
@@ -23,6 +25,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_n_bow_2
@@ -32,6 +35,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_n_high
@@ -41,6 +45,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_n_high_double
@@ -51,6 +56,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_s
@@ -60,6 +66,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_s_hole
@@ -69,6 +76,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_s_bow_1
@@ -78,6 +86,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_s_bow_2
@@ -87,6 +96,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_s_high
@@ -96,6 +106,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_s_high_double
@@ -106,6 +117,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_w
@@ -115,6 +127,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_w_hole
@@ -124,6 +137,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_w_bow_1
@@ -133,6 +147,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_w_bow_2
@@ -142,6 +157,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_w_high
@@ -151,6 +167,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_w_high_double
@@ -161,6 +178,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_e
@@ -170,6 +188,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_e_hole
@@ -179,6 +198,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_e_bow_1
@@ -188,6 +208,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_e_bow_2
@@ -197,6 +218,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_e_high
@@ -206,6 +228,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_e_high_double
@@ -216,6 +239,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_ne
@@ -225,6 +249,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_ne_high
@@ -234,6 +259,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_ne_high_double
@@ -244,6 +270,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_nw
@@ -253,6 +280,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_nw_high
@@ -262,6 +290,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_nw_high_double
@@ -272,6 +301,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_se
@@ -281,6 +311,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_se_high
@@ -290,6 +321,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_se_high_double
@@ -300,6 +332,7 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end
 
 Object ship_rail_sw
@@ -309,6 +342,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_sw_high
@@ -318,6 +352,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl rails
 end
 
 Object ship_rail_sw_high_double
@@ -328,4 +363,5 @@ terrain_type 1
 type 77
 no_pick 1
 draw_double 1
+name_pl rails
 end

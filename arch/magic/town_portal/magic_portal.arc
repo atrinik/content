@@ -15,4 +15,5 @@ no_pick 1
 slaying /city/city
 hp 15
 sp 19
+name_pl magic portals
 end

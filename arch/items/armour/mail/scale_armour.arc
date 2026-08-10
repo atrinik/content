@@ -15,4 +15,5 @@ protect_slash 30
 protect_pierce 16
 weight 13000
 value 1800
+name_pl armour
 end

@@ -28,6 +28,7 @@ of skin flakes off and falls to the ground.
 endmsg
 race *
 level 5
+name_pl leprosy
 end
 
 Object leprous_skin
@@ -38,4 +39,5 @@ food 5
 weight 7
 nrof 1
 layer 4
+name_pl leprous flakes of skin
 end

@@ -10,4 +10,5 @@ terrain_type 2
 type 71
 no_pick 1
 is_floor 1
+name_pl water
 end

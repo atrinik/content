@@ -4,6 +4,7 @@ layer 5
 type 79
 face pool_acid.101
 no_pick 1
+name_pl acid pools
 end
 
 Object pool_blood
@@ -12,6 +13,7 @@ layer 5
 type 79
 face pool_blood.101
 no_pick 1
+name_pl blood pools
 end
 
 Object pool_ember
@@ -20,6 +22,7 @@ layer 5
 type 79
 face pool_ember.101
 no_pick 1
+name_pl ember pools
 end
 
 Object pool_fire
@@ -28,6 +31,7 @@ layer 5
 type 79
 face pool_fire.101
 no_pick 1
+name_pl fire pools
 end
 
 Object pool_murky
@@ -36,6 +40,7 @@ layer 5
 type 79
 face pool_murky.101
 no_pick 1
+name_pl murky pools
 end
 
 Object pool_poison
@@ -44,6 +49,7 @@ layer 5
 type 79
 face pool_poison.101
 no_pick 1
+name_pl poison pools
 end
 
 Object pool_water
@@ -52,6 +58,7 @@ layer 5
 type 79
 face pool_water.101
 no_pick 1
+name_pl water pools
 end
 
 Object pool_old
@@ -61,6 +68,7 @@ type 79
 face pool_old.101
 no_pick 1
 no_pass 1
+name_pl old pools
 end
 
 Object pool_magic
@@ -73,4 +81,5 @@ no_pass 1
 animation pool_magic
 is_animated 1
 anim_speed 4
+name_pl magic pools
 end

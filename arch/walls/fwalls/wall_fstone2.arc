@@ -7,6 +7,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_fstone2a
 name wall
@@ -17,6 +18,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_fstone2b
 name wall
@@ -27,6 +29,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_fstone2c
 name wall
@@ -37,6 +40,7 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end
 Object fwall_fstone2d
 name wall
@@ -47,4 +51,5 @@ type 77
 no_pick 1
 no_pass 1
 draw_double 1
+name_pl walls
 end

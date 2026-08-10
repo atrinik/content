@@ -14,4 +14,5 @@ face bow_short.101
 weight 1300
 value 350
 sp 5
+name_pl short bows
 end

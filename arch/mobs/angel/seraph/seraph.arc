@@ -49,6 +49,7 @@ level 1
 weight 125000
 faction monsters
 int 27
+name_pl seraphs
 end
 More
 Object seraph_b

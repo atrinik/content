@@ -14,6 +14,7 @@ no_pick 1
 pass_thru 1
 maxsp 1
 ac 1
+name_pl gates
 end
 
 Object gate_closed
@@ -35,4 +36,5 @@ state 7
 blocksview 1
 no_pass 1
 ac 1
+name_pl gates
 end

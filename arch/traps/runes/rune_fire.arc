@@ -18,4 +18,5 @@ attack_fire 100
 dam 8
 int 20
 sp -1
+name_pl Runes of Fire
 end

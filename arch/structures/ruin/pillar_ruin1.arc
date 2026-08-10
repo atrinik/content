@@ -7,6 +7,7 @@ mpart_id 4
 type 79
 no_pass 1
 no_pick 1
+name_pl ruins
 end
 More
 Object pillar_ruin1a_b
@@ -39,6 +40,7 @@ mpart_nr 3
 type 79
 no_pass 1
 no_pick 1
+name_pl ruins
 end
 More
 Object pillar_ruin1a_b1
@@ -70,6 +72,7 @@ type 79
 no_pass 1
 face pillar_ruin1b.101
 no_pick 1
+name_pl pillars
 end
 
 Object pillar_ruin1c.101
@@ -79,6 +82,7 @@ no_pass 1
 type 79
 face pillar_ruin1c.101
 no_pick 1
+name_pl pillars
 end
 
 Object pillar_ruin1d.101
@@ -88,6 +92,7 @@ no_pass 1
 type 79
 face pillar_ruin1d.101
 no_pick 1
+name_pl pillars
 end
 
 Object pillar_ruin1e.101
@@ -97,4 +102,5 @@ no_pass 1
 type 79
 face pillar_ruin1e.101
 no_pick 1
+name_pl pillars
 end

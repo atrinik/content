@@ -9,4 +9,5 @@ This spell restores depleted stats of your character.
 endmsg
 level 1
 value 0
+name_pl remove depletion
 end

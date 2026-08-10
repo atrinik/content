@@ -13,4 +13,5 @@ weight 2000
 value 200
 material_real 65
 material 2
+name_pl belts
 end

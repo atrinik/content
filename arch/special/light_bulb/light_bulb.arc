@@ -7,6 +7,7 @@ no_drop 1
 no_teleport 1
 sys_object 1
 type 78
+name_pl light
 end
 Object light2
 name light
@@ -17,6 +18,7 @@ no_drop 1
 no_teleport 1
 type 78
 sys_object 1
+name_pl light
 end
 Object light3
 name light
@@ -27,6 +29,7 @@ no_drop 1
 type 78
 no_teleport 1
 sys_object 1
+name_pl light
 end
 Object light4
 name light
@@ -37,6 +40,7 @@ type 78
 no_teleport 1
 glow_radius 4
 sys_object 1
+name_pl light
 end
 Object light5
 name light
@@ -47,6 +51,7 @@ type 78
 no_teleport 1
 glow_radius 5
 sys_object 1
+name_pl light
 end
 Object light6
 name light
@@ -57,6 +62,7 @@ type 78
 no_teleport 1
 glow_radius 6
 sys_object 1
+name_pl light
 end
 Object light7
 name light
@@ -67,6 +73,7 @@ type 78
 no_teleport 1
 glow_radius 7
 sys_object 1
+name_pl light
 end
 Object light8
 name light
@@ -77,6 +84,7 @@ type 78
 no_teleport 1
 glow_radius 8
 sys_object 1
+name_pl light
 end
 Object light9
 name light
@@ -87,4 +95,5 @@ type 78
 no_teleport 1
 glow_radius 9
 sys_object 1
+name_pl light
 end

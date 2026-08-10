@@ -12,4 +12,5 @@ item_quality 100
 identified 1
 value 10000
 is_magical 1
+name_pl Silmedsen's potion bottles
 end

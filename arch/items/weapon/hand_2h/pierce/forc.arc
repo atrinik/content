@@ -16,4 +16,5 @@ weight 2250
 value 750
 block 10
 absorb 15
+name_pl forcs
 end

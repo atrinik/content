@@ -15,4 +15,5 @@ material 32
 material_real 323
 weight 18500
 value 2850
+name_pl mail
 end

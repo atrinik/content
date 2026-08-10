@@ -39,4 +39,5 @@ magic 8
 can_cast_spell 1
 faction monsters
 int 18
+name_pl small gazers
 end

@@ -42,6 +42,10 @@ the checked-in projections and the entire legacy corpus with:
 python3 -m tools.content_schema validate --root .
 ```
 
+The canonical per-ID plural vocabulary, drift-safe one-time migration, permanent
+completeness audit, and cross-line comparison are documented in
+[`docs/ARCHETYPE_PLURALS.md`](docs/ARCHETYPE_PLURALS.md).
+
 Versioned legacy ADS grammar contracts, consumer ownership, interchange schemas,
 and the lossless parity corpus live under `contracts/content-v1/`. See
 [`docs/CONTENT_GRAMMAR_CONTRACTS.md`](docs/CONTENT_GRAMMAR_CONTRACTS.md) for the

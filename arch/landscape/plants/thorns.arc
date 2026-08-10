@@ -4,4 +4,5 @@ face thorns.101
 layer 4
 type 79
 no_pick 1
+name_pl thorns
 end

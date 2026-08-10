@@ -10,4 +10,5 @@ value 2
 weight 60
 level 1
 exp 10
+name_pl letters
 end

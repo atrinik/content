@@ -16,4 +16,5 @@ is_dust 1
 weight 15
 value 150
 can_stack 1
+name_pl dust
 end

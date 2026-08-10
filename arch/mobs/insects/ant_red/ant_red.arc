@@ -33,4 +33,5 @@ speed -0.053
 weight 22500
 faction monsters
 int 2
+name_pl red ants
 end

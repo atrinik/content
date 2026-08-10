@@ -8,4 +8,5 @@ walk_on 1
 walk_off 1
 last_sp 1
 xrays 1
+name_pl inventory checker
 end

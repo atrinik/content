@@ -7,4 +7,5 @@ no_teleport 1
 no_pick 1
 xrays 1
 item_level 8
+name_pl sound_ambient
 end

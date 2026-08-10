@@ -32,4 +32,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 20
+name_pl goat demons
 end

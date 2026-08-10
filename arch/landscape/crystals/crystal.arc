@@ -6,6 +6,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_purple_s
@@ -16,6 +17,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_red
@@ -26,6 +28,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_red_s
@@ -36,6 +39,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_yellow
@@ -46,6 +50,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_yellow_s
@@ -56,6 +61,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_green
@@ -66,6 +72,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_green_s
@@ -76,6 +83,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_blue
@@ -86,6 +94,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_blue_s
@@ -96,6 +105,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_white
@@ -106,6 +116,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal_white_s
@@ -116,6 +127,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal10
@@ -126,6 +138,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal11
@@ -136,6 +149,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal12
@@ -146,6 +160,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal13
@@ -156,6 +171,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end
 
 Object crystal14
@@ -166,4 +182,5 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+name_pl crystals
 end

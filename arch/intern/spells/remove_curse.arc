@@ -9,4 +9,5 @@ value 0
 msg
 This spell removes any curse from applied items. Unapplied items are not affected.
 endmsg
+name_pl remove curse
 end

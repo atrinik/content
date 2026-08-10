@@ -32,4 +32,5 @@ speed -0.053
 weight 32500
 faction monsters
 int 4
+name_pl killer bees
 end

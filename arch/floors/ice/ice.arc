@@ -7,6 +7,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object floor_ice2
@@ -18,6 +19,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object floor_ice3
@@ -29,6 +31,7 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end
 
 Object floor_ice4
@@ -40,4 +43,5 @@ terrain_type 1
 type 71
 no_pick 1
 is_floor 1
+name_pl ice
 end

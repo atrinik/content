@@ -14,4 +14,5 @@ protect_cleave 6
 type 99
 material_real 193
 material 8
+name_pl leggings
 end

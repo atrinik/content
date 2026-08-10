@@ -6,6 +6,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_e_long
@@ -16,6 +17,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_e_midship
@@ -25,6 +27,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_e_starboard_a
@@ -35,6 +38,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_e_starboard_b
@@ -45,6 +49,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_e_starboard_c
@@ -54,6 +59,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_e_strokeside_a
@@ -64,6 +70,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_e_strokeside_b
@@ -74,6 +81,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_e_strokeside_c
@@ -83,6 +91,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_n
@@ -93,6 +102,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_n_long
@@ -103,6 +113,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_n_midship
@@ -112,6 +123,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_n_starboard_a
@@ -122,6 +134,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_n_starboard_b
@@ -132,6 +145,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_n_starboard_c
@@ -141,6 +155,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_n_strokeside_a
@@ -151,6 +166,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_n_strokeside_b
@@ -161,6 +177,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_n_strokeside_c
@@ -170,6 +187,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_s
@@ -180,6 +198,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_s_long
@@ -190,6 +209,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_s_midship
@@ -199,6 +219,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_s_starboard_a
@@ -209,6 +230,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_s_starboard_b
@@ -219,6 +241,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_s_starboard_c
@@ -228,6 +251,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_s_strokeside_a
@@ -238,6 +262,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_s_strokeside_b
@@ -248,6 +273,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_s_strokeside_c
@@ -257,6 +283,7 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_w
@@ -267,6 +294,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_w_long
@@ -277,6 +305,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_w_midship
@@ -286,6 +315,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_w_starboard_a
@@ -296,6 +326,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_w_starboard_b
@@ -306,6 +337,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_w_starboard_c
@@ -315,6 +347,7 @@ layer 5
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end
 
 Object ship_prow_w_strokeside_a
@@ -325,6 +358,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_w_strokeside_b
@@ -335,6 +369,7 @@ terrain_type 1
 type 77
 no_pick 1
 no_pass 1
+name_pl prows
 end
 
 Object ship_prow_w_strokeside_c
@@ -344,4 +379,5 @@ layer 7
 terrain_type 1
 type 77
 no_pick 1
+name_pl prows
 end

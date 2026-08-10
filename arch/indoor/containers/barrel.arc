@@ -5,6 +5,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl barrels
 end
 Object barrel_water.101
 name water barrel
@@ -13,6 +14,7 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl water barrels
 end
 Object barrel2.101
 name barrel
@@ -21,4 +23,5 @@ no_pick 1
 no_pass 1
 type 79
 layer 4
+name_pl barrels
 end

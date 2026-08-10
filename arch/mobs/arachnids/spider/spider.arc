@@ -32,4 +32,5 @@ speed -0.053
 weight 19000
 faction monsters
 int 9
+name_pl spiders
 end

@@ -42,4 +42,5 @@ msg
 Bringer of Life
 endmsg
 weight 1
+name_pl Elathiel
 end

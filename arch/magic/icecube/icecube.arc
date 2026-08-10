@@ -10,4 +10,5 @@ item_quality 100
 weight 1500
 protect_cold 100
 level 1
+name_pl icecubes
 end

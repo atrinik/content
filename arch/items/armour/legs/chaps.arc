@@ -13,4 +13,5 @@ protect_cleave 6
 type 35
 material_real 193
 material 8
+name_pl chaps
 end

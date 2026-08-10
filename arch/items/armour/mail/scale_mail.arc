@@ -15,4 +15,5 @@ protect_cleave 17
 protect_pierce 35
 weight 19500
 value 2550
+name_pl scale mail
 end

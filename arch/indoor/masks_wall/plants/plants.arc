@@ -9,6 +9,7 @@ direction 1
 type 77
 no_pick 1
 layer 7
+name_pl plants
 end
 Object plant2_wall.151
 name plants
@@ -21,4 +22,5 @@ direction 1
 type 77
 no_pick 1
 layer 7
+name_pl plants
 end

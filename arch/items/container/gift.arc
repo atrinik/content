@@ -11,6 +11,7 @@ value 15
 weight 250
 container 10000
 weapon_speed 1.0
+name_pl wrapped gifts
 end
 Object gift_open
 name wrapped gift
@@ -25,4 +26,5 @@ value 15
 weight 250
 container 10000
 weapon_speed 1.0
+name_pl wrapped gifts
 end

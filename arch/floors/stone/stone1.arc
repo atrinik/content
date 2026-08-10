@@ -7,6 +7,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object fstone1b
 name floor
@@ -17,6 +18,7 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end
 Object fstone1c
 name floor
@@ -27,4 +29,5 @@ type 71
 no_teleport 1
 no_pick 1
 is_floor 1
+name_pl floors
 end

@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.102
 name snow
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.103
 name snow
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.104
 name snow
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.105
 name snow
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.106
 name snow
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.107
 name snow
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.108
 name snow
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.112
 name snow
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.114
 name snow
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.116
 name snow
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.118
 name snow
@@ -93,6 +104,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end
 Object snow_fmask.121
 name snow
@@ -101,4 +113,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl snow
 end

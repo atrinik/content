@@ -10,6 +10,7 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl wooden coffins
 end
 Object coffin_stone.111
 name stone coffin
@@ -23,4 +24,5 @@ is_turnable 1
 direction 1
 no_pass 1
 no_pick 1
+name_pl stone coffins
 end

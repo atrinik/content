@@ -43,4 +43,5 @@ msg
 Elven goddess of luck, Huntress of Goblins, Trollslayer, the Trickster
 endmsg
 weight 1
+name_pl Tylowyn
 end

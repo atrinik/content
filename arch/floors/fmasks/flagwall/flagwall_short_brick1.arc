@@ -5,6 +5,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 0
+name_pl pond walls
 end
 
 Object flagwall_short_brick1.131
@@ -14,6 +15,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 0
+name_pl pond walls
 end
 
 Object flagwall_short_brick1.141
@@ -23,6 +25,7 @@ type 77
 layer 5
 no_pick 1
 no_pass 0
+name_pl pond walls
 end
 
 Object flagwall_short_brick1.181
@@ -32,4 +35,5 @@ type 77
 layer 5
 no_pick 1
 no_pass 0
+name_pl pond walls
 end

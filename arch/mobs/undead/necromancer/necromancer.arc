@@ -38,4 +38,5 @@ weight 32500
 undead 1
 faction monsters
 int 17
+name_pl necromancers
 end

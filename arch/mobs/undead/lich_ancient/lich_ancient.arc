@@ -38,4 +38,5 @@ weight 32500
 undead 1
 faction monsters
 int 15
+name_pl ancient liches
 end

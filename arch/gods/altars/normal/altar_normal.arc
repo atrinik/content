@@ -9,4 +9,5 @@ is_turnable 1
 direction 1
 type 56
 no_pick 1
+name_pl Altars
 end

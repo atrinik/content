@@ -32,4 +32,5 @@ no_pick 1
 level 1
 faction monsters
 int 17
+name_pl cyclopes
 end

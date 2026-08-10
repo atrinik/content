@@ -5,6 +5,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.102
 name desert
@@ -13,6 +14,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.103
 name desert
@@ -21,6 +23,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.104
 name desert
@@ -29,6 +32,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.105
 name desert
@@ -37,6 +41,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.106
 name desert
@@ -45,6 +50,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.107
 name desert
@@ -53,6 +59,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.108
 name desert
@@ -61,6 +68,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.112
 name desert
@@ -69,6 +77,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.114
 name desert
@@ -77,6 +86,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.116
 name desert
@@ -85,6 +95,7 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end
 Object desert_fmask.118
 name desert
@@ -93,4 +104,5 @@ no_teleport 1
 layer 2
 type 79
 no_pick 1
+name_pl deserts
 end

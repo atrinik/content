@@ -15,4 +15,5 @@ protect_cleave 40
 protect_pierce 20
 weight 24750
 value 4300
+name_pl field plates
 end

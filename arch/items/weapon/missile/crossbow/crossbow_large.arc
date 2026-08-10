@@ -16,4 +16,5 @@ wc_range 25
 dam 2
 last_sp 5
 value 1450
+name_pl large crossbows
 end

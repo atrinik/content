@@ -4,4 +4,5 @@ face starfish.101
 layer 4
 type 79
 no_pick 1
+name_pl starfish
 end

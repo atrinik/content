@@ -1153,20 +1153,28 @@
         "discrete-0002",
         "smooth-1113",
         "smooth-1114",
-        "smooth-1115"
+        "smooth-1115",
+        "smooth-1116",
+        "smooth-1117",
+        "smooth-1118",
+        "smooth-1119",
+        "smooth-1120",
+        "smooth-1121",
+        "smooth-1122",
+        "smooth-1123"
       ],
-      "rationale": "Compared a dark lair plus applied neutral torch, orange grave-fire, and amber mithril-lamp states; each light pool preserves deliberate darkness and the traversable route."
+      "rationale": "Compared a dark lair and every distinct applied type-74 state; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
     },
     "outdoor-transition": {
       "status": "pass",
       "views": [
         "smooth-0400",
         "discrete-0005",
-        "smooth-1116",
-        "smooth-1117",
-        "smooth-1118"
+        "smooth-0362",
+        "smooth-0752",
+        "smooth-1038"
       ],
-      "rationale": "Compared a street/interior transition and all three red-ant map contexts after correcting the source tint; outdoor detail stays readable without red clipping."
+      "rationale": "Compared street/interior transitions and corrected firefly-animation contexts; outdoor detail remains readable without palette clipping."
     },
     "fog-roof": {
       "status": "pass",

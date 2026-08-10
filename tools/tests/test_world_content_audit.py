@@ -1,6 +1,7 @@
 """Tests for the read-only world content audit."""
 
 import json
+import struct
 import tempfile
 import unittest
 from pathlib import Path
@@ -268,6 +269,7 @@ end
                 ),
                 "resources_source": "https://github.com/atrinik/resources/tree/" + "3" * 40,
                 "inventory_sha256": audit._inventory_semantic_sha256(report),
+                "runtime_content_sha256": audit._runtime_content_sha256(),
                 "profile": "test-light-review",
                 "command": "test Classic client screenshot command",
                 "settings": "seventeen by seventeen viewport with frozen lighting modes",
@@ -355,6 +357,18 @@ end
             report["summary"],
         )
         self.assertEqual([], audit.validate_light_inventory(report))
+
+        smooth.write_bytes(
+            b"\x89PNG\r\n\x1a\n"
+            + evidence_tools._chunk(
+                b"IHDR", struct.pack(">IIBBBBB", 1, 1, 8, 2, 0, 0, 0)
+            )
+            + evidence_tools._chunk(b"IEND", b"")
+        )
+        errors = audit.validate_light_inventory(report)
+        self.assertTrue(
+            any("smooth is not a valid image" in error for error in errors), errors
+        )
         scene = report["maps"][0]
         self.assertEqual("3", scene["darkness"])
         self.assertEqual("intentional-neutral", scene["emitters"][1]["disposition"])
@@ -431,6 +445,15 @@ end
             evidence_errors,
         )
         evidence_path.write_text(json.dumps(evidence))
+
+        scene_path = self.root / "maps/scene"
+        scene_source = scene_path.read_text()
+        scene_path.write_text(scene_source + "# runtime tree changed\n")
+        self.assertIn(
+            "light-source evidence runtime content changed since rendered review",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        scene_path.write_text(scene_source)
 
         archetype_path = self.root / "arch/lights.arc"
         archetype_source = archetype_path.read_text()

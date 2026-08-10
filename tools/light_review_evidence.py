@@ -148,6 +148,51 @@ def read_png(path: Path) -> tuple[int, int, bytes]:
     return width, height, bytes(rgb)
 
 
+def validate_png(path: Path) -> tuple[int, int]:
+    """Validate a screenshot PNG without materializing its decoded pixels."""
+
+    width = height = color_type = None
+    compressed = bytearray()
+    idat_seen = False
+    for name, payload in _png_chunks(path.read_bytes()):
+        if name == b"IHDR":
+            if width is not None or len(payload) != 13:
+                raise ValueError("PNG has an invalid IHDR")
+            width, height, depth, color_type, compression, filtering, interlace = (
+                struct.unpack(">IIBBBBB", payload)
+            )
+            unsupported = (compression, filtering, interlace) != (0, 0, 0)
+            if (
+                width < 1
+                or height < 1
+                or depth != 8
+                or color_type not in {2, 6}
+                or unsupported
+            ):
+                raise ValueError("unsupported Classic screenshot PNG encoding")
+        elif name == b"IDAT":
+            idat_seen = True
+            compressed.extend(payload)
+    if width is None or height is None:
+        raise ValueError("PNG has no IHDR")
+    if not idat_seen:
+        raise ValueError("PNG has no IDAT")
+    channels = 3 if color_type == 2 else 4
+    stride = width * channels
+    expected = (stride + 1) * height
+    decoder = zlib.decompressobj()
+    raw = decoder.decompress(bytes(compressed), expected + 1)
+    if len(raw) > expected:
+        raise ValueError("PNG scanline size mismatch")
+    raw += decoder.flush(expected + 1 - len(raw))
+    if not decoder.eof or decoder.unused_data or len(raw) != expected:
+        raise ValueError("PNG scanline size mismatch")
+    for offset in range(0, expected, stride + 1):
+        if raw[offset] > 4:
+            raise ValueError("unsupported PNG scanline filter")
+    return width, height
+
+
 def _chunk(name: bytes, payload: bytes) -> bytes:
     checksum = binascii.crc32(name + payload) & 0xffffffff
     return struct.pack(">I", len(payload)) + name + payload + struct.pack(">I", checksum)
@@ -237,7 +282,7 @@ def build_evidence(args) -> dict:
                 raise ValueError("capture references stale toggle state: {}".format(state_id))
             if state_id is not None and not isinstance(row.get("runtime_command"), str):
                 raise ValueError("active-state capture needs its exact runtime command")
-            width, height, _ = read_png(row["_path"])
+            width, height = validate_png(row["_path"])
             if (width, height) != (1024, 768):
                 raise ValueError(
                     "{} capture must be a 1024x768 Classic screenshot: {}".format(
@@ -308,6 +353,7 @@ def build_evidence(args) -> dict:
             candidate_artifact = candidate / Path(entry["artifact"]).name
             entry["sha256"] = rendered[str(candidate_artifact)]
         context["inventory_sha256"] = audit._inventory_semantic_sha256(report)
+        context["runtime_content_sha256"] = audit._runtime_content_sha256()
         active_states = {
             row["id"]: {
                 "semantic_sha256": row["semantic_sha256"],

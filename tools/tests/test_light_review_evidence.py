@@ -106,17 +106,49 @@ class LightReviewEvidenceTest(unittest.TestCase):
                 output=output,
                 dry_run=False,
             )
-            original_root = evidence.audit.ROOT
+            original_roots = (
+                evidence.audit.ROOT,
+                evidence.audit.ARCH_ROOT,
+                evidence.audit.MAP_ROOT,
+            )
             evidence.audit.ROOT = root
+            evidence.audit.ARCH_ROOT = root / "arch"
+            evidence.audit.MAP_ROOT = root / "maps"
+            evidence.audit.ARCH_ROOT.mkdir()
             try:
                 result = evidence.build_evidence(args)
+                runtime_digest = evidence.audit._runtime_content_sha256()
             finally:
-                evidence.audit.ROOT = original_root
+                (
+                    evidence.audit.ROOT,
+                    evidence.audit.ARCH_ROOT,
+                    evidence.audit.MAP_ROOT,
+                ) = original_roots
 
             self.assertEqual(2, result["sheets"])
             self.assertFalse((output / "stale.png").exists())
             self.assertTrue((output / "smooth-001.png").is_file())
-            self.assertEqual(2, json.loads((output / "manifest.json").read_text())["schema_version"])
+            manifest = json.loads((output / "manifest.json").read_text())
+            self.assertEqual(2, manifest["schema_version"])
+            self.assertEqual(
+                runtime_digest, manifest["render_context"]["runtime_content_sha256"]
+            )
+
+            rows[0]["sha256"] = "0" * 64
+            smooth.write_text(json.dumps(rows))
+            args.dry_run = True
+            evidence.audit.ROOT = root
+            evidence.audit.ARCH_ROOT = root / "arch"
+            evidence.audit.MAP_ROOT = root / "maps"
+            try:
+                with self.assertRaisesRegex(ValueError, "capture digest changed"):
+                    evidence.build_evidence(args)
+            finally:
+                (
+                    evidence.audit.ROOT,
+                    evidence.audit.ARCH_ROOT,
+                    evidence.audit.MAP_ROOT,
+                ) = original_roots
 
 
 if __name__ == "__main__":

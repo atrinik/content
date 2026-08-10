@@ -537,16 +537,39 @@ def _inventory_semantic_sha256(report: dict) -> str:
     )
 
 
+def _runtime_content_sha256() -> str:
+    """Hash the authored runtime tree while excluding review-only evidence."""
+
+    digest = hashlib.sha256()
+    for root in (ARCH_ROOT, MAP_ROOT):
+        paths = sorted(
+            candidate for candidate in root.rglob("*") if candidate.is_file()
+        )
+        for path in paths:
+            relative = path.relative_to(ROOT).as_posix()
+            if relative == "maps/light-source-review.json" or relative.startswith(
+                "maps/light-source-evidence/"
+            ) or relative.startswith(
+                "maps/.light-source-evidence-build-"
+            ):
+                continue
+            encoded = relative.encode("utf-8")
+            digest.update(len(encoded).to_bytes(4, "big"))
+            digest.update(encoded)
+            data = path.read_bytes()
+            digest.update(len(data).to_bytes(8, "big"))
+            digest.update(data)
+    return digest.hexdigest()
+
+
 def _image_dimensions(path: Path) -> tuple[int, int] | None:
     """Fully decode a deterministic evidence PNG and return its dimensions."""
 
     try:
-        from tools.light_review_evidence import read_png
+        from tools.light_review_evidence import validate_png
 
-        width, height, pixels = read_png(path)
+        width, height = validate_png(path)
     except (OSError, ValueError, TypeError, zlib.error):
-        return None
-    if len(pixels) != width * height * 3:
         return None
     return width, height
 
@@ -588,6 +611,8 @@ def validate_light_evidence(report: dict) -> list[str]:
             errors.append("light-source evidence needs immutable {}".format(field))
     if context.get("inventory_sha256") != _inventory_semantic_sha256(report):
         errors.append("light-source evidence inventory changed since rendered review")
+    if context.get("runtime_content_sha256") != _runtime_content_sha256():
+        errors.append("light-source evidence runtime content changed since rendered review")
 
     sheets = evidence.get("sheets")
     if not isinstance(sheets, dict):

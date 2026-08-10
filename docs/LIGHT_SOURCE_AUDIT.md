@@ -26,18 +26,23 @@ repository-relative.
 - an intentional-neutral fallback and rationale for every emitting archetype
   and artifact, while authored effective fields identify explicit colors;
 - one art-specific rationale for every archetype supplying an effective color;
-- one contextual review record for every map containing an effective emitter;
+- one contextual review record for every map containing an effective emitter,
+  plus source-line rationales for map-local face or animation substitutions;
+- one reviewed semantic state and active-runtime evidence binding for every
+  distinct type-74 radius/color/face/animation combination;
 - a semantic SHA-256 for every source and map (including sorted effective
   emitter provenance, positions, radii, colors, faces, and visibility);
 - a separate durable Classic client evidence manifest whose committed contact
   sheets, exact content/Classic client/Classic server/resources inputs,
   inventory digest, map semantic digests, viewport coordinates, lighting modes,
   and artifact SHA-256 values are all checked locally; and
-- checks for overlaps, linked depths, horizontal boundaries, dark interiors,
-  outdoor transitions, fog/roofs, and navigation cues.
+- explicit pass records, rationales, and smooth/discrete evidence identifiers
+  for overlaps, linked depths, horizontal boundaries, dark interiors, outdoor
+  transitions, fog/roofs, and navigation cues.
 
 The current baseline covers 97 emitting archetypes, four emitting artifacts,
-115 effective color suppliers, and 11,391 effective instances across 625 maps.
+121 effective color suppliers, 11 toggle-active semantic states, and 11,391
+effective instances across 625 maps.
 Of those map instances, 5,878 are invisible map-local composition lights.
 Invisible fill remains intentionally neutral: adding one shared tint would
 recolor unrelated rooms and destroy the mapper-authored balance where several
@@ -65,26 +70,39 @@ to the recorded coordinates, and saved the primary map surface with
 smooth runtime view around every invisible emitter; maps without an invisible
 emitter retain a representative view. Selected scenes were rendered again with
 smooth lighting disabled so both client lighting paths cover every contextual
-review criterion. Neutral torch, orange grave-fire, and amber mithril-lamp
-states were also created and applied in the isolated scenario before capture,
-proving the type-74 active path rather than only its resting art.
+review criterion. Every distinct toggle-active state was also created or
+reached, applied, and captured in the isolated scenario. Those views record
+the exact state ID and runtime command, proving active radius, color, face, and
+animation instead of merely showing resting art.
 
-`maps/light-source-evidence/` commits 1,125 views as 46 numbered 5-by-5 contact
+`maps/light-source-evidence/` commits 1,130 views as 46 numbered 5-by-5 contact
 sheets. The evidence manifest maps every tile back to its map semantic digest,
-coordinates, and lighting mode. `lights --check` re-hashes each sheet, verifies
-its encoded dimensions, rejects stale or duplicate tiles, checks the aggregate
-inventory digest, and proves that every invisible emitter lies inside a
-recorded smooth viewport. This makes the rendered pixels retrievable while
-keeping generated full-resolution screenshots out of authored content.
+coordinates, lighting mode, exact content input, and full-resolution capture
+digest. `lights --check` re-hashes each sheet, validates all PNG chunks, CRCs,
+compressed scanlines, filters, and dimensions, rejects stale, duplicate, or
+unlisted artifacts, checks the aggregate inventory digest, proves that every
+invisible emitter lies inside a recorded smooth viewport, and requires an
+active view for every toggle state. A separate digest over all authored
+`arch/` and runtime `maps/` inputs proves the final tree still matches the tree
+used by the recorded content build even when review-only files are committed
+after that build. The review JSON and evidence directory are
+explicitly omitted from playable runtime collection, while remaining
+available in the source tree for maintainers.
 
 The checked generator makes viewport selection, tile order, and sheet encoding
 reproducible. `plan` emits the greedy cover in map-path order. `build` consumes
 ordered smooth/discrete capture manifests whose rows contain `artifact`, `map`,
-`x`, and `y`; it creates 5-by-5 sheets in manifest order. Each 1024-by-768 client
+coordinates, semantic/content bindings, and the capture digest; it creates
+5-by-5 sheets in manifest order. Each 1024-by-768 client
 PNG is nearest-neighbor sampled to 204 by 153 pixels, unused tiles remain black,
 tile top/left edges are white, and output is deterministic RGB PNG using filter
-zero and zlib level nine. Context and representative-check JSON objects use the
-same shapes as those objects in the committed manifest:
+zero and zlib level nine. Every raw-manifest row also supplies its capture
+SHA-256, content commit, and current map semantic SHA-256; active rows add the
+toggle-state ID and exact runtime command. `--dry-run` fully decodes and checks
+all input captures. A real build renders into a sibling staging directory and
+atomically replaces the evidence directory, so stale sheets and partial builds
+cannot survive. Context and representative-check JSON objects use the same
+shapes as those objects in the committed manifest:
 
 ```sh
 python3 tools/light_review_evidence.py plan \
@@ -111,8 +129,9 @@ When refreshing the review:
 2. render affected maps with the Classic client and a profile selecting the
    exact content worktree, retaining a 17-by-17 view around every invisible
    emitter;
-3. compare overlaps and adjacent/depth-linked scenes in both smooth and
-   discrete lighting where a color changes;
+3. activate and render every changed type-74 semantic state, and compare
+   overlaps and adjacent/depth-linked scenes in both smooth and discrete
+   lighting where a color changes;
 4. use the checked plan/build commands to rebuild contact sheets and manifest
    tiles, then update only affected palette and review records; and
 5. run `python3 tools/validate.py` and `git diff --check`.

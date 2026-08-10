@@ -79,8 +79,14 @@ def obj_assign_attribs (obj, attribs):
         return
 
     tokens = re.findall(r'"[^"]*"(?=\s|$)|\S+', attribs)
+    legacy_pairs = [
+        (t[0], t[1] or t[2])
+        for t in re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
+    ]
 
-    if "light_color" in tokens:
+    if "light_color" in tokens or any(
+        attrib == "light_color" for attrib, _ in legacy_pairs
+    ):
         if len(tokens) % 2:
             raise ValueError(
                 "light_color must be exactly six hexadecimal digits (RRGGBB)."
@@ -97,15 +103,21 @@ def obj_assign_attribs (obj, attribs):
                     "light_color must be exactly six hexadecimal digits (RRGGBB)."
                 )
 
-            if val.startswith('"') and val.endswith('"'):
+            if '"' in val:
+                if not (
+                    val.startswith('"')
+                    and val.endswith('"')
+                    and val.count('"') == 2
+                ):
+                    raise ValueError(
+                        "light_color must be exactly six hexadecimal digits (RRGGBB)."
+                    )
+
                 val = val[1:-1] or '""'
 
             pairs.append((attrib, val))
     else:
-        pairs = [
-            (t[0], t[1] or t[2])
-            for t in re.findall(r'(\w+)\s+(?:"([^"]+)"|(\S+))', attribs)
-        ]
+        pairs = legacy_pairs
 
     parsed = []
 

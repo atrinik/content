@@ -95,6 +95,9 @@ class PythonCommandTests(unittest.TestCase):
             "count 2 light_color\tgg0000",
             'count 2 light_color "ff0000"junk',
             'count 2 "junk" light_color',
+            'count 2 label "junk light_color ff0000',
+            'count 2 label junk" light_color ff0000',
+            'count 2 label "junk"light_color ff0000',
         ):
             with self.subTest(attribs=attribs):
                 obj = FakeObject()
@@ -147,6 +150,9 @@ class PythonCommandTests(unittest.TestCase):
             "torch count 2 light_color  gg0000",
             'torch count 2 light_color "ff0000"junk',
             'torch count 2 "junk" light_color',
+            'torch count 2 label "junk light_color ff0000',
+            'torch count 2 label junk" light_color ff0000',
+            'torch count 2 label "junk"light_color ff0000',
         ):
             with self.subTest(message=message):
                 obj = FakeObject()
@@ -207,6 +213,9 @@ class PythonCommandTests(unittest.TestCase):
             "me count 2 light_color  gg0000",
             'me count 2 light_color "ff0000"junk',
             'me count 2 "junk" light_color',
+            'me count 2 label "junk light_color ff0000',
+            'me count 2 label junk" light_color ff0000',
+            'me count 2 label "junk"light_color ff0000',
         ):
             with self.subTest(message=message):
                 obj = FakeObject()

@@ -44,6 +44,17 @@ nested objects. `python3 tools/validate.py` runs the permanent semantic audit
 and verifies that runtime collection preserves every authored `name_pl` line
 byte-for-byte. The baseline-bound source-delta audit above is separate one-time
 delivery evidence so it does not reject legitimate future archetype edits.
+Ordinary migration rejects a partial corpus. If a process or host terminates
+outside the transaction rollback handler, `recover` first verifies that the
+partial baseline diff contains only exact reviewed plural additions, then
+removes those additions. Recovery is dry-run-first and safely repeatable after
+another interruption; rerun the migration only after recovery reaches the
+reviewed baseline.
+
+```sh
+python3 tools/archetype_plurals.py recover --root .
+python3 tools/archetype_plurals.py recover --root . --apply
+```
 
 Cross-line review compares each branch's independently resolved inventory:
 

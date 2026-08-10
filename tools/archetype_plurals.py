@@ -550,6 +550,55 @@ def _transactions(
     ]
 
 
+def _recovery_transactions(
+    entries: Mapping[str, Mapping[str, Any]], rows: Sequence[Mapping[str, Any]]
+) -> list[Mapping[str, Any]]:
+    operations: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    sources = {}
+    for row in rows:
+        entry = entries[row["archetype_id"]]
+        if not entry["plurals"]:
+            continue
+        node = entry["node"]
+        operations[entry["path"]].append(
+            {
+                "kind": "unset-property",
+                "node_handle": node.handle,
+                "node_fingerprint": node.fingerprint,
+                "field_id": "object.name_pl",
+            }
+        )
+        sources[entry["path"]] = entry["source_sha256"]
+    files = [
+        {
+            "path": path,
+            "format": "archetype",
+            "base_sha256": sources[path],
+            "operations": operations[path],
+        }
+        for path in sorted(operations)
+    ]
+    return [
+        {
+            "schema_version": 1,
+            "kind": "content-transaction",
+            "files": files[index : index + MAX_TRANSACTION_FILES],
+        }
+        for index in range(0, len(files), MAX_TRANSACTION_FILES)
+    ]
+
+
+def _publish_prepared(
+    root: Path,
+    prepared: Sequence[PreparedTransaction],
+    failure_after: int | None = None,
+) -> None:
+    combined = PreparedTransaction(
+        tuple(item for transaction in prepared for item in transaction.files)
+    )
+    publish_transaction(root, combined, failure_after=failure_after)
+
+
 def migrate(
     root: Path,
     manifest: Mapping[str, Any],
@@ -604,12 +653,7 @@ def migrate(
     transactions = _transactions(entries, rows)
     prepared = [prepare_transaction(root, transaction, schema_root=root) for transaction in transactions]
     if apply:
-        combined = PreparedTransaction(
-            tuple(item for transaction in prepared for item in transaction.files)
-        )
-        publish_transaction(
-            root, combined, failure_after=publish_failure_after
-        )
+        _publish_prepared(root, prepared, publish_failure_after)
     return {
         "schema_version": 1,
         "kind": "archetype-plural-migration",
@@ -623,6 +667,76 @@ def migrate(
         "operations": sum(
             file.operation_count for item in prepared for file in item.files
         ),
+    }
+
+
+def recover(
+    root: Path,
+    manifest: Mapping[str, Any],
+    *,
+    apply: bool = False,
+    check_git: bool = True,
+) -> Mapping[str, Any]:
+    """Remove only a manifest-matching interrupted partial migration."""
+
+    if check_git and manifest != load_manifest(root / MANIFEST_PATH):
+        raise PluralMigrationError(
+            "recovery input differs from the repository-owned reviewed manifest"
+        )
+    line = identify_line(root) if check_git else "fixture"
+    entries, rows = _checked_rows(root, manifest)
+    present = sum(bool(entry["plurals"]) for entry in entries.values())
+    if present in (0, len(entries)):
+        raise PluralMigrationError(
+            "recovery requires a partial reviewed migration, found {}/{}".format(
+                present, len(entries)
+            )
+        )
+    if check_git:
+        baseline = LINES[line]["baseline_sha"]
+        result = subprocess.run(
+            [
+                "git", "-C", str(root), "diff", "--no-ext-diff", "--unified=0",
+                baseline, "--", ":(glob)arch/**/*.arc",
+            ],
+            check=True, capture_output=True, text=True,
+        )
+        additions = Counter()
+        for line_text in result.stdout.splitlines():
+            if line_text.startswith(("+++", "---")):
+                continue
+            if line_text.startswith("+") and line_text[1:].startswith("name_pl "):
+                additions[line_text[1:].removeprefix("name_pl ")] += 1
+            elif line_text.startswith(("+", "-")):
+                raise PluralMigrationError(
+                    "partial recovery refuses unrelated archetype-source changes"
+                )
+        expected = Counter(
+            entry["plurals"][0].typed_value
+            for entry in entries.values()
+            if entry["plurals"]
+        )
+        if additions != expected:
+            raise PluralMigrationError(
+                "partial recovery diff does not match reviewed plural additions"
+            )
+    transactions = _recovery_transactions(entries, rows)
+    prepared = [
+        prepare_transaction(root, transaction, schema_root=root)
+        for transaction in transactions
+    ]
+    if apply:
+        _publish_prepared(root, prepared)
+    return {
+        "schema_version": 1,
+        "kind": "archetype-plural-recovery",
+        "line": line,
+        "dry_run": not apply,
+        "applied": apply,
+        "status": "recovered" if apply else "prepared",
+        "archetypes": present,
+        "files": sum(len(item.files) for item in prepared),
+        "batches": len(prepared),
     }
 
 
@@ -784,7 +898,8 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "command", choices=(
-            "inventory", "propose", "migrate", "audit", "audit-source-delta", "compare"
+            "inventory", "propose", "migrate", "recover", "audit",
+            "audit-source-delta", "compare"
         )
     )
     parser.add_argument("--root", type=Path, default=Path.cwd())
@@ -806,6 +921,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             result = proposed_manifest(root)
         elif options.command == "migrate":
             result = migrate(root, load_manifest(manifest_path), apply=options.apply)
+        elif options.command == "recover":
+            result = recover(root, load_manifest(manifest_path), apply=options.apply)
         elif options.command == "audit":
             result = audit(root, load_manifest(manifest_path))
         elif options.command == "audit-source-delta":

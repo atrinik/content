@@ -9,6 +9,7 @@ direction 1
 no_pick 1
 type 79
 layer 4
+glow_radius 3
 light_color ff6030
 name_pl small cauldrons
 end

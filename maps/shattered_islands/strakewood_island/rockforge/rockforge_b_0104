@@ -1669,10 +1669,7 @@ end
 arch fireplace_left
 x 18
 y 19
-end
-arch light5
-x 18
-y 19
+glow_radius 5
 end
 arch floor_marble1
 x 18

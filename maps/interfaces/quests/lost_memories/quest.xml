@@ -956,11 +956,6 @@ def dialog_hello(self):
                     <response destination="claim" message="Please register my apartment."/>
                     <response action="close" message="I need a moment."/>
                 </dialog>
-                <dialog name="claim">
-                    <message>Your Strakewood apartment entitlement is ready. If you already owned one, its current size and contents were left untouched. Otherwise, you now own the cheap apartment at no charge.</message>
-                    <message>Step into the glowing portal beside me, then use the bed inside. Talking to me alone will not complete Sam's lesson.</message>
-                    <response action="close" message="I'll visit it now."/>
-                </dialog>
                 <code>
 def dialog_claim(self):
     from LostMemoriesApartment import ensure_strakewood_apartment
@@ -972,7 +967,9 @@ def dialog_claim(self):
         self.add_link("I'll return later.", action="close")
         return
 
-    InterfaceDialog.dialog_claim(self)
+    self.add_msg("Your Strakewood apartment entitlement is ready. If you already owned one, its current size and contents were left untouched. Otherwise, you now own the cheap apartment at no charge.")
+    self.add_msg("Step into the glowing portal beside me, then use the bed inside. Talking to me alone will not complete Sam's lesson.")
+    self.add_link("I'll visit it now.", action="close")
                 </code>
             </interface>
         </part>

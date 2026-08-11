@@ -3,6 +3,8 @@ name acid pool
 layer 5
 type 79
 face pool_acid.101
+glow_radius 1
+light_color ff60c0
 no_pick 1
 name_pl acid pools
 end
@@ -48,6 +50,8 @@ name poison pool
 layer 5
 type 79
 face pool_poison.101
+glow_radius 1
+light_color 40ff60
 no_pick 1
 name_pl poison pools
 end

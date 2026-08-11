@@ -4,6 +4,7 @@ face mushroom_spot1.101
 no_pick 1
 type 79
 layer 4
+light_color ff3030
 name_pl mushrooms
 end
 
@@ -13,6 +14,7 @@ face mushroom_spot2.101
 no_pick 1
 type 79
 layer 4
+light_color 60d0ff
 name_pl mushrooms
 end
 

@@ -33,5 +33,6 @@ speed -0.053
 weight 22500
 faction monsters
 int 2
+light_color ff3030
 name_pl red ants
 end

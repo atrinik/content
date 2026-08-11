@@ -7,5 +7,6 @@ is_animated 1
 anim_speed 4
 no_pick 1
 type 79
+light_color ffd080
 name_pl mushrooms
 end

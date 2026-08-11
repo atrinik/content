@@ -9,6 +9,7 @@ mpart_id 6
 layer 7
 no_pick 1
 no_pass 1
+light_color 60d0ff
 name_pl streams
 end
 More

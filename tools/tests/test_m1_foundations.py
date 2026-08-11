@@ -68,13 +68,27 @@ class M1FoundationTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
-        self.assertEqual(contract["branch"], "1.x")
         self.assertEqual(
-            contract["consumers"],
-            ["classic/client", "classic/editor", "classic/server"],
+            {
+                "schema_version": 1,
+                "component": "content-1x",
+                "repository": "atrinik/content",
+                "branch": "1.x",
+                "fork_tag": "v1.8.1",
+                "fork_revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+                "content_format": "classic-ads-v1",
+                "artifact_format": "atrinik-classic-runtime-content-v1",
+                "compatible_classic_releases": ">=5.10.1 <6.0.0",
+                "consumers": [
+                    "classic/client",
+                    "classic/editor",
+                    "classic/server",
+                ],
+                "replacement_ready": False,
+                "replacement_toolkit_package": False,
+            },
+            contract,
         )
-        self.assertFalse(contract["replacement_ready"])
-        self.assertFalse(contract["replacement_toolkit_package"])
         release = json.loads((ROOT / ".releaserc.json").read_text(encoding="utf-8"))
         self.assertIn(
             {"name": "1.x", "range": "1.x", "channel": "1.x"},

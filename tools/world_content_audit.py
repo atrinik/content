@@ -845,6 +845,27 @@ def _git_runtime_content_sha256(commit: str) -> str:
     return digest.hexdigest()
 
 
+def _git_commit_is_ancestor(commit: str, revision: str = "HEAD") -> bool:
+    """Return whether a commit is durably reachable from the current history."""
+
+    if (
+        not isinstance(commit, str)
+        or re.fullmatch(r"[0-9a-f]{40}", commit) is None
+    ):
+        return False
+    try:
+        result = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", commit, revision],
+            cwd=ROOT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+    except OSError:
+        return False
+    return result.returncode == 0
+
+
 def _image_dimensions(path: Path) -> tuple[int, int] | None:
     """Fully decode a deterministic evidence PNG and return its dimensions."""
 
@@ -963,11 +984,9 @@ def _has_visible_light_pool(
     )
 
 
-def _rendered_art_extent(row: dict) -> tuple[int, int]:
-    """Return the largest raw PNG canvas used by a source's rendered art."""
+def _art_index() -> tuple[dict, dict, dict]:
+    """Index authored faces and the animation files that select them."""
 
-    if not row.get("visible"):
-        return 0, 0
     root_key = str(ARCH_ROOT.resolve())
     cached = _ART_INDEX_CACHE.get(root_key)
     if cached is None:
@@ -975,20 +994,31 @@ def _rendered_art_extent(row: dict) -> tuple[int, int]:
         for path in ARCH_ROOT.rglob("*.png"):
             faces[path.stem].append(path)
         animations = defaultdict(list)
+        animation_files = defaultdict(set)
         for path in ARCH_ROOT.rglob("*.anim"):
             current = None
             for raw_line in path.read_text(errors="replace").splitlines():
                 line = raw_line.strip()
                 if line.startswith("anim "):
                     current = line.split(None, 1)[1]
+                    animation_files[current].add(path)
                 elif line == "mina":
                     current = None
                 elif current and line and not line.startswith(("#", "facings ")):
                     animations[current].append(line.split()[0])
-        cached = (faces, animations)
+        cached = (faces, animations, animation_files)
         _ART_INDEX_CACHE[root_key] = cached
-    faces, animations = cached
+    return cached
+
+
+def _rendered_art_paths(row: dict) -> tuple[Path, ...]:
+    """Resolve every authored PNG and animation file used by rendered art."""
+
+    if not row.get("visible"):
+        return ()
+    faces, animations, animation_files = _art_index()
     names = []
+    paths = set()
     if row.get("face"):
         names.append(row["face"])
     animation = row.get("animation")
@@ -996,25 +1026,71 @@ def _rendered_art_extent(row: dict) -> tuple[int, int]:
         if animation not in animations:
             raise ValueError("rendered animation is unresolved: {}".format(animation))
         names.extend(animations[animation])
+        paths.update(animation_files[animation])
     if row.get("visible") and not names:
         raise ValueError("visible rendered source has no face or animation")
-    width = height = 0
     for name in names:
-        paths = faces.get(name, ())
-        if not paths:
+        face_paths = faces.get(name, ())
+        if not face_paths:
             raise ValueError("rendered face is unresolved: {}".format(name))
-        for path in paths:
-            try:
-                face_width, face_height = _validated_art_png_dimensions(path)
-            except (OSError, ValueError, TypeError, zlib.error) as error:
-                raise ValueError(
-                    "rendered face has an invalid PNG: {} ({})".format(
-                        name, error
-                    )
-                ) from error
-            width = max(width, face_width)
-            height = max(height, face_height)
+        paths.update(face_paths)
+    return tuple(sorted(paths, key=lambda path: path.relative_to(ROOT).as_posix()))
+
+
+def _rendered_art_extent(row: dict) -> tuple[int, int]:
+    """Return the largest raw PNG canvas used by a source's rendered art."""
+
+    width = height = 0
+    for path in _rendered_art_paths(row):
+        if path.suffix != ".png":
+            continue
+        try:
+            face_width, face_height = _validated_art_png_dimensions(path)
+        except (OSError, ValueError, TypeError, zlib.error) as error:
+            raise ValueError(
+                "rendered face has an invalid PNG: {} ({})".format(
+                    path.stem, error
+                )
+            ) from error
+        width = max(width, face_width)
+        height = max(height, face_height)
     return width, height
+
+
+def _light_render_assets_sha256(report: dict) -> str:
+    """Hash authored art files that can affect reviewed light renders."""
+
+    paths = set()
+
+    def add_row(row: dict) -> None:
+        paths.update(_rendered_art_paths(row))
+        if row.get("active_visible") is not None:
+            paths.update(
+                _rendered_art_paths({
+                    "visible": row.get("active_visible"),
+                    "face": row.get("active_face"),
+                    "animation": row.get("active_animation"),
+                })
+            )
+
+    for section in ("archetypes", "artifacts"):
+        for row in report[section]:
+            add_row(row)
+    for map_row in report["maps"]:
+        for emitter in map_row["emitters"]:
+            add_row(emitter)
+    for row in report["toggle_states"]:
+        paths.update(_rendered_art_paths(row))
+
+    digest = hashlib.sha256()
+    for path in sorted(
+        paths, key=lambda candidate: candidate.relative_to(ROOT).as_posix()
+    ):
+        relative = path.relative_to(ROOT).as_posix()
+        data = path.read_bytes()
+        _update_runtime_digest_path(digest, relative, len(data))
+        digest.update(data)
+    return digest.hexdigest()
 
 
 def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
@@ -1275,6 +1351,17 @@ def validate_light_evidence(report: dict) -> list[str]:
         value = context.get(field)
         if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
             errors.append("light-source evidence needs a {} SHA".format(field))
+    runtime_commit = context.get(
+        "runtime_content_commit", context.get("content_commit")
+    )
+    if (
+        "runtime_content_commit" in context
+        and (
+            not isinstance(runtime_commit, str)
+            or re.fullmatch(r"[0-9a-f]{40}", runtime_commit) is None
+        )
+    ):
+        errors.append("light-source evidence needs a runtime_content_commit SHA")
     for field in ("profile", "command", "settings", "ordinary_state"):
         value = context.get(field)
         if not isinstance(value, str) or len(value.strip()) < 12:
@@ -1292,22 +1379,56 @@ def validate_light_evidence(report: dict) -> list[str]:
             errors.append("light-source evidence needs immutable {}".format(field))
     if context.get("inventory_sha256") != _inventory_semantic_sha256(report):
         errors.append("light-source evidence inventory changed since rendered review")
+    render_assets_digest = context.get("render_assets_sha256")
+    if (
+        not isinstance(render_assets_digest, str)
+        or SHA256_RE.fullmatch(render_assets_digest) is None
+    ):
+        errors.append("light-source evidence needs a render_assets_sha256 digest")
+    try:
+        current_render_assets_digest = _light_render_assets_sha256(report)
+    except (OSError, ValueError) as error:
+        errors.append(
+            "light-source evidence rendered art cannot be resolved: {}".format(
+                error
+            )
+        )
+    else:
+        if render_assets_digest != current_render_assets_digest:
+            errors.append(
+                "light-source evidence rendered art changed since rendered review"
+            )
     runtime_digest = context.get("runtime_content_sha256")
-    if runtime_digest != _runtime_content_sha256():
-        errors.append("light-source evidence runtime content changed since rendered review")
-    content_commit = context.get("content_commit")
-    if isinstance(content_commit, str) and re.fullmatch(
-        r"[0-9a-f]{40}", content_commit
+    if isinstance(runtime_commit, str) and re.fullmatch(
+        r"[0-9a-f]{40}", runtime_commit
     ) is not None:
         try:
-            commit_digest = _git_runtime_content_sha256(content_commit)
+            commit_digest = _git_runtime_content_sha256(runtime_commit)
         except ValueError as error:
-            errors.append("light-source evidence {}".format(error))
-        else:
-            if runtime_digest != commit_digest:
+            if runtime_commit == context.get("content_commit"):
+                errors.append("light-source evidence {}".format(error))
+            else:
+                detail = str(error).removeprefix("content commit ")
                 errors.append(
-                    "light-source evidence content commit runtime tree disagrees "
-                    "with rendered review"
+                    "light-source evidence runtime content commit {}".format(
+                        detail
+                    )
+                )
+        else:
+            if not _git_commit_is_ancestor(runtime_commit):
+                errors.append(
+                    "light-source evidence runtime content commit is not "
+                    "reachable from HEAD"
+                )
+            if runtime_digest != commit_digest:
+                commit_label = (
+                    "content commit"
+                    if runtime_commit == context.get("content_commit")
+                    else "runtime content commit"
+                )
+                errors.append(
+                    "light-source evidence {} runtime tree disagrees with "
+                    "rendered review".format(commit_label)
                 )
 
     sheets = evidence.get("sheets")

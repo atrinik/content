@@ -299,18 +299,31 @@ class LightReviewEvidenceTest(unittest.TestCase):
             arch = root / "arch"
             arch.mkdir()
             (arch / "runtime.arc").write_text("Object runtime\nend\n")
+            evidence.write_png(
+                arch / "lamp.101.png", 32, 32, bytes(32 * 32 * 3)
+            )
+            evidence.write_png(
+                arch / "reward.101.png", 32, 32, bytes(32 * 32 * 3)
+            )
             (root / "maps" / "scene").write_text("arch map\nend\n")
             _git(root, "init", "-q")
             _git(root, "add", "arch", "maps/scene")
             _git(root, "commit", "-qm", "fixture runtime tree")
             commit = _git(root, "rev-parse", "HEAD")
             inventory = {
-                "archetypes": [{"id": "lamp", "semantic_sha256": lamp_semantic}],
+                "archetypes": [{
+                    "id": "lamp",
+                    "semantic_sha256": lamp_semantic,
+                    "face": "lamp.101",
+                    "visible": True,
+                }],
                 "artifacts": [{
                     "id": "glowing_reward",
                     "archetype": "shield",
                     "runtime_archetype": "shield",
                     "semantic_sha256": artifact_semantic,
+                    "face": "reward.101",
+                    "visible": True,
                 }],
                 "color_sources": [],
                 "toggle_states": [],
@@ -322,6 +335,7 @@ class LightReviewEvidenceTest(unittest.TestCase):
                         "x": 1,
                         "y": 2,
                         "visible": True,
+                        "face": "lamp.101",
                     }],
                 }],
             }
@@ -390,6 +404,9 @@ class LightReviewEvidenceTest(unittest.TestCase):
             try:
                 result = evidence.build_evidence(args)
                 runtime_digest = evidence.audit._runtime_content_sha256()
+                render_assets_digest = (
+                    evidence.audit._light_render_assets_sha256(inventory)
+                )
             finally:
                 (
                     evidence.audit.ROOT,
@@ -407,6 +424,13 @@ class LightReviewEvidenceTest(unittest.TestCase):
             self.assertEqual(2, manifest["schema_version"])
             self.assertEqual(
                 runtime_digest, manifest["render_context"]["runtime_content_sha256"]
+            )
+            self.assertEqual(
+                render_assets_digest,
+                manifest["render_context"]["render_assets_sha256"],
+            )
+            self.assertEqual(
+                commit, manifest["render_context"]["runtime_content_commit"]
             )
             self.assertEqual(
                 ["smooth-0003"],
@@ -473,6 +497,26 @@ class LightReviewEvidenceTest(unittest.TestCase):
             try:
                 with self.assertRaisesRegex(
                     ValueError, "render-context content commit does not resolve"
+                ):
+                    evidence.build_evidence(args)
+            finally:
+                (
+                    evidence.audit.ROOT,
+                    evidence.audit.ARCH_ROOT,
+                    evidence.audit.MAP_ROOT,
+                ) = original_roots
+
+            context_path.write_text(json.dumps({
+                "content_commit": commit,
+                "runtime_content_commit": "0" * 40,
+            }))
+            evidence.audit.ROOT = root
+            evidence.audit.ARCH_ROOT = root / "arch"
+            evidence.audit.MAP_ROOT = root / "maps"
+            try:
+                with self.assertRaisesRegex(
+                    ValueError,
+                    "render-context runtime_content_commit does not resolve",
                 ):
                     evidence.build_evidence(args)
             finally:

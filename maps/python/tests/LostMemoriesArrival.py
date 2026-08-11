@@ -11,6 +11,7 @@ from LostMemoriesApartment import (
     APARTMENT_TAG,
     complete_apartment_tutorial,
     ensure_strakewood_apartment,
+    find_strakewood_apartment,
     notify_apartment_entry,
 )
 from QuestManager import QuestManager
@@ -265,6 +266,13 @@ class LostMemoriesArrivalSuite(TestSuite):
         )
         self.assertFalse(memories.started("speak_priest"))
 
+        apartment, created = ensure_strakewood_apartment(
+            activator, ready_map=lambda path: None
+        )
+        self.assertIsNone(apartment)
+        self.assertFalse(created)
+        self.assertIsNone(find_strakewood_apartment(activator))
+
         apartment, created = ensure_strakewood_apartment(activator)
         self.assertTrue(created)
         self.assertIsNotNone(apartment)
@@ -353,9 +361,10 @@ class LostMemoriesArrivalSuite(TestSuite):
 
         packets = activator.Controller().s_packets
         packets.clear()
-        origin = (activator.map.path, activator.x, activator.y)
+        origin_map = activator.map.path
         activator.Apply(portal)
-        self.assertEqual(origin, (activator.map.path, activator.x, activator.y))
+        self.assertEqual(origin_map, activator.map.path)
+        self.assertEqual((7, 3), (activator.x, activator.y))
         self.assertTrue(any(
             b"You don't own an apartment here!" in packet
             for packet in packets
@@ -370,6 +379,10 @@ class LostMemoriesArrivalSuite(TestSuite):
                 apartment, created = ensure_strakewood_apartment(activator)
                 self.assertTrue(created)
                 apartment.slaying = tier
+                expected_path = activator.map.GetPath(
+                    info["path"], True, activator.name
+                )
+                self.assertIsNotNone(Atrinik.ReadyMap(expected_path))
                 memories = QuestManager(activator, lost_memories)
                 memories.start("apartment_tutorial")
 
@@ -379,9 +392,6 @@ class LostMemoriesArrivalSuite(TestSuite):
                     "Incuna Strakewood apartment portal"
                 )
                 self.assertIsNotNone(portal)
-                expected_path = activator.map.GetPath(
-                    info["path"], True, activator.name
-                )
                 activator.Apply(portal)
                 self.assertEqual(expected_path, activator.map.path)
 

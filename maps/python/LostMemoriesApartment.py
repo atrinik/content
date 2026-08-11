@@ -21,7 +21,7 @@ def find_strakewood_apartment(player):
     return player.FindObject(archname="player_info", name=APARTMENT_TAG)
 
 
-def ensure_strakewood_apartment(player, creator=None):
+def ensure_strakewood_apartment(player, creator=None, ready_map=None):
     """Create the free cheap entitlement once, preserving any existing tier."""
 
     apartment = find_strakewood_apartment(player)
@@ -29,6 +29,7 @@ def ensure_strakewood_apartment(player, creator=None):
         return apartment, False
 
     creator = creator or player.CreateObject
+    ready_map = ready_map or Atrinik.ReadyMap
     apartment = None
     try:
         apartment = creator("player_info")
@@ -36,6 +37,11 @@ def ensure_strakewood_apartment(player, creator=None):
             return None, False
         apartment.name = APARTMENT_TAG
         apartment.slaying = APARTMENT_TIER
+        info = apartments_info[APARTMENT_REGION]["apartments"][APARTMENT_TIER]
+        path = player.map.GetPath(info["path"], True, player.name)
+        if not ready_map(path):
+            apartment.Destroy()
+            return None, False
     except Exception:
         if apartment:
             apartment.Destroy()

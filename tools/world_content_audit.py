@@ -36,6 +36,7 @@ LIGHT_EVIDENCE_TILE_WIDTH = 204
 LIGHT_EVIDENCE_TILE_HEIGHT = 153
 LIGHT_EVIDENCE_WIDTH = LIGHT_EVIDENCE_COLUMNS * LIGHT_EVIDENCE_TILE_WIDTH
 LIGHT_EVIDENCE_HEIGHT = LIGHT_EVIDENCE_ROWS * LIGHT_EVIDENCE_TILE_HEIGHT
+_ART_INDEX_CACHE = {}
 
 
 def fields(lines: list[str]) -> dict[str, list[str]]:
@@ -886,6 +887,7 @@ def _has_visible_light_pool(
     control: bytes,
     width: int | None = None,
     height: int | None = None,
+    sprite_extent: tuple[int, int] | None = None,
 ) -> bool:
     """Return whether a captured state materially changes its map viewport."""
 
@@ -935,14 +937,22 @@ def _has_visible_light_pool(
         changed_y = [index // viewport_width for index in changed_pixels]
         spread_width = max(changed_x) - min(changed_x) + 1
         spread_height = max(changed_y) - min(changed_y) + 1
-        # A changed object sprite is not evidence of emitted light.  The raw
-        # client captures use 32-pixel object cells; the deterministic contact
-        # sheets sample those cells to at most eight pixels in either axis.
-        # Require the changed area to extend beyond one whole sprite footprint
-        # in both axes so the surrounding illuminated map is part of the proof.
-        sprite_extent = 8 if sampled_tile else 32
+        # Changed object art is not evidence of emitted light.  Require the
+        # changed area to extend beyond the source's largest authored face in
+        # both axes so surrounding illuminated map pixels are part of the proof.
+        raw_sprite_width, raw_sprite_height = sprite_extent or (32, 32)
+        if sampled_tile:
+            sprite_width = (
+                raw_sprite_width * LIGHT_EVIDENCE_TILE_WIDTH + 1023
+            ) // 1024
+            sprite_height = (
+                raw_sprite_height * LIGHT_EVIDENCE_TILE_HEIGHT + 767
+            ) // 768
+        else:
+            sprite_width = raw_sprite_width
+            sprite_height = raw_sprite_height
         spatially_spread = (
-            spread_width > sprite_extent and spread_height > sprite_extent
+            spread_width > sprite_width and spread_height > sprite_height
         )
     return (
         len(active) == len(control)
@@ -950,6 +960,93 @@ def _has_visible_light_pool(
         and sum(differences) >= minimum_total
         and spatially_spread
     )
+
+
+def _rendered_art_extent(row: dict) -> tuple[int, int]:
+    """Return the largest raw PNG canvas used by a source's rendered art."""
+
+    root_key = str(ARCH_ROOT.resolve())
+    cached = _ART_INDEX_CACHE.get(root_key)
+    if cached is None:
+        faces = defaultdict(list)
+        for path in ARCH_ROOT.rglob("*.png"):
+            faces[path.stem].append(path)
+        animations = defaultdict(list)
+        for path in ARCH_ROOT.rglob("*.anim"):
+            current = None
+            for raw_line in path.read_text(errors="replace").splitlines():
+                line = raw_line.strip()
+                if line.startswith("anim "):
+                    current = line.split(None, 1)[1]
+                elif line == "mina":
+                    current = None
+                elif current and line and not line.startswith(("#", "facings ")):
+                    animations[current].append(line.split()[0])
+        cached = (faces, animations)
+        _ART_INDEX_CACHE[root_key] = cached
+    faces, animations = cached
+    names = []
+    if row.get("face"):
+        names.append(row["face"])
+    names.extend(animations.get(row.get("animation"), ()))
+    width = height = 0
+    for name in names:
+        for path in faces.get(name, ()):
+            header = path.read_bytes()[:24]
+            if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
+                continue
+            width = max(width, int.from_bytes(header[16:20], "big"))
+            height = max(height, int.from_bytes(header[20:24], "big"))
+    if not (width and height) and row.get("visible"):
+        return 32, 32
+    return width, height
+
+
+def _source_rendered_art_extent(
+    report: dict, source_kind: str, row: dict
+) -> tuple[int, int]:
+    """Return art bounds for the speed-zero object used by the source plan."""
+
+    art_row = row
+    if source_kind == "archetype":
+        relative = row.get("path")
+        object_line = row.get("object_line")
+        if isinstance(relative, str) and isinstance(object_line, int):
+            path = ROOT / relative
+            if path.is_file():
+                lines = path.read_text().splitlines()
+                cursor = object_line - 1
+                runtime_id = row["id"]
+                while 0 <= cursor < len(lines):
+                    previous = cursor - 1
+                    while previous >= 0 and not lines[previous].strip():
+                        previous -= 1
+                    if previous < 0 or lines[previous].strip() != "More":
+                        break
+                    previous_object = previous - 1
+                    while (
+                        previous_object >= 0
+                        and not lines[previous_object].startswith("Object ")
+                    ):
+                        previous_object -= 1
+                    if previous_object < 0:
+                        break
+                    runtime_id = lines[previous_object].removeprefix("Object ").strip()
+                    cursor = previous_object
+                art_row = next(
+                    (
+                        candidate
+                        for candidate in report["archetypes"]
+                        if candidate["id"] == runtime_id
+                    ),
+                    row,
+                )
+    # Continuous source commands freeze animation at speed zero, so the
+    # effective initial face—not a later and potentially larger frame—is the
+    # complete rendered sprite footprint for this comparison.
+    art_row = dict(art_row)
+    art_row["animation"] = None
+    return _rendered_art_extent(art_row)
 
 
 def _toggle_render_semantics(row: dict) -> tuple:
@@ -1384,6 +1481,7 @@ def validate_light_evidence(report: dict) -> list[str]:
                 control_pixels,
                 LIGHT_EVIDENCE_TILE_WIDTH - 1,
                 LIGHT_EVIDENCE_TILE_HEIGHT - 1,
+                _rendered_art_extent(row),
             ):
                 errors.append(
                     "toggle state {} view {} lacks a visible active light pool".format(
@@ -1469,6 +1567,7 @@ def validate_light_evidence(report: dict) -> list[str]:
                 control_pixels,
                 LIGHT_EVIDENCE_TILE_WIDTH - 1,
                 LIGHT_EVIDENCE_TILE_HEIGHT - 1,
+                _source_rendered_art_extent(report, source_kind, row),
             ):
                 errors.append(
                     "light source {} view {} lacks a visible light pool".format(

@@ -85,8 +85,10 @@ its capture surface, so map-only evidence cannot be compared with a full-window
 control. Those views record the exact state ID, activation archetype, and
 runtime command; the checker decodes the committed tiles and requires a
 material light-pool difference from the matching control for every continuous
-and toggle-active source instead of accepting resting art, changed UI, or a few
-sprite pixels. It also rejects one raw capture reused by states whose effective
+and toggle-active source. Changed pixels must extend beyond the largest actual
+PNG canvas used by the speed-zero source face or active animation in both axes,
+so oversized art, resting art, changed UI, or isolated sprite pixels cannot
+satisfy the light-pool proof. It also rejects one raw capture reused by states whose effective
 radius, color, face, animation, or visibility differs.
 Before ordinary smooth or discrete capture, the reviewer must emit no light and
 all carried toggle lights must be explicitly extinguished and unapplied. The

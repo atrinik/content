@@ -6,6 +6,7 @@ import struct
 import subprocess
 import tempfile
 import unittest
+import zlib
 from pathlib import Path
 
 from tools import light_review_evidence as evidence_tools
@@ -43,7 +44,7 @@ class WorldContentAuditTest(unittest.TestCase):
         )
         self.assertFalse(
             audit._has_visible_light_pool(
-                bytes(compact_sprite), full_control, width, height
+                bytes(compact_sprite), full_control, width, height, (32, 32)
             )
         )
         self.assertTrue(
@@ -76,11 +77,111 @@ class WorldContentAuditTest(unittest.TestCase):
                 tile_control,
                 tile_width,
                 tile_height,
+                (40, 40),
             )
         )
         self.assertTrue(
             audit._has_visible_light_pool(
                 bytes(tile_pool), tile_control, tile_width, tile_height
+            )
+        )
+
+        # A real oversized Classic face must not count as emitted light merely
+        # because its changed pixels span more than one 32-pixel map cell.
+        forcefield_path = (
+            self.original_roots[0]
+            / "arch/magic/forcefield/forcefield_blue/forcefield_blue.101.png"
+        )
+        palette = transparency = b""
+        compressed = bytearray()
+        for name, payload in evidence_tools._png_chunks(forcefield_path.read_bytes()):
+            if name == b"IHDR":
+                face_width, face_height = struct.unpack(">II", payload[:8])
+            elif name == b"PLTE":
+                palette = payload
+            elif name == b"tRNS":
+                transparency = payload
+            elif name == b"IDAT":
+                compressed.extend(payload)
+        raw = zlib.decompress(bytes(compressed))
+        previous = bytearray(face_width)
+        face_pixels = bytearray(face_width * face_height * 3)
+        for y in range(face_height):
+            start = y * (face_width + 1)
+            filter_type = raw[start]
+            scanline = bytearray(raw[start + 1:start + face_width + 1])
+            for x in range(face_width):
+                left = scanline[x - 1] if x else 0
+                above = previous[x]
+                upper_left = previous[x - 1] if x else 0
+                if filter_type == 1:
+                    scanline[x] = (scanline[x] + left) & 0xff
+                elif filter_type == 2:
+                    scanline[x] = (scanline[x] + above) & 0xff
+                elif filter_type == 3:
+                    scanline[x] = (scanline[x] + (left + above) // 2) & 0xff
+                elif filter_type == 4:
+                    estimate = left + above - upper_left
+                    candidates = (left, above, upper_left)
+                    scanline[x] = (
+                        scanline[x]
+                        + min(candidates, key=lambda value: abs(estimate - value))
+                    ) & 0xff
+                elif filter_type != 0:
+                    self.fail("unsupported indexed PNG filter")
+            for x, palette_index in enumerate(scanline):
+                alpha = (
+                    transparency[palette_index]
+                    if palette_index < len(transparency)
+                    else 255
+                )
+                source = palette_index * 3
+                target = (y * face_width + x) * 3
+                face_pixels[target:target + 3] = bytes(
+                    (palette[source + component] * alpha + 127) // 255
+                    for component in range(3)
+                )
+            previous = scanline
+        face_only = bytearray(full_control)
+        face_left = width // 2
+        face_top = height // 3
+        for y in range(face_height):
+            source = y * face_width * 3
+            target = ((face_top + y) * width + face_left) * 3
+            face_only[target:target + face_width * 3] = face_pixels[
+                source:source + face_width * 3
+            ]
+        self.assertFalse(
+            audit._has_visible_light_pool(
+                bytes(face_only),
+                full_control,
+                width,
+                height,
+                (face_width, face_height),
+            )
+        )
+
+        sampled_width = (face_width * audit.LIGHT_EVIDENCE_TILE_WIDTH + 1023) // 1024
+        sampled_height = (face_height * audit.LIGHT_EVIDENCE_TILE_HEIGHT + 767) // 768
+        sampled_face_only = bytearray(tile_control)
+        sampled_left = tile_width // 2
+        sampled_top = tile_height // 3
+        for y in range(sampled_height):
+            source_y = y * face_height // sampled_height
+            for x in range(sampled_width):
+                source_x = x * face_width // sampled_width
+                source = (source_y * face_width + source_x) * 3
+                target = (
+                    (sampled_top + y) * tile_width + sampled_left + x
+                ) * 3
+                sampled_face_only[target:target + 3] = face_pixels[source:source + 3]
+        self.assertFalse(
+            audit._has_visible_light_pool(
+                bytes(sampled_face_only),
+                tile_control,
+                tile_width,
+                tile_height,
+                (face_width, face_height),
             )
         )
 

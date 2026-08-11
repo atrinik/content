@@ -679,8 +679,22 @@ def build_evidence(args) -> dict:
         control_width, control_height, control_pixels = read_png(control["_path"])
         if (width, height) != (control_width, control_height):
             raise ValueError("source capture and control dimensions differ")
+        if row.get("active_state_id") is not None:
+            rendered_source = toggle_states[row["active_state_id"]]
+            rendered_extent = audit._rendered_art_extent(rendered_source)
+        else:
+            rendered_source = source_rows[
+                (row["source_kind"], row["source_id"])
+            ]
+            rendered_extent = audit._source_rendered_art_extent(
+                report, row["source_kind"], rendered_source
+            )
         if not audit._has_visible_light_pool(
-            active_pixels, control_pixels, width, height
+            active_pixels,
+            control_pixels,
+            width,
+            height,
+            rendered_extent,
         ):
             raise ValueError("source capture lacks a visible light pool")
     if args.dry_run:

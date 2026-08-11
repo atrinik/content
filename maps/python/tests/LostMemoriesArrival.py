@@ -472,13 +472,16 @@ class LostMemoriesArrivalSuite(TestSuite):
                         reconstructed_apartment.last_grace,
                     ),
                 )
+                reconstructed_apartment.Destroy()
 
                 # Force the vacated private map through the normal server swap
                 # path.  Re-entry must therefore load the marker from the map
                 # file rather than observe the still-resident map object.
+                del marker, beds, bed, apartment_exit
                 apartment_map = Atrinik.ReadyMap(expected_path)
                 self.assertIsNotNone(apartment_map)
                 apartment_map.timeout = 1
+                del apartment_map
                 simulate_server(count=2, wait=False)
 
                 portal = self.find_map_object(

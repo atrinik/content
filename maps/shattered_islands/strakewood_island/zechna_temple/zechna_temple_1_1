@@ -2245,10 +2245,7 @@ x 16
 y 17
 end
 arch pool_poison
-x 16
-y 17
-end
-arch light3
+glow_radius 3
 x 16
 y 17
 end

@@ -456,8 +456,10 @@ class LostMemoriesArrivalSuite(TestSuite):
                 # representation, as player loading does during a relog.
                 # Verify the fields from which the private map and return
                 # point are reconstructed.
-                reconstructed_apartment = Atrinik.LoadObject(
-                    serialized_apartment
+                serialized_fields = serialized_apartment.splitlines()[1:-1]
+                reconstructed_apartment = Atrinik.CreateObject("player_info")
+                reconstructed_apartment.Load(
+                    "{}\n".format("\n".join(serialized_fields))
                 )
                 self.assertIsNotNone(reconstructed_apartment)
                 self.assertEqual(tier, reconstructed_apartment.slaying)

@@ -185,6 +185,27 @@ class WorldContentAuditTest(unittest.TestCase):
             )
         )
 
+    def test_rendered_art_extent_fails_closed_on_missing_or_invalid_art(self):
+        audit._ART_INDEX_CACHE.clear()
+        with self.assertRaisesRegex(ValueError, "rendered face is unresolved"):
+            audit._rendered_art_extent({"face": "missing.101", "visible": True})
+
+        evidence_tools.write_png(
+            audit.ARCH_ROOT / "valid.101.png", 32, 32, bytes(32 * 32 * 3)
+        )
+        audit._ART_INDEX_CACHE.clear()
+        with self.assertRaisesRegex(ValueError, "rendered animation is unresolved"):
+            audit._rendered_art_extent({
+                "face": "valid.101",
+                "animation": "missing_animation",
+                "visible": True,
+            })
+
+        (audit.ARCH_ROOT / "invalid.101.png").write_bytes(b"not a PNG")
+        audit._ART_INDEX_CACHE.clear()
+        with self.assertRaisesRegex(ValueError, "invalid PNG header"):
+            audit._rendered_art_extent({"face": "invalid.101", "visible": True})
+
     def test_toggle_render_semantics_ignore_identity_but_track_pixels(self):
         first = {
             "activation_archetype": "lamp",
@@ -386,8 +407,16 @@ Object
 glow_radius 1
 face reward.101
 end
-""",
+            """,
         )
+        evidence_tools.write_png(
+            audit.ARCH_ROOT / "lamp.101.png", 32, 40, bytes(32 * 40 * 3)
+        )
+        evidence_tools.write_png(
+            audit.ARCH_ROOT / "reward.101.png", 32, 32, bytes(32 * 32 * 3)
+        )
+        self.write("arch/lamp.anim", "anim lamp\nlamp.101\nmina\n")
+        audit._ART_INDEX_CACHE.clear()
         self.write(
             "maps/scene",
             """arch map

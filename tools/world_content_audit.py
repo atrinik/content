@@ -965,6 +965,8 @@ def _has_visible_light_pool(
 def _rendered_art_extent(row: dict) -> tuple[int, int]:
     """Return the largest raw PNG canvas used by a source's rendered art."""
 
+    if not row.get("visible"):
+        return 0, 0
     root_key = str(ARCH_ROOT.resolve())
     cached = _ART_INDEX_CACHE.get(root_key)
     if cached is None:
@@ -988,17 +990,24 @@ def _rendered_art_extent(row: dict) -> tuple[int, int]:
     names = []
     if row.get("face"):
         names.append(row["face"])
-    names.extend(animations.get(row.get("animation"), ()))
+    animation = row.get("animation")
+    if animation:
+        if animation not in animations:
+            raise ValueError("rendered animation is unresolved: {}".format(animation))
+        names.extend(animations[animation])
+    if row.get("visible") and not names:
+        raise ValueError("visible rendered source has no face or animation")
     width = height = 0
     for name in names:
-        for path in faces.get(name, ()):
+        paths = faces.get(name, ())
+        if not paths:
+            raise ValueError("rendered face is unresolved: {}".format(name))
+        for path in paths:
             header = path.read_bytes()[:24]
             if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
-                continue
+                raise ValueError("rendered face has an invalid PNG header: {}".format(name))
             width = max(width, int.from_bytes(header[16:20], "big"))
             height = max(height, int.from_bytes(header[20:24], "big"))
-    if not (width and height) and row.get("visible"):
-        return 32, 32
     return width, height
 
 
@@ -1033,14 +1042,48 @@ def _source_rendered_art_extent(
                         break
                     runtime_id = lines[previous_object].removeprefix("Object ").strip()
                     cursor = previous_object
-                art_row = next(
+                inventoried = next(
                     (
                         candidate
                         for candidate in report["archetypes"]
                         if candidate["id"] == runtime_id
                     ),
-                    row,
+                    None,
                 )
+                if inventoried is not None:
+                    art_row = inventoried
+                elif runtime_id != row["id"]:
+                    relative = path.relative_to(ROOT).as_posix()
+                    document = parse_bytes(
+                        path.read_bytes(), path=relative, format_name="archetype"
+                    )
+                    head = next(
+                        (
+                            node
+                            for node in document.nodes
+                            if node.depth == 0 and node.name == runtime_id
+                        ),
+                        None,
+                    )
+                    if head is None:
+                        raise ValueError(
+                            "multipart runtime head is unresolved: {}".format(
+                                runtime_id
+                            )
+                        )
+                    attrs, _ = _legacy_archetype_attrs(document, head)
+                    effective = {
+                        key: values[-1]
+                        for key, values in attrs.items()
+                        if values
+                    }
+                    art_row = {
+                        "face": effective.get("face"),
+                        "animation": effective.get("animation"),
+                        "visible": bool(
+                            effective.get("face") or effective.get("animation")
+                        ),
+                    }
     # Continuous source commands freeze animation at speed zero, so the
     # effective initial face—not a later and potentially larger frame—is the
     # complete rendered sprite footprint for this comparison.
@@ -1476,12 +1519,21 @@ def validate_light_evidence(report: dict) -> list[str]:
                     )
                 )
                 continue
+            try:
+                art_extent = _rendered_art_extent(row)
+            except (OSError, ValueError) as error:
+                errors.append(
+                    "toggle state {} view {} has unresolved rendered art: {}".format(
+                        identifier, view_id, error
+                    )
+                )
+                continue
             if not _has_visible_light_pool(
                 active_pixels,
                 control_pixels,
                 LIGHT_EVIDENCE_TILE_WIDTH - 1,
                 LIGHT_EVIDENCE_TILE_HEIGHT - 1,
-                _rendered_art_extent(row),
+                art_extent,
             ):
                 errors.append(
                     "toggle state {} view {} lacks a visible active light pool".format(
@@ -1562,12 +1614,23 @@ def validate_light_evidence(report: dict) -> list[str]:
                     )
                 )
                 continue
+            try:
+                art_extent = _source_rendered_art_extent(
+                    report, source_kind, row
+                )
+            except (OSError, ValueError) as error:
+                errors.append(
+                    "light source {} view {} has unresolved rendered art: {}".format(
+                        identifier, view_id, error
+                    )
+                )
+                continue
             if not _has_visible_light_pool(
                 source_pixels,
                 control_pixels,
                 LIGHT_EVIDENCE_TILE_WIDTH - 1,
                 LIGHT_EVIDENCE_TILE_HEIGHT - 1,
-                _source_rendered_art_extent(report, source_kind, row),
+                art_extent,
             ):
                 errors.append(
                     "light source {} view {} lacks a visible light pool".format(

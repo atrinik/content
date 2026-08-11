@@ -152,22 +152,30 @@ class LightReviewEvidenceTest(unittest.TestCase):
             path = root / "arch" / "multipart.arc"
             path.parent.mkdir()
             path.write_text(
-                "Object explosion\nend\nMore\n"
+                "Object explosion\nface explosion.101\nend\nMore\n"
                 "Object explosion_a\nglow_radius 3\nend\nMore\n"
                 "Object explosion_b\nglow_radius 3\nend\n"
+            )
+            evidence.write_png(
+                path.parent / "explosion.101.png",
+                48,
+                69,
+                bytes(48 * 69 * 3),
             )
             report = {
                 "archetypes": [
                     {
                         "id": "explosion_a",
                         "path": "arch/multipart.arc",
-                        "object_line": 4,
+                        "object_line": 5,
+                        "visible": False,
                         "semantic_sha256": "1" * 64,
                     },
                     {
                         "id": "explosion_b",
                         "path": "arch/multipart.arc",
-                        "object_line": 8,
+                        "object_line": 9,
+                        "visible": False,
                         "semantic_sha256": "2" * 64,
                     },
                 ],
@@ -175,8 +183,10 @@ class LightReviewEvidenceTest(unittest.TestCase):
                 "toggle_states": [],
                 "maps": [],
             }
-            original_root = evidence.audit.ROOT
+            original_roots = (evidence.audit.ROOT, evidence.audit.ARCH_ROOT)
             evidence.audit.ROOT = root
+            evidence.audit.ARCH_ROOT = root / "arch"
+            evidence.audit._ART_INDEX_CACHE.clear()
             try:
                 plan = evidence.source_capture_plan(
                     report,
@@ -185,8 +195,14 @@ class LightReviewEvidenceTest(unittest.TestCase):
                     evidence.SOURCE_REVIEW_X,
                     evidence.SOURCE_REVIEW_Y,
                 )
+                self.assertEqual(
+                    (48, 69),
+                    evidence.audit._source_rendered_art_extent(
+                        report, "archetype", report["archetypes"][0]
+                    ),
+                )
             finally:
-                evidence.audit.ROOT = original_root
+                evidence.audit.ROOT, evidence.audit.ARCH_ROOT = original_roots
 
         expected = (
             "/console \"noinf::obj=activator.map.CreateObject('explosion',"

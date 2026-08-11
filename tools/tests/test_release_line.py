@@ -87,6 +87,12 @@ class ReleaseLineTests(unittest.TestCase):
                     "subject": "transfer crystal light ownership (#116)",
                     "release": "patch",
                 },
+                {
+                    "type": "feat",
+                    "scope": "maps",
+                    "subject": "give Rockforge teleporter a focal glow (#117)",
+                    "release": "patch",
+                },
             ],
         )
         self.assertNotIn(

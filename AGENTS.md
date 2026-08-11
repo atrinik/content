@@ -74,7 +74,7 @@
 - `1.x` releases use semantic-release maintenance range/channel `1.x`. Because
   `main` owns the post-fork `v1.9.0` tag, this line can publish only patch
   versions in `>=1.8.1 <1.9.0`. Keep analyzer exceptions limited to the exact
-  historical `feat(release)` bootstrap and six pre-policy feature subjects
+  historical `feat(release)` bootstrap and seven pre-policy feature subjects
   documented in `docs/RELEASE_LINES.md`; do not weaken ordinary feature or
   breaking-change classification. The pull-request title policy rejects all
   new feature and breaking titles targeting `1.x`. Published releases and dry

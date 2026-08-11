@@ -37,6 +37,7 @@ LIGHT_EVIDENCE_TILE_HEIGHT = 153
 LIGHT_EVIDENCE_WIDTH = LIGHT_EVIDENCE_COLUMNS * LIGHT_EVIDENCE_TILE_WIDTH
 LIGHT_EVIDENCE_HEIGHT = LIGHT_EVIDENCE_ROWS * LIGHT_EVIDENCE_TILE_HEIGHT
 _ART_INDEX_CACHE = {}
+_ART_DIMENSION_CACHE = {}
 
 
 def fields(lines: list[str]) -> dict[str, list[str]]:
@@ -1003,12 +1004,70 @@ def _rendered_art_extent(row: dict) -> tuple[int, int]:
         if not paths:
             raise ValueError("rendered face is unresolved: {}".format(name))
         for path in paths:
-            header = path.read_bytes()[:24]
-            if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
-                raise ValueError("rendered face has an invalid PNG header: {}".format(name))
-            width = max(width, int.from_bytes(header[16:20], "big"))
-            height = max(height, int.from_bytes(header[20:24], "big"))
+            try:
+                face_width, face_height = _validated_art_png_dimensions(path)
+            except (OSError, ValueError, TypeError, zlib.error) as error:
+                raise ValueError(
+                    "rendered face has an invalid PNG: {} ({})".format(
+                        name, error
+                    )
+                ) from error
+            width = max(width, face_width)
+            height = max(height, face_height)
     return width, height
+
+
+def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
+    """Fully validate a non-interlaced authored PNG and return its dimensions."""
+
+    cache_key = str(path.resolve())
+    if cache_key in _ART_DIMENSION_CACHE:
+        return _ART_DIMENSION_CACHE[cache_key]
+    from tools.light_review_evidence import _png_chunks
+
+    width = height = depth = color_type = None
+    compressed = bytearray()
+    palette_seen = False
+    for name, payload in _png_chunks(path.read_bytes()):
+        if name == b"IHDR":
+            if width is not None or len(payload) != 13:
+                raise ValueError("PNG has an invalid IHDR")
+            width = int.from_bytes(payload[0:4], "big")
+            height = int.from_bytes(payload[4:8], "big")
+            depth, color_type, compression, filtering, interlace = payload[8:13]
+            if (
+                width < 1
+                or height < 1
+                or color_type not in {2, 3, 4, 6}
+                or depth not in {1, 2, 4, 8, 16}
+                or (compression, filtering, interlace) != (0, 0, 0)
+            ):
+                raise ValueError("unsupported authored PNG encoding")
+        elif name == b"PLTE":
+            if not payload or len(payload) % 3:
+                raise ValueError("PNG has an invalid palette")
+            palette_seen = True
+        elif name == b"IDAT":
+            compressed.extend(payload)
+    if width is None or height is None:
+        raise ValueError("PNG has no IHDR")
+    if color_type == 3 and not palette_seen:
+        raise ValueError("indexed PNG has no palette")
+    if not compressed:
+        raise ValueError("PNG has no IDAT")
+    channels = {2: 3, 3: 1, 4: 2, 6: 4}[color_type]
+    stride = (width * channels * depth + 7) // 8
+    expected = (stride + 1) * height
+    decoder = zlib.decompressobj()
+    raw = decoder.decompress(bytes(compressed), expected + 1)
+    raw += decoder.flush(max(0, expected + 1 - len(raw)))
+    if not decoder.eof or decoder.unused_data or len(raw) != expected:
+        raise ValueError("PNG scanline size mismatch")
+    if any(raw[offset] > 4 for offset in range(0, expected, stride + 1)):
+        raise ValueError("unsupported PNG scanline filter")
+    dimensions = (width, height)
+    _ART_DIMENSION_CACHE[cache_key] = dimensions
+    return dimensions
 
 
 def _source_rendered_art_extent(

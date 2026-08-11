@@ -203,8 +203,28 @@ class WorldContentAuditTest(unittest.TestCase):
 
         (audit.ARCH_ROOT / "invalid.101.png").write_bytes(b"not a PNG")
         audit._ART_INDEX_CACHE.clear()
-        with self.assertRaisesRegex(ValueError, "invalid PNG header"):
+        audit._ART_DIMENSION_CACHE.clear()
+        with self.assertRaisesRegex(ValueError, "invalid PNG"):
             audit._rendered_art_extent({"face": "invalid.101", "visible": True})
+
+        truncated = audit.ARCH_ROOT / "truncated.101.png"
+        truncated.write_bytes(
+            b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR"
+            + struct.pack(">II", 48, 69)
+        )
+        audit._ART_INDEX_CACHE.clear()
+        audit._ART_DIMENSION_CACHE.clear()
+        with self.assertRaisesRegex(ValueError, "invalid PNG"):
+            audit._rendered_art_extent({
+                "face": "truncated.101", "visible": True
+            })
+
+        zero = audit.ARCH_ROOT / "zero.101.png"
+        evidence_tools.write_png(zero, 0, 0, b"")
+        audit._ART_INDEX_CACHE.clear()
+        audit._ART_DIMENSION_CACHE.clear()
+        with self.assertRaisesRegex(ValueError, "invalid PNG"):
+            audit._rendered_art_extent({"face": "zero.101", "visible": True})
 
     def test_toggle_render_semantics_ignore_identity_but_track_pixels(self):
         first = {

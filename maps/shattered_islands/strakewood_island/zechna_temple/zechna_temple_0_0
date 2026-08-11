@@ -922,10 +922,7 @@ end
 arch crystal_white
 x 6
 y 5
-end
-arch light5
-x 6
-y 5
+glow_radius 5
 end
 arch floor_sblack1b
 x 6
@@ -1558,10 +1555,7 @@ end
 arch crystal_white_s
 x 11
 y 5
-end
-arch light3
-x 11
-y 5
+glow_radius 3
 end
 arch floor_sblack1b
 x 11

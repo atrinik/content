@@ -529,6 +529,11 @@
       "rationale": "obstacle_volcano_6 uses the lava and open fire palette entry to match its visible art.",
       "semantic_sha256": "12cbd80e3e3dfd8aee50317270b57d5be49cda4591ab3cd46136356e441e1aea"
     },
+    "power_crystal": {
+      "uncolored_disposition": "neutral",
+      "rationale": "power_crystal uses a restrained radius-1 holy gold-white light matching its animated luminous-white facets.",
+      "semantic_sha256": "b97dcc49d1dd9b1b9b9b6fac0e5ac62af78d80c2d6346b8fc6c6dff44204937f"
+    },
     "pool_acid": {
       "uncolored_disposition": "neutral",
       "rationale": "pool_acid uses the established pink palette entry to match its saturated magenta liquid.",
@@ -606,10 +611,40 @@
       "rationale": "The activated crystal artifact uses explicit soft-white light matching its pale animation.",
       "semantic_sha256": "8b8ef22d27b78491c8d592e776ff3aa5b4768d84bf7f88379db8e8c3ecbc9ccf"
     },
+    "gandyld_crystal_1": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Gandyld's first mana-crystal upgrade inherits the base crystal's single restrained light without amplification.",
+      "semantic_sha256": "22948502e177c31818e6c6ff6adf313ec2ec638d163b73baa54a8382b7562b35"
+    },
+    "gandyld_crystal_2": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Gandyld's second mana-crystal upgrade inherits the base crystal's single restrained light without amplification.",
+      "semantic_sha256": "32a4fc426e23b8cc07ccdcd75a8fe4a80862eb9019a3a68c6c1576276e73fe5a"
+    },
+    "gandyld_crystal_3": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Gandyld's final mana-crystal upgrade inherits the base crystal's single restrained light without amplification.",
+      "semantic_sha256": "1eac2ded5df4886a9bd4c78e776c84893091b29db40702ac86ea319b0876e62c"
+    },
     "halloween_abyss_jackolantern": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated abyss jack-o-lantern uses explicit orange light matching its carved flame art.",
       "semantic_sha256": "12e4f3ebcf546586c987d62b1046c9e7da42d91b861d74da0ca89e737e708532"
+    },
+    "mana_crystal_100": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The 100-sp mana crystal inherits the base crystal's single restrained light independently of charge capacity.",
+      "semantic_sha256": "313c6244c28fda1c320e078bde969ae30483b29f0a6971f1b6d970555dec4d40"
+    },
+    "mana_crystal_25": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The 25-sp mana crystal inherits the base crystal's single restrained light independently of charge capacity.",
+      "semantic_sha256": "ad059e2ed66de693c9f2e5c5867f2634fcb6d3b29f24dd206592208fd5f490ec"
+    },
+    "mana_crystal_50": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The 50-sp mana crystal inherits the base crystal's single restrained light independently of charge capacity.",
+      "semantic_sha256": "b7ad18070369b68f7d1ea97f8f05b5099f42b1d12f782924ce2e1b208319479f"
     },
     "shield_holy_light": {
       "uncolored_disposition": "neutral",
@@ -1066,6 +1101,10 @@
       "rationale": "The authored ff60c0 tint matches the visible art for plant_mushroom3.",
       "semantic_sha256": "6ceb1c1fb74ce544f3af3c2953d8b490c1ac1e0daa5500bbe4fd1d1f8d91de39"
     },
+    "power_crystal": {
+      "rationale": "The authored fff0c0 tint gives the luminous-white power-crystal art a restrained holy gold-white cast.",
+      "semantic_sha256": "bea61ff9366ac356e18058996fa0b978bbe5f5555fda73667f18510b08e2b75f"
+    },
     "pool_acid": {
       "rationale": "The authored ff60c0 tint matches pool_acid's saturated magenta liquid.",
       "semantic_sha256": "e4c807e3f3ec2386dcdead66bc0a640b6eaf951c51d02f739a31c1970fcf09e2"
@@ -1208,7 +1247,7 @@
   "context_checks": {
     "overlap": {
       "status": "pass",
-      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control.",
+      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control. The Marigold radius-1 power crystal sits beside stronger neutral helper lights and a currently non-emitting crystal ball without stacked focal color.",
       "classic_views": [
         "smooth-0001",
         "discrete-0001",
@@ -2418,7 +2457,7 @@
       "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; overlapping crystal-owned red and purple pools preserve combat silhouettes, doors, and traversable floor edges.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7da9bc79d8bae7d3778ba05e9af3324874112569f983b0e28824ccc762babffa"
+      "semantic_sha256": "e54ef2e93051c857918508a7dc392eab220428374ed9622f4b4ebac5a7b95083"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1": {
       "uncolored_disposition": "neutral",
@@ -3274,10 +3313,10 @@
     },
     "maps/shattered_islands/world_17_2_4": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Wizards' Tower: Marigold in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Wizards' Tower: Marigold with its radius-1 pale-gold power-crystal focus beside the currently non-emitting crystal ball; the stronger neutral helper lights retain the room hierarchy without stacked focal color.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a3e6bbd1ff143c1ea8ed687167a72f4a867d46a3b578fee190753abdec4c0c67"
+      "semantic_sha256": "2122d13accbe02dbaecc1445f98416b7a92c54301423f5b5b2b925e9dda492dd"
     },
     "maps/shattered_islands/world_17_2_5": {
       "uncolored_disposition": "neutral",
@@ -4141,7 +4180,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6ae04c7907a3ebb3c4c27ffa067490c0c3829a446d536cfba9621e49e0f00d4d"
+      "semantic_sha256": "b624147d29e798fb862489ca67d58cfe55d0d451c227b91745a0ff280aef90e9"
     },
     "maps/shattered_islands/world_4_48": {
       "uncolored_disposition": "neutral",
@@ -4984,7 +5023,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "05044f1d152d1dca3bc2edc04913557a95521a47c2cccf1ad2d0a68a85e8b916"
+      "semantic_sha256": "345978b2c19945137f7f3f2bdb5414db4565043fc434d2204f9fedcf9601f1cc"
     },
     "maps/shattered_islands/world_6_66_-1": {
       "uncolored_disposition": "neutral",

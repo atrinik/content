@@ -1176,10 +1176,7 @@ x 7
 y 7
 end
 arch pool_poison
-x 7
-y 7
-end
-arch light7
+glow_radius 7
 x 7
 y 7
 end
@@ -2028,10 +2025,7 @@ x 13
 y 7
 end
 arch pool_poison
-x 13
-y 7
-end
-arch light7
+glow_radius 7
 x 13
 y 7
 end
@@ -2989,10 +2983,7 @@ x 19
 y 21
 end
 arch pool_poison
-x 19
-y 21
-end
-arch light7
+glow_radius 7
 x 19
 y 21
 end

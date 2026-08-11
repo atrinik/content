@@ -226,6 +226,92 @@ class WorldContentAuditTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "invalid PNG"):
             audit._rendered_art_extent({"face": "zero.101", "visible": True})
 
+        for name, depth, color_type, stride, extra_chunks in (
+            ("rgba1.101", 1, 6, 4, b""),
+            (
+                "indexed16.101",
+                16,
+                3,
+                16,
+                evidence_tools._chunk(b"PLTE", b"\x00\x00\x00"),
+            ),
+        ):
+            invalid_encoding = audit.ARCH_ROOT / (name + ".png")
+            ihdr = struct.pack(">IIBBBBB", 8, 8, depth, color_type, 0, 0, 0)
+            scanlines = bytes([0] + [0] * stride) * 8
+            invalid_encoding.write_bytes(
+                b"\x89PNG\r\n\x1a\n"
+                + evidence_tools._chunk(b"IHDR", ihdr)
+                + extra_chunks
+                + evidence_tools._chunk(b"IDAT", zlib.compress(scanlines))
+                + evidence_tools._chunk(b"IEND", b"")
+            )
+            audit._ART_INDEX_CACHE.clear()
+            audit._ART_DIMENSION_CACHE.clear()
+            with self.assertRaisesRegex(ValueError, "invalid PNG"):
+                audit._rendered_art_extent({"face": name, "visible": True})
+
+        signature = b"\x89PNG\r\n\x1a\n"
+        indexed_ihdr = evidence_tools._chunk(
+            b"IHDR", struct.pack(">IIBBBBB", 8, 8, 1, 3, 0, 0, 0)
+        )
+        indexed_idat = evidence_tools._chunk(
+            b"IDAT", zlib.compress(bytes([0, 0]) * 8)
+        )
+        rgb_ihdr = evidence_tools._chunk(
+            b"IHDR", struct.pack(">IIBBBBB", 1, 1, 8, 2, 0, 0, 0)
+        )
+        rgb_compressed = zlib.compress(b"\x00\x00\x00\x00")
+        rgba_ihdr = evidence_tools._chunk(
+            b"IHDR", struct.pack(">IIBBBBB", 1, 1, 8, 6, 0, 0, 0)
+        )
+        ordering_cases = {
+            "late_ihdr.101": (
+                evidence_tools._chunk(b"tEXt", b"note\x00value")
+                + rgb_ihdr
+                + evidence_tools._chunk(b"IDAT", rgb_compressed)
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "late_palette.101": (
+                indexed_ihdr
+                + indexed_idat
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00\xff\xff\xff")
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "split_idat.101": (
+                rgb_ihdr
+                + evidence_tools._chunk(b"IDAT", rgb_compressed[:3])
+                + evidence_tools._chunk(b"tEXt", b"note\x00value")
+                + evidence_tools._chunk(b"IDAT", rgb_compressed[3:])
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "oversized_palette.101": (
+                indexed_ihdr
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00" * 3)
+                + indexed_idat
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "rgba_palette.101": (
+                rgba_ihdr
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00")
+                + evidence_tools._chunk(
+                    b"IDAT", zlib.compress(b"\x00\x00\x00\x00\x00")
+                )
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "nonempty_iend.101": (
+                rgb_ihdr
+                + evidence_tools._chunk(b"IDAT", rgb_compressed)
+                + evidence_tools._chunk(b"IEND", b"invalid")
+            ),
+        }
+        for name, chunks in ordering_cases.items():
+            (audit.ARCH_ROOT / (name + ".png")).write_bytes(signature + chunks)
+            audit._ART_INDEX_CACHE.clear()
+            audit._ART_DIMENSION_CACHE.clear()
+            with self.assertRaisesRegex(ValueError, "invalid PNG"):
+                audit._rendered_art_extent({"face": name, "visible": True})
+
     def test_toggle_render_semantics_ignore_identity_but_track_pixels(self):
         first = {
             "activation_archetype": "lamp",

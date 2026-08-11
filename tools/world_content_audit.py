@@ -1028,32 +1028,62 @@ def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
     width = height = depth = color_type = None
     compressed = bytearray()
     palette_seen = False
-    for name, payload in _png_chunks(path.read_bytes()):
+    idat_seen = False
+    idat_closed = False
+    for chunk_index, (name, payload) in enumerate(_png_chunks(path.read_bytes())):
+        if chunk_index == 0 and name != b"IHDR":
+            raise ValueError("PNG IHDR is not first")
         if name == b"IHDR":
-            if width is not None or len(payload) != 13:
+            if chunk_index != 0 or width is not None or len(payload) != 13:
                 raise ValueError("PNG has an invalid IHDR")
             width = int.from_bytes(payload[0:4], "big")
             height = int.from_bytes(payload[4:8], "big")
             depth, color_type, compression, filtering, interlace = payload[8:13]
+            legal_depths = {
+                2: {8, 16},
+                3: {1, 2, 4, 8},
+                4: {8, 16},
+                6: {8, 16},
+            }
             if (
                 width < 1
                 or height < 1
-                or color_type not in {2, 3, 4, 6}
-                or depth not in {1, 2, 4, 8, 16}
+                or color_type not in legal_depths
+                or depth not in legal_depths.get(color_type, ())
                 or (compression, filtering, interlace) != (0, 0, 0)
             ):
                 raise ValueError("unsupported authored PNG encoding")
         elif name == b"PLTE":
-            if not payload or len(payload) % 3:
+            if (
+                width is None
+                or palette_seen
+                or idat_seen
+                or color_type in {4, 6}
+                or not payload
+                or len(payload) % 3
+                or len(payload) > 256 * 3
+                or (color_type == 3 and len(payload) // 3 > 2 ** depth)
+            ):
                 raise ValueError("PNG has an invalid palette")
             palette_seen = True
         elif name == b"IDAT":
+            if width is None or idat_closed:
+                raise ValueError("PNG has invalid IDAT ordering")
+            idat_seen = True
             compressed.extend(payload)
+        elif name == b"IEND":
+            if payload or not idat_seen:
+                raise ValueError("PNG has an invalid IEND")
+        else:
+            if name and not (name[0] & 0x20):
+                raise ValueError("PNG has an unknown critical chunk")
+            if idat_seen:
+                idat_closed = True
     if width is None or height is None:
         raise ValueError("PNG has no IHDR")
     if color_type == 3 and not palette_seen:
         raise ValueError("indexed PNG has no palette")
-    if not compressed:
+    if not idat_seen or not compressed:
         raise ValueError("PNG has no IDAT")
     channels = {2: 3, 3: 1, 4: 2, 6: 4}[color_type]
     stride = (width * channels * depth + 7) // 8

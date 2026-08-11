@@ -18,5 +18,6 @@ flying 1
 fly_on 1
 walk_on 1
 no_pick 1
+light_color a060ff
 name_pl raw mana
 end

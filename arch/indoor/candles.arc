@@ -22,6 +22,7 @@ face candlelight3.101
 no_pick 1
 type 79
 layer 4
+light_color ffd080
 name_pl candlelight
 end
 
@@ -31,6 +32,7 @@ face candlelight4.101
 no_pick 1
 type 79
 layer 4
+light_color ffd080
 name_pl candlelight
 end
 

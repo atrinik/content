@@ -12,5 +12,6 @@ speed 1
 food 82
 is_used_up 1
 no_pick 1
+light_color ff6030
 name_pl burning items
 end

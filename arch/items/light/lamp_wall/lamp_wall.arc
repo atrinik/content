@@ -16,5 +16,6 @@ last_sp 5
 weight 1250
 material 144
 food 1
+light_color ffd080
 name_pl attached lamps
 end

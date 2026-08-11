@@ -1120,6 +1120,7 @@ arch exit
 animation portal_red
 zoom 100
 glow_radius 9
+light_color ff3030
 slaying strakewood_island/zechna_temple/zechna_temple_0_0
 hp 8
 sp 7

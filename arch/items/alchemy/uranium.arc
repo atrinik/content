@@ -24,6 +24,7 @@ type 73
 glow_radius 1
 value 4000
 weight 5000
+light_color 80ff40
 name_pl piles
 end
 

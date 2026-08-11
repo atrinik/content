@@ -69,12 +69,14 @@ python3 -m tools.syntax_evaluation --root . --json
 ```
 
 For read-only exploratory inventories of quests, regions, artifacts, maps,
-named objects, and archetype locations, run:
+named objects, archetype locations, and effective light emitters, run:
 
 ```sh
 python3 tools/world_content_audit.py all > build/world-content-audit.json
 ```
 
-Pass `quests`, `regions`, `artifacts`, or `world` for a focused report. The
+Pass `quests`, `regions`, `artifacts`, `world`, or `lights` for a focused report.
+The checked light-source baseline and its rendered review workflow are
+documented in [`docs/LIGHT_SOURCE_AUDIT.md`](docs/LIGHT_SOURCE_AUDIT.md). The
 audit emits deterministic JSON and never modifies authored content. It is a
 review aid, not a replacement for `tools/validate.py` or the typed catalog.

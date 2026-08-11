@@ -42,7 +42,7 @@ repository-relative.
   transitions, fog/roofs, and navigation cues.
 
 The current baseline covers 97 emitting archetypes, four emitting artifacts,
-120 effective color suppliers, 13 toggle-active semantic states, and 11,392
+120 effective color suppliers, 14 toggle-active semantic states, and 11,393
 effective instances across 625 maps.
 Of those map instances, 5,878 are invisible map-local composition lights.
 Invisible fill remains intentionally neutral: adding one shared tint would
@@ -75,16 +75,19 @@ emitter retain a representative view. Selected scenes were rendered again with
 smooth lighting disabled so both client lighting paths cover every contextual
 review criterion. Every effective archetype and artifact definition was
 created in the review-only `tools/light-source-review/dark-lab` scene and bound
-to its semantic digest and exact command. Every distinct toggle-active state
-was also created or reached, applied, and captured beside a clean control of
-that same scene. Toggle views are full 1024-by-768 client frames rather than
-map-only exports so the applied inventory art and its runtime light pool are
-both reviewable. Those views record the exact state ID, activation archetype,
-and runtime command; the checker decodes the committed tiles and requires a
-material active light-pool difference from the control instead of accepting
-resting art or a few changed sprite pixels. It also rejects one raw capture
-reused by states whose effective radius, color, face, animation, or visibility
-differs.
+to its semantic digest and exact command. Continuous definitions use
+`/screenshot map` and are compared with a clean map-surface control. Every
+distinct toggle-active state was also created or reached, applied, and captured
+beside a separate clean full-window control of that same scene. Toggle views
+are full 1024-by-768 client frames rather than map-only exports so the applied
+inventory art and its runtime light pool are both reviewable. Each view records
+its capture surface, so map-only evidence cannot be compared with a full-window
+control. Those views record the exact state ID, activation archetype, and
+runtime command; the checker decodes the committed tiles and requires a
+material light-pool difference from the matching control for every continuous
+and toggle-active source instead of accepting resting art, changed UI, or a few
+sprite pixels. It also rejects one raw capture reused by states whose effective
+radius, color, face, animation, or visibility differs.
 Before ordinary smooth or discrete capture, the reviewer must emit no light and
 all carried toggle lights must be explicitly extinguished and unapplied. The
 evidence context records that clean player-state precondition so a test light
@@ -100,8 +103,8 @@ input, definition/state bindings, and full-resolution capture digest.
 compressed scanlines, filters, and dimensions, rejects stale, duplicate, or
 unlisted artifacts, checks the aggregate inventory digest, proves that every
 invisible emitter lies inside a recorded smooth viewport, and requires a
-source-bound view for every effective definition plus a control-compared active
-view for every toggle state. A separate digest over all authored
+source-bound, control-compared view for every effective definition plus an
+active view for every toggle state. A separate digest over all authored
 `arch/` and runtime `maps/` inputs proves the final tree still matches the tree
 used by the recorded content build even when review-only files are committed
 after that build. The review JSON, evidence directory, review-only lab, and
@@ -111,8 +114,9 @@ tree for maintainers.
 
 The checked generator makes viewport selection, tile order, and sheet encoding
 reproducible. `plan` emits the greedy cover in map-path order; `plan-sources`
-emits the dark control, every archetype/artifact definition, and any remaining
-map-only active state in semantic order. `build` consumes
+emits the full-window toggle control, every archetype/artifact definition, any
+remaining map-only active state, and the map-surface continuous control in
+semantic order. `build` consumes
 ordered smooth/discrete capture manifests whose rows contain `artifact`, `map`,
 coordinates, semantic/content bindings, and the capture digest; it creates
 5-by-5 sheets in manifest order. Each 1024-by-768 client
@@ -120,8 +124,13 @@ PNG is nearest-neighbor sampled to 204 by 153 pixels, unused tiles remain black,
 tile top/left edges are white, and output is deterministic RGB PNG using filter
 zero and zlib level nine. Every raw-manifest row also supplies its capture
 SHA-256, content commit, and current map semantic SHA-256 or review-scene file
-SHA-256. Source rows add source kind, identity, semantic digest, and exact
-runtime command; active rows add the toggle-state and shared dark-control IDs.
+SHA-256. Source rows add source kind, identity, semantic digest, exact runtime
+command, capture surface, and the matching surface-specific dark-control ID;
+active rows also add the toggle-state ID. Classic's `/console` transport uses
+one unmatched leading quote to preserve command whitespace; the generated
+command intentionally has no closing quote. In an active transcript, the
+semicolon before the second slash command separates two consecutive client
+submissions; it is not entered as part of either command.
 `--dry-run` fully decodes and checks all input captures. A real build renders
 into a sibling staging directory and atomically replaces the evidence
 directory, so stale sheets and partial builds cannot survive. Context and
@@ -161,9 +170,9 @@ When refreshing the review:
    map root (for example, with
    `install -D -m 0644 tools/light-source-review/dark-lab "$ATRINIK_REVIEW_MAPS/light-source-review/dark-lab"`),
    teleport to `/light-source-review/dark-lab 9 9`, then create every changed
-   source from the generated command; for type-74 rows, apply the named object
-   server-side and retain a full-client frame that shows both active inventory
-   art and its light pool;
+   source with the complete generated command transcript in order; retain `/screenshot map` for
+   continuous rows and a full-client frame for type-74 rows, plus one clean
+   control on each capture surface;
 4. compare overlaps and adjacent/depth-linked scenes in both smooth and
    discrete lighting where a color changes;
 5. use the checked plan/build commands to rebuild contact sheets and manifest

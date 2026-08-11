@@ -25,6 +25,23 @@ ROWS = audit.LIGHT_EVIDENCE_ROWS
 TILE_WIDTH = audit.LIGHT_EVIDENCE_TILE_WIDTH
 TILE_HEIGHT = audit.LIGHT_EVIDENCE_TILE_HEIGHT
 SHEET_CAPACITY = COLUMNS * ROWS
+SOURCE_REVIEW_MAP = "tools/light-source-review/dark-lab"
+SOURCE_REVIEW_RUNTIME_MAP = "/light-source-review/dark-lab"
+SOURCE_REVIEW_X = 9
+SOURCE_REVIEW_Y = 9
+SOURCE_PLAN_FIELDS = (
+    "map",
+    "map_source_sha256",
+    "x",
+    "y",
+    "review_control_id",
+    "source_kind",
+    "source_id",
+    "source_semantic_sha256",
+    "active_state_id",
+    "capture_surface",
+    "runtime_command",
+)
 
 
 def review_centers(emitters: list[dict]) -> list[tuple[int, int]]:
@@ -100,6 +117,46 @@ def runtime_archetype_id(row: dict) -> str:
     return runtime_id
 
 
+def _console(command: str) -> str:
+    """Return one copy-pasteable Classic Python-console command."""
+
+    # Classic consumes one leading quote to preserve whitespace through the
+    # command protocol. A closing quote would become part of the Python input.
+    return '/console "{}'.format(command)
+
+
+def _continuous_source_command(source_kind: str, row: dict) -> str:
+    """Return the exact dark-lab placement command for a continuous source."""
+
+    if source_kind == "artifact" and row.get("runtime_archetype") != row["id"]:
+        command = (
+            "noinf::obj=activator.map.CreateObject({!r},activator.x+1,activator.y); "
+            "obj.Remove(); obj.Artificate({!r}); obj.speed=0; "
+            "obj=activator.map.Insert(obj,activator.x+1,activator.y); obj.Update()"
+        ).format(row["archetype"], row["id"])
+    else:
+        runtime_id = (
+            row["runtime_archetype"]
+            if source_kind == "artifact"
+            else runtime_archetype_id(row)
+        )
+        command = (
+            "noinf::obj=activator.map.CreateObject({!r},activator.x+1,activator.y); "
+            "obj.speed=0; obj.Update()"
+        ).format(runtime_id)
+    return _console(command)
+
+
+def _active_source_command(create_command: str) -> str:
+    """Return the exact ordered command transcript for a toggle source."""
+
+    apply_command = _console(
+        "noinf::obj=activator.FindObject(name='issue65_capture'); "
+        "activator.Apply(obj)"
+    )
+    return "{} name issue65_capture; {}".format(create_command, apply_command)
+
+
 def source_capture_plan(
     report: dict, map_path: str, map_source_sha256: str, x: int, y: int
 ) -> list[dict]:
@@ -111,33 +168,51 @@ def source_capture_plan(
         for source in state["sources"]
         if source["kind"] in {"archetype", "artifact"}
     }
-    control_id = "toggle-dark-control"
+    if map_path != SOURCE_REVIEW_MAP:
+        raise ValueError(
+            "source review map must be {}".format(SOURCE_REVIEW_MAP)
+        )
+    if (x, y) != (SOURCE_REVIEW_X, SOURCE_REVIEW_Y):
+        raise ValueError(
+            "source review coordinates must be {},{}".format(
+                SOURCE_REVIEW_X, SOURCE_REVIEW_Y
+            )
+        )
+    toggle_control_id = "toggle-full-control"
+    map_control_id = "source-map-control"
     plan = [{
         "number": 1,
         "map": map_path,
         "map_source_sha256": map_source_sha256,
         "x": x,
         "y": y,
-        "review_control_id": control_id,
+        "review_control_id": toggle_control_id,
+        "capture_surface": "window",
         "runtime_command": (
-            "/tpto /{} {} {}; verify no carried emitted light"
-        ).format(map_path.removeprefix("maps/"), x, y),
+            "/tpto {} {} {}; verify no carried emitted light; capture full window"
+        ).format(SOURCE_REVIEW_RUNTIME_MAP, x, y),
     }]
     for source_kind, section in (
         ("archetype", "archetypes"),
         ("artifact", "artifacts"),
     ):
         for row in report[section]:
+            state_id = state_by_source.get((source_kind, row["id"]))
             if source_kind == "artifact":
                 if row.get("runtime_archetype") == row["id"]:
-                    command = "/create {}".format(row["id"])
+                    create_command = "/create {}".format(row["id"])
                 else:
-                    command = "/create {} of {}".format(
+                    create_command = "/create {} of {}".format(
                         row["archetype"], row["id"]
                     )
             else:
-                command = "/create {}".format(runtime_archetype_id(row))
-            state_id = state_by_source.get((source_kind, row["id"]))
+                create_command = "/create {}".format(runtime_archetype_id(row))
+            command = (
+                _active_source_command(create_command)
+                if state_id
+                else _continuous_source_command(source_kind, row)
+            )
+            capture_surface = "window" if state_id else "map"
             plan.append({
                 "number": len(plan) + 1,
                 "map": map_path,
@@ -148,10 +223,13 @@ def source_capture_plan(
                 "source_id": row["id"],
                 "source_semantic_sha256": row["semantic_sha256"],
                 "runtime_command": command,
+                "review_control_id": (
+                    toggle_control_id if state_id else map_control_id
+                ),
+                "capture_surface": capture_surface,
                 **(
                     {
                         "active_state_id": state_id,
-                        "review_control_id": control_id,
                     }
                     if state_id else {}
                 ),
@@ -174,15 +252,15 @@ def source_capture_plan(
         if source is None or source["id"] not in map_emitters:
             raise ValueError("toggle state has no reproducible source")
         emitter = map_emitters[source["id"]]
-        command = "/create {} last_sp {}".format(
+        create_command = "/create {} last_sp {}".format(
             emitter["activation_archetype"], state["radius"]
         )
         if state["color"] is not None:
-            command += " light_color {}".format(state["color"])
+            create_command += " light_color {}".format(state["color"])
         if emitter.get("face"):
-            command += " face {}".format(emitter["face"])
+            create_command += " face {}".format(emitter["face"])
         if emitter.get("animation"):
-            command += " animation {}".format(emitter["animation"])
+            create_command += " animation {}".format(emitter["animation"])
         plan.append({
             "number": len(plan) + 1,
             "map": map_path,
@@ -190,10 +268,72 @@ def source_capture_plan(
             "x": x,
             "y": y,
             "active_state_id": state["id"],
-            "review_control_id": control_id,
-            "runtime_command": command,
+            "review_control_id": toggle_control_id,
+            "capture_surface": "window",
+            "runtime_command": _active_source_command(create_command),
         })
+    plan.append({
+        "number": len(plan) + 1,
+        "map": map_path,
+        "map_source_sha256": map_source_sha256,
+        "x": x,
+        "y": y,
+        "review_control_id": map_control_id,
+        "capture_surface": "map",
+        "runtime_command": (
+            "/tpto {} {} {}; verify no carried emitted light; /screenshot map"
+        ).format(SOURCE_REVIEW_RUNTIME_MAP, x, y),
+    })
     return plan
+
+
+def source_plan_errors(report: dict, rows: list[dict]) -> list[str]:
+    """Return capture/manifest drift from the authoritative source plan."""
+
+    scene = audit.ROOT / SOURCE_REVIEW_MAP
+    if not scene.is_file():
+        return ["source review map is missing: {}".format(SOURCE_REVIEW_MAP)]
+    expected_rows = source_capture_plan(
+        report,
+        SOURCE_REVIEW_MAP,
+        hashlib.sha256(scene.read_bytes()).hexdigest(),
+        SOURCE_REVIEW_X,
+        SOURCE_REVIEW_Y,
+    )
+
+    def key(row: dict):
+        if row.get("source_kind") is not None or row.get("source_id") is not None:
+            return ("source", row.get("source_kind"), row.get("source_id"))
+        if row.get("active_state_id") is not None:
+            return ("active", row.get("active_state_id"))
+        if row.get("review_control_id") is not None:
+            return ("control", row.get("review_control_id"))
+        return None
+
+    expected = {key(row): row for row in expected_rows}
+    actual: dict[tuple, dict] = {}
+    errors = []
+    for row in rows:
+        identifier = key(row)
+        if identifier is None:
+            continue
+        if identifier in actual:
+            errors.append("duplicate source-plan row: {}".format(identifier))
+            continue
+        actual[identifier] = row
+    for identifier in sorted(set(expected) - set(actual), key=str):
+        errors.append("missing source-plan row: {}".format(identifier))
+    for identifier in sorted(set(actual) - set(expected), key=str):
+        errors.append("stale source-plan row: {}".format(identifier))
+    for identifier in sorted(set(expected) & set(actual), key=str):
+        wanted = expected[identifier]
+        found = actual[identifier]
+        for field in SOURCE_PLAN_FIELDS:
+            if found.get(field) != wanted.get(field):
+                errors.append(
+                    "source-plan row {} has stale {}".format(identifier, field)
+                )
+    return errors
 
 
 def _png_chunks(data: bytes):
@@ -419,13 +559,17 @@ def build_evidence(args) -> dict:
         "smooth": _load_captures(args.smooth_manifest, "smooth"),
         "discrete": _load_captures(args.discrete_manifest, "discrete"),
     }
+    plan_errors = source_plan_errors(
+        report, [row for rows in modes.values() for row in rows]
+    )
+    if plan_errors:
+        raise ValueError(plan_errors[0])
     sheet_count = sum(
         (len(rows) + SHEET_CAPACITY - 1) // SHEET_CAPACITY
         for rows in modes.values()
     )
     bound_sources: set[tuple[str, str]] = set()
     controls: dict[str, dict] = {}
-    active_rows = []
     for mode, rows in modes.items():
         for row in rows:
             map_row = map_rows.get(row["map"])
@@ -451,27 +595,29 @@ def build_evidence(args) -> dict:
             actual_sha256 = hashlib.sha256(row["_path"].read_bytes()).hexdigest()
             if row.get("sha256") != actual_sha256:
                 raise ValueError("capture digest changed: {}".format(row["_path"]))
-            state_id = row.get("active_state_id")
-            if state_id is not None and state_id not in toggle_states:
-                raise ValueError("capture references stale toggle state: {}".format(state_id))
-            if state_id is not None and not isinstance(row.get("runtime_command"), str):
-                raise ValueError("active-state capture needs its exact runtime command")
-            if state_id is not None:
-                active_rows.append(row)
-            control_id = row.get("review_control_id")
-            if control_id is not None:
-                if not isinstance(control_id, str) or len(control_id.strip()) < 6:
-                    raise ValueError("capture has an invalid review control id")
-                if state_id is None:
-                    if control_id in controls:
-                        raise ValueError("duplicate review control: {}".format(control_id))
-                    controls[control_id] = row
             source_fields = (
                 "source_kind",
                 "source_id",
                 "source_semantic_sha256",
             )
             has_source_binding = any(row.get(field) is not None for field in source_fields)
+            state_id = row.get("active_state_id")
+            if state_id is not None and state_id not in toggle_states:
+                raise ValueError("capture references stale toggle state: {}".format(state_id))
+            if state_id is not None and mode != "smooth":
+                raise ValueError("active-state capture must use smooth lighting")
+            if state_id is not None and not isinstance(row.get("runtime_command"), str):
+                raise ValueError("active-state capture needs its exact runtime command")
+            control_id = row.get("review_control_id")
+            if control_id is not None:
+                if not isinstance(control_id, str) or len(control_id.strip()) < 6:
+                    raise ValueError("capture has an invalid review control id")
+                if state_id is None and not has_source_binding:
+                    if mode != "smooth":
+                        raise ValueError("source control must use smooth lighting")
+                    if control_id in controls:
+                        raise ValueError("duplicate review control: {}".format(control_id))
+                    controls[control_id] = row
             if has_source_binding:
                 if mode != "smooth":
                     raise ValueError("source-bound capture must use smooth lighting")
@@ -505,30 +651,38 @@ def build_evidence(args) -> dict:
             "{} {} needs a smooth runtime capture".format(source_kind, source_id)
         )
     active_digests = {}
-    for row in active_rows:
+    pool_rows = [
+        row
+        for rows in modes.values()
+        for row in rows
+        if row.get("source_kind") is not None or row.get("active_state_id") is not None
+    ]
+    for row in pool_rows:
         control = controls.get(row.get("review_control_id"))
         if (
             control is None
             or control["map"] != row["map"]
             or control["x"] != row["x"]
             or control["y"] != row["y"]
+            or control.get("capture_surface") != row.get("capture_surface")
         ):
-            raise ValueError("active-state capture needs a matching review control")
-        state = toggle_states[row["active_state_id"]]
-        render_semantics = audit._toggle_render_semantics(state)
-        previous_state, previous_semantics = active_digests.setdefault(
-            row["sha256"], (row["active_state_id"], render_semantics)
-        )
-        if previous_semantics != render_semantics:
-            raise ValueError("renderer-distinct active states reuse one capture")
+            raise ValueError("source capture needs a matching review control")
+        if row.get("active_state_id") is not None:
+            state = toggle_states[row["active_state_id"]]
+            render_semantics = audit._toggle_render_semantics(state)
+            previous_state, previous_semantics = active_digests.setdefault(
+                row["sha256"], (row["active_state_id"], render_semantics)
+            )
+            if previous_semantics != render_semantics:
+                raise ValueError("renderer-distinct active states reuse one capture")
         width, height, active_pixels = read_png(row["_path"])
         control_width, control_height, control_pixels = read_png(control["_path"])
         if (width, height) != (control_width, control_height):
-            raise ValueError("active-state capture and control dimensions differ")
+            raise ValueError("source capture and control dimensions differ")
         if not audit._has_visible_light_pool(
             active_pixels, control_pixels, width, height
         ):
-            raise ValueError("active-state capture lacks a visible light pool")
+            raise ValueError("source capture lacks a visible light pool")
     if args.dry_run:
         return {
             "captures": {mode: len(rows) for mode, rows in modes.items()},
@@ -565,6 +719,8 @@ def build_evidence(args) -> dict:
                                 "source_semantic_sha256"
                             ],
                         })
+                    if row.get("capture_surface") is not None:
+                        optional["capture_surface"] = row["capture_surface"]
                     if optional:
                         optional["runtime_command"] = row["runtime_command"]
                     map_binding = (
@@ -613,13 +769,17 @@ def build_evidence(args) -> dict:
             for view in views
             if view.get("review_control_id") is not None
             and view.get("active_state_id") is None
+            and view.get("source_kind") is None
         }
         for view in views:
-            if view.get("active_state_id") is not None:
+            if (
+                view.get("active_state_id") is not None
+                or view.get("source_kind") is not None
+            ):
                 control_id = view.get("review_control_id")
                 if control_id not in control_views:
                     raise ValueError(
-                        "active-state capture needs a matching review control"
+                        "source capture needs a matching review control"
                     )
                 view["control_view"] = control_views[control_id]
         if audit._runtime_content_sha256() != runtime_digest:

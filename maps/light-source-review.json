@@ -1121,6 +1121,10 @@
     "f2a2532e32a058e7e810d7e0c766ac0c9a516019b14ae5c0abf5afc8fa662404": {
       "rationale": "Applied runtime review covers mithril_lamp at active radius 5 with 60d0ff light and its Classic clone-derived mithril_lamp art.",
       "semantic_sha256": "4919424bc119e506e22db8c8ed60d2de9380a7a5d73a0497f4002e11b4e8ecc8"
+    },
+    "ff4808f53872611d84dc81468f582151c7f9efb34153beb0aed4442ba1a40aaf": {
+      "rationale": "Applied runtime review covers the directly registered crystal_light4 artifact clone at active radius 5 with fff0c0 light and its pale crystal animation.",
+      "semantic_sha256": "d3c3c4c813656dfe5ae815aebe15b39db802f059589f10ff4ad63123806b787c"
     }
   },
   "context_checks": {
@@ -1167,7 +1171,8 @@
         "smooth-1214",
         "smooth-1215",
         "smooth-1216",
-        "smooth-1217"
+        "smooth-1217",
+        "smooth-1218"
       ],
       "rationale": "Compared a dark lair and every applied type-74 source/state view against smooth-1113, the clean proof-lab control; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
     },
@@ -4030,7 +4035,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d844aeff0c8e342e38b9ca55f2914c95ceebe6dc54c378ea03cf217cb625b318"
+      "semantic_sha256": "bd5aa09abe78f6c322160aae105caecca2dd57c2b14c5d736b188496567c554f"
     },
     "maps/shattered_islands/world_4_44": {
       "uncolored_disposition": "neutral",

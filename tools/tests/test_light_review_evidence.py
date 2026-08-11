@@ -103,18 +103,48 @@ class LightReviewEvidenceTest(unittest.TestCase):
         }
 
         plan = evidence.source_capture_plan(
-            report, "maps/dark", "4" * 64, 12, 13
+            report,
+            evidence.SOURCE_REVIEW_MAP,
+            "4" * 64,
+            evidence.SOURCE_REVIEW_X,
+            evidence.SOURCE_REVIEW_Y,
         )
 
-        self.assertEqual("toggle-dark-control", plan[0]["review_control_id"])
-        self.assertEqual("/create torch", plan[1]["runtime_command"])
+        self.assertEqual("toggle-full-control", plan[0]["review_control_id"])
+        self.assertEqual("window", plan[0]["capture_surface"])
+        self.assertEqual(
+            "/tpto /light-source-review/dark-lab 9 9; "
+            "verify no carried emitted light; capture full window",
+            plan[0]["runtime_command"],
+        )
+        self.assertEqual(
+            "/create torch name issue65_capture; "
+            "/console \"noinf::obj=activator.FindObject(name='issue65_capture'); "
+            "activator.Apply(obj)",
+            plan[1]["runtime_command"],
+        )
         self.assertEqual("3" * 64, plan[1]["active_state_id"])
+        self.assertEqual("toggle-full-control", plan[1]["review_control_id"])
+        self.assertEqual("window", plan[1]["capture_surface"])
         self.assertEqual("archetype", plan[1]["source_kind"])
         self.assertEqual(
-            "/create shield_high of holy_shield", plan[2]["runtime_command"]
+            "/console \"noinf::obj=activator.map.CreateObject('shield_high',"
+            "activator.x+1,activator.y); obj.Remove(); "
+            "obj.Artificate('holy_shield'); obj.speed=0; "
+            "obj=activator.map.Insert(obj,activator.x+1,activator.y); "
+            "obj.Update()",
+            plan[2]["runtime_command"],
         )
         self.assertNotIn("active_state_id", plan[2])
-        self.assertEqual("/create quest_shield", plan[3]["runtime_command"])
+        self.assertEqual("source-map-control", plan[2]["review_control_id"])
+        self.assertEqual("map", plan[2]["capture_surface"])
+        self.assertEqual(
+            "/console \"noinf::obj=activator.map.CreateObject('quest_shield',"
+            "activator.x+1,activator.y); obj.speed=0; obj.Update()",
+            plan[3]["runtime_command"],
+        )
+        self.assertEqual("source-map-control", plan[-1]["review_control_id"])
+        self.assertEqual("map", plan[-1]["capture_surface"])
 
     def test_source_capture_plan_spawns_multipart_head_for_satellite(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -149,13 +179,65 @@ class LightReviewEvidenceTest(unittest.TestCase):
             evidence.audit.ROOT = root
             try:
                 plan = evidence.source_capture_plan(
-                    report, "maps/dark", "3" * 64, 1, 2
+                    report,
+                    evidence.SOURCE_REVIEW_MAP,
+                    "3" * 64,
+                    evidence.SOURCE_REVIEW_X,
+                    evidence.SOURCE_REVIEW_Y,
                 )
             finally:
                 evidence.audit.ROOT = original_root
 
-        self.assertEqual("/create explosion", plan[1]["runtime_command"])
-        self.assertEqual("/create explosion", plan[2]["runtime_command"])
+        expected = (
+            "/console \"noinf::obj=activator.map.CreateObject('explosion',"
+            "activator.x+1,activator.y); obj.speed=0; obj.Update()"
+        )
+        self.assertEqual(expected, plan[1]["runtime_command"])
+        self.assertEqual(expected, plan[2]["runtime_command"])
+
+    def test_source_plan_rejects_stale_commands_and_coordinates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            scene = root / evidence.SOURCE_REVIEW_MAP
+            scene.parent.mkdir(parents=True)
+            scene.write_text("arch map\nend\n")
+            report = {
+                "archetypes": [{"id": "lamp", "semantic_sha256": "1" * 64}],
+                "artifacts": [],
+                "toggle_states": [],
+                "maps": [],
+            }
+            original_root = evidence.audit.ROOT
+            evidence.audit.ROOT = root
+            try:
+                plan = evidence.source_capture_plan(
+                    report,
+                    evidence.SOURCE_REVIEW_MAP,
+                    hashlib.sha256(scene.read_bytes()).hexdigest(),
+                    evidence.SOURCE_REVIEW_X,
+                    evidence.SOURCE_REVIEW_Y,
+                )
+                self.assertEqual([], evidence.source_plan_errors(report, plan))
+                stale = json.loads(json.dumps(plan))
+                stale[1]["runtime_command"] = "/create lamp"
+                self.assertIn(
+                    "source-plan row ('source', 'archetype', 'lamp') has stale runtime_command",
+                    evidence.source_plan_errors(report, stale),
+                )
+                stale = json.loads(json.dumps(plan))
+                stale[1]["x"] = 8
+                self.assertIn(
+                    "source-plan row ('source', 'archetype', 'lamp') has stale x",
+                    evidence.source_plan_errors(report, stale),
+                )
+                stale = json.loads(json.dumps(plan))
+                stale[1]["capture_surface"] = "window"
+                self.assertIn(
+                    "source-plan row ('source', 'archetype', 'lamp') has stale capture_surface",
+                    evidence.source_plan_errors(report, stale),
+                )
+            finally:
+                evidence.audit.ROOT = original_root
 
     def test_png_round_trip_is_deterministic(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -180,6 +262,18 @@ class LightReviewEvidenceTest(unittest.TestCase):
             screenshot = captures / "scene.png"
             evidence.write_png(screenshot, 1024, 768, bytes(1024 * 768 * 3))
             digest = hashlib.sha256(screenshot.read_bytes()).hexdigest()
+            light_pixels = bytearray(1024 * 768 * 3)
+            center = ((768 // 3) * 1024 + 1024 // 2) * 3
+            light_pixels[center:center + 600] = bytes([12] * 600)
+            lamp_capture = captures / "lamp.png"
+            artifact_capture = captures / "artifact.png"
+            evidence.write_png(lamp_capture, 1024, 768, bytes(light_pixels))
+            light_pixels[center:center + 600] = bytes([18] * 600)
+            evidence.write_png(artifact_capture, 1024, 768, bytes(light_pixels))
+            window_control = captures / "window-control.png"
+            window_pixels = bytearray(1024 * 768 * 3)
+            window_pixels[:3] = b"\x01\x01\x01"
+            evidence.write_png(window_control, 1024, 768, bytes(window_pixels))
             semantic = "a" * 64
             lamp_semantic = "c" * 64
             artifact_semantic = "d" * 64
@@ -195,6 +289,8 @@ class LightReviewEvidenceTest(unittest.TestCase):
                 "archetypes": [{"id": "lamp", "semantic_sha256": lamp_semantic}],
                 "artifacts": [{
                     "id": "glowing_reward",
+                    "archetype": "shield",
+                    "runtime_archetype": "shield",
                     "semantic_sha256": artifact_semantic,
                 }],
                 "color_sources": [],
@@ -202,7 +298,12 @@ class LightReviewEvidenceTest(unittest.TestCase):
                 "maps": [{
                     "path": "maps/scene",
                     "semantic_sha256": semantic,
-                    "emitters": [{"x": 1, "y": 2, "visible": True}],
+                    "emitters": [{
+                        "id": "maps/scene:2",
+                        "x": 1,
+                        "y": 2,
+                        "visible": True,
+                    }],
                 }],
             }
             inventory_path = root / "inventory.json"
@@ -211,6 +312,9 @@ class LightReviewEvidenceTest(unittest.TestCase):
             context_path.write_text(json.dumps({"content_commit": commit}))
             representatives_path = root / "representatives.json"
             representatives_path.write_text("{}")
+            review_scene = root / evidence.SOURCE_REVIEW_MAP
+            review_scene.parent.mkdir(parents=True)
+            review_scene.write_text("arch map\nend\n")
             ordinary = {
                 "artifact": "scene.png",
                 "map": "maps/scene",
@@ -220,23 +324,29 @@ class LightReviewEvidenceTest(unittest.TestCase):
                 "x": 1,
                 "y": 2,
             }
-            rows = [
-                ordinary,
-                {
-                    **ordinary,
-                    "source_kind": "archetype",
-                    "source_id": "lamp",
-                    "source_semantic_sha256": lamp_semantic,
-                    "runtime_command": "/spawn lamp; /screenshot map",
-                },
-                {
-                    **ordinary,
-                    "source_kind": "artifact",
-                    "source_id": "glowing_reward",
-                    "source_semantic_sha256": artifact_semantic,
-                    "runtime_command": "/spawn artifact glowing_reward; /screenshot map",
-                },
-            ]
+            source_plan = evidence.source_capture_plan(
+                inventory,
+                evidence.SOURCE_REVIEW_MAP,
+                hashlib.sha256(review_scene.read_bytes()).hexdigest(),
+                evidence.SOURCE_REVIEW_X,
+                evidence.SOURCE_REVIEW_Y,
+            )
+            source_artifacts = (
+                "window-control.png",
+                "lamp.png",
+                "artifact.png",
+                "scene.png",
+            )
+            source_rows = []
+            for planned, artifact_name in zip(source_plan, source_artifacts):
+                artifact_path = captures / artifact_name
+                source_rows.append({
+                    **{key: value for key, value in planned.items() if key != "number"},
+                    "artifact": artifact_name,
+                    "content_commit": commit,
+                    "sha256": hashlib.sha256(artifact_path.read_bytes()).hexdigest(),
+                })
+            rows = [ordinary, *source_rows]
             smooth = captures / "smooth.json"
             discrete = captures / "discrete.json"
             smooth.write_text(json.dumps(rows))
@@ -280,11 +390,11 @@ class LightReviewEvidenceTest(unittest.TestCase):
                 runtime_digest, manifest["render_context"]["runtime_content_sha256"]
             )
             self.assertEqual(
-                ["smooth-0002"],
+                ["smooth-0003"],
                 manifest["source_states"]["archetype:lamp"]["views"],
             )
             self.assertEqual(
-                ["smooth-0003"],
+                ["smooth-0004"],
                 manifest["source_states"]["artifact:glowing_reward"]["views"],
             )
             self.assertNotIn("source_kind", manifest["views"][0])
@@ -293,14 +403,40 @@ class LightReviewEvidenceTest(unittest.TestCase):
             self.assertEqual(1020, manifest["sheets"]["smooth-001"]["pixel_width"])
             self.assertEqual(765, manifest["sheets"]["smooth-001"]["pixel_height"])
 
-            smooth.write_text(json.dumps([ordinary]))
+            original_lamp = lamp_capture.read_bytes()
+            lamp_capture.write_bytes(screenshot.read_bytes())
+            source_rows[1]["sha256"] = hashlib.sha256(
+                lamp_capture.read_bytes()
+            ).hexdigest()
+            smooth.write_text(json.dumps(rows))
             args.dry_run = True
             evidence.audit.ROOT = root
             evidence.audit.ARCH_ROOT = root / "arch"
             evidence.audit.MAP_ROOT = root / "maps"
             try:
                 with self.assertRaisesRegex(
-                    ValueError, "archetype lamp needs a smooth runtime capture"
+                    ValueError, "source capture lacks a visible light pool"
+                ):
+                    evidence.build_evidence(args)
+            finally:
+                (
+                    evidence.audit.ROOT,
+                    evidence.audit.ARCH_ROOT,
+                    evidence.audit.MAP_ROOT,
+                ) = original_roots
+            lamp_capture.write_bytes(original_lamp)
+            source_rows[1]["sha256"] = hashlib.sha256(
+                lamp_capture.read_bytes()
+            ).hexdigest()
+            smooth.write_text(json.dumps(rows))
+
+            smooth.write_text(json.dumps([ordinary]))
+            evidence.audit.ROOT = root
+            evidence.audit.ARCH_ROOT = root / "arch"
+            evidence.audit.MAP_ROOT = root / "maps"
+            try:
+                with self.assertRaisesRegex(
+                    ValueError, "missing source-plan row"
                 ):
                     evidence.build_evidence(args)
             finally:

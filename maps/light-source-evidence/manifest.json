@@ -13,7 +13,7 @@
     "command": "Classic /tpto /PATH X Y and /screenshot map for ordinary maps; stage tools/light-source-review/dark-lab into only the isolated runtime, then type-preserving CreateObject/Map.Insert DM-console placement with speed 0 for continuous source views; /create ... name issue65_capture plus server-side activator.Apply for type-74 states, captured as full 1024x768 client frames so active inventory art and the light pool are both visible",
     "settings": "17x17 look, map zoom 100%, smooth RGB lighting for complete map/source coverage; disabled in Client Settings for paired discrete views; 19x19 darkness-4 review-only lab for source and active-state captures",
     "ordinary_state": "the reviewer emitted no light, carried only the scenario starting objects, and all temporary toggle lights were extinguished, unapplied, destroyed, and reset between source views; a linked-map viewport can render the same reviewer representation more than once without adding a server-side emitter",
-    "inventory_sha256": "4b7287f2377b4a2433c3595825529fd74ddf92df4ad9cdf8ef949d30920e6605",
+    "inventory_sha256": "df63d94fec60af1ec27bc0197c910c8965310275037f400cc3a9150842e5c555",
     "runtime_content_sha256": "dddd2fe5bfb32d4c37d0d9b171c27c257e8b41d5a7d283b92f77797bdc3c8f25"
   },
   "sheets": {
@@ -451,7 +451,7 @@
     },
     "smooth-049": {
       "artifact": "maps/light-source-evidence/smooth-049.png",
-      "sha256": "346d845d3921addbd632b630f99ddd558a4c70700aec8e584d67fb9c18abf5d7",
+      "sha256": "a4496bade9d4c0387bef975537eaa4c66295583643c9138148f1ca6f2fdcb58f",
       "columns": 5,
       "rows": 5,
       "pixel_width": 1020,
@@ -8812,7 +8812,7 @@
     {
       "id": "smooth-0696",
       "map": "maps/shattered_islands/world_4_43",
-      "map_semantic_sha256": "d844aeff0c8e342e38b9ca55f2914c95ceebe6dc54c378ea03cf217cb625b318",
+      "map_semantic_sha256": "bd5aa09abe78f6c322160aae105caecca2dd57c2b14c5d736b188496567c554f",
       "x": 17,
       "y": 2,
       "sheet": "smooth-028",
@@ -8824,7 +8824,7 @@
     {
       "id": "smooth-0697",
       "map": "maps/shattered_islands/world_4_43",
-      "map_semantic_sha256": "d844aeff0c8e342e38b9ca55f2914c95ceebe6dc54c378ea03cf217cb625b318",
+      "map_semantic_sha256": "bd5aa09abe78f6c322160aae105caecca2dd57c2b14c5d736b188496567c554f",
       "x": 0,
       "y": 6,
       "sheet": "smooth-028",
@@ -8836,7 +8836,7 @@
     {
       "id": "smooth-0698",
       "map": "maps/shattered_islands/world_4_43",
-      "map_semantic_sha256": "d844aeff0c8e342e38b9ca55f2914c95ceebe6dc54c378ea03cf217cb625b318",
+      "map_semantic_sha256": "bd5aa09abe78f6c322160aae105caecca2dd57c2b14c5d736b188496567c554f",
       "x": 0,
       "y": 16,
       "sheet": "smooth-028",
@@ -13824,8 +13824,9 @@
       "mode": "smooth",
       "capture_sha256": "0d844aabb671ab3cb6148a310841bcfbff3ed9629d6a6c25fb2358d725c68886",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
-      "review_control_id": "toggle-dark-control",
-      "runtime_command": "/tpto /light-source-review/dark-lab 9 9; verify no carried emitted light"
+      "review_control_id": "toggle-full-control",
+      "capture_surface": "window",
+      "runtime_command": "/tpto /light-source-review/dark-lab 9 9; verify no carried emitted light; capture full window"
     },
     {
       "id": "smooth-1114",
@@ -13838,10 +13839,13 @@
       "mode": "smooth",
       "capture_sha256": "b3277770ae5141ea99eb4a552243bf0804d4bfcd384dd3e05fbcbf995000cc75",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "burnout",
       "source_semantic_sha256": "6114f75f99994ac7ea471b5e29d48a7856ee64e88588094004a9a9349df29294",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('burnout',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('burnout',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1115",
@@ -13854,10 +13858,13 @@
       "mode": "smooth",
       "capture_sha256": "889955c4e3d53771e9bb2a63cce85a78197104d81794275192d4dcee2822b8b0",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "campfire",
       "source_semantic_sha256": "f888e23aeff80b2e68068e66d629ad184b3f1ac5ce377d81034fed62d08c6501",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('campfire',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('campfire',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1116",
@@ -13870,10 +13877,13 @@
       "mode": "smooth",
       "capture_sha256": "efea719af95e0af572f6536324dc94dc53df8f8b32fe261ef6c88d24101d0b42",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "crystal_rune",
       "source_semantic_sha256": "7b2b8477e404b5b5905598859f29037667328c5be151db03f50a00d0e3624679",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('crystal_rune',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('crystal_rune',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1117",
@@ -13886,10 +13896,13 @@
       "mode": "smooth",
       "capture_sha256": "98d90f94eb3dc6ae84df28103ce868464b09a8cf2e943608cc8578d680f09914",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "demilich",
       "source_semantic_sha256": "8af6f5142756daf198fd8b867c4c4ef422342d82e162a6e3ad356d21ac64f5bb",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('demilich',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('demilich',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1118",
@@ -13902,10 +13915,13 @@
       "mode": "smooth",
       "capture_sha256": "2fe90369618b9a1dad45edd59300d4ed2c6eafe45816e5abd8e2d84a6133d0b8",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "effect_explosion",
       "source_semantic_sha256": "75d9184e716bc2e0b45df9effd56335f3e5441d79d1c85ee80b5d5cee3b32ff6",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1119",
@@ -13918,10 +13934,13 @@
       "mode": "smooth",
       "capture_sha256": "2fe90369618b9a1dad45edd59300d4ed2c6eafe45816e5abd8e2d84a6133d0b8",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "effect_explosion_a",
       "source_semantic_sha256": "763ff65e2248301d34a91cdc3f2e1f471db17427f24b47803be572d799cdc3fe",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1120",
@@ -13934,10 +13953,13 @@
       "mode": "smooth",
       "capture_sha256": "6b2a391f9f884f0512b664dc95fbc12a8340aa0e4c793971c3a88812e4d6a007",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "effect_explosion_b",
       "source_semantic_sha256": "94be26331c84c2bb9c14a146abc1bee1c0708612a0bb63f8c73512612a34c559",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1121",
@@ -13950,10 +13972,13 @@
       "mode": "smooth",
       "capture_sha256": "6b2a391f9f884f0512b664dc95fbc12a8340aa0e4c793971c3a88812e4d6a007",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "effect_explosion_c",
       "source_semantic_sha256": "342ea78a03144576d45dc85a2f683c6f2b415e931db3b90fa1e6fb717247bb44",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('effect_explosion',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1122",
@@ -13966,10 +13991,13 @@
       "mode": "smooth",
       "capture_sha256": "ae0a2b8efa6915a90b3be118c2d59a64a0a5c45d8a3eef254a3984fc47eb4d5e",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "enriched_uranium_pile",
       "source_semantic_sha256": "210d858b22042b5e9daf4b1995a6a4a4664a228b9cc99d49e50376ff5d33f800",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('enriched_uranium_pile',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('enriched_uranium_pile',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1123",
@@ -13982,10 +14010,13 @@
       "mode": "smooth",
       "capture_sha256": "e8b31c6c271e66c070803460d166c09541f166e193cf0bf69d56c7bdffc8ca8a",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "firebolt",
       "source_semantic_sha256": "1c09fb20b0ea8b5e0049864ccfb6d59171999fb3857f6232969c47def6efdeef",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('firebolt',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('firebolt',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1124",
@@ -13998,10 +14029,13 @@
       "mode": "smooth",
       "capture_sha256": "a2d57e2cae582aade9c16d81934adce3cc95c2cf7d0fe3758c5ccb80912060f8",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "firebreath",
       "source_semantic_sha256": "8a4628610a16036961458c1b7607aae3dfb4a47725e9c5bb9d8902e0fee33955",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('firebreath',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('firebreath',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1125",
@@ -14014,10 +14048,13 @@
       "mode": "smooth",
       "capture_sha256": "821a3ec5254be615573ada3bd81856e1156567f41bfe543df12b31df491c4855",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fireflies",
       "source_semantic_sha256": "686541307db645c759dafd4b72fa26412f4ad2237f984dbfdb22d0e3f8ee882e",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fireflies',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fireflies',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1126",
@@ -14030,10 +14067,13 @@
       "mode": "smooth",
       "capture_sha256": "02be6b1659497bbffb3b9cad805f663cc77e5f02af6b7636f9f214f135a44779",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "floor_lava2_1",
       "source_semantic_sha256": "f946980ece30adaade01628898d49be3e68aeba02459ef4453cf03666f323ea7",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1127",
@@ -14046,10 +14086,13 @@
       "mode": "smooth",
       "capture_sha256": "3bfc86c28b8422bd96f81d65801978754fe0a9a167f7996f9fcb5de9259f0de0",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "floor_lava2_2",
       "source_semantic_sha256": "8e1b49bda0051ae57cd8167883aa6c20a3897f66623f768e0f69a2f7d3a2a813",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_2',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_2',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1128",
@@ -14062,10 +14105,13 @@
       "mode": "smooth",
       "capture_sha256": "9f87e81e94a3c5583c0a010dcfe23920ac823e8d6a72683384c1feaf98de73ca",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "floor_lava2_3",
       "source_semantic_sha256": "a2f12cf3f6a450b48f3763b36ffc8354f322dd5af8fdcfd1906f514eb679d7bc",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1129",
@@ -14078,10 +14124,13 @@
       "mode": "smooth",
       "capture_sha256": "687d2b3f3188bfb3236cdd01317f1de1763bc596af73454c41bdabc03420ffc4",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "floor_lava2_4",
       "source_semantic_sha256": "366b164af8a974e757814256b4ff7b1cc77da43646215475fa39a4413200065e",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('floor_lava2_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1130",
@@ -14094,10 +14143,13 @@
       "mode": "smooth",
       "capture_sha256": "bce7337ba98c93fbb412b7dd35818a7495fa42dbd20eca8b005fb39613f46825",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_blue_0",
       "source_semantic_sha256": "90dc72a69b5d97d1a4bf2ca4394503ca309f89a69a76326546b65236271badb4",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1131",
@@ -14110,10 +14162,13 @@
       "mode": "smooth",
       "capture_sha256": "91bd732c667be708ebcdff9a22d206966709da8745e42e292e74d2fb415e4ee2",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_blue_1",
       "source_semantic_sha256": "4ddf6f2b70b915ee43d8cc6e4a0b1dc79f203ac067d2a315186d54d55fcd2cef",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1132",
@@ -14126,10 +14181,13 @@
       "mode": "smooth",
       "capture_sha256": "e09d5a59dc4b088fc362cc217de61a1b9fd5dda31814cba30c7b47381d022f5c",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_blue_3",
       "source_semantic_sha256": "8ca320e2fd725f54d572f24d0d6b83e013b9af159430f900a5da6d6f888deaa1",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1133",
@@ -14142,10 +14200,13 @@
       "mode": "smooth",
       "capture_sha256": "ae40350179fb93dc93bf76d7527a75535f5ca4dc382d7abc2488f056d175bb35",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_blue_4",
       "source_semantic_sha256": "74e6bd00993a72ca8b8342a15a9f5663409b46cd1bed651f99ffe098f521a2e3",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1134",
@@ -14158,10 +14219,13 @@
       "mode": "smooth",
       "capture_sha256": "ebd7c3193ab27cd1f6fa28dc56e220b7c370816f399f41118d1d2bf1f6ced593",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_blue_8",
       "source_semantic_sha256": "6a7ba1d6aafe4e43bd205699f20dc16733efaf23207ed0ae494104d9e77b6c4d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_blue_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1135",
@@ -14174,10 +14238,13 @@
       "mode": "smooth",
       "capture_sha256": "65f775c247b62c0065a3754a653e6fbc6bee9516fa6a2ebc16874aba4f6c89fe",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_green_0",
       "source_semantic_sha256": "7f552ab92144998b6b28238905e1aec3314785ce27fb52484f667a890dd55393",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1136",
@@ -14190,10 +14257,13 @@
       "mode": "smooth",
       "capture_sha256": "8b5108950afc1d1fbac082642df3c39b6e918d8a387572bf9581c11862bb2107",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_green_1",
       "source_semantic_sha256": "cf03b792b73169821aaa140a39ef7a6b137a63d3cf79387fe3c397013f5c59ae",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1137",
@@ -14206,10 +14276,13 @@
       "mode": "smooth",
       "capture_sha256": "ab970335d56698e8df83ab632df9283cd46089f0f1af09c49770a5a5c0edaa19",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_green_3",
       "source_semantic_sha256": "1c03296b1df347311a9bc881baa27bf8cb52b6f95f3a4e73ed577fea64833fed",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1138",
@@ -14222,10 +14295,13 @@
       "mode": "smooth",
       "capture_sha256": "85a74b502be7ec4eab22dc765b0bea59ca740668fd42b1670c515ce004e9b853",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_green_4",
       "source_semantic_sha256": "186729c030298b1345b2cbdfa2b6522c3db9cb397949c25c909f49f8b9b4b21f",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1139",
@@ -14238,10 +14314,13 @@
       "mode": "smooth",
       "capture_sha256": "9ff13c6ac56404479761380a612f8b2fcfb9de42a30493ace6f7207bd731ccd9",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_green_8",
       "source_semantic_sha256": "0b8ad835a2d33f1e5577ccc5d7509130e7e45c1761d4e011418e3196c6b6b78d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_green_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1140",
@@ -14254,10 +14333,13 @@
       "mode": "smooth",
       "capture_sha256": "24ee82fd8f3b906ad921b98eada76f10b7215c4924fe0547eca4b5c68d856397",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_orange_0",
       "source_semantic_sha256": "28a4695fb36edc6cfa062c43f50bf5137870f0d0b6d7c6382ff99a35f19d55f6",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1141",
@@ -14270,10 +14352,13 @@
       "mode": "smooth",
       "capture_sha256": "2e0b00b3ce30498fa703dc75503a3cd9f2676cf23af7164a752e9d55851c5ad7",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_orange_1",
       "source_semantic_sha256": "5d16fac0f05d4e3630e7d36058694a5ff80254e814263abd8598e71a1ab27312",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1142",
@@ -14286,10 +14371,13 @@
       "mode": "smooth",
       "capture_sha256": "eaf5498eec86169dc1849eb5c87d529161b7c548ab18e8863c6403a86847d26c",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_orange_3",
       "source_semantic_sha256": "da850dbd50916d7dda2eacd0d42f9513ba5072a5cc1e1e0d4fd7560f04b073ac",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1143",
@@ -14302,10 +14390,13 @@
       "mode": "smooth",
       "capture_sha256": "7b2225c384684cc22da892d7d02202efac3711c512a50c6e2ecd4b739a8c8291",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_orange_4",
       "source_semantic_sha256": "c5e71718d98523c9ef061460109bbb7c9974cf134cefbb6c284d8ecafe5c4ba6",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1144",
@@ -14318,10 +14409,13 @@
       "mode": "smooth",
       "capture_sha256": "c455eaddbee524df6bc0510d86318e12086994409ab1a493afcef822775ae55e",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_orange_8",
       "source_semantic_sha256": "dbcf1490f303ec8c46ec517365c15caccd7d03e41894c3ee7badfb00176fb718",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_orange_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1145",
@@ -14334,10 +14428,13 @@
       "mode": "smooth",
       "capture_sha256": "dddb3a62310e6ed43f4c41524d88d627e7460462e542d5164f7fc05346cf9f95",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_pink_0",
       "source_semantic_sha256": "06a237899cc2d18cb6ebb4b4fc89ea1064432aa4eef91d8bd428bf396f08c1f5",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1146",
@@ -14350,10 +14447,13 @@
       "mode": "smooth",
       "capture_sha256": "7694413a6220b9cc1a6e2c6bf99bd8ff98290af6473b54576ce59f01cbb30aca",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_pink_1",
       "source_semantic_sha256": "8ad7522a940dd98d236e72e52a7d3bd5b377fecb18112d9e2776afde697c09d7",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1147",
@@ -14366,10 +14466,13 @@
       "mode": "smooth",
       "capture_sha256": "31d0b3c9862e4c458399730324bd764344aebe716967a334dc86f90abbac56b0",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_pink_3",
       "source_semantic_sha256": "91ed6b9f6a96834cb6db7636fa4284f35b4d61baf31b80eb4e696936d9306eb7",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1148",
@@ -14382,10 +14485,13 @@
       "mode": "smooth",
       "capture_sha256": "fcf04c0bdc6475aafb7287e55beb4e2c0ef5139bc6cc1f4327293003ca71d1a9",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_pink_4",
       "source_semantic_sha256": "140cd5c9aa0c7d0797af2b961f02322591d00acb71d79cf28acb2700cadbe810",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1149",
@@ -14398,10 +14504,13 @@
       "mode": "smooth",
       "capture_sha256": "d956c40179aba620c3f22607f241a269f1666f95aafe511637342bfeb6a25f65",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_pink_8",
       "source_semantic_sha256": "3e1c69cd503604e0d73d42de3de9800aa8234fb92420f255a5a9d87e2acd686b",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_pink_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1150",
@@ -14414,10 +14523,13 @@
       "mode": "smooth",
       "capture_sha256": "a44f4a3d6312dd15a2cb6af541b821536f56b639ec89b9490231f7abce113d59",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_purple_0",
       "source_semantic_sha256": "b39db5a8f75e5a4b949aa4e8ddf56b34f75516e7cc62a9a2e564bb33b1697384",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1151",
@@ -14430,10 +14542,13 @@
       "mode": "smooth",
       "capture_sha256": "3f70a3bfd7aca6130c73dc148e8bd17239bc5521e93f7ce37f94e342a2380b17",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_purple_1",
       "source_semantic_sha256": "ee238cae331e68df6b10df89bbe08f4e7e6832b6c10fa80aff8138e3e5c3ce5d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1152",
@@ -14446,10 +14561,13 @@
       "mode": "smooth",
       "capture_sha256": "1a64c0fd3be1c2bef59e4cf1894e58b84362315f52bb96a509c17027cedaf97d",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_purple_3",
       "source_semantic_sha256": "541ea4702b268324ce303e7416f172ff7ca78d2ac8e547b576b79b4d775c5144",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1153",
@@ -14462,10 +14580,13 @@
       "mode": "smooth",
       "capture_sha256": "f95dea9e25cb2761fb1637b3eb35b11f713921ce6670b1da21a38c89e5600baa",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_purple_4",
       "source_semantic_sha256": "09b626132ebeb99fb6e28de96123e87b30197447f07f18c916dd09cbfb34cbe1",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1154",
@@ -14478,10 +14599,13 @@
       "mode": "smooth",
       "capture_sha256": "8c35969fe48ecd2ebff2958bd6edee557fe8a884a0af1417c883b1e3dcae7db4",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_purple_8",
       "source_semantic_sha256": "78b54c31b557630ccfe41c7f87da7f7aff1463f20d28852118eea0c11b6641ae",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_purple_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1155",
@@ -14494,10 +14618,13 @@
       "mode": "smooth",
       "capture_sha256": "a961cf18d7b2acc583ead4abf2f77c028104703f89a00d3589047e1e3f7df92c",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_red_0",
       "source_semantic_sha256": "bbc7020ee63c7b9e06b136fbe8b2c81ed2d13f3c569ae51c5b9eeb86f9110738",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1156",
@@ -14510,10 +14637,13 @@
       "mode": "smooth",
       "capture_sha256": "af8963e8b5850804970c9b5b453b5f837b8542634dc367ff6b01026f3abfd7b0",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_red_1",
       "source_semantic_sha256": "c759bea2a2f719f5fd8eb4011b6e280efcb25bdbdeedc733c9dd60c16fe4e411",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1157",
@@ -14526,10 +14656,13 @@
       "mode": "smooth",
       "capture_sha256": "cc81ff51dc2e4bb93b9b01f3518631ce3a44e18ef31b3a6b54e7d6b89158e920",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_red_3",
       "source_semantic_sha256": "aef8a1c26e239fa14ce632450f848f3f6dc7b7d3085eb843c0e6eb8bb1ec3244",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1158",
@@ -14542,10 +14675,13 @@
       "mode": "smooth",
       "capture_sha256": "edcad24e55ead749a424c0f5e7abe6300449f8903a31df0ccb1e2ac114c00177",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_red_4",
       "source_semantic_sha256": "21629e653f468be2d42797e22f654fb645c5e760bf352d01dc8e907348b14865",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1159",
@@ -14558,10 +14694,13 @@
       "mode": "smooth",
       "capture_sha256": "58aed802f0322dd086e479d3ee42d88bb14bf2e3bdb254266822160f910b2f25",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_red_8",
       "source_semantic_sha256": "81edd4a68af9d54c668b4227b9d1d53cf72e53057112c9f12a27dae1d55ee8ae",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_red_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1160",
@@ -14574,10 +14713,13 @@
       "mode": "smooth",
       "capture_sha256": "b3df2440ff9d7c1ff52cd216e52286ac35c30d8dab5b1b437da97e321ab97e60",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_white_0",
       "source_semantic_sha256": "bed07c1fe7aec5fe2359d6f70208088e159bca0293959bce0d39791e124e7d52",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1161",
@@ -14590,10 +14732,13 @@
       "mode": "smooth",
       "capture_sha256": "e6eae630520fdfee297f16d2c348d03c89ce44b3bbcad35cd7d6db3001a04319",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_white_1",
       "source_semantic_sha256": "4c06ebe99dc3d23470f15c38dbd15abe00092d0bb79515a250f0fc088758a65c",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1162",
@@ -14606,10 +14751,13 @@
       "mode": "smooth",
       "capture_sha256": "20002093ba00737da19315ca0ac5919312909d52e22b81d2697e751bdd1beac8",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_white_3",
       "source_semantic_sha256": "9e761f8cceaa543d452eb587b7cd97ca45a3f2cbfcc300edc81d152480dd7732",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1163",
@@ -14622,10 +14770,13 @@
       "mode": "smooth",
       "capture_sha256": "b79dd3a9e8ed911a8314a4fdd6d3a3cab622222ef4c70449bda925c63de5f380",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_white_4",
       "source_semantic_sha256": "c4261140ba4bb81123f0fc225a34c4fc5b920c8844f01a342e26df3e428bf2b2",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1164",
@@ -14638,10 +14789,13 @@
       "mode": "smooth",
       "capture_sha256": "63225ec424c0f77e2b60de2491bd54fdb10717e64e3cc6b12f935c37e27f201d",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_white_8",
       "source_semantic_sha256": "5b419c660c2a0e377ff3f5af0f28c62a0d6cc35cb900bc3fbe2aee064cc719bb",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_white_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1165",
@@ -14654,10 +14808,13 @@
       "mode": "smooth",
       "capture_sha256": "3173a4cd4269bac56f19e58ad593f50b73eaf3f16f799c3cd2b7e82a83cefcd3",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_yellow_0",
       "source_semantic_sha256": "d497255511b240610704d67673fc0df6d6f86518a2beb93698cff613bbafb31c",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_0',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_0',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1166",
@@ -14670,10 +14827,13 @@
       "mode": "smooth",
       "capture_sha256": "cf6814a42cf1d9a28bff3967a2547d3927d8eb3b866bfff61fbded41c3d28f93",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_yellow_1",
       "source_semantic_sha256": "c221f9143cf409a42ed534aa8d78b5969726b335b9583a8951864035d83b7f32",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1167",
@@ -14686,10 +14846,13 @@
       "mode": "smooth",
       "capture_sha256": "db9fe3ecb0be8bac1ee0b7c430f6939826eb4f95548a096141a346812393730d",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_yellow_3",
       "source_semantic_sha256": "88850f9a428d210b65c630ee25e8575b53869872bb19612712516fc0babca018",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1168",
@@ -14702,10 +14865,13 @@
       "mode": "smooth",
       "capture_sha256": "be2b4c744a17b8d3fef36cc2bbc083dfb10d79373b30c12a777478dbb3c64ee3",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_yellow_4",
       "source_semantic_sha256": "e833da0325d2aa430974bc5058465ad36b9f4e785796f441371d3a2acfe7f8f6",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1169",
@@ -14718,10 +14884,13 @@
       "mode": "smooth",
       "capture_sha256": "8f7a9ca5b2e6dbf5dab03764b13fd24e4d1c2aa09301dd14d5a3a8a2014e3ceb",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forcefield_yellow_8",
       "source_semantic_sha256": "8af13166a170dfc89ef9a7df903437b930c26e6520c972c45e165f7c323b70ec",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forcefield_yellow_8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1170",
@@ -14734,10 +14903,13 @@
       "mode": "smooth",
       "capture_sha256": "ae0e7939e9f82959dbe84c2179dfa81f8607abaca2a44e05432d15efab14e7ae",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "forked_lightning",
       "source_semantic_sha256": "ac64e3d2e9b640b1a18012ca2831d0938b84e40633a63a1e97977b86dfee1d0d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forked_lightning',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('forked_lightning',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1171",
@@ -14750,10 +14922,13 @@
       "mode": "smooth",
       "capture_sha256": "40cde0d1daf7262c1adc24fdb50a10ccb9b58493d62df9005a590a44b13b2d0f",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "frostbolt",
       "source_semantic_sha256": "bafdfa79a46fdde6a5d1dc15340ae69183378bef9d632d5f085f282d66a8f567",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('frostbolt',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('frostbolt',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1172",
@@ -14766,10 +14941,13 @@
       "mode": "smooth",
       "capture_sha256": "83d413f6303d3519facecd9b6dcc74b428615ad43031a8c1d292f726ece619a3",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1a",
       "source_semantic_sha256": "8652726ad884f486940c51fb8dbc53546d62e2b4e6be521fd7e5db616618a0c7",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1a',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1a',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1173",
@@ -14782,10 +14960,13 @@
       "mode": "smooth",
       "capture_sha256": "d283d4ba16ec17709d36244105024526d980eb122ae6d7b5015e6401af85235b",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1b",
       "source_semantic_sha256": "9a3988aae986de7c0800d7fa12df6e515cc82119c57bc29a0c72409ae830af64",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1b',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1b',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1174",
@@ -14798,10 +14979,13 @@
       "mode": "smooth",
       "capture_sha256": "bb497669e391edd79a23afd067faf0c3683fb4c384cbfcd2bd9dd8842b8e2a96",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1c",
       "source_semantic_sha256": "42261420b47f2faf1e25f2c13b13be66475d66767cdb8247b3fc45880157e25e",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1c',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1c',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1175",
@@ -14814,10 +14998,13 @@
       "mode": "smooth",
       "capture_sha256": "d5498c75d99a134f07f2c8b909a8c8d145d9838c1169b53ee535ec89499fa57e",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1d",
       "source_semantic_sha256": "8d94f9090455353d260520e6226b701c0ddb8b37e10eb3afdc1d1a7edb6b3858",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1d',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1d',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1176",
@@ -14830,10 +15017,13 @@
       "mode": "smooth",
       "capture_sha256": "c77dfacce3d86fea6b77e7c8e5f88bfd33db81ea76d5443126bf283e2444c8f6",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1e",
       "source_semantic_sha256": "3e994bfddc712ed733ba1e4f5a8a4d94d855c7a59a4c05e93764bcea2bd438cd",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1e',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1e',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1177",
@@ -14846,10 +15036,13 @@
       "mode": "smooth",
       "capture_sha256": "3462e8c0ab64c2952ecfff33ab7f434dfd2209245a4d026ab97f72f5857c24c6",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1f",
       "source_semantic_sha256": "433174b5b8635ff6a492d76f1a272cf226aa8f315e8dcedc09284c224770488e",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1f',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1f',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1178",
@@ -14862,10 +15055,13 @@
       "mode": "smooth",
       "capture_sha256": "a2b6bd844f35235ac68c8549dfd8f546f9d3c4410d531db2cc54e4ab72ba902b",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1g",
       "source_semantic_sha256": "0d4c0de56cb03b27f54731b78bdb1c7d1b77511b772b83d02d328a41a63f380c",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1g',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1g',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1179",
@@ -14878,10 +15074,13 @@
       "mode": "smooth",
       "capture_sha256": "e7df6740dac876b56a3adde2191fe89350749c72d1e9a923dd46b961e283235c",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "fwall_lava1h",
       "source_semantic_sha256": "71233180b6c519a2b76910f9823b2b049cae68666af8c7431c336fd34ea23c43",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1h',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('fwall_lava1h',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1180",
@@ -14895,10 +15094,11 @@
       "capture_sha256": "7f1396a0751ede7d95db005c5b4679d0d6587049b8653d1d5611d99f74f1c3f7",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "68cda6f9640dc0016ffbc2ef90394508aae5b2ca44a4603b93091b5cbaa4a926",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "grave_fire.101",
       "source_semantic_sha256": "2544db8d47450a2fa75f07daa688013d0cce29cd7044be792267349033dc7112",
+      "capture_surface": "window",
       "runtime_command": "/create grave_fire.101 name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -14913,10 +15113,13 @@
       "mode": "smooth",
       "capture_sha256": "83891f64d292305d6355e252921859e0f6661dc8589553150fb766b30f86d779",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "holyword",
       "source_semantic_sha256": "2e01ea91356756f2f80e2ae16eef68f5cc63486cf60558ea33ab2b7c0a26ba5a",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('holyword',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('holyword',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1182",
@@ -14929,10 +15132,13 @@
       "mode": "smooth",
       "capture_sha256": "fea83e066be20af115c6218bfb3b4eb29c316c3c0781a350e8e1d592bb13820f",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "icestorm",
       "source_semantic_sha256": "17e536f9a12b0546a0ebc68b755feb1828ca895be61727eacfef655e634f3b55",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('icestorm',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('icestorm',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1183",
@@ -14946,10 +15152,11 @@
       "capture_sha256": "491571d54727d596eda4804d4603dfd85bc1eeb2419623b05f24025bc368fdc2",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "e8e6324b96ec0ed934a9807cb5beb5c995f665dc09f0f12aae0744191c861349",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "jackolantern",
       "source_semantic_sha256": "4268690b725c72e5df94f31a6a405323d9b57b2d9b843deb138d250420f6877a",
+      "capture_surface": "window",
       "runtime_command": "/create jackolantern name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -14965,10 +15172,11 @@
       "capture_sha256": "108960715d8773eff3568f7fe952af05b7445c4d1037ad726cb4101b055a0604",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "d4a8b47cfd0bdfa350827fbf3ce1c6e7d7e0b73113da3b0c70443953e9ecedba",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "lamp",
       "source_semantic_sha256": "727156a96303dd2cca5ee60ea8731b115ac04273db2c489e90daf61528467ddf",
+      "capture_surface": "window",
       "runtime_command": "/create lamp name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -14983,10 +15191,13 @@
       "mode": "smooth",
       "capture_sha256": "5f02c6b74f282edfc64649054038c9af6376753f2f7b68ac734f3ce3f01cbd34",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "lamp_wall",
       "source_semantic_sha256": "ccf76bfaaeda98c2ce2f622a6eb69aa2649db17f3a02210e732a686ccf6d0dd0",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lamp_wall',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lamp_wall',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1186",
@@ -15000,10 +15211,11 @@
       "capture_sha256": "e9dd24e89edda9d35447fddaca9e6d626c222d5bf37236d5526aa85d89666d94",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "8fa468ad35908a2a81a14c9fc739813a8b58f702d893cbf3803d438ee84a5f8f",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "lamp_wall_1_unlit",
       "source_semantic_sha256": "8f3ed771fb0cfb6478ca7c819df42ade23e7e27baa15ec1ef895fd4eff153860",
+      "capture_surface": "window",
       "runtime_command": "/create lamp_wall_1_unlit name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15018,10 +15230,13 @@
       "mode": "smooth",
       "capture_sha256": "07ddd64570e2208a997fcebc28c96f101f25888164cb92a66e400219e3ec4331",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "lava",
       "source_semantic_sha256": "530fdccab09a5164aa3b7dc1e24fef5f5538efa2a22ac206ef476bf97549bb0b",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lava',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lava',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1188",
@@ -15034,10 +15249,13 @@
       "mode": "smooth",
       "capture_sha256": "7660d882d77e95552540305b02b3ed5924a1ed693e146a07727f5630a61a54bf",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "lava_blob",
       "source_semantic_sha256": "1333a3c53b896a30730a553f08f0c07720c1b3d04f6a8c26cc49d386423f00cd",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lava_blob',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lava_blob',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1189",
@@ -15050,10 +15268,13 @@
       "mode": "smooth",
       "capture_sha256": "1879a63e84c8fb1c44901498fe21e7d8977fe269f885e93f59968209e83744db",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light1",
       "source_semantic_sha256": "f4fd2cbace59dc9d30da534d892c77ea8a5b2c6b5b6800e955c3c1cf627a6834",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1190",
@@ -15066,10 +15287,13 @@
       "mode": "smooth",
       "capture_sha256": "d163d6b021c11225ebcfbea920e22cfa4b7a008ec270842f3746c68b209a6df3",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light2",
       "source_semantic_sha256": "6b66ee1e6adc5e4db16bc7d7b1c1fcc2250a41d6863e16d121dfadea75f89dd3",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light2',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light2',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1191",
@@ -15082,10 +15306,13 @@
       "mode": "smooth",
       "capture_sha256": "b0bf2dd7f403dee7f8b179d33431fc39484027de4428f5310a195b0e558e32f9",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light3",
       "source_semantic_sha256": "fdb68a4c29fba02cb9686b106a5b8468b27338e17fe12114025d6bf2d8faa88b",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1192",
@@ -15098,10 +15325,13 @@
       "mode": "smooth",
       "capture_sha256": "d3c256632cf7284172be89b6766763b10187a99a4d733781f1916a094953b45b",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light4",
       "source_semantic_sha256": "aec45a351d59a45ae7bb2b5b9445444040c98997309707bb33a127997eff9b5d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light4',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light4',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1193",
@@ -15114,10 +15344,13 @@
       "mode": "smooth",
       "capture_sha256": "abed578e8e13349de1a5cae25a1f4c31aa04f2881cd42825cde8255aa94704af",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light5",
       "source_semantic_sha256": "bafb930caed5037115b83cc5099ad111ba3ccbc09180717c8f71e07bbb1a0b7d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light5',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light5',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1194",
@@ -15130,10 +15363,13 @@
       "mode": "smooth",
       "capture_sha256": "dacc13f9e0601395a99c2594091291b0a6154b032c70d58beda5c9f7eae12753",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light6",
       "source_semantic_sha256": "f72a9c19a9c88cd2a8cf2beafcc27621118a5a50d2f3ee7e5d3342e79cef5d32",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light6',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light6',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1195",
@@ -15146,10 +15382,13 @@
       "mode": "smooth",
       "capture_sha256": "abed578e8e13349de1a5cae25a1f4c31aa04f2881cd42825cde8255aa94704af",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light7",
       "source_semantic_sha256": "28eb32a064ee60676bc353f46b0db21b8f865dbdf971f36dbca4fe3bc033a58d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light7',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light7',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1196",
@@ -15162,10 +15401,13 @@
       "mode": "smooth",
       "capture_sha256": "f4c46310e497ad14768a17530793044ecde16d37a95a3112790b49477957a2df",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light8",
       "source_semantic_sha256": "39d36ecc2dbae09121d44f8c10d6bdb6e5d7a51b4e52fcd7b19e44fea3bcf90d",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light8',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light8',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1197",
@@ -15178,10 +15420,13 @@
       "mode": "smooth",
       "capture_sha256": "82e4221fa0fb271df81f326a6eeddbd4e574e72d260c9e10528356c07f3f7097",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "light9",
       "source_semantic_sha256": "7dc4e8a20e1e1fdec33b864b45eaf4b3c237178d018d13b0ce9e64e12de7ca46",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light9',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('light9',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1198",
@@ -15194,10 +15439,13 @@
       "mode": "smooth",
       "capture_sha256": "9faac3463b9cb514fb33f3f388c76b0a0727175f89afab51279d65c6e61e1c83",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "lightning",
       "source_semantic_sha256": "b6e3a2162d5dc57ddbbd4235bc43b4041d1e68b17904f2b0c9d8264d41d4a393",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lightning',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('lightning',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1199",
@@ -15211,10 +15459,11 @@
       "capture_sha256": "e1ce518307918e03d54747e6cb7cd2eb0afcd8c95933bcbf891c0982ab280dce",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "f2a2532e32a058e7e810d7e0c766ac0c9a516019b14ae5c0abf5afc8fa662404",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "mithril_lamp",
       "source_semantic_sha256": "66329e2ac0866058dd2eaa909c1379b5cfbc2ecbe4221efe215ab2dfa05a9210",
+      "capture_surface": "window",
       "runtime_command": "/create mithril_lamp name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15229,10 +15478,13 @@
       "mode": "smooth",
       "capture_sha256": "9bd8da5b03da2d3457dae88714676352b22f90cc971f227ca158afa4fdaef5c0",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "negabolt",
       "source_semantic_sha256": "74574ceee81e43d36be3d12b86c4b521cf1d6ac32ec7ad5e6a538cbb17b4d353",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('negabolt',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('negabolt',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1201",
@@ -15245,10 +15497,13 @@
       "mode": "smooth",
       "capture_sha256": "a77924c8002028a7c6333c55a3d2028e1bcf6204b245cf31491e07dd5961a51e",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "obstacle_volcano_3",
       "source_semantic_sha256": "3783c52ffca9042ca287640c77b61c34af36a07f3a252d74aede1f17c2fda0b0",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('obstacle_volcano_3',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('obstacle_volcano_3',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1202",
@@ -15261,10 +15516,13 @@
       "mode": "smooth",
       "capture_sha256": "6d6717ee33caeff9f24c46baa41278cb92d6a665787e708406925c36b57807c2",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "obstacle_volcano_5",
       "source_semantic_sha256": "b5abae761aedc09e4d750b45d93d75f5997d90f35c7ae333c47e67498e357056",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('obstacle_volcano_5',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('obstacle_volcano_5',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1203",
@@ -15277,10 +15535,13 @@
       "mode": "smooth",
       "capture_sha256": "6068295445019a757c75a234656935de6ea5aa8645e5d9a579a91d9a786d19b7",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "obstacle_volcano_6",
       "source_semantic_sha256": "12cbd80e3e3dfd8aee50317270b57d5be49cda4591ab3cd46136356e441e1aea",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('obstacle_volcano_6',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('obstacle_volcano_6',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1204",
@@ -15293,10 +15554,13 @@
       "mode": "smooth",
       "capture_sha256": "b478f1e8b00c21aeb5678328ceb8aa6a3f7716b6ff5c9eba1318863c1e61020a",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "raw_mana",
       "source_semantic_sha256": "61b570ed4bab855519e7bcda03510d047f4c1aa6db34cb515b9a46e230be0f1f",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('raw_mana',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('raw_mana',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1205",
@@ -15309,10 +15573,13 @@
       "mode": "smooth",
       "capture_sha256": "b4a0ad8542f7f729b0499849360ae4a05d5fa715d3355068a7601d5ac6872017",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "seraph",
       "source_semantic_sha256": "1f5360a0190b0c6f429f829f2954d50e3e2ddb78517d59565f18053c77132182",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('seraph',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('seraph',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1206",
@@ -15326,10 +15593,11 @@
       "capture_sha256": "3c89198659099d6285ad3830867a34ba0f30bdb5e527a5d26ae37196311a2e11",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "c72bb232af06c8b3fcae2b566674894d27bc71e4c470b36c7d89c898b4d4672e",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "torch",
       "source_semantic_sha256": "4a7e22463b9686c4062329617841d592f229839208554e051e184fe2489a2ea2",
+      "capture_surface": "window",
       "runtime_command": "/create torch name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15344,10 +15612,13 @@
       "mode": "smooth",
       "capture_sha256": "27cc6e941c52e5129d02f32aeff80092bd154cd2f1a38477cba1b6e1b6dc2ab8",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "torch_wall_1",
       "source_semantic_sha256": "4554846d8689e2095929509a532f5f01909b422a5b7233ad097c509ead29a515",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('torch_wall_1',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('torch_wall_1',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1208",
@@ -15361,10 +15632,11 @@
       "capture_sha256": "6f02742edb66708fdbd5861d4514fd9ba2908d0fdb70ac05314103e09c6e2c07",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "9d4b6fa2f54e4175e2d99e8bf07963aa1c63a6117f0ca4bde4dcc73933090c88",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "torch_wall_1_unlit",
       "source_semantic_sha256": "569b2d2bfed48c466c1e74f20b99db6836fd462d100cd6f38ecbd5f7bef2ad42",
+      "capture_surface": "window",
       "runtime_command": "/create torch_wall_1_unlit name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15379,10 +15651,13 @@
       "mode": "smooth",
       "capture_sha256": "9661d719aab4b0b3903d720925a033968d97f2940a5f84353903091a773ad6aa",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "archetype",
       "source_id": "torch_wall_green",
       "source_semantic_sha256": "71f450d40b4642e6dd2cca0664e653dd622a8a0f960d9f028a6ed4c051a0fb7c",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('torch_wall_green',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('torch_wall_green',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1210",
@@ -15396,10 +15671,11 @@
       "capture_sha256": "5cc0c8f67cdd832076e7fde3d0b88c349792fb1fac21554b0a0a239fd39625be",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "8162856f685a1cfdb1f118dedc4ec3ac21be844c57927466bba8f8def2341bcb",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "archetype",
       "source_id": "torch_wall_green_unlit",
       "source_semantic_sha256": "27731bc529f5f7904707b9568a929d7113b0d888ae72e3c53be4af9edc9ef8bd",
+      "capture_surface": "window",
       "runtime_command": "/create torch_wall_green_unlit name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15415,10 +15691,11 @@
       "capture_sha256": "d15af15103700cfae329830db4f25fd353458856c13f397e83f6ebecbfd12529",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "36eca27e3b5e7bbbfadb44c351ec9c86bdc14c0310b843d60dfb45952ab75d03",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "artifact",
       "source_id": "crystal_light4",
       "source_semantic_sha256": "8b8ef22d27b78491c8d592e776ff3aa5b4768d84bf7f88379db8e8c3ecbc9ccf",
+      "capture_surface": "window",
       "runtime_command": "/create crystal_light of crystal_light4 name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15433,10 +15710,13 @@
       "mode": "smooth",
       "capture_sha256": "bb2ac81f4c3ffc3af2d740f7a5bfc38856e72707038cf48345b820953996b42d",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "artifact",
       "source_id": "shield_holy_light",
       "source_semantic_sha256": "47a24ad6ff4989269d02cc7f513a27efcbb3602c9163eacc820fac15a3f73149",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('shield_holy_light',activator.x+1,activator.y); obj.speed=0; obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('shield_holy_light',activator.x+1,activator.y); obj.speed=0; obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1213",
@@ -15449,10 +15729,13 @@
       "mode": "smooth",
       "capture_sha256": "2b135b566c5ee806f52c4f8c0900017cc331c4f87976d77515cc7256e5b451ff",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
       "source_kind": "artifact",
       "source_id": "armour_elathiel",
       "source_semantic_sha256": "9d0db6ed27d3b1cfb690ee4eae119983353d8c0691c3e175eb7d10015c56b2c3",
-      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('chain_mail',activator.x+1,activator.y); obj.Remove(); obj.Artificate('armour_elathiel'); obj.speed=0; obj=activator.map.Insert(obj,activator.x+1,activator.y); obj.Update()"
+      "capture_surface": "map",
+      "runtime_command": "/console \"noinf::obj=activator.map.CreateObject('chain_mail',activator.x+1,activator.y); obj.Remove(); obj.Artificate('armour_elathiel'); obj.speed=0; obj=activator.map.Insert(obj,activator.x+1,activator.y); obj.Update()",
+      "control_view": "smooth-1219"
     },
     {
       "id": "smooth-1214",
@@ -15466,10 +15749,11 @@
       "capture_sha256": "558457ada896437343e7ae193815c44af3e1050fa0fe4f2f5ab026f5670c01c8",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "5dbc04fdedf142a2eff34287688b3a7ffe7a28f06fa3b41db05ee4d9e6df421a",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
       "source_kind": "artifact",
       "source_id": "halloween_abyss_jackolantern",
       "source_semantic_sha256": "12e4f3ebcf546586c987d62b1046c9e7da42d91b861d74da0ca89e737e708532",
+      "capture_surface": "window",
       "runtime_command": "/create halloween_abyss_jackolantern name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15485,7 +15769,8 @@
       "capture_sha256": "d72f306891aff6a277e3192370c4b8329a3e03292593ca9aad9020ef0b995d21",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "4e0242dabcccccc1970b80d5ee64b7057bd556b1bdc1eebe7ad1aaa3d63c7b11",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
+      "capture_surface": "window",
       "runtime_command": "/create torch_wall_1 last_sp 9 light_color ffc080 face torch_wall.110 animation torch_wall_1_unlit name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15501,7 +15786,8 @@
       "capture_sha256": "a0e285f73c16e9f001b5c013e6a06d2646ebcbbfb98e6570d962316d130d1a01",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "a2d081576ab13890635c74a2dc9642f802ca6862f39b39ddfd2c81d0fd61c286",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
+      "capture_surface": "window",
       "runtime_command": "/create lamp_wall last_sp 5 light_color ffd080 face lamp_wall.111 animation lamp_wall_1_unlit name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
     },
@@ -15517,9 +15803,42 @@
       "capture_sha256": "1b1bf4047db017034946ef0ace1640f7af742f83e5e17d05097bd300009f6ef4",
       "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
       "active_state_id": "bbd4bac3ab6ee56b280ac6b7ee304a48c051384586982bb0e518f718ca8db41c",
-      "review_control_id": "toggle-dark-control",
+      "review_control_id": "toggle-full-control",
+      "capture_surface": "window",
       "runtime_command": "/create torch_wall_1 last_sp 5 light_color ffc080 face torch_wall.110 animation torch_wall_1_unlit name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
       "control_view": "smooth-1113"
+    },
+    {
+      "id": "smooth-1218",
+      "map": "tools/light-source-review/dark-lab",
+      "map_source_sha256": "ea67425f99a55a769cb73994b877dd3d96833f470c22f820177d4bcbc48ac835",
+      "x": 9,
+      "y": 9,
+      "sheet": "smooth-049",
+      "tile": 17,
+      "mode": "smooth",
+      "capture_sha256": "f1e4dcb40c44f3b65cfa1089d4cfb1a622c51411529548002352ebf988e1a5d6",
+      "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "active_state_id": "ff4808f53872611d84dc81468f582151c7f9efb34153beb0aed4442ba1a40aaf",
+      "review_control_id": "toggle-full-control",
+      "capture_surface": "window",
+      "runtime_command": "/create crystal_light4 last_sp 5 light_color fff0c0 face lcrystal_unlit.101 animation crystal_light name issue65_capture; /console \"noinf::obj=activator.FindObject(name='issue65_capture'); activator.Apply(obj)",
+      "control_view": "smooth-1113"
+    },
+    {
+      "id": "smooth-1219",
+      "map": "tools/light-source-review/dark-lab",
+      "map_source_sha256": "ea67425f99a55a769cb73994b877dd3d96833f470c22f820177d4bcbc48ac835",
+      "x": 9,
+      "y": 9,
+      "sheet": "smooth-049",
+      "tile": 18,
+      "mode": "smooth",
+      "capture_sha256": "f2f942db1df3051389e904add0e222d0eb509ed0861244f75a257bd2fac81ca0",
+      "content_commit": "3244bd66b40bf7ffe0bf68e9646b9a4e167d728c",
+      "review_control_id": "source-map-control",
+      "capture_surface": "map",
+      "runtime_command": "/tpto /light-source-review/dark-lab 9 9; verify no carried emitted light; /screenshot map"
     },
     {
       "id": "discrete-0001",
@@ -15646,7 +15965,8 @@
         "smooth-1214",
         "smooth-1215",
         "smooth-1216",
-        "smooth-1217"
+        "smooth-1217",
+        "smooth-1218"
       ],
       "rationale": "Compared a dark lair and every applied type-74 source/state view against smooth-1113, the clean proof-lab control; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
     },
@@ -15766,6 +16086,13 @@
         "smooth-1199"
       ],
       "rationale": "Applied runtime review covers mithril_lamp at active radius 5 with 60d0ff light and its Classic clone-derived mithril_lamp art."
+    },
+    "ff4808f53872611d84dc81468f582151c7f9efb34153beb0aed4442ba1a40aaf": {
+      "semantic_sha256": "d3c3c4c813656dfe5ae815aebe15b39db802f059589f10ff4ad63123806b787c",
+      "views": [
+        "smooth-1218"
+      ],
+      "rationale": "Applied runtime review covers the directly registered crystal_light4 artifact clone at active radius 5 with fff0c0 light and its pale crystal animation."
     }
   },
   "source_states": {

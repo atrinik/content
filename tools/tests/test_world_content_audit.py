@@ -1,5 +1,6 @@
 """Tests for the read-only world content audit."""
 
+import hashlib
 import json
 import struct
 import subprocess
@@ -38,6 +39,25 @@ class WorldContentAuditTest(unittest.TestCase):
         self.assertTrue(
             audit._has_visible_light_pool(
                 bytes(central_pool), full_control, width, height
+            )
+        )
+
+        tile_width = audit.LIGHT_EVIDENCE_TILE_WIDTH - 1
+        tile_height = audit.LIGHT_EVIDENCE_TILE_HEIGHT - 1
+        tile_control = bytes(tile_width * tile_height * 3)
+        tile_sprite = bytearray(tile_control)
+        tile_sprite[:24] = bytes([255] * 24)
+        tile_pool = bytearray(tile_control)
+        tile_center = ((tile_height // 3) * tile_width + tile_width // 2) * 3
+        tile_pool[tile_center:tile_center + 180] = bytes([18] * 180)
+        self.assertFalse(
+            audit._has_visible_light_pool(
+                bytes(tile_sprite), tile_control, tile_width, tile_height
+            )
+        )
+        self.assertTrue(
+            audit._has_visible_light_pool(
+                bytes(tile_pool), tile_control, tile_width, tile_height
             )
         )
 
@@ -349,6 +369,23 @@ end
                 ]
         review_path.write_text(json.dumps(review))
         report = audit.light_inventory()
+        review_scene = self.write(
+            evidence_tools.SOURCE_REVIEW_MAP, "arch map\nend\n"
+        )
+        source_plan = evidence_tools.source_capture_plan(
+            report,
+            evidence_tools.SOURCE_REVIEW_MAP,
+            hashlib.sha256(review_scene.read_bytes()).hexdigest(),
+            evidence_tools.SOURCE_REVIEW_X,
+            evidence_tools.SOURCE_REVIEW_Y,
+        )
+        planned_control = source_plan[0]
+        planned_sources = {
+            (row.get("source_kind"), row.get("source_id")): row
+            for row in source_plan
+            if row.get("source_kind") is not None
+        }
+        planned_map_control = source_plan[-1]
         self.git("init", "-q")
         self.git("add", "arch", "maps")
         self.git("commit", "-qm", "fixture runtime tree")
@@ -357,20 +394,27 @@ end
         evidence_dir.mkdir()
         smooth = evidence_dir / "smooth.png"
         discrete = evidence_dir / "discrete.png"
-        sheet_pixels = bytes(
+        sheet_pixels = bytearray(
             audit.LIGHT_EVIDENCE_WIDTH * audit.LIGHT_EVIDENCE_HEIGHT * 3
         )
+        for tile, value in ((2, 12), (3, 18), (4, 24)):
+            tile_x = (tile % audit.LIGHT_EVIDENCE_COLUMNS) * audit.LIGHT_EVIDENCE_TILE_WIDTH
+            tile_y = (tile // audit.LIGHT_EVIDENCE_COLUMNS) * audit.LIGHT_EVIDENCE_TILE_HEIGHT
+            for y in range(tile_y + 65, tile_y + 85):
+                for x in range(tile_x + 90, tile_x + 110):
+                    offset = (y * audit.LIGHT_EVIDENCE_WIDTH + x) * 3
+                    sheet_pixels[offset:offset + 3] = bytes([value] * 3)
         evidence_tools.write_png(
             smooth,
             audit.LIGHT_EVIDENCE_WIDTH,
             audit.LIGHT_EVIDENCE_HEIGHT,
-            sheet_pixels,
+            bytes(sheet_pixels),
         )
         evidence_tools.write_png(
             discrete,
             audit.LIGHT_EVIDENCE_WIDTH,
             audit.LIGHT_EVIDENCE_HEIGHT,
-            sheet_pixels,
+            bytes(audit.LIGHT_EVIDENCE_WIDTH * audit.LIGHT_EVIDENCE_HEIGHT * 3),
         )
         image = smooth.read_bytes()
         evidence = {
@@ -429,48 +473,80 @@ end
                     "mode": "smooth",
                     "capture_sha256": "5" * 64,
                     "content_commit": content_commit,
-                    "source_kind": "archetype",
-                    "source_id": "colored_lamp",
-                    "source_semantic_sha256": report["archetypes"][0][
-                        "semantic_sha256"
-                    ],
-                    "runtime_command": "/spawn colored_lamp; /screenshot map",
                 },
                 {
-                    "id": "smooth-light2",
-                    "map": "maps/scene",
-                    "map_semantic_sha256": report["maps"][0]["semantic_sha256"],
-                    "x": 12,
-                    "y": 14,
+                    **{
+                        key: value
+                        for key, value in planned_control.items()
+                        if key != "number"
+                    },
+                    "id": "toggle-control",
                     "sheet": "smooth",
                     "tile": 1,
                     "mode": "smooth",
-                    "capture_sha256": "7" * 64,
+                    "capture_sha256": "a" * 64,
                     "content_commit": content_commit,
-                    "source_kind": "archetype",
-                    "source_id": "light2",
-                    "source_semantic_sha256": report["archetypes"][1][
-                        "semantic_sha256"
-                    ],
-                    "runtime_command": "/spawn light2; /screenshot map",
                 },
                 {
-                    "id": "smooth-glowing-reward",
-                    "map": "maps/scene",
-                    "map_semantic_sha256": report["maps"][0]["semantic_sha256"],
-                    "x": 12,
-                    "y": 14,
+                    **{
+                        key: value
+                        for key, value in planned_sources[
+                            ("archetype", "colored_lamp")
+                        ].items()
+                        if key != "number"
+                    },
+                    "id": "smooth-colored-lamp",
                     "sheet": "smooth",
                     "tile": 2,
                     "mode": "smooth",
+                    "capture_sha256": "7" * 64,
+                    "content_commit": content_commit,
+                    "control_view": "map-control",
+                },
+                {
+                    **{
+                        key: value
+                        for key, value in planned_sources[
+                            ("archetype", "light2")
+                        ].items()
+                        if key != "number"
+                    },
+                    "id": "smooth-light2",
+                    "sheet": "smooth",
+                    "tile": 3,
+                    "mode": "smooth",
                     "capture_sha256": "8" * 64,
                     "content_commit": content_commit,
-                    "source_kind": "artifact",
-                    "source_id": "glowing_reward",
-                    "source_semantic_sha256": report["artifacts"][0][
-                        "semantic_sha256"
-                    ],
-                    "runtime_command": "/spawn glowing_reward; /screenshot map",
+                    "control_view": "map-control",
+                },
+                {
+                    **{
+                        key: value
+                        for key, value in planned_sources[
+                            ("artifact", "glowing_reward")
+                        ].items()
+                        if key != "number"
+                    },
+                    "id": "smooth-glowing-reward",
+                    "sheet": "smooth",
+                    "tile": 4,
+                    "mode": "smooth",
+                    "capture_sha256": "9" * 64,
+                    "content_commit": content_commit,
+                    "control_view": "map-control",
+                },
+                {
+                    **{
+                        key: value
+                        for key, value in planned_map_control.items()
+                        if key != "number"
+                    },
+                    "id": "map-control",
+                    "sheet": "smooth",
+                    "tile": 5,
+                    "mode": "smooth",
+                    "capture_sha256": "b" * 64,
+                    "content_commit": content_commit,
                 },
                 {
                     "id": "discrete-scene",
@@ -506,7 +582,7 @@ end
                     "source_kind": "archetype",
                     "source_id": "colored_lamp",
                     "semantic_sha256": report["archetypes"][0]["semantic_sha256"],
-                    "views": ["smooth-scene"],
+                    "views": ["smooth-colored-lamp"],
                 },
                 "archetype:light2": {
                     "source_kind": "archetype",
@@ -544,6 +620,37 @@ end
             report["summary"],
         )
         self.assertEqual([], audit.validate_light_inventory(report))
+
+        stale_surface = json.loads(json.dumps(evidence))
+        next(
+            view
+            for view in stale_surface["views"]
+            if view["id"] == "smooth-colored-lamp"
+        )["capture_surface"] = "window"
+        evidence_path.write_text(json.dumps(stale_surface))
+        self.assertIn(
+            "source-plan row ('source', 'archetype', 'colored_lamp') has stale capture_surface",
+            audit.validate_light_inventory(report),
+        )
+        evidence_path.write_text(json.dumps(evidence))
+
+        evidence_tools.write_png(
+            smooth,
+            audit.LIGHT_EVIDENCE_WIDTH,
+            audit.LIGHT_EVIDENCE_HEIGHT,
+            bytes(audit.LIGHT_EVIDENCE_WIDTH * audit.LIGHT_EVIDENCE_HEIGHT * 3),
+        )
+        blank_sources = json.loads(json.dumps(evidence))
+        blank_sources["sheets"]["smooth"]["sha256"] = hashlib.sha256(
+            smooth.read_bytes()
+        ).hexdigest()
+        evidence_path.write_text(json.dumps(blank_sources))
+        self.assertIn(
+            "light source archetype:colored_lamp view smooth-colored-lamp lacks a visible light pool",
+            audit.validate_light_inventory(report),
+        )
+        smooth.write_bytes(image)
+        evidence_path.write_text(json.dumps(evidence))
 
         tiny_evidence = json.loads(json.dumps(evidence))
         evidence_tools.write_png(smooth, 1, 1, b"\x00\x00\x00")
@@ -950,6 +1057,81 @@ end
             {("artifact", "quest_lamp"), ("map", "maps/quest:4")},
             {(row["kind"], row["id"]) for row in state["sources"]},
         )
+
+    def test_allowed_artifact_is_also_a_registered_map_archetype(self):
+        self.write(
+            "arch/toggle.arc",
+            """Object toggle_lamp
+face lamp_lit.101
+animation lamp_lit
+type 74
+anim_speed 4
+last_sp 5
+light_color ffc080
+end
+""",
+        )
+        self.write(
+            "maps/quest.art",
+            """Allowed toggle_lamp
+chance 1
+artifact quest_lamp
+def_arch toggle_lamp
+Object
+face quest_lamp.101
+animation quest_lamp
+end
+""",
+        )
+        self.write(
+            "maps/quest",
+            """arch map
+name Quest Lamp
+end
+arch quest_lamp
+x 6
+y 7
+end
+""",
+        )
+
+        report = audit.light_inventory()
+
+        artifact = report["artifacts"][0]
+        self.assertEqual("toggle_lamp", artifact["runtime_archetype"])
+        self.assertEqual("def_arch", artifact["runtime_archetype_source"]["field"])
+        self.assertEqual("toggle_lamp", artifact["activation_archetype"])
+        self.assertEqual("lamp_lit.101", artifact["active_face"])
+
+        emitter = report["maps"][0]["emitters"][0]
+        self.assertEqual("quest_lamp", emitter["archetype"])
+        self.assertEqual((6, 7), (emitter["x"], emitter["y"]))
+        self.assertEqual("artifact", emitter["face_source"]["kind"])
+        self.assertEqual("quest_lamp.101", emitter["face"])
+        self.assertEqual("quest_lamp", emitter["activation_archetype"])
+        self.assertEqual("quest_lamp.101", emitter["active_face"])
+        self.assertEqual("artifact", emitter["active_face_source"]["kind"])
+        self.assertEqual("map", emitter["activation_archetype_source"]["kind"])
+
+        states = {
+            row["activation_archetype"]: row for row in report["toggle_states"]
+        }
+        self.assertEqual(
+            {
+                ("archetype", "toggle_lamp"),
+                ("artifact", "quest_lamp"),
+            },
+            {
+                (row["kind"], row["id"])
+                for row in states["toggle_lamp"]["sources"]
+            },
+        )
+        self.assertEqual("lamp_lit.101", states["toggle_lamp"]["face"])
+        self.assertEqual(
+            [{"kind": "map", "id": "maps/quest:4"}],
+            states["quest_lamp"]["sources"],
+        )
+        self.assertEqual("quest_lamp.101", states["quest_lamp"]["face"])
 
     def test_light_review_check_rejects_missing_baseline_rows(self):
         self.write(

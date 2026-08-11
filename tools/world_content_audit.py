@@ -912,10 +912,20 @@ def _has_visible_light_pool(
         abs(active_channel - control_channel)
         for active_channel, control_channel in zip(active, control)
     ]
+    # The committed contact-sheet tile has about one twenty-fifth of the raw
+    # capture's pixels.  Keep a substantial absolute floor so changed sprites
+    # cannot pass, while allowing genuine radius-one pools that survive the
+    # deterministic nearest-neighbor sampling.
+    sampled_tile = (
+        width == LIGHT_EVIDENCE_TILE_WIDTH - 1
+        and height == LIGHT_EVIDENCE_TILE_HEIGHT - 1
+    )
+    minimum_channels = 150 if sampled_tile else 300
+    minimum_total = 2500 if sampled_tile else 3000
     return (
         len(active) == len(control)
-        and sum(value >= 3 for value in differences) >= 300
-        and sum(differences) >= 3000
+        and sum(value >= 3 for value in differences) >= minimum_channels
+        and sum(differences) >= minimum_total
     )
 
 
@@ -1212,6 +1222,13 @@ def validate_light_evidence(report: dict) -> list[str]:
                 "unlisted light-source evidence artifact: {}".format(path.name)
             )
 
+    try:
+        from tools.light_review_evidence import source_plan_errors
+
+        errors.extend(source_plan_errors(report, views))
+    except (OSError, ValueError, TypeError) as error:
+        errors.append("light-source evidence source plan cannot be checked: {}".format(error))
+
     for map_path, row in sorted(map_rows.items()):
         map_views = smooth_by_map.get(map_path, [])
         invisible = [emitter for emitter in row["emitters"] if not emitter["visible"]]
@@ -1321,6 +1338,7 @@ def validate_light_evidence(report: dict) -> list[str]:
                 or control.get("map") != view.get("map")
                 or control.get("x") != view.get("x")
                 or control.get("y") != view.get("y")
+                or control.get("capture_surface") != view.get("capture_surface")
             ):
                 errors.append(
                     "toggle state {} view {} lacks a matched dark control".format(
@@ -1391,6 +1409,46 @@ def validate_light_evidence(report: dict) -> list[str]:
             ):
                 errors.append(
                     "light source {} has invalid runtime view {}".format(
+                        identifier, view_id
+                    )
+                )
+                continue
+            control = view_ids.get(view.get("control_view"))
+            if (
+                not isinstance(control, dict)
+                or control.get("mode") != "smooth"
+                or control.get("active_state_id") is not None
+                or control.get("source_kind") is not None
+                or control.get("review_control_id") != view.get("review_control_id")
+                or control.get("map") != view.get("map")
+                or control.get("x") != view.get("x")
+                or control.get("y") != view.get("y")
+                or control.get("capture_surface") != view.get("capture_surface")
+            ):
+                errors.append(
+                    "light source {} view {} lacks a matched dark control".format(
+                        identifier, view_id
+                    )
+                )
+                continue
+            try:
+                source_pixels = _evidence_tile(view, sheets, tile_cache)
+                control_pixels = _evidence_tile(control, sheets, tile_cache)
+            except (KeyError, OSError, ValueError, TypeError, zlib.error):
+                errors.append(
+                    "light source {} view {} cannot be pixel-compared".format(
+                        identifier, view_id
+                    )
+                )
+                continue
+            if not _has_visible_light_pool(
+                source_pixels,
+                control_pixels,
+                LIGHT_EVIDENCE_TILE_WIDTH - 1,
+                LIGHT_EVIDENCE_TILE_HEIGHT - 1,
+            ):
+                errors.append(
+                    "light source {} view {} lacks a visible light pool".format(
                         identifier, view_id
                     )
                 )
@@ -1631,11 +1689,15 @@ def light_inventory() -> dict:
         emitters = []
         for node, parent, x, y in flatten_map_objects(parsed["objects"]):
             attrs = node["attrs"]
+            # Classic registers every parsed artifact clone as an archetype,
+            # regardless of its Allowed selector.  A map can therefore refer
+            # directly to either an Allowed-none quest object or a normally
+            # artified object by its artifact ID.  In both cases the map
+            # object's arch pointer is the registered artifact clone, so an
+            # activated type-74 object restores that clone's art rather than
+            # the base def_arch art used by ordinary artification.
             registered_artifact = artifacts_by_id.get(node["arch"])
-            if (
-                registered_artifact is not None
-                and registered_artifact.get("allowed") == "none"
-            ):
+            if registered_artifact is not None:
                 definition = archetypes.get(registered_artifact["def_arch"], {})
                 base = dict(definition.get("attrs", {}))
                 base.update(registered_artifact.get("attrs", {}))

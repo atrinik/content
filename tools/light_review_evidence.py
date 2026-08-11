@@ -545,6 +545,7 @@ def build_evidence(args) -> dict:
     }
     context = json.loads(args.context.read_text())
     runtime_digest = audit._runtime_content_sha256()
+    render_assets_digest = audit._light_render_assets_sha256(report)
     try:
         commit_digest = audit._git_runtime_content_sha256(
             context.get("content_commit")
@@ -555,6 +556,26 @@ def build_evidence(args) -> dict:
         raise ValueError(
             "render-context content_commit runtime tree disagrees with captures"
         )
+    runtime_commit = context.get(
+        "runtime_content_commit", context["content_commit"]
+    )
+    try:
+        runtime_commit_digest = audit._git_runtime_content_sha256(runtime_commit)
+    except ValueError as error:
+        detail = str(error).removeprefix("content commit ")
+        raise ValueError(
+            "render-context runtime_content_commit {}".format(detail)
+        ) from error
+    if runtime_commit_digest != runtime_digest:
+        raise ValueError(
+            "render-context runtime_content_commit runtime tree disagrees "
+            "with captures"
+        )
+    if not audit._git_commit_is_ancestor(runtime_commit):
+        raise ValueError(
+            "render-context runtime_content_commit is not reachable from HEAD"
+        )
+    context["runtime_content_commit"] = runtime_commit
     modes = {
         "smooth": _load_captures(args.smooth_manifest, "smooth"),
         "discrete": _load_captures(args.discrete_manifest, "discrete"),
@@ -798,8 +819,11 @@ def build_evidence(args) -> dict:
                 view["control_view"] = control_views[control_id]
         if audit._runtime_content_sha256() != runtime_digest:
             raise ValueError("runtime content changed while evidence was built")
+        if audit._light_render_assets_sha256(report) != render_assets_digest:
+            raise ValueError("rendered light-source art changed while evidence was built")
         context["inventory_sha256"] = audit._inventory_semantic_sha256(report)
         context["runtime_content_sha256"] = runtime_digest
+        context["render_assets_sha256"] = render_assets_digest
         active_states = {
             row["id"]: {
                 "semantic_sha256": row["semantic_sha256"],

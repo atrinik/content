@@ -7,6 +7,7 @@ import copy
 import io
 import json
 from pathlib import Path
+import re
 import shutil
 import tempfile
 import unittest
@@ -79,6 +80,19 @@ class ContentContractTest(unittest.TestCase):
                 "object-single-variable-mode",
             },
             {entry["name"] for entry in self.grammar["load_modes"]},
+        )
+
+    def test_grammar_documentation_reports_authoritative_field_count(self):
+        documentation = (ROOT / "docs" / "CONTENT_GRAMMAR_CONTRACTS.md").read_text()
+        match = re.search(
+            r"captures those source locations, ([0-9]+) known object\s+fields,",
+            documentation,
+        )
+
+        self.assertIsNotNone(match)
+        self.assertEqual(
+            len(self.grammar["object_grammar"]["known_fields"]),
+            int(match.group(1)),
         )
 
     def test_consumer_inventory_covers_every_legacy_role_and_repository(self):

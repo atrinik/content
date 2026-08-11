@@ -34,6 +34,11 @@ class ContentCatalogTest(unittest.TestCase):
 
     def create_valid_tree(self):
         self.write(
+            "maps/content-identities.json",
+            '{"schema_version":1,"npcs":[{"id":"sample_npc"}],'
+            '"properties":[{"id":"sample_property"}]}',
+        )
+        self.write(
             "arch/objects.arc",
             """Object base
 type 1
@@ -127,7 +132,7 @@ end
   <quest name="Sample Quest">
     <part uid="first_part">
       <part uid="nested_part"/>
-      <interface>
+      <interface npc_id="sample_npc" property_id="sample_property">
         <action start="first_part::nested_part" cast="minor healing"
                 teleport="/start 1 1" region_map="town"/>
         <object arch="special_item"/>
@@ -151,6 +156,8 @@ end
         self.assertIn(ContentId("skill", "skill_literacy"), ids)
         self.assertIn(ContentId("archetype", "sample_monster_variant"), ids)
         self.assertIn(ContentId("quest", "sample_quest"), ids)
+        self.assertIn(ContentId("npc", "sample_npc"), ids)
+        self.assertIn(ContentId("property", "sample_property"), ids)
         self.assertIn(
             ContentId("quest-part", "sample_quest::first_part::nested_part"), ids
         )

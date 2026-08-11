@@ -180,6 +180,10 @@ end
 arch floor_ostone5
 x 3
 y 1
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch bed_1a.111
 name bed to reality
@@ -235,6 +239,10 @@ end
 arch floor_ostone5
 x 4
 y 1
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch bed_1b.111
 name bed to reality

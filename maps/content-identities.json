@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "npcs": [
+    {
+      "id": "incuna_apartment_steward"
+    }
+  ],
+  "properties": [
+    {
+      "id": "strakewood_island_apartment"
+    }
+  ]
+}

@@ -36,6 +36,8 @@ a typed reference.
 | `quest-part` | Quest key plus nested part UIDs joined with `::` | The quest XML's `part uid` attributes |
 | `spell` | Spell archetype key, conventionally `spell_<name>` | Type-29 spell archetype in `arch/`; the server maps it to a runtime index |
 | `skill` | Skill archetype key, conventionally `skill_<name>` | Type-43 skill archetype in `arch/`; the server maps it to a runtime index |
+| `npc` | Explicit `id` | `maps/content-identities.json` |
+| `property` | Explicit `id` | `maps/content-identities.json` |
 
 Display names, messages, descriptions, translations, filesystem enumeration
 order, C enum values, and array positions are not identities. Quest-part UIDs
@@ -43,6 +45,11 @@ are validated and preserved verbatim; the interface compiler must never
 sanitize one into a different key. Runtime spell and skill indices are
 process-local acceleration values. Durable consumers serialize the stable
 archetype key and resolve it after startup.
+
+Map objects and interfaces bind these identities with `npc_id` and
+`property_id`. Interface compilation uses `npc_id` for its output filename;
+`npc` remains only the visible Classic name. This keeps dispatch stable when a
+display name changes.
 
 Existing monster variants and bosses retain their archetype identities; do not
 invent parallel variant or boss IDs for them. A monster-family key does not yet

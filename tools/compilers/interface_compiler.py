@@ -233,7 +233,7 @@ class TagCompilerInterface(BaseTagCompiler):
         self.handlers["precond"] = TagCompilerPrecond
 
     def compile(self, elem):
-        self.compiler.npc = elem.get("npc")
+        self.compiler.npc = elem.get("npc_id") or elem.get("npc")
 
         if self.compiler.npc:
             self.compiler.npc = re.sub(

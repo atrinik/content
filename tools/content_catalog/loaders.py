@@ -2,19 +2,72 @@
 
 from __future__ import annotations
 
+import ast
 import os
 import posixpath
 import re
+import json
 from pathlib import Path
 from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 from xml.parsers import expat
 
+from .identifiers import is_portable_content_id
 from .model import ContentCatalog, ContentId, SourceLocation
 
 
 QUEST_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 QUEST_PART_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 OBJECT_DOMAINS = ("archetype", "artifact")
+
+
+def _load_content_identities(catalog: ContentCatalog, maps_root: Path) -> None:
+    """Load explicit NPC and property identities owned by authored content."""
+
+    path = maps_root / "content-identities.json"
+    if not path.is_file():
+        return
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        catalog.add_diagnostic(
+            "invalid-content-identities", str(error), catalog.location(path, 1)
+        )
+        return
+    if not isinstance(document, dict) or set(document) != {
+        "schema_version", "npcs", "properties"
+    } or document.get("schema_version") != 1:
+        catalog.add_diagnostic(
+            "invalid-content-identities",
+            "content identity registry must be a closed schema-version 1 object",
+            catalog.location(path, 1),
+        )
+        return
+    for field, domain in (("npcs", "npc"), ("properties", "property")):
+        entries = document[field]
+        if not isinstance(entries, list):
+            catalog.add_diagnostic(
+                "invalid-content-identities",
+                "{} must be an array".format(field),
+                catalog.location(path, 1),
+            )
+            continue
+        for entry in entries:
+            if not isinstance(entry, dict) or set(entry) != {"id"}:
+                catalog.add_diagnostic(
+                    "invalid-content-identity",
+                    "{} entries must contain only id".format(field),
+                    catalog.location(path, 1),
+                )
+                continue
+            key = entry.get("id")
+            if not is_portable_content_id(key):
+                catalog.add_diagnostic(
+                    "invalid-content-identity",
+                    "{} id must be a portable stable identifier".format(domain),
+                    catalog.location(path, 1),
+                )
+                continue
+            catalog.add_definition(domain, key, catalog.location(path, 1))
 
 
 def _validate_source_roots(
@@ -557,6 +610,14 @@ def _load_maps(catalog: ContentCatalog, maps_root: Path) -> None:
                     "skill_id",
                     map_id,
                 )
+            elif field in ("npc_id", "property_id") and value:
+                catalog.add_reference(
+                    value,
+                    ("npc" if field == "npc_id" else "property",),
+                    catalog.location(path, line_number, _column(line, value)),
+                    field,
+                    map_id,
+                )
         if in_header:
             catalog.add_diagnostic(
                 "unterminated-map-header",
@@ -568,12 +629,20 @@ def _load_maps(catalog: ContentCatalog, maps_root: Path) -> None:
 class _InterfaceLoader:
     QUEST_FIELDS = ("start", "complete", "fail", "started", "finished", "completed", "failed")
 
-    def __init__(self, catalog: ContentCatalog, path: Path, quest_key: Optional[str]):
+    def __init__(
+        self,
+        catalog: ContentCatalog,
+        path: Path,
+        quest_key: Optional[str],
+        property_actions: List[dict],
+    ):
         self.catalog = catalog
         self.path = path
         self.quest_key = quest_key
         self.quest_id: Optional[ContentId] = None
         self.part_stack: List[str] = []
+        self.interface_stack: List[dict] = []
+        self.property_actions = property_actions
         self.contents = path.read_bytes()
         self.parser = expat.ParserCreate()
         self.parser.StartElementHandler = self._start
@@ -639,6 +708,13 @@ class _InterfaceLoader:
                 self.catalog.add_definition(
                     "quest-part", key, self.location(uid), {"uid": uid}
                 )
+        elif name == "interface":
+            self.interface_stack.append({
+                "quest_id": self.quest_key,
+                "quest_part_id": self.part_stack[-1] if self.part_stack else None,
+                "npc_id": attrs.get("npc_id"),
+                "property_id": attrs.get("property_id"),
+            })
 
         source = self.quest_id
         if name in ("item", "object") and attrs.get("arch"):
@@ -675,6 +751,24 @@ class _InterfaceLoader:
                 "region_map",
                 source,
             )
+        for attribute, domain in (("npc_id", "npc"), ("property_id", "property")):
+            value = attrs.get(attribute)
+            if value:
+                self.catalog.add_reference(
+                    value, (domain,), self.location(value), attribute, source
+                )
+        property_action = attrs.get("property_action_id")
+        if property_action:
+            self.catalog.add_reference(
+                property_action, ("property-action",),
+                self.location(property_action), "property_action_id", source
+            )
+            context = self.interface_stack[-1] if self.interface_stack else {}
+            self.property_actions.append({
+                "id": property_action,
+                "location": self.location(property_action),
+                **context,
+            })
         for attribute, value in attrs.items():
             if attribute.startswith("faction_"):
                 self.catalog.add_reference(
@@ -690,15 +784,18 @@ class _InterfaceLoader:
                     )
 
     def _end(self, name: str) -> None:
-        if name == "part" and self.part_stack:
+        if name == "interface" and self.interface_stack:
+            self.interface_stack.pop()
+        elif name == "part" and self.part_stack:
             self.part_stack.pop()
 
 
-def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> None:
+def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> List[dict]:
+    property_actions: List[dict] = []
     interfaces_root = maps_root / "interfaces"
     quests_root = interfaces_root / "quests"
     if not interfaces_root.is_dir():
-        return
+        return property_actions
     for path in sorted(interfaces_root.rglob("*.xml")):
         quest_key = None
         try:
@@ -707,7 +804,425 @@ def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> None:
                 quest_key = relative.parts[0]
         except ValueError:
             pass
-        _InterfaceLoader(catalog, path, quest_key).parse()
+        _InterfaceLoader(catalog, path, quest_key, property_actions).parse()
+    return property_actions
+
+
+def _map_object_bindings(
+    path: Path, catalog: ContentCatalog
+) -> Tuple[List[dict], Optional[int], Optional[int]]:
+    """Return effective bindings from the authoritative lossless map model."""
+
+    # Import lazily because content_core's project index consumes this catalog.
+    from tools.content_core import parse_bytes
+
+    relative = path.relative_to(catalog.root).as_posix()
+    document = parse_bytes(path.read_bytes(), path=relative, format_name="map")
+    if not document.valid or document.map_header is None:
+        raise ValueError("property binding map is not valid authored content")
+
+    def integer_value(node, field: str, default: int) -> int:
+        value = node.last_value(field)
+        return int(value) if value is not None else default
+
+    header = document.map_header
+    width = integer_value(header, "width", 0)
+    height = integer_value(header, "height", 0)
+    bindings: List[dict] = []
+
+    def visit(node, parent_x: int = 0, parent_y: int = 0) -> None:
+        binding = {
+            "archetype": node.name,
+            "x": integer_value(node, "x", parent_x),
+            "y": integer_value(node, "y", parent_y),
+        }
+        for field in ("name", "npc_id", "property_id", "type"):
+            value = node.last_value(field)
+            if value is not None:
+                binding[field] = value
+        bindings.append(binding)
+        for handle in node.child_handles:
+            visit(document.node(handle), binding["x"], binding["y"])
+
+    for handle in document.top_level_handles:
+        node = document.node(handle)
+        if node.kind == "object":
+            visit(node)
+    return bindings, width, height
+
+
+def _classic_apartment_tags(root: Path, catalog: ContentCatalog) -> set[str]:
+    """Read literal Classic apartment tags without importing runtime Python."""
+
+    path = root / "maps" / "python" / "Apartments.py"
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        for statement in tree.body:
+            if (isinstance(statement, ast.Assign) and
+                    any(isinstance(target, ast.Name) and
+                        target.id == "apartments_info" for target in statement.targets)):
+                document = ast.literal_eval(statement.value)
+                return {
+                    value["tag"] for value in document.values()
+                    if isinstance(value, dict) and isinstance(value.get("tag"), str)
+                }
+    except (OSError, UnicodeError, SyntaxError, ValueError) as error:
+        catalog.add_diagnostic(
+            "invalid-property-runtime-binding", str(error), catalog.location(path, 1)
+        )
+    return set()
+
+
+def _validate_property_layout(
+    catalog: ContentCatalog, maps_root: Path, path: Path, entry: dict,
+    source: ContentId,
+) -> None:
+    """Prove the private map, safe entry, exit, and save-bed bindings."""
+
+    layout = entry.get("layout_binding")
+    if not isinstance(layout, dict) or set(layout) != {
+        "map", "entry", "exit", "save_beds",
+    }:
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout_binding has an invalid shape",
+            catalog.location(path, 1),
+        )
+        return
+    map_key = layout.get("map")
+    if not isinstance(map_key, str) or not map_key.startswith("/"):
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout map must be an absolute string",
+            catalog.location(path, 1),
+        )
+        return
+    _add_map_reference(catalog, map_key, catalog.location(path, 1), "layout_binding", source)
+    try:
+        map_path = maps_root / _canonical_map_path(map_key).lstrip("/")
+        objects, width, height = _map_object_bindings(map_path, catalog)
+    except (OSError, UnicodeError, ValueError):
+        objects, width, height = [], None, None
+
+    def in_bounds(binding: dict) -> bool:
+        coordinates = (binding.get("x"), binding.get("y"))
+        return (
+            all(isinstance(value, int) and not isinstance(value, bool)
+                for value in coordinates)
+            and isinstance(width, int) and isinstance(height, int)
+            and 0 <= coordinates[0] < width and 0 <= coordinates[1] < height
+        )
+
+    entry_binding = layout.get("entry")
+    if not isinstance(entry_binding, dict) or set(entry_binding) != {
+        "x", "y", "floor_archetype",
+    } or not isinstance(entry_binding.get("floor_archetype"), str):
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout entry has an invalid shape",
+            catalog.location(path, 1),
+        )
+    elif not in_bounds(entry_binding):
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout entry is outside the authored map",
+            catalog.location(path, 1),
+        )
+    else:
+        at_entry = [
+            obj for obj in objects
+            if obj.get("x") == entry_binding["x"] and
+            obj.get("y") == entry_binding["y"]
+        ]
+        if not any(
+            obj.get("archetype") == entry_binding["floor_archetype"]
+            for obj in at_entry
+        ) or any(obj.get("archetype") in {"blocked", "exit"} for obj in at_entry):
+            catalog.add_diagnostic(
+                "missing-property-layout-binding",
+                "layout entry is not the declared unobstructed floor",
+                catalog.location(path, 1),
+            )
+
+    exit_binding = layout.get("exit")
+    exit_fields = {"x", "y", "archetype", "property_id"}
+    if not isinstance(exit_binding, dict) or set(exit_binding) != exit_fields:
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout exit has an invalid shape",
+            catalog.location(path, 1),
+        )
+    elif not in_bounds(exit_binding):
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout exit is outside the authored map",
+            catalog.location(path, 1),
+        )
+    elif exit_binding.get("property_id") != entry.get("property_id"):
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout exit property ID must match the interaction",
+            catalog.location(path, 1),
+        )
+    elif not any(
+        all(obj.get(field) == exit_binding.get(field) for field in exit_fields)
+        for obj in objects
+    ):
+        catalog.add_diagnostic(
+            "missing-property-layout-binding",
+            "layout exit does not match an authored stable-ID map object",
+            catalog.location(path, 1),
+        )
+
+    save_beds = layout.get("save_beds")
+    if not isinstance(save_beds, list) or not save_beds:
+        catalog.add_diagnostic(
+            "invalid-property-layout", "layout save_beds must be a non-empty array",
+            catalog.location(path, 1),
+        )
+        return
+    bed_fields = {"x", "y", "archetype", "name", "property_id"}
+    declared_beds = set()
+    for binding in save_beds:
+        if not isinstance(binding, dict) or set(binding) != bed_fields:
+            catalog.add_diagnostic(
+                "invalid-property-layout", "layout save-bed binding has an invalid shape",
+                catalog.location(path, 1),
+            )
+            continue
+        if not in_bounds(binding):
+            catalog.add_diagnostic(
+                "invalid-property-layout", "layout save bed is outside the authored map",
+                catalog.location(path, 1),
+            )
+            continue
+        if binding.get("property_id") != entry.get("property_id"):
+            catalog.add_diagnostic(
+                "invalid-property-layout", "layout save-bed property ID must match the interaction",
+                catalog.location(path, 1),
+            )
+            continue
+        identity = tuple(binding[field] for field in ("x", "y", "archetype", "name", "property_id"))
+        if identity in declared_beds:
+            catalog.add_diagnostic(
+                "invalid-property-layout", "layout save-bed bindings must be unique",
+                catalog.location(path, 1),
+            )
+            continue
+        declared_beds.add(identity)
+        if not any(
+            obj.get("type") == "106" and
+            all(obj.get(field) == binding.get(field) for field in bed_fields)
+            for obj in objects
+        ):
+            catalog.add_diagnostic(
+                "missing-property-layout-binding",
+                "layout save bed does not match an authored type-106 property object",
+                catalog.location(path, 1),
+            )
+    authored_beds = {
+        tuple(obj.get(field) for field in ("x", "y", "archetype", "name", "property_id"))
+        for obj in objects
+        if obj.get("type") == "106" and
+        obj.get("property_id") == entry.get("property_id")
+    }
+    if declared_beds != authored_beds:
+        catalog.add_diagnostic(
+            "missing-property-layout-binding",
+            "layout save-bed bindings must cover every authored property save bed exactly",
+            catalog.location(path, 1),
+        )
+
+
+def _load_property_interactions(
+    catalog: ContentCatalog, maps_root: Path, interface_actions: List[dict]
+) -> None:
+    """Load typed property actions and prove their authored/runtime bindings."""
+
+    path = maps_root / "property-interactions.json"
+    if not path.is_file():
+        return
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        catalog.add_diagnostic(
+            "invalid-property-interactions", str(error), catalog.location(path, 1)
+        )
+        return
+    if (not isinstance(document, dict) or
+            set(document) != {"schema_version", "interactions"} or
+            document.get("schema_version") != 1 or
+            not isinstance(document.get("interactions"), list)):
+        catalog.add_diagnostic(
+            "invalid-property-interactions",
+            "property interactions must use the closed schema-version 1 shape",
+            catalog.location(path, 1),
+        )
+        return
+
+    tags = _classic_apartment_tags(catalog.root, catalog)
+    entry_fields = {
+        "id", "quest_id", "quest_part_id", "npc_id", "property_id",
+        "npc_binding", "portal_binding", "layout_binding", "grant", "completion",
+        "runtime_owners",
+    }
+    for entry in document["interactions"]:
+        if not isinstance(entry, dict) or set(entry) != entry_fields:
+            catalog.add_diagnostic(
+                "invalid-property-interaction", "property interaction has unknown or missing fields",
+                catalog.location(path, 1),
+            )
+            continue
+        identifier = entry.get("id")
+        if not is_portable_content_id(identifier):
+            catalog.add_diagnostic(
+                "invalid-property-interaction", "interaction id must be stable",
+                catalog.location(path, 1),
+            )
+            continue
+        identity_fields = ("quest_id", "quest_part_id", "npc_id", "property_id")
+        if any(
+            not is_portable_content_id(entry.get(field))
+            for field in identity_fields
+        ):
+            catalog.add_diagnostic(
+                "invalid-property-interaction",
+                "quest, quest-part, NPC, and property IDs must be stable",
+                catalog.location(path, 1),
+            )
+            continue
+        source = catalog.add_definition(
+            "property-action", identifier, catalog.location(path, 1)
+        )
+        expected_action = {
+            "id": identifier,
+            "quest_id": entry.get("quest_id"),
+            "quest_part_id": entry.get("quest_part_id"),
+            "npc_id": entry.get("npc_id"),
+            "property_id": entry.get("property_id"),
+        }
+        declared_actions = [
+            action for action in interface_actions if action.get("id") == identifier
+        ]
+        if (len(declared_actions) != 1 or
+                {key: declared_actions[0].get(key) for key in expected_action}
+                != expected_action):
+            catalog.add_diagnostic(
+                "invalid-property-action-context",
+                "property action must occur exactly once in its declared quest part and interface",
+                catalog.location(path, 1),
+            )
+        references = (
+            (entry.get("quest_id"), "quest", "quest_id"),
+            ("{}::{}".format(entry.get("quest_id"), entry.get("quest_part_id")),
+             "quest-part", "quest_part_id"),
+            (entry.get("npc_id"), "npc", "npc_id"),
+            (entry.get("property_id"), "property", "property_id"),
+        )
+        for key, domain, field in references:
+            if isinstance(key, str):
+                catalog.add_reference(
+                    key, (domain,), catalog.location(path, 1), field, source
+                )
+
+        for field, identity_field, extra in (
+            ("npc_binding", "npc_id", set()),
+            ("portal_binding", "property_id", {"return_x", "return_y"}),
+        ):
+            binding_fields = {"map", "x", "y", "archetype", identity_field}
+            binding = entry.get(field)
+            if not isinstance(binding, dict) or set(binding) != binding_fields | extra:
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} has an invalid shape".format(field),
+                    catalog.location(path, 1),
+                )
+                continue
+            map_key = binding.get("map")
+            if not isinstance(map_key, str) or not map_key.startswith("/"):
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} map must be an absolute string".format(field),
+                    catalog.location(path, 1),
+                )
+                continue
+            _add_map_reference(
+                catalog, map_key, catalog.location(path, 1), field, source
+            )
+            try:
+                map_path = maps_root / _canonical_map_path(map_key).lstrip("/")
+                objects, width, height = _map_object_bindings(map_path, catalog)
+            except (OSError, UnicodeError, ValueError):
+                objects, width, height = [], None, None
+            coordinates = [binding.get("x"), binding.get("y")]
+            if (not all(isinstance(value, int) and not isinstance(value, bool)
+                        for value in coordinates) or
+                    not isinstance(width, int) or not isinstance(height, int) or
+                    not (0 <= coordinates[0] < width and 0 <= coordinates[1] < height)):
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} coordinates are outside the authored map".format(field),
+                    catalog.location(path, 1),
+                )
+            if not isinstance(binding.get("archetype"), str) or not isinstance(
+                binding.get(identity_field), str
+            ):
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} identity fields must be strings".format(field),
+                    catalog.location(path, 1),
+                )
+            if binding.get(identity_field) != entry.get(identity_field):
+                catalog.add_diagnostic(
+                    "invalid-property-binding",
+                    "{} stable ID must match the interaction".format(field),
+                    catalog.location(path, 1),
+                )
+            if not any(
+                obj.get("archetype") == binding.get("archetype") and
+                obj.get(identity_field) == binding.get(identity_field) and
+                obj.get("x") == binding.get("x") and
+                obj.get("y") == binding.get("y")
+                for obj in objects
+            ):
+                catalog.add_diagnostic(
+                    "missing-property-binding",
+                    "{} does not match an authored stable-ID map object".format(field),
+                    catalog.location(path, 1),
+                )
+            if field == "portal_binding":
+                returns = [binding.get("return_x"), binding.get("return_y")]
+                if (not all(isinstance(value, int) and not isinstance(value, bool)
+                            for value in returns) or
+                        not isinstance(width, int) or not isinstance(height, int) or
+                        not (0 <= returns[0] < width and 0 <= returns[1] < height)):
+                    catalog.add_diagnostic(
+                        "invalid-property-binding",
+                        "portal return coordinates are outside the authored destination map",
+                        catalog.location(path, 1),
+                    )
+
+        _validate_property_layout(catalog, maps_root, path, entry, source)
+
+        grant = entry.get("grant")
+        if not isinstance(grant, dict) or grant != {
+            "operation": "ensure_ownership", "tier": "cheap", "price": 0,
+            "emit_purchase_event": False, "preserve_existing_tier": True,
+            "idempotency_scope": "character_property",
+        }:
+            catalog.add_diagnostic(
+                "invalid-property-grant", "tutorial grant invariants are incomplete",
+                catalog.location(path, 1),
+            )
+        completion = entry.get("completion")
+        if not isinstance(completion, dict) or completion != {
+            "event": "property_bed_used", "next_quest_part_id": "speak_priest",
+            "transition_order": ["start_next", "complete_current"],
+        }:
+            catalog.add_diagnostic(
+                "invalid-property-completion", "tutorial completion invariants are incomplete",
+                catalog.location(path, 1),
+            )
+        owners = entry.get("runtime_owners")
+        if not isinstance(owners, dict) or owners != {
+            "main": "typed_property_service",
+            "classic_1x": "classic_apartment_adapter",
+            "classic_entitlement_tag": entry.get("property_id"),
+        } or owners.get("classic_entitlement_tag") not in tags:
+            catalog.add_diagnostic(
+                "invalid-property-runtime-binding",
+                "typed property identity must match the Classic entitlement tag",
+                catalog.location(path, 1),
+            )
 
 
 def load_catalog(root: Path) -> ContentCatalog:
@@ -724,9 +1239,11 @@ def load_catalog(root: Path) -> ContentCatalog:
     _load_artifacts(catalog, (arch_root, maps_root))
     _load_treasures(catalog, (arch_root, maps_root))
     _load_factions(catalog, maps_root)
+    _load_content_identities(catalog, maps_root)
     _load_maps(catalog, maps_root)
     _load_regions(catalog, maps_root)
-    _load_interfaces(catalog, maps_root)
+    interface_actions = _load_interfaces(catalog, maps_root)
+    _load_property_interactions(catalog, maps_root, interface_actions)
     catalog.check_shared_namespace(
         "server archetype", ("archetype", "artifact")
     )

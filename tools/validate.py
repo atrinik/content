@@ -44,6 +44,7 @@ def main() -> int:
             "-m",
             "unittest",
             "tools.tests.test_content_catalog",
+            "tools.tests.test_interface_compiler",
             "tools.tests.test_archetype_plurals",
             "tools.tests.test_content_contracts",
             "tools.tests.test_content_core",

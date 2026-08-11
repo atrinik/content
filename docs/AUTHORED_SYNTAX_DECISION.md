@@ -167,7 +167,7 @@ the Linux timing run.
 
 Maps are regular, non-symlink authored files with the exact classic map header,
 sorted by `(byte size, relative path)`. The runner selects nearest-rank p10,
-p50, p90, and maximum entries from 3,650 candidates, rejects maps outside the
+p50, p90, and maximum entries from 3,651 candidates, rejects maps outside the
 #17 grammar, and excludes `no_save` maps that cannot exercise swap behavior.
 
 The following values are medians of 20 observations. Time is milliseconds.

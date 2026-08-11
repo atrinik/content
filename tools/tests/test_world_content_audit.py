@@ -291,12 +291,39 @@ class WorldContentAuditTest(unittest.TestCase):
                 + indexed_idat
                 + evidence_tools._chunk(b"IEND", b"")
             ),
-            "rgba_palette.101": (
+            "rgba_transparency.101": (
                 rgba_ihdr
-                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00")
+                + evidence_tools._chunk(b"tRNS", b"\x00")
                 + evidence_tools._chunk(
                     b"IDAT", zlib.compress(b"\x00\x00\x00\x00\x00")
                 )
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "early_indexed_transparency.101": (
+                indexed_ihdr
+                + evidence_tools._chunk(b"tRNS", b"\x00")
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00\xff\xff\xff")
+                + indexed_idat
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "oversized_indexed_transparency.101": (
+                indexed_ihdr
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00\xff\xff\xff")
+                + evidence_tools._chunk(b"tRNS", b"\x00\x80\xff")
+                + indexed_idat
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "late_indexed_transparency.101": (
+                indexed_ihdr
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00\xff\xff\xff")
+                + indexed_idat
+                + evidence_tools._chunk(b"tRNS", b"\x00\x80")
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "short_rgb_transparency.101": (
+                rgb_ihdr
+                + evidence_tools._chunk(b"tRNS", b"\x00\x00")
+                + evidence_tools._chunk(b"IDAT", rgb_compressed)
                 + evidence_tools._chunk(b"IEND", b"")
             ),
             "nonempty_iend.101": (
@@ -311,6 +338,21 @@ class WorldContentAuditTest(unittest.TestCase):
             audit._ART_DIMENSION_CACHE.clear()
             with self.assertRaisesRegex(ValueError, "invalid PNG"):
                 audit._rendered_art_extent({"face": name, "visible": True})
+
+        rgba_palette = audit.ARCH_ROOT / "rgba_palette.101.png"
+        rgba_palette.write_bytes(
+            signature
+            + rgba_ihdr
+            + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00")
+            + evidence_tools._chunk(
+                b"IDAT", zlib.compress(b"\x00\x00\x00\x00\x00")
+            )
+            + evidence_tools._chunk(b"IEND", b"")
+        )
+        audit._ART_DIMENSION_CACHE.clear()
+        self.assertEqual(
+            (1, 1), audit._validated_art_png_dimensions(rgba_palette)
+        )
 
     def test_toggle_render_semantics_ignore_identity_but_track_pixels(self):
         first = {

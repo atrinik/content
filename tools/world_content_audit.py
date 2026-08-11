@@ -1028,6 +1028,8 @@ def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
     width = height = depth = color_type = None
     compressed = bytearray()
     palette_seen = False
+    palette_entries = 0
+    transparency_seen = False
     idat_seen = False
     idat_closed = False
     for chunk_index, (name, payload) in enumerate(_png_chunks(path.read_bytes())):
@@ -1057,8 +1059,9 @@ def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
             if (
                 width is None
                 or palette_seen
+                or transparency_seen
                 or idat_seen
-                or color_type in {4, 6}
+                or color_type == 4
                 or not payload
                 or len(payload) % 3
                 or len(payload) > 256 * 3
@@ -1066,6 +1069,21 @@ def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
             ):
                 raise ValueError("PNG has an invalid palette")
             palette_seen = True
+            palette_entries = len(payload) // 3
+        elif name == b"tRNS":
+            if (
+                width is None
+                or transparency_seen
+                or idat_seen
+                or color_type in {4, 6}
+                or (color_type == 2 and len(payload) != 6)
+                or (
+                    color_type == 3
+                    and (not palette_seen or len(payload) > palette_entries)
+                )
+            ):
+                raise ValueError("PNG has invalid transparency")
+            transparency_seen = True
         elif name == b"IDAT":
             if width is None or idat_closed:
                 raise ValueError("PNG has invalid IDAT ordering")

@@ -3037,6 +3037,7 @@ x 22
 y 6
 end
 arch glower.101
+glow_radius 0
 no_pass 1
 x 22
 y 6
@@ -3058,6 +3059,7 @@ x 22
 y 8
 end
 arch glower.101
+glow_radius 0
 no_pass 1
 x 22
 y 8
@@ -3187,6 +3189,7 @@ x 23
 y 6
 end
 arch glower.101
+glow_radius 0
 no_pass 1
 x 23
 y 6
@@ -3209,6 +3212,7 @@ x 23
 y 8
 end
 arch glower.101
+glow_radius 0
 no_pass 1
 x 23
 y 8

@@ -24,11 +24,6 @@ def _load_content_identities(catalog: ContentCatalog, maps_root: Path) -> None:
 
     path = maps_root / "content-identities.json"
     if not path.is_file():
-        catalog.add_diagnostic(
-            "missing-content-identities",
-            "maps/content-identities.json is required",
-            catalog.location(path, 1),
-        )
         return
     try:
         document = json.loads(path.read_text(encoding="utf-8"))

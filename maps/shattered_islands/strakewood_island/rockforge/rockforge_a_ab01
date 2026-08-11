@@ -1136,10 +1136,7 @@ x 16
 y 6
 end
 arch glower.101
-x 16
-y 6
-end
-arch light9
+glow_radius 9
 x 16
 y 6
 end
@@ -1187,10 +1184,7 @@ x 16
 y 12
 end
 arch glower.101
-x 16
-y 12
-end
-arch light9
+glow_radius 9
 x 16
 y 12
 end
@@ -1223,10 +1217,7 @@ x 16
 y 16
 end
 arch glower.101
-x 16
-y 16
-end
-arch light9
+glow_radius 9
 x 16
 y 16
 end
@@ -1270,14 +1261,11 @@ x 16
 y 22
 end
 arch glower.101
+glow_radius 9
 x 16
 y 22
 end
 arch wall_marble1.131a
-x 16
-y 22
-end
-arch light9
 x 16
 y 22
 end
@@ -1642,10 +1630,7 @@ x 20
 y 6
 end
 arch glower.101
-x 20
-y 6
-end
-arch light9
+glow_radius 9
 x 20
 y 6
 end
@@ -1693,10 +1678,7 @@ x 20
 y 12
 end
 arch glower.101
-x 20
-y 12
-end
-arch light9
+glow_radius 9
 x 20
 y 12
 end
@@ -1729,10 +1711,7 @@ x 20
 y 16
 end
 arch glower.101
-x 20
-y 16
-end
-arch light9
+glow_radius 9
 x 20
 y 16
 end
@@ -1776,14 +1755,11 @@ x 20
 y 22
 end
 arch glower.101
+glow_radius 9
 x 20
 y 22
 end
 arch wall_marble1.131a
-x 20
-y 22
-end
-arch light9
 x 20
 y 22
 end

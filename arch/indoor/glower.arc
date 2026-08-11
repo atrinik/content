@@ -1,6 +1,7 @@
 Object glower.101
 name glower
 face glower.101
+light_color ffd080
 no_pick 1
 type 79
 layer 4

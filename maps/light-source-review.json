@@ -912,6 +912,10 @@
       "rationale": "The authored ff6030 tint matches the visible art for grave_fire.101.",
       "semantic_sha256": "52679966a11b5e160ce083bfaf65e4c917372f7b4c678be2ab90d960e860c28a"
     },
+    "glower.101": {
+      "rationale": "The authored ffd080 tint matches the warm gold visible glower fixture art.",
+      "semantic_sha256": "a52ea70d35f6ec93875b98c8acbd532451e54fb4f2017df9b994829403235e3e"
+    },
     "holyword": {
       "rationale": "The authored fff0c0 tint matches the visible art for holyword.",
       "semantic_sha256": "469f58d4588827a45a19017c1c92c2096187ee41aff2417005c9a20604c6d6ed"
@@ -1134,7 +1138,7 @@
         "smooth-0001",
         "discrete-0001",
         "smooth-0350",
-        "discrete-0004"
+        "discrete-0008"
       ],
       "rationale": "Compared overlapping neutral, portal, and cold-blue emitters in the Bone Cairn and ice cavern without clipping or lost object silhouettes."
     },
@@ -1142,7 +1146,7 @@
       "status": "pass",
       "views": [
         "smooth-0200",
-        "discrete-0003"
+        "discrete-0007"
       ],
       "rationale": "Compared a linked underground-city depth; the authored illumination continues to distinguish its corridor and adjacent combat space."
     },
@@ -1150,7 +1154,7 @@
       "status": "pass",
       "views": [
         "smooth-0450",
-        "discrete-0006"
+        "discrete-0011"
       ],
       "rationale": "Compared a horizontally linked city boundary and bridge; lighted walls, water edges, and exits remain readable in both renderer modes."
     },
@@ -1159,33 +1163,67 @@
       "views": [
         "smooth-0050",
         "discrete-0002",
-        "smooth-1180",
-        "smooth-1183",
+        "smooth-0085",
+        "smooth-0094",
+        "smooth-0121",
+        "smooth-0128",
+        "smooth-0425",
+        "smooth-0563",
+        "smooth-0564",
+        "smooth-0565",
+        "smooth-0566",
+        "smooth-0567",
+        "smooth-0640",
+        "smooth-0641",
+        "smooth-0980",
+        "smooth-1110",
+        "smooth-1111",
+        "smooth-1112",
+        "smooth-1113",
+        "discrete-0003",
+        "discrete-0004",
+        "discrete-0005",
+        "discrete-0006",
+        "discrete-0010",
+        "discrete-0012",
+        "discrete-0013",
+        "discrete-0014",
+        "discrete-0015",
+        "discrete-0016",
+        "discrete-0017",
+        "discrete-0018",
+        "discrete-0020",
+        "discrete-0021",
+        "discrete-0022",
+        "discrete-0023",
+        "discrete-0024",
+        "smooth-1181",
         "smooth-1184",
-        "smooth-1186",
-        "smooth-1199",
-        "smooth-1206",
-        "smooth-1208",
-        "smooth-1210",
+        "smooth-1185",
+        "smooth-1187",
+        "smooth-1200",
+        "smooth-1207",
+        "smooth-1209",
         "smooth-1211",
-        "smooth-1214",
+        "smooth-1212",
         "smooth-1215",
         "smooth-1216",
         "smooth-1217",
-        "smooth-1218"
+        "smooth-1218",
+        "smooth-1219"
       ],
-      "rationale": "Compared a dark lair and every applied type-74 source/state view against smooth-1113, the clean proof-lab control; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
+      "rationale": "Compared the source lab and every glower context in both modes: warm emitting fixtures preserve deliberate darkness without wall bleed or washout, while the five zero-radius fixtures remain dark."
     },
     "outdoor-transition": {
       "status": "pass",
       "views": [
         "smooth-0400",
-        "discrete-0005",
+        "discrete-0009",
         "smooth-0362",
         "smooth-0752",
         "smooth-1038"
       ],
-      "rationale": "Compared street/interior transitions and corrected firefly-animation contexts; outdoor detail remains readable without palette clipping."
+      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping."
     },
     "fog-roof": {
       "status": "pass",
@@ -1199,9 +1237,43 @@
       "status": "pass",
       "views": [
         "smooth-0650",
-        "discrete-0007"
+        "discrete-0019",
+        "smooth-0085",
+        "smooth-0094",
+        "smooth-0121",
+        "smooth-0128",
+        "smooth-0425",
+        "smooth-0563",
+        "smooth-0564",
+        "smooth-0565",
+        "smooth-0566",
+        "smooth-0567",
+        "smooth-0640",
+        "smooth-0641",
+        "smooth-0980",
+        "smooth-1110",
+        "smooth-1111",
+        "smooth-1112",
+        "smooth-1113",
+        "discrete-0003",
+        "discrete-0004",
+        "discrete-0005",
+        "discrete-0006",
+        "discrete-0010",
+        "discrete-0012",
+        "discrete-0013",
+        "discrete-0014",
+        "discrete-0015",
+        "discrete-0016",
+        "discrete-0017",
+        "discrete-0018",
+        "discrete-0020",
+        "discrete-0021",
+        "discrete-0022",
+        "discrete-0023",
+        "discrete-0024"
       ],
-      "rationale": "Compared an enclosed city garden and adjoining passages; wall lights and ground contrast retain entrances and walkable routes."
+      "rationale": "Compared the baseline enclosed garden plus all eight glower contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes."
     }
   },
   "maps": {
@@ -1534,10 +1606,10 @@
     },
     "maps/shattered_islands/strakewood_island/greyton/jail/jail": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Greyton Jail in the issue65_0036 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Warm radius-5 glower fixtures preserve Greyton Jail's established room footprints while neutral independent fill retains the wider interior hierarchy.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "07c78a621c1a2573159149ceb59146bd971eb5cfb4ff4f5bdfdedd3607714b97"
+      "semantic_sha256": "1a644f2fb1c0a51b1c31db49483072fd46bcd7d32f5869ba2de9c17f83586372"
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_0101": {
       "uncolored_disposition": "neutral",
@@ -1583,10 +1655,10 @@
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0204": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Old Outpost in the issue65_0043 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The warm radius-5 glower now owns its established Old Outpost footprint without changing the surrounding interior composition.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0cb743b4564834314d2724e7db2f7f41cf8de782f86519e6a092905ea1923e28"
+      "semantic_sha256": "7b707342f565110db91c2b8e27b79acfdedc3bf0d261211f3b8b40d50359d043"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_0101": {
       "uncolored_disposition": "neutral",
@@ -1711,10 +1783,10 @@
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_aa01": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Warm radius-9 glower fixtures preserve Rockforge's large-room footprints while making the visible fixtures own their illumination.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8e2a74dacd1374e441eb86f601a9be105b9d4ae22cff246f5efa7bbcb5033cfc"
+      "semantic_sha256": "a7528eb1f41d8644177722e1d48eb4d4d4c9c9bc19414827c64d93a5a5dc139d"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_aa02": {
       "uncolored_disposition": "neutral",
@@ -1746,10 +1818,10 @@
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_ab01": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Warm radius-9 glower fixtures preserve Rockforge's large-room footprints while making the visible fixtures own their illumination.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "209cb46e10b56dc9fdf2abf17dd0d54d1ff24cabb6de10489787913e2bb1e56d"
+      "semantic_sha256": "8e62d09888577520414a585fa1c95db79e5df0f7cb135a079fae1000b34a7ca2"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_ab02": {
       "uncolored_disposition": "neutral",
@@ -2791,10 +2863,10 @@
     },
     "maps/shattered_islands/world_10_42_1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Asteria Docks retains neutral ambient hierarchy; its separately reviewed glower is explicitly radius zero and remains non-emitting.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "059f570bb83ea9e74ce78271262f74ba3d6cec44c6bf3de33c970b857b6e168f"
+      "semantic_sha256": "6ac52d20786337cb3880b2693e10d3c0d23304ecbd2d9da578735d3422109faa"
     },
     "maps/shattered_islands/world_10_42_2": {
       "uncolored_disposition": "neutral",
@@ -3406,10 +3478,10 @@
     },
     "maps/shattered_islands/world_1_68": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Brynknot retains neutral ambient hierarchy; its four separately reviewed glowers are explicitly radius zero and remain non-emitting.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b9f5ffaa86682b194e2dfe044532933acf7782bc7940469bcc059ad2f649cca9"
+      "semantic_sha256": "a41198e06f84f023f6ad2af34c5e35f05948a618eada88752bab73433f0efbda"
     },
     "maps/shattered_islands/world_1_68_-1": {
       "uncolored_disposition": "neutral",
@@ -3762,10 +3834,10 @@
     },
     "maps/shattered_islands/world_3_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The warm radius-7 interior glower retains its established Asteria footprint without recoloring unrelated outdoor fill.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f07747ba405b2cbcca3cb64b54207223b763b34d103bb20d78b57594bac87015"
+      "semantic_sha256": "6ae8b19fd53705c6fb33fe45b5dda979ae736ab918ede10ba352d8b10852a021"
     },
     "maps/shattered_islands/world_3_46": {
       "uncolored_disposition": "neutral",
@@ -5185,10 +5257,10 @@
     },
     "maps/shattered_islands/world_7_64_1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Inn In The Mountains in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The warm radius-4 glower preserves the mountain inn's compact interior footprint while surrounding neutral sources remain independent.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e71457c4ef46e292b21407aac7ee691573d34d48479c6e3ce2d1fd8cad62cb10"
+      "semantic_sha256": "808bfe7ac8c12dcfabe00c800ad84f615c7321ede2ed5330ac374ecc3a3da186"
     },
     "maps/shattered_islands/world_7_64_2": {
       "uncolored_disposition": "neutral",

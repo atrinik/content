@@ -42,9 +42,9 @@ repository-relative.
   transitions, fog/roofs, and navigation cues.
 
 The current baseline covers 97 emitting archetypes, four emitting artifacts,
-120 effective color suppliers, 14 toggle-active semantic states, and 11,393
+121 effective color suppliers, 14 toggle-active semantic states, and 11,393
 effective instances across 625 maps.
-Of those map instances, 5,878 are invisible map-local composition lights.
+Of those map instances, 5,857 are invisible map-local composition lights.
 Invisible fill remains intentionally neutral: adding one shared tint would
 recolor unrelated rooms and destroy the mapper-authored balance where several
 radii overlap. Visible fire, lava, lanterns, candles, crystals,
@@ -52,6 +52,28 @@ cold/electrical/holy effects, and colored forcefields, fungi, fairies, water,
 and portals instead inherit an explicit six-digit color matched to their art.
 Visible map-local illumination on non-emissive scenery and characters has a
 source-specific neutral rationale.
+
+### Glower fixture ownership
+
+`glower.101` owns the reviewed warm `ffd080` color without a global radius.
+Every placement records an explicit map-local radius, so the 21 fixtures that
+replaced co-located neutral helpers preserve their scalar footprints and the
+five independently reviewed fixtures remain non-emitting with radius zero:
+
+| Context and map | Fixtures | Radius | Disposition |
+| --- | ---: | ---: | --- |
+| Greyton Jail `greyton/jail/jail` | 6 | 5 | migrated from six `light5` helpers |
+| Old Outpost `old_outpost_a_0204` | 1 | 5 | migrated from one `light5` helper |
+| Rockforge `rockforge_a_aa01` | 4 | 9 | migrated from four `light9` helpers |
+| Rockforge `rockforge_a_ab01` | 8 | 9 | migrated from eight `light9` helpers |
+| Asteria `world_3_45` | 1 | 7 | migrated from one `light7` helper |
+| Mountain inn `world_7_64_1` | 1 | 4 | migrated from one `light4` helper |
+| Asteria Docks `world_10_42_1` | 1 | 0 | explicitly non-emitting; no prior source |
+| Brynknot `world_1_68` | 4 | 0 | explicitly non-emitting; no prior source |
+
+The zero-radius placements still inherit the fixture color for a reproducible
+future disposition, but Classic creates no light pool for them. No independent
+ambient helper was removed outside the 21 exact same-tile pairs.
 
 ## Review and regeneration
 
@@ -61,10 +83,11 @@ existing emitter's effective source, position, radius, color, face, visibility,
 or map context also invalidate its semantic digest. Do not refresh a digest or
 copy an old disposition without opening the map in a current Classic render.
 
-For this baseline, the wrapper profile `issue-65-light-colors-pinned` selected
-the issue's `content-1x` worktree and the isolated topology
-`issue-65-lighting-proof-pinned`, scenario `issue-65-lighting-proof`, and state
-`scenario-issue-65-lighting-proof`.
+For this baseline, the wrapper profile `issue-103-glower-1x` selected the
+issue's `content-1x` worktree at the source checkpoint recorded in the
+manifest. The isolated topology and scenario were both
+`issue-103-glower-lighting`, with state
+`scenario-issue-103-glower-lighting`.
 The Classic client at the commit recorded in
 `maps/light-source-evidence/manifest.json` connected to that profile, enabled
 its default smooth RGB renderer, teleported an invulnerable review character

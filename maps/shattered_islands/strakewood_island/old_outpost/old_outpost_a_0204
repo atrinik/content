@@ -608,10 +608,7 @@ x 6
 y 17
 end
 arch glower.101
-x 6
-y 17
-end
-arch light5
+glow_radius 5
 x 6
 y 17
 end

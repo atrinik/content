@@ -112,6 +112,7 @@ x 1
 y 22
 end
 arch glower.101
+glow_radius 0
 x 1
 y 22
 end

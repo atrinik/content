@@ -131,10 +131,6 @@ end
 arch floor_grey1a1
 x 1
 y 7
-arch event_obj
-sub_type 1
-race /python/items/lost_memories_apartment_bed.py
-end
 end
 arch carpet1.111
 x 1
@@ -147,6 +143,10 @@ no_magic 1
 damned 1
 x 1
 y 7
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch floor_grey1a1
 x 1
@@ -217,10 +217,6 @@ end
 arch floor_grey1a1
 x 2
 y 7
-arch event_obj
-sub_type 1
-race /python/items/lost_memories_apartment_bed.py
-end
 end
 arch carpet1.111
 x 2
@@ -233,6 +229,10 @@ no_magic 1
 damned 1
 x 2
 y 7
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch floor_grey1a1
 x 2

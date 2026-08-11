@@ -114,6 +114,11 @@ class LostMemoriesArrivalSuite(TestSuite):
         event = obj.FindObject(archname="event_obj")
         return event is not None and event.race == race
 
+    @staticmethod
+    def walk_into_portal(portal):
+        activator.SetPosition(portal.x, portal.y + 1)
+        activator.Move(Atrinik.NORTH)
+
     def test_arrival_starts_speak_sam(self):
         for path in ARRIVAL_MAPS:
             with self.subTest(path=path):
@@ -339,10 +344,10 @@ class LostMemoriesArrivalSuite(TestSuite):
         activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
         steward = None
         portal = None
-        for obj in activator.map.Objects(6, 3):
+        for obj in activator.map.Objects(9, 4):
             if obj.name == "Elara Harth":
                 steward = obj
-        for obj in activator.map.Objects(7, 3):
+        for obj in activator.map.Objects(10, 4):
             if obj.name == "Incuna Strakewood apartment portal":
                 portal = obj
 
@@ -362,9 +367,9 @@ class LostMemoriesArrivalSuite(TestSuite):
         packets = activator.Controller().s_packets
         packets.clear()
         origin_map = activator.map.path
-        activator.Apply(portal)
+        self.walk_into_portal(portal)
         self.assertEqual(origin_map, activator.map.path)
-        self.assertEqual((7, 3), (activator.x, activator.y))
+        self.assertEqual((10, 5), (activator.x, activator.y))
         self.assertTrue(any(
             b"You don't own an apartment here!" in packet
             for packet in packets
@@ -372,12 +377,12 @@ class LostMemoriesArrivalSuite(TestSuite):
 
     def test_every_strakewood_tier_enters_persists_and_completes_at_bed(self):
         region = apartments_info["strakewood_island"]
+        apartment, created = ensure_strakewood_apartment(activator)
+        self.assertTrue(created)
 
         for tier, info in region["apartments"].items():
             with self.subTest(tier=tier):
                 self.clear_quests()
-                apartment, created = ensure_strakewood_apartment(activator)
-                self.assertTrue(created)
                 apartment.slaying = tier
                 expected_path = activator.map.GetPath(
                     info["path"], True, activator.name
@@ -392,7 +397,7 @@ class LostMemoriesArrivalSuite(TestSuite):
                     "Incuna Strakewood apartment portal"
                 )
                 self.assertIsNotNone(portal)
-                activator.Apply(portal)
+                self.walk_into_portal(portal)
                 self.assertEqual(expected_path, activator.map.path)
 
                 marker = activator.map.CreateObject(
@@ -426,20 +431,19 @@ class LostMemoriesArrivalSuite(TestSuite):
                 self.assertEqual(
                     "/shattered_islands/world_4_85", activator.map.path
                 )
-                self.assertEqual((7, 3), (activator.x, activator.y))
+                self.assertEqual((10, 5), (activator.x, activator.y))
 
                 portal = self.find_map_object(
                     lambda obj: obj.name ==
                     "Incuna Strakewood apartment portal"
                 )
-                activator.Apply(portal)
+                self.walk_into_portal(portal)
                 self.assertEqual(expected_path, activator.map.path)
                 persisted = self.find_map_object(
                     lambda obj: obj.title == "issue 105 persistence marker"
                 )
                 self.assertIsNotNone(persisted)
                 persisted.Destroy()
-                apartment.Destroy()
 
     def test_arrival_preserves_legacy_lost_memories_states(self):
         states = (

@@ -109,6 +109,16 @@ class LostMemoriesArrivalSuite(TestSuite):
                         return obj
         return None
 
+    def find_map_objects(self, predicate):
+        matches = []
+        for x in range(activator.map.width):
+            for y in range(activator.map.height):
+                matches.extend(
+                    obj for obj in activator.map.Objects(x, y)
+                    if predicate(obj)
+                )
+        return matches
+
     @staticmethod
     def event_with_race(obj, race):
         event = obj.FindObject(archname="event_obj")
@@ -404,14 +414,16 @@ class LostMemoriesArrivalSuite(TestSuite):
                     "sword", activator.x, activator.y
                 )
                 marker.title = "issue 105 persistence marker"
-                bed = self.find_map_object(
+                beds = self.find_map_objects(
                     lambda obj: obj.name == "bed to reality"
                 )
-                self.assertIsNotNone(bed)
-                self.assertTrue(self.event_with_race(
-                    bed,
-                    "/python/items/lost_memories_apartment_bed.py",
-                ))
+                self.assertGreaterEqual(len(beds), 1)
+                for bed in beds:
+                    self.assertTrue(self.event_with_race(
+                        bed,
+                        "/python/items/lost_memories_apartment_bed.py",
+                    ))
+                bed = beds[0]
                 activator.SetPosition(bed.x, bed.y)
                 activator.Apply(bed)
                 self.assertTrue(memories.completed("apartment_tutorial"))
@@ -419,6 +431,12 @@ class LostMemoriesArrivalSuite(TestSuite):
                     Atrinik.QUEST_STATUS_STARTED,
                     memories.get_quest_status("speak_priest"),
                 )
+                activator.map.Save()
+                activator.Controller().Save()
+                with open(expected_path, "r", encoding="utf-8") as saved:
+                    self.assertIn(
+                        "title issue 105 persistence marker", saved.read()
+                    )
 
                 apartment_exit = self.find_map_object(
                     lambda obj: self.event_with_race(

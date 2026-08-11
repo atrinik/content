@@ -4,7 +4,7 @@ import Atrinik
 
 from Apartments import apartments_info
 from InterfaceQuests import lost_memories
-from Notification import Notification
+from Packet import Notification
 from QuestManager import QuestManager
 
 

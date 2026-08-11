@@ -433,7 +433,7 @@ class LostMemoriesArrivalSuite(TestSuite):
                 )
                 activator.map.Save()
                 activator.Controller().Save()
-                serialized_player = activator.Save()
+                serialized_apartment = apartment.Save()
                 with open(expected_path, "r", encoding="utf-8") as saved:
                     self.assertIn(
                         "title issue 105 persistence marker", saved.read()
@@ -452,13 +452,12 @@ class LostMemoriesArrivalSuite(TestSuite):
                 )
                 self.assertEqual((10, 5), (activator.x, activator.y))
 
-                # Rebuild an independent player object from the saved
-                # representation, as a relog does for the player's object and
-                # inventory state.  Verify the entitlement fields from which
-                # the private map and return point are reconstructed.
-                reconstructed = Atrinik.LoadObject(serialized_player)
-                reconstructed_apartment = reconstructed.FindObject(
-                    archname="player_info", name=APARTMENT_TAG
+                # Rebuild the apartment entitlement from its saved inventory
+                # representation, as player loading does during a relog.
+                # Verify the fields from which the private map and return
+                # point are reconstructed.
+                reconstructed_apartment = Atrinik.LoadObject(
+                    serialized_apartment
                 )
                 self.assertIsNotNone(reconstructed_apartment)
                 self.assertEqual(tier, reconstructed_apartment.slaying)

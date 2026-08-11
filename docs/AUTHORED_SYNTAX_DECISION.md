@@ -146,7 +146,7 @@ selected or added by issue #16.
 ## Fixed parity results
 
 The content-v1 input lock is
-`135866c5ba80e30cf83aa0fce8ef6611ee4e48aadd6e9d11170c69b916a66f17`.
+`126102873f5356eae0114d6876df25b54cb616719387f0bb466279bb6ecd460d`.
 It covers the #17 grammar and consumer inventories, corpus manifest, and every
 path-backed fixture. The corpus has 14 fixtures, including four deliberately
 malformed legacy documents.
@@ -174,10 +174,10 @@ The following values are medians of 20 observations. Time is milliseconds.
 
 | Class | Legacy bytes / objects | JSONC bytes / ratio | JSONC encode / decode | YAML bytes / ratio | YAML encode / decode |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| p10 | 8,400 / 259 | 196,873 / 23.44× | 3.94 / 19.33 | 140,524 / 16.73× | 15.10 / 30.33 |
-| p50 | 16,002 / 576 | 413,172 / 25.82× | 8.24 / 41.05 | 295,307 / 18.45× | 31.72 / 64.35 |
-| p90 | 23,918 / 867 | 623,449 / 26.07× | 12.82 / 62.67 | 446,148 / 18.65× | 48.74 / 97.43 |
-| maximum | 95,629 / 2,779 | 2,199,804 / 23.00× | 44.47 / 216.91 | 1,581,075 / 16.53× | 167.09 / 341.70 |
+| p10 | 8,400 / 259 | 196,873 / 23.44× | 8.22 / 36.80 | 140,524 / 16.73× | 32.01 / 67.57 |
+| p50 | 16,002 / 576 | 413,172 / 25.82× | 15.24 / 70.90 | 295,307 / 18.45× | 62.88 / 135.49 |
+| p90 | 23,908 / 848 | 611,111 / 25.56× | 28.53 / 119.94 | 437,450 / 18.30× | 90.19 / 185.19 |
+| maximum | 95,618 / 2,778 | 2,199,259 / 23.00× | 83.88 / 366.86 | 1,580,686 / 16.53× | 298.04 / 613.05 |
 
 These expansion ratios measure the same deliberately verbose physical-record
 scaffold, not the future typed schema or runtime representation. YAML's lighter
@@ -196,11 +196,11 @@ the wrapper-runner digest.
 
 Collection used a fresh output directory for each of three observations. It
 did not flush the operating-system page cache. Median collection time was
-7.876 seconds and p95 was 8.041 seconds.
+13.635 seconds and p95 was 14.230 seconds.
 
 The classic standalone checker was measured in a fresh collected runtime with
-five processes per map. Its median wall times were 75 ms (p10), 77 ms (p50),
-80 ms (p90), and 94 ms (maximum). Python 3.14 required recorded compatibility
+five processes per map. Its median wall times were 163 ms (p10), 173 ms (p50),
+153 ms (p90), and 196 ms (maximum). Python 3.14 required recorded compatibility
 aliases for `ConfigParser.readfp` and `xrange`; the checker source was not
 modified.
 
@@ -210,13 +210,13 @@ samples per map per process:
 
 | Class | Cold authored load | Warm lookup | Swap | Temporary reload |
 | --- | ---: | ---: | ---: | ---: |
-| p10 | 271 µs | 0 µs | 268 µs | 341 µs |
-| p50 | 500 µs | 0 µs | 446 µs | 560 µs |
-| p90 | 745 µs | 0 µs | 634 µs | 805 µs |
-| maximum | 2,978 µs | 0 µs | 2,248 µs | 3,090 µs |
+| p10 | 620 µs | 1 µs | 627 µs | 800 µs |
+| p50 | 1,025 µs | 0 µs | 994 µs | 1,117 µs |
+| p90 | 1,626 µs | 1 µs | 1,496 µs | 1,730 µs |
+| maximum | 8,163 µs | 3 µs | 6,932 µs | 8,975 µs |
 
-Median server initialization was 67.017 ms, median archetype initialization was
-22.106 ms, and median Linux peak startup RSS was 36,352 KiB. The harness asserts
+Median server initialization was 127.343 ms, median archetype initialization was
+44.267 ms, and median Linux peak startup RSS was 44,204 KiB. The harness asserts
 every cold/warm/swap/reload state transition; it does not accept timing-shaped
 output when a map stayed resident or failed to swap.
 
@@ -254,7 +254,7 @@ cd /workspaces/atrinik
 ./atrinik topology show syntax-decision --service server --json
 ./atrinik build server --profile syntax-decision --test
 ./atrinik run server --profile syntax-decision --state syntax-benchmark -- \
-  --content_benchmark=/shattered_islands/world_5_65_2,/shattered_islands/world_-4_65,/shattered_islands/world_-4_57,/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0 \
+  --content_benchmark=/shattered_islands/world_5_65_2,/shattered_islands/world_-4_65,/shattered_islands/world_-8_54,/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0 \
   --content_benchmark_iterations=9
 ./atrinik up --name syntax-decision-runtime --profile syntax-decision \
   --state syntax-benchmark --service server

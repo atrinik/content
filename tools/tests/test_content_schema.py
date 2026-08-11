@@ -162,6 +162,11 @@ class ContentSchemaTest(unittest.TestCase):
         self.assertTrue(
             all(field["constraints"] for field in fields if field["value_kind"] == "integer")
         )
+        by_id = {field["field_id"]: field for field in fields}
+        self.assertEqual(["npc"], by_id["object.npc_id"]["reference_domains"])
+        self.assertEqual(
+            ["property"], by_id["object.property_id"]["reference_domains"]
+        )
 
     def test_generated_projections_are_deterministic_and_current(self):
         first = render_outputs(ROOT)

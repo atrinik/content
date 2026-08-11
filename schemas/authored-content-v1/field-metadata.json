@@ -2994,6 +2994,20 @@
       "value_kind": "boolean"
     },
     {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.npc_id",
+      "legacy_name": "npc_id",
+      "reference_domains": [
+        "npc"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
+    },
+    {
       "constraints": {
         "maximum": 9007199254740991,
         "minimum": -9007199254740991
@@ -3199,6 +3213,20 @@
       ],
       "status": "active",
       "value_kind": "integer"
+    },
+    {
+      "constraints": {},
+      "context": "object",
+      "field_id": "object.property_id",
+      "legacy_name": "property_id",
+      "reference_domains": [
+        "property"
+      ],
+      "roles": [
+        "reference"
+      ],
+      "status": "active",
+      "value_kind": "reference"
     },
     {
       "constraints": {
@@ -4734,5 +4762,5 @@
   ],
   "schema_id": "atrinik-authored-content-v1",
   "schema_version": 1,
-  "source_sha256": "d0e81ee929fe071a196298cb9b02e32e62395309a32adf3d2653e6859cd24065"
+  "source_sha256": "098b4d4d39d34f627339d27144e7631aa5a397aeb4035793f577e7937b5732e0"
 }

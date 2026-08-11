@@ -12,14 +12,14 @@
         "x": 9,
         "y": 4,
         "archetype": "female2",
-        "name": "Elara Harth"
+        "npc_id": "incuna_apartment_steward"
       },
       "portal_binding": {
         "map": "/shattered_islands/world_4_85",
         "x": 10,
         "y": 4,
         "archetype": "exit",
-        "name": "Incuna Strakewood apartment portal",
+        "property_id": "strakewood_island_apartment",
         "return_x": 10,
         "return_y": 5
       },
@@ -47,4 +47,3 @@
     }
   ]
 }
-

@@ -54,11 +54,11 @@ class ContentCatalogTest(unittest.TestCase):
                     "property_id": "sample_property",
                     "npc_binding": {
                         "map": "/start", "x": 1, "y": 1,
-                        "archetype": "base", "name": "Sample Steward",
+                        "archetype": "base", "npc_id": "sample_npc",
                     },
                     "portal_binding": {
                         "map": "/start", "x": 2, "y": 1,
-                        "archetype": "base", "name": "Sample Portal",
+                        "archetype": "base", "property_id": "sample_property",
                         "return_x": 2, "return_y": 2,
                     },
                     "grant": {
@@ -144,6 +144,8 @@ end
         self.write(
             "maps/start",
             """arch map
+width 4
+height 4
 region town
 tile_path_1 next
 end
@@ -157,11 +159,13 @@ arch wand
 spell_id spell_minor_healing
 end
 arch base
+npc_id sample_npc
 name Sample Steward
 x 1
 y 1
 end
 arch base
+property_id sample_property
 name Sample Portal
 x 2
 y 1
@@ -236,6 +240,76 @@ end
             reference.field == "property_action_id"
             and reference.key == "sample_property_grant"
             for reference in catalog.references
+        ))
+
+    def test_rejects_property_action_in_the_wrong_interface_context(self):
+        self.create_valid_tree()
+        quest = self.root / "maps/interfaces/quests/sample_quest/quest.xml"
+        quest.write_text(
+            quest.read_text(encoding="utf-8").replace(
+                'npc_id="sample_npc"', 'npc_id="different_npc"'
+            ),
+            encoding="utf-8",
+        )
+
+        catalog = load_catalog(self.root)
+
+        self.assertIn(
+            "invalid-property-action-context",
+            {diagnostic.code for diagnostic in catalog.diagnostics},
+        )
+
+    def test_rejects_duplicate_property_action_contexts(self):
+        self.create_valid_tree()
+        quest = self.root / "maps/interfaces/quests/sample_quest/quest.xml"
+        contents = quest.read_text(encoding="utf-8")
+        quest.write_text(
+            contents.replace(
+                '<response property_action_id="sample_property_grant" message="Grant"/>',
+                '<response property_action_id="sample_property_grant" message="Grant"/>'
+                '<response property_action_id="sample_property_grant" message="Again"/>',
+            ),
+            encoding="utf-8",
+        )
+
+        catalog = load_catalog(self.root)
+
+        self.assertIn(
+            "invalid-property-action-context",
+            {diagnostic.code for diagnostic in catalog.diagnostics},
+        )
+
+    def test_rejects_invalid_property_map_and_return_coordinates(self):
+        self.create_valid_tree()
+        path = self.root / "maps/property-interactions.json"
+        document = json.loads(path.read_text(encoding="utf-8"))
+        interaction = document["interactions"][0]
+        interaction["npc_binding"]["map"] = None
+        interaction["portal_binding"]["return_x"] = -1
+        path.write_text(json.dumps(document), encoding="utf-8")
+
+        catalog = load_catalog(self.root)
+
+        messages = [
+            diagnostic.message for diagnostic in catalog.diagnostics
+            if diagnostic.code == "invalid-property-binding"
+        ]
+        self.assertTrue(any("map must be an absolute string" in item for item in messages))
+        self.assertTrue(any("return coordinates" in item for item in messages))
+
+    def test_rejects_property_binding_for_a_different_stable_id(self):
+        self.create_valid_tree()
+        path = self.root / "maps/property-interactions.json"
+        document = json.loads(path.read_text(encoding="utf-8"))
+        document["interactions"][0]["npc_binding"]["npc_id"] = "other_npc"
+        path.write_text(json.dumps(document), encoding="utf-8")
+
+        catalog = load_catalog(self.root)
+
+        self.assertTrue(any(
+            diagnostic.code == "invalid-property-binding" and
+            "stable ID must match" in diagnostic.message
+            for diagnostic in catalog.diagnostics
         ))
 
     def test_reports_duplicate_missing_wrong_domain_and_cycles(self):

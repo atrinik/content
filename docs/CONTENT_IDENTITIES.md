@@ -46,10 +46,10 @@ sanitize one into a different key. Runtime spell and skill indices are
 process-local acceleration values. Durable consumers serialize the stable
 archetype key and resolve it after startup.
 
-Map objects and interfaces bind these identities with `npc_id` and
-`property_id`. Interface compilation uses `npc_id` for its output filename;
-`npc` remains only the visible Classic name. This keeps dispatch stable when a
-display name changes.
+Interfaces bind these identities with `npc_id` and `property_id`. Interface
+compilation uses `npc_id` for its output filename, and map events point to that
+stable handler; `npc` remains only the visible Classic name. This keeps
+dispatch stable when a display name changes.
 
 Existing monster variants and bosses retain their archetype identities; do not
 invent parallel variant or boss IDs for them. A monster-family key does not yet

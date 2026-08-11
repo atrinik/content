@@ -10,6 +10,7 @@ direction 1
 layer 5
 type 79
 no_pick 1
+light_color ffd080
 name_pl magic lanterns
 end
 
@@ -24,5 +25,6 @@ direction 1
 layer 5
 type 79
 no_pick 1
+light_color ffd080
 name_pl magic lanterns
 end

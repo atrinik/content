@@ -134,6 +134,7 @@ monster 0
 name fireflies
 layer 4
 animation fireflies
+light_color c0ff60
 glow_radius 4
 randomitems none
 invulnerable 1
@@ -378,6 +379,7 @@ monster 0
 name fireflies
 layer 4
 animation fireflies
+light_color c0ff60
 glow_radius 4
 randomitems none
 invulnerable 1
@@ -588,6 +590,7 @@ monster 0
 name fireflies
 layer 4
 animation fireflies
+light_color c0ff60
 glow_radius 4
 randomitems none
 invulnerable 1
@@ -630,6 +633,7 @@ monster 0
 name fireflies
 layer 4
 animation fireflies
+light_color c0ff60
 glow_radius 4
 randomitems none
 invulnerable 1
@@ -1040,6 +1044,7 @@ monster 0
 name fireflies
 layer 4
 animation fireflies
+light_color c0ff60
 glow_radius 4
 randomitems none
 invulnerable 1

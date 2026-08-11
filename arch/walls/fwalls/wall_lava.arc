@@ -8,6 +8,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 3
+light_color ff6030
 name_pl walls
 end
 
@@ -21,6 +22,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 3
+light_color ff6030
 name_pl walls
 end
 
@@ -34,6 +36,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 3
+light_color ff6030
 name_pl walls
 end
 
@@ -47,6 +50,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 4
+light_color ff6030
 name_pl walls
 end
 
@@ -60,6 +64,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 4
+light_color ff6030
 name_pl walls
 end
 
@@ -73,6 +78,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 4
+light_color ff6030
 name_pl walls
 end
 
@@ -86,6 +92,7 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 5
+light_color ff6030
 name_pl walls
 end
 
@@ -99,5 +106,6 @@ no_pick 1
 no_pass 1
 draw_double 1
 glow_radius 5
+light_color ff6030
 name_pl walls
 end

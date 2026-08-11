@@ -1717,6 +1717,7 @@ end
 arch campfire
 layer 3
 animation fountain_stream
+light_color 60d0ff
 anim_speed 2
 z -80
 align -45

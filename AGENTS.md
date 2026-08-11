@@ -67,7 +67,10 @@
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
-  common lossless core.
+  common lossless core. The checked main-line light review must preserve its
+  pinned Classic decisions and replacement-runtime boundary, carry no Classic
+  capture artifacts, and pass `python3 tools/world_content_audit.py lights
+  --check` with zero unreviewed emitters.
 - Run `python3 tools/validate.py` and `git diff --check` for every change. The
   aggregate validator already runs contracts, schema/syntax/catalog checks,
   lossless-core tests/audit, provenance/license gates, and an isolated runtime

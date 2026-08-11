@@ -49,6 +49,7 @@ level 1
 weight 125000
 faction monsters
 int 27
+light_color fff0c0
 name_pl seraphs
 end
 More

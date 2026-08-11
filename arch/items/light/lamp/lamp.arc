@@ -15,5 +15,6 @@ maxhp 1000
 food 1000
 last_eat 1
 last_sp 5
+light_color ffd080
 name_pl lamps
 end

@@ -2,6 +2,7 @@
 
 import json
 import struct
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,6 +12,17 @@ from tools import world_content_audit as audit
 
 
 class WorldContentAuditTest(unittest.TestCase):
+    def test_active_light_evidence_requires_a_material_pool(self):
+        control = bytes(1200)
+        sprite_only = bytearray(control)
+        sprite_only[:24] = bytes([255] * 24)
+        light_pool = bytearray(control)
+        light_pool[:600] = bytes([12] * 600)
+
+        self.assertFalse(audit._has_visible_light_pool(control, control))
+        self.assertFalse(audit._has_visible_light_pool(bytes(sprite_only), control))
+        self.assertTrue(audit._has_visible_light_pool(bytes(light_pool), control))
+
     def setUp(self):
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
@@ -30,6 +42,24 @@ class WorldContentAuditTest(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(contents, encoding="utf-8")
         return path
+
+    def git(self, *args):
+        result = subprocess.run(
+            [
+                "git",
+                "-c",
+                "user.name=World Audit Test",
+                "-c",
+                "user.email=world-audit-test@example.invalid",
+                *args,
+            ],
+            cwd=self.root,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        return result.stdout.strip()
 
     def test_inventories_are_structured_and_json_serializable(self):
         self.write(
@@ -246,21 +276,40 @@ end
                 ]
         review_path.write_text(json.dumps(review))
         report = audit.light_inventory()
+        self.git("init", "-q")
+        self.git("add", "arch", "maps")
+        self.git("commit", "-qm", "fixture runtime tree")
+        content_commit = self.git("rev-parse", "HEAD")
         evidence_dir = self.root / "maps/light-source-evidence"
         evidence_dir.mkdir()
         smooth = evidence_dir / "smooth.png"
         discrete = evidence_dir / "discrete.png"
-        evidence_tools.write_png(smooth, 1, 1, b"\x00\x00\x00")
-        evidence_tools.write_png(discrete, 1, 1, b"\x00\x00\x00")
+        sheet_pixels = bytes(
+            audit.LIGHT_EVIDENCE_WIDTH * audit.LIGHT_EVIDENCE_HEIGHT * 3
+        )
+        evidence_tools.write_png(
+            smooth,
+            audit.LIGHT_EVIDENCE_WIDTH,
+            audit.LIGHT_EVIDENCE_HEIGHT,
+            sheet_pixels,
+        )
+        evidence_tools.write_png(
+            discrete,
+            audit.LIGHT_EVIDENCE_WIDTH,
+            audit.LIGHT_EVIDENCE_HEIGHT,
+            sheet_pixels,
+        )
         image = smooth.read_bytes()
         evidence = {
             "schema_version": 2,
             "render_context": {
-                "content_commit": "1" * 40,
+                "content_commit": content_commit,
                 "classic_client_commit": "2" * 40,
                 "classic_server_commit": "4" * 40,
                 "resources_commit": "3" * 40,
-                "content_source": "https://github.com/atrinik/content/tree/" + "1" * 40,
+                "content_source": (
+                    "https://github.com/atrinik/content/tree/" + content_commit
+                ),
                 "classic_client_source": (
                     "https://github.com/atrinik/classic/tree/" + "2" * 40
                 ),
@@ -279,19 +328,19 @@ end
                 "smooth": {
                     "artifact": "maps/light-source-evidence/smooth.png",
                     "sha256": audit.hashlib.sha256(smooth.read_bytes()).hexdigest(),
-                    "columns": 1,
-                    "rows": 1,
-                    "pixel_width": 1,
-                    "pixel_height": 1,
+                    "columns": audit.LIGHT_EVIDENCE_COLUMNS,
+                    "rows": audit.LIGHT_EVIDENCE_ROWS,
+                    "pixel_width": audit.LIGHT_EVIDENCE_WIDTH,
+                    "pixel_height": audit.LIGHT_EVIDENCE_HEIGHT,
                     "mode": "smooth",
                 },
                 "discrete": {
                     "artifact": "maps/light-source-evidence/discrete.png",
                     "sha256": audit.hashlib.sha256(discrete.read_bytes()).hexdigest(),
-                    "columns": 1,
-                    "rows": 1,
-                    "pixel_width": 1,
-                    "pixel_height": 1,
+                    "columns": audit.LIGHT_EVIDENCE_COLUMNS,
+                    "rows": audit.LIGHT_EVIDENCE_ROWS,
+                    "pixel_width": audit.LIGHT_EVIDENCE_WIDTH,
+                    "pixel_height": audit.LIGHT_EVIDENCE_HEIGHT,
                     "mode": "discrete",
                 },
             },
@@ -306,7 +355,49 @@ end
                     "tile": 0,
                     "mode": "smooth",
                     "capture_sha256": "5" * 64,
-                    "content_commit": "1" * 40,
+                    "content_commit": content_commit,
+                    "source_kind": "archetype",
+                    "source_id": "colored_lamp",
+                    "source_semantic_sha256": report["archetypes"][0][
+                        "semantic_sha256"
+                    ],
+                    "runtime_command": "/spawn colored_lamp; /screenshot map",
+                },
+                {
+                    "id": "smooth-light2",
+                    "map": "maps/scene",
+                    "map_semantic_sha256": report["maps"][0]["semantic_sha256"],
+                    "x": 12,
+                    "y": 14,
+                    "sheet": "smooth",
+                    "tile": 1,
+                    "mode": "smooth",
+                    "capture_sha256": "7" * 64,
+                    "content_commit": content_commit,
+                    "source_kind": "archetype",
+                    "source_id": "light2",
+                    "source_semantic_sha256": report["archetypes"][1][
+                        "semantic_sha256"
+                    ],
+                    "runtime_command": "/spawn light2; /screenshot map",
+                },
+                {
+                    "id": "smooth-glowing-reward",
+                    "map": "maps/scene",
+                    "map_semantic_sha256": report["maps"][0]["semantic_sha256"],
+                    "x": 12,
+                    "y": 14,
+                    "sheet": "smooth",
+                    "tile": 2,
+                    "mode": "smooth",
+                    "capture_sha256": "8" * 64,
+                    "content_commit": content_commit,
+                    "source_kind": "artifact",
+                    "source_id": "glowing_reward",
+                    "source_semantic_sha256": report["artifacts"][0][
+                        "semantic_sha256"
+                    ],
+                    "runtime_command": "/spawn glowing_reward; /screenshot map",
                 },
                 {
                     "id": "discrete-scene",
@@ -318,7 +409,7 @@ end
                     "tile": 0,
                     "mode": "discrete",
                     "capture_sha256": "6" * 64,
-                    "content_commit": "1" * 40,
+                    "content_commit": content_commit,
                 },
             ],
             "representative_checks": {
@@ -337,8 +428,30 @@ end
                 )
             },
             "active_states": {},
+            "source_states": {
+                "archetype:colored_lamp": {
+                    "source_kind": "archetype",
+                    "source_id": "colored_lamp",
+                    "semantic_sha256": report["archetypes"][0]["semantic_sha256"],
+                    "views": ["smooth-scene"],
+                },
+                "archetype:light2": {
+                    "source_kind": "archetype",
+                    "source_id": "light2",
+                    "semantic_sha256": report["archetypes"][1]["semantic_sha256"],
+                    "views": ["smooth-light2"],
+                },
+                "artifact:glowing_reward": {
+                    "source_kind": "artifact",
+                    "source_id": "glowing_reward",
+                    "semantic_sha256": report["artifacts"][0]["semantic_sha256"],
+                    "views": ["smooth-glowing-reward"],
+                },
+            },
         }
-        self.write("maps/light-source-evidence/manifest.json", json.dumps(evidence))
+        evidence_path = self.write(
+            "maps/light-source-evidence/manifest.json", json.dumps(evidence)
+        )
 
         self.assertEqual(
             {
@@ -358,6 +471,28 @@ end
             report["summary"],
         )
         self.assertEqual([], audit.validate_light_inventory(report))
+
+        tiny_evidence = json.loads(json.dumps(evidence))
+        evidence_tools.write_png(smooth, 1, 1, b"\x00\x00\x00")
+        tiny_evidence["sheets"]["smooth"].update({
+            "sha256": audit.hashlib.sha256(smooth.read_bytes()).hexdigest(),
+            "columns": 1,
+            "rows": 1,
+            "pixel_width": 1,
+            "pixel_height": 1,
+        })
+        evidence_path.write_text(json.dumps(tiny_evidence))
+        geometry_errors = audit.validate_light_inventory(report)
+        self.assertIn(
+            "light-source evidence sheet smooth must use 5 by 5 tiles",
+            geometry_errors,
+        )
+        self.assertIn(
+            "light-source evidence sheet smooth must declare 1020 by 765 pixels",
+            geometry_errors,
+        )
+        smooth.write_bytes(image)
+        evidence_path.write_text(json.dumps(evidence))
 
         smooth.write_bytes(
             b"\x89PNG\r\n\x1a\n"
@@ -424,7 +559,50 @@ end
         )
         smooth.write_bytes(image)
 
-        evidence_path = evidence_dir / "manifest.json"
+        missing_source_evidence = json.loads(evidence_path.read_text())
+        missing_source_evidence["source_states"].pop("artifact:glowing_reward")
+        evidence_path.write_text(json.dumps(missing_source_evidence))
+        self.assertIn(
+            "light source artifact:glowing_reward lacks runtime evidence",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        evidence_path.write_text(json.dumps(evidence))
+
+        unresolved_evidence = json.loads(json.dumps(evidence))
+        unresolved_commit = "0" * 40
+        unresolved_evidence["render_context"]["content_commit"] = unresolved_commit
+        unresolved_evidence["render_context"]["content_source"] = (
+            "https://github.com/atrinik/content/tree/" + unresolved_commit
+        )
+        for view in unresolved_evidence["views"]:
+            view["content_commit"] = unresolved_commit
+        evidence_path.write_text(json.dumps(unresolved_evidence))
+        self.assertIn(
+            "light-source evidence content commit does not resolve",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        evidence_path.write_text(json.dumps(evidence))
+
+        uncommitted = self.write(
+            "arch/post-render.arc", "# uncommitted runtime tree change\n"
+        )
+        mismatched_evidence = json.loads(json.dumps(evidence))
+        mismatched_evidence["render_context"]["runtime_content_sha256"] = (
+            audit._runtime_content_sha256()
+        )
+        evidence_path.write_text(json.dumps(mismatched_evidence))
+        mismatch_errors = audit.validate_light_inventory(audit.light_inventory())
+        self.assertNotIn(
+            "light-source evidence runtime content changed since rendered review",
+            mismatch_errors,
+        )
+        self.assertIn(
+            "light-source evidence content commit runtime tree disagrees with rendered review",
+            mismatch_errors,
+        )
+        uncommitted.unlink()
+        evidence_path.write_text(json.dumps(evidence))
+
         broken_evidence = json.loads(evidence_path.read_text())
         broken_evidence["render_context"]["content_commit"] = "not-a-commit"
         broken_evidence["render_context"]["inventory_sha256"] = "0" * 64
@@ -529,9 +707,18 @@ end
         self.write(
             "arch/toggle.arc",
             """Object toggle_lamp
-face lamp.101
-animation lamp
+face lamp_lit.101
+animation lamp_lit
 type 74
+anim_speed 4
+last_sp 5
+light_color ffc080
+end
+Object toggle_lamp_unlit
+face lamp_unlit.101
+animation lamp_unlit
+type 74
+anim_speed 4
 last_sp 5
 light_color ffc080
 end
@@ -543,8 +730,20 @@ end
 name Toggle Lamp
 end
 arch toggle_lamp
+face lamp_unlit.101
+animation lamp_unlit
 x 3
 y 4
+end
+""",
+        )
+        self.write(
+            "arch/toggle.art",
+            """artifact toggle_prize
+def_arch toggle_lamp
+Object
+face prize_unlit.101
+animation prize_unlit
 end
 """,
         )
@@ -555,16 +754,69 @@ end
         self.assertEqual("toggle-active", source["activation"])
         self.assertEqual(5, source["radius"])
         self.assertEqual("last_sp", source["radius_source"]["field"])
+        self.assertEqual("toggle_lamp", source["activation_archetype"])
+        self.assertEqual("lamp_lit.101", source["active_face"])
+        self.assertEqual("lamp_lit", source["active_animation"])
+        self.assertEqual("archetype", source["active_animation_source"]["kind"])
         emitter = report["maps"][0]["emitters"][0]
         self.assertEqual("toggle-active", emitter["activation"])
         self.assertEqual((3, 4), (emitter["x"], emitter["y"]))
         self.assertEqual("archetype", emitter["radius_source"]["kind"])
         self.assertEqual("light_color", emitter["color_source"]["field"])
-        self.assertEqual("lamp", emitter["animation"])
-        self.assertEqual(1, len(report["toggle_states"]))
+        self.assertEqual("lamp_unlit.101", emitter["face"])
+        self.assertEqual("lamp_unlit", emitter["animation"])
+        self.assertEqual("lamp_lit.101", emitter["active_face"])
+        self.assertEqual("lamp_lit", emitter["active_animation"])
+        self.assertEqual("archetype", emitter["active_animation_source"]["kind"])
+        self.assertEqual("map", emitter["activation_archetype_source"]["kind"])
+        self.assertEqual("arch", emitter["activation_archetype_source"]["field"])
+        artifact = report["artifacts"][0]
+        self.assertEqual("prize_unlit.101", artifact["face"])
+        self.assertEqual("prize_unlit", artifact["animation"])
+        self.assertEqual("lamp_lit.101", artifact["active_face"])
+        self.assertEqual("lamp_lit", artifact["active_animation"])
         self.assertEqual(
-            {"archetype", "map"},
-            {row["kind"] for row in report["toggle_states"][0]["sources"]},
+            "artifact", artifact["activation_archetype_source"]["kind"]
+        )
+        self.assertEqual(
+            "def_arch", artifact["activation_archetype_source"]["field"]
+        )
+        self.assertEqual(2, len(report["toggle_states"]))
+        states = {
+            row["activation_archetype"]: row for row in report["toggle_states"]
+        }
+        active_lamp = states["toggle_lamp"]
+        self.assertEqual("lamp_lit.101", active_lamp["face"])
+        self.assertEqual("lamp_lit", active_lamp["animation"])
+        self.assertEqual("archetype", active_lamp["animation_source"]["kind"])
+        self.assertEqual(
+            {"archetype", "artifact", "map"},
+            {row["kind"] for row in active_lamp["sources"]},
+        )
+        standalone = states["toggle_lamp_unlit"]
+        self.assertEqual("lamp_unlit.101", standalone["face"])
+        self.assertEqual("lamp_unlit", standalone["animation"])
+        self.assertEqual(
+            [{"kind": "archetype", "id": "toggle_lamp_unlit"}],
+            standalone["sources"],
+        )
+
+        clean_errors = audit.validate_light_inventory(report)
+        self.assertFalse(
+            [error for error in clean_errors if "provenance" in error],
+            clean_errors,
+        )
+        broken = json.loads(json.dumps(report))
+        broken["maps"][0]["emitters"][0]["active_animation_source"] = None
+        broken["toggle_states"][0]["activation_archetype"] = None
+        errors = audit.validate_light_inventory(broken)
+        self.assertIn(
+            "map emitter maps/toggle:4 has invalid active_animation provenance",
+            errors,
+        )
+        self.assertTrue(
+            any(error.endswith("lacks an activation archetype") for error in errors),
+            errors,
         )
 
     def test_light_review_check_rejects_missing_baseline_rows(self):

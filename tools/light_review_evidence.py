@@ -20,10 +20,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools import world_content_audit as audit
 
 
-COLUMNS = 5
-ROWS = 5
-TILE_WIDTH = 204
-TILE_HEIGHT = 153
+COLUMNS = audit.LIGHT_EVIDENCE_COLUMNS
+ROWS = audit.LIGHT_EVIDENCE_ROWS
+TILE_WIDTH = audit.LIGHT_EVIDENCE_TILE_WIDTH
+TILE_HEIGHT = audit.LIGHT_EVIDENCE_TILE_HEIGHT
+SHEET_CAPACITY = COLUMNS * ROWS
 
 
 def review_centers(emitters: list[dict]) -> list[tuple[int, int]]:
@@ -65,6 +66,97 @@ def capture_plan(report: dict) -> list[dict]:
                 "x": x,
                 "y": y,
             })
+    return plan
+
+
+def source_capture_plan(
+    report: dict, map_path: str, map_source_sha256: str, x: int, y: int
+) -> list[dict]:
+    """Build a deterministic dark-lab plan for every source definition."""
+
+    state_by_source = {
+        (source["kind"], source["id"]): state["id"]
+        for state in report["toggle_states"]
+        for source in state["sources"]
+        if source["kind"] in {"archetype", "artifact"}
+    }
+    control_id = "toggle-dark-control"
+    plan = [{
+        "number": 1,
+        "map": map_path,
+        "map_source_sha256": map_source_sha256,
+        "x": x,
+        "y": y,
+        "review_control_id": control_id,
+        "runtime_command": (
+            "/tpto /{} {} {}; verify no carried emitted light"
+        ).format(map_path.removeprefix("maps/"), x, y),
+    }]
+    for source_kind, section in (
+        ("archetype", "archetypes"),
+        ("artifact", "artifacts"),
+    ):
+        for row in report[section]:
+            if source_kind == "artifact":
+                command = "/create {} of {}".format(row["archetype"], row["id"])
+            else:
+                command = "/create {}".format(row["id"])
+            state_id = state_by_source.get((source_kind, row["id"]))
+            plan.append({
+                "number": len(plan) + 1,
+                "map": map_path,
+                "map_source_sha256": map_source_sha256,
+                "x": x,
+                "y": y,
+                "source_kind": source_kind,
+                "source_id": row["id"],
+                "source_semantic_sha256": row["semantic_sha256"],
+                "runtime_command": command,
+                **(
+                    {
+                        "active_state_id": state_id,
+                        "review_control_id": control_id,
+                    }
+                    if state_id else {}
+                ),
+            })
+    covered_states = {
+        row["active_state_id"] for row in plan if row.get("active_state_id")
+    }
+    map_emitters = {
+        emitter["id"]: emitter
+        for map_row in report["maps"]
+        for emitter in map_row["emitters"]
+    }
+    for state in report["toggle_states"]:
+        if state["id"] in covered_states:
+            continue
+        source = next(
+            (source for source in state["sources"] if source["kind"] == "map"),
+            None,
+        )
+        if source is None or source["id"] not in map_emitters:
+            raise ValueError("toggle state has no reproducible source")
+        emitter = map_emitters[source["id"]]
+        command = "/create {} last_sp {}".format(
+            emitter["activation_archetype"], state["radius"]
+        )
+        if state["color"] is not None:
+            command += " light_color {}".format(state["color"])
+        if emitter.get("face"):
+            command += " face {}".format(emitter["face"])
+        if emitter.get("animation"):
+            command += " animation {}".format(emitter["animation"])
+        plan.append({
+            "number": len(plan) + 1,
+            "map": map_path,
+            "map_source_sha256": map_source_sha256,
+            "x": x,
+            "y": y,
+            "active_state_id": state["id"],
+            "review_control_id": control_id,
+            "runtime_command": command,
+        })
     return plan
 
 
@@ -260,18 +352,62 @@ def build_evidence(args) -> dict:
     report = json.loads(args.inventory.read_text())
     map_rows = {row["path"]: row for row in report["maps"]}
     toggle_states = {row["id"]: row for row in report["toggle_states"]}
+    source_rows = {
+        (source_kind, row["id"]): row
+        for source_kind, section in (
+            ("archetype", "archetypes"),
+            ("artifact", "artifacts"),
+        )
+        for row in report[section]
+    }
     context = json.loads(args.context.read_text())
+    runtime_digest = audit._runtime_content_sha256()
+    try:
+        commit_digest = audit._git_runtime_content_sha256(
+            context.get("content_commit")
+        )
+    except ValueError as error:
+        raise ValueError("render-context {}".format(error)) from error
+    if commit_digest != runtime_digest:
+        raise ValueError(
+            "render-context content_commit runtime tree disagrees with captures"
+        )
     modes = {
         "smooth": _load_captures(args.smooth_manifest, "smooth"),
         "discrete": _load_captures(args.discrete_manifest, "discrete"),
     }
-    sheet_count = sum((len(rows) + 24) // 25 for rows in modes.values())
+    sheet_count = sum(
+        (len(rows) + SHEET_CAPACITY - 1) // SHEET_CAPACITY
+        for rows in modes.values()
+    )
+    bound_sources: set[tuple[str, str]] = set()
+    controls: dict[str, dict] = {}
+    active_rows = []
     for mode, rows in modes.items():
         for row in rows:
-            if row["map"] not in map_rows:
-                raise ValueError("capture references stale map: {}".format(row["map"]))
-            if row.get("map_semantic_sha256") != map_rows[row["map"]]["semantic_sha256"]:
-                raise ValueError("capture references stale map semantics: {}".format(row["map"]))
+            map_row = map_rows.get(row["map"])
+            if map_row is not None:
+                if row.get("map_semantic_sha256") != map_row["semantic_sha256"]:
+                    raise ValueError(
+                        "capture references stale map semantics: {}".format(row["map"])
+                    )
+            else:
+                scene = audit.ROOT / row["map"]
+                try:
+                    contained = scene.resolve().is_relative_to(
+                        (audit.ROOT / "maps").resolve()
+                    )
+                except OSError:
+                    contained = False
+                if not contained or not scene.is_file():
+                    raise ValueError("capture references stale map: {}".format(row["map"]))
+                scene_sha256 = hashlib.sha256(scene.read_bytes()).hexdigest()
+                if row.get("map_source_sha256") != scene_sha256:
+                    raise ValueError(
+                        "capture references stale review-scene source: {}".format(
+                            row["map"]
+                        )
+                    )
             if row.get("content_commit") != context.get("content_commit"):
                 raise ValueError("capture content commit disagrees with render context")
             actual_sha256 = hashlib.sha256(row["_path"].read_bytes()).hexdigest()
@@ -282,6 +418,43 @@ def build_evidence(args) -> dict:
                 raise ValueError("capture references stale toggle state: {}".format(state_id))
             if state_id is not None and not isinstance(row.get("runtime_command"), str):
                 raise ValueError("active-state capture needs its exact runtime command")
+            if state_id is not None:
+                active_rows.append(row)
+            control_id = row.get("review_control_id")
+            if control_id is not None:
+                if not isinstance(control_id, str) or len(control_id.strip()) < 6:
+                    raise ValueError("capture has an invalid review control id")
+                if state_id is None:
+                    if control_id in controls:
+                        raise ValueError("duplicate review control: {}".format(control_id))
+                    controls[control_id] = row
+            source_fields = (
+                "source_kind",
+                "source_id",
+                "source_semantic_sha256",
+            )
+            has_source_binding = any(row.get(field) is not None for field in source_fields)
+            if has_source_binding:
+                if mode != "smooth":
+                    raise ValueError("source-bound capture must use smooth lighting")
+                source_key = (row.get("source_kind"), row.get("source_id"))
+                source = source_rows.get(source_key)
+                if source is None:
+                    raise ValueError(
+                        "capture references stale light source: {}:{}".format(*source_key)
+                    )
+                if row.get("source_semantic_sha256") != source["semantic_sha256"]:
+                    raise ValueError(
+                        "capture references stale light-source semantics: {}:{}".format(
+                            *source_key
+                        )
+                    )
+                command = row.get("runtime_command")
+                if not isinstance(command, str) or len(command.strip()) < 12:
+                    raise ValueError(
+                        "source-bound capture needs its exact runtime command"
+                    )
+                bound_sources.add(source_key)
             width, height = validate_png(row["_path"])
             if (width, height) != (1024, 768):
                 raise ValueError(
@@ -289,6 +462,27 @@ def build_evidence(args) -> dict:
                         mode, row["_path"]
                     )
                 )
+    for source_kind, source_id in sorted(set(source_rows) - bound_sources):
+        raise ValueError(
+            "{} {} needs a smooth runtime capture".format(source_kind, source_id)
+        )
+    active_digests = {}
+    for row in active_rows:
+        control = controls.get(row.get("review_control_id"))
+        if (
+            control is None
+            or control["map"] != row["map"]
+            or control["x"] != row["x"]
+            or control["y"] != row["y"]
+        ):
+            raise ValueError("active-state capture needs a matching review control")
+        previous_state = active_digests.setdefault(row["sha256"], row["active_state_id"])
+        if previous_state != row["active_state_id"]:
+            raise ValueError("different active states reuse one capture")
+        _, _, active_pixels = read_png(row["_path"])
+        _, _, control_pixels = read_png(control["_path"])
+        if not audit._has_visible_light_pool(active_pixels, control_pixels):
+            raise ValueError("active-state capture lacks a visible light pool")
     if args.dry_run:
         return {
             "captures": {mode: len(rows) for mode, rows in modes.items()},
@@ -306,14 +500,36 @@ def build_evidence(args) -> dict:
         views = []
         jobs = []
         for mode, rows in modes.items():
-            for offset in range(0, len(rows), 25):
-                number = offset // 25 + 1
+            for offset in range(0, len(rows), SHEET_CAPACITY):
+                number = offset // SHEET_CAPACITY + 1
                 identifier = f"{mode}-{number:03d}"
-                for tile, row in enumerate(rows[offset:offset + 25]):
+                for tile, row in enumerate(
+                    rows[offset:offset + SHEET_CAPACITY]
+                ):
+                    optional = {}
+                    if row.get("active_state_id") is not None:
+                        optional["active_state_id"] = row["active_state_id"]
+                    if row.get("review_control_id") is not None:
+                        optional["review_control_id"] = row["review_control_id"]
+                    if row.get("source_kind") is not None:
+                        optional.update({
+                            "source_kind": row["source_kind"],
+                            "source_id": row["source_id"],
+                            "source_semantic_sha256": row[
+                                "source_semantic_sha256"
+                            ],
+                        })
+                    if optional:
+                        optional["runtime_command"] = row["runtime_command"]
+                    map_binding = (
+                        {"map_semantic_sha256": map_rows[row["map"]]["semantic_sha256"]}
+                        if row["map"] in map_rows
+                        else {"map_source_sha256": row["map_source_sha256"]}
+                    )
                     views.append({
                         "id": f"{mode}-{offset + tile + 1:04d}",
                         "map": row["map"],
-                        "map_semantic_sha256": map_rows[row["map"]]["semantic_sha256"],
+                        **map_binding,
                         "x": row["x"],
                         "y": row["y"],
                         "sheet": identifier,
@@ -321,18 +537,12 @@ def build_evidence(args) -> dict:
                         "mode": mode,
                         "capture_sha256": row["sha256"],
                         "content_commit": row["content_commit"],
-                        **(
-                            {
-                                "active_state_id": row["active_state_id"],
-                                "runtime_command": row["runtime_command"],
-                            }
-                            if row.get("active_state_id") else {}
-                        ),
+                        **optional,
                     })
                 artifact_name = f"{identifier}.png"
                 jobs.append((str(candidate / artifact_name), [
                     str(row["_path"])
-                    for row in rows[offset:offset + 25]
+                    for row in rows[offset:offset + SHEET_CAPACITY]
                 ]))
                 final_artifact = (args.output / artifact_name).resolve()
                 sheets[identifier] = {
@@ -352,8 +562,24 @@ def build_evidence(args) -> dict:
         for identifier, entry in sheets.items():
             candidate_artifact = candidate / Path(entry["artifact"]).name
             entry["sha256"] = rendered[str(candidate_artifact)]
+        control_views = {
+            view["review_control_id"]: view["id"]
+            for view in views
+            if view.get("review_control_id") is not None
+            and view.get("active_state_id") is None
+        }
+        for view in views:
+            if view.get("active_state_id") is not None:
+                control_id = view.get("review_control_id")
+                if control_id not in control_views:
+                    raise ValueError(
+                        "active-state capture needs a matching review control"
+                    )
+                view["control_view"] = control_views[control_id]
+        if audit._runtime_content_sha256() != runtime_digest:
+            raise ValueError("runtime content changed while evidence was built")
         context["inventory_sha256"] = audit._inventory_semantic_sha256(report)
-        context["runtime_content_sha256"] = audit._runtime_content_sha256()
+        context["runtime_content_sha256"] = runtime_digest
         active_states = {
             row["id"]: {
                 "semantic_sha256": row["semantic_sha256"],
@@ -366,6 +592,24 @@ def build_evidence(args) -> dict:
             }
             for row in report["toggle_states"]
         }
+        source_states = {
+            "{}:{}".format(source_kind, row["id"]): {
+                "source_kind": source_kind,
+                "source_id": row["id"],
+                "semantic_sha256": row["semantic_sha256"],
+                "views": [
+                    view["id"]
+                    for view in views
+                    if view.get("source_kind") == source_kind
+                    and view.get("source_id") == row["id"]
+                ],
+            }
+            for source_kind, section in (
+                ("archetype", "archetypes"),
+                ("artifact", "artifacts"),
+            )
+            for row in report[section]
+        }
         manifest = {
             "schema_version": 2,
             "render_context": context,
@@ -373,6 +617,7 @@ def build_evidence(args) -> dict:
             "views": views,
             "representative_checks": json.loads(args.representatives.read_text()),
             "active_states": active_states,
+            "source_states": source_states,
         }
         (candidate / "manifest.json").write_text(
             json.dumps(manifest, indent=2) + "\n"
@@ -394,6 +639,13 @@ def main() -> int:
     subparsers = parser.add_subparsers(dest="command", required=True)
     plan_parser = subparsers.add_parser("plan", help="print the deterministic capture plan")
     plan_parser.add_argument("--inventory", type=Path, required=True)
+    source_parser = subparsers.add_parser(
+        "plan-sources", help="print the deterministic source-lab capture plan"
+    )
+    source_parser.add_argument("--inventory", type=Path, required=True)
+    source_parser.add_argument("--map", required=True)
+    source_parser.add_argument("--x", type=int, required=True)
+    source_parser.add_argument("--y", type=int, required=True)
     build_parser = subparsers.add_parser("build", help="build sheets and their bound manifest")
     build_parser.add_argument("--inventory", type=Path, required=True)
     build_parser.add_argument("--smooth-manifest", type=Path, required=True)
@@ -406,6 +658,18 @@ def main() -> int:
     if args.command == "plan":
         report = json.loads(args.inventory.read_text())
         print(json.dumps(capture_plan(report), indent=2))
+    elif args.command == "plan-sources":
+        report = json.loads(args.inventory.read_text())
+        scene = audit.ROOT / args.map
+        if not scene.is_file():
+            parser.error("--map must name an existing map in this checkout")
+        print(json.dumps(source_capture_plan(
+            report,
+            args.map,
+            hashlib.sha256(scene.read_bytes()).hexdigest(),
+            args.x,
+            args.y,
+        ), indent=2))
     else:
         print(json.dumps(build_evidence(args), indent=2))
     return 0

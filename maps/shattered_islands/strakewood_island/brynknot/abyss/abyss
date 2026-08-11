@@ -6378,6 +6378,7 @@ name mysterious crystal
 face pillar_blue7.101
 is_animated 0
 glow_radius 9
+light_color 60d0ff
 direction 0
 randomitems random_gem
 level 5

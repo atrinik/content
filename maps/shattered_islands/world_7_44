@@ -2047,6 +2047,7 @@ animation fire_trail
 anim_speed 2
 is_animated 1
 glow_radius 4
+light_color ff6030
 sys_object 0
 name fire burst
 attack_fire 100

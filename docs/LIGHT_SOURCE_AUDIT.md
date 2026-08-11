@@ -29,7 +29,8 @@ repository-relative.
 - one contextual review record for every map containing an effective emitter,
   plus source-line rationales for map-local face or animation substitutions;
 - one reviewed semantic state and active-runtime evidence binding for every
-  distinct type-74 radius/color/face/animation combination;
+  distinct type-74 activation archetype, radius, color, and clone-derived
+  active face/animation combination;
 - a semantic SHA-256 for every source and map (including sorted effective
   emitter provenance, positions, radii, colors, faces, and visibility);
 - a separate durable Classic client evidence manifest whose committed contact
@@ -41,7 +42,7 @@ repository-relative.
   transitions, fog/roofs, and navigation cues.
 
 The current baseline covers 97 emitting archetypes, four emitting artifacts,
-121 effective color suppliers, 11 toggle-active semantic states, and 11,391
+120 effective color suppliers, 12 toggle-active semantic states, and 11,391
 effective instances across 625 maps.
 Of those map instances, 5,878 are invisible map-local composition lights.
 Invisible fill remains intentionally neutral: adding one shared tint would
@@ -61,7 +62,8 @@ or map context also invalidate its semantic digest. Do not refresh a digest or
 copy an old disposition without opening the map in a current Classic render.
 
 For this baseline, the wrapper profile `issue-65-light-colors` selected the
-issue's `content-1x` worktree and the isolated `issue-65-lighting` scenario.
+issue's `content-1x` worktree and the isolated `issue-65-lighting-clean`
+scenario/state `scenario-issue-65-lighting-clean`.
 The Classic client at the commit recorded in
 `maps/light-source-evidence/manifest.json` connected to that profile, enabled
 its default smooth RGB renderer, teleported an invulnerable review character
@@ -70,10 +72,14 @@ to the recorded coordinates, and saved the primary map surface with
 smooth runtime view around every invisible emitter; maps without an invisible
 emitter retain a representative view. Selected scenes were rendered again with
 smooth lighting disabled so both client lighting paths cover every contextual
-review criterion. Every distinct toggle-active state was also created or
-reached, applied, and captured in the isolated scenario. Those views record
-the exact state ID and runtime command, proving active radius, color, face, and
-animation instead of merely showing resting art.
+review criterion. Every effective archetype and artifact definition was
+created in a dark runtime review scene and bound to its semantic digest and
+exact command. Every distinct toggle-active state was also created or reached,
+applied, and captured beside a clean control of that same scene. Those views
+record the exact state ID, activation archetype, and runtime command; the
+checker decodes the committed tiles and requires a material active light-pool
+difference from the control instead of accepting resting art or a few changed
+sprite pixels.
 Before ordinary smooth or discrete capture, the reviewer must emit no light and
 all carried toggle lights must be explicitly extinguished and unapplied. The
 evidence context records that clean player-state precondition so a test light
@@ -81,14 +87,16 @@ cannot tint unrelated map views. A linked-map viewport can render the same
 reviewer representation more than once; this is acceptable only when the
 scenario contains no second server-side player object or saved gravestone.
 
-`maps/light-source-evidence/` commits 1,130 views as 46 numbered 5-by-5 contact
-sheets. The evidence manifest maps every tile back to its map semantic digest,
-coordinates, lighting mode, exact content input, and full-resolution capture
-digest. `lights --check` re-hashes each sheet, validates all PNG chunks, CRCs,
+`maps/light-source-evidence/` commits the generated views as numbered 5-by-5
+contact sheets. The evidence manifest maps every tile back to its map semantic
+digest or review-scene source digest, coordinates, lighting mode, exact content
+input, definition/state bindings, and full-resolution capture digest.
+`lights --check` re-hashes each sheet, validates all PNG chunks, CRCs,
 compressed scanlines, filters, and dimensions, rejects stale, duplicate, or
 unlisted artifacts, checks the aggregate inventory digest, proves that every
-invisible emitter lies inside a recorded smooth viewport, and requires an
-active view for every toggle state. A separate digest over all authored
+invisible emitter lies inside a recorded smooth viewport, and requires a
+source-bound view for every effective definition plus a control-compared active
+view for every toggle state. A separate digest over all authored
 `arch/` and runtime `maps/` inputs proves the final tree still matches the tree
 used by the recorded content build even when review-only files are committed
 after that build. The review JSON and evidence directory are
@@ -96,23 +104,31 @@ explicitly omitted from playable runtime collection, while remaining
 available in the source tree for maintainers.
 
 The checked generator makes viewport selection, tile order, and sheet encoding
-reproducible. `plan` emits the greedy cover in map-path order. `build` consumes
+reproducible. `plan` emits the greedy cover in map-path order; `plan-sources`
+emits the dark control, every archetype/artifact definition, and any remaining
+map-only active state in semantic order. `build` consumes
 ordered smooth/discrete capture manifests whose rows contain `artifact`, `map`,
 coordinates, semantic/content bindings, and the capture digest; it creates
 5-by-5 sheets in manifest order. Each 1024-by-768 client
 PNG is nearest-neighbor sampled to 204 by 153 pixels, unused tiles remain black,
 tile top/left edges are white, and output is deterministic RGB PNG using filter
 zero and zlib level nine. Every raw-manifest row also supplies its capture
-SHA-256, content commit, and current map semantic SHA-256; active rows add the
-toggle-state ID and exact runtime command. `--dry-run` fully decodes and checks
-all input captures. A real build renders into a sibling staging directory and
-atomically replaces the evidence directory, so stale sheets and partial builds
-cannot survive. Context and representative-check JSON objects use the same
-shapes as those objects in the committed manifest:
+SHA-256, content commit, and current map semantic SHA-256 or review-scene file
+SHA-256. Source rows add source kind, identity, semantic digest, and exact
+runtime command; active rows add the toggle-state and shared dark-control IDs.
+`--dry-run` fully decodes and checks all input captures. A real build renders
+into a sibling staging directory and atomically replaces the evidence
+directory, so stale sheets and partial builds cannot survive. Context and
+representative-check JSON objects use the same shapes as those objects in the
+committed manifest:
 
 ```sh
 python3 tools/light_review_evidence.py plan \
   --inventory build/light-sources.json > build/light-capture-plan.json
+python3 tools/light_review_evidence.py plan-sources \
+  --inventory build/light-sources.json \
+  --map maps/shattered_islands/world_1_73_-2 --x 12 --y 12 \
+  > build/light-source-capture-plan.json
 python3 tools/light_review_evidence.py build \
   --inventory build/light-sources.json \
   --smooth-manifest build/light-captures/smooth/manifest.json \

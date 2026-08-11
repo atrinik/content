@@ -38,6 +38,6 @@ weight 22500
 undead 1
 faction monsters
 int 17
-light_color 80c0ff
+light_color ff6030
 name_pl demiliches
 end

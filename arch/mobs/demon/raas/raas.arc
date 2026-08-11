@@ -40,6 +40,5 @@ anim_speed 4
 no_pick 1
 faction monsters
 int 25
-light_color 60d0ff
 name_pl raas
 end

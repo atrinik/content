@@ -13,6 +13,7 @@ import json
 import re
 from collections import defaultdict
 from pathlib import Path
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 import zlib
@@ -29,6 +30,12 @@ LIGHT_REVIEW_NAME = "light-source-review.json"
 LIGHT_EVIDENCE_NAME = "light-source-evidence/manifest.json"
 LIGHT_COLOR_RE = re.compile(r"^[0-9a-f]{6}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+LIGHT_EVIDENCE_COLUMNS = 5
+LIGHT_EVIDENCE_ROWS = 5
+LIGHT_EVIDENCE_TILE_WIDTH = 204
+LIGHT_EVIDENCE_TILE_HEIGHT = 153
+LIGHT_EVIDENCE_WIDTH = LIGHT_EVIDENCE_COLUMNS * LIGHT_EVIDENCE_TILE_WIDTH
+LIGHT_EVIDENCE_HEIGHT = LIGHT_EVIDENCE_ROWS * LIGHT_EVIDENCE_TILE_HEIGHT
 
 
 def fields(lines: list[str]) -> dict[str, list[str]]:
@@ -307,6 +314,13 @@ def artifact_inventory() -> list[dict]:
                 i += 1
             chunk = lines[start:i]
             attrs = fields([x + "\n" for x in chunk])
+            artifact_field_lines = {}
+            for offset, raw in enumerate(chunk, start + 1):
+                if raw == "Object":
+                    break
+                key, separator, _ = raw.partition(" ")
+                if separator:
+                    artifact_field_lines[key] = offset
             object_attrs = {}
             object_field_lines = {}
             object_line = None
@@ -330,6 +344,7 @@ def artifact_inventory() -> list[dict]:
                 "def_arch": one(attrs, "def_arch"),
                 "chance": one(attrs, "chance"),
                 "attrs": {key: vals[-1] for key, vals in object_attrs.items() if vals},
+                "artifact_field_lines": artifact_field_lines,
                 "field_lines": object_field_lines,
             })
     return artifacts
@@ -422,6 +437,77 @@ def _map_source(path: str, node: dict, field: str) -> dict | None:
     )
 
 
+def _archetype_identity_source(definition: dict, identity: str) -> dict | None:
+    """Locate the original archetype clone used by Classic activation."""
+
+    line = definition.get("object_line")
+    path = definition.get("path")
+    if not isinstance(line, int) or not isinstance(path, str):
+        return None
+    return _source_location("archetype", path, identity, line, "Object", line)
+
+
+def _artifact_activation_source(artifact: dict) -> dict | None:
+    """Locate an artifact's original `def_arch` activation clone."""
+
+    line = artifact.get("artifact_field_lines", {}).get("def_arch")
+    if line is None:
+        return None
+    return _source_location(
+        "artifact",
+        artifact["path"],
+        artifact["id"],
+        artifact["artifact_line"],
+        "def_arch",
+        line,
+    )
+
+
+def _map_activation_source(path: str, node: dict) -> dict:
+    """Locate the map `arch` opener that selects the activation clone."""
+
+    return _source_location(
+        "map", path, node["arch"], node["line"], "arch", node["line"]
+    )
+
+
+def _active_art(
+    definition: dict,
+    identity: str,
+    effective_face,
+    effective_face_source,
+    effective_animation,
+    effective_animation_source,
+    anim_speed,
+) -> tuple[object, dict | None, object, dict | None]:
+    """Resolve art after Classic activates a resting type-74 light.
+
+    `light_apply` restores the animation from `op->arch->clone` whenever the
+    effective animation speed is nonzero.  The active rendered face therefore
+    comes from that same original clone rather than a resting map or artifact
+    override.  A non-animated light retains its effective authored art.
+    """
+
+    try:
+        animated = int(anim_speed or 0) != 0
+    except (TypeError, ValueError):
+        animated = False
+    if not animated:
+        return (
+            effective_face,
+            effective_face_source,
+            effective_animation,
+            effective_animation_source,
+        )
+    attrs = definition.get("attrs", {})
+    return (
+        attrs.get("face"),
+        _archetype_source(definition, identity, "face"),
+        attrs.get("animation"),
+        _archetype_source(definition, identity, "animation"),
+    )
+
+
 def _effective_color(value) -> str | None:
     """Normalize an authored RGB tint; absence retains Classic neutral white."""
 
@@ -453,6 +539,8 @@ def _source_semantic_sha256(row: dict) -> str:
                 "id",
                 "path",
                 "archetype",
+                "activation_archetype",
+                "activation_archetype_source",
                 "activation",
                 "radius",
                 "radius_source",
@@ -463,6 +551,11 @@ def _source_semantic_sha256(row: dict) -> str:
                 "face_source",
                 "animation",
                 "animation_source",
+                "active_face",
+                "active_face_source",
+                "active_animation",
+                "active_animation_source",
+                "active_visible",
             )
         }
     )
@@ -486,6 +579,13 @@ def _map_semantic_sha256(row: dict) -> str:
                 "face_source",
                 "animation",
                 "animation_source",
+                "activation_archetype",
+                "activation_archetype_source",
+                "active_face",
+                "active_face_source",
+                "active_animation",
+                "active_animation_source",
+                "active_visible",
                 "art_override_fields",
                 "review_scope",
             )
@@ -537,8 +637,29 @@ def _inventory_semantic_sha256(report: dict) -> str:
     )
 
 
+def _is_review_only_runtime_path(relative: str) -> bool:
+    """Return whether a runtime-tree path belongs only to lighting review."""
+
+    return (
+        relative == "maps/light-source-review.json"
+        or relative.startswith("maps/light-source-evidence/")
+        or relative.startswith("maps/.light-source-evidence-build-")
+    )
+
+
+def _update_runtime_digest_path(
+    digest, relative: str, size: int
+) -> None:
+    """Add one length-framed runtime path and blob size to a digest."""
+
+    encoded = relative.encode("utf-8")
+    digest.update(len(encoded).to_bytes(4, "big"))
+    digest.update(encoded)
+    digest.update(size.to_bytes(8, "big"))
+
+
 def _runtime_content_sha256() -> str:
-    """Hash the authored runtime tree while excluding review-only evidence."""
+    """Hash the working tree's runtime content, excluding lighting review."""
 
     digest = hashlib.sha256()
     for root in (ARCH_ROOT, MAP_ROOT):
@@ -547,18 +668,113 @@ def _runtime_content_sha256() -> str:
         )
         for path in paths:
             relative = path.relative_to(ROOT).as_posix()
-            if relative == "maps/light-source-review.json" or relative.startswith(
-                "maps/light-source-evidence/"
-            ) or relative.startswith(
-                "maps/.light-source-evidence-build-"
-            ):
+            if _is_review_only_runtime_path(relative):
                 continue
-            encoded = relative.encode("utf-8")
-            digest.update(len(encoded).to_bytes(4, "big"))
-            digest.update(encoded)
             data = path.read_bytes()
-            digest.update(len(data).to_bytes(8, "big"))
+            _update_runtime_digest_path(digest, relative, len(data))
             digest.update(data)
+    return digest.hexdigest()
+
+
+def _git_runtime_content_sha256(commit: str) -> str:
+    """Hash one Git commit's runtime tree using the working-tree framing."""
+
+    if not isinstance(commit, str) or re.fullmatch(r"[0-9a-f]{40}", commit) is None:
+        raise ValueError("content commit does not resolve")
+    try:
+        verified = subprocess.run(
+            ["git", "rev-parse", "--verify", "{}^{{commit}}".format(commit)],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            check=False,
+            text=True,
+        )
+    except OSError as error:
+        raise ValueError("content commit does not resolve") from error
+    if verified.returncode != 0:
+        raise ValueError("content commit does not resolve")
+    resolved = verified.stdout.strip()
+    try:
+        tree = subprocess.run(
+            [
+                "git",
+                "ls-tree",
+                "-r",
+                "-z",
+                "--full-tree",
+                resolved,
+                "--",
+                "arch",
+                "maps",
+            ],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+    except OSError as error:
+        raise ValueError("content commit runtime tree cannot be read") from error
+    if tree.returncode != 0:
+        raise ValueError("content commit runtime tree cannot be read")
+
+    blobs = []
+    for record in tree.stdout.split(b"\0"):
+        if not record:
+            continue
+        metadata, raw_path = record.split(b"\t", 1)
+        _, object_type, object_id = metadata.split(b" ", 2)
+        relative = raw_path.decode("utf-8")
+        if _is_review_only_runtime_path(relative):
+            continue
+        if object_type != b"blob":
+            raise ValueError("content commit runtime tree contains a non-file entry")
+        blobs.append((relative, object_id))
+
+    digest = hashlib.sha256()
+    try:
+        process = subprocess.Popen(
+            ["git", "cat-file", "--batch"],
+            cwd=ROOT,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+        )
+    except OSError as error:
+        raise ValueError("content commit runtime blobs cannot be read") from error
+    try:
+        if process.stdin is None or process.stdout is None:
+            raise ValueError("content commit runtime blobs cannot be read")
+        for relative, object_id in sorted(blobs):
+            process.stdin.write(object_id + b"\n")
+            process.stdin.flush()
+            header = process.stdout.readline().rstrip(b"\n").split(b" ")
+            if len(header) != 3 or header[1] != b"blob":
+                raise ValueError("content commit runtime blob cannot be read")
+            size = int(header[2])
+            _update_runtime_digest_path(digest, relative, size)
+            remaining = size
+            while remaining:
+                chunk = process.stdout.read(min(remaining, 1024 * 1024))
+                if not chunk:
+                    raise ValueError("content commit runtime blob is truncated")
+                digest.update(chunk)
+                remaining -= len(chunk)
+            if process.stdout.read(1) != b"\n":
+                raise ValueError("content commit runtime blob is malformed")
+        process.stdin.close()
+        if process.wait() != 0:
+            raise ValueError("content commit runtime blobs cannot be read")
+    except BaseException:
+        if process.stdin is not None and not process.stdin.closed:
+            process.stdin.close()
+        if process.poll() is None:
+            process.kill()
+            process.wait()
+        raise
+    finally:
+        if process.stdout is not None:
+            process.stdout.close()
     return digest.hexdigest()
 
 
@@ -572,6 +788,46 @@ def _image_dimensions(path: Path) -> tuple[int, int] | None:
     except (OSError, ValueError, TypeError, zlib.error):
         return None
     return width, height
+
+
+def _evidence_tile(
+    view: dict, sheets: dict, cache: dict[str, tuple[int, int, bytes]]
+) -> bytes:
+    """Return one decoded 204-by-153 evidence tile without its white edges."""
+
+    from tools.light_review_evidence import read_png
+
+    sheet_id = view["sheet"]
+    if sheet_id not in cache:
+        cache[sheet_id] = read_png(ROOT / sheets[sheet_id]["artifact"])
+    width, height, pixels = cache[sheet_id]
+    if (width, height) != (LIGHT_EVIDENCE_WIDTH, LIGHT_EVIDENCE_HEIGHT):
+        raise ValueError("invalid evidence sheet geometry")
+    tile = view["tile"]
+    tile_x = (tile % LIGHT_EVIDENCE_COLUMNS) * LIGHT_EVIDENCE_TILE_WIDTH
+    tile_y = (tile // LIGHT_EVIDENCE_COLUMNS) * LIGHT_EVIDENCE_TILE_HEIGHT
+    output = bytearray()
+    for y in range(1, LIGHT_EVIDENCE_TILE_HEIGHT):
+        start = (
+            (tile_y + y) * LIGHT_EVIDENCE_WIDTH + tile_x + 1
+        ) * 3
+        end = start + (LIGHT_EVIDENCE_TILE_WIDTH - 1) * 3
+        output.extend(pixels[start:end])
+    return bytes(output)
+
+
+def _has_visible_light_pool(active: bytes, control: bytes) -> bool:
+    """Return whether a captured state materially changes its dark control."""
+
+    differences = [
+        abs(active_channel - control_channel)
+        for active_channel, control_channel in zip(active, control)
+    ]
+    return (
+        len(active) == len(control)
+        and sum(value >= 3 for value in differences) >= 300
+        and sum(differences) >= 3000
+    )
 
 
 def validate_light_evidence(report: dict) -> list[str]:
@@ -611,8 +867,23 @@ def validate_light_evidence(report: dict) -> list[str]:
             errors.append("light-source evidence needs immutable {}".format(field))
     if context.get("inventory_sha256") != _inventory_semantic_sha256(report):
         errors.append("light-source evidence inventory changed since rendered review")
-    if context.get("runtime_content_sha256") != _runtime_content_sha256():
+    runtime_digest = context.get("runtime_content_sha256")
+    if runtime_digest != _runtime_content_sha256():
         errors.append("light-source evidence runtime content changed since rendered review")
+    content_commit = context.get("content_commit")
+    if isinstance(content_commit, str) and re.fullmatch(
+        r"[0-9a-f]{40}", content_commit
+    ) is not None:
+        try:
+            commit_digest = _git_runtime_content_sha256(content_commit)
+        except ValueError as error:
+            errors.append("light-source evidence {}".format(error))
+        else:
+            if runtime_digest != commit_digest:
+                errors.append(
+                    "light-source evidence content commit runtime tree disagrees "
+                    "with rendered review"
+                )
 
     sheets = evidence.get("sheets")
     if not isinstance(sheets, dict):
@@ -664,17 +935,23 @@ def validate_light_evidence(report: dict) -> list[str]:
                 )
         columns = entry.get("columns")
         rows = entry.get("rows")
-        if (
-            not isinstance(columns, int) or isinstance(columns, bool) or columns < 1
-            or not isinstance(rows, int) or isinstance(rows, bool) or rows < 1
-        ):
+        if columns != LIGHT_EVIDENCE_COLUMNS or rows != LIGHT_EVIDENCE_ROWS:
             errors.append(
-                "light-source evidence sheet {} needs positive dimensions".format(
-                    identifier
+                "light-source evidence sheet {} must use {} by {} tiles".format(
+                    identifier, LIGHT_EVIDENCE_COLUMNS, LIGHT_EVIDENCE_ROWS
                 )
             )
         else:
             capacities[identifier] = columns * rows
+        if (
+            entry.get("pixel_width") != LIGHT_EVIDENCE_WIDTH
+            or entry.get("pixel_height") != LIGHT_EVIDENCE_HEIGHT
+        ):
+            errors.append(
+                "light-source evidence sheet {} must declare {} by {} pixels".format(
+                    identifier, LIGHT_EVIDENCE_WIDTH, LIGHT_EVIDENCE_HEIGHT
+                )
+            )
         if entry.get("mode") not in {"smooth", "discrete"}:
             errors.append("light-source evidence sheet {} needs a lighting mode".format(identifier))
 
@@ -687,6 +964,14 @@ def validate_light_evidence(report: dict) -> list[str]:
     occupied = set()
     referenced_sheets = set()
     smooth_by_map: dict[str, list[dict]] = defaultdict(list)
+    expected_sources = {
+        (source_kind, row["id"]): row
+        for source_kind, section in (
+            ("archetype", "archetypes"),
+            ("artifact", "artifacts"),
+        )
+        for row in report[section]
+    }
     for view in views:
         if not isinstance(view, dict):
             errors.append("light-source evidence view must be an object")
@@ -700,8 +985,37 @@ def validate_light_evidence(report: dict) -> list[str]:
         view_ids[identifier] = view
         map_path = view.get("map")
         row = map_rows.get(map_path)
+        source_fields = (
+            "source_kind",
+            "source_id",
+            "source_semantic_sha256",
+        )
+        has_source_binding = any(view.get(field) is not None for field in source_fields)
         if row is None:
-            errors.append("light-source evidence view {} references a stale map".format(identifier))
+            scene = ROOT / str(map_path)
+            try:
+                contained = scene.resolve().is_relative_to(MAP_ROOT.resolve())
+            except OSError:
+                contained = False
+            lab_binding = (
+                has_source_binding
+                or view.get("active_state_id") is not None
+                or view.get("review_control_id") is not None
+            )
+            if not contained or not scene.is_file() or not lab_binding:
+                errors.append(
+                    "light-source evidence view {} references a stale map".format(
+                        identifier
+                    )
+                )
+            elif view.get("map_source_sha256") != hashlib.sha256(
+                scene.read_bytes()
+            ).hexdigest():
+                errors.append(
+                    "light-source evidence view {} has stale review-scene source".format(
+                        identifier
+                    )
+                )
         elif view.get("map_semantic_sha256") != row["semantic_sha256"]:
             errors.append(
                 "light-source evidence view {} has stale map semantics".format(identifier)
@@ -756,6 +1070,34 @@ def validate_light_evidence(report: dict) -> list[str]:
                     identifier
                 )
             )
+        if has_source_binding:
+            source_key = (view.get("source_kind"), view.get("source_id"))
+            source = expected_sources.get(source_key)
+            if source is None:
+                errors.append(
+                    "light-source evidence view {} references a stale source".format(
+                        identifier
+                    )
+                )
+            elif view.get("source_semantic_sha256") != source["semantic_sha256"]:
+                errors.append(
+                    "light-source evidence view {} has stale source semantics".format(
+                        identifier
+                    )
+                )
+            if mode != "smooth":
+                errors.append(
+                    "light-source evidence view {} binds a source outside smooth mode".format(
+                        identifier
+                    )
+                )
+            command = view.get("runtime_command")
+            if not isinstance(command, str) or len(command.strip()) < 12:
+                errors.append(
+                    "light-source evidence view {} needs a source runtime command".format(
+                        identifier
+                    )
+                )
     for identifier in sorted(set(sheets) - referenced_sheets):
         errors.append("stale light-source evidence sheet: {}".format(identifier))
     expected_artifacts = {
@@ -833,6 +1175,8 @@ def validate_light_evidence(report: dict) -> list[str]:
         errors.append("light-source evidence active_states must be an object")
         active_states = {}
     expected_states = {row["id"]: row for row in report["toggle_states"]}
+    active_capture_ids = {}
+    tile_cache = {}
     for stale in sorted(set(active_states) - set(expected_states)):
         errors.append("stale active-state lighting evidence: {}".format(stale))
     for identifier, row in sorted(expected_states.items()):
@@ -860,8 +1204,92 @@ def validate_light_evidence(report: dict) -> list[str]:
                         identifier, view_id
                     )
                 )
+                continue
+            capture_sha256 = view.get("capture_sha256")
+            previous_state = active_capture_ids.setdefault(capture_sha256, identifier)
+            if previous_state != identifier:
+                errors.append(
+                    "toggle states {} and {} reuse one active capture".format(
+                        previous_state, identifier
+                    )
+                )
+            control = view_ids.get(view.get("control_view"))
+            if (
+                not isinstance(control, dict)
+                or control.get("mode") != "smooth"
+                or control.get("active_state_id") is not None
+                or control.get("review_control_id") != view.get("review_control_id")
+                or control.get("map") != view.get("map")
+                or control.get("x") != view.get("x")
+                or control.get("y") != view.get("y")
+            ):
+                errors.append(
+                    "toggle state {} view {} lacks a matched dark control".format(
+                        identifier, view_id
+                    )
+                )
+                continue
+            try:
+                active_pixels = _evidence_tile(view, sheets, tile_cache)
+                control_pixels = _evidence_tile(control, sheets, tile_cache)
+            except (KeyError, OSError, ValueError, TypeError, zlib.error):
+                errors.append(
+                    "toggle state {} view {} cannot be pixel-compared".format(
+                        identifier, view_id
+                    )
+                )
+                continue
+            if not _has_visible_light_pool(active_pixels, control_pixels):
+                errors.append(
+                    "toggle state {} view {} lacks a visible active light pool".format(
+                        identifier, view_id
+                    )
+                )
         if not isinstance(entry.get("rationale"), str) or len(entry["rationale"].strip()) < 12:
             errors.append("toggle state {} needs an evidence rationale".format(identifier))
+    source_states = evidence.get("source_states")
+    if not isinstance(source_states, dict):
+        errors.append("light-source evidence source_states must be an object")
+        source_states = {}
+    expected_state_ids = {
+        "{}:{}".format(source_kind, source_id): (source_kind, source_id, row)
+        for (source_kind, source_id), row in expected_sources.items()
+    }
+    for stale in sorted(set(source_states) - set(expected_state_ids)):
+        errors.append("stale source-state lighting evidence: {}".format(stale))
+    for identifier, (source_kind, source_id, row) in sorted(
+        expected_state_ids.items()
+    ):
+        entry = source_states.get(identifier)
+        if not isinstance(entry, dict):
+            errors.append("light source {} lacks runtime evidence".format(identifier))
+            continue
+        if (
+            entry.get("source_kind") != source_kind
+            or entry.get("source_id") != source_id
+            or entry.get("semantic_sha256") != row["semantic_sha256"]
+        ):
+            errors.append("light source {} runtime evidence is stale".format(identifier))
+        identifiers = entry.get("views")
+        if not isinstance(identifiers, list) or not identifiers:
+            errors.append("light source {} needs smooth runtime views".format(identifier))
+            continue
+        for view_id in identifiers:
+            view = view_ids.get(view_id)
+            if (
+                not isinstance(view, dict)
+                or view.get("mode") != "smooth"
+                or view.get("source_kind") != source_kind
+                or view.get("source_id") != source_id
+                or view.get("source_semantic_sha256") != row["semantic_sha256"]
+                or not isinstance(view.get("runtime_command"), str)
+                or len(view["runtime_command"].strip()) < 12
+            ):
+                errors.append(
+                    "light source {} has invalid runtime view {}".format(
+                        identifier, view_id
+                    )
+                )
     return errors
 
 
@@ -904,24 +1332,60 @@ def light_inventory() -> dict:
         disposition, resolved_color = _review_disposition(
             review.get("archetypes", {}).get(archetype), color
         )
+        face = attrs.get("face")
+        face_source = _archetype_source(definition, archetype, "face")
+        animation = attrs.get("animation")
+        animation_source = _archetype_source(definition, archetype, "animation")
+        activation_archetype = None
+        activation_archetype_source = None
+        active_face = active_face_source = None
+        active_animation = active_animation_source = None
+        active_visible = None
+        if activation == "toggle-active":
+            activation_archetype = archetype
+            activation_archetype_source = _archetype_identity_source(
+                definition, archetype
+            )
+            (
+                active_face,
+                active_face_source,
+                active_animation,
+                active_animation_source,
+            ) = _active_art(
+                definition,
+                archetype,
+                face,
+                face_source,
+                animation,
+                animation_source,
+                attrs.get("anim_speed"),
+            )
+            active_visible = _visible_emitter(
+                active_face, attrs.get("type"), attrs.get("sys_object")
+            )
         row = {
             "id": archetype,
             "path": definition["path"],
             "object_line": definition["object_line"],
             "activation": activation,
+            "activation_archetype": activation_archetype,
+            "activation_archetype_source": activation_archetype_source,
             "radius": radius,
             "radius_source": _archetype_source(definition, archetype, radius_field),
             "color": resolved_color,
             "color_source": _archetype_source(definition, archetype, "light_color"),
             "visible": _visible_emitter(
-                attrs.get("face"), attrs.get("type"), attrs.get("sys_object")
+                face, attrs.get("type"), attrs.get("sys_object")
             ),
-            "face": attrs.get("face"),
-            "face_source": _archetype_source(definition, archetype, "face"),
-            "animation": attrs.get("animation"),
-            "animation_source": _archetype_source(
-                definition, archetype, "animation"
-            ),
+            "face": face,
+            "face_source": face_source,
+            "animation": animation,
+            "animation_source": animation_source,
+            "active_face": active_face,
+            "active_face_source": active_face_source,
+            "active_animation": active_animation,
+            "active_animation_source": active_animation_source,
+            "active_visible": active_visible,
             "disposition": disposition,
             "rationale": review.get("archetypes", {}).get(archetype, {}).get(
                 "rationale"
@@ -966,12 +1430,41 @@ def light_inventory() -> dict:
                 base_definition, artifact["def_arch"], "animation"
             )
         )
+        activation_archetype = None
+        activation_archetype_source = None
+        active_face = active_face_source = None
+        active_animation = active_animation_source = None
+        active_visible = None
+        if activation == "toggle-active":
+            activation_archetype = artifact["def_arch"]
+            activation_archetype_source = _artifact_activation_source(artifact)
+            (
+                active_face,
+                active_face_source,
+                active_animation,
+                active_animation_source,
+            ) = _active_art(
+                base_definition,
+                artifact["def_arch"],
+                face,
+                face_source,
+                animation,
+                animation_source,
+                attrs.get("anim_speed", base.get("anim_speed")),
+            )
+            active_visible = _visible_emitter(
+                active_face,
+                attrs.get("type", base.get("type")),
+                attrs.get("sys_object", base.get("sys_object")),
+            )
         row = {
             "id": artifact["id"],
             "path": artifact["path"],
             "archetype": artifact["def_arch"],
             "object_line": artifact.get("object_line"),
             "activation": activation,
+            "activation_archetype": activation_archetype,
+            "activation_archetype_source": activation_archetype_source,
             "radius": radius,
             "radius_source": radius_source,
             "color": resolved_color,
@@ -985,6 +1478,11 @@ def light_inventory() -> dict:
             "face_source": face_source,
             "animation": animation,
             "animation_source": animation_source,
+            "active_face": active_face,
+            "active_face_source": active_face_source,
+            "active_animation": active_animation,
+            "active_animation_source": active_animation_source,
+            "active_visible": active_visible,
             "disposition": disposition,
             "rationale": review.get("artifacts", {}).get(artifact["id"], {}).get(
                 "rationale"
@@ -1064,6 +1562,33 @@ def light_inventory() -> dict:
                 if "animation" in attrs
                 else _archetype_source(definition, node["arch"], "animation")
             )
+            activation_archetype = None
+            activation_archetype_source = None
+            active_face = active_face_source = None
+            active_animation = active_animation_source = None
+            active_visible = None
+            if activation == "toggle-active":
+                activation_archetype = node["arch"]
+                activation_archetype_source = _map_activation_source(relative, node)
+                (
+                    active_face,
+                    active_face_source,
+                    active_animation,
+                    active_animation_source,
+                ) = _active_art(
+                    definition,
+                    node["arch"],
+                    face,
+                    face_source,
+                    animation,
+                    animation_source,
+                    one(attrs, "anim_speed", base.get("anim_speed")),
+                )
+                active_visible = _visible_emitter(
+                    active_face,
+                    one(attrs, "type", base.get("type")),
+                    one(attrs, "sys_object", base.get("sys_object")),
+                )
             art_rationale = (
                 map_review.get("art_overrides", {}).get(str(node["line"]))
                 if map_review else None
@@ -1075,6 +1600,8 @@ def light_inventory() -> dict:
                 "x": x,
                 "y": y,
                 "activation": activation,
+                "activation_archetype": activation_archetype,
+                "activation_archetype_source": activation_archetype_source,
                 "radius": radius,
                 "radius_source": radius_source,
                 "color": resolved_color,
@@ -1089,6 +1616,11 @@ def light_inventory() -> dict:
                 "face_source": face_source,
                 "animation": animation,
                 "animation_source": animation_source,
+                "active_face": active_face,
+                "active_face_source": active_face_source,
+                "active_animation": active_animation,
+                "active_animation_source": active_animation_source,
+                "active_visible": active_visible,
                 "art_override_fields": art_override_fields,
                 "art_rationale": art_rationale,
                 "review_scope": review_scope,
@@ -1162,14 +1694,20 @@ def light_inventory() -> dict:
         for state_row in state_rows:
             if state_row.get("activation") != "toggle-active":
                 continue
-            state = {
-                key: state_row.get(key)
-                for key in ("radius", "color", "face", "animation", "visible")
+            state_identity = {
+                "activation_archetype": state_row.get("activation_archetype"),
+                "radius": state_row.get("radius"),
+                "color": state_row.get("color"),
+                "face": state_row.get("active_face"),
+                "animation": state_row.get("active_animation"),
+                "visible": state_row.get("active_visible"),
             }
-            identifier = _semantic_sha256(state)
+            identifier = _semantic_sha256(state_identity)
             group = toggle_groups.setdefault(identifier, {
                 "id": identifier,
-                **state,
+                **state_identity,
+                "face_source": state_row.get("active_face_source"),
+                "animation_source": state_row.get("active_animation_source"),
                 "sources": [],
             })
             group["sources"].append({"kind": kind, "id": state_row["id"]})
@@ -1242,7 +1780,14 @@ def validate_light_inventory(report: dict) -> list[str]:
     }
     for section in ("archetypes", "artifacts"):
         for row in report[section]:
-            for field in ("radius", "color", "face", "animation"):
+            for field in (
+                "radius",
+                "color",
+                "face",
+                "animation",
+                "active_face",
+                "active_animation",
+            ):
                 source = row.get(field + "_source")
                 if (row.get(field) is not None) != _valid_source_location(source):
                     errors.append(
@@ -1256,6 +1801,26 @@ def validate_light_inventory(report: dict) -> list[str]:
                         section[:-1], row["id"]
                     )
                 )
+            activation_archetype = row.get("activation_archetype")
+            activation_source = row.get("activation_archetype_source")
+            if row.get("activation") == "toggle-active":
+                if (
+                    not isinstance(activation_archetype, str)
+                    or not activation_archetype
+                    or not _valid_source_location(activation_source)
+                    or not isinstance(row.get("active_visible"), bool)
+                ):
+                    errors.append(
+                        "{} {} has invalid active-state provenance".format(
+                            section[:-1], row["id"]
+                        )
+                    )
+            elif activation_archetype is not None or activation_source is not None:
+                errors.append(
+                    "{} {} has unexpected active-state provenance".format(
+                        section[:-1], row["id"]
+                    )
+                )
     for row in report["color_sources"]:
         if not _valid_source_location(row.get("color_source")):
             errors.append(
@@ -1263,7 +1828,14 @@ def validate_light_inventory(report: dict) -> list[str]:
             )
     for map_row in report["maps"]:
         for emitter in map_row["emitters"]:
-            for field in ("radius", "color", "face", "animation"):
+            for field in (
+                "radius",
+                "color",
+                "face",
+                "animation",
+                "active_face",
+                "active_animation",
+            ):
                 source = emitter.get(field + "_source")
                 if (emitter.get(field) is not None) != _valid_source_location(source):
                     errors.append(
@@ -1274,6 +1846,41 @@ def validate_light_inventory(report: dict) -> list[str]:
             if emitter.get("activation") not in {"continuous", "toggle-active"}:
                 errors.append(
                     "map emitter {} has invalid activation mode".format(emitter["id"])
+                )
+            activation_archetype = emitter.get("activation_archetype")
+            activation_source = emitter.get("activation_archetype_source")
+            if emitter.get("activation") == "toggle-active":
+                if (
+                    not isinstance(activation_archetype, str)
+                    or not activation_archetype
+                    or not _valid_source_location(activation_source)
+                    or not isinstance(emitter.get("active_visible"), bool)
+                ):
+                    errors.append(
+                        "map emitter {} has invalid active-state provenance".format(
+                            emitter["id"]
+                        )
+                    )
+            elif activation_archetype is not None or activation_source is not None:
+                errors.append(
+                    "map emitter {} has unexpected active-state provenance".format(
+                        emitter["id"]
+                    )
+                )
+    for row in report["toggle_states"]:
+        if not isinstance(row.get("activation_archetype"), str) or not row[
+            "activation_archetype"
+        ]:
+            errors.append(
+                "toggle state {} lacks an activation archetype".format(row["id"])
+            )
+        for field in ("face", "animation"):
+            source = row.get(field + "_source")
+            if (row.get(field) is not None) != _valid_source_location(source):
+                errors.append(
+                    "toggle state {} has invalid {} provenance".format(
+                        row["id"], field
+                    )
                 )
     errors.extend(validate_light_evidence(report))
     required_checks = {

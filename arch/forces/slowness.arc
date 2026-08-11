@@ -1,5 +1,5 @@
 Object slowness
-sys_object 1
+name slowness
 face slowness.101
 exp -1
 identified 1

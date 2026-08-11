@@ -2704,11 +2704,8 @@ x 17
 y 9
 end
 arch glower.101
+glow_radius 7
 sub_layer 1
-x 17
-y 9
-end
-arch light7
 x 17
 y 9
 end

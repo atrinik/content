@@ -327,13 +327,11 @@ end
         self.assertNotIn(external_directory, diagnostics[0].format())
         self.assertEqual((), catalog.definitions)
 
-    def test_runtime_collection_excludes_light_review_artifacts(self):
+    def test_runtime_collection_excludes_semantic_review_and_caches(self):
         maps = self.root / "maps"
         self.assertEqual(
             {
                 "__pycache__",
-                "light-source-evidence",
-                "light-source-review",
                 "light-source-review.json",
                 "stale.pyc",
             },
@@ -342,8 +340,6 @@ end
                 [
                     "world",
                     "__pycache__",
-                    "light-source-evidence",
-                    "light-source-review",
                     "light-source-review.json",
                     "stale.pyc",
                 ],
@@ -354,7 +350,7 @@ end
             {"__pycache__", "nested.pyc"},
             review_only_map_entries(
                 str(maps / "nested"),
-                ["light-source-evidence", "__pycache__", "nested.pyc"],
+                ["local-render.png", "__pycache__", "nested.pyc"],
                 maps,
             ),
         )

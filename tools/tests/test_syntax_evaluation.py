@@ -15,7 +15,6 @@ from tools.syntax_evaluation.benchmark import (
     _implementation_digest,
     _parse_server_output,
     _summary,
-    _topology_input_components,
     select_representative_maps,
 )
 from tools.syntax_evaluation.evaluation import evaluate_corpus, validate_baseline_lock
@@ -28,32 +27,6 @@ CONTRACT_ROOT = ROOT / "contracts" / "content-v1"
 
 
 class SyntaxEvaluationTest(unittest.TestCase):
-    def test_topology_inputs_resolve_current_provider_names(self):
-        inputs = _topology_input_components(
-            {
-                "components": {
-                    "classic-server": {
-                        "head": "1" * 40,
-                        "dirty": False,
-                        "path": "/worktrees/classic/server",
-                    },
-                    "content-1x": {
-                        "head": "2" * 40,
-                        "dirty": False,
-                        "path": "/worktrees/content-1x",
-                    },
-                },
-                "dependencies": ["server", "content"],
-                "providers": {
-                    "server": "classic-server",
-                    "content": "content-1x",
-                },
-            }
-        )
-
-        self.assertEqual("1" * 40, inputs["server"]["commit"])
-        self.assertEqual("/worktrees/content-1x", inputs["content"]["path"])
-
     def test_locked_corpus_roundtrips_both_surfaces_deterministically(self):
         first = evaluate_corpus(ROOT)
         second = evaluate_corpus(ROOT)

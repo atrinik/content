@@ -703,6 +703,7 @@ end
 arch campfire
 layer 2
 animation fountain_stream
+light_color 60d0ff
 anim_speed 2
 z -72
 zoom 65
@@ -724,6 +725,7 @@ end
 arch campfire
 layer 2
 animation fountain_stream
+light_color 60d0ff
 anim_speed 2
 z -36
 zoom 50
@@ -844,6 +846,7 @@ end
 arch campfire
 layer 2
 animation fountain_stream
+light_color 60d0ff
 anim_speed 2
 z -32
 zoom 50

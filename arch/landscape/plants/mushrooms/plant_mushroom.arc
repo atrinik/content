@@ -4,6 +4,7 @@ layer 4
 face plant_mushroom1.101
 no_pick 1
 type 79
+light_color ff60c0
 name_pl mushrooms
 end
 
@@ -13,6 +14,7 @@ layer 4
 face plant_mushroom2.101
 no_pick 1
 type 79
+light_color ff60c0
 name_pl mushrooms
 end
 
@@ -22,6 +24,7 @@ layer 4
 face plant_mushroom3.101
 no_pick 1
 type 79
+light_color ff60c0
 name_pl mushrooms
 end
 

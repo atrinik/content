@@ -4,6 +4,7 @@ layer 4
 face mushroom_giant1.101
 no_pick 1
 type 79
+light_color c0ff60
 name_pl giant mushrooms
 end
 
@@ -13,6 +14,7 @@ layer 4
 face mushroom_giant2.101
 no_pick 1
 type 79
+light_color ffd080
 name_pl giant mushrooms
 end
 
@@ -22,6 +24,7 @@ layer 4
 face mushroom_giant3.101
 no_pick 1
 type 79
+light_color 60d0ff
 name_pl giant mushrooms
 end
 
@@ -31,6 +34,7 @@ layer 4
 face mushroom_giant4.101
 no_pick 1
 type 79
+light_color c0ff60
 name_pl giant mushrooms
 end
 

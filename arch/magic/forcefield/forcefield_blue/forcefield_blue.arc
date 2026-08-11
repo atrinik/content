@@ -9,6 +9,7 @@ layer 5
 no_pick 1
 glow_radius 5
 name_pl blue force fields
+light_color 4060ff
 end
 
 Object forcefield_blue_1
@@ -22,6 +23,7 @@ layer 5
 no_pick 1
 glow_radius 4
 name_pl blue force fields
+light_color 4060ff
 end
 
 Object forcefield_blue_3
@@ -35,6 +37,7 @@ layer 5
 no_pick 1
 glow_radius 4
 name_pl blue force fields
+light_color 4060ff
 end
 
 Object forcefield_blue_4
@@ -48,6 +51,7 @@ layer 5
 no_pick 1
 glow_radius 4
 name_pl blue force fields
+light_color 4060ff
 end
 
 Object forcefield_blue_8
@@ -61,4 +65,5 @@ layer 5
 no_pick 1
 glow_radius 4
 name_pl blue force fields
+light_color 4060ff
 end

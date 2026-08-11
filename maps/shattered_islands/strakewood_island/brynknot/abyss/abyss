@@ -247,10 +247,7 @@ end
 arch crystal_purple_s
 x 2
 y 32
-end
-arch light3
-x 2
-y 32
+glow_radius 3
 end
 arch magic_wall
 speed_left 0.2
@@ -1467,10 +1464,7 @@ end
 arch crystal_red_s
 x 7
 y 26
-end
-arch light3
-x 7
-y 26
+glow_radius 3
 end
 arch magic_wall
 speed_left 0.2
@@ -1614,10 +1608,7 @@ end
 arch crystal_red_s
 x 8
 y 13
-end
-arch light3
-x 8
-y 13
+glow_radius 3
 end
 arch magic_wall
 speed_left 0.2
@@ -3138,10 +3129,7 @@ end
 arch crystal_purple_s
 x 13
 y 9
-end
-arch light3
-x 13
-y 9
+glow_radius 3
 end
 arch magic_wall
 speed_left 0.4
@@ -4337,10 +4325,7 @@ end
 arch crystal_red_s
 x 17
 y 45
-end
-arch light3
-x 17
-y 45
+glow_radius 3
 end
 arch magic_wall
 speed_left 0.4
@@ -5949,10 +5934,7 @@ end
 arch crystal_purple
 x 29
 y 6
-end
-arch light7
-x 29
-y 6
+glow_radius 7
 end
 arch magic_wall
 speed_left 0.4
@@ -5997,10 +5979,7 @@ end
 arch crystal_red
 x 29
 y 14
-end
-arch light7
-x 29
-y 14
+glow_radius 7
 end
 arch magic_wall
 speed_left 0.2
@@ -6778,10 +6757,7 @@ end
 arch crystal_red
 x 37
 y 6
-end
-arch light7
-x 37
-y 6
+glow_radius 7
 end
 arch magic_wall
 speed_left 1.0
@@ -6826,10 +6802,7 @@ end
 arch crystal_purple
 x 37
 y 14
-end
-arch light7
-x 37
-y 14
+glow_radius 7
 end
 arch magic_wall
 speed_left 0.8

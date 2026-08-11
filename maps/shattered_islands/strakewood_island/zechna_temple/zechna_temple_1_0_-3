@@ -440,10 +440,7 @@ end
 arch crystal_purple_s
 x 2
 y 22
-end
-arch light3
-x 2
-y 22
+glow_radius 3
 end
 arch floor_sblack2b
 x 2
@@ -763,10 +760,7 @@ end
 arch crystal_purple_s
 x 5
 y 3
-end
-arch light3
-x 5
-y 3
+glow_radius 3
 end
 arch floor_sblack1b
 x 5
@@ -869,10 +863,7 @@ end
 arch crystal_red_s
 x 5
 y 12
-end
-arch light3
-x 5
-y 12
+glow_radius 3
 end
 arch floor_sblack2b
 x 5
@@ -1031,10 +1022,7 @@ end
 arch crystal_purple_s
 x 6
 y 19
-end
-arch light3
-x 6
-y 19
+glow_radius 3
 end
 arch floor_sblack2b
 x 6
@@ -1313,10 +1301,7 @@ end
 arch crystal_red_s
 x 9
 y 3
-end
-arch light3
-x 9
-y 3
+glow_radius 3
 end
 arch floor_sblack2b
 x 9
@@ -1371,10 +1356,7 @@ end
 arch crystal_red
 x 9
 y 7
-end
-arch light5
-x 9
-y 7
+glow_radius 5
 end
 arch floor_sblack2b
 x 9
@@ -1434,10 +1416,7 @@ end
 arch crystal_purple_s
 x 9
 y 12
-end
-arch light3
-x 9
-y 12
+glow_radius 3
 end
 arch floor_sblack3b
 x 9
@@ -1870,10 +1849,7 @@ end
 arch crystal_red
 x 12
 y 21
-end
-arch light5
-x 12
-y 21
+glow_radius 5
 end
 arch floor_sblack1b
 x 12
@@ -1912,10 +1888,7 @@ end
 arch crystal_purple_s
 x 13
 y 3
-end
-arch light3
-x 13
-y 3
+glow_radius 3
 end
 arch floor_sblack2b
 x 13
@@ -2037,10 +2010,7 @@ end
 arch crystal_red_s
 x 13
 y 12
-end
-arch light3
-x 13
-y 12
+glow_radius 3
 end
 arch floor_sblack3b
 x 13
@@ -2464,10 +2434,7 @@ end
 arch crystal_red_s
 x 17
 y 3
-end
-arch light3
-x 17
-y 3
+glow_radius 3
 end
 arch floor_sblack1b
 x 17
@@ -2604,10 +2571,7 @@ end
 arch crystal_purple_s
 x 17
 y 12
-end
-arch light3
-x 17
-y 12
+glow_radius 3
 end
 arch floor_sblack1b
 x 17
@@ -2923,10 +2887,7 @@ end
 arch crystal_red_s
 x 19
 y 19
-end
-arch light3
-x 19
-y 19
+glow_radius 3
 end
 arch floor_sblack1b
 x 19
@@ -2986,10 +2947,7 @@ end
 arch crystal_purple
 x 20
 y 4
-end
-arch light5
-x 20
-y 4
+glow_radius 5
 end
 arch floor_sblack1b
 x 20
@@ -3022,10 +2980,7 @@ end
 arch crystal_red_s
 x 20
 y 10
-end
-arch light3
-x 20
-y 10
+glow_radius 3
 end
 arch floor_sblack2b
 x 20

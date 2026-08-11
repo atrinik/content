@@ -54,12 +54,18 @@ dispatch stable when a display name changes.
 
 Typed property interactions live in `maps/property-interactions.json`.
 Each closed record binds a quest part and interface action to stable NPC,
-property, and map identities; exact NPC/portal coordinates and archetypes; an
-idempotent free grant; and an ordered completion event. Catalog validation
-checks those authored map objects and the preserved Classic entitlement tag.
+property, and map identities; exact NPC/portal coordinates and archetypes; the
+private layout's safe entry, property exit, and complete set of type-106 save
+beds; an idempotent free grant; and an ordered completion event. Catalog
+validation checks those authored map objects through the authoritative lossless
+content model and checks the preserved Classic entitlement tag.
 `main` owns the typed property-service action and must not add a Python
 ownership mechanism. The `1.x` runtime may implement the same record through
 the existing Classic apartment adapter.
+
+Stable IDs that become generated handler filenames must also avoid
+case-insensitive Windows device basenames (`con`, `prn`, `aux`, `nul`,
+`com1`–`com9`, and `lpt1`–`lpt9`), including those names before a dot.
 
 Existing monster variants and bosses retain their archetype identities; do not
 invent parallel variant or boss IDs for them. A monster-family key does not yet

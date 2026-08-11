@@ -12,6 +12,7 @@ import re
 
 import utils
 from compilers import BaseCompiler
+from tools.content_catalog.identifiers import is_portable_content_id
 
 
 try:
@@ -237,6 +238,10 @@ class TagCompilerInterface(BaseTagCompiler):
         self.compiler.npc = npc_id or elem.get("npc")
 
         if npc_id:
+            if not is_portable_content_id(npc_id):
+                raise ParseError(
+                    "npc_id is not a portable stable identifier", elem
+                )
             # Content validation guarantees a stable ID. Preserve it verbatim:
             # punctuation is significant and distinct IDs must not collide.
             self.compiler.npc = npc_id

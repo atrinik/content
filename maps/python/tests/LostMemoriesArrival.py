@@ -424,6 +424,14 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertEqual(18, len(blocked_tiles))
         self.assertEqual(1, len(chests))
         self.assertEqual(2, len(hammocks))
+        self.assertEqual(
+            {"hammock_a", "hammock_b"},
+            {hammock.arch.name for hammock in hammocks},
+        )
+        self.assertEqual(
+            {"hammock_a.101", "hammock_b.101"},
+            {hammock.face[0] for hammock in hammocks},
+        )
         for hammock in hammocks:
             self.assertTrue(self.event_with_race(
                 hammock,

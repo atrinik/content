@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "sha256": "cddfe83e6fccb6a61136aa054933d0dc2cd0bf6e77a4e3ee20f10051a5205e9c",
+  "sha256": "6b1d892deca0b14e037d023e554540bc74c9e9805fc712bb06ea54d6bf56e992",
   "files": [
     {
       "path": "contracts/content-v1/consumer-inventory.json",
@@ -69,8 +69,8 @@
     },
     {
       "path": "contracts/content-v1/grammar-inventory.json",
-      "bytes": 9954,
-      "sha256": "a3750d1f54028e9881c253dfba99460f7c0b7b4fd18338ae60fcf763f4c70467"
+      "bytes": 9991,
+      "sha256": "0a45b32b8eb9964194c229c434ba1a9dd9720346eeaf12e5bafa809ea40d89f4"
     }
   ]
 }

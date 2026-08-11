@@ -23,6 +23,24 @@ class WorldContentAuditTest(unittest.TestCase):
         self.assertFalse(audit._has_visible_light_pool(bytes(sprite_only), control))
         self.assertTrue(audit._has_visible_light_pool(bytes(light_pool), control))
 
+        width, height = 1024, 768
+        full_control = bytes(width * height * 3)
+        ui_only = bytearray(full_control)
+        ui_only[:6000] = bytes([12] * 6000)
+        central_pool = bytearray(full_control)
+        central = ((height // 3) * width + width // 2) * 3
+        central_pool[central:central + 600] = bytes([12] * 600)
+        self.assertFalse(
+            audit._has_visible_light_pool(
+                bytes(ui_only), full_control, width, height
+            )
+        )
+        self.assertTrue(
+            audit._has_visible_light_pool(
+                bytes(central_pool), full_control, width, height
+            )
+        )
+
     def test_toggle_render_semantics_ignore_identity_but_track_pixels(self):
         first = {
             "activation_archetype": "lamp",

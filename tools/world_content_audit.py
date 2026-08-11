@@ -881,8 +881,32 @@ def _evidence_tile(
     return bytes(output)
 
 
-def _has_visible_light_pool(active: bytes, control: bytes) -> bool:
-    """Return whether a captured state materially changes its dark control."""
+def _has_visible_light_pool(
+    active: bytes,
+    control: bytes,
+    width: int | None = None,
+    height: int | None = None,
+) -> bool:
+    """Return whether a captured state materially changes its map viewport."""
+
+    if (
+        width is not None
+        and height is not None
+        and len(active) == len(control) == width * height * 3
+    ):
+        left = width // 4
+        right = width * 3 // 4
+        top = height // 6
+        bottom = height * 2 // 3
+        row_bytes = width * 3
+        active = b"".join(
+            active[y * row_bytes + left * 3:y * row_bytes + right * 3]
+            for y in range(top, bottom)
+        )
+        control = b"".join(
+            control[y * row_bytes + left * 3:y * row_bytes + right * 3]
+            for y in range(top, bottom)
+        )
 
     differences = [
         abs(active_channel - control_channel)
@@ -1314,7 +1338,12 @@ def validate_light_evidence(report: dict) -> list[str]:
                     )
                 )
                 continue
-            if not _has_visible_light_pool(active_pixels, control_pixels):
+            if not _has_visible_light_pool(
+                active_pixels,
+                control_pixels,
+                LIGHT_EVIDENCE_TILE_WIDTH - 1,
+                LIGHT_EVIDENCE_TILE_HEIGHT - 1,
+            ):
                 errors.append(
                     "toggle state {} view {} lacks a visible active light pool".format(
                         identifier, view_id

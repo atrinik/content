@@ -521,9 +521,13 @@ def build_evidence(args) -> dict:
         )
         if previous_semantics != render_semantics:
             raise ValueError("renderer-distinct active states reuse one capture")
-        _, _, active_pixels = read_png(row["_path"])
-        _, _, control_pixels = read_png(control["_path"])
-        if not audit._has_visible_light_pool(active_pixels, control_pixels):
+        width, height, active_pixels = read_png(row["_path"])
+        control_width, control_height, control_pixels = read_png(control["_path"])
+        if (width, height) != (control_width, control_height):
+            raise ValueError("active-state capture and control dimensions differ")
+        if not audit._has_visible_light_pool(
+            active_pixels, control_pixels, width, height
+        ):
             raise ValueError("active-state capture lacks a visible light pool")
     if args.dry_run:
         return {

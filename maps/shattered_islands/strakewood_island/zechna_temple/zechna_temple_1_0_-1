@@ -2674,10 +2674,7 @@ end
 arch crystal_blue
 x 20
 y 20
-end
-arch light5
-x 20
-y 20
+glow_radius 5
 end
 arch floor_sblack3b
 x 20

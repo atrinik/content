@@ -1257,7 +1257,7 @@
     },
     "navigation": {
       "status": "pass",
-      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast.",
+      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct.",
       "classic_views": [
         "smooth-0650",
         "discrete-0007"
@@ -1736,10 +1736,10 @@
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0301": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Rockforge's dwarven teleporter at (6,6) in smooth and discrete Classic lighting: one map-local radius-9 ffe060 source on the visible teleporter owns the warm composed-machine focal pool. All nine neutral helpers across the overlapping 3x3 dwarven-machine base and 2x2 teleporter footprint were removed; room-scale neutral fill elsewhere remains independent and preserves the ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "192f4fbbd39f75a941388f38b274dbc8f468b95a1a804fdc98b4e9dfd20e6eab"
+      "semantic_sha256": "84244e4c4a029b44b418b5036d616ce8612a2dde72cc8f8b6acaf0d4df54b5fc"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0302": {
       "uncolored_disposition": "neutral",

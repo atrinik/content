@@ -801,10 +801,8 @@ end
 arch dwarven_teleporter
 z 80
 align -8
-x 6
-y 6
-end
-arch light9
+glow_radius 9
+light_color ffe060
 x 6
 y 6
 end
@@ -812,15 +810,7 @@ arch floor_marble1
 x 6
 y 7
 end
-arch light9
-x 6
-y 7
-end
 arch floor_marble1
-x 6
-y 8
-end
-arch light9
 x 6
 y 8
 end
@@ -948,23 +938,11 @@ arch floor_marble1a
 x 7
 y 6
 end
-arch light9
-x 7
-y 6
-end
 arch floor_marble1b
 x 7
 y 7
 end
-arch light9
-x 7
-y 7
-end
 arch floor_marble1
-x 7
-y 8
-end
-arch light9
 x 7
 y 8
 end
@@ -1096,23 +1074,11 @@ arch floor_marble1
 x 8
 y 6
 end
-arch light9
-x 8
-y 6
-end
 arch floor_marble1a
 x 8
 y 7
 end
-arch light9
-x 8
-y 7
-end
 arch floor_marble1a
-x 8
-y 8
-end
-arch light9
 x 8
 y 8
 end

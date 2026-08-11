@@ -134,7 +134,7 @@ class LostMemoriesArrivalSuite(TestSuite):
                     current.get_quest_status("speak_priest"),
                 )
 
-    def test_actual_incuna_sam_advances_to_priest_once(self):
+    def test_actual_incuna_sam_advances_to_apartment_once(self):
         memories = QuestManager(activator, lost_memories)
         memories.start("speak_sam")
         sam = self.find_incuna_sam()
@@ -168,7 +168,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             )
             self.assertEqual(
                 [
-                    ("speak_priest", Atrinik.QUEST_STATUS_STARTED),
+                    ("apartment_tutorial", Atrinik.QUEST_STATUS_STARTED),
                     ("speak_sam", Atrinik.QUEST_STATUS_COMPLETED),
                 ],
                 self.quest_parts(memories),

@@ -5,6 +5,12 @@ import unittest
 import Atrinik
 from Interface import InterfaceBuilder
 from InterfaceQuests import escaping_deserted_island, lost_memories
+from LostMemoriesApartment import (
+    APARTMENT_TAG,
+    complete_apartment_tutorial,
+    ensure_strakewood_apartment,
+    notify_apartment_entry,
+)
 from QuestManager import QuestManager
 from tests import TestSuite, ib_wrapper
 
@@ -29,6 +35,11 @@ class LostMemoriesArrivalSuite(TestSuite):
         )
 
     def tearDown(self):
+        apartment = activator.FindObject(
+            archname="player_info", name=APARTMENT_TAG
+        )
+        if apartment:
+            apartment.Destroy()
         for obj in self.quest_items:
             if obj:
                 obj.Destroy()
@@ -134,7 +145,7 @@ class LostMemoriesArrivalSuite(TestSuite):
                     current.get_quest_status("speak_priest"),
                 )
 
-    def test_actual_incuna_sam_advances_to_priest_once(self):
+    def test_actual_incuna_sam_advances_to_apartment_once(self):
         memories = QuestManager(activator, lost_memories)
         memories.start("speak_sam")
         sam = self.find_incuna_sam()
@@ -168,7 +179,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             )
             self.assertEqual(
                 [
-                    ("speak_priest", Atrinik.QUEST_STATUS_STARTED),
+                    ("apartment_tutorial", Atrinik.QUEST_STATUS_STARTED),
                     ("speak_sam", Atrinik.QUEST_STATUS_COMPLETED),
                 ],
                 self.quest_parts(memories),
@@ -191,6 +202,97 @@ class LostMemoriesArrivalSuite(TestSuite):
             for obj in activator.FindObjects(archname="sack"):
                 if obj not in sacks_before:
                     obj.Destroy()
+
+    def test_apartment_grant_is_free_once_and_preserves_existing_tier(self):
+        self.assertFalse(notify_apartment_entry(activator))
+        apartment, created = ensure_strakewood_apartment(activator)
+        self.assertTrue(created)
+        self.assertEqual(APARTMENT_TAG, apartment.name)
+        self.assertEqual("cheap", apartment.slaying)
+
+        repeated, created = ensure_strakewood_apartment(activator)
+        self.assertFalse(created)
+        self.assertEqual(apartment, repeated)
+        self.assertEqual(1, len(activator.FindObjects(
+            archname="player_info", name=APARTMENT_TAG
+        )))
+
+        for tier in ("normal", "expensive", "luxurious"):
+            apartment.slaying = tier
+            existing, created = ensure_strakewood_apartment(activator)
+            self.assertFalse(created)
+            self.assertEqual(apartment, existing)
+            self.assertEqual(tier, existing.slaying)
+
+    def test_failed_apartment_grant_does_not_advance_and_can_retry(self):
+        memories = QuestManager(activator, lost_memories)
+        memories.start("apartment_tutorial")
+
+        apartment, created = ensure_strakewood_apartment(
+            activator, creator=lambda archname: None
+        )
+        self.assertIsNone(apartment)
+        self.assertFalse(created)
+        self.assertEqual(
+            Atrinik.QUEST_STATUS_STARTED,
+            memories.get_quest_status("apartment_tutorial"),
+        )
+        self.assertFalse(memories.started("speak_priest"))
+
+        apartment, created = ensure_strakewood_apartment(activator)
+        self.assertTrue(created)
+        self.assertIsNotNone(apartment)
+
+        packets = activator.Controller().s_packets
+        packets.clear()
+        self.assertTrue(notify_apartment_entry(activator))
+        self.assertTrue(any(
+            b"Tutorial Available: Apartments" in packet
+            for packet in packets
+        ))
+
+    def test_bed_use_requires_ownership_and_advances_in_order_once(self):
+        memories = QuestManager(activator, lost_memories)
+        memories.start("apartment_tutorial")
+        self.assertFalse(complete_apartment_tutorial(activator))
+        self.assertFalse(memories.started("speak_priest"))
+
+        apartment, created = ensure_strakewood_apartment(activator)
+        self.assertTrue(created)
+        self.assertTrue(complete_apartment_tutorial(activator))
+        self.assertTrue(memories.completed("apartment_tutorial"))
+        self.assertEqual(
+            Atrinik.QUEST_STATUS_STARTED,
+            memories.get_quest_status("speak_priest"),
+        )
+
+        state = self.quest_parts(memories)
+        self.assertFalse(complete_apartment_tutorial(activator))
+        self.assertEqual(state, self.quest_parts(memories))
+
+    def test_incuna_steward_and_owner_gated_portal_are_signposted(self):
+        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
+        steward = None
+        portal = None
+        for obj in activator.map.Objects(6, 3):
+            if obj.name == "Elara Harth":
+                steward = obj
+        for obj in activator.map.Objects(7, 3):
+            if obj.name == "Incuna Strakewood apartment portal":
+                portal = obj
+
+        self.assertIsNotNone(steward)
+        self.assertIsNotNone(portal)
+        steward_event = steward.FindObject(archname="event_obj")
+        portal_event = portal.FindObject(archname="event_obj")
+        self.assertEqual(
+            "/interfaces/quests/lost_memories/quest.xml",
+            steward_event.race,
+        )
+        self.assertEqual(
+            "/python/generic/apartment_teleport.py", portal_event.race
+        )
+        self.assertEqual("strakewood_island", portal_event.slaying)
 
     def test_arrival_preserves_legacy_lost_memories_states(self):
         states = (

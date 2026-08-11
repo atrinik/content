@@ -2759,10 +2759,7 @@ end
 arch fireplace_right
 x 21
 y 10
-end
-arch light5
-x 21
-y 10
+glow_radius 5
 end
 arch floor_marble2a
 x 21

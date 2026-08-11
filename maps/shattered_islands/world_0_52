@@ -1470,10 +1470,6 @@ arch brazier_lit
 x 8
 y 6
 end
-arch light5
-x 8
-y 6
-end
 arch floor_wood2_l1
 x 8
 y 7
@@ -1495,10 +1491,6 @@ x 8
 y 9
 end
 arch brazier_lit
-x 8
-y 9
-end
-arch light5
 x 8
 y 9
 end

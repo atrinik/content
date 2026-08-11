@@ -2713,10 +2713,6 @@ layer 5
 x 20
 y 13
 end
-arch light3
-x 20
-y 13
-end
 arch earth_brown3
 x 20
 y 14

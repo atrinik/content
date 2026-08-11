@@ -2636,10 +2636,7 @@ arch fire_cauld.131
 direction 5
 x 17
 y 20
-end
-arch light6
-x 17
-y 20
+glow_radius 6
 end
 arch grassd_4
 x 17

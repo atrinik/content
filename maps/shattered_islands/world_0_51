@@ -1671,10 +1671,6 @@ arch fire_cauld.131
 x 12
 y 20
 end
-arch light3
-x 12
-y 20
-end
 arch floor_sand_d3
 x 12
 y 21
@@ -2709,10 +2705,6 @@ x 20
 y 22
 end
 arch fire_cauld.131
-x 20
-y 22
-end
-arch light3
 x 20
 y 22
 end

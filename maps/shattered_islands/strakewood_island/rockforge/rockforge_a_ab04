@@ -1139,10 +1139,7 @@ end
 arch fireplace_left
 x 5
 y 20
-end
-arch light5
-x 5
-y 20
+glow_radius 5
 end
 arch floor_marble2a
 x 5
@@ -1178,10 +1175,7 @@ end
 arch fireplace_right
 x 6
 y 1
-end
-arch light5
-x 6
-y 1
+glow_radius 5
 end
 arch floor_marble2c
 x 6
@@ -3463,10 +3457,7 @@ end
 arch fireplace_right
 x 20
 y 1
-end
-arch light5
-x 20
-y 1
+glow_radius 5
 end
 arch floor_marble2c
 x 20

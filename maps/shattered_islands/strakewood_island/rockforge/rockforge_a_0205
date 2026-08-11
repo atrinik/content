@@ -48,9 +48,7 @@ y 12
 end
 arch fireplace_right
 y 12
-end
-arch light5
-y 12
+glow_radius 5
 end
 arch floor_marble1b
 y 13

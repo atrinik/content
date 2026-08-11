@@ -20,6 +20,7 @@ REVIEW_ONLY_MAP_ENTRIES = {
     "light-source-review",
     "light-source-review.json",
 }
+RUNTIME_SOURCE_COMPONENTS = ("arch", "maps", "tools", "contracts", "schemas")
 
 
 def review_only_map_entries(directory: str, names: list[str], map_root: Path) -> set[str]:
@@ -37,7 +38,7 @@ def review_only_map_entries(directory: str, names: list[str], map_root: Path) ->
 def validate_source_tree(source: Path) -> None:
     """Reject missing roots, links, and special files before staging content."""
 
-    for component in ("arch", "maps", "tools"):
+    for component in RUNTIME_SOURCE_COMPONENTS:
         root = source / component
         if root.is_symlink() or not root.is_dir():
             raise ValueError(
@@ -185,7 +186,7 @@ def build(
         candidate = transaction / "candidate"
         with tempfile.TemporaryDirectory(prefix="atrinik-content-") as temporary:
             staging = Path(temporary)
-            for component in ("arch", "maps", "tools", "contracts", "schemas"):
+            for component in RUNTIME_SOURCE_COMPONENTS:
                 component_source = source / component
                 if component_source.is_dir():
                     shutil.copytree(component_source, staging / component)

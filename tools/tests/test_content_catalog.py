@@ -9,7 +9,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.build_runtime import build as build_runtime, review_only_map_entries
+from tools.build_runtime import (
+    build as build_runtime,
+    review_only_map_entries,
+    validate_source_tree,
+)
 from tools.content_catalog import ContentCatalog, ContentId, load_catalog
 from tools.content_catalog.__main__ import main as catalog_main
 
@@ -487,6 +491,30 @@ end
                 )
         self.assertEqual("existing output\n", sentinel.read_text(encoding="utf-8"))
 
+    def test_runtime_staging_rejects_linked_schema_and_contract_roots(self):
+        self.create_valid_tree()
+        (self.root / "tools").mkdir()
+        with tempfile.TemporaryDirectory() as external_directory:
+            external = Path(external_directory)
+            for component in ("schemas", "contracts"):
+                with self.subTest(component=component):
+                    for required in ("schemas", "contracts"):
+                        root = self.root / required
+                        if root.is_symlink():
+                            root.unlink()
+                        root.mkdir(exist_ok=True)
+                    target = external / component
+                    target.mkdir()
+                    (self.root / component).rmdir()
+                    (self.root / component).symlink_to(
+                        target, target_is_directory=True
+                    )
+
+                    with self.assertRaisesRegex(
+                        ValueError, "required source directory is missing or unsafe"
+                    ):
+                        validate_source_tree(self.root)
+
     def test_runtime_collection_excludes_light_review_artifacts(self):
         maps = self.root / "maps"
         self.assertEqual(
@@ -543,6 +571,7 @@ end
         self.create_valid_tree()
         self.create_release_contract()
         (self.root / "tools").mkdir()
+        (self.root / "schemas").mkdir()
         self.write("tools/collect.py", "raise SystemExit(1)\n")
         output = self.root / "build" / "runtime"
         output.mkdir(parents=True)

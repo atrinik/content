@@ -15,7 +15,7 @@ from LostMemoriesApartment import (
     notify_apartment_entry,
 )
 from QuestManager import QuestManager
-from tests import TestSuite, ib_wrapper
+from tests import TestSuite, ib_wrapper, simulate_server
 
 
 ARRIVAL_MAPS = (
@@ -433,6 +433,7 @@ class LostMemoriesArrivalSuite(TestSuite):
                 )
                 activator.map.Save()
                 activator.Controller().Save()
+                serialized_player = activator.Save()
                 with open(expected_path, "r", encoding="utf-8") as saved:
                     self.assertIn(
                         "title issue 105 persistence marker", saved.read()
@@ -450,6 +451,27 @@ class LostMemoriesArrivalSuite(TestSuite):
                     "/shattered_islands/world_4_85", activator.map.path
                 )
                 self.assertEqual((10, 5), (activator.x, activator.y))
+
+                # Exercise the same object deserialization used when player
+                # state is reconstructed after a relog.  The live test player
+                # cannot disconnect without terminating the embedded plugin
+                # test, so rebuild an independent player object from the saved
+                # representation and verify its entitlement before continuing.
+                reconstructed = Atrinik.LoadObject(serialized_player)
+                reconstructed_apartment = reconstructed.FindObject(
+                    archname="player_info", name=APARTMENT_TAG
+                )
+                self.assertIsNotNone(reconstructed_apartment)
+                self.assertEqual(tier, reconstructed_apartment.slaying)
+                self.assertEqual(expected_path, reconstructed_apartment.race)
+
+                # Force the vacated private map through the normal server swap
+                # path.  Re-entry must therefore load the marker from the map
+                # file rather than observe the still-resident map object.
+                apartment_map = Atrinik.ReadyMap(expected_path)
+                self.assertIsNotNone(apartment_map)
+                apartment_map.timeout = 1
+                simulate_server(count=2, wait=False)
 
                 portal = self.find_map_object(
                     lambda obj: obj.name ==

@@ -25,9 +25,7 @@ arch floor_marble1a
 y 6
 end
 arch glower.101
-y 6
-end
-arch light9
+glow_radius 9
 y 6
 end
 arch floor_marble1a
@@ -84,9 +82,7 @@ arch carpet1.151
 y 12
 end
 arch glower.101
-y 12
-end
-arch light9
+glow_radius 9
 y 12
 end
 arch floor_marble1a
@@ -111,9 +107,7 @@ arch floor_marble1b
 y 16
 end
 arch glower.101
-y 16
-end
-arch light9
+glow_radius 9
 y 16
 end
 arch floor_marble1b
@@ -156,12 +150,10 @@ arch floor_marble1b
 y 22
 end
 arch glower.101
+glow_radius 9
 y 22
 end
 arch wall_marble1.131
-y 22
-end
-arch light9
 y 22
 end
 arch blocked

@@ -28,12 +28,22 @@ class WorldContentAuditTest(unittest.TestCase):
         full_control = bytes(width * height * 3)
         ui_only = bytearray(full_control)
         ui_only[:6000] = bytes([12] * 6000)
+        compact_sprite = bytearray(full_control)
         central_pool = bytearray(full_control)
-        central = ((height // 3) * width + width // 2) * 3
-        central_pool[central:central + 600] = bytes([12] * 600)
+        for y in range(height // 3, height // 3 + 32):
+            start = (y * width + width // 2) * 3
+            compact_sprite[start:start + 32 * 3] = bytes([255] * 32 * 3)
+        for y in range(height // 3, height // 3 + 40):
+            start = (y * width + width // 2) * 3
+            central_pool[start:start + 40 * 3] = bytes([12] * 40 * 3)
         self.assertFalse(
             audit._has_visible_light_pool(
                 bytes(ui_only), full_control, width, height
+            )
+        )
+        self.assertFalse(
+            audit._has_visible_light_pool(
+                bytes(compact_sprite), full_control, width, height
             )
         )
         self.assertTrue(
@@ -47,12 +57,25 @@ class WorldContentAuditTest(unittest.TestCase):
         tile_control = bytes(tile_width * tile_height * 3)
         tile_sprite = bytearray(tile_control)
         tile_sprite[:24] = bytes([255] * 24)
+        tile_compact_sprite = bytearray(tile_control)
         tile_pool = bytearray(tile_control)
-        tile_center = ((tile_height // 3) * tile_width + tile_width // 2) * 3
-        tile_pool[tile_center:tile_center + 180] = bytes([18] * 180)
+        for y in range(tile_height // 3, tile_height // 3 + 8):
+            start = (y * tile_width + tile_width // 2) * 3
+            tile_compact_sprite[start:start + 8 * 3] = bytes([255] * 8 * 3)
+        for y in range(tile_height // 3, tile_height // 3 + 12):
+            start = (y * tile_width + tile_width // 2) * 3
+            tile_pool[start:start + 12 * 3] = bytes([18] * 12 * 3)
         self.assertFalse(
             audit._has_visible_light_pool(
                 bytes(tile_sprite), tile_control, tile_width, tile_height
+            )
+        )
+        self.assertFalse(
+            audit._has_visible_light_pool(
+                bytes(tile_compact_sprite),
+                tile_control,
+                tile_width,
+                tile_height,
             )
         )
         self.assertTrue(

@@ -263,12 +263,15 @@ class LightReviewEvidenceTest(unittest.TestCase):
             evidence.write_png(screenshot, 1024, 768, bytes(1024 * 768 * 3))
             digest = hashlib.sha256(screenshot.read_bytes()).hexdigest()
             light_pixels = bytearray(1024 * 768 * 3)
-            center = ((768 // 3) * 1024 + 1024 // 2) * 3
-            light_pixels[center:center + 600] = bytes([12] * 600)
+            for y in range(768 // 3, 768 // 3 + 40):
+                start = (y * 1024 + 1024 // 2) * 3
+                light_pixels[start:start + 40 * 3] = bytes([12] * 40 * 3)
             lamp_capture = captures / "lamp.png"
             artifact_capture = captures / "artifact.png"
             evidence.write_png(lamp_capture, 1024, 768, bytes(light_pixels))
-            light_pixels[center:center + 600] = bytes([18] * 600)
+            for y in range(768 // 3, 768 // 3 + 40):
+                start = (y * 1024 + 1024 // 2) * 3
+                light_pixels[start:start + 40 * 3] = bytes([18] * 40 * 3)
             evidence.write_png(artifact_capture, 1024, 768, bytes(light_pixels))
             window_control = captures / "window-control.png"
             window_pixels = bytearray(1024 * 768 * 3)

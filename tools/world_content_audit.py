@@ -889,6 +889,7 @@ def _has_visible_light_pool(
 ) -> bool:
     """Return whether a captured state materially changes its map viewport."""
 
+    viewport_width = None
     if (
         width is not None
         and height is not None
@@ -898,6 +899,7 @@ def _has_visible_light_pool(
         right = width * 3 // 4
         top = height // 6
         bottom = height * 2 // 3
+        viewport_width = right - left
         row_bytes = width * 3
         active = b"".join(
             active[y * row_bytes + left * 3:y * row_bytes + right * 3]
@@ -922,10 +924,31 @@ def _has_visible_light_pool(
     )
     minimum_channels = 150 if sampled_tile else 300
     minimum_total = 2500 if sampled_tile else 3000
+    changed_pixels = [
+        index
+        for index in range(len(differences) // 3)
+        if max(differences[index * 3:index * 3 + 3]) >= 3
+    ]
+    spatially_spread = True
+    if viewport_width is not None and changed_pixels:
+        changed_x = [index % viewport_width for index in changed_pixels]
+        changed_y = [index // viewport_width for index in changed_pixels]
+        spread_width = max(changed_x) - min(changed_x) + 1
+        spread_height = max(changed_y) - min(changed_y) + 1
+        # A changed object sprite is not evidence of emitted light.  The raw
+        # client captures use 32-pixel object cells; the deterministic contact
+        # sheets sample those cells to at most eight pixels in either axis.
+        # Require the changed area to extend beyond one whole sprite footprint
+        # in both axes so the surrounding illuminated map is part of the proof.
+        sprite_extent = 8 if sampled_tile else 32
+        spatially_spread = (
+            spread_width > sprite_extent and spread_height > sprite_extent
+        )
     return (
         len(active) == len(control)
         and sum(value >= 3 for value in differences) >= minimum_channels
         and sum(differences) >= minimum_total
+        and spatially_spread
     )
 
 

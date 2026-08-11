@@ -2,10 +2,12 @@
 
 import hashlib
 import json
+import struct
 import subprocess
 import tempfile
 from types import SimpleNamespace
 import unittest
+import zlib
 from pathlib import Path
 
 from tools import light_review_evidence as evidence
@@ -31,6 +33,23 @@ def _git(root: Path, *args: str) -> str:
 
 
 class LightReviewEvidenceTest(unittest.TestCase):
+    def test_read_png_composites_classic_rgba_darkness_against_black(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "rgba.png"
+            raw = b"\x00" + bytes((255, 0, 0, 0, 100, 50, 20, 128))
+            data = b"\x89PNG\r\n\x1a\n"
+            data += evidence._chunk(
+                b"IHDR", struct.pack(">IIBBBBB", 2, 1, 8, 6, 0, 0, 0)
+            )
+            data += evidence._chunk(b"IDAT", zlib.compress(raw, 9))
+            data += evidence._chunk(b"IEND", b"")
+            path.write_bytes(data)
+
+            self.assertEqual(
+                (2, 1, bytes((0, 0, 0, 50, 25, 10))),
+                evidence.read_png(path),
+            )
+
     def test_capture_plan_covers_invisible_emitters_and_representative_maps(self):
         report = {
             "maps": [
@@ -68,7 +87,13 @@ class LightReviewEvidenceTest(unittest.TestCase):
             "artifacts": [{
                 "id": "holy_shield",
                 "archetype": "shield_high",
+                "runtime_archetype": "shield_high",
                 "semantic_sha256": "2" * 64,
+            }, {
+                "id": "quest_shield",
+                "archetype": "shield_high",
+                "runtime_archetype": "quest_shield",
+                "semantic_sha256": "4" * 64,
             }],
             "toggle_states": [{
                 "id": "3" * 64,
@@ -89,6 +114,48 @@ class LightReviewEvidenceTest(unittest.TestCase):
             "/create shield_high of holy_shield", plan[2]["runtime_command"]
         )
         self.assertNotIn("active_state_id", plan[2])
+        self.assertEqual("/create quest_shield", plan[3]["runtime_command"])
+
+    def test_source_capture_plan_spawns_multipart_head_for_satellite(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "arch" / "multipart.arc"
+            path.parent.mkdir()
+            path.write_text(
+                "Object explosion\nend\nMore\n"
+                "Object explosion_a\nglow_radius 3\nend\nMore\n"
+                "Object explosion_b\nglow_radius 3\nend\n"
+            )
+            report = {
+                "archetypes": [
+                    {
+                        "id": "explosion_a",
+                        "path": "arch/multipart.arc",
+                        "object_line": 4,
+                        "semantic_sha256": "1" * 64,
+                    },
+                    {
+                        "id": "explosion_b",
+                        "path": "arch/multipart.arc",
+                        "object_line": 8,
+                        "semantic_sha256": "2" * 64,
+                    },
+                ],
+                "artifacts": [],
+                "toggle_states": [],
+                "maps": [],
+            }
+            original_root = evidence.audit.ROOT
+            evidence.audit.ROOT = root
+            try:
+                plan = evidence.source_capture_plan(
+                    report, "maps/dark", "3" * 64, 1, 2
+                )
+            finally:
+                evidence.audit.ROOT = original_root
+
+        self.assertEqual("/create explosion", plan[1]["runtime_command"])
+        self.assertEqual("/create explosion", plan[2]["runtime_command"])
 
     def test_png_round_trip_is_deterministic(self):
         with tempfile.TemporaryDirectory() as directory:

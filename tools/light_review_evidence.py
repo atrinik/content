@@ -69,6 +69,37 @@ def capture_plan(report: dict) -> list[dict]:
     return plan
 
 
+def runtime_archetype_id(row: dict) -> str:
+    """Return the spawnable head ID for an archetype or multipart part."""
+
+    relative = row.get("path")
+    object_line = row.get("object_line")
+    if not isinstance(relative, str) or not isinstance(object_line, int):
+        return row["id"]
+    path = audit.ROOT / relative
+    if not path.is_file():
+        return row["id"]
+    lines = path.read_text().splitlines()
+    cursor = object_line - 1
+    if cursor < 0 or cursor >= len(lines):
+        return row["id"]
+    runtime_id = row["id"]
+    while cursor > 0:
+        previous = cursor - 1
+        while previous >= 0 and not lines[previous].strip():
+            previous -= 1
+        if previous < 0 or lines[previous].strip() != "More":
+            break
+        previous_object = previous - 1
+        while previous_object >= 0 and not lines[previous_object].startswith("Object "):
+            previous_object -= 1
+        if previous_object < 0:
+            break
+        runtime_id = lines[previous_object].removeprefix("Object ").strip()
+        cursor = previous_object
+    return runtime_id
+
+
 def source_capture_plan(
     report: dict, map_path: str, map_source_sha256: str, x: int, y: int
 ) -> list[dict]:
@@ -98,9 +129,14 @@ def source_capture_plan(
     ):
         for row in report[section]:
             if source_kind == "artifact":
-                command = "/create {} of {}".format(row["archetype"], row["id"])
+                if row.get("runtime_archetype") == row["id"]:
+                    command = "/create {}".format(row["id"])
+                else:
+                    command = "/create {} of {}".format(
+                        row["archetype"], row["id"]
+                    )
             else:
-                command = "/create {}".format(row["id"])
+                command = "/create {}".format(runtime_archetype_id(row))
             state_id = state_by_source.get((source_kind, row["id"]))
             plan.append({
                 "number": len(plan) + 1,
@@ -235,7 +271,14 @@ def read_png(path: Path) -> tuple[int, int, bytes]:
         for x in range(width):
             source = x * channels
             target = (y * width + x) * 3
-            rgb[target:target + 3] = scanline[source:source + 3]
+            if channels == 4:
+                alpha = scanline[source + 3]
+                rgb[target:target + 3] = bytes(
+                    (scanline[source + component] * alpha + 127) // 255
+                    for component in range(3)
+                )
+            else:
+                rgb[target:target + 3] = scanline[source:source + 3]
         previous = scanline
     return width, height, bytes(rgb)
 
@@ -393,12 +436,7 @@ def build_evidence(args) -> dict:
                     )
             else:
                 scene = audit.ROOT / row["map"]
-                try:
-                    contained = scene.resolve().is_relative_to(
-                        (audit.ROOT / "maps").resolve()
-                    )
-                except OSError:
-                    contained = False
+                contained = audit._is_light_review_scene(scene)
                 if not contained or not scene.is_file():
                     raise ValueError("capture references stale map: {}".format(row["map"]))
                 scene_sha256 = hashlib.sha256(scene.read_bytes()).hexdigest()
@@ -476,9 +514,13 @@ def build_evidence(args) -> dict:
             or control["y"] != row["y"]
         ):
             raise ValueError("active-state capture needs a matching review control")
-        previous_state = active_digests.setdefault(row["sha256"], row["active_state_id"])
-        if previous_state != row["active_state_id"]:
-            raise ValueError("different active states reuse one capture")
+        state = toggle_states[row["active_state_id"]]
+        render_semantics = audit._toggle_render_semantics(state)
+        previous_state, previous_semantics = active_digests.setdefault(
+            row["sha256"], (row["active_state_id"], render_semantics)
+        )
+        if previous_semantics != render_semantics:
+            raise ValueError("renderer-distinct active states reuse one capture")
         _, _, active_pixels = read_png(row["_path"])
         _, _, control_pixels = read_png(control["_path"])
         if not audit._has_visible_light_pool(active_pixels, control_pixels):

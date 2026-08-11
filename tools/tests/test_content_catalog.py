@@ -330,17 +330,32 @@ end
     def test_runtime_collection_excludes_light_review_artifacts(self):
         maps = self.root / "maps"
         self.assertEqual(
-            {"light-source-evidence", "light-source-review.json"},
+            {
+                "__pycache__",
+                "light-source-evidence",
+                "light-source-review",
+                "light-source-review.json",
+                "stale.pyc",
+            },
             review_only_map_entries(
                 str(maps),
-                ["world", "light-source-evidence", "light-source-review.json"],
+                [
+                    "world",
+                    "__pycache__",
+                    "light-source-evidence",
+                    "light-source-review",
+                    "light-source-review.json",
+                    "stale.pyc",
+                ],
                 maps,
             ),
         )
         self.assertEqual(
-            set(),
+            {"__pycache__", "nested.pyc"},
             review_only_map_entries(
-                str(maps / "nested"), ["light-source-evidence"], maps
+                str(maps / "nested"),
+                ["light-source-evidence", "__pycache__", "nested.pyc"],
+                maps,
             ),
         )
 

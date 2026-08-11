@@ -309,6 +309,18 @@ def artifact_inventory() -> list[dict]:
                 continue
             artifact_id = lines[i].split(" ", 1)[1]
             start = i
+            allowed = "all"
+            allowed_line = None
+            previous = start - 1
+            while previous >= 0:
+                raw = lines[previous]
+                if raw.startswith("Allowed "):
+                    allowed = raw.split(" ", 1)[1]
+                    allowed_line = previous + 1
+                    break
+                if raw == "end" or raw.startswith("artifact "):
+                    break
+                previous -= 1
             i += 1
             while i < len(lines) and not lines[i].startswith("artifact "):
                 i += 1
@@ -341,6 +353,8 @@ def artifact_inventory() -> list[dict]:
                 "path": str(path.relative_to(ROOT)),
                 "artifact_line": start + 1,
                 "object_line": object_line,
+                "allowed": allowed,
+                "allowed_line": allowed_line,
                 "def_arch": one(attrs, "def_arch"),
                 "chance": one(attrs, "chance"),
                 "attrs": {key: vals[-1] for key, vals in object_attrs.items() if vals},
@@ -448,7 +462,17 @@ def _archetype_identity_source(definition: dict, identity: str) -> dict | None:
 
 
 def _artifact_activation_source(artifact: dict) -> dict | None:
-    """Locate an artifact's original `def_arch` activation clone."""
+    """Locate the runtime archetype clone used by artifact activation."""
+
+    if artifact.get("allowed") == "none":
+        return _source_location(
+            "artifact",
+            artifact["path"],
+            artifact["id"],
+            artifact["artifact_line"],
+            "artifact",
+            artifact["artifact_line"],
+        )
 
     line = artifact.get("artifact_field_lines", {}).get("def_arch")
     if line is None:
@@ -461,6 +485,24 @@ def _artifact_activation_source(artifact: dict) -> dict | None:
         "def_arch",
         line,
     )
+
+
+def _artifact_runtime_archetype(artifact: dict) -> str:
+    """Return the ID Classic can create for this artifact definition."""
+
+    if artifact.get("allowed") == "none":
+        return artifact["id"]
+    return artifact["def_arch"]
+
+
+def _artifact_effective_source(
+    artifact: dict, base_definition: dict, field: str
+) -> dict | None:
+    """Locate a field inherited by or authored on an artifact template."""
+
+    if field in artifact.get("attrs", {}):
+        return _artifact_source(artifact, field)
+    return _archetype_source(base_definition, artifact["def_arch"], field)
 
 
 def _map_activation_source(path: str, node: dict) -> dict:
@@ -539,6 +581,8 @@ def _source_semantic_sha256(row: dict) -> str:
                 "id",
                 "path",
                 "archetype",
+                "runtime_archetype",
+                "runtime_archetype_source",
                 "activation_archetype",
                 "activation_archetype_source",
                 "activation",
@@ -638,13 +682,32 @@ def _inventory_semantic_sha256(report: dict) -> str:
 
 
 def _is_review_only_runtime_path(relative: str) -> bool:
-    """Return whether a runtime-tree path belongs only to lighting review."""
+    """Return whether a path is review-only or generated runtime noise."""
 
     return (
         relative == "maps/light-source-review.json"
+        or relative.startswith("maps/light-source-review/")
         or relative.startswith("maps/light-source-evidence/")
         or relative.startswith("maps/.light-source-evidence-build-")
+        or "__pycache__" in relative.split("/")
+        or relative.endswith(".pyc")
     )
+
+
+def _is_light_review_scene(path: Path) -> bool:
+    """Return whether a source path is an allowed non-runtime review scene."""
+
+    try:
+        resolved = path.resolve()
+        return any(
+            resolved.is_relative_to(root.resolve())
+            for root in (
+                MAP_ROOT / "light-source-review",
+                ROOT / "tools" / "light-source-review",
+            )
+        )
+    except OSError:
+        return False
 
 
 def _update_runtime_digest_path(
@@ -662,17 +725,19 @@ def _runtime_content_sha256() -> str:
     """Hash the working tree's runtime content, excluding lighting review."""
 
     digest = hashlib.sha256()
+    runtime_paths = []
     for root in (ARCH_ROOT, MAP_ROOT):
-        paths = sorted(
-            candidate for candidate in root.rglob("*") if candidate.is_file()
-        )
-        for path in paths:
+        for path in root.rglob("*"):
+            if not path.is_file():
+                continue
             relative = path.relative_to(ROOT).as_posix()
             if _is_review_only_runtime_path(relative):
                 continue
-            data = path.read_bytes()
-            _update_runtime_digest_path(digest, relative, len(data))
-            digest.update(data)
+            runtime_paths.append((relative, path))
+    for relative, path in sorted(runtime_paths):
+        data = path.read_bytes()
+        _update_runtime_digest_path(digest, relative, len(data))
+        digest.update(data)
     return digest.hexdigest()
 
 
@@ -827,6 +892,15 @@ def _has_visible_light_pool(active: bytes, control: bytes) -> bool:
         len(active) == len(control)
         and sum(value >= 3 for value in differences) >= 300
         and sum(differences) >= 3000
+    )
+
+
+def _toggle_render_semantics(row: dict) -> tuple:
+    """Return the fields that can change a toggle state's rendered pixels."""
+
+    return tuple(
+        row.get(field)
+        for field in ("radius", "color", "face", "animation", "visible")
     )
 
 
@@ -993,10 +1067,7 @@ def validate_light_evidence(report: dict) -> list[str]:
         has_source_binding = any(view.get(field) is not None for field in source_fields)
         if row is None:
             scene = ROOT / str(map_path)
-            try:
-                contained = scene.resolve().is_relative_to(MAP_ROOT.resolve())
-            except OSError:
-                contained = False
+            contained = _is_light_review_scene(scene)
             lab_binding = (
                 has_source_binding
                 or view.get("active_state_id") is not None
@@ -1206,10 +1277,14 @@ def validate_light_evidence(report: dict) -> list[str]:
                 )
                 continue
             capture_sha256 = view.get("capture_sha256")
-            previous_state = active_capture_ids.setdefault(capture_sha256, identifier)
-            if previous_state != identifier:
+            render_semantics = _toggle_render_semantics(row)
+            previous_state, previous_semantics = active_capture_ids.setdefault(
+                capture_sha256, (identifier, render_semantics)
+            )
+            if previous_semantics != render_semantics:
                 errors.append(
-                    "toggle states {} and {} reuse one active capture".format(
+                    "renderer-distinct toggle states {} and {} reuse one active "
+                    "capture".format(
                         previous_state, identifier
                     )
                 )
@@ -1395,7 +1470,9 @@ def light_inventory() -> dict:
         archetype_rows.append(row)
 
     artifact_rows = []
-    for artifact in artifact_inventory():
+    artifacts = artifact_inventory()
+    artifacts_by_id = {artifact["id"]: artifact for artifact in artifacts}
+    for artifact in artifacts:
         base = archetypes.get(artifact["def_arch"], {}).get("attrs", {})
         base_definition = archetypes.get(artifact["def_arch"], {})
         attrs = artifact["attrs"]
@@ -1436,22 +1513,45 @@ def light_inventory() -> dict:
         active_animation = active_animation_source = None
         active_visible = None
         if activation == "toggle-active":
-            activation_archetype = artifact["def_arch"]
+            activation_archetype = _artifact_runtime_archetype(artifact)
             activation_archetype_source = _artifact_activation_source(artifact)
-            (
-                active_face,
-                active_face_source,
-                active_animation,
-                active_animation_source,
-            ) = _active_art(
-                base_definition,
-                artifact["def_arch"],
-                face,
-                face_source,
-                animation,
-                animation_source,
-                attrs.get("anim_speed", base.get("anim_speed")),
-            )
+            if artifact.get("allowed") != "none":
+                (
+                    active_face,
+                    active_face_source,
+                    active_animation,
+                    active_animation_source,
+                ) = _active_art(
+                    base_definition,
+                    artifact["def_arch"],
+                    face,
+                    face_source,
+                    animation,
+                    animation_source,
+                    attrs.get("anim_speed", base.get("anim_speed")),
+                )
+            else:
+                try:
+                    animated = int(
+                        attrs.get("anim_speed", base.get("anim_speed")) or 0
+                    ) != 0
+                except (TypeError, ValueError):
+                    animated = False
+                if animated:
+                    active_face = attrs.get("face", base.get("face"))
+                    active_face_source = _artifact_effective_source(
+                        artifact, base_definition, "face"
+                    )
+                    active_animation = attrs.get("animation", base.get("animation"))
+                    active_animation_source = _artifact_effective_source(
+                        artifact, base_definition, "animation"
+                    )
+                else:
+                    active_face, active_face_source = face, face_source
+                    active_animation, active_animation_source = (
+                        animation,
+                        animation_source,
+                    )
             active_visible = _visible_emitter(
                 active_face,
                 attrs.get("type", base.get("type")),
@@ -1461,6 +1561,8 @@ def light_inventory() -> dict:
             "id": artifact["id"],
             "path": artifact["path"],
             "archetype": artifact["def_arch"],
+            "runtime_archetype": _artifact_runtime_archetype(artifact),
+            "runtime_archetype_source": _artifact_activation_source(artifact),
             "object_line": artifact.get("object_line"),
             "activation": activation,
             "activation_archetype": activation_archetype,
@@ -1500,8 +1602,26 @@ def light_inventory() -> dict:
         emitters = []
         for node, parent, x, y in flatten_map_objects(parsed["objects"]):
             attrs = node["attrs"]
-            definition = archetypes.get(node["arch"], {})
-            base = definition.get("attrs", {})
+            registered_artifact = artifacts_by_id.get(node["arch"])
+            if (
+                registered_artifact is not None
+                and registered_artifact.get("allowed") == "none"
+            ):
+                definition = archetypes.get(registered_artifact["def_arch"], {})
+                base = dict(definition.get("attrs", {}))
+                base.update(registered_artifact.get("attrs", {}))
+
+                def definition_source(field):
+                    return _artifact_effective_source(
+                        registered_artifact, definition, field
+                    )
+            else:
+                registered_artifact = None
+                definition = archetypes.get(node["arch"], {})
+                base = definition.get("attrs", {})
+
+                def definition_source(field):
+                    return _archetype_source(definition, node["arch"], field)
             overrides = {
                 field: one(attrs, field)
                 for field in ("glow_radius", "last_sp", "type")
@@ -1518,13 +1638,17 @@ def light_inventory() -> dict:
                 one(attrs, "type", base.get("type")),
                 one(attrs, "sys_object", base.get("sys_object")),
             )
-            review_scope = "archetype"
-            source_review = review.get("archetypes", {}).get(node["arch"])
+            review_scope = "artifact" if registered_artifact else "archetype"
+            source_review = (
+                review.get("artifacts", {}).get(node["arch"])
+                if registered_artifact
+                else review.get("archetypes", {}).get(node["arch"])
+            )
             art_override_fields = [
                 field for field in ("face", "animation") if field in attrs
             ]
             if (
-                node["arch"] not in archetypes
+                (node["arch"] not in archetypes and registered_artifact is None)
                 or radius_field in attrs
                 or art_override_fields
             ):
@@ -1544,23 +1668,28 @@ def light_inventory() -> dict:
             radius_source = (
                 _map_source(relative, node, radius_field)
                 if radius_field in attrs
-                else _archetype_source(definition, node["arch"], radius_field)
+                else definition_source(radius_field)
             )
             color_source = (
                 _map_source(relative, node, "light_color")
                 if "light_color" in attrs
-                else _archetype_source(definition, node["arch"], "light_color")
+                else definition_source("light_color")
             )
-            color_review = review.get("color_sources", {}).get(node["arch"], {})
+            color_source_id = (
+                registered_artifact["def_arch"]
+                if registered_artifact is not None
+                else node["arch"]
+            )
+            color_review = review.get("color_sources", {}).get(color_source_id, {})
             face_source = (
                 _map_source(relative, node, "face")
                 if "face" in attrs
-                else _archetype_source(definition, node["arch"], "face")
+                else definition_source("face")
             )
             animation_source = (
                 _map_source(relative, node, "animation")
                 if "animation" in attrs
-                else _archetype_source(definition, node["arch"], "animation")
+                else definition_source("animation")
             )
             activation_archetype = None
             activation_archetype_source = None
@@ -1570,20 +1699,39 @@ def light_inventory() -> dict:
             if activation == "toggle-active":
                 activation_archetype = node["arch"]
                 activation_archetype_source = _map_activation_source(relative, node)
-                (
-                    active_face,
-                    active_face_source,
-                    active_animation,
-                    active_animation_source,
-                ) = _active_art(
-                    definition,
-                    node["arch"],
-                    face,
-                    face_source,
-                    animation,
-                    animation_source,
-                    one(attrs, "anim_speed", base.get("anim_speed")),
-                )
+                if registered_artifact is None:
+                    (
+                        active_face,
+                        active_face_source,
+                        active_animation,
+                        active_animation_source,
+                    ) = _active_art(
+                        definition,
+                        node["arch"],
+                        face,
+                        face_source,
+                        animation,
+                        animation_source,
+                        one(attrs, "anim_speed", base.get("anim_speed")),
+                    )
+                else:
+                    try:
+                        animated = int(
+                            one(attrs, "anim_speed", base.get("anim_speed")) or 0
+                        ) != 0
+                    except (TypeError, ValueError):
+                        animated = False
+                    if animated:
+                        active_face = base.get("face")
+                        active_face_source = definition_source("face")
+                        active_animation = base.get("animation")
+                        active_animation_source = definition_source("animation")
+                    else:
+                        active_face, active_face_source = face, face_source
+                        active_animation, active_animation_source = (
+                            animation,
+                            animation_source,
+                        )
                 active_visible = _visible_emitter(
                     active_face,
                     one(attrs, "type", base.get("type")),
@@ -1655,7 +1803,7 @@ def light_inventory() -> dict:
         if row["color"] is not None
     }
     color_source_ids.update(
-        row["archetype"]
+        row["color_source"]["object"]
         for row in map_rows
         if row["color"] is not None
         and (row.get("color_source") or {}).get("kind") == "archetype"
@@ -1819,6 +1967,16 @@ def validate_light_inventory(report: dict) -> list[str]:
                 errors.append(
                     "{} {} has unexpected active-state provenance".format(
                         section[:-1], row["id"]
+                    )
+                )
+            if section == "artifacts" and (
+                not isinstance(row.get("runtime_archetype"), str)
+                or not row["runtime_archetype"]
+                or not _valid_source_location(row.get("runtime_archetype_source"))
+            ):
+                errors.append(
+                    "artifact {} has invalid runtime archetype provenance".format(
+                        row["id"]
                     )
                 )
     for row in report["color_sources"]:

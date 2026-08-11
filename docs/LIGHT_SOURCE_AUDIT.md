@@ -42,7 +42,7 @@ repository-relative.
   transitions, fog/roofs, and navigation cues.
 
 The current baseline covers 97 emitting archetypes, four emitting artifacts,
-120 effective color suppliers, 12 toggle-active semantic states, and 11,391
+120 effective color suppliers, 13 toggle-active semantic states, and 11,392
 effective instances across 625 maps.
 Of those map instances, 5,878 are invisible map-local composition lights.
 Invisible fill remains intentionally neutral: adding one shared tint would
@@ -61,9 +61,10 @@ existing emitter's effective source, position, radius, color, face, visibility,
 or map context also invalidate its semantic digest. Do not refresh a digest or
 copy an old disposition without opening the map in a current Classic render.
 
-For this baseline, the wrapper profile `issue-65-light-colors` selected the
-issue's `content-1x` worktree and the isolated `issue-65-lighting-clean`
-scenario/state `scenario-issue-65-lighting-clean`.
+For this baseline, the wrapper profile `issue-65-light-colors-pinned` selected
+the issue's `content-1x` worktree and the isolated topology
+`issue-65-lighting-proof-pinned`, scenario `issue-65-lighting-proof`, and state
+`scenario-issue-65-lighting-proof`.
 The Classic client at the commit recorded in
 `maps/light-source-evidence/manifest.json` connected to that profile, enabled
 its default smooth RGB renderer, teleported an invulnerable review character
@@ -73,13 +74,17 @@ smooth runtime view around every invisible emitter; maps without an invisible
 emitter retain a representative view. Selected scenes were rendered again with
 smooth lighting disabled so both client lighting paths cover every contextual
 review criterion. Every effective archetype and artifact definition was
-created in a dark runtime review scene and bound to its semantic digest and
-exact command. Every distinct toggle-active state was also created or reached,
-applied, and captured beside a clean control of that same scene. Those views
-record the exact state ID, activation archetype, and runtime command; the
-checker decodes the committed tiles and requires a material active light-pool
-difference from the control instead of accepting resting art or a few changed
-sprite pixels.
+created in the review-only `tools/light-source-review/dark-lab` scene and bound
+to its semantic digest and exact command. Every distinct toggle-active state
+was also created or reached, applied, and captured beside a clean control of
+that same scene. Toggle views are full 1024-by-768 client frames rather than
+map-only exports so the applied inventory art and its runtime light pool are
+both reviewable. Those views record the exact state ID, activation archetype,
+and runtime command; the checker decodes the committed tiles and requires a
+material active light-pool difference from the control instead of accepting
+resting art or a few changed sprite pixels. It also rejects one raw capture
+reused by states whose effective radius, color, face, animation, or visibility
+differs.
 Before ordinary smooth or discrete capture, the reviewer must emit no light and
 all carried toggle lights must be explicitly extinguished and unapplied. The
 evidence context records that clean player-state precondition so a test light
@@ -99,9 +104,10 @@ source-bound view for every effective definition plus a control-compared active
 view for every toggle state. A separate digest over all authored
 `arch/` and runtime `maps/` inputs proves the final tree still matches the tree
 used by the recorded content build even when review-only files are committed
-after that build. The review JSON and evidence directory are
-explicitly omitted from playable runtime collection, while remaining
-available in the source tree for maintainers.
+after that build. The review JSON, evidence directory, review-only lab, and
+generated Python bytecode caches are explicitly omitted from playable runtime
+collection, while the authored review inputs remain available in the source
+tree for maintainers.
 
 The checked generator makes viewport selection, tile order, and sheet encoding
 reproducible. `plan` emits the greedy cover in map-path order; `plan-sources`
@@ -127,7 +133,7 @@ python3 tools/light_review_evidence.py plan \
   --inventory build/light-sources.json > build/light-capture-plan.json
 python3 tools/light_review_evidence.py plan-sources \
   --inventory build/light-sources.json \
-  --map maps/shattered_islands/world_1_73_-2 --x 12 --y 12 \
+  --map tools/light-source-review/dark-lab --x 9 --y 9 \
   > build/light-source-capture-plan.json
 python3 tools/light_review_evidence.py build \
   --inventory build/light-sources.json \
@@ -151,12 +157,18 @@ When refreshing the review:
 2. render affected maps with the Classic client and a profile selecting the
    exact content worktree, retaining a 17-by-17 view around every invisible
    emitter;
-3. activate and render every changed type-74 semantic state, and compare
-   overlaps and adjacent/depth-linked scenes in both smooth and discrete
-   lighting where a color changes;
-4. use the checked plan/build commands to rebuild contact sheets and manifest
+3. stage `tools/light-source-review/dark-lab` only in the isolated server's live
+   map root (for example, with
+   `install -D -m 0644 tools/light-source-review/dark-lab "$ATRINIK_REVIEW_MAPS/light-source-review/dark-lab"`),
+   teleport to `/light-source-review/dark-lab 9 9`, then create every changed
+   source from the generated command; for type-74 rows, apply the named object
+   server-side and retain a full-client frame that shows both active inventory
+   art and its light pool;
+4. compare overlaps and adjacent/depth-linked scenes in both smooth and
+   discrete lighting where a color changes;
+5. use the checked plan/build commands to rebuild contact sheets and manifest
    tiles, then update only affected palette and review records; and
-5. run `python3 tools/validate.py` and `git diff --check`.
+6. run `python3 tools/validate.py` and `git diff --check`.
 
 The baseline is a review contract, not a second parser, renderer, or generated
 runtime artifact. Runtime collection continues to use authored fields; the

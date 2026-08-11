@@ -82,509 +82,509 @@
     "burnout": {
       "uncolored_disposition": "neutral",
       "rationale": "burnout uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "cd90cd6bdce421862b6249b4cea37280402cdefe888232bfe312914e3cd6a32b"
+      "semantic_sha256": "6114f75f99994ac7ea471b5e29d48a7856ee64e88588094004a9a9349df29294"
     },
     "campfire": {
       "uncolored_disposition": "neutral",
       "rationale": "campfire uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "322825cbcc6ddd3fea683edeb98214c09990d6c2bdf1a81da2c358c5bf3d39c5"
+      "semantic_sha256": "f888e23aeff80b2e68068e66d629ad184b3f1ac5ce377d81034fed62d08c6501"
     },
     "crystal_rune": {
       "uncolored_disposition": "neutral",
       "rationale": "crystal_rune uses the crystal cyan palette entry to match its visible art.",
-      "semantic_sha256": "7e2c817b425d66d2b2995e529c9ef76aba04030fbf50a96c4a45798b040f7878"
+      "semantic_sha256": "7b2b8477e404b5b5905598859f29037667328c5be151db03f50a00d0e3624679"
     },
     "demilich": {
       "uncolored_disposition": "neutral",
       "rationale": "demilich uses the lava and open fire palette entry to match its red, yellow, and orange animated highlights.",
-      "semantic_sha256": "4730a188f1a78eea1cf85e5d7144f4d915c2a22383d587c7b1e4916a4b12e62e"
+      "semantic_sha256": "8af6f5142756daf198fd8b867c4c4ef422342d82e162a6e3ad356d21ac64f5bb"
     },
     "effect_explosion": {
       "uncolored_disposition": "neutral",
       "rationale": "effect_explosion uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "905c88a20b593f3d901084408ff5aecbbdaa2090dfef0d0f2867f74c072b7d2c"
+      "semantic_sha256": "75d9184e716bc2e0b45df9effd56335f3e5441d79d1c85ee80b5d5cee3b32ff6"
     },
     "effect_explosion_a": {
       "uncolored_disposition": "neutral",
       "rationale": "Faceless multipart satellite shares the warm fire tint authored on the visible explosion head.",
-      "semantic_sha256": "db28029a498704ff3c76e99828b54219fab48c788f909f9e00b4f2142c6b378d"
+      "semantic_sha256": "763ff65e2248301d34a91cdc3f2e1f471db17427f24b47803be572d799cdc3fe"
     },
     "effect_explosion_b": {
       "uncolored_disposition": "neutral",
       "rationale": "Faceless multipart satellite shares the warm fire tint authored on the visible explosion head.",
-      "semantic_sha256": "a062c87f3e916f1162671066fb89c79b77ac3ed473ff5d0f3a70f8d2ada5854f"
+      "semantic_sha256": "94be26331c84c2bb9c14a146abc1bee1c0708612a0bb63f8c73512612a34c559"
     },
     "effect_explosion_c": {
       "uncolored_disposition": "neutral",
       "rationale": "Faceless multipart satellite shares the warm fire tint authored on the visible explosion head.",
-      "semantic_sha256": "23d1fe28a2efd4c65737a0b9f0b90cab5e8b73d10b0da888971fc4b2a72c581c"
+      "semantic_sha256": "342ea78a03144576d45dc85a2f683c6f2b415e931db3b90fa1e6fb717247bb44"
     },
     "enriched_uranium_pile": {
       "uncolored_disposition": "neutral",
       "rationale": "enriched_uranium_pile uses the radioactive green palette entry to match its visible art.",
-      "semantic_sha256": "9a14866c902ae577e4e2c1471280c19ae33f9a212e074216a28cd9ac40703d21"
+      "semantic_sha256": "210d858b22042b5e9daf4b1995a6a4a4664a228b9cc99d49e50376ff5d33f800"
     },
     "firebolt": {
       "uncolored_disposition": "neutral",
       "rationale": "firebolt uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "ae17847a745ac22e2a677b7aefdbdc9497216b58cf5245410ddf4dc37b7eccad"
+      "semantic_sha256": "1c09fb20b0ea8b5e0049864ccfb6d59171999fb3857f6232969c47def6efdeef"
     },
     "firebreath": {
       "uncolored_disposition": "neutral",
       "rationale": "firebreath uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "a032b9b53ae6871db018e471a2767d285cf3626e9c41c71bcbcfc7969848da92"
+      "semantic_sha256": "8a4628610a16036961458c1b7607aae3dfb4a47725e9c5bb9d8902e0fee33955"
     },
     "fireflies": {
       "uncolored_disposition": "neutral",
       "rationale": "fireflies uses the firefly yellow-green palette entry to match its visible art.",
-      "semantic_sha256": "938b555219fe4c9a8394cc2e25b575fa23182285f67b7d579405e1a60b1cda48"
+      "semantic_sha256": "686541307db645c759dafd4b72fa26412f4ad2237f984dbfdb22d0e3f8ee882e"
     },
     "floor_lava2_1": {
       "uncolored_disposition": "neutral",
       "rationale": "floor_lava2_1 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "3f0f77796cc9dc729c1e3fcc3c132e6615525e6937741340ce708169251e2cea"
+      "semantic_sha256": "f946980ece30adaade01628898d49be3e68aeba02459ef4453cf03666f323ea7"
     },
     "floor_lava2_2": {
       "uncolored_disposition": "neutral",
       "rationale": "floor_lava2_2 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "6b660411dc9c8a20228fe942650c75b9b1d36a5d4dfc8a4dfd03d3a0b0f77ca2"
+      "semantic_sha256": "8e1b49bda0051ae57cd8167883aa6c20a3897f66623f768e0f69a2f7d3a2a813"
     },
     "floor_lava2_3": {
       "uncolored_disposition": "neutral",
       "rationale": "floor_lava2_3 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "e70ccb9d842af7dc91cb1e83e14b485bec1f2965a15f79282c02f5e1d80cd9da"
+      "semantic_sha256": "a2f12cf3f6a450b48f3763b36ffc8354f322dd5af8fdcfd1906f514eb679d7bc"
     },
     "floor_lava2_4": {
       "uncolored_disposition": "neutral",
       "rationale": "floor_lava2_4 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "685a6ca805e5c1f6b479f724b43a6c15446e26f9599c384699e4a6872f476e51"
+      "semantic_sha256": "366b164af8a974e757814256b4ff7b1cc77da43646215475fa39a4413200065e"
     },
     "forcefield_blue_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_0 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "d51820cdb2ae06a0d2f2ae9b2c1732b240721e931c2b0040658361a63b5bdc6b"
+      "semantic_sha256": "90dc72a69b5d97d1a4bf2ca4394503ca309f89a69a76326546b65236271badb4"
     },
     "forcefield_blue_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_1 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "d15d9672cfe268fc4580523de8ce4884657685306dd6307e2552db73c78ccc54"
+      "semantic_sha256": "4ddf6f2b70b915ee43d8cc6e4a0b1dc79f203ac067d2a315186d54d55fcd2cef"
     },
     "forcefield_blue_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_3 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "b11fb44a08693ea256174ee743452c42fe02a44aea4ae72953836fc657b2182c"
+      "semantic_sha256": "8ca320e2fd725f54d572f24d0d6b83e013b9af159430f900a5da6d6f888deaa1"
     },
     "forcefield_blue_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_4 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "bc19e995d78409fb851006349f0df018332daccd63e754a6c6de05211158e0f3"
+      "semantic_sha256": "74e6bd00993a72ca8b8342a15a9f5663409b46cd1bed651f99ffe098f521a2e3"
     },
     "forcefield_blue_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_8 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "8430aded7f780450d0dffe02157ca26f0efebd71cb6a9126ac8ed8571aa908e7"
+      "semantic_sha256": "6a7ba1d6aafe4e43bd205699f20dc16733efaf23207ed0ae494104d9e77b6c4d"
     },
     "forcefield_green_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_green_0 uses the forcefield green palette entry to match its visible art.",
-      "semantic_sha256": "c4ed7ed50709e695e5cf6bfdbe6bea0acfda2bbb7ead14112205fbab12df9dde"
+      "semantic_sha256": "7f552ab92144998b6b28238905e1aec3314785ce27fb52484f667a890dd55393"
     },
     "forcefield_green_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_green_1 uses the forcefield green palette entry to match its visible art.",
-      "semantic_sha256": "45fc48c8f2b6dfddaa0f79f87e70dcf90898c0d406fc6c83f5535ae55edd96d5"
+      "semantic_sha256": "cf03b792b73169821aaa140a39ef7a6b137a63d3cf79387fe3c397013f5c59ae"
     },
     "forcefield_green_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_green_3 uses the forcefield green palette entry to match its visible art.",
-      "semantic_sha256": "9fa1a20593dddc78754334122432b70f3a7d4cb27c596b48fdecf73436f5565b"
+      "semantic_sha256": "1c03296b1df347311a9bc881baa27bf8cb52b6f95f3a4e73ed577fea64833fed"
     },
     "forcefield_green_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_green_4 uses the forcefield green palette entry to match its visible art.",
-      "semantic_sha256": "70519a2abb503cc4eedc0192b6301d420a92933f744826220b27c79c9fd3f8a5"
+      "semantic_sha256": "186729c030298b1345b2cbdfa2b6522c3db9cb397949c25c909f49f8b9b4b21f"
     },
     "forcefield_green_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_green_8 uses the forcefield green palette entry to match its visible art.",
-      "semantic_sha256": "f7f669ab8245cd743b56298c14aa6dbdd9fbb994776f0304dab8f94151309968"
+      "semantic_sha256": "0b8ad835a2d33f1e5577ccc5d7509130e7e45c1761d4e011418e3196c6b6b78d"
     },
     "forcefield_orange_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_orange_0 uses the forcefield orange palette entry to match its visible art.",
-      "semantic_sha256": "a787fceacfca5dc8e64efc028a99de872bcfa59ef79823588c2e68e004131236"
+      "semantic_sha256": "28a4695fb36edc6cfa062c43f50bf5137870f0d0b6d7c6382ff99a35f19d55f6"
     },
     "forcefield_orange_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_orange_1 uses the forcefield orange palette entry to match its visible art.",
-      "semantic_sha256": "dc4dad311dabc1a3230baf10020360c77d073272568731f44d8e4430cf01ca67"
+      "semantic_sha256": "5d16fac0f05d4e3630e7d36058694a5ff80254e814263abd8598e71a1ab27312"
     },
     "forcefield_orange_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_orange_3 uses the forcefield orange palette entry to match its visible art.",
-      "semantic_sha256": "c8036600cd65eb61391da1a239b42dbac2db39cc9aad29b592e232831c9ea8fb"
+      "semantic_sha256": "da850dbd50916d7dda2eacd0d42f9513ba5072a5cc1e1e0d4fd7560f04b073ac"
     },
     "forcefield_orange_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_orange_4 uses the forcefield orange palette entry to match its visible art.",
-      "semantic_sha256": "21ebff099e28738fe095a011a03410298cb6c55bdf0c825954d17a1938c615c8"
+      "semantic_sha256": "c5e71718d98523c9ef061460109bbb7c9974cf134cefbb6c284d8ecafe5c4ba6"
     },
     "forcefield_orange_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_orange_8 uses the forcefield orange palette entry to match its visible art.",
-      "semantic_sha256": "5e7d06321d587805229e92b0f5b63c61599f851adfd94664b9042c2254b833eb"
+      "semantic_sha256": "dbcf1490f303ec8c46ec517365c15caccd7d03e41894c3ee7badfb00176fb718"
     },
     "forcefield_pink_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_pink_0 uses the forcefield pink palette entry to match its visible art.",
-      "semantic_sha256": "d47ed1509994c859beb61b190f21d7d815accc919bb58c83752d17de39895d81"
+      "semantic_sha256": "06a237899cc2d18cb6ebb4b4fc89ea1064432aa4eef91d8bd428bf396f08c1f5"
     },
     "forcefield_pink_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_pink_1 uses the forcefield pink palette entry to match its visible art.",
-      "semantic_sha256": "4f80a52071802f46754f43d099d8902788208a9ed4a74a83652fd469202cd8b8"
+      "semantic_sha256": "8ad7522a940dd98d236e72e52a7d3bd5b377fecb18112d9e2776afde697c09d7"
     },
     "forcefield_pink_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_pink_3 uses the forcefield pink palette entry to match its visible art.",
-      "semantic_sha256": "4d93fedb3b44da61128e7d674f64e9a07b1286d9734dd82a0dfca693e20f686f"
+      "semantic_sha256": "91ed6b9f6a96834cb6db7636fa4284f35b4d61baf31b80eb4e696936d9306eb7"
     },
     "forcefield_pink_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_pink_4 uses the forcefield pink palette entry to match its visible art.",
-      "semantic_sha256": "91bfb3b0a653bd8cab77b4dafba22569d3de9a901d446b98644ebe4adadb12cf"
+      "semantic_sha256": "140cd5c9aa0c7d0797af2b961f02322591d00acb71d79cf28acb2700cadbe810"
     },
     "forcefield_pink_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_pink_8 uses the forcefield pink palette entry to match its visible art.",
-      "semantic_sha256": "ea5b859d3e0853503a07c80a2cbf38052848614d872622c975f11b48a0f584ed"
+      "semantic_sha256": "3e1c69cd503604e0d73d42de3de9800aa8234fb92420f255a5a9d87e2acd686b"
     },
     "forcefield_purple_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_purple_0 uses the arcane purple palette entry to match its visible art.",
-      "semantic_sha256": "19b1af9daadfd2d6b8e243744db2c294c9d68a6359860c40351f2dc9905c2a97"
+      "semantic_sha256": "b39db5a8f75e5a4b949aa4e8ddf56b34f75516e7cc62a9a2e564bb33b1697384"
     },
     "forcefield_purple_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_purple_1 uses the arcane purple palette entry to match its visible art.",
-      "semantic_sha256": "566ecf00688d7659ecc72d9b2b301adb6bc7e632ff336c941a05e9c1dffe9682"
+      "semantic_sha256": "ee238cae331e68df6b10df89bbe08f4e7e6832b6c10fa80aff8138e3e5c3ce5d"
     },
     "forcefield_purple_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_purple_3 uses the arcane purple palette entry to match its visible art.",
-      "semantic_sha256": "2bd3ea0ee0b5350bb9fe63d858c25ff3bb356cff1fc6f8ddb56551b7bfb88c4f"
+      "semantic_sha256": "541ea4702b268324ce303e7416f172ff7ca78d2ac8e547b576b79b4d775c5144"
     },
     "forcefield_purple_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_purple_4 uses the arcane purple palette entry to match its visible art.",
-      "semantic_sha256": "b3546ed8696af67052c0d5163e433077d4bae4da1a1ae7209ed9690b028e18d1"
+      "semantic_sha256": "09b626132ebeb99fb6e28de96123e87b30197447f07f18c916dd09cbfb34cbe1"
     },
     "forcefield_purple_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_purple_8 uses the arcane purple palette entry to match its visible art.",
-      "semantic_sha256": "9b00d57c0c936cf1fa54b9a9c86940d54d315b02a6c507f834ba43657dea70ac"
+      "semantic_sha256": "78b54c31b557630ccfe41c7f87da7f7aff1463f20d28852118eea0c11b6641ae"
     },
     "forcefield_red_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_0 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "50b2e67b8b5ce4394cf80deb044be830c28b907d506662e8f9a18bf1569812f0"
+      "semantic_sha256": "bbc7020ee63c7b9e06b136fbe8b2c81ed2d13f3c569ae51c5b9eeb86f9110738"
     },
     "forcefield_red_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_1 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "af31c0020d92e79aeb2925704c5361aa6f3004594e24a21023fb16e8a402e788"
+      "semantic_sha256": "c759bea2a2f719f5fd8eb4011b6e280efcb25bdbdeedc733c9dd60c16fe4e411"
     },
     "forcefield_red_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_3 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "aa9dca791b7c2fc05c321b6abb4b4df47286761d0120906ecf72e412a975acd8"
+      "semantic_sha256": "aef8a1c26e239fa14ce632450f848f3f6dc7b7d3085eb843c0e6eb8bb1ec3244"
     },
     "forcefield_red_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_4 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "f5f1adb4fc740f0c49e72172105ea5ea2c2241df7dd8ccca598df84c85bed8ec"
+      "semantic_sha256": "21629e653f468be2d42797e22f654fb645c5e760bf352d01dc8e907348b14865"
     },
     "forcefield_red_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_8 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "ffc731c5ae5a06f0b66f761db42ace534e19aca82910909e0349a00adbf4202a"
+      "semantic_sha256": "81edd4a68af9d54c668b4227b9d1d53cf72e53057112c9f12a27dae1d55ee8ae"
     },
     "forcefield_white_0": {
       "uncolored_disposition": "neutral",
       "rationale": "The white forcefield animation remains intentionally neutral white.",
-      "semantic_sha256": "6aa7820c88f0a1f96fef28cc4c8e8d14d32789bad465d517587c4de2e06b8c1a"
+      "semantic_sha256": "bed07c1fe7aec5fe2359d6f70208088e159bca0293959bce0d39791e124e7d52"
     },
     "forcefield_white_1": {
       "uncolored_disposition": "neutral",
       "rationale": "The white forcefield animation remains intentionally neutral white.",
-      "semantic_sha256": "3be5634f2089b3bdeea470b492521da26fee145184d7d3c335a0f4d865f60b20"
+      "semantic_sha256": "4c06ebe99dc3d23470f15c38dbd15abe00092d0bb79515a250f0fc088758a65c"
     },
     "forcefield_white_3": {
       "uncolored_disposition": "neutral",
       "rationale": "The white forcefield animation remains intentionally neutral white.",
-      "semantic_sha256": "da33d20d75683931b5737d134282e64c62e5a77e00dcd2852c0e56748c1887fe"
+      "semantic_sha256": "9e761f8cceaa543d452eb587b7cd97ca45a3f2cbfcc300edc81d152480dd7732"
     },
     "forcefield_white_4": {
       "uncolored_disposition": "neutral",
       "rationale": "The white forcefield animation remains intentionally neutral white.",
-      "semantic_sha256": "8d36e6d6e290c2126fbe6357e2b598bdcc089c4cf5eec0786b2c069f3efff286"
+      "semantic_sha256": "c4261140ba4bb81123f0fc225a34c4fc5b920c8844f01a342e26df3e428bf2b2"
     },
     "forcefield_white_8": {
       "uncolored_disposition": "neutral",
       "rationale": "The white forcefield animation remains intentionally neutral white.",
-      "semantic_sha256": "658a3c050c65eb5421a54c7b1439446df0e899d0415d25f861a36bdf2ea2eb11"
+      "semantic_sha256": "5b419c660c2a0e377ff3f5af0f28c62a0d6cc35cb900bc3fbe2aee064cc719bb"
     },
     "forcefield_yellow_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_yellow_0 uses the forcefield yellow palette entry to match its visible art.",
-      "semantic_sha256": "232c1f6efbdc0cd976dc6dfe6c5cb1c5efd5961f29ebd2030eaeffec0d5584c2"
+      "semantic_sha256": "d497255511b240610704d67673fc0df6d6f86518a2beb93698cff613bbafb31c"
     },
     "forcefield_yellow_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_yellow_1 uses the forcefield yellow palette entry to match its visible art.",
-      "semantic_sha256": "4d122a3bda012ceea4af3a7f2e01fd33da3b65f474aa888f697439340ee442dd"
+      "semantic_sha256": "c221f9143cf409a42ed534aa8d78b5969726b335b9583a8951864035d83b7f32"
     },
     "forcefield_yellow_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_yellow_3 uses the forcefield yellow palette entry to match its visible art.",
-      "semantic_sha256": "c654e839c8e37ed410ef2c53b338e4d701156c7bb841596590bd0074790ab80c"
+      "semantic_sha256": "88850f9a428d210b65c630ee25e8575b53869872bb19612712516fc0babca018"
     },
     "forcefield_yellow_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_yellow_4 uses the forcefield yellow palette entry to match its visible art.",
-      "semantic_sha256": "b4f631fbe086a054d09398da01d4522fcb023c7c2899d24bf56d27ee1f65e4ad"
+      "semantic_sha256": "e833da0325d2aa430974bc5058465ad36b9f4e785796f441371d3a2acfe7f8f6"
     },
     "forcefield_yellow_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_yellow_8 uses the forcefield yellow palette entry to match its visible art.",
-      "semantic_sha256": "3e45dc9b00230beef9a17c151c4f2b576cf9c71b06d9c74596471fa97ba65f13"
+      "semantic_sha256": "8af13166a170dfc89ef9a7df903437b930c26e6520c972c45e165f7c323b70ec"
     },
     "forked_lightning": {
       "uncolored_disposition": "neutral",
       "rationale": "forked_lightning uses the lightning blue-white palette entry to match its visible art.",
-      "semantic_sha256": "fb58591d097cf9a1fc3b7b42536e29eb31b78ef7a60b96194ff681dcdee9bfb1"
+      "semantic_sha256": "ac64e3d2e9b640b1a18012ca2831d0938b84e40633a63a1e97977b86dfee1d0d"
     },
     "frostbolt": {
       "uncolored_disposition": "neutral",
       "rationale": "frostbolt uses the cold blue palette entry to match its visible art.",
-      "semantic_sha256": "b9b8f719149e701ad5440b18f0a66f97615665db95fc59c39797d08b63900e5b"
+      "semantic_sha256": "bafdfa79a46fdde6a5d1dc15340ae69183378bef9d632d5f085f282d66a8f567"
     },
     "fwall_lava1a": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1a uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "f54a56f33540cc6eb20f36c4d98764e7e4154c006e2cc983f801143133f7529e"
+      "semantic_sha256": "8652726ad884f486940c51fb8dbc53546d62e2b4e6be521fd7e5db616618a0c7"
     },
     "fwall_lava1b": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1b uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "77e470494622bedfab1046b74771e30dc9cd8446f9f33e85d92dfa5dbab5abde"
+      "semantic_sha256": "9a3988aae986de7c0800d7fa12df6e515cc82119c57bc29a0c72409ae830af64"
     },
     "fwall_lava1c": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1c uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "5e9accaea52da47ae4d3bb575f9cb04bcc20df411cfe235c39dc723fbe2d0583"
+      "semantic_sha256": "42261420b47f2faf1e25f2c13b13be66475d66767cdb8247b3fc45880157e25e"
     },
     "fwall_lava1d": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1d uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "44f680d551d01b0b094958fb78c3645d72333bbcee35cee91b15271d75616360"
+      "semantic_sha256": "8d94f9090455353d260520e6226b701c0ddb8b37e10eb3afdc1d1a7edb6b3858"
     },
     "fwall_lava1e": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1e uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "6e2ff559399a5a77bf80e05b21ba676c150b404ff22604be70d42e68f8f3d81b"
+      "semantic_sha256": "3e994bfddc712ed733ba1e4f5a8a4d94d855c7a59a4c05e93764bcea2bd438cd"
     },
     "fwall_lava1f": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1f uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "30eb9898f3d8af8d6589cd50d7e613a42ecab0a9aa1b163ce387795b3a161689"
+      "semantic_sha256": "433174b5b8635ff6a492d76f1a272cf226aa8f315e8dcedc09284c224770488e"
     },
     "fwall_lava1g": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1g uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "0fd3c68f4c9286f182f8ca713f10d01af27c3658db66306529f58b525fe00b28"
+      "semantic_sha256": "0d4c0de56cb03b27f54731b78bdb1c7d1b77511b772b83d02d328a41a63f380c"
     },
     "fwall_lava1h": {
       "uncolored_disposition": "neutral",
       "rationale": "fwall_lava1h uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "adbbccad720715cf514ada4e9c349ae0547ea38e5f5a7d1f7b8a5c33bce44d3e"
+      "semantic_sha256": "71233180b6c519a2b76910f9823b2b049cae68666af8c7431c336fd34ea23c43"
     },
     "grave_fire.101": {
       "uncolored_disposition": "neutral",
       "rationale": "The lit grave fire uses its authored orange flame tint; its extinguished state emits no light.",
-      "semantic_sha256": "b96c31dc3b137e21015e203e955342a0c529c756597dcec016107be3e93f1f63"
+      "semantic_sha256": "2544db8d47450a2fa75f07daa688013d0cce29cd7044be792267349033dc7112"
     },
     "holyword": {
       "uncolored_disposition": "neutral",
       "rationale": "holyword uses the holy gold-white palette entry to match its visible art.",
-      "semantic_sha256": "73a6dc0be57e7daeb85e7d3f7f572e9b76fbddda6389b3a2dc1b6f08546f845f"
+      "semantic_sha256": "2e01ea91356756f2f80e2ae16eef68f5cc63486cf60558ea33ab2b7c0a26ba5a"
     },
     "icestorm": {
       "uncolored_disposition": "neutral",
       "rationale": "icestorm uses the cold blue palette entry to match its visible art.",
-      "semantic_sha256": "ea4b372aefb3accaf3f09e82fea142cc909a5155e5c0b53409bf791dad6f32e4"
+      "semantic_sha256": "17e536f9a12b0546a0ebc68b755feb1828ca895be61727eacfef655e634f3b55"
     },
     "jackolantern": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated carved pumpkin uses explicit orange light matching its flame animation.",
-      "semantic_sha256": "9851a9e1b39f616c18d230b1e6ab344288f49d15460bf383e7ceb606f5e15eab"
+      "semantic_sha256": "4268690b725c72e5df94f31a6a405323d9b57b2d9b843deb138d250420f6877a"
     },
     "lamp": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated portable lamp uses explicit amber light matching its warm flame animation.",
-      "semantic_sha256": "f87f0a6ec1ec197dc6bd327a1ad4ea4f313d5b48fad3c15bdeabf68a5ef80b62"
+      "semantic_sha256": "727156a96303dd2cca5ee60ea8731b115ac04273db2c489e90daf61528467ddf"
     },
     "lamp_wall": {
       "uncolored_disposition": "neutral",
       "rationale": "lamp_wall uses the lantern and candle palette entry to match its visible art.",
-      "semantic_sha256": "046a6fe0c89f37afb535d6a7c4f0f2a36fad9daa41b1cb8c44e770dffdc050d2"
+      "semantic_sha256": "ccf76bfaaeda98c2ce2f622a6eb69aa2649db17f3a02210e732a686ccf6d0dd0"
     },
     "lamp_wall_1_unlit": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated wall lamp uses explicit amber light matching the related lit wall-lamp art.",
-      "semantic_sha256": "95356b8baa4efdd3cbe3ad354c2bcb68049412c19981edf82b2b61afc2870911"
+      "semantic_sha256": "8f3ed771fb0cfb6478ca7c819df42ade23e7e27baa15ec1ef895fd4eff153860"
     },
     "lava": {
       "uncolored_disposition": "neutral",
       "rationale": "lava uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "4be3a08a256815681ae0c6c8f53e90e348ba54527889406ea31a16f19177965f"
+      "semantic_sha256": "530fdccab09a5164aa3b7dc1e24fef5f5538efa2a22ac206ef476bf97549bb0b"
     },
     "lava_blob": {
       "uncolored_disposition": "neutral",
       "rationale": "lava_blob uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "817a814c2b5ac9fcecbd4b83ea689c74f3c9a807816966e201bcc32987a6c91f"
+      "semantic_sha256": "1333a3c53b896a30730a553f08f0c07720c1b3d04f6a8c26cc49d386423f00cd"
     },
     "light1": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "76501ec7eab8584c0246248b019f8ca95b9b9854e15993df9ef0b6b669c358ef"
+      "semantic_sha256": "f4fd2cbace59dc9d30da534d892c77ea8a5b2c6b5b6800e955c3c1cf627a6834"
     },
     "light2": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "de15738a33933bc307605d40124e77e210bbf405d3218b45bd2fb489f1da39e0"
+      "semantic_sha256": "6b66ee1e6adc5e4db16bc7d7b1c1fcc2250a41d6863e16d121dfadea75f89dd3"
     },
     "light3": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "bc17924ff5a0e65dce0d0fb8e317d99cc0ef336e1c6f84bd694769ad1d8b53b0"
+      "semantic_sha256": "fdb68a4c29fba02cb9686b106a5b8468b27338e17fe12114025d6bf2d8faa88b"
     },
     "light4": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "4d0b11e3c99a0c1d13d25e76f1f712229080cbb5e9db5674f06b7aab55830e12"
+      "semantic_sha256": "aec45a351d59a45ae7bb2b5b9445444040c98997309707bb33a127997eff9b5d"
     },
     "light5": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "c079d2fe9e094af811780bf1e3f6b389164659e93df84701f18817eba4f7d6b2"
+      "semantic_sha256": "bafb930caed5037115b83cc5099ad111ba3ccbc09180717c8f71e07bbb1a0b7d"
     },
     "light6": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "9d03c39b76352ce60579021698a95bf9ba8305350a50226c07c9613b7d4daf16"
+      "semantic_sha256": "f72a9c19a9c88cd2a8cf2beafcc27621118a5a50d2f3ee7e5d3342e79cef5d32"
     },
     "light7": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "c20118076e2a5a1f8a12b252c61ba0ac1acf7171fa457e96006690b27abc21b3"
+      "semantic_sha256": "28eb32a064ee60676bc353f46b0db21b8f865dbdf971f36dbca4fe3bc033a58d"
     },
     "light8": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "2c903f65f2362295a4ce5bb8df9036e258b68ab1d653dd8996552f1adee2edce"
+      "semantic_sha256": "39d36ecc2dbae09121d44f8c10d6bdb6e5d7a51b4e52fcd7b19e44fea3bcf90d"
     },
     "light9": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
-      "semantic_sha256": "ec8b6a0a853da259de54225daca6bf55c7dacf4bb84aec03c1494f9bb867356a"
+      "semantic_sha256": "7dc4e8a20e1e1fdec33b864b45eaf4b3c237178d018d13b0ce9e64e12de7ca46"
     },
     "lightning": {
       "uncolored_disposition": "neutral",
       "rationale": "lightning uses the lightning blue-white palette entry to match its visible art.",
-      "semantic_sha256": "2a96f56f0b64ad012cdf5cae307724b7acc54f5487905c1ee961b6b248aacd17"
+      "semantic_sha256": "b6e3a2162d5dc57ddbbd4235bc43b4041d1e68b17904f2b0c9d8264d41d4a393"
     },
     "mithril_lamp": {
       "uncolored_disposition": "neutral",
       "rationale": "The lit mithril lamp uses explicit cyan light matching its only chromatic blue-green glass and metal pixels.",
-      "semantic_sha256": "136066621b733c086e76e739d3555e4d48cafd025d2f29dbecbe1c896157b482"
+      "semantic_sha256": "66329e2ac0866058dd2eaa909c1379b5cfbc2ecbe4221efe215ab2dfa05a9210"
     },
     "negabolt": {
       "uncolored_disposition": "neutral",
       "rationale": "negabolt uses the negative violet palette entry to match its visible art.",
-      "semantic_sha256": "bc6f67edbbde2d961a9eaadd2ef5b14319e8dd9deaeed2c5f6d837f616660add"
+      "semantic_sha256": "74574ceee81e43d36be3d12b86c4b521cf1d6ac32ec7ad5e6a538cbb17b4d353"
     },
     "obstacle_volcano_3": {
       "uncolored_disposition": "neutral",
       "rationale": "obstacle_volcano_3 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "0429593ecdd15dc37a200d29ae19d232c7e877ea16363dc578bf308b0710ebd7"
+      "semantic_sha256": "3783c52ffca9042ca287640c77b61c34af36a07f3a252d74aede1f17c2fda0b0"
     },
     "obstacle_volcano_5": {
       "uncolored_disposition": "neutral",
       "rationale": "obstacle_volcano_5 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "70b7ba20e5e13ad683018ca2fed0e755011bb7543df231db60326a4c5921e8e3"
+      "semantic_sha256": "b5abae761aedc09e4d750b45d93d75f5997d90f35c7ae333c47e67498e357056"
     },
     "obstacle_volcano_6": {
       "uncolored_disposition": "neutral",
       "rationale": "obstacle_volcano_6 uses the lava and open fire palette entry to match its visible art.",
-      "semantic_sha256": "c9e6e610c37e115253088a85dde59b7c3d1ee6d116048fdf984083d828da392c"
+      "semantic_sha256": "12cbd80e3e3dfd8aee50317270b57d5be49cda4591ab3cd46136356e441e1aea"
     },
     "raw_mana": {
       "uncolored_disposition": "neutral",
       "rationale": "raw_mana uses the arcane purple palette entry to match its visible art.",
-      "semantic_sha256": "5b266a4efd78659f635b9fdadf3c63d3e6443caba0da04e22b828e9071068824"
+      "semantic_sha256": "61b570ed4bab855519e7bcda03510d047f4c1aa6db34cb515b9a46e230be0f1f"
     },
     "seraph": {
       "uncolored_disposition": "neutral",
       "rationale": "seraph uses the holy gold-white palette entry to match its visible art.",
-      "semantic_sha256": "977e46abc23fb1c81319a8d0024129fe15ed04eabca616ba4ae21440e84ab8f2"
+      "semantic_sha256": "1f5360a0190b0c6f429f829f2954d50e3e2ddb78517d59565f18053c77132182"
     },
     "torch": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated portable torch uses explicit warm light matching its flame animation.",
-      "semantic_sha256": "160527cdbdbaf905db210cf42aad9669da1486443b3712aa61211da3b7e96f8d"
+      "semantic_sha256": "4a7e22463b9686c4062329617841d592f229839208554e051e184fe2489a2ea2"
     },
     "torch_wall_1": {
       "uncolored_disposition": "neutral",
       "rationale": "torch_wall_1 uses the torch flame palette entry to match its visible art.",
-      "semantic_sha256": "5fa07555d9e7090989f6b4c1720be15f4ffa1a125ac4c428b41e2bf0529f25b3"
+      "semantic_sha256": "4554846d8689e2095929509a532f5f01909b422a5b7233ad097c509ead29a515"
     },
     "torch_wall_1_unlit": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated wall torch uses explicit warm light matching the related lit wall-torch art.",
-      "semantic_sha256": "ce201d2825b15405d2ff105c2cc03546e6b2b5932c2cad84bcedeff1e13772e9"
+      "semantic_sha256": "569b2d2bfed48c466c1e74f20b99db6836fd462d100cd6f38ecbd5f7bef2ad42"
     },
     "torch_wall_green": {
       "uncolored_disposition": "neutral",
       "rationale": "torch_wall_green uses the green flame palette entry to match its visible art.",
-      "semantic_sha256": "74e7df7e33ca1b906c58ae2329905619d114a9981879fa5ea7e393100efebeca"
+      "semantic_sha256": "71f450d40b4642e6dd2cca0664e653dd622a8a0f960d9f028a6ed4c051a0fb7c"
     },
     "torch_wall_green_unlit": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated green wall torch uses the same explicit green as its related lit archetype.",
-      "semantic_sha256": "d20abb48cd300e3f2bc2527ac3f3d8250f77fd40cde34140ca70864f37465e86"
+      "semantic_sha256": "27731bc529f5f7904707b9568a929d7113b0d888ae72e3c53be4af9edc9ef8bd"
     }
   },
   "artifacts": {
     "armour_elathiel": {
       "uncolored_disposition": "neutral",
       "rationale": "armour_elathiel uses the holy gold-white palette entry to match its authored description and art.",
-      "semantic_sha256": "6b22252f737fe1ba4399fa79ea82fd65b8f6ad87201cd6edcecc2408817be412"
+      "semantic_sha256": "9d0db6ed27d3b1cfb690ee4eae119983353d8c0691c3e175eb7d10015c56b2c3"
     },
     "crystal_light4": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated crystal artifact uses explicit soft-white light matching its pale animation.",
-      "semantic_sha256": "14b1c8f64cb203c478deb38dfa05755b9d2e7facc242b3c99fb09a2c94f58915"
+      "semantic_sha256": "8b8ef22d27b78491c8d592e776ff3aa5b4768d84bf7f88379db8e8c3ecbc9ccf"
     },
     "halloween_abyss_jackolantern": {
       "uncolored_disposition": "neutral",
       "rationale": "The activated abyss jack-o-lantern uses explicit orange light matching its carved flame art.",
-      "semantic_sha256": "c85300d931618edfc65bb43fd0bfdd0340cf65a38dfcf79c4c27dff1ac546ef3"
+      "semantic_sha256": "12e4f3ebcf546586c987d62b1046c9e7da42d91b861d74da0ca89e737e708532"
     },
     "shield_holy_light": {
       "uncolored_disposition": "neutral",
       "rationale": "shield_holy_light uses the holy gold-white palette entry to match its authored description and art.",
-      "semantic_sha256": "79f946dfe4264264ae2a84b9eddb024e5ec79e6d55c6d6154dd8cac56c4ec8d0"
+      "semantic_sha256": "47a24ad6ff4989269d02cc7f513a27efcbb3602c9163eacc820fac15a3f73149"
     }
   },
   "color_sources": {
@@ -1078,6 +1078,10 @@
       "rationale": "Applied runtime review covers torch_wall_1 at active radius 9 with ffc080 light and its Classic clone-derived torch_wall_1 art.",
       "semantic_sha256": "c0a5817ab1734842f952046c6868e87191d1dea1369b4123300cf78f51ba97ee"
     },
+    "5dbc04fdedf142a2eff34287688b3a7ffe7a28f06fa3b41db05ee4d9e6df421a": {
+      "rationale": "Applied runtime review covers halloween_abyss_jackolantern at active radius 5 with ff8030 light and its Classic clone-derived jackolantern art.",
+      "semantic_sha256": "755e4ca5c38690e0ce81cf9ce581d5be24daf1db6bc373f84a369e37b239e081"
+    },
     "68cda6f9640dc0016ffbc2ef90394508aae5b2ca44a4603b93091b5cbaa4a926": {
       "rationale": "Applied runtime review covers grave_fire.101 at active radius 5 with ff6030 light and its Classic clone-derived grave_fire.101 art.",
       "semantic_sha256": "b6567a569a6d497cc75c37bfa302737a868e95a2d39c67f4595a18e1887aa7c6"
@@ -1112,7 +1116,7 @@
     },
     "e8e6324b96ec0ed934a9807cb5beb5c995f665dc09f0f12aae0744191c861349": {
       "rationale": "Applied runtime review covers jackolantern at active radius 5 with ff8030 light and its Classic clone-derived jackolantern art.",
-      "semantic_sha256": "d6ea492ac46ab965dae58d318b07165877ca1eb6efe5277507d47d4edcc6f63d"
+      "semantic_sha256": "d62a91a9e5827af3bcf3ec58ed876b93240962f73ea4fca4644dc273be167fbe"
     },
     "f2a2532e32a058e7e810d7e0c766ac0c9a516019b14ae5c0abf5afc8fa662404": {
       "rationale": "Applied runtime review covers mithril_lamp at active radius 5 with 60d0ff light and its Classic clone-derived mithril_lamp art.",
@@ -1151,19 +1155,21 @@
       "views": [
         "smooth-0050",
         "discrete-0002",
-        "smooth-1113",
-        "smooth-1114",
-        "smooth-1115",
-        "smooth-1116",
-        "smooth-1117",
-        "smooth-1118",
-        "smooth-1119",
-        "smooth-1120",
-        "smooth-1121",
-        "smooth-1122",
-        "smooth-1123"
+        "smooth-1180",
+        "smooth-1183",
+        "smooth-1184",
+        "smooth-1186",
+        "smooth-1199",
+        "smooth-1206",
+        "smooth-1208",
+        "smooth-1210",
+        "smooth-1211",
+        "smooth-1214",
+        "smooth-1215",
+        "smooth-1216",
+        "smooth-1217"
       ],
-      "rationale": "Compared a dark lair and every distinct applied type-74 state; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
+      "rationale": "Compared a dark lair and every applied type-74 source/state view against smooth-1113, the clean proof-lab control; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
     },
     "outdoor-transition": {
       "status": "pass",
@@ -1447,7 +1453,7 @@
       "art_overrides": {
         "6376": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
-      "semantic_sha256": "52a3422735e903b976f8ac46a76b46e7de063a9b1a6f8f0048624d361a8da947"
+      "semantic_sha256": "caf4cee5a8a5f87d2ba7beeba1a894f92a4f8277ca9fe93392a676332c0ff798"
     },
     "maps/shattered_islands/strakewood_island/brynknot/sewers/lab": {
       "uncolored_disposition": "neutral",

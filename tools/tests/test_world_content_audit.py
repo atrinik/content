@@ -23,6 +23,61 @@ class WorldContentAuditTest(unittest.TestCase):
         self.assertFalse(audit._has_visible_light_pool(bytes(sprite_only), control))
         self.assertTrue(audit._has_visible_light_pool(bytes(light_pool), control))
 
+    def test_toggle_render_semantics_ignore_identity_but_track_pixels(self):
+        first = {
+            "activation_archetype": "lamp",
+            "radius": 5,
+            "color": "ffd080",
+            "face": "lamp.101",
+            "animation": "lamp",
+            "visible": True,
+        }
+        alias = {**first, "activation_archetype": "quest_lamp"}
+        larger = {**first, "radius": 9}
+
+        self.assertEqual(
+            audit._toggle_render_semantics(first),
+            audit._toggle_render_semantics(alias),
+        )
+        self.assertNotEqual(
+            audit._toggle_render_semantics(first),
+            audit._toggle_render_semantics(larger),
+        )
+
+    def test_runtime_digest_excludes_review_and_python_cache_paths(self):
+        for relative in (
+            "maps/light-source-review.json",
+            "maps/light-source-review/dark-lab",
+            "maps/light-source-evidence/smooth-001.png",
+            "maps/python/__pycache__/Common.cpython-314.pyc",
+            "maps/python/stale.pyc",
+        ):
+            self.assertTrue(audit._is_review_only_runtime_path(relative), relative)
+        self.assertFalse(audit._is_review_only_runtime_path("maps/python/Common.py"))
+        self.assertTrue(
+            audit._is_light_review_scene(
+                self.root / "tools/light-source-review/dark-lab"
+            )
+        )
+        self.assertFalse(
+            audit._is_light_review_scene(self.root / "tools/other-map")
+        )
+
+        self.write("arch/construction.arc", "Object construction\nend\n")
+        self.write("arch/construction/LICENSE", "fixture license\n")
+        self.write("maps/python/Common.py", "VALUE = 1\n")
+        self.git("init", "-q")
+        self.git("add", "arch", "maps/python/Common.py")
+        self.git("commit", "-qm", "fixture runtime tree")
+        commit = self.git("rev-parse", "HEAD")
+        self.write("maps/python/__pycache__/Common.cpython-314.pyc", "cache")
+        self.write("maps/light-source-review/dark-lab", "review only\n")
+
+        self.assertEqual(
+            audit._git_runtime_content_sha256(commit),
+            audit._runtime_content_sha256(),
+        )
+
     def setUp(self):
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
@@ -817,6 +872,65 @@ end
         self.assertTrue(
             any(error.endswith("lacks an activation archetype") for error in errors),
             errors,
+        )
+
+    def test_allowed_none_artifact_is_a_registered_runtime_archetype(self):
+        self.write(
+            "arch/toggle.arc",
+            """Object toggle_lamp
+face lamp_lit.101
+animation lamp_lit
+type 74
+anim_speed 4
+last_sp 5
+light_color ffc080
+end
+""",
+        )
+        self.write(
+            "maps/quest.art",
+            """Allowed none
+chance 1
+artifact quest_lamp
+def_arch toggle_lamp
+Object
+face quest_lamp.101
+animation quest_lamp
+end
+""",
+        )
+        self.write(
+            "maps/quest",
+            """arch map
+name Quest Lamp
+end
+arch quest_lamp
+x 6
+y 7
+end
+""",
+        )
+
+        report = audit.light_inventory()
+
+        artifact = report["artifacts"][0]
+        self.assertEqual("quest_lamp", artifact["runtime_archetype"])
+        self.assertEqual("artifact", artifact["runtime_archetype_source"]["field"])
+        self.assertEqual("quest_lamp", artifact["activation_archetype"])
+        self.assertEqual("quest_lamp.101", artifact["active_face"])
+        emitter = report["maps"][0]["emitters"][0]
+        self.assertEqual("quest_lamp", emitter["archetype"])
+        self.assertEqual((6, 7), (emitter["x"], emitter["y"]))
+        self.assertEqual("artifact", emitter["face_source"]["kind"])
+        self.assertEqual("quest_lamp", emitter["activation_archetype"])
+        self.assertEqual("quest_lamp.101", emitter["active_face"])
+        state = next(
+            row for row in report["toggle_states"]
+            if row["activation_archetype"] == "quest_lamp"
+        )
+        self.assertEqual(
+            {("artifact", "quest_lamp"), ("map", "maps/quest:4")},
+            {(row["kind"], row["id"]) for row in state["sources"]},
         )
 
     def test_light_review_check_rejects_missing_baseline_rows(self):

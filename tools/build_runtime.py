@@ -15,15 +15,23 @@ import sys
 import tempfile
 
 
-REVIEW_ONLY_MAP_ENTRIES = {"light-source-evidence", "light-source-review.json"}
+REVIEW_ONLY_MAP_ENTRIES = {
+    "light-source-evidence",
+    "light-source-review",
+    "light-source-review.json",
+}
 
 
 def review_only_map_entries(directory: str, names: list[str], map_root: Path) -> set[str]:
-    """Return review-only root entries excluded from playable runtime maps."""
+    """Return review-only and generated entries excluded from runtime maps."""
 
+    ignored = {
+        name for name in names
+        if name == "__pycache__" or name.endswith(".pyc")
+    }
     if Path(directory) == map_root:
-        return set(names) & REVIEW_ONLY_MAP_ENTRIES
-    return set()
+        ignored.update(set(names) & REVIEW_ONLY_MAP_ENTRIES)
+    return ignored
 
 
 def validate_source_tree(source: Path) -> None:

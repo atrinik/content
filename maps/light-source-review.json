@@ -4311,7 +4311,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fa446a38a100cc8b8ce1578521fb4dd5b48d3bf887a84f64e170e7a53825a809"
+      "semantic_sha256": "d4d57312c7088f2d3499988fa2ed4dd1628be0834fc2fc11cf092c2af7c48c9a"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",

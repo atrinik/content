@@ -130,12 +130,19 @@ unlisted artifacts, checks the aggregate inventory digest, proves that every
 invisible emitter lies inside a recorded smooth viewport, and requires a
 source-bound, control-compared view for every effective definition plus an
 active view for every toggle state. A separate digest over all authored
-`arch/` and runtime `maps/` inputs proves the final tree still matches the tree
-used by the recorded content build even when review-only files are committed
-after that build. The review JSON, evidence directory, review-only lab, and
-generated Python bytecode caches are explicitly omitted from playable runtime
-collection, while the authored review inputs remain available in the source
-tree for maintainers.
+`arch/` and runtime `maps/` inputs binds the renders to their recorded immutable
+content commit. Current relevance is checked through the aggregate lighting
+inventory, each bound map, source, and active-state semantic digest, and
+`render_assets_sha256` over every resolved light-source PNG and animation file.
+An unrelated authored-content change therefore does not require recapturing
+every sheet, while same-size rendered-art changes still do. After a squash
+merge, `runtime_content_commit` may name the merged commit, reachable from the
+current history, whose runtime digest matches the original capture commit; the
+original `content_commit` and per-view bindings remain unchanged as capture
+provenance.
+The review JSON, evidence directory, review-only lab, and generated Python
+bytecode caches are explicitly omitted from playable runtime collection, while
+the authored review inputs remain available in the source tree for maintainers.
 
 The checked generator makes viewport selection, tile order, and sheet encoding
 reproducible. `plan` emits the greedy cover in map-path order; `plan-sources`

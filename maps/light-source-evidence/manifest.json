@@ -2,6 +2,7 @@
   "schema_version": 2,
   "render_context": {
     "content_commit": "e91bd19c8aa41a2015f76969dbcbd7cf4d2ea377",
+    "runtime_content_commit": "969b53c2b953772970d0cc6c76e702a262b1d09d",
     "classic_client_commit": "62625f30ff27707c66304915d49ec4132023342d",
     "classic_server_commit": "62625f30ff27707c66304915d49ec4132023342d",
     "resources_commit": "266ac693e5567e1c253384bff1d490f1e37fedca",
@@ -14,7 +15,8 @@
     "settings": "17x17 look, map zoom 100%, smooth RGB lighting for complete map/source coverage; disabled in Client Settings for baseline and all eight glower-context discrete views; 19x19 darkness-4 review-only lab for source and active-state captures",
     "ordinary_state": "the reviewer emitted no light, carried only the scenario starting objects, and all temporary toggle lights were extinguished, unapplied, destroyed, and reset between source views; a linked-map viewport can render the same reviewer representation more than once without adding a server-side emitter",
     "inventory_sha256": "e06de4926d16235db962a0b99d913923240e3c2d695b9c0c0a91107daaccf773",
-    "runtime_content_sha256": "69ebc85ace5097fd25c29d40dc7c4a6e81b64af0a8345128ab0d8e94812e6f6c"
+    "runtime_content_sha256": "69ebc85ace5097fd25c29d40dc7c4a6e81b64af0a8345128ab0d8e94812e6f6c",
+    "render_assets_sha256": "fbb46fcb345bf91c48a1d713d52da7977e330cfe1f2501ca2a6c6c338ce2062d"
   },
   "sheets": {
     "smooth-001": {

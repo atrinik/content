@@ -580,13 +580,17 @@ face reward.101
 end
             """,
         )
-        evidence_tools.write_png(
-            audit.ARCH_ROOT / "lamp.101.png", 32, 40, bytes(32 * 40 * 3)
-        )
+        lamp_path = audit.ARCH_ROOT / "lamp.101.png"
+        evidence_tools.write_png(lamp_path, 32, 40, bytes(32 * 40 * 3))
         evidence_tools.write_png(
             audit.ARCH_ROOT / "reward.101.png", 32, 32, bytes(32 * 32 * 3)
         )
+        evidence_tools.write_png(
+            audit.ARCH_ROOT / "orb.101.png", 32, 32, bytes(32 * 32 * 3)
+        )
         self.write("arch/lamp.anim", "anim lamp\nlamp.101\nmina\n")
+        self.write("arch/inert.anim", "anim inert\nreward.101\nmina\n")
+        self.write("arch/orb.anim", "anim orb\norb.101\nmina\n")
         audit._ART_INDEX_CACHE.clear()
         self.write(
             "maps/scene",
@@ -714,6 +718,23 @@ end
         self.git("add", "arch", "maps")
         self.git("commit", "-qm", "fixture runtime tree")
         content_commit = self.git("rev-parse", "HEAD")
+        self.write("docs/capture.md", "fixture capture record\n")
+        self.git("add", "docs/capture.md")
+        self.git("commit", "-qm", "fixture capture record")
+        runtime_content_commit = self.git("rev-parse", "HEAD")
+        mismatched_alias_path = self.write(
+            "arch/mismatched-alias.arc", "Object mismatched_alias\nend\n"
+        )
+        self.git("add", "arch/mismatched-alias.arc")
+        self.git("commit", "-qm", "fixture mismatched runtime tree")
+        mismatched_runtime_content_commit = self.git("rev-parse", "HEAD")
+        mismatched_alias_path.unlink()
+        self.git("add", "-u", "arch")
+        self.git("commit", "-qm", "restore fixture runtime tree")
+        runtime_tree = self.git("rev-parse", "HEAD^{tree}")
+        unreachable_runtime_content_commit = self.git(
+            "commit-tree", runtime_tree, "-m", "fixture unreachable runtime tree"
+        )
         evidence_dir = self.root / "maps/light-source-evidence"
         evidence_dir.mkdir()
         smooth = evidence_dir / "smooth.png"
@@ -745,6 +766,7 @@ end
             "schema_version": 2,
             "render_context": {
                 "content_commit": content_commit,
+                "runtime_content_commit": runtime_content_commit,
                 "classic_client_commit": "2" * 40,
                 "classic_server_commit": "4" * 40,
                 "resources_commit": "3" * 40,
@@ -760,6 +782,7 @@ end
                 "resources_source": "https://github.com/atrinik/resources/tree/" + "3" * 40,
                 "inventory_sha256": audit._inventory_semantic_sha256(report),
                 "runtime_content_sha256": audit._runtime_content_sha256(),
+                "render_assets_sha256": audit._light_render_assets_sha256(report),
                 "profile": "test-light-review",
                 "command": "test Classic client screenshot command",
                 "settings": "seventeen by seventeen viewport with frozen lighting modes",
@@ -945,6 +968,18 @@ end
         )
         self.assertEqual([], audit.validate_light_inventory(report))
 
+        lamp_bytes = lamp_path.read_bytes()
+        changed_lamp_pixels = bytearray(32 * 40 * 3)
+        changed_lamp_pixels[0] = 1
+        evidence_tools.write_png(
+            lamp_path, 32, 40, bytes(changed_lamp_pixels)
+        )
+        self.assertIn(
+            "light-source evidence rendered art changed since rendered review",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        lamp_path.write_bytes(lamp_bytes)
+
         stale_surface = json.loads(json.dumps(evidence))
         next(
             view
@@ -1072,8 +1107,23 @@ end
         )
         evidence_path.write_text(json.dumps(evidence))
 
+        unavailable_capture = json.loads(json.dumps(evidence))
+        unavailable_commit = "0" * 40
+        unavailable_capture["render_context"]["content_commit"] = unavailable_commit
+        unavailable_capture["render_context"]["content_source"] = (
+            "https://github.com/atrinik/content/tree/" + unavailable_commit
+        )
+        for view in unavailable_capture["views"]:
+            view["content_commit"] = unavailable_commit
+        evidence_path.write_text(json.dumps(unavailable_capture))
+        self.assertEqual(
+            [],
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+
         unresolved_evidence = json.loads(json.dumps(evidence))
         unresolved_commit = "0" * 40
+        unresolved_evidence["render_context"].pop("runtime_content_commit")
         unresolved_evidence["render_context"]["content_commit"] = unresolved_commit
         unresolved_evidence["render_context"]["content_source"] = (
             "https://github.com/atrinik/content/tree/" + unresolved_commit
@@ -1087,6 +1137,55 @@ end
         )
         evidence_path.write_text(json.dumps(evidence))
 
+        malformed_alias = json.loads(json.dumps(evidence))
+        malformed_alias["render_context"]["runtime_content_commit"] = "not-a-commit"
+        evidence_path.write_text(json.dumps(malformed_alias))
+        self.assertIn(
+            "light-source evidence needs a runtime_content_commit SHA",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+
+        unresolved_alias = json.loads(json.dumps(evidence))
+        unresolved_alias["render_context"]["runtime_content_commit"] = "0" * 40
+        evidence_path.write_text(json.dumps(unresolved_alias))
+        self.assertIn(
+            "light-source evidence runtime content commit does not resolve",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+
+        unreachable_alias = json.loads(json.dumps(evidence))
+        unreachable_alias["render_context"]["runtime_content_commit"] = (
+            unreachable_runtime_content_commit
+        )
+        evidence_path.write_text(json.dumps(unreachable_alias))
+        self.assertIn(
+            "light-source evidence runtime content commit is not reachable "
+            "from HEAD",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+
+        mismatched_alias = json.loads(json.dumps(evidence))
+        mismatched_alias["render_context"]["runtime_content_commit"] = (
+            mismatched_runtime_content_commit
+        )
+        evidence_path.write_text(json.dumps(mismatched_alias))
+        self.assertIn(
+            "light-source evidence runtime content commit runtime tree disagrees "
+            "with rendered review",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        evidence_path.write_text(json.dumps(evidence))
+
+        unrelated_runtime = self.write(
+            "arch/status-effect.arc",
+            "Object status_effect\nname status effect\nend\n",
+        )
+        self.assertEqual(
+            [],
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        unrelated_runtime.unlink()
+
         uncommitted = self.write(
             "arch/post-render.arc", "# uncommitted runtime tree change\n"
         )
@@ -1096,12 +1195,9 @@ end
         )
         evidence_path.write_text(json.dumps(mismatched_evidence))
         mismatch_errors = audit.validate_light_inventory(audit.light_inventory())
-        self.assertNotIn(
-            "light-source evidence runtime content changed since rendered review",
-            mismatch_errors,
-        )
         self.assertIn(
-            "light-source evidence content commit runtime tree disagrees with rendered review",
+            "light-source evidence runtime content commit runtime tree disagrees "
+            "with rendered review",
             mismatch_errors,
         )
         uncommitted.unlink()
@@ -1134,9 +1230,14 @@ end
         scene_path = self.root / "maps/scene"
         scene_source = scene_path.read_text()
         scene_path.write_text(scene_source + "# runtime tree changed\n")
+        scene_errors = audit.validate_light_inventory(audit.light_inventory())
         self.assertIn(
-            "light-source evidence runtime content changed since rendered review",
-            audit.validate_light_inventory(audit.light_inventory()),
+            "light-source evidence view smooth-scene has stale map semantics",
+            scene_errors,
+        )
+        self.assertIn(
+            "map maps/scene changed since its lighting review",
+            scene_errors,
         )
         scene_path.write_text(scene_source)
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import posixpath
 import re
+import json
 from pathlib import Path
 from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 from xml.parsers import expat
@@ -15,6 +16,62 @@ from .model import ContentCatalog, ContentId, SourceLocation
 QUEST_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 QUEST_PART_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 OBJECT_DOMAINS = ("archetype", "artifact")
+CONTENT_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
+
+
+def _load_content_identities(catalog: ContentCatalog, maps_root: Path) -> None:
+    """Load explicit NPC and property identities owned by authored content."""
+
+    path = maps_root / "content-identities.json"
+    if not path.is_file():
+        catalog.add_diagnostic(
+            "missing-content-identities",
+            "maps/content-identities.json is required",
+            catalog.location(path, 1),
+        )
+        return
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        catalog.add_diagnostic(
+            "invalid-content-identities", str(error), catalog.location(path, 1)
+        )
+        return
+    if not isinstance(document, dict) or set(document) != {
+        "schema_version", "npcs", "properties"
+    } or document.get("schema_version") != 1:
+        catalog.add_diagnostic(
+            "invalid-content-identities",
+            "content identity registry must be a closed schema-version 1 object",
+            catalog.location(path, 1),
+        )
+        return
+    for field, domain in (("npcs", "npc"), ("properties", "property")):
+        entries = document[field]
+        if not isinstance(entries, list):
+            catalog.add_diagnostic(
+                "invalid-content-identities",
+                "{} must be an array".format(field),
+                catalog.location(path, 1),
+            )
+            continue
+        for entry in entries:
+            if not isinstance(entry, dict) or set(entry) != {"id"}:
+                catalog.add_diagnostic(
+                    "invalid-content-identity",
+                    "{} entries must contain only id".format(field),
+                    catalog.location(path, 1),
+                )
+                continue
+            key = entry.get("id")
+            if not isinstance(key, str) or not CONTENT_ID_RE.fullmatch(key):
+                catalog.add_diagnostic(
+                    "invalid-content-identity",
+                    "{} id must be a portable stable identifier".format(domain),
+                    catalog.location(path, 1),
+                )
+                continue
+            catalog.add_definition(domain, key, catalog.location(path, 1))
 
 
 def _validate_source_roots(
@@ -557,6 +614,14 @@ def _load_maps(catalog: ContentCatalog, maps_root: Path) -> None:
                     "skill_id",
                     map_id,
                 )
+            elif field in ("npc_id", "property_id") and value:
+                catalog.add_reference(
+                    value,
+                    ("npc" if field == "npc_id" else "property",),
+                    catalog.location(path, line_number, _column(line, value)),
+                    field,
+                    map_id,
+                )
         if in_header:
             catalog.add_diagnostic(
                 "unterminated-map-header",
@@ -675,6 +740,12 @@ class _InterfaceLoader:
                 "region_map",
                 source,
             )
+        for attribute, domain in (("npc_id", "npc"), ("property_id", "property")):
+            value = attrs.get(attribute)
+            if value:
+                self.catalog.add_reference(
+                    value, (domain,), self.location(value), attribute, source
+                )
         for attribute, value in attrs.items():
             if attribute.startswith("faction_"):
                 self.catalog.add_reference(
@@ -724,6 +795,7 @@ def load_catalog(root: Path) -> ContentCatalog:
     _load_artifacts(catalog, (arch_root, maps_root))
     _load_treasures(catalog, (arch_root, maps_root))
     _load_factions(catalog, maps_root)
+    _load_content_identities(catalog, maps_root)
     _load_maps(catalog, maps_root)
     _load_regions(catalog, maps_root)
     _load_interfaces(catalog, maps_root)

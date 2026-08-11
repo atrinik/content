@@ -948,7 +948,7 @@ def dialog_hello(self):
         </part>
         <part name="Your First Apartment" uid="apartment_tutorial">
             <info>Visit apartment steward Elara Harth in Incuna's dock house beside Gulliver. Claim your Strakewood apartment, enter through the glowing portal beside her, and use the bed inside.</info>
-            <interface npc="Elara Harth" state="need_complete">
+            <interface npc="Elara Harth" npc_id="incuna_apartment_steward" property_id="strakewood_island_apartment" state="need_complete">
                 <dialog name="hello">
                     <message>Welcome. Sam asked me to teach you how apartments work before you leave Incuna.</message>
                     <message>An apartment is a private, persistent space. Only its owner can enter, and anything stored inside remains there between visits. Apartment portals are regional: this portal reaches your Strakewood property from Incuna now, and the Brynknot portal will reach the same property after your voyage.</message>

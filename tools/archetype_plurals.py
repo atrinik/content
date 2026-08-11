@@ -32,7 +32,7 @@ RECOVERY_JOURNAL_PATH = Path("build/archetype-plural-migration-recovery-v1.json"
 RECOVERY_JOURNAL_PENDING_PATH = Path(
     "build/archetype-plural-migration-recovery-v1.pending"
 )
-REVIEWED_MANIFEST_SHA256 = "6c4eede454e239911049bb87c9ce5f96aeb328d0d11b6d7d9468ffb8c9569660"
+REVIEWED_MANIFEST_SHA256 = "740e28c4f6ce9f45d031224f3ff91d423754228c789048352557648d4d35e100"
 LINES = {
     "1.x": {
         "baseline_sha": "ead72ef831444c874f65da841498924bab625e99",

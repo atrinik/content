@@ -10731,6 +10731,20 @@
       "classification": "review:reviewed-regular-s"
     },
     {
+      "archetype_id": "hammock_a",
+      "singular": "hammock",
+      "object_type": "79",
+      "name_pl": "hammocks",
+      "classification": "review:reviewed-regular-s"
+    },
+    {
+      "archetype_id": "hammock_b",
+      "singular": "hammock",
+      "object_type": "79",
+      "name_pl": "hammocks",
+      "classification": "review:reviewed-regular-s"
+    },
+    {
       "archetype_id": "handle_lever",
       "singular": "big lever",
       "object_type": "93",

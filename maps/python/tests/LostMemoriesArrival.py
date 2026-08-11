@@ -485,8 +485,9 @@ class LostMemoriesArrivalSuite(TestSuite):
                 self.assertIsNotNone(apartment_map)
                 apartment_map.timeout = 1
                 del apartment_map
-                self.npc.Destroy()
-                self.npc = None
+                if self.npc:
+                    self.npc.Destroy()
+                    self.npc = None
                 simulate_server(count=2, wait=False)
 
                 portal = self.find_map_object(

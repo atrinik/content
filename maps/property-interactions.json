@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "interactions": [
+    {
+      "id": "lost_memories_incuna_apartment_grant",
+      "quest_id": "lost_memories",
+      "quest_part_id": "apartment_tutorial",
+      "npc_id": "incuna_apartment_steward",
+      "property_id": "strakewood_island_apartment",
+      "npc_binding": {
+        "map": "/shattered_islands/world_4_85",
+        "x": 9,
+        "y": 4,
+        "archetype": "female2",
+        "name": "Elara Harth"
+      },
+      "portal_binding": {
+        "map": "/shattered_islands/world_4_85",
+        "x": 10,
+        "y": 4,
+        "archetype": "exit",
+        "name": "Incuna Strakewood apartment portal",
+        "return_x": 10,
+        "return_y": 5
+      },
+      "grant": {
+        "operation": "ensure_ownership",
+        "tier": "cheap",
+        "price": 0,
+        "emit_purchase_event": false,
+        "preserve_existing_tier": true,
+        "idempotency_scope": "character_property"
+      },
+      "completion": {
+        "event": "property_bed_used",
+        "next_quest_part_id": "speak_priest",
+        "transition_order": [
+          "start_next",
+          "complete_current"
+        ]
+      },
+      "runtime_owners": {
+        "main": "typed_property_service",
+        "classic_1x": "classic_apartment_adapter",
+        "classic_entitlement_tag": "strakewood_island_apartment"
+      }
+    }
+  ]
+}
+

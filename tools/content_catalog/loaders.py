@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import os
 import posixpath
 import re
@@ -741,6 +742,12 @@ class _InterfaceLoader:
                 self.catalog.add_reference(
                     value, (domain,), self.location(value), attribute, source
                 )
+        property_action = attrs.get("property_action_id")
+        if property_action:
+            self.catalog.add_reference(
+                property_action, ("property-action",),
+                self.location(property_action), "property_action_id", source
+            )
         for attribute, value in attrs.items():
             if attribute.startswith("faction_"):
                 self.catalog.add_reference(
@@ -776,6 +783,174 @@ def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> None:
         _InterfaceLoader(catalog, path, quest_key).parse()
 
 
+def _map_object_bindings(path: Path, catalog: ContentCatalog) -> List[dict]:
+    """Return effective identity fields for nested objects in one map."""
+
+    bindings: List[dict] = []
+    stack: List[dict] = []
+    for _line_number, line in _iter_source_lines(path, catalog):
+        field, value = _split(line)
+        if field == "arch" and value:
+            parent = stack[-1] if stack else {}
+            stack.append({
+                "archetype": value.split()[0],
+                "x": parent.get("x", 0),
+                "y": parent.get("y", 0),
+            })
+        elif field == "end" and not value:
+            if stack:
+                bindings.append(stack.pop())
+        elif stack and field in ("name", "x", "y"):
+            stack[-1][field] = int(value) if field in ("x", "y") else value
+    return bindings
+
+
+def _classic_apartment_tags(root: Path, catalog: ContentCatalog) -> set[str]:
+    """Read literal Classic apartment tags without importing runtime Python."""
+
+    path = root / "maps" / "python" / "Apartments.py"
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        for statement in tree.body:
+            if (isinstance(statement, ast.Assign) and
+                    any(isinstance(target, ast.Name) and
+                        target.id == "apartments_info" for target in statement.targets)):
+                document = ast.literal_eval(statement.value)
+                return {
+                    value["tag"] for value in document.values()
+                    if isinstance(value, dict) and isinstance(value.get("tag"), str)
+                }
+    except (OSError, UnicodeError, SyntaxError, ValueError) as error:
+        catalog.add_diagnostic(
+            "invalid-property-runtime-binding", str(error), catalog.location(path, 1)
+        )
+    return set()
+
+
+def _load_property_interactions(catalog: ContentCatalog, maps_root: Path) -> None:
+    """Load typed property actions and prove their authored/runtime bindings."""
+
+    path = maps_root / "property-interactions.json"
+    if not path.is_file():
+        return
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        catalog.add_diagnostic(
+            "invalid-property-interactions", str(error), catalog.location(path, 1)
+        )
+        return
+    if (not isinstance(document, dict) or
+            set(document) != {"schema_version", "interactions"} or
+            document.get("schema_version") != 1 or
+            not isinstance(document.get("interactions"), list)):
+        catalog.add_diagnostic(
+            "invalid-property-interactions",
+            "property interactions must use the closed schema-version 1 shape",
+            catalog.location(path, 1),
+        )
+        return
+
+    tags = _classic_apartment_tags(catalog.root, catalog)
+    entry_fields = {
+        "id", "quest_id", "quest_part_id", "npc_id", "property_id",
+        "npc_binding", "portal_binding", "grant", "completion", "runtime_owners",
+    }
+    binding_fields = {"map", "x", "y", "archetype", "name"}
+    for entry in document["interactions"]:
+        if not isinstance(entry, dict) or set(entry) != entry_fields:
+            catalog.add_diagnostic(
+                "invalid-property-interaction", "property interaction has unknown or missing fields",
+                catalog.location(path, 1),
+            )
+            continue
+        identifier = entry.get("id")
+        if not isinstance(identifier, str) or not CONTENT_ID_RE.fullmatch(identifier):
+            catalog.add_diagnostic(
+                "invalid-property-interaction", "interaction id must be stable",
+                catalog.location(path, 1),
+            )
+            continue
+        source = catalog.add_definition(
+            "property-action", identifier, catalog.location(path, 1)
+        )
+        references = (
+            (entry.get("quest_id"), "quest", "quest_id"),
+            ("{}::{}".format(entry.get("quest_id"), entry.get("quest_part_id")),
+             "quest-part", "quest_part_id"),
+            (entry.get("npc_id"), "npc", "npc_id"),
+            (entry.get("property_id"), "property", "property_id"),
+        )
+        for key, domain, field in references:
+            if isinstance(key, str):
+                catalog.add_reference(
+                    key, (domain,), catalog.location(path, 1), field, source
+                )
+
+        for field, extra in (("npc_binding", set()),
+                             ("portal_binding", {"return_x", "return_y"})):
+            binding = entry.get(field)
+            if not isinstance(binding, dict) or set(binding) != binding_fields | extra:
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} has an invalid shape".format(field),
+                    catalog.location(path, 1),
+                )
+                continue
+            map_key = binding.get("map")
+            if isinstance(map_key, str):
+                _add_map_reference(
+                    catalog, map_key, catalog.location(path, 1), field, source
+                )
+                try:
+                    map_path = maps_root / _canonical_map_path(map_key).lstrip("/")
+                    objects = _map_object_bindings(map_path, catalog)
+                except (OSError, UnicodeError, ValueError):
+                    objects = []
+                if not any(
+                    obj.get("archetype") == binding.get("archetype") and
+                    obj.get("name") == binding.get("name") and
+                    obj.get("x") == binding.get("x") and
+                    obj.get("y") == binding.get("y")
+                    for obj in objects
+                ):
+                    catalog.add_diagnostic(
+                        "missing-property-binding",
+                        "{} does not match an authored map object".format(field),
+                        catalog.location(path, 1),
+                    )
+
+        grant = entry.get("grant")
+        if not isinstance(grant, dict) or grant != {
+            "operation": "ensure_ownership", "tier": "cheap", "price": 0,
+            "emit_purchase_event": False, "preserve_existing_tier": True,
+            "idempotency_scope": "character_property",
+        }:
+            catalog.add_diagnostic(
+                "invalid-property-grant", "tutorial grant invariants are incomplete",
+                catalog.location(path, 1),
+            )
+        completion = entry.get("completion")
+        if not isinstance(completion, dict) or completion != {
+            "event": "property_bed_used", "next_quest_part_id": "speak_priest",
+            "transition_order": ["start_next", "complete_current"],
+        }:
+            catalog.add_diagnostic(
+                "invalid-property-completion", "tutorial completion invariants are incomplete",
+                catalog.location(path, 1),
+            )
+        owners = entry.get("runtime_owners")
+        if not isinstance(owners, dict) or owners != {
+            "main": "typed_property_service",
+            "classic_1x": "classic_apartment_adapter",
+            "classic_entitlement_tag": entry.get("property_id"),
+        } or owners.get("classic_entitlement_tag") not in tags:
+            catalog.add_diagnostic(
+                "invalid-property-runtime-binding",
+                "typed property identity must match the Classic entitlement tag",
+                catalog.location(path, 1),
+            )
+
+
 def load_catalog(root: Path) -> ContentCatalog:
     """Build and resolve a catalog from an Atrinik source tree."""
 
@@ -794,6 +969,7 @@ def load_catalog(root: Path) -> ContentCatalog:
     _load_maps(catalog, maps_root)
     _load_regions(catalog, maps_root)
     _load_interfaces(catalog, maps_root)
+    _load_property_interactions(catalog, maps_root)
     catalog.check_shared_namespace(
         "server archetype", ("archetype", "artifact")
     )

@@ -38,6 +38,7 @@ a typed reference.
 | `skill` | Skill archetype key, conventionally `skill_<name>` | Type-43 skill archetype in `arch/`; the server maps it to a runtime index |
 | `npc` | Explicit `id` | `maps/content-identities.json` |
 | `property` | Explicit `id` | `maps/content-identities.json` |
+| `property-action` | Explicit interaction `id` | `maps/property-interactions.json` |
 
 Display names, messages, descriptions, translations, filesystem enumeration
 order, C enum values, and array positions are not identities. Quest-part UIDs
@@ -50,6 +51,15 @@ Interfaces bind these identities with `npc_id` and `property_id`. Interface
 compilation uses `npc_id` for its output filename, and map events point to that
 stable handler; `npc` remains only the visible Classic name. This keeps
 dispatch stable when a display name changes.
+
+Typed property interactions live in `maps/property-interactions.json`.
+Each closed record binds a quest part and interface action to stable NPC,
+property, and map identities; exact NPC/portal coordinates and archetypes; an
+idempotent free grant; and an ordered completion event. Catalog validation
+checks those authored map objects and the preserved Classic entitlement tag.
+`main` owns the typed property-service action and must not add a Python
+ownership mechanism. The `1.x` runtime may implement the same record through
+the existing Classic apartment adapter.
 
 Existing monster variants and bosses retain their archetype identities; do not
 invent parallel variant or boss IDs for them. A monster-family key does not yet

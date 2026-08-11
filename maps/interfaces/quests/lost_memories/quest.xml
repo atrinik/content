@@ -953,7 +953,7 @@ def dialog_hello(self):
                     <message>Welcome. Sam asked me to teach you how apartments work before you leave Incuna.</message>
                     <message>An apartment is a private, persistent space. Only its owner can enter, and anything stored inside remains there between visits. Apartment portals are regional: this portal reaches your Strakewood property from Incuna now, and the Brynknot portal will reach the same property after your voyage.</message>
                     <message>The apartment's exit returns you to the portal where you entered. Use the bed inside to set your recall point and prove you can return safely. Later, ordinary apartment stewards can sell larger apartments and transfer your stored belongings during an upgrade.</message>
-                    <response destination="claim" message="Please register my apartment."/>
+                    <response destination="claim" property_action_id="lost_memories_incuna_apartment_grant" message="Please register my apartment."/>
                     <response action="close" message="I need a moment."/>
                 </dialog>
                 <code>

@@ -1079,10 +1079,21 @@ def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
                 or (color_type == 2 and len(payload) != 6)
                 or (
                     color_type == 3
-                    and (not palette_seen or len(payload) > palette_entries)
+                    and (
+                        not palette_seen
+                        or not payload
+                        or len(payload) > palette_entries
+                    )
                 )
             ):
                 raise ValueError("PNG has invalid transparency")
+            if color_type == 2:
+                samples = (
+                    int.from_bytes(payload[offset:offset + 2], "big")
+                    for offset in (0, 2, 4)
+                )
+                if any(sample >= 2 ** depth for sample in samples):
+                    raise ValueError("PNG transparency sample exceeds bit depth")
             transparency_seen = True
         elif name == b"IDAT":
             if width is None or idat_closed:
@@ -1113,6 +1124,42 @@ def _validated_art_png_dimensions(path: Path) -> tuple[int, int]:
         raise ValueError("PNG scanline size mismatch")
     if any(raw[offset] > 4 for offset in range(0, expected, stride + 1)):
         raise ValueError("unsupported PNG scanline filter")
+    if color_type == 3:
+        bytes_per_pixel = max(1, (channels * depth + 7) // 8)
+        previous = bytearray(stride)
+        for y in range(height):
+            offset = y * (stride + 1)
+            filter_type = raw[offset]
+            scanline = bytearray(raw[offset + 1:offset + stride + 1])
+            for x in range(stride):
+                left = scanline[x - bytes_per_pixel] if x >= bytes_per_pixel else 0
+                above = previous[x]
+                upper_left = (
+                    previous[x - bytes_per_pixel]
+                    if x >= bytes_per_pixel
+                    else 0
+                )
+                if filter_type == 1:
+                    scanline[x] = (scanline[x] + left) & 0xff
+                elif filter_type == 2:
+                    scanline[x] = (scanline[x] + above) & 0xff
+                elif filter_type == 3:
+                    scanline[x] = (scanline[x] + (left + above) // 2) & 0xff
+                elif filter_type == 4:
+                    estimate = left + above - upper_left
+                    candidates = (left, above, upper_left)
+                    predictor = min(
+                        candidates, key=lambda value: abs(estimate - value)
+                    )
+                    scanline[x] = (scanline[x] + predictor) & 0xff
+            for x in range(width):
+                bit_offset = x * depth
+                byte = scanline[bit_offset // 8]
+                shift = 8 - depth - (bit_offset % 8)
+                palette_index = (byte >> shift) & ((1 << depth) - 1)
+                if palette_index >= palette_entries:
+                    raise ValueError("indexed PNG pixel exceeds palette")
+            previous = scanline
     dimensions = (width, height)
     _ART_DIMENSION_CACHE[cache_key] = dimensions
     return dimensions

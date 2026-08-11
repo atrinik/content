@@ -326,6 +326,29 @@ class WorldContentAuditTest(unittest.TestCase):
                 + evidence_tools._chunk(b"IDAT", rgb_compressed)
                 + evidence_tools._chunk(b"IEND", b"")
             ),
+            "wide_rgb_transparency.101": (
+                rgb_ihdr
+                + evidence_tools._chunk(
+                    b"tRNS", struct.pack(">HHH", 0x0100, 0, 0)
+                )
+                + evidence_tools._chunk(b"IDAT", rgb_compressed)
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "empty_indexed_transparency.101": (
+                indexed_ihdr
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00")
+                + evidence_tools._chunk(b"tRNS", b"")
+                + indexed_idat
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
+            "missing_palette_index.101": (
+                indexed_ihdr
+                + evidence_tools._chunk(b"PLTE", b"\x00\x00\x00")
+                + evidence_tools._chunk(
+                    b"IDAT", zlib.compress(bytes([0, 0x80]) * 8)
+                )
+                + evidence_tools._chunk(b"IEND", b"")
+            ),
             "nonempty_iend.101": (
                 rgb_ihdr
                 + evidence_tools._chunk(b"IDAT", rgb_compressed)

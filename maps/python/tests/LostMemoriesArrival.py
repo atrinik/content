@@ -409,13 +409,13 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertEqual((11, 12), (activator.x, activator.y))
 
         sand_tiles = self.find_map_objects(
-            lambda obj: obj.archname.startswith("floor_sand_d")
+            lambda obj: obj.arch.name.startswith("floor_sand_d")
         )
         blocked_tiles = self.find_map_objects(
-            lambda obj: obj.archname == "blocked"
+            lambda obj: obj.arch.name == "blocked"
         )
         chests = self.find_map_objects(
-            lambda obj: obj.archname == "chest_sw_1"
+            lambda obj: obj.arch.name == "chest_sw_1"
         )
         hammocks = self.find_map_objects(
             lambda obj: obj.name == "hammock to reality"

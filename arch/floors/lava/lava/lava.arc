@@ -11,5 +11,6 @@ type 71
 no_pick 1
 is_floor 1
 glow_radius 3
+light_color ff6030
 name_pl lava
 end

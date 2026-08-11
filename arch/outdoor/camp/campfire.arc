@@ -9,5 +9,6 @@ layer 4
 no_pass 1
 glow_radius 2
 no_pick 1
+light_color ff6030
 name_pl campfires
 end

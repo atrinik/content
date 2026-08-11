@@ -529,6 +529,16 @@
       "rationale": "obstacle_volcano_6 uses the lava and open fire palette entry to match its visible art.",
       "semantic_sha256": "12cbd80e3e3dfd8aee50317270b57d5be49cda4591ab3cd46136356e441e1aea"
     },
+    "pool_acid": {
+      "uncolored_disposition": "neutral",
+      "rationale": "pool_acid uses the established pink palette entry to match its saturated magenta liquid.",
+      "semantic_sha256": "958277c3755d8823aedc5541c64a4760a31db2d4398a11b052faa8bf22a9ac56"
+    },
+    "pool_poison": {
+      "uncolored_disposition": "neutral",
+      "rationale": "pool_poison uses the established green palette entry to match its saturated toxic liquid.",
+      "semantic_sha256": "889871c53ea1dd1c01920f35f952c83172cf52035f1198e848975642d1ba7aa9"
+    },
     "raw_mana": {
       "uncolored_disposition": "neutral",
       "rationale": "raw_mana uses the arcane purple palette entry to match its visible art.",
@@ -1056,6 +1066,14 @@
       "rationale": "The authored ff60c0 tint matches the visible art for plant_mushroom3.",
       "semantic_sha256": "6ceb1c1fb74ce544f3af3c2953d8b490c1ac1e0daa5500bbe4fd1d1f8d91de39"
     },
+    "pool_acid": {
+      "rationale": "The authored ff60c0 tint matches pool_acid's saturated magenta liquid.",
+      "semantic_sha256": "e4c807e3f3ec2386dcdead66bc0a640b6eaf951c51d02f739a31c1970fcf09e2"
+    },
+    "pool_poison": {
+      "rationale": "The authored 40ff60 tint matches pool_poison's saturated toxic-green liquid.",
+      "semantic_sha256": "47c37e83c9acfc5e69f21c7b9ae7ecfa5c523f4e1fb537752e20ad230cdf86f5"
+    },
     "raw_mana": {
       "rationale": "The authored a060ff tint matches the visible art for raw_mana.",
       "semantic_sha256": "c5b99522d766ddf030cf22fdbbd1f60872cb0a2b26de45dffb5ffdb52181c163"
@@ -1202,7 +1220,7 @@
     },
     "dark-interior": {
       "status": "pass",
-      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes."
+      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes. Compared every affected toxic-pool placement in smooth and discrete modes; magenta and green pools preserve deliberate darkness, hazard identity, and traversable routes."
     },
     "outdoor-transition": {
       "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting.",
@@ -1582,17 +1600,17 @@
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0202": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Old Outpost in the issue65_0041 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Old Outpost with smooth and discrete lighting; both poison pools retain their former co-located radius-7 footprints while their toxic-green tint carries the visible liquid's art cue.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c7abe66196a71cceb94d0f7aa8177f62e1057885d46d5d92770f656b02238d59"
+      "semantic_sha256": "4e9162cd0962a540f2e0db7cc9727d1447f14111ecc0d852d5b164a9c31fdcd9"
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0203": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Old Outpost in the issue65_0042 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Old Outpost with smooth and discrete lighting; all three poison pools retain their former co-located radius-7 footprints while their toxic-green tint distinguishes the hazards from neutral ambient light.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "05b9dc561cf79b4a07a0e399b76f8a76e291476c2c9252644ebf75a361e054a5"
+      "semantic_sha256": "b8f7aa16f672b1888324be99d2601c0fc4968ff8b96fdfcd8d7c2518d3cb2756"
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0204": {
       "uncolored_disposition": "neutral",
@@ -2189,10 +2207,10 @@
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_4_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered The Underground City II in the underground_city_a batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered The Underground City II with smooth and discrete lighting; the previously unlit poison pool uses the archetype's minimal radius-1 toxic-green glow without disturbing the surrounding ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3080bb78f9219e5a8feeb1321e915f8e7c2e7182d4076aa255a92234dc770b15"
+      "semantic_sha256": "f05f898909604084b2197787e2d86f08a88c11ee496f760ed3fca6a63020cc1b"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_5_-1": {
       "uncolored_disposition": "neutral",
@@ -2357,17 +2375,17 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna with smooth and discrete lighting; the poison pool retains the former co-located radius-3 footprint while its toxic-green tint carries the visible liquid's art cue.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "09f49529c76fd3a8bd7e58a09b8e396d281b966fe5398a78c80f6a73a5a80689"
+      "semantic_sha256": "c5c4fa696cf17526ff828b892eddf4d142d27e920453b9c7227396ea63d6fecc"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna with smooth and discrete lighting; the acid pool retains the former co-located radius-3 footprint while its magenta tint carries the visible liquid's art cue.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c35ecc66f0f97aab0478c8c90af4ae305d9d40749eab9bc6ccfbf7359dd3efc9"
+      "semantic_sha256": "de776b708d72a61ec1887c8a13f9918fa37274df4eb26dc0e95679d5e8fc062c"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-2": {
       "uncolored_disposition": "neutral",
@@ -4435,13 +4453,13 @@
     },
     "maps/shattered_islands/world_5_48_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the issue65_0138 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria with smooth and discrete lighting; the previously unlit poison pool uses the archetype's minimal radius-1 toxic-green glow while the existing warm wall-torch overrides preserve the room's ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {
         "713": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "796": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "989fdf5a8c0b59db62527aeb618ddabc6bf7ba6bf7ec1ea0ee31d49d33b725ac"
+      "semantic_sha256": "b6a0ef7647901c26be085da2dd434d9bb57563d8f5aa8fb3816118e5ad736884"
     },
     "maps/shattered_islands/world_5_48_1": {
       "uncolored_disposition": "neutral",
@@ -4840,14 +4858,14 @@
     },
     "maps/shattered_islands/world_6_48_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria Sewers in the issue65_0156 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria Sewers with smooth and discrete lighting; the previously unlit poison pool uses the archetype's minimal radius-1 toxic-green glow while the existing warm wall-torch overrides preserve the sewer's ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {
         "79": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "186": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "475": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "86f79797bbe4d9af9fc6ac33fcd224c756ce2bcdf22ddbd1b84e6122593714bc"
+      "semantic_sha256": "8e41872ddd9803bfaf2e50533041da134fc38377199c5d0dfe6a9716154cedf3"
     },
     "maps/shattered_islands/world_6_48_-2": {
       "uncolored_disposition": "neutral",

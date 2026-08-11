@@ -86,6 +86,24 @@ class WorldContentAuditTest(unittest.TestCase):
             )
         )
 
+        # A radius-one smooth pool can become sparse after deterministic 5x
+        # sheet sampling.  Preserve that genuine pool while the rendered-face
+        # extent continues to exclude sprite-only changes.
+        sampled_radius_one = bytearray(tile_control)
+        for y in range(tile_height // 3, tile_height // 3 + 12):
+            for x in range(tile_width // 2, tile_width // 2 + 12):
+                if (x + y) % 3:
+                    sampled_radius_one[(y * tile_width + x) * 3] = 18
+        self.assertTrue(
+            audit._has_visible_light_pool(
+                bytes(sampled_radius_one),
+                tile_control,
+                tile_width,
+                tile_height,
+                (35, 23),
+            )
+        )
+
         # A real oversized Classic face must not count as emitted light merely
         # because its changed pixels span more than one 32-pixel map cell.
         forcefield_path = (

@@ -945,8 +945,11 @@ def _has_visible_light_pool(
         width == LIGHT_EVIDENCE_TILE_WIDTH - 1
         and height == LIGHT_EVIDENCE_TILE_HEIGHT - 1
     )
-    minimum_channels = 150 if sampled_tile else 300
-    minimum_total = 2500 if sampled_tile else 3000
+    # A clean radius-one RGB pool can retain only about 90 materially changed
+    # channels and 1,500 total difference after 5x nearest-neighbor sampling.
+    # The sprite-aware two-axis spread below still rejects compact changed art.
+    minimum_channels = 80 if sampled_tile else 300
+    minimum_total = 1200 if sampled_tile else 3000
     changed_pixels = [
         index
         for index in range(len(differences) // 3)

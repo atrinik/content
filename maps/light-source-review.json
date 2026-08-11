@@ -1237,7 +1237,7 @@
         "smooth-0001",
         "discrete-0001",
         "smooth-0350",
-        "discrete-0004"
+        "discrete-0008"
       ],
       "rationale": "Compared overlapping neutral, portal, and cold-blue emitters in the Bone Cairn and ice cavern without clipping or lost object silhouettes."
     },
@@ -1245,7 +1245,7 @@
       "status": "pass",
       "views": [
         "smooth-0200",
-        "discrete-0003"
+        "discrete-0006"
       ],
       "rationale": "Compared a linked underground-city depth; the authored illumination continues to distinguish its corridor and adjacent combat space."
     },
@@ -1253,7 +1253,7 @@
       "status": "pass",
       "views": [
         "smooth-0450",
-        "discrete-0006"
+        "discrete-0011"
       ],
       "rationale": "Compared a horizontally linked city boundary and bridge; lighted walls, water edges, and exits remain readable in both renderer modes."
     },
@@ -1261,29 +1261,30 @@
       "status": "pass",
       "views": [
         "smooth-0050",
-        "discrete-0002",
+        "discrete-0004",
+        "smooth-1213",
+        "smooth-1174",
+        "smooth-1177",
+        "smooth-1178",
         "smooth-1180",
-        "smooth-1183",
-        "smooth-1184",
-        "smooth-1186",
-        "smooth-1199",
-        "smooth-1206",
+        "smooth-1193",
+        "smooth-1200",
+        "smooth-1202",
+        "smooth-1204",
+        "smooth-1205",
         "smooth-1208",
+        "smooth-1209",
         "smooth-1210",
         "smooth-1211",
-        "smooth-1214",
-        "smooth-1215",
-        "smooth-1216",
-        "smooth-1217",
-        "smooth-1218"
+        "smooth-1212"
       ],
-      "rationale": "Compared a dark lair and every applied type-74 source/state view against smooth-1113, the clean proof-lab control; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
+      "rationale": "Compared a dark lair and every applied type-74 source/state view against smooth-1213, the clean proof-lab control; each colored light pool preserves deliberate darkness, art identity, and the traversable route."
     },
     "outdoor-transition": {
       "status": "pass",
       "views": [
         "smooth-0400",
-        "discrete-0005",
+        "discrete-0010",
         "smooth-0362",
         "smooth-0752",
         "smooth-1038"
@@ -1302,9 +1303,99 @@
       "status": "pass",
       "views": [
         "smooth-0650",
-        "discrete-0007"
+        "discrete-0013"
       ],
       "rationale": "Compared an enclosed city garden and adjoining passages; wall lights and ground contrast retain entrances and walkable routes."
+    },
+    "candle-dense-cluster": {
+      "status": "pass",
+      "views": ["smooth-0390", "discrete-0009", "smooth-1105"],
+      "rationale": "Compared Centennial's four-part candle composite in both renderers and against the isolated candle form; one retained radius-4 source gives a warm local pool without additive over-lighting."
+    },
+    "candle-form-candle-on": {
+      "status": "pass",
+      "views": ["smooth-1105", "smooth-0390", "discrete-0009"],
+      "rationale": "The isolated candle_on form and its dense in-map composite retain visible flame identity and a warm-gold pool."
+    },
+    "candle-form-candle2-on": {
+      "status": "pass",
+      "views": ["smooth-1104", "smooth-0559", "discrete-0012"],
+      "rationale": "The isolated candle2_on form retains its distinct silhouette and small warm-gold pool; the Brynknot Tavern pair preserves the surrounding room hierarchy."
+    },
+    "candle-form-candlelight1": {
+      "status": "pass",
+      "views": ["smooth-1106", "smooth-0204", "discrete-0007"],
+      "rationale": "The isolated and underground-city candlelight1 form remains legible with warm light beside walls and other fixture variants."
+    },
+    "candle-form-candlelight2": {
+      "status": "pass",
+      "views": ["smooth-1107", "smooth-0204", "discrete-0007"],
+      "rationale": "The isolated and underground-city candlelight2 form remains legible with warm light beside walls and other fixture variants."
+    },
+    "candle-form-candlelight3": {
+      "status": "pass",
+      "views": ["smooth-1108", "smooth-0728", "discrete-0014"],
+      "rationale": "The isolated and mixed-radius candlelight3 form preserves flame identity and warm room-scale hierarchy."
+    },
+    "candle-form-candlelight4": {
+      "status": "pass",
+      "views": ["smooth-1109", "smooth-0728", "discrete-0014"],
+      "rationale": "The isolated and mixed-radius candlelight4 form preserves flame identity and warm room-scale hierarchy."
+    },
+    "candle-map-seam": {
+      "status": "pass",
+      "views": ["smooth-0150", "discrete-0005", "smooth-0204", "discrete-0007"],
+      "rationale": "Compared candles adjacent to linked-map edges at two underground-city depths; smooth pools stop naturally at occlusion while adjacent geometry remains readable."
+    },
+    "candle-mixed-color-overlap": {
+      "status": "pass",
+      "views": ["smooth-0150", "discrete-0005", "smooth-0204", "discrete-0007"],
+      "rationale": "Warm candle pools remain distinct where they overlap cooler and neutral underground-city emitters, without clipping fixture art or walkable boundaries."
+    },
+    "candle-radius-2": {
+      "status": "pass",
+      "views": ["smooth-0150", "discrete-0005", "smooth-1104", "smooth-1105"],
+      "rationale": "Reviewed radius-2 candle placements and both radius-2 source defaults; their compact pools illuminate the fixture without flattening the dark interior."
+    },
+    "candle-radius-3": {
+      "status": "pass",
+      "views": ["smooth-0204", "discrete-0007", "smooth-1106", "smooth-1107", "smooth-1108", "smooth-1109"],
+      "rationale": "Reviewed the radius-3 defaults and a mixed-form seam context; each form produces a consistent small warm pool."
+    },
+    "candle-radius-4": {
+      "status": "pass",
+      "views": ["smooth-0390", "discrete-0009"],
+      "rationale": "The preserved radius-4 Centennial source illuminates the four-part composite once, without cumulative brightness."
+    },
+    "candle-radius-5": {
+      "status": "pass",
+      "views": ["smooth-0728", "discrete-0014"],
+      "rationale": "A mixed-radius fixture room shows the radius-5 warm pool retaining floor, wall, and furniture contrast."
+    },
+    "candle-radius-6": {
+      "status": "pass",
+      "views": ["smooth-0728", "discrete-0014"],
+      "rationale": "A mixed-radius fixture room shows radius-6 warm pools preserving overlap hierarchy and navigable boundaries."
+    },
+    "candle-radius-7": {
+      "status": "pass",
+      "views": ["smooth-0728", "discrete-0014"],
+      "rationale": "A mixed-radius fixture room shows radius-7 warm pools covering their authored footprint without washing nearby structure."
+    },
+    "candle-radius-8": {
+      "status": "pass",
+      "views": ["smooth-0033", "discrete-0002"],
+      "rationale": "The ruins context preserves deliberate darkness and stone detail across the reviewed radius-8 candle footprint."
+    },
+    "candle-radius-9": {
+      "status": "pass",
+      "views": ["smooth-0037", "discrete-0003"],
+      "rationale": "The Everlink interior remains warmly readable across the reviewed radius-9 footprint without obscuring doors, walls, or furnishings."
+    },
+    "candle-wall-adjacency": {
+      "status": "pass",
+      "views": ["smooth-0204", "discrete-0007", "smooth-0728", "discrete-0014"],
+      "rationale": "Compared candle fixtures directly beside walls in two dense interiors; smooth lighting respects occlusion and preserves fixture silhouettes and entrances."
     }
   },
   "maps": {

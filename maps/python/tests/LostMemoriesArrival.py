@@ -3,17 +3,8 @@ import runpy
 import unittest
 
 import Atrinik
-import LostMemoriesApartment
 from Interface import InterfaceBuilder
 from InterfaceQuests import escaping_deserted_island, lost_memories
-from Apartments import apartments_info
-from LostMemoriesApartment import (
-    APARTMENT_TAG,
-    complete_apartment_tutorial,
-    ensure_strakewood_apartment,
-    find_strakewood_apartment,
-    notify_apartment_entry,
-)
 from QuestManager import QuestManager
 from tests import TestSuite, ib_wrapper
 
@@ -27,10 +18,6 @@ SAM_INTERFACE = os.path.join(
     MAPS_ROOT,
     "interfaces/quests/lost_memories/sam_goodberry.py",
 )
-STEWARD_INTERFACE = os.path.join(
-    MAPS_ROOT,
-    "interfaces/quests/lost_memories/incuna_apartment_steward.py",
-)
 
 
 class LostMemoriesArrivalSuite(TestSuite):
@@ -42,11 +29,6 @@ class LostMemoriesArrivalSuite(TestSuite):
         )
 
     def tearDown(self):
-        apartment = activator.FindObject(
-            archname="player_info", name=APARTMENT_TAG
-        )
-        if apartment:
-            apartment.Destroy()
         for obj in self.quest_items:
             if obj:
                 obj.Destroy()
@@ -93,41 +75,6 @@ class LostMemoriesArrivalSuite(TestSuite):
             "me": sam,
             "msg": msg,
         })
-
-    def run_steward_interface(self, steward, msg):
-        runpy.run_path(STEWARD_INTERFACE, init_globals={
-            "activator": activator,
-            "me": steward,
-            "msg": msg,
-        })
-
-    def find_map_object(self, predicate):
-        for x in range(activator.map.width):
-            for y in range(activator.map.height):
-                for obj in activator.map.Objects(x, y):
-                    if predicate(obj):
-                        return obj
-        return None
-
-    def find_map_objects(self, predicate):
-        matches = []
-        for x in range(activator.map.width):
-            for y in range(activator.map.height):
-                matches.extend(
-                    obj for obj in activator.map.Objects(x, y)
-                    if predicate(obj)
-                )
-        return matches
-
-    @staticmethod
-    def event_with_race(obj, race):
-        event = obj.FindObject(archname="event_obj")
-        return event is not None and event.race == race
-
-    @staticmethod
-    def walk_into_portal(portal):
-        activator.SetPosition(portal.x, portal.y + 1)
-        activator.Move(Atrinik.NORTH)
 
     def test_arrival_starts_speak_sam(self):
         for path in ARRIVAL_MAPS:
@@ -187,7 +134,7 @@ class LostMemoriesArrivalSuite(TestSuite):
                     current.get_quest_status("speak_priest"),
                 )
 
-    def test_actual_incuna_sam_advances_to_apartment_once(self):
+    def test_actual_incuna_sam_advances_to_priest_once(self):
         memories = QuestManager(activator, lost_memories)
         memories.start("speak_sam")
         sam = self.find_incuna_sam()
@@ -221,7 +168,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             )
             self.assertEqual(
                 [
-                    ("apartment_tutorial", Atrinik.QUEST_STATUS_STARTED),
+                    ("speak_priest", Atrinik.QUEST_STATUS_STARTED),
                     ("speak_sam", Atrinik.QUEST_STATUS_COMPLETED),
                 ],
                 self.quest_parts(memories),
@@ -244,224 +191,6 @@ class LostMemoriesArrivalSuite(TestSuite):
             for obj in activator.FindObjects(archname="sack"):
                 if obj not in sacks_before:
                     obj.Destroy()
-
-    def test_apartment_grant_is_free_once_and_preserves_existing_tier(self):
-        self.assertFalse(notify_apartment_entry(activator))
-        apartment, created = ensure_strakewood_apartment(activator)
-        self.assertTrue(created)
-        self.assertEqual(APARTMENT_TAG, apartment.name)
-        self.assertEqual("cheap", apartment.slaying)
-
-        repeated, created = ensure_strakewood_apartment(activator)
-        self.assertFalse(created)
-        self.assertEqual(apartment, repeated)
-        self.assertEqual(1, len(activator.FindObjects(
-            archname="player_info", name=APARTMENT_TAG
-        )))
-
-        for tier in ("normal", "expensive", "luxurious"):
-            apartment.slaying = tier
-            existing, created = ensure_strakewood_apartment(activator)
-            self.assertFalse(created)
-            self.assertEqual(apartment, existing)
-            self.assertEqual(tier, existing.slaying)
-
-    def test_failed_apartment_grant_does_not_advance_and_can_retry(self):
-        memories = QuestManager(activator, lost_memories)
-        memories.start("apartment_tutorial")
-
-        apartment, created = ensure_strakewood_apartment(
-            activator, creator=lambda archname: None
-        )
-        self.assertIsNone(apartment)
-        self.assertFalse(created)
-        self.assertEqual(
-            Atrinik.QUEST_STATUS_STARTED,
-            memories.get_quest_status("apartment_tutorial"),
-        )
-        self.assertFalse(memories.started("speak_priest"))
-
-        apartment, created = ensure_strakewood_apartment(
-            activator, ready_map=lambda path: None
-        )
-        self.assertIsNone(apartment)
-        self.assertFalse(created)
-        self.assertIsNone(find_strakewood_apartment(activator))
-
-        apartment, created = ensure_strakewood_apartment(activator)
-        self.assertTrue(created)
-        self.assertIsNotNone(apartment)
-
-        packets = activator.Controller().s_packets
-        packets.clear()
-        self.assertTrue(notify_apartment_entry(activator))
-        self.assertTrue(any(
-            b"Tutorial Available: Apartments" in packet
-            for packet in packets
-        ))
-
-    def test_actual_steward_failure_does_not_advance_and_retry_grants_once(self):
-        memories = QuestManager(activator, lost_memories)
-        memories.start("apartment_tutorial")
-        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
-        steward = self.find_map_object(lambda obj: obj.name == "Elara Harth")
-        self.assertIsNotNone(steward)
-
-        original_ensure = LostMemoriesApartment.ensure_strakewood_apartment
-        try:
-            LostMemoriesApartment.ensure_strakewood_apartment = (
-                lambda player: (None, False)
-            )
-            self.run_steward_interface(steward, "claim")
-        finally:
-            LostMemoriesApartment.ensure_strakewood_apartment = original_ensure
-
-        self.assertIsNone(activator.FindObject(
-            archname="player_info", name=APARTMENT_TAG
-        ))
-        self.assertFalse(memories.started("speak_priest"))
-        self.assertEqual(
-            Atrinik.QUEST_STATUS_STARTED,
-            memories.get_quest_status("apartment_tutorial"),
-        )
-
-        self.run_steward_interface(steward, "claim")
-        self.run_steward_interface(steward, "claim")
-        self.assertEqual(1, len(activator.FindObjects(
-            archname="player_info", name=APARTMENT_TAG
-        )))
-
-    def test_bed_use_requires_ownership_and_advances_in_order_once(self):
-        memories = QuestManager(activator, lost_memories)
-        memories.start("apartment_tutorial")
-        self.assertFalse(complete_apartment_tutorial(activator))
-        self.assertFalse(memories.started("speak_priest"))
-
-        apartment, created = ensure_strakewood_apartment(activator)
-        self.assertTrue(created)
-        self.assertTrue(complete_apartment_tutorial(activator))
-        self.assertTrue(memories.completed("apartment_tutorial"))
-        self.assertEqual(
-            Atrinik.QUEST_STATUS_STARTED,
-            memories.get_quest_status("speak_priest"),
-        )
-
-        state = self.quest_parts(memories)
-        self.assertFalse(complete_apartment_tutorial(activator))
-        self.assertEqual(state, self.quest_parts(memories))
-
-    def test_incuna_steward_and_owner_gated_portal_are_signposted(self):
-        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
-        steward = None
-        portal = None
-        for obj in activator.map.Objects(9, 4):
-            if obj.name == "Elara Harth":
-                steward = obj
-        for obj in activator.map.Objects(10, 4):
-            if obj.name == "Incuna Strakewood apartment portal":
-                portal = obj
-
-        self.assertIsNotNone(steward)
-        self.assertIsNotNone(portal)
-        steward_event = steward.FindObject(archname="event_obj")
-        portal_event = portal.FindObject(archname="event_obj")
-        self.assertEqual(
-            "/interfaces/quests/lost_memories/incuna_apartment_steward.py",
-            steward_event.race,
-        )
-        self.assertEqual(
-            "/python/generic/apartment_teleport.py", portal_event.race
-        )
-        self.assertEqual("strakewood_island", portal_event.slaying)
-
-        packets = activator.Controller().s_packets
-        packets.clear()
-        origin_map = activator.map.path
-        self.walk_into_portal(portal)
-        self.assertEqual(origin_map, activator.map.path)
-        self.assertEqual((10, 5), (activator.x, activator.y))
-        self.assertTrue(any(
-            b"You don't own an apartment here!" in packet
-            for packet in packets
-        ))
-
-    def test_every_strakewood_tier_enters_persists_and_completes_at_bed(self):
-        region = apartments_info["strakewood_island"]
-        apartment, created = ensure_strakewood_apartment(activator)
-        self.assertTrue(created)
-
-        for tier, info in region["apartments"].items():
-            with self.subTest(tier=tier):
-                self.clear_quests()
-                apartment.slaying = tier
-                expected_path = activator.map.GetPath(
-                    info["path"], True, activator.name
-                )
-                self.assertIsNotNone(Atrinik.ReadyMap(expected_path))
-                memories = QuestManager(activator, lost_memories)
-                memories.start("apartment_tutorial")
-
-                activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
-                portal = self.find_map_object(
-                    lambda obj: obj.name ==
-                    "Incuna Strakewood apartment portal"
-                )
-                self.assertIsNotNone(portal)
-                self.walk_into_portal(portal)
-                self.assertEqual(expected_path, activator.map.path)
-
-                marker = activator.map.CreateObject(
-                    "sword", activator.x, activator.y
-                )
-                marker.title = "issue 105 persistence marker"
-                beds = self.find_map_objects(
-                    lambda obj: obj.name == "bed to reality"
-                )
-                self.assertGreaterEqual(len(beds), 1)
-                for bed in beds:
-                    self.assertTrue(self.event_with_race(
-                        bed,
-                        "/python/items/lost_memories_apartment_bed.py",
-                    ))
-                bed = beds[0]
-                activator.SetPosition(bed.x, bed.y)
-                activator.Apply(bed)
-                self.assertTrue(memories.completed("apartment_tutorial"))
-                self.assertEqual(
-                    Atrinik.QUEST_STATUS_STARTED,
-                    memories.get_quest_status("speak_priest"),
-                )
-                activator.map.Save()
-                activator.Controller().Save()
-                with open(expected_path, "r", encoding="utf-8") as saved:
-                    self.assertIn(
-                        "title issue 105 persistence marker", saved.read()
-                    )
-
-                apartment_exit = self.find_map_object(
-                    lambda obj: self.event_with_race(
-                        obj, "/python/generic/apartment_out.py"
-                    )
-                )
-                self.assertIsNotNone(apartment_exit)
-                activator.SetPosition(apartment_exit.x, apartment_exit.y)
-                activator.Apply(apartment_exit)
-                self.assertEqual(
-                    "/shattered_islands/world_4_85", activator.map.path
-                )
-                self.assertEqual((10, 5), (activator.x, activator.y))
-
-                portal = self.find_map_object(
-                    lambda obj: obj.name ==
-                    "Incuna Strakewood apartment portal"
-                )
-                self.walk_into_portal(portal)
-                self.assertEqual(expected_path, activator.map.path)
-                persisted = self.find_map_object(
-                    lambda obj: obj.title == "issue 105 persistence marker"
-                )
-                self.assertIsNotNone(persisted)
-                persisted.Destroy()
 
     def test_arrival_preserves_legacy_lost_memories_states(self):
         states = (

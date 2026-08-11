@@ -39,6 +39,48 @@ class ContentCatalogTest(unittest.TestCase):
             '"properties":[{"id":"sample_property"}]}',
         )
         self.write(
+            "maps/python/Apartments.py",
+            'apartments_info = {"sample": {"tag": "sample_property"}}\n',
+        )
+        self.write(
+            "maps/property-interactions.json",
+            json.dumps({
+                "schema_version": 1,
+                "interactions": [{
+                    "id": "sample_property_grant",
+                    "quest_id": "sample_quest",
+                    "quest_part_id": "first_part",
+                    "npc_id": "sample_npc",
+                    "property_id": "sample_property",
+                    "npc_binding": {
+                        "map": "/start", "x": 1, "y": 1,
+                        "archetype": "base", "name": "Sample Steward",
+                    },
+                    "portal_binding": {
+                        "map": "/start", "x": 2, "y": 1,
+                        "archetype": "base", "name": "Sample Portal",
+                        "return_x": 2, "return_y": 2,
+                    },
+                    "grant": {
+                        "operation": "ensure_ownership", "tier": "cheap",
+                        "price": 0, "emit_purchase_event": False,
+                        "preserve_existing_tier": True,
+                        "idempotency_scope": "character_property",
+                    },
+                    "completion": {
+                        "event": "property_bed_used",
+                        "next_quest_part_id": "speak_priest",
+                        "transition_order": ["start_next", "complete_current"],
+                    },
+                    "runtime_owners": {
+                        "main": "typed_property_service",
+                        "classic_1x": "classic_apartment_adapter",
+                        "classic_entitlement_tag": "sample_property",
+                    },
+                }],
+            }),
+        )
+        self.write(
             "arch/objects.arc",
             """Object base
 type 1
@@ -114,6 +156,16 @@ end
 arch wand
 spell_id spell_minor_healing
 end
+arch base
+name Sample Steward
+x 1
+y 1
+end
+arch base
+name Sample Portal
+x 2
+y 1
+end
 """,
         )
         self.write(
@@ -135,6 +187,7 @@ end
       <interface npc_id="sample_npc" property_id="sample_property">
         <action start="first_part::nested_part" cast="minor healing"
                 teleport="/start 1 1" region_map="town"/>
+        <response property_action_id="sample_property_grant" message="Grant"/>
         <object arch="special_item"/>
       </interface>
     </part>
@@ -158,6 +211,7 @@ end
         self.assertIn(ContentId("quest", "sample_quest"), ids)
         self.assertIn(ContentId("npc", "sample_npc"), ids)
         self.assertIn(ContentId("property", "sample_property"), ids)
+        self.assertIn(ContentId("property-action", "sample_property_grant"), ids)
         self.assertIn(
             ContentId("quest-part", "sample_quest::first_part::nested_part"), ids
         )
@@ -178,6 +232,11 @@ end
                 for reference in catalog.references
             )
         )
+        self.assertTrue(any(
+            reference.field == "property_action_id"
+            and reference.key == "sample_property_grant"
+            for reference in catalog.references
+        ))
 
     def test_reports_duplicate_missing_wrong_domain_and_cycles(self):
         catalog = ContentCatalog(self.root)

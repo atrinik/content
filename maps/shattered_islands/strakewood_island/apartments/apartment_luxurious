@@ -1045,10 +1045,6 @@ no_magic 1
 damned 1
 x 9
 y 1
-arch event_obj
-sub_type 1
-race /python/items/lost_memories_apartment_bed.py
-end
 end
 arch floor_ostone1
 x 9
@@ -1186,10 +1182,6 @@ no_magic 1
 damned 1
 x 10
 y 1
-arch event_obj
-sub_type 1
-race /python/items/lost_memories_apartment_bed.py
-end
 end
 arch floor_ostone1
 x 10

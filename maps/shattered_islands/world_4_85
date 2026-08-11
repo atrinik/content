@@ -912,10 +912,6 @@ direction 3
 stand_still 1
 faction incuna_citizens
 invulnerable 1
-arch event_obj
-sub_type 6
-race /interfaces/quests/lost_memories/incuna_apartment_steward.py
-end
 end
 end
 arch bridge_wood_EW.101
@@ -1068,11 +1064,6 @@ hp 10
 sp 5
 x 10
 y 4
-arch event_obj
-sub_type 10
-race /python/generic/apartment_teleport.py
-slaying strakewood_island
-end
 end
 arch bridge_wood_EW.101
 x 7

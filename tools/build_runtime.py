@@ -114,8 +114,10 @@ def build(source: Path, output: Path, source_commit: str) -> None:
         candidate = transaction / "candidate"
         with tempfile.TemporaryDirectory(prefix="atrinik-content-") as temporary:
             staging = Path(temporary)
-            for component in ("arch", "maps", "tools"):
-                shutil.copytree(source / component, staging / component)
+            for component in ("arch", "maps", "tools", "contracts", "schemas"):
+                component_source = source / component
+                if component_source.is_dir():
+                    shutil.copytree(component_source, staging / component)
 
             (candidate / "lib").mkdir(parents=True)
             subprocess.run(

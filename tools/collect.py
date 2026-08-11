@@ -14,8 +14,13 @@ import shutil
 import platform
 from pathlib import Path
 
+# Runtime collection stages this script in a temporary source tree. Keep the
+# repository root importable so analyzers use the same canonical tools package.
+SOURCE_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SOURCE_ROOT))
+
 from compilers.interface_compiler import InterfaceCompiler
-from content_catalog import load_catalog
+from tools.content_catalog import load_catalog
 import compilers
 import utils
 

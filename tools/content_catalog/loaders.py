@@ -629,12 +629,20 @@ def _load_maps(catalog: ContentCatalog, maps_root: Path) -> None:
 class _InterfaceLoader:
     QUEST_FIELDS = ("start", "complete", "fail", "started", "finished", "completed", "failed")
 
-    def __init__(self, catalog: ContentCatalog, path: Path, quest_key: Optional[str]):
+    def __init__(
+        self,
+        catalog: ContentCatalog,
+        path: Path,
+        quest_key: Optional[str],
+        property_actions: List[dict],
+    ):
         self.catalog = catalog
         self.path = path
         self.quest_key = quest_key
         self.quest_id: Optional[ContentId] = None
         self.part_stack: List[str] = []
+        self.interface_stack: List[dict] = []
+        self.property_actions = property_actions
         self.contents = path.read_bytes()
         self.parser = expat.ParserCreate()
         self.parser.StartElementHandler = self._start
@@ -700,6 +708,13 @@ class _InterfaceLoader:
                 self.catalog.add_definition(
                     "quest-part", key, self.location(uid), {"uid": uid}
                 )
+        elif name == "interface":
+            self.interface_stack.append({
+                "quest_id": self.quest_key,
+                "quest_part_id": self.part_stack[-1] if self.part_stack else None,
+                "npc_id": attrs.get("npc_id"),
+                "property_id": attrs.get("property_id"),
+            })
 
         source = self.quest_id
         if name in ("item", "object") and attrs.get("arch"):
@@ -748,6 +763,12 @@ class _InterfaceLoader:
                 property_action, ("property-action",),
                 self.location(property_action), "property_action_id", source
             )
+            context = self.interface_stack[-1] if self.interface_stack else {}
+            self.property_actions.append({
+                "id": property_action,
+                "location": self.location(property_action),
+                **context,
+            })
         for attribute, value in attrs.items():
             if attribute.startswith("faction_"):
                 self.catalog.add_reference(
@@ -763,15 +784,18 @@ class _InterfaceLoader:
                     )
 
     def _end(self, name: str) -> None:
-        if name == "part" and self.part_stack:
+        if name == "interface" and self.interface_stack:
+            self.interface_stack.pop()
+        elif name == "part" and self.part_stack:
             self.part_stack.pop()
 
 
-def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> None:
+def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> List[dict]:
+    property_actions: List[dict] = []
     interfaces_root = maps_root / "interfaces"
     quests_root = interfaces_root / "quests"
     if not interfaces_root.is_dir():
-        return
+        return property_actions
     for path in sorted(interfaces_root.rglob("*.xml")):
         quest_key = None
         try:
@@ -780,14 +804,19 @@ def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> None:
                 quest_key = relative.parts[0]
         except ValueError:
             pass
-        _InterfaceLoader(catalog, path, quest_key).parse()
+        _InterfaceLoader(catalog, path, quest_key, property_actions).parse()
+    return property_actions
 
 
-def _map_object_bindings(path: Path, catalog: ContentCatalog) -> List[dict]:
+def _map_object_bindings(
+    path: Path, catalog: ContentCatalog
+) -> Tuple[List[dict], Optional[int], Optional[int]]:
     """Return effective identity fields for nested objects in one map."""
 
     bindings: List[dict] = []
     stack: List[dict] = []
+    width: Optional[int] = None
+    height: Optional[int] = None
     for _line_number, line in _iter_source_lines(path, catalog):
         field, value = _split(line)
         if field == "arch" and value:
@@ -800,9 +829,23 @@ def _map_object_bindings(path: Path, catalog: ContentCatalog) -> List[dict]:
         elif field == "end" and not value:
             if stack:
                 bindings.append(stack.pop())
-        elif stack and field in ("name", "x", "y"):
+        elif stack and field in ("name", "npc_id", "property_id", "x", "y"):
             stack[-1][field] = int(value) if field in ("x", "y") else value
-    return bindings
+            if len(stack) == 1 and stack[-1].get("archetype") == "map":
+                if field == "x":
+                    width = stack[-1][field]
+                elif field == "y":
+                    height = stack[-1][field]
+        elif stack and len(stack) == 1 and field in ("width", "height"):
+            try:
+                dimension = int(value)
+            except ValueError:
+                dimension = None
+            if field == "width":
+                width = dimension
+            else:
+                height = dimension
+    return bindings, width, height
 
 
 def _classic_apartment_tags(root: Path, catalog: ContentCatalog) -> set[str]:
@@ -827,7 +870,9 @@ def _classic_apartment_tags(root: Path, catalog: ContentCatalog) -> set[str]:
     return set()
 
 
-def _load_property_interactions(catalog: ContentCatalog, maps_root: Path) -> None:
+def _load_property_interactions(
+    catalog: ContentCatalog, maps_root: Path, interface_actions: List[dict]
+) -> None:
     """Load typed property actions and prove their authored/runtime bindings."""
 
     path = maps_root / "property-interactions.json"
@@ -856,7 +901,6 @@ def _load_property_interactions(catalog: ContentCatalog, maps_root: Path) -> Non
         "id", "quest_id", "quest_part_id", "npc_id", "property_id",
         "npc_binding", "portal_binding", "grant", "completion", "runtime_owners",
     }
-    binding_fields = {"map", "x", "y", "archetype", "name"}
     for entry in document["interactions"]:
         if not isinstance(entry, dict) or set(entry) != entry_fields:
             catalog.add_diagnostic(
@@ -871,9 +915,39 @@ def _load_property_interactions(catalog: ContentCatalog, maps_root: Path) -> Non
                 catalog.location(path, 1),
             )
             continue
+        identity_fields = ("quest_id", "quest_part_id", "npc_id", "property_id")
+        if any(
+            not isinstance(entry.get(field), str) or
+            not CONTENT_ID_RE.fullmatch(entry[field])
+            for field in identity_fields
+        ):
+            catalog.add_diagnostic(
+                "invalid-property-interaction",
+                "quest, quest-part, NPC, and property IDs must be stable",
+                catalog.location(path, 1),
+            )
+            continue
         source = catalog.add_definition(
             "property-action", identifier, catalog.location(path, 1)
         )
+        expected_action = {
+            "id": identifier,
+            "quest_id": entry.get("quest_id"),
+            "quest_part_id": entry.get("quest_part_id"),
+            "npc_id": entry.get("npc_id"),
+            "property_id": entry.get("property_id"),
+        }
+        declared_actions = [
+            action for action in interface_actions if action.get("id") == identifier
+        ]
+        if (len(declared_actions) != 1 or
+                {key: declared_actions[0].get(key) for key in expected_action}
+                != expected_action):
+            catalog.add_diagnostic(
+                "invalid-property-action-context",
+                "property action must occur exactly once in its declared quest part and interface",
+                catalog.location(path, 1),
+            )
         references = (
             (entry.get("quest_id"), "quest", "quest_id"),
             ("{}::{}".format(entry.get("quest_id"), entry.get("quest_part_id")),
@@ -887,8 +961,11 @@ def _load_property_interactions(catalog: ContentCatalog, maps_root: Path) -> Non
                     key, (domain,), catalog.location(path, 1), field, source
                 )
 
-        for field, extra in (("npc_binding", set()),
-                             ("portal_binding", {"return_x", "return_y"})):
+        for field, identity_field, extra in (
+            ("npc_binding", "npc_id", set()),
+            ("portal_binding", "property_id", {"return_x", "return_y"}),
+        ):
+            binding_fields = {"map", "x", "y", "archetype", identity_field}
             binding = entry.get(field)
             if not isinstance(binding, dict) or set(binding) != binding_fields | extra:
                 catalog.add_diagnostic(
@@ -897,25 +974,63 @@ def _load_property_interactions(catalog: ContentCatalog, maps_root: Path) -> Non
                 )
                 continue
             map_key = binding.get("map")
-            if isinstance(map_key, str):
-                _add_map_reference(
-                    catalog, map_key, catalog.location(path, 1), field, source
+            if not isinstance(map_key, str) or not map_key.startswith("/"):
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} map must be an absolute string".format(field),
+                    catalog.location(path, 1),
                 )
-                try:
-                    map_path = maps_root / _canonical_map_path(map_key).lstrip("/")
-                    objects = _map_object_bindings(map_path, catalog)
-                except (OSError, UnicodeError, ValueError):
-                    objects = []
-                if not any(
-                    obj.get("archetype") == binding.get("archetype") and
-                    obj.get("name") == binding.get("name") and
-                    obj.get("x") == binding.get("x") and
-                    obj.get("y") == binding.get("y")
-                    for obj in objects
-                ):
+                continue
+            _add_map_reference(
+                catalog, map_key, catalog.location(path, 1), field, source
+            )
+            try:
+                map_path = maps_root / _canonical_map_path(map_key).lstrip("/")
+                objects, width, height = _map_object_bindings(map_path, catalog)
+            except (OSError, UnicodeError, ValueError):
+                objects, width, height = [], None, None
+            coordinates = [binding.get("x"), binding.get("y")]
+            if (not all(isinstance(value, int) and not isinstance(value, bool)
+                        for value in coordinates) or
+                    not isinstance(width, int) or not isinstance(height, int) or
+                    not (0 <= coordinates[0] < width and 0 <= coordinates[1] < height)):
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} coordinates are outside the authored map".format(field),
+                    catalog.location(path, 1),
+                )
+            if not isinstance(binding.get("archetype"), str) or not isinstance(
+                binding.get(identity_field), str
+            ):
+                catalog.add_diagnostic(
+                    "invalid-property-binding", "{} identity fields must be strings".format(field),
+                    catalog.location(path, 1),
+                )
+            if binding.get(identity_field) != entry.get(identity_field):
+                catalog.add_diagnostic(
+                    "invalid-property-binding",
+                    "{} stable ID must match the interaction".format(field),
+                    catalog.location(path, 1),
+                )
+            if not any(
+                obj.get("archetype") == binding.get("archetype") and
+                obj.get(identity_field) == binding.get(identity_field) and
+                obj.get("x") == binding.get("x") and
+                obj.get("y") == binding.get("y")
+                for obj in objects
+            ):
+                catalog.add_diagnostic(
+                    "missing-property-binding",
+                    "{} does not match an authored stable-ID map object".format(field),
+                    catalog.location(path, 1),
+                )
+            if field == "portal_binding":
+                returns = [binding.get("return_x"), binding.get("return_y")]
+                if (not all(isinstance(value, int) and not isinstance(value, bool)
+                            for value in returns) or
+                        not isinstance(width, int) or not isinstance(height, int) or
+                        not (0 <= returns[0] < width and 0 <= returns[1] < height)):
                     catalog.add_diagnostic(
-                        "missing-property-binding",
-                        "{} does not match an authored map object".format(field),
+                        "invalid-property-binding",
+                        "portal return coordinates are outside the authored destination map",
                         catalog.location(path, 1),
                     )
 
@@ -968,8 +1083,8 @@ def load_catalog(root: Path) -> ContentCatalog:
     _load_content_identities(catalog, maps_root)
     _load_maps(catalog, maps_root)
     _load_regions(catalog, maps_root)
-    _load_interfaces(catalog, maps_root)
-    _load_property_interactions(catalog, maps_root)
+    interface_actions = _load_interfaces(catalog, maps_root)
+    _load_property_interactions(catalog, maps_root, interface_actions)
     catalog.check_shared_namespace(
         "server archetype", ("archetype", "artifact")
     )

@@ -50,7 +50,8 @@ class LostMemoriesArrivalSuite(TestSuite):
         for obj in self.quest_items:
             if obj:
                 obj.Destroy()
-        self.npc.Destroy()
+        if self.npc:
+            self.npc.Destroy()
         activator.TeleportTo("/emergency")
         super().tearDown()
 
@@ -484,6 +485,8 @@ class LostMemoriesArrivalSuite(TestSuite):
                 self.assertIsNotNone(apartment_map)
                 apartment_map.timeout = 1
                 del apartment_map
+                self.npc.Destroy()
+                self.npc = None
                 simulate_server(count=2, wait=False)
 
                 portal = self.find_map_object(

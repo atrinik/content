@@ -1989,10 +1989,7 @@ arch fireplace_left
 sub_layer 1
 x 14
 y 9
-end
-arch light7
-x 14
-y 9
+glow_radius 7
 end
 arch floor_wood2_l2
 sub_layer 1
@@ -2384,10 +2381,7 @@ arch fireplace_left
 sub_layer 1
 x 15
 y 22
-end
-arch light5
-x 15
-y 22
+glow_radius 5
 end
 arch floor_wood2
 z 50

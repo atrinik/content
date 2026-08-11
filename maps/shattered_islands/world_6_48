@@ -611,10 +611,6 @@ arch fire_cauld.131
 x 3
 y 22
 end
-arch light3
-x 3
-y 22
-end
 arch floor_wood2_l1
 x 3
 y 23

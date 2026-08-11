@@ -2432,10 +2432,7 @@ arch fireplace_left
 sub_layer 1
 x 11
 y 18
-end
-arch light5
-x 11
-y 18
+glow_radius 5
 end
 arch floor_red1
 sub_layer 1

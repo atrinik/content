@@ -8,6 +8,7 @@ is_animated 1
 anim_speed 2
 no_pick 1
 no_pass 1
+glow_radius 5
 light_color ff6030
 name_pl braziers
 end

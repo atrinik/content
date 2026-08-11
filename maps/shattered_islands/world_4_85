@@ -1058,15 +1058,11 @@ arch bridge_wood_EW.101
 x 7
 y 3
 end
-arch exit
+arch portal_azure
 name Incuna Strakewood apartment portal
 msg
 The apartment portal stewarded by Elara Harth. It opens only for the owner of a Strakewood apartment.
 endmsg
-face pstone_1.111
-animation pstone_1
-is_animated 1
-anim_speed 4
 hp 7
 sp 3
 x 7

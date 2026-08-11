@@ -31,6 +31,7 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+light_color ff6030
 name_pl lava
 end
 
@@ -43,5 +44,6 @@ no_teleport 1
 terrain_type 8
 no_pick 1
 is_floor 1
+light_color ff6030
 name_pl lava
 end

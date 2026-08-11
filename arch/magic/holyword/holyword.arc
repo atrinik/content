@@ -20,5 +20,6 @@ terrain_flag 32767
 flying 1
 no_pick 1
 race undead
+light_color fff0c0
 name_pl holy word
 end

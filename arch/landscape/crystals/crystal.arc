@@ -138,6 +138,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 8040ff
 name_pl crystals
 end
 
@@ -149,6 +150,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color 40ff60
 name_pl crystals
 end
 
@@ -160,6 +162,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color ff6030
 name_pl crystals
 end
 
@@ -171,6 +174,7 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color c0e0ff
 name_pl crystals
 end
 
@@ -182,5 +186,6 @@ material 64
 layer 5
 no_pick 1
 no_pass 1
+light_color ff60c0
 name_pl crystals
 end

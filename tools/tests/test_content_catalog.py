@@ -65,6 +65,21 @@ class ContentCatalogTest(unittest.TestCase):
                         "archetype": "base", "property_id": "sample_property",
                         "return_x": 2, "return_y": 2,
                     },
+                    "layout_binding": {
+                        "map": "/apartment",
+                        "entry": {
+                            "x": 1, "y": 1, "floor_archetype": "base",
+                        },
+                        "exit": {
+                            "x": 0, "y": 1, "archetype": "base",
+                            "property_id": "sample_property",
+                        },
+                        "save_beds": [{
+                            "x": 1, "y": 0, "archetype": "base",
+                            "name": "sample bed",
+                            "property_id": "sample_property",
+                        }],
+                    },
                     "grant": {
                         "operation": "ensure_ownership", "tier": "cheap",
                         "price": 0, "emit_purchase_event": False,
@@ -182,6 +197,30 @@ end
 region town
 end
 arch base
+end
+""",
+        )
+        self.write(
+            "maps/apartment",
+            """arch map
+width 3
+height 3
+end
+arch base
+x 1
+y 1
+end
+arch base
+property_id sample_property
+x 0
+y 1
+end
+arch base
+name sample bed
+type 106
+property_id sample_property
+x 1
+y 0
 end
 """,
         )
@@ -315,6 +354,46 @@ end
             "stable ID must match" in diagnostic.message
             for diagnostic in catalog.diagnostics
         ))
+
+    def test_rejects_invalid_or_incomplete_property_layout_bindings(self):
+        self.create_valid_tree()
+        path = self.root / "maps/property-interactions.json"
+        document = json.loads(path.read_text(encoding="utf-8"))
+        layout = document["interactions"][0]["layout_binding"]
+        layout["entry"]["x"] = 99
+        layout["save_beds"][0]["archetype"] = "missing_bed"
+        path.write_text(json.dumps(document), encoding="utf-8")
+
+        catalog = load_catalog(self.root)
+
+        diagnostics = [
+            (item.code, item.message) for item in catalog.diagnostics
+        ]
+        self.assertIn(
+            ("invalid-property-layout", "layout entry is outside the authored map"),
+            diagnostics,
+        )
+        self.assertTrue(any(
+            code == "missing-property-layout-binding" and
+            "save bed" in message
+            for code, message in diagnostics
+        ))
+
+    def test_rejects_windows_device_content_ids(self):
+        for identifier in ("con", "aux.config", "com1", "lpt9.handler"):
+            with self.subTest(identifier=identifier):
+                self.create_valid_tree()
+                path = self.root / "maps/content-identities.json"
+                document = json.loads(path.read_text(encoding="utf-8"))
+                document["npcs"][0]["id"] = identifier
+                path.write_text(json.dumps(document), encoding="utf-8")
+
+                catalog = load_catalog(self.root)
+
+                self.assertIn(
+                    "invalid-content-identity",
+                    {item.code for item in catalog.diagnostics},
+                )
 
     def test_reports_duplicate_missing_wrong_domain_and_cycles(self):
         catalog = ContentCatalog(self.root)

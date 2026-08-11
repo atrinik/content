@@ -3230,10 +3230,6 @@ arch candlelight4.101
 x 22
 y 13
 end
-arch light3
-x 22
-y 13
-end
 arch floor_wood2_l1
 x 22
 y 14

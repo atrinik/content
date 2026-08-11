@@ -2348,13 +2348,10 @@ arch candlelight4.101
 sub_layer 1
 x 17
 y 3
+glow_radius 5
 end
 arch wall_stone4_1
 sub_layer 1
-x 17
-y 3
-end
-arch light5
 x 17
 y 3
 end

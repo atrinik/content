@@ -3647,15 +3647,12 @@ z 30
 align 10
 x 20
 y 21
+glow_radius 3
 end
 arch quill_pen
 layer 7
 z 38
 align 24
-x 20
-y 21
-end
-arch light3
 x 20
 y 21
 end

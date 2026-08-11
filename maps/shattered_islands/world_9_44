@@ -830,13 +830,10 @@ arch candlelight3.101
 z 11
 x 4
 y 4
+glow_radius 5
 end
 arch bar1
 direction 4
-x 4
-y 4
-end
-arch light5
 x 4
 y 4
 end
@@ -1060,10 +1057,7 @@ arch candlelight3.101
 layer 7
 x 5
 y 9
-end
-arch light5
-x 5
-y 9
+glow_radius 5
 end
 arch floor_ostone4
 z 50
@@ -1118,10 +1112,7 @@ z 8
 align 10
 x 5
 y 13
-end
-arch light5
-x 5
-y 13
+glow_radius 5
 end
 arch floor_ostone4
 z 50
@@ -1151,10 +1142,7 @@ arch candlelight4.101
 z -11
 x 5
 y 16
-end
-arch light9
-x 5
-y 16
+glow_radius 9
 end
 arch floor_ostone4
 z 50
@@ -1878,10 +1866,7 @@ z 8
 align -10
 x 9
 y 9
-end
-arch light5
-x 9
-y 9
+glow_radius 5
 end
 arch floor_ostone4
 z 50
@@ -1930,13 +1915,10 @@ arch candlelight3.101
 z 11
 x 9
 y 13
+glow_radius 5
 end
 arch bar1
 direction 4
-x 9
-y 13
-end
-arch light5
 x 9
 y 13
 end
@@ -2293,10 +2275,7 @@ arch candlelight4.101
 z -11
 x 11
 y 18
-end
-arch light5
-x 11
-y 18
+glow_radius 5
 end
 arch floor_ostone4
 z 50

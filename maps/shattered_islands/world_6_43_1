@@ -1362,12 +1362,9 @@ end
 arch candlelight3.101
 x 23
 y 19
+glow_radius 5
 end
 arch wall_dungeon_3
-x 23
-y 19
-end
-arch light5
 x 23
 y 19
 end
@@ -1407,12 +1404,9 @@ end
 arch candlelight3.101
 x 23
 y 23
+glow_radius 5
 end
 arch wall_dungeon_3
-x 23
-y 23
-end
-arch light5
 x 23
 y 23
 end

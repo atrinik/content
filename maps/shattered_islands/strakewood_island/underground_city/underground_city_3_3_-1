@@ -626,12 +626,9 @@ end
 arch candlelight4.101
 x 4
 y 8
+glow_radius 5
 end
 arch wall_dungeon_3
-x 4
-y 8
-end
-arch light5
 x 4
 y 8
 end
@@ -666,12 +663,9 @@ end
 arch candlelight4.101
 x 4
 y 12
+glow_radius 5
 end
 arch wall_dungeon_3
-x 4
-y 12
-end
-arch light5
 x 4
 y 12
 end
@@ -748,16 +742,13 @@ end
 arch candlelight4.101
 x 5
 y 3
+glow_radius 5
 end
 arch wall_dungeon_1
 x 5
 y 3
 end
 arch picture14
-x 5
-y 3
-end
-arch light5
 x 5
 y 3
 end
@@ -1105,6 +1096,7 @@ end
 arch candlelight4.101
 x 7
 y 7
+glow_radius 5
 end
 arch wall_dungeon_3
 x 7
@@ -1112,10 +1104,6 @@ y 7
 end
 arch picture9
 direction 7
-x 7
-y 7
-end
-arch light5
 x 7
 y 7
 end
@@ -1150,12 +1138,9 @@ end
 arch candlelight4.101
 x 7
 y 11
+glow_radius 5
 end
 arch wall_dungeon_3
-x 7
-y 11
-end
-arch light5
 x 7
 y 11
 end
@@ -1244,12 +1229,9 @@ end
 arch candlelight4.101
 x 8
 y 3
+glow_radius 5
 end
 arch wall_dungeon_1
-x 8
-y 3
-end
-arch light5
 x 8
 y 3
 end
@@ -1569,12 +1551,9 @@ end
 arch candlelight4.101
 x 10
 y 6
+glow_radius 5
 end
 arch wall_dungeon_3
-x 10
-y 6
-end
-arch light5
 x 10
 y 6
 end
@@ -1609,12 +1588,9 @@ end
 arch candlelight4.101
 x 10
 y 10
+glow_radius 5
 end
 arch wall_dungeon_3
-x 10
-y 10
-end
-arch light5
 x 10
 y 10
 end
@@ -1920,12 +1896,9 @@ end
 arch candlelight4.101
 x 12
 y 3
+glow_radius 5
 end
 arch wall_dungeon_1
-x 12
-y 3
-end
-arch light5
 x 12
 y 3
 end
@@ -2285,12 +2258,9 @@ end
 arch candlelight4.101
 x 14
 y 7
+glow_radius 5
 end
 arch wall_dungeon_3
-x 14
-y 7
-end
-arch light5
 x 14
 y 7
 end
@@ -2333,12 +2303,9 @@ end
 arch candlelight4.101
 x 14
 y 12
+glow_radius 5
 end
 arch wall_dungeon_3
-x 14
-y 12
-end
-arch light5
 x 14
 y 12
 end

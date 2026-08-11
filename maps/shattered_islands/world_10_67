@@ -960,10 +960,7 @@ end
 arch candlelight2.101
 x 6
 y 7
-end
-arch light5
-x 6
-y 7
+glow_radius 5
 end
 arch floor_flagm3
 x 6
@@ -1423,10 +1420,7 @@ end
 arch candlelight1.101
 x 9
 y 7
-end
-arch light5
-x 9
-y 7
+glow_radius 5
 end
 arch floor_flagm1
 x 9
@@ -1879,10 +1873,7 @@ end
 arch candlelight2.101
 x 12
 y 7
-end
-arch light5
-x 12
-y 7
+glow_radius 5
 end
 arch floor_flagm4
 x 12
@@ -2336,10 +2327,7 @@ end
 arch candlelight3.101
 x 15
 y 7
-end
-arch light5
-x 15
-y 7
+glow_radius 5
 end
 arch floor_flagm2
 x 15

@@ -1,6 +1,63 @@
 {
-  "schema_version": 4,
-  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, toggle-active state review, and durable Classic client smooth/discrete runtime evidence.",
+  "schema_version": 5,
+  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, complete fixture-group placement review, toggle-active state review, and durable Classic client smooth/discrete runtime evidence.",
+  "fixture_groups": {
+    "warm-candle-fixtures": {
+      "archetypes": [
+        "candle2_on",
+        "candle_on",
+        "candlelight1.101",
+        "candlelight2.101",
+        "candlelight3.101",
+        "candlelight4.101"
+      ],
+      "checks": [
+        "candle-dense-cluster",
+        "candle-form-candle-on",
+        "candle-form-candle2-on",
+        "candle-form-candlelight1",
+        "candle-form-candlelight2",
+        "candle-form-candlelight3",
+        "candle-form-candlelight4",
+        "candle-map-seam",
+        "candle-mixed-color-overlap",
+        "candle-radius-2",
+        "candle-radius-3",
+        "candle-radius-4",
+        "candle-radius-5",
+        "candle-radius-6",
+        "candle-radius-7",
+        "candle-radius-8",
+        "candle-radius-9",
+        "candle-wall-adjacency"
+      ],
+      "default_radii": {
+        "candle2_on": 2,
+        "candle_on": 2,
+        "candlelight1.101": 3,
+        "candlelight2.101": 3,
+        "candlelight3.101": 3,
+        "candlelight4.101": 3
+      },
+      "expected_color": "ffd080",
+      "expected_maps": 119,
+      "expected_placements": {
+        "candle2_on": 1,
+        "candle_on": 5,
+        "candlelight1.101": 47,
+        "candlelight2.101": 25,
+        "candlelight3.101": 122,
+        "candlelight4.101": 278
+      },
+      "intentional_non_emitters": {
+        "maps/shattered_islands/world_0_52_1:9:4:candle_on:2": "One candle in the four-part composite owns the original radius-4 source; this member is locally dark to prevent additive over-lighting.",
+        "maps/shattered_islands/world_0_52_1:9:4:candle_on:3": "One candle in the four-part composite owns the original radius-4 source; this member is locally dark to prevent additive over-lighting.",
+        "maps/shattered_islands/world_0_52_1:9:4:candle_on:4": "One candle in the four-part composite owns the original radius-4 source; this member is locally dark to prevent additive over-lighting."
+      },
+      "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the sole four-part composite retains exactly one source.",
+      "semantic_sha256": "014fbfd0783b7683954330a4709550e947e8d509737ca084fb3f75da1f7b4c9f"
+    }
+  },
   "palette": {
     "4060ff": {
       "name": "forcefield blue",
@@ -88,6 +145,36 @@
       "uncolored_disposition": "neutral",
       "rationale": "campfire uses the lava and open fire palette entry to match its visible art.",
       "semantic_sha256": "f888e23aeff80b2e68068e66d629ad184b3f1ac5ce377d81034fed62d08c6501"
+    },
+    "candle2_on": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "70bbdc221fb9053b0ee02fb62cb0e926a884083149d30db3729bbc8e444f69fb"
+    },
+    "candle_on": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "316b458c95cf66640bd1fe71004653195a9908257b3f2dcfba96af1b44c55fb2"
+    },
+    "candlelight1.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "bfa25288c4f4c2c0411189df524f69042e1e1da706372b41c93adaad65696d19"
+    },
+    "candlelight2.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "af972e7d52ec46c5c04094a454ebcee93958864f4ed2a842e5d72728255e5edb"
+    },
+    "candlelight3.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "d54f378927ac9835dacc1d9b8890eeca313a0294f1bfe06251a6cc71c0cbe7e5"
+    },
+    "candlelight4.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "52070159cc2f75830a37d7fcae4e2da3b60db951876fd7eadcbb096ef149f9b3"
     },
     "crystal_rune": {
       "uncolored_disposition": "neutral",
@@ -600,13 +687,29 @@
       "rationale": "The authored ff6030 tint matches the visible art for campfire.",
       "semantic_sha256": "d6137f6d13a5dfec8f38c900cae6cc38f5e6c4d1097f9f956f39aa715783a522"
     },
+    "candle2_on": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candle2_on.",
+      "semantic_sha256": "2f5189112bc9f1ce250dccb97249e433def630537d8cd876de81e6ca4164b428"
+    },
+    "candle_on": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candle_on.",
+      "semantic_sha256": "56a78d156e51c1be08d07bc971669c327c5a1b69d7a25b68555e7abd9350ec81"
+    },
+    "candlelight1.101": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight1.101.",
+      "semantic_sha256": "0805b1b0384cc8501944e6ee9d7b3f5d3686cb6b9cfba64efcaeb4e2e06e6a36"
+    },
+    "candlelight2.101": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight2.101.",
+      "semantic_sha256": "7a89e15244245564c5fa883f29a75149a9034716d4542f590e573b589ceee5a9"
+    },
     "candlelight3.101": {
-      "rationale": "The authored ffd080 tint matches the visible art for candlelight3.101.",
-      "semantic_sha256": "e031e83d2b5ac8da3c1b4d452f73df6d9b82d46dfb94113039c3632b4f9a12ae"
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight3.101.",
+      "semantic_sha256": "4aff2f167443b53d75ab5f2474edbd229e1f5255b135103a4a09aadabe709092"
     },
     "candlelight4.101": {
-      "rationale": "The authored ffd080 tint matches the visible art for candlelight4.101.",
-      "semantic_sha256": "a7555346a03eb4380019360d7538417913e078e0c8914fa3153b5e945912430b"
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight4.101.",
+      "semantic_sha256": "82e3de175eb6314488ccb493113f7837e0be73d02df1a4d175063cfe28d2e716"
     },
     "crystal10": {
       "rationale": "The authored 8040ff tint matches crystal10's blue-violet facets.",
@@ -1100,7 +1203,7 @@
     },
     "a2d081576ab13890635c74a2dc9642f802ca6862f39b39ddfd2c81d0fd61c286": {
       "rationale": "Applied runtime review covers lamp_wall at active radius 5 with ffd080 light and its Classic clone-derived lamp_wall art.",
-      "semantic_sha256": "a8d8d92d51a320bdcc47c092eb5c902de67b5b88e353fcc98882bc7e8fc18234"
+      "semantic_sha256": "55fa31d4a16498995af941fa25db724e96751fbaeff1c929174bb67e42d8dd26"
     },
     "bbd4bac3ab6ee56b280ac6b7ee304a48c051384586982bb0e518f718ca8db41c": {
       "rationale": "Applied runtime review covers torch_wall_1 at active radius 5 with ffc080 light and its Classic clone-derived torch_wall_1 art.",
@@ -1108,11 +1211,11 @@
     },
     "c72bb232af06c8b3fcae2b566674894d27bc71e4c470b36c7d89c898b4d4672e": {
       "rationale": "Applied runtime review covers torch at active radius 3 with ffc080 light and its Classic clone-derived torch art.",
-      "semantic_sha256": "d8cfc013a239cf00e4b00d9b9889ff03b477f32299ca0a08a277c99cfe7f2953"
+      "semantic_sha256": "a28928e18f778b19c907063fb7a6cb1e96e9ba2baa509dd9de3bd06379386b3c"
     },
     "d4a8b47cfd0bdfa350827fbf3ce1c6e7d7e0b73113da3b0c70443953e9ecedba": {
       "rationale": "Applied runtime review covers lamp at active radius 5 with ffd080 light and its Classic clone-derived lamp art.",
-      "semantic_sha256": "0a00d8e1785075e53f1fb00663de8f4f4e251c47f0d298da6879b28738b5e97b"
+      "semantic_sha256": "22cde423a8263173c21a359d10dc39d6e9cc650d4bb33bce2f2181f10796437a"
     },
     "e8e6324b96ec0ed934a9807cb5beb5c995f665dc09f0f12aae0744191c861349": {
       "rationale": "Applied runtime review covers jackolantern at active radius 5 with ff8030 light and its Classic clone-derived jackolantern art.",
@@ -1205,6 +1308,34 @@
     }
   },
   "maps": {
+    "maps/guilds/quick_wolves/guild": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Quick Wolves Guild for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "7db5b6501ee8ab1848f192e5655d860afef0aec7d0f72d3ce7bf7380dbffb345"
+    },
+    "maps/guilds/quick_wolves/oracle": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Quick Wolves Guild for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "a1ced534259bb76c16bb726ea3687b355099aa09e2ebc7f558b129e146a0683d"
+    },
+    "maps/guilds/quick_wolves/storage": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Quick Wolves Storage for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "9d88e0a70fc393a5e7098e9e4de8f4d5f138e7c2216a72e49938ed6716fa8c1c"
+    },
+    "maps/hall_of_dms": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Hall of DMs for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "35faa04b39f23e3afee34185712476c2ebd8cc55e4ee5af7438a468c268ab744"
+    },
     "maps/planes/bone_cairn/bone_cairn_0_0": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Bone Cairn in the bone_cairn batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
@@ -1333,7 +1464,7 @@
       "rationale": "Rendered Vielumin Ruins in the issue65_0017 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2c0be45eb53eb04eec564b9192ab4f684237ac1b514eb3db2f981dcea87b982d"
+      "semantic_sha256": "6d09c876be6d2849419451d6e2dcf0488ba6670a9bc637ec88f7159ba8f10843"
     },
     "maps/shattered_islands/eld_woods_island/vielumin_ruins/ruins_0201": {
       "uncolored_disposition": "neutral",
@@ -1347,28 +1478,28 @@
       "rationale": "Rendered Vielumin Ruins in the issue65_0019 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "5c11ea5d09b883adc57f3af4d287811a7d7d609080a28fa432842e338cda919c"
+      "semantic_sha256": "7b98c0cb5023f85a97d5260e8e89f18fff351639b41ff179aaf9b4db406a7bf2"
     },
     "maps/shattered_islands/eld_woods_island/vielumin_ruins/ruins_0303": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Vielumin Ruins in the issue65_0020 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "82fcad3be722904679063b7a6de7718d8da8ae5ea2a82a8028346b9fe6d28c97"
+      "semantic_sha256": "1bcb8f9f5d1f6714bb1b3cb4892e84cd1f0a958bd2ba8e6f3d2201a4028702c8"
     },
     "maps/shattered_islands/everlink/everlink_0101": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cc9b8243b5ffaf9484474bb66d59df718401e8c52b969fb57fdc74468aae4bc6"
+      "semantic_sha256": "2c678823d156d4074c67cb880014e3d9d1aa1bcfe7607641900bcbf0510f708f"
     },
     "maps/shattered_islands/everlink/everlink_0102": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8be24ebcea27061639782803e441637b2ff18d651a86eb1292d0e838dfc27458"
+      "semantic_sha256": "e13005e1773ebc3559860f098041d8c513a11b9fb662db462a17c471fed67ddf"
     },
     "maps/shattered_islands/everlink/everlink_0201": {
       "uncolored_disposition": "neutral",
@@ -1389,14 +1520,14 @@
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b3009afac6212809ade0a0b6015d042641d7fdc9808de61b7789788d5b04ba2c"
+      "semantic_sha256": "a50a4353e623175801c212162d3112b29b1c1491e0b726c7af5bacbf9b07a873"
     },
     "maps/shattered_islands/everlink/everlink_0302": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bf31db914f9d49c997e904ea9250c1b202762a65662173110a4571e1b56e1c3b"
+      "semantic_sha256": "199405d84a36f6e6709d3237701376f358dd2e41de65462e2dc7bd5c10dafcd2"
     },
     "maps/shattered_islands/everlink/everlink_0401": {
       "uncolored_disposition": "neutral",
@@ -1410,30 +1541,30 @@
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "23bcd6ce53ed64d1ebfc6bbdbf78bdbd01445ba8b85e6c3f03b8375fe5c38d20"
+      "semantic_sha256": "cddb4d6ba2aa61adb6fa7f46a4978973f0040a8552d598dbe0202485124ac06b"
     },
     "maps/shattered_islands/incuna/ellamin": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna - Below Ellamin's House in the issue65_0021 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0432ded0f0f52cb495b5acd2fb817a0dcbd2ab5b1248ea4fa5a7f19809a9bd39"
+      "semantic_sha256": "62b69d3b30c99797f4f12ad771cc7536d958822d964cdabed844ba430e3b3132"
     },
     "maps/shattered_islands/lyondale_archipelago/morliana/hierro/hierro_lair": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Hierro's Lair in the issue65_0022 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "1342": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "1367": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "1392": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "1417": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "1442": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2548": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2573": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2598": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2623": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2648": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "1342": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1367": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1392": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1417": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1442": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2548": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2573": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2598": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2623": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2648": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "1cdcf3d7a2fa24b3b29a8e678b1ae497cee52edbec301bf5b609bd5eb6f47709"
     },
@@ -1450,6 +1581,34 @@
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "c8608073560a6a6a5539a76808ab0e2b09d73a94bab9e34355719c8877484667"
+    },
+    "maps/shattered_islands/strakewood_island/apartments/apartment_cheap": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Cheap Apartment for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "7c5f02dfa315291a8bfa9182c33b9d80440afabbc610b213fab5ccc79bb88908"
+    },
+    "maps/shattered_islands/strakewood_island/apartments/apartment_expensive": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Expensive Apartment for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "41d6215748fca3e2a2bd0666f234f41f14b5928d7d88bde2f1fe957e77fc99c8"
+    },
+    "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Luxurious Apartment for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "dd2ab10e7518b5b7ade397525ba913c018d6eba356af0ebaa2b499182a834a5c"
+    },
+    "maps/shattered_islands/strakewood_island/apartments/apartment_normal": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Normal Apartment for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "9949bf642345122f9ca8dc1b052938912fa6b2e8ea4f395f6ee19fdac696c394"
     },
     "maps/shattered_islands/strakewood_island/brynknot/abyss/abyss": {
       "uncolored_disposition": "neutral",
@@ -1530,7 +1689,7 @@
         "peasant": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "592ac8c75b1023bed82af6e985d2b5852ad6f21547e4ad7b8517358d17b68280"
+      "semantic_sha256": "feeaa3798517900ff069954751b7f9ec82241e12e3403c7100ba4d6dc632d409"
     },
     "maps/shattered_islands/strakewood_island/greyton/jail/jail": {
       "uncolored_disposition": "neutral",
@@ -1614,7 +1773,7 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d9a47e6a6013eb66d289c65c3b628e9a0cbb23d6cefe3a6b05392cdb9cbc0b01"
+      "semantic_sha256": "49976b80b65404a196eae3a444674b9863ac925b05e4521d7a77a6b560fadbef"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0103": {
       "uncolored_disposition": "neutral",
@@ -1628,16 +1787,16 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "2357": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture."
+        "2354": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
-      "semantic_sha256": "14b69d593b18b70352e049b122061491eca9f5cf4404fbd47ecd45451df7e1a9"
+      "semantic_sha256": "dd4a8f8b7a94814afe030bdee338903cceb16dfc19d5593f2085a1aa970fe5ed"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0105": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b0c7083b6542effece4006a83383b354a93277619fc73b9da140ada13ea51fa1"
+      "semantic_sha256": "6debc3e0b1f5c2cf3383cf7a3b1c716fc53ecd23d76a8e21025ed98bf13b3231"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0201": {
       "uncolored_disposition": "neutral",
@@ -1735,7 +1894,7 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fb6b8247bbfa3d7d5bb1bb4c86af9f88e7ba68c333f057824f293ac2f20b3716"
+      "semantic_sha256": "c17beb41d50e4d567b59d0ee91e2b35d1573d948cbd52b8222928bff2c2389d6"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_aa05": {
       "uncolored_disposition": "neutral",
@@ -1770,10 +1929,10 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "314": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture.",
-        "1053": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture."
+        "1053": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "314": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
-      "semantic_sha256": "adceac94c23ea5e2c3a85ead542326bf67e9e0c0a057da18e3cef154550c02e4"
+      "semantic_sha256": "ee69dbd4bc7b305cdde6dced5315887bca91d9f3f2de8c27fb3e9afc4d9cdee5"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_ab05": {
       "uncolored_disposition": "neutral",
@@ -1787,21 +1946,21 @@
       "rationale": "Rendered Rockforge: City in the rockforge2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e9bf78f39df988ac2a2a61bb7f7b98e5ed87191c3a303cdeb5d75f9fa914ed53"
+      "semantic_sha256": "4bf0ecf6618816209534f989979e9fcfca7c6fe13fc574e26c2dcf442a8d439b"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_b_aa04": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Rockforge: City in the rockforge2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9b7712296ae7e82b87084fd956f9a4fe534237f69a3bda86347dbf1092a8112e"
+      "semantic_sha256": "dc0be8c2b7f55b98ba35a79ab272473626977bcfcf8ef39a232eb9976aeecf1c"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_0": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e7eaf0879aa9890b926981fbed1d28ed0a1237048c603feca5f23a238007a110"
+      "semantic_sha256": "8a2a26bbc1a19869adbf7cf84384633722ebebb12e2139ff35e01c1e8431670e"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_0_-2": {
       "uncolored_disposition": "neutral",
@@ -1815,7 +1974,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bd9a7cbc08f8bae3280907a4177bde8a34609222c50dae8b0c2b55e83653281b"
+      "semantic_sha256": "a1eb5fc07a228beac8f0bf090e066a6d19a0f574caa0dee34abb2400d8e8ff0b"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_1_-2": {
       "uncolored_disposition": "neutral",
@@ -1829,7 +1988,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "204dc671233f1aff721d56ee253d2c22164964adf22d84a86b544b45da48062c"
+      "semantic_sha256": "0d2ba6085a7926472c7c71425a5fe6e7891964b1d66a1dd3bf3aa9e93380b3fd"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_2_-2": {
       "uncolored_disposition": "neutral",
@@ -1843,14 +2002,14 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9225497ab2a5174675b84f48fb222a2400b01bcf901f20d14a8a554b5026e4d0"
+      "semantic_sha256": "c714c8723bc884873de07bc16a094ef455b516c92d068c9c4b544567885a30ca"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_4": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ae1ac5b61bb9b3eee2918c72cd048fe3da4e8865629f4f6f9702821aab4b30b6"
+      "semantic_sha256": "29964e1f8a373579d4876598487c095052a180a8670a87fd84d2d354710bf9ac"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_-1_-2": {
       "uncolored_disposition": "neutral",
@@ -1878,7 +2037,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2879c727ad28f4b1d56e92b9c85b42e165f365f75aa9591394b739a47d05cbb1"
+      "semantic_sha256": "e6fcd79f6ae491bba987b80c0ebe65b124426e4209f44513b1b425523d648f9d"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_0_-2": {
       "uncolored_disposition": "neutral",
@@ -1895,7 +2054,7 @@
         "statue_white2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "3146ea3942a7e6fa11a0264fcbc1bd8ee1cffa2c01cbd05c60949f54e71130cd"
+      "semantic_sha256": "789da6952ab7c24fe7866fbc16d542232469bbb88afc28fb95639078c22d81f5"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_1_-2": {
       "uncolored_disposition": "neutral",
@@ -1911,7 +2070,7 @@
         "statue_black1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "a0e841c040547a83106884425bba6dd0c487ede3c4272fb8b69bf49f5c987c3e"
+      "semantic_sha256": "202931bdcf1ba094f2b89eefee05a134691aad92ac7011a371946e520d91eab9"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_2_-2": {
       "uncolored_disposition": "neutral",
@@ -1974,7 +2133,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7eb26ed83704f03e1eb000e69f7ada60bac30099d4030fcd49d74e296745f6c6"
+      "semantic_sha256": "6df2203ef601ee7094c8297e3cd7a50770d395120c5f9c40107622dd9509289b"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_0_-2": {
       "uncolored_disposition": "neutral",
@@ -1988,21 +2147,21 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "97d66684e6f0f5c9796697d10e978ee9f392efad5d1f7f76e787ce59dae834c5"
+      "semantic_sha256": "ffc631318116c92e672093026dadf0f35e4f5b76459dc13425bf45aa7f437f84"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7e90a9f42a9238859368a4e79f6c55ef4c8c165383ea144917d4257eb0437e63"
+      "semantic_sha256": "45cf78ddc03e9e3ac05e799949aed39a16bd9ee0dd29ec04e1bfb866d182bb22"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6bf38401c95f6e13bb792e48957f019ad920e755171a6f34eb5e8ac4fcf86cff"
+      "semantic_sha256": "9f6cb5bf57df158c87703234f88694446e9bb57c5871aa5e3e7de9d85a5806a6"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3_-1": {
       "uncolored_disposition": "neutral",
@@ -2081,7 +2240,7 @@
       "rationale": "Rendered The Underground City II in the underground_city_a batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e91fce49e344441b725a7e0d338bc56e3467cf98b1ceac54616dbd830ca861a9"
+      "semantic_sha256": "0d19fcf074c8d3b9052d46e9a642187157f4013847f2729fbddf3dc37e7e83a6"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_3_3_-2": {
       "uncolored_disposition": "neutral",
@@ -2123,7 +2282,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "990bb806d01e191b7a36ef63f2f6025a3c37febb79abbb799e771e3cc749ab33"
+      "semantic_sha256": "23bad92d746b9d0ec50296ec9bcf1c7deb2214f732223d5a21a2403a9801a9db"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_0_-3": {
       "uncolored_disposition": "neutral",
@@ -2137,14 +2296,14 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "05e004d3290f9b7f3afbda038aebcd95452c8d26fa570af9fe0cc8042f03efa5"
+      "semantic_sha256": "cbbaf9ba91c07dd902fcf017b2cae44fedb1ca9e79c97f6ac98543de5fae0607"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9c6cbcde149871d4131ff3ad6fcc22676064be0436a98988196b472ef15c2f6f"
+      "semantic_sha256": "53c51ea192ed5461e796d22b1155aad8a0f7de5389dbe0e3f36c075c960b7d0d"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_2_-1": {
       "uncolored_disposition": "neutral",
@@ -2417,14 +2576,14 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "14059dd341f0eaa11eb5e6133b439f781e05a1b63d029838ce4f64cbbc53a1d1"
+      "semantic_sha256": "1f194c50809d6428741463bfa5c1ae43bb93e74a63eb084f99291961df3a29d4"
     },
     "maps/shattered_islands/world_-1_69": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "354db572d7a7497323a21223fbcd9d1405a14d108666446b030c6b8933ab5b6e"
+      "semantic_sha256": "f8e754d42c1a4074146c841d0e72ac00f53c064c6cdec027ec77790613f684e0"
     },
     "maps/shattered_islands/world_-1_70": {
       "uncolored_disposition": "neutral",
@@ -2438,13 +2597,13 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "2187": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2473": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2503": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2972": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "3112": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "3843": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "3878": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "2187": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2473": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2503": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2972": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "3112": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "3843": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "3878": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "ba17fd49498f0d82e7e720c996b7e8a181bda7c0489e298362174d631fb46691"
     },
@@ -2523,11 +2682,11 @@
       "rationale": "Rendered Deserted Island in the issue65_0052 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "130": "Map-local firefly animation uses explicit yellow-green light matching the visible insects.",
-        "375": "Map-local firefly animation uses explicit yellow-green light matching the visible insects.",
-        "586": "Map-local firefly animation uses explicit yellow-green light matching the visible insects.",
-        "629": "Map-local firefly animation uses explicit yellow-green light matching the visible insects.",
-        "1040": "Map-local firefly animation uses explicit yellow-green light matching the visible insects."
+        "1040": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "130": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "375": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "586": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "629": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "051a37d0626c9efebca38d7161b8c5d28dc0d8a6dd89d00cb6bbabbcf4d01ae4"
     },
@@ -2557,7 +2716,7 @@
       "rationale": "Rendered Ocean in the issue65_0056 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "319": "Map-local fountain-stream animation uses explicit cyan light matching the visible water."
+        "319": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "fde244742c6ae9e8b27bd2263e7bf3f30b784183caa5f2ed12a632146dca5b33"
     },
@@ -2636,7 +2795,7 @@
       "rationale": "Rendered Centennial in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7968b1ebeb2006f0c869d0e42b30d1b74b8d0f4f405f828073490b27e35c8b41"
+      "semantic_sha256": "c630a22de8d93a2a536c955c4c53ca7cbf85d7dcddd5d21bd4a823df21f4c816"
     },
     "maps/shattered_islands/world_0_53": {
       "uncolored_disposition": "neutral",
@@ -2685,14 +2844,14 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3c69203e395277b30b4b7c5c786a061991227adba459a3476e9800ca5e5581cf"
+      "semantic_sha256": "8269cd5311ab22257fdc707ce4b357a57dba3bb279bdfd0a6c1bda0501f2b2a8"
     },
     "maps/shattered_islands/world_0_67_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "24780d5997d117b9e41b8819e578c3685ef0d783cfcda17f3a014163342a19d6"
+      "semantic_sha256": "725b11b663b4fe90bbebdcd13ae7ab2f85be0320e57f4d790f154415d8d65030"
     },
     "maps/shattered_islands/world_0_68": {
       "uncolored_disposition": "neutral",
@@ -2720,7 +2879,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9d7d127c324d16530fe34d64c68d3a6ad9c275770538fd21fc4008eccda9db0b"
+      "semantic_sha256": "0a051b63a905cee53634ed49e711934c4385357aeda1c2663bb10a98fdf47c59"
     },
     "maps/shattered_islands/world_0_69_-1": {
       "uncolored_disposition": "neutral",
@@ -2778,7 +2937,7 @@
       "rationale": "Rendered World in the issue65_0070 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "1717": "Map-local fountain-stream animation uses explicit cyan light matching the visible water."
+        "1717": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "53a0fdcee724a0d48e4a27f4153d903e33baec9fa4d9f2dd6264f37dc7d5a0bd"
     },
@@ -2815,7 +2974,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "46": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "46": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "7cf863624dee3254a08493619ba39245d474590c93308864c7b509bf68d3a837"
     },
@@ -2838,7 +2997,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6ce38f144ced83c3de9cae8e93110768467bf68efca092ba64e4560cf28ce0e0"
+      "semantic_sha256": "b5358bcc30ad559d3748938f4efffbd071bd59eca4b934ae582dd829742b31a9"
     },
     "maps/shattered_islands/world_10_67_1": {
       "uncolored_disposition": "neutral",
@@ -2866,7 +3025,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2296ad544d5545dbc523979e554e27d39879aa5a533538f88adeea42ffa2bf96"
+      "semantic_sha256": "aaabc574c8cc0c0953061831fb791f00d41c31df61fa1cbd188481dc60edad95"
     },
     "maps/shattered_islands/world_10_69_1": {
       "uncolored_disposition": "neutral",
@@ -2886,8 +3045,8 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Berri Lur in the berri_lur batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {
-        "ped_black_hs1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "ped_black_h1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
+        "ped_black_h1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "ped_black_hs1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
       "semantic_sha256": "2fa360930cebbc1db7019a3ad392d734e176df740e29a205d4bd91ec61a3a39c"
@@ -2897,7 +3056,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fd394d0bf7d631051f8b7f72e04ab242921ba8bfac597c2bab2dd42e3de948ef"
+      "semantic_sha256": "0d439b0771991b03f108d30d6b72ce9003a03a560101c966aad2e865baa75638"
     },
     "maps/shattered_islands/world_11_67_1": {
       "uncolored_disposition": "neutral",
@@ -2960,7 +3119,7 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "250da936d716595032f94ac709ecbd4d6b3c1f50138905703d3e62c576d28512"
+      "semantic_sha256": "f25921f1232c8bc103ffd9b495ceaa444e50a5546d53a0db8a4b5bb07f1afaf8"
     },
     "maps/shattered_islands/world_12_4_1": {
       "uncolored_disposition": "neutral",
@@ -2974,14 +3133,14 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "83862d3d40028605022a541019383c93ec87981ff8e582de945a8667e128ec4f"
+      "semantic_sha256": "437dfc58016e6ea6953bb105b704a0ff26d1d4600b06cc7dbbc4974d1de68a82"
     },
     "maps/shattered_islands/world_12_6": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4261ec0f1ecc1cd37cdb870626985290e6aa2dbd396028f954fff5dc32fe5f55"
+      "semantic_sha256": "5cdb2b8162e867e2c23554c2fa29581205b03ceeb95bf5f5d65753eb54ef8a75"
     },
     "maps/shattered_islands/world_12_62": {
       "uncolored_disposition": "neutral",
@@ -3037,21 +3196,21 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bc767e76c5f27e3a28d72db7c7eca5598cff1524f593c5016b44e8665b396b56"
+      "semantic_sha256": "b64b3e91da2b25b25d293ecb7e025fe9db103b4773183a111437ee350e99320c"
     },
     "maps/shattered_islands/world_13_5": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ed5117a9dd0b0c89055f3f838d5c2c4a97e70314f997b49bf551a36d73f06d48"
+      "semantic_sha256": "3c75459d1e3335b45f29d80d49906c1a6b2f1725c4ca20c9993881b3b8b77b63"
     },
     "maps/shattered_islands/world_13_6": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b7c250d50b3ce5a76f61981bba7bc0710f6d81edf83263fb452525ed2c808865"
+      "semantic_sha256": "652cd2d3c14156d502b6cdddfee28c80a863e29df451a05387d7d545f45de49f"
     },
     "maps/shattered_islands/world_13_62": {
       "uncolored_disposition": "neutral",
@@ -3086,21 +3245,21 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0c86845357a346b6011298e5c9988f8955336d96df3a76c7d3bb60da091108ee"
+      "semantic_sha256": "67b6a8bc30a0edf4db5decaadf21bf7830f62774f493bc3bf322d9882c030ae1"
     },
     "maps/shattered_islands/world_14_5": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3bf02bd2e69915798eae24011e7a913b5be506700439d00e9c38bfadab4d1ea2"
+      "semantic_sha256": "a4d8e6725575b523548333f0dcb31a9845d83fecac150ce9dfd75e64ea4e353d"
     },
     "maps/shattered_islands/world_14_6": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cf06cab9eb2b35567651102a0c9b25638d78fb2e19584fdf8a788a3721b377ba"
+      "semantic_sha256": "bd7f16395645f14e8e806fc28e82678f4498ebf2773c458d824fa2a6dbeda94f"
     },
     "maps/shattered_islands/world_14_64": {
       "uncolored_disposition": "neutral",
@@ -3158,17 +3317,17 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Burnt Forest in the eld_woods_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {
-        "tree27": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "tree34": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "tree_huge": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "tree38": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "tree31": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "tree21": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
         "lo_tree7": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "tree21": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
         "tree22": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "tree23": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
         "tree24": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
         "tree25": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "tree23": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
+        "tree27": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "tree31": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "tree34": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "tree38": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "tree_huge": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
       "semantic_sha256": "f73432220b3332d0dea90a8ea7a77b96b33a6b7946f9396b22d747e2ab4e559d"
@@ -3185,21 +3344,21 @@
       "rationale": "Rendered Wizards' Tower: Daffodil in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3646e89c1608544bf1c68d2536ad99d279d8292f8f7ca254daf039b6f1bd5a54"
+      "semantic_sha256": "8bbfa633277352e5fa9ab9f27d1e981f2f048f4badec25b947b26644ae1d149f"
     },
     "maps/shattered_islands/world_17_2_3": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Wizards' Tower: Lingholm in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "25b8f380eeb803737b63c394483bc4e2dbdab3155015be4bd6fe34007bb0a293"
+      "semantic_sha256": "75bec0513b99351bc57e20e8684ebc290f6528f6cbf25973d740c38c3a45940e"
     },
     "maps/shattered_islands/world_17_2_4": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Wizards' Tower: Marigold in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a3e6bbd1ff143c1ea8ed687167a72f4a867d46a3b578fee190753abdec4c0c67"
+      "semantic_sha256": "78b07964c378f8615abee36827d659aa2be7f8bb5ea1e3b4117352779fb07057"
     },
     "maps/shattered_islands/world_17_2_5": {
       "uncolored_disposition": "neutral",
@@ -3276,7 +3435,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1cd3b88d1beabf52e07920ce7e3c1cfe632138e16cb2948e3dc0827f6a55079c"
+      "semantic_sha256": "ba9854338d8808f29500b438e66eb099bed534f05a49b3d22ea7919e63985a04"
     },
     "maps/shattered_islands/world_1_49": {
       "uncolored_disposition": "neutral",
@@ -3290,7 +3449,7 @@
       "rationale": "Rendered Outpost of Dr'kass in the issue65_0073 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a73bbea31ab18cf3aa7ae191864f31a17cc11d7fbe478acb6bb6e74776b3a429"
+      "semantic_sha256": "c8499e48a8d041426bc8f505c96d96a4ecd57ca9713686d1ebd85f8a626769a4"
     },
     "maps/shattered_islands/world_1_50_-1": {
       "uncolored_disposition": "neutral",
@@ -3381,7 +3540,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "01891d4186be3f964ec654674cc4a0d9c91f74c23d46f1b0927913dab9de9e4f"
+      "semantic_sha256": "f2624f29792921de83ffdbebf2f9fdc856a932ef1b50344cb83f553db28992bc"
     },
     "maps/shattered_islands/world_1_67_-1": {
       "uncolored_disposition": "neutral",
@@ -3402,7 +3561,7 @@
       "rationale": "Rendered Brynknot Tavern in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "57a463a7f7f7d2d8046eee5547002ac326deaa0d00e7f56b0b7824e30ba73784"
+      "semantic_sha256": "540d3e926d8c437a6aea5a302691c55e196712417c787a626b7670e8979109fd"
     },
     "maps/shattered_islands/world_1_68": {
       "uncolored_disposition": "neutral",
@@ -3430,7 +3589,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "40ee16de0670cada190d3b6393c66a230659741ba71212a30bac0916883da0e3"
+      "semantic_sha256": "85d1be45f14f45906782ca2ed14c992aab2c33d0833ff1bafb206ecaf50610c7"
     },
     "maps/shattered_islands/world_1_69_-1": {
       "uncolored_disposition": "neutral",
@@ -3459,8 +3618,8 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Sewers in the issue65_0086 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {
-        "plant21": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
-        "plant20": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
+        "plant20": "Map-local visible emitter intentionally retains neutral light after rendered contextual review.",
+        "plant21": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
       "semantic_sha256": "bef637549510b8c25e58e42199d917956b341390bb1b3c3b8e542b2ba9a54755"
@@ -3563,9 +3722,9 @@
       "rationale": "Rendered Caverns in the issue65_0095 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "703": "Map-local fountain-stream animation uses explicit cyan light matching the visible water.",
-        "725": "Map-local fountain-stream animation uses explicit cyan light matching the visible water.",
-        "846": "Map-local fountain-stream animation uses explicit cyan light matching the visible water."
+        "703": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "725": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "846": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "1c749502ab8c6f26f014e925f89e80adaf65ccd6f32eb5bc603e30e1d044fc11"
     },
@@ -3630,7 +3789,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0214d0dc6d4540232216f232cf2112f7f9a4d8f8ebfc5e76781225a2229005c7"
+      "semantic_sha256": "05d7677aeeb5f45a886fc978c8c2a3953135ed7dc5e7eab502941a78235e0246"
     },
     "maps/shattered_islands/world_2_67_-1": {
       "uncolored_disposition": "neutral",
@@ -3651,7 +3810,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3aa14ac0777ceaceb2e72e95d245af8f1b635a03cd04f5fbfab48d71a76db274"
+      "semantic_sha256": "7f822ef0ec59b2b600e377097b92da5588404b07696138cb202036c1fc7d2893"
     },
     "maps/shattered_islands/world_2_68_-1": {
       "uncolored_disposition": "neutral",
@@ -3693,7 +3852,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "5328c4225e0b8951a50c8735764b82684a18c68ee8a4d1d25698f099deadf430"
+      "semantic_sha256": "f16f04db7fbe89499448aec0bf095b24ea6b6a46ef89c7f13df4b5f3dec4884e"
     },
     "maps/shattered_islands/world_2_69_-1": {
       "uncolored_disposition": "neutral",
@@ -3742,7 +3901,7 @@
       "rationale": "Rendered Ocean in the issue65_0111 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "319": "Map-local fountain-stream animation uses explicit cyan light matching the visible water."
+        "319": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "0cb09309017cf5e1f35ba228c5b22fb8d9f2fa541b07d6d4d2f198b53926a968"
     },
@@ -3772,7 +3931,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8751a376afd75505ee0a5aa688ec78f4fadc2e88e740d6406f90236337c7872b"
+      "semantic_sha256": "3dc17d3852d9fec4aea7e76b66de3c9256ffd780ac1af4d9f9894fa28f2f1319"
     },
     "maps/shattered_islands/world_3_47": {
       "uncolored_disposition": "neutral",
@@ -3879,7 +4038,7 @@
         "priest_church": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "74d7cb5c5a158431b08d5c4fcc8ca93f3ddb761ac6a3354e4f0987cd2b3a26a1"
+      "semantic_sha256": "eb8b64c30647c0016f4eb0b2ec480bbc19bb2f1311ff33c8c8b14bd15475e1c5"
     },
     "maps/shattered_islands/world_3_59": {
       "uncolored_disposition": "neutral",
@@ -3951,7 +4110,7 @@
       "rationale": "Rendered Forgotten Tunnels in the forgotten_tunnels batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8221c2e399ebdace50616d967d75cb686693525be0e3fa25bbe2e6a43df8718b"
+      "semantic_sha256": "52e0065041f6f20689f0f410ea7087cecec22ad34d4ed37a87991259ebe66452"
     },
     "maps/shattered_islands/world_3_82": {
       "uncolored_disposition": "neutral",
@@ -3972,7 +4131,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cfbcebd1359f1f316738fa93a2094f56c769e82fbc00d5d9d7646beb4dbe9b53"
+      "semantic_sha256": "3c6fcad9d9dc9cd698b41581b4418e42dae2130edc8283f9b60e2919386874d6"
     },
     "maps/shattered_islands/world_3_83_-1": {
       "uncolored_disposition": "neutral",
@@ -3993,7 +4152,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ee9d00749058027f069f6230d2cb6bf0467005dd68ddebe34e39cb2c3ab0c6fe"
+      "semantic_sha256": "6122189f45e219733a7f9b87eaa259d6d7e7789bd503c4859a7c069d85e55da0"
     },
     "maps/shattered_islands/world_3_84_-1": {
       "uncolored_disposition": "neutral",
@@ -4035,7 +4194,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bd5aa09abe78f6c322160aae105caecca2dd57c2b14c5d736b188496567c554f"
+      "semantic_sha256": "d542bf0a10a1b3001f161555c4de30ace9b29f983f7a6f525ea72670b5c1d903"
     },
     "maps/shattered_islands/world_4_44": {
       "uncolored_disposition": "neutral",
@@ -4049,7 +4208,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "da6e76b97a12edb510a54bccffc0fd20890a4ff4dbdebbc6efe373641134688d"
+      "semantic_sha256": "d3534dc6d90fe0274159a2859b83a789f253b73126fa7ff4fbf080c71a85c8c5"
     },
     "maps/shattered_islands/world_4_46": {
       "uncolored_disposition": "neutral",
@@ -4063,7 +4222,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "95ea6cb082f1b2d63376b7ea7070cb16a69892d7b4a06909213cdfc1b2d13a1d"
+      "semantic_sha256": "8733f7b9aafe20b328c7504c100114798189cf24d892e0fe0d20470272989b60"
     },
     "maps/shattered_islands/world_4_48": {
       "uncolored_disposition": "neutral",
@@ -4105,7 +4264,7 @@
       "rationale": "Rendered Fort Sether in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "51f2e4ae28c2981e6bac1c77e4fd0691a49d12d7f1253ea1b18a6c6d64b94352"
+      "semantic_sha256": "bddb49b84f905f1aa5174708d6d1e45fc19bae0fa1826a0bdf5ffdd110bc3b29"
     },
     "maps/shattered_islands/world_4_52_-2": {
       "uncolored_disposition": "neutral",
@@ -4126,14 +4285,14 @@
       "rationale": "Rendered Fort Sether in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "343d95949cc53dd90ff83344bf2d2d7c2f0e896b16a0e7cd90b639619db819c6"
+      "semantic_sha256": "2f0a78acffed239dc356103e8309d3b2c6ecfd96591062b5debfcd052be5048c"
     },
     "maps/shattered_islands/world_4_53_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Below Fort Sether in the issue65_0127 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ae9efec5b51ff48797e732665e4aeb3318ada5ec75749956f2b08f16935b3ce7"
+      "semantic_sha256": "8d54efbf2b0398de6592cd95f40c175c1e75042ff951327f4b5f58ee4bee498a"
     },
     "maps/shattered_islands/world_4_53_-2": {
       "uncolored_disposition": "neutral",
@@ -4182,7 +4341,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d19220e5c29b33c9e3ddaf43c483ba6643ad4f6ccb4e0bdbde00543ec34c5b9d"
+      "semantic_sha256": "fbd1e42cbcfc570849ab7d30d15d341c4d56680f803d40aa244bde5fd125a90a"
     },
     "maps/shattered_islands/world_4_66_-2": {
       "uncolored_disposition": "neutral",
@@ -4252,15 +4411,15 @@
       "rationale": "Rendered Forgotten Tunnels in the forgotten_tunnels batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8d78e2ce5eab8461680b943abd09eb911eb80146691fdc03eb68d0a96892d008"
+      "semantic_sha256": "ad3b0251594e5f92a3b9a15b8484d42cbb193ba7a8ebd0573ebd4d0a7d39c3b4"
     },
     "maps/shattered_islands/world_4_82": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "1579": "Map-local firefly animation uses explicit yellow-green light matching the visible insects.",
-        "2094": "Map-local firefly animation uses explicit yellow-green light matching the visible insects."
+        "1579": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "2094": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "38201c5474e0d4968e9aa07ee73329687cf9419dc153719af7633347232b6e43"
     },
@@ -4276,21 +4435,21 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1dabc28ff09bcf5156a283b4bf33e4de7742dadef497d3cdf61875d16a38f8fd"
+      "semantic_sha256": "d0fb4d99b952084cd082cccb47188b8fe0e0508c0cabdbfbfb6f2bdb6e09c13a"
     },
     "maps/shattered_islands/world_4_83_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna in the incuna_-1 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a6ed1fe71c40d94e7857e9eaf9279f3fcfc1b2419a5dea5552ef74cab483134d"
+      "semantic_sha256": "a5fe6b19cc409f538889baa3b2b0d9f6e6bad5f829a9bf295c628ffc980d74eb"
     },
     "maps/shattered_islands/world_4_84": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0b6e33d8cb8cf96949859d79b91dafb0b732d1d0d9eddf0d9a04a82c61b12ec4"
+      "semantic_sha256": "7cfac95295d022cd6252db021c82c3726f49ad5ac7df7acf03d572965c5f764e"
     },
     "maps/shattered_islands/world_4_84_-1": {
       "uncolored_disposition": "neutral",
@@ -4332,7 +4491,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "43079f02a6b23ab110900e8c7ca19050ffdbd2b01ae548acbc4217e9a6ba8724"
+      "semantic_sha256": "218015a0a02e68600877e368269294b094d56a8d8e88bf71533cc976a8d927a8"
     },
     "maps/shattered_islands/world_5_42": {
       "uncolored_disposition": "neutral",
@@ -4381,7 +4540,7 @@
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "805126a68f66268dc115ead08b468f0a23f519800aeed765da0542f7acbd35a4"
+      "semantic_sha256": "5ab214c062f2b23260bf239bbc60ddb1a5951382009d87e4df0b3291f0447f0a"
     },
     "maps/shattered_islands/world_5_45": {
       "uncolored_disposition": "neutral",
@@ -4395,7 +4554,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e29b0dfdcd44780e487d41984c20fa610f7054d3cb51539edf3d85bbaca28090"
+      "semantic_sha256": "15b79c3822f2553771d3d570fdf3281332bafc757ed312907dfe455c021978b3"
     },
     "maps/shattered_islands/world_5_46": {
       "uncolored_disposition": "neutral",
@@ -4418,15 +4577,15 @@
         "floor_wood2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "9114e039f49c0bc9236fd7edf7acfad545ca49e79cc2ddf99abece0f26dd6d6e"
+      "semantic_sha256": "0900eae6940c42a333ffcad687e3c7da092fb1e69bdd261958a20d33ccfa2d1b"
     },
     "maps/shattered_islands/world_5_48_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Asteria in the issue65_0138 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "713": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "796": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "713": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "796": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "5821c3896ed0b364618a0bc12419a7379cc306b31d6cf1352a30f30d725c7c76"
     },
@@ -4437,7 +4596,7 @@
         "floor_wood2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "58193db285597a41e1aeecc54a4ca4400257f026b7a4113fd2627a3d8621c6a3"
+      "semantic_sha256": "a78555a5fcae97105c697d3f0aa0d587d6b884be98db21c38c859e6e6d50f02e"
     },
     "maps/shattered_islands/world_5_49": {
       "uncolored_disposition": "neutral",
@@ -4451,9 +4610,9 @@
       "rationale": "Rendered map context preserves deliberate darkness and readable routes around toggle-active lights.",
       "visible_neutral": {},
       "art_overrides": {
-        "87": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "209": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "353": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "209": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "353": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "87": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "4b339e9cbafa8543ff371ca952ea3187805e74a9171ed368c754f8bd373619aa"
     },
@@ -4483,7 +4642,7 @@
       "rationale": "Rendered Fort Sether in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a069dc0fe9bc62453d46035629a32cfc2118ecb43ead4036bd8b1974fd535b68"
+      "semantic_sha256": "a917b79f1af9a087ce07913ed1ee85b5843c8ffb170440eef35f696f11de1a29"
     },
     "maps/shattered_islands/world_5_53_-2": {
       "uncolored_disposition": "neutral",
@@ -4560,30 +4719,30 @@
       "rationale": "Rendered Fort Ghzal in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3708fccdb8e785d1d1ffab611d46976743ad90d8d7c8253851fe5960ccedc566"
+      "semantic_sha256": "ed7189ef45849feff8127bb8242ba4bbbe6a7d44b5e94aa26bb35c9b0082e090"
     },
     "maps/shattered_islands/world_5_67_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Under Fort Ghzal in the issue65_0143 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fa9b6fc128df6ae695f3ff96160520c9ddbf610b95df3de95fdf6fc840ef937b"
+      "semantic_sha256": "f0666c93ff05c8c652a8078dd7013262871b461166a0747897b75219f195eebb"
     },
     "maps/shattered_islands/world_5_67_1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Fort Ghzal in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "94": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "94": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
-      "semantic_sha256": "44f311508f848bd7da33c11b804050543557c7993c6ddbc1c3745f73b53b5ad8"
+      "semantic_sha256": "dbbf029d802cf4ee6121aa847a7f10365072f49a80a2a97803219d8e183a837a"
     },
     "maps/shattered_islands/world_5_68": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "69412076318b66a66e4a5fba02daecad66ca1d7fb2d6d8f15a60164e98088a13"
+      "semantic_sha256": "a36d37b86b30dbd0b8dc8624bb957ee9d9b65e3795e381dc49d040a5dc140f06"
     },
     "maps/shattered_islands/world_5_68_-1": {
       "uncolored_disposition": "neutral",
@@ -4646,7 +4805,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c175e334a2bcf843754eaeae6ae4754778578a8cf497de4ef8b9b9110fc9c19f"
+      "semantic_sha256": "61410e2684a5da69404c0207d4166bf9b0fe8bd869ded9989143a18a7ece11a6"
     },
     "maps/shattered_islands/world_5_84_-2": {
       "uncolored_disposition": "neutral",
@@ -4709,14 +4868,14 @@
       "rationale": "Rendered Asteria Palace Dungeon in the issue65_0147 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "050a0cca6f6382aefb2ded7521f960f6befe3ae864ed71a12b921d424fcbc6c7"
+      "semantic_sha256": "04373ffa42ab88c20656b384ad0bc05217a701f3e04b46a4a6287bb3445ced9a"
     },
     "maps/shattered_islands/world_6_43_1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "dbf01c71996ce2d5982c9bb6d1a9d8e84aef87a88c38961f302a4b4c981c747c"
+      "semantic_sha256": "c8897d8a5348e5dc6630e2e1aeb4098908f2bcaaeb52eef12ed13ef41ddecd84"
     },
     "maps/shattered_islands/world_6_44": {
       "uncolored_disposition": "neutral",
@@ -4744,7 +4903,7 @@
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4722715a3cd118ccaba84dda960add9181716cbee40370fb4a7e928f3e982501"
+      "semantic_sha256": "4b8d3daa779360f37829094dc0db87614c277fa62a562cd8f15345506a7d7aa6"
     },
     "maps/shattered_islands/world_6_45": {
       "uncolored_disposition": "neutral",
@@ -4830,9 +4989,9 @@
       "rationale": "Rendered Asteria Sewers in the issue65_0156 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "79": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "186": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "475": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "186": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "475": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "79": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "86f79797bbe4d9af9fc6ac33fcd224c756ce2bcdf22ddbd1b84e6122593714bc"
     },
@@ -4842,6 +5001,13 @@
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "5b6d9fef8d80ea769278e858aae41e63d613ad0c32419107157285a1075fa24e"
+    },
+    "maps/shattered_islands/world_6_48_1": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Asteria for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "4810311aab606235327343a7d38827a5d9f156061532c509db2ace87f302b9c5"
     },
     "maps/shattered_islands/world_6_49": {
       "uncolored_disposition": "neutral",
@@ -4855,7 +5021,7 @@
       "rationale": "Rendered map context preserves deliberate darkness and readable routes around toggle-active lights.",
       "visible_neutral": {},
       "art_overrides": {
-        "127": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "127": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "3fb204f64bc0cd6d5b856ebdcb28492b48ff056ff4a9a7fd82b8fad179bfaa4d"
     },
@@ -4885,7 +5051,7 @@
       "rationale": "Rendered Morg'eean's Cellar in the issue65_0160 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ec1e34b2f287f5eb6895ee8dbebe84ad92ed3ccce1aead2f2fdd58fbdf869d8d"
+      "semantic_sha256": "0c44927007f733ee68e794ca09736e84ea4a670c1bb3f05184a75dedfbaba042"
     },
     "maps/shattered_islands/world_6_51_-2": {
       "uncolored_disposition": "neutral",
@@ -4906,7 +5072,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "05044f1d152d1dca3bc2edc04913557a95521a47c2cccf1ad2d0a68a85e8b916"
+      "semantic_sha256": "93bd35259873584805d473ca31aa1bc3a013ce5552121f0e76bb787cec744acd"
     },
     "maps/shattered_islands/world_6_66_-1": {
       "uncolored_disposition": "neutral",
@@ -4927,7 +5093,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "60dc2a6a5a12a8d883e20734c9990f300e52b9373ed279a6390e0acea84ea0c9"
+      "semantic_sha256": "9e608e840e82cd2acd3d6a0e7b3edd79b708ad064bce2c41705716db2b649be0"
     },
     "maps/shattered_islands/world_6_68_-1": {
       "uncolored_disposition": "neutral",
@@ -5032,9 +5198,9 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "2044": "Map-local fire-trail animation uses its explicit warm fire illumination."
+        "2044": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
-      "semantic_sha256": "23392310a369324a453a9a8d09f18099e8d3b3e0a1fabdae86b06b0b962674d5"
+      "semantic_sha256": "2fa235c4e2134fba008cede43ac6dea93f0547497afa68c67253f099d03a6c00"
     },
     "maps/shattered_islands/world_7_44_-1": {
       "uncolored_disposition": "neutral",
@@ -5055,7 +5221,7 @@
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7a761a7e0a5001dc54cd4c9b55028b8620675afaeb9bdb38886622bcdf279089"
+      "semantic_sha256": "38382b57c12e637343ea1a1120e20cf9c6d332d7b42882442ed3f26ab106ef5d"
     },
     "maps/shattered_islands/world_7_45": {
       "uncolored_disposition": "neutral",
@@ -5167,7 +5333,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d8530cdc7b87c376c0ef6d1e8c97306e38a8d818e8ab517217a43e9bf6190aa9"
+      "semantic_sha256": "75483eb70e132c1c8ecf0f33c3f77ee58b7d34bfbbb0358ab84ab0f8f67a6840"
     },
     "maps/shattered_islands/world_7_64_-1": {
       "uncolored_disposition": "neutral",
@@ -5188,14 +5354,14 @@
       "rationale": "Rendered Inn In The Mountains in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e71457c4ef46e292b21407aac7ee691573d34d48479c6e3ce2d1fd8cad62cb10"
+      "semantic_sha256": "ef8be7444dd4fc71b3f6ff9acb0120f59e227d08e6a487f8ece32287c9419b45"
     },
     "maps/shattered_islands/world_7_64_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Inn In The Mountains in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f6d38ed1471b7f79a4de1683a86a2f31696c38213aecb5d773cc90970f185841"
+      "semantic_sha256": "3e8f5a81c68610225ce5953aa960375410ad7729e855ec10d6e02edea43b9e07"
     },
     "maps/shattered_islands/world_7_65_-1": {
       "uncolored_disposition": "neutral",
@@ -5209,7 +5375,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "69cc1982594445ccb750268357c20c15fa42edd2a592151cde89aa0e8b3e32ed"
+      "semantic_sha256": "ef5227cf0a15eb22d7d94db6430908dcc236ab9185a64104cc6eb0c3c0bd6ee3"
     },
     "maps/shattered_islands/world_7_66_-1": {
       "uncolored_disposition": "neutral",
@@ -5223,7 +5389,7 @@
       "rationale": "Rendered Abandoned Mine in the issue65_0183 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "1119": "Map-local red-portal animation uses its explicit red illumination."
+        "1119": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "16abbd7bdbfaf03a8aa1becd28b5cde41af262f5c03bc5c24ebe40b9fdca61af"
     },
@@ -5232,14 +5398,14 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0dbac7379dbe5386f544d69a15b0e9bb3cea13e2afbbf89a5b11ae92c84c99bc"
+      "semantic_sha256": "a779e17eaa7b9a258ba25f8dd4aa932867ccea9dcfc827552af47db2851383a6"
     },
     "maps/shattered_islands/world_7_69": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e548504183b7f0716d4cca8b9c1d33dbe120ba984c29e8aa3bd2742cb9ea54ba"
+      "semantic_sha256": "23974d6e5790cbf5ff6ddd95c483de3b2ab7a8673dff9ff742f3597b44cb2576"
     },
     "maps/shattered_islands/world_7_71": {
       "uncolored_disposition": "neutral",
@@ -5288,7 +5454,7 @@
       "rationale": "Rendered Clearhaven in the eld_woods_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "69fe82dbb9ade313f1c657868b08e81a7ad9574a64fd5e0229339db931887c17"
+      "semantic_sha256": "4a4a49853257a733cf39181f5231fcccc7d6d530f76477709b03854563bf18bc"
     },
     "maps/shattered_islands/world_8_40": {
       "uncolored_disposition": "neutral",
@@ -5330,12 +5496,12 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "231": "Map-local lightning animation uses its explicit electric-blue illumination.",
-        "303": "Map-local lightning animation uses its explicit electric-blue illumination.",
-        "1543": "Map-local still-water animation uses its explicit cyan illumination.",
-        "1626": "Map-local lightning animation uses its explicit electric-blue illumination.",
-        "1688": "Map-local lightning animation uses its explicit electric-blue illumination.",
-        "1939": "Map-local still-water animation uses its explicit cyan illumination."
+        "1543": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1626": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1688": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1939": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "231": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "303": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "0b0597fa3e489049e9bed931dbe02464fa2487352834cce3d802c7dd57cae927"
     },
@@ -5372,14 +5538,14 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1a84d4da7c9c290423a3e9dffc0a7600c14a7d4f1ab08a4d9aa7b457fc74a79d"
+      "semantic_sha256": "00d03b17d3456c9759d014a1d374f4374181b87c281e9ebb2a942936a4c39098"
     },
     "maps/shattered_islands/world_8_46_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Thieves Guild in the issue65_0188 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "94ff457f121848d531dcbcb3a54b52a219ac0ada5bb42ccf8d980dac6ace8b4f"
+      "semantic_sha256": "f808b39d386262116c42a57c2fa9423f16bf3549f995d69bf08f0ccb58758c55"
     },
     "maps/shattered_islands/world_8_47": {
       "uncolored_disposition": "neutral",
@@ -5416,8 +5582,8 @@
         "elvish_shyde": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {
-        "1266": "Map-local firefly animation uses explicit yellow-green light matching the visible insects.",
-        "1852": "Map-local firefly animation uses explicit yellow-green light matching the visible insects."
+        "1266": "Map-local face or animation override was rendered with its explicit contextual light color.",
+        "1852": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
       "semantic_sha256": "89a0671b5bba8cc34e4b615d80a18092434f0f9983ef87ca30aa86b390e27986"
     },
@@ -5482,7 +5648,7 @@
       "rationale": "Rendered Clearhaven in the eld_woods_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "86e9d28d53ad5f494e30a2720c9515cebb7412f4ef17dec1e9a5b95ebfd24510"
+      "semantic_sha256": "2d2300b0e3c67423393075858f5516be195f9e8440b08080f0a7be707839a034"
     },
     "maps/shattered_islands/world_8_79": {
       "uncolored_disposition": "neutral",
@@ -5545,7 +5711,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0d073e0133186d9ebc2ecdd81fa558cfbdd309f78e1cde0c28b54ed0386663f2"
+      "semantic_sha256": "5bbd93076d1af00c1741ac391038c87c6f63f7b37b0e51ec0e46ac25431104d4"
     },
     "maps/shattered_islands/world_9_44_1": {
       "uncolored_disposition": "neutral",
@@ -5610,7 +5776,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8f95aa5ca7d9dd745734ce4f42ea0e1bc7eb8f5c4a23446e39f663d3a058d538"
+      "semantic_sha256": "f4bf24732f70d1838d6d41c0d4a480bc41a1ac76e24945635618ca5e5073d314"
     },
     "maps/shattered_islands/world_9_67_1": {
       "uncolored_disposition": "neutral",
@@ -5659,7 +5825,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2d58dd5f76a929407d7a43074893e8f5cc4a62f589a2980c30106685e5818e80"
+      "semantic_sha256": "76b29895f6de841d66a7919ca4d265f3a6c6160e260b4d8c8c8eb8f397cd7604"
     },
     "maps/shattered_islands/world_9_69_1": {
       "uncolored_disposition": "neutral",

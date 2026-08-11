@@ -11,7 +11,7 @@ import argparse
 import hashlib
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 import subprocess
 import sys
@@ -658,6 +658,23 @@ def _light_review() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _required_context_checks(review: dict) -> set[str]:
+    """Return baseline checks plus fixture-specific rendered review checks."""
+
+    checks = {
+        "overlap", "linked-depth", "horizontal-boundary", "dark-interior",
+        "outdoor-transition", "fog-roof", "navigation",
+    }
+    fixture_groups = review.get("fixture_groups", {})
+    if isinstance(fixture_groups, dict):
+        for entry in fixture_groups.values():
+            if isinstance(entry, dict) and isinstance(entry.get("checks"), list):
+                checks.update(
+                    check for check in entry["checks"] if isinstance(check, str)
+                )
+    return checks
+
+
 def _light_evidence() -> dict:
     path = MAP_ROOT / LIGHT_EVIDENCE_NAME
     if not path.is_file():
@@ -666,21 +683,24 @@ def _light_evidence() -> dict:
 
 
 def _inventory_semantic_sha256(report: dict) -> str:
-    return _semantic_sha256(
-        {
-            section: [
-                (row[identity], row["semantic_sha256"])
-                for row in report[section]
-            ]
-            for section, identity in (
-                ("archetypes", "id"),
-                ("artifacts", "id"),
-                ("color_sources", "id"),
-                ("toggle_states", "id"),
-                ("maps", "path"),
-            )
-        }
-    )
+    value = {
+        section: [
+            (row[identity], row["semantic_sha256"])
+            for row in report[section]
+        ]
+        for section, identity in (
+            ("archetypes", "id"),
+            ("artifacts", "id"),
+            ("color_sources", "id"),
+            ("toggle_states", "id"),
+            ("maps", "path"),
+        )
+    }
+    value["fixture_groups"] = [
+        (row["id"], row["semantic_sha256"])
+        for row in report.get("fixture_groups", ())
+    ]
+    return _semantic_sha256(value)
 
 
 def _is_review_only_runtime_path(relative: str) -> bool:
@@ -1565,10 +1585,7 @@ def validate_light_evidence(report: dict) -> list[str]:
                     )
                 )
 
-    required_checks = {
-        "overlap", "linked-depth", "horizontal-boundary", "dark-interior",
-        "outdoor-transition", "fog-roof", "navigation",
-    }
+    required_checks = _required_context_checks(_light_review())
     representative = evidence.get("representative_checks")
     if not isinstance(representative, dict):
         errors.append("light-source evidence representative_checks must be an object")
@@ -1823,6 +1840,17 @@ def light_inventory() -> dict:
 
     review = _light_review()
     archetypes = load_archetypes()
+    fixture_reviews = review.get("fixture_groups", {})
+    if not isinstance(fixture_reviews, dict):
+        fixture_reviews = {}
+    fixture_groups_by_archetype: dict[str, list[str]] = defaultdict(list)
+    fixture_rows: dict[str, list[dict]] = defaultdict(list)
+    for group_id, entry in sorted(fixture_reviews.items()):
+        if not isinstance(entry, dict) or not isinstance(entry.get("archetypes"), list):
+            continue
+        for archetype in entry["archetypes"]:
+            if isinstance(archetype, str):
+                fixture_groups_by_archetype[archetype].append(group_id)
     archetype_rows = []
     for archetype, definition in sorted(archetypes.items()):
         attrs = definition["attrs"]
@@ -2026,6 +2054,7 @@ def light_inventory() -> dict:
         relative = path.relative_to(ROOT).as_posix()
         map_review = review.get("maps", {}).get(relative)
         emitters = []
+        fixture_ordinals: dict[tuple[str, str, int, int], int] = defaultdict(int)
         for node, parent, x, y in flatten_map_objects(parsed["objects"]):
             attrs = node["attrs"]
             # Classic registers every parsed artifact clone as an archetype,
@@ -2058,7 +2087,8 @@ def light_inventory() -> dict:
                 if field in attrs
             }
             radius, radius_field, activation = _effective_radius(overrides, base)
-            if radius is None:
+            fixture_group_ids = fixture_groups_by_archetype.get(node["arch"], ())
+            if radius is None and not fixture_group_ids:
                 continue
             color = _effective_color(one(attrs, "light_color", base.get("light_color")))
             face = one(attrs, "face", base.get("face"))
@@ -2068,6 +2098,49 @@ def light_inventory() -> dict:
                 one(attrs, "type", base.get("type")),
                 one(attrs, "sys_object", base.get("sys_object")),
             )
+            if fixture_group_ids:
+                raw_local_radius = one(attrs, "glow_radius")
+                try:
+                    local_radius = (
+                        int(raw_local_radius) if raw_local_radius is not None else None
+                    )
+                except (TypeError, ValueError):
+                    local_radius = None
+                fixture_radius_source = (
+                    _map_source(relative, node, "glow_radius")
+                    if "glow_radius" in attrs
+                    else definition_source("glow_radius")
+                )
+                fixture_color_source = (
+                    _map_source(relative, node, "light_color")
+                    if "light_color" in attrs
+                    else definition_source("light_color")
+                )
+                for group_id in fixture_group_ids:
+                    ordinal_key = (group_id, node["arch"], x, y)
+                    fixture_ordinals[ordinal_key] += 1
+                    ordinal = fixture_ordinals[ordinal_key]
+                    fixture_rows[group_id].append({
+                        "id": "{}:{}:{}:{}:{}".format(
+                            relative, x, y, node["arch"], ordinal
+                        ),
+                        "source_id": "{}:{}".format(relative, node["line"]),
+                        "path": relative,
+                        "line": node["line"],
+                        "archetype": node["arch"],
+                        "x": x,
+                        "y": y,
+                        "ordinal": ordinal,
+                        "radius": radius,
+                        "local_radius": local_radius,
+                        "radius_source": fixture_radius_source,
+                        "color": color,
+                        "color_source": fixture_color_source,
+                        "visible": visible,
+                        "same_tile_emitters": [],
+                    })
+            if radius is None:
+                continue
             review_scope = "artifact" if registered_artifact else "archetype"
             source_review = (
                 review.get("artifacts", {}).get(node["arch"])
@@ -2226,6 +2299,30 @@ def light_inventory() -> dict:
         reviewed_maps[relative] = row
         map_rows.extend(emitters)
 
+    emitters_by_origin: dict[tuple[str, int, int], list[str]] = defaultdict(list)
+    for emitter in map_rows:
+        emitters_by_origin[(
+            emitter["id"].rsplit(":", 1)[0], emitter["x"], emitter["y"]
+        )].append(emitter["id"])
+    fixture_group_rows = []
+    for group_id, placements in sorted(fixture_rows.items()):
+        for placement in placements:
+            placement["same_tile_emitters"] = sorted(
+                identifier
+                for identifier in emitters_by_origin.get(
+                    (placement["path"], placement["x"], placement["y"]), ()
+                )
+                if identifier != placement["source_id"]
+            )
+        group = {
+            "id": group_id,
+            "archetypes": sorted(fixture_reviews[group_id]["archetypes"]),
+            "maps": len({placement["path"] for placement in placements}),
+            "placements": placements,
+        }
+        group["semantic_sha256"] = _semantic_sha256(group)
+        fixture_group_rows.append(group)
+
     rows = archetype_rows + artifact_rows + map_rows
     color_source_ids = {
         row["id"]
@@ -2309,6 +2406,10 @@ def light_inventory() -> dict:
             "artifacts": len(artifact_rows),
             "color_sources": len(color_source_rows),
             "toggle_states": len(toggle_state_rows),
+            "fixture_groups": len(fixture_group_rows),
+            "fixture_placements": sum(
+                len(group["placements"]) for group in fixture_group_rows
+            ),
             "maps": len(reviewed_maps),
             "map_instances": len(map_rows),
             "visible_map_instances": sum(row["visible"] for row in map_rows),
@@ -2326,6 +2427,7 @@ def light_inventory() -> dict:
         "artifacts": artifact_rows,
         "color_sources": color_source_rows,
         "toggle_states": toggle_state_rows,
+        "fixture_groups": fixture_group_rows,
         "maps": [reviewed_maps[path] for path in sorted(reviewed_maps)],
     }
 
@@ -2335,8 +2437,8 @@ def validate_light_inventory(report: dict) -> list[str]:
 
     errors = []
     review = _light_review()
-    if review.get("schema_version") != 4:
-        errors.append("light-source review must use schema_version 4")
+    if review.get("schema_version") != 5:
+        errors.append("light-source review must use schema_version 5")
     if (
         not isinstance(review.get("review_method"), str)
         or len(review["review_method"].strip()) < 12
@@ -2356,6 +2458,132 @@ def validate_light_inventory(report: dict) -> list[str]:
         "toggle_states": {row["id"]: row for row in report["toggle_states"]},
         "maps": {row["path"]: row for row in report["maps"]},
     }
+    fixture_review = review.get("fixture_groups")
+    if not isinstance(fixture_review, dict):
+        errors.append("light-source review fixture_groups must be an object")
+        fixture_review = {}
+    fixture_report = {
+        row["id"]: row for row in report.get("fixture_groups", ())
+    }
+    for missing in sorted(set(fixture_review) - set(fixture_report)):
+        errors.append("fixture group {} has no inventoried placements".format(missing))
+    for stale in sorted(set(fixture_report) - set(fixture_review)):
+        errors.append("unreviewed fixture group: {}".format(stale))
+    archetypes_by_id = {row["id"]: row for row in report["archetypes"]}
+    emitter_ids = {
+        emitter["id"]
+        for map_row in report["maps"]
+        for emitter in map_row["emitters"]
+    }
+    for group_id, entry in sorted(fixture_review.items()):
+        if not isinstance(entry, dict):
+            errors.append("fixture group {} review must be an object".format(group_id))
+            continue
+        group = fixture_report.get(group_id)
+        if group is None:
+            continue
+        if not isinstance(entry.get("rationale"), str) or len(
+            entry["rationale"].strip()
+        ) < 12:
+            errors.append("fixture group {} needs a concise rationale".format(group_id))
+        reviewed_archetypes = entry.get("archetypes")
+        if (
+            not isinstance(reviewed_archetypes, list)
+            or reviewed_archetypes != sorted(set(reviewed_archetypes))
+            or reviewed_archetypes != group["archetypes"]
+        ):
+            errors.append("fixture group {} has invalid archetype coverage".format(group_id))
+            reviewed_archetypes = []
+        placement_counts = Counter(
+            placement["archetype"] for placement in group["placements"]
+        )
+        if entry.get("expected_placements") != dict(sorted(placement_counts.items())):
+            errors.append("fixture group {} placement counts changed".format(group_id))
+        if entry.get("expected_maps") != group["maps"]:
+            errors.append("fixture group {} map coverage changed".format(group_id))
+        expected_color = entry.get("expected_color")
+        if not isinstance(expected_color, str) or LIGHT_COLOR_RE.fullmatch(
+            expected_color
+        ) is None:
+            errors.append("fixture group {} has an invalid expected color".format(group_id))
+        default_radii = entry.get("default_radii")
+        if not isinstance(default_radii, dict):
+            errors.append("fixture group {} default_radii must be an object".format(group_id))
+            default_radii = {}
+        for archetype in reviewed_archetypes:
+            row = archetypes_by_id.get(archetype)
+            if row is None or row.get("radius") != default_radii.get(archetype):
+                errors.append(
+                    "fixture group {} default radius changed for {}".format(
+                        group_id, archetype
+                    )
+                )
+            if row is None or row.get("color") != expected_color:
+                errors.append(
+                    "fixture group {} default color changed for {}".format(
+                        group_id, archetype
+                    )
+                )
+        non_emitters = {
+            placement["id"]: placement
+            for placement in group["placements"]
+            if placement["radius"] is None
+        }
+        reviewed_non_emitters = entry.get("intentional_non_emitters")
+        if not isinstance(reviewed_non_emitters, dict):
+            errors.append(
+                "fixture group {} intentional_non_emitters must be an object".format(
+                    group_id
+                )
+            )
+            reviewed_non_emitters = {}
+        if set(reviewed_non_emitters) != set(non_emitters):
+            errors.append(
+                "fixture group {} non-emitting dispositions changed".format(group_id)
+            )
+        for identifier, rationale in sorted(reviewed_non_emitters.items()):
+            if not isinstance(rationale, str) or len(rationale.strip()) < 12:
+                errors.append(
+                    "fixture {} needs a concise non-emitting rationale".format(
+                        identifier
+                    )
+                )
+        for placement in group["placements"]:
+            if placement.get("color") != expected_color:
+                errors.append(
+                    "fixture {} does not resolve the reviewed color".format(
+                        placement["id"]
+                    )
+                )
+            same_tile = placement.get("same_tile_emitters")
+            if placement["radius"] is None:
+                if (
+                    placement.get("local_radius") != 0
+                    or not isinstance(same_tile, list)
+                    or len(same_tile) != 1
+                    or same_tile[0] not in emitter_ids
+                ):
+                    errors.append(
+                        "non-emitting fixture {} lacks one reviewed composite source".format(
+                            placement["id"]
+                        )
+                    )
+            elif same_tile:
+                errors.append(
+                    "emitting fixture {} has an accidental same-tile source".format(
+                        placement["id"]
+                    )
+                )
+        checks = entry.get("checks")
+        if (
+            not isinstance(checks, list)
+            or not checks
+            or checks != sorted(set(checks))
+            or any(not isinstance(check, str) or not check for check in checks)
+        ):
+            errors.append("fixture group {} has invalid review checks".format(group_id))
+        if entry.get("semantic_sha256") != group["semantic_sha256"]:
+            errors.append("fixture group {} changed since review".format(group_id))
     for section in ("archetypes", "artifacts"):
         for row in report[section]:
             for field in (
@@ -2471,15 +2699,7 @@ def validate_light_inventory(report: dict) -> list[str]:
                     )
                 )
     errors.extend(validate_light_evidence(report))
-    required_checks = {
-        "overlap",
-        "linked-depth",
-        "horizontal-boundary",
-        "dark-interior",
-        "outdoor-transition",
-        "fog-roof",
-        "navigation",
-    }
+    required_checks = _required_context_checks(review)
     for section, expected_ids in expected.items():
         entries = review.get(section)
         if not isinstance(entries, dict):

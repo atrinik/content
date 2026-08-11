@@ -1093,10 +1093,7 @@ end
 arch candlelight4.101
 x 7
 y 18
-end
-arch light4
-x 7
-y 18
+glow_radius 4
 end
 arch floor_white1a
 x 7

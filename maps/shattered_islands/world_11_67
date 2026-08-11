@@ -2781,12 +2781,9 @@ end
 arch candlelight4.101
 x 17
 y 10
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 17
-y 10
-end
-arch light5
 x 17
 y 10
 end
@@ -2837,12 +2834,9 @@ end
 arch candlelight3.101
 x 17
 y 16
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 17
-y 16
-end
-arch light5
 x 17
 y 16
 end
@@ -2861,12 +2855,9 @@ end
 arch candlelight4.101
 x 17
 y 18
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 17
-y 18
-end
-arch light5
 x 17
 y 18
 end
@@ -2901,12 +2892,9 @@ end
 arch candlelight4.101
 x 17
 y 22
+glow_radius 5
 end
 arch wall_flagstone1.141
-x 17
-y 22
-end
-arch light5
 x 17
 y 22
 end

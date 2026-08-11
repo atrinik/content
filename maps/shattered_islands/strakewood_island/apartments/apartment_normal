@@ -180,10 +180,6 @@ end
 arch floor_ostone5
 x 3
 y 1
-arch event_obj
-sub_type 1
-race /python/items/lost_memories_apartment_bed.py
-end
 end
 arch bed_1a.111
 name bed to reality
@@ -192,6 +188,10 @@ no_magic 1
 damned 1
 x 3
 y 1
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch floor_ostone5
 x 3
@@ -239,10 +239,6 @@ end
 arch floor_ostone5
 x 4
 y 1
-arch event_obj
-sub_type 1
-race /python/items/lost_memories_apartment_bed.py
-end
 end
 arch bed_1b.111
 name bed to reality
@@ -251,6 +247,10 @@ no_magic 1
 damned 1
 x 4
 y 1
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch floor_ostone5
 x 4

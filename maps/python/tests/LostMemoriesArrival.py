@@ -406,7 +406,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIsNotNone(portal)
         self.walk_into_portal(portal)
         self.assertEqual(expected_path, activator.map.path)
-        self.assertEqual((10, 13), (activator.x, activator.y))
+        self.assertEqual((11, 12), (activator.x, activator.y))
 
         sand_tiles = self.find_map_objects(
             lambda obj: obj.archname.startswith("floor_sand_d")

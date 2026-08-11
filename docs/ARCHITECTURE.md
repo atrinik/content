@@ -51,8 +51,8 @@ documented in [`CONTENT_CORE.md`](CONTENT_CORE.md).
 Generated runtime files are outputs, never authored sources. Exploratory reports
 from `tools/world_content_audit.py` are review artifacts, not another identity or
 grammar authority. Its map and archetype traversal uses the common core. The
-checked light-source review baseline records art-direction dispositions and
-render evidence, while effective fields remain authored runtime data; see
+checked light-source review baseline records semantic digests and art-direction
+dispositions, while effective fields remain authored runtime data; see
 [`LIGHT_SOURCE_AUDIT.md`](LIGHT_SOURCE_AUDIT.md). A new
 loader, writer, checker, collector, or analyzer must use the existing catalog,
 lossless core, and versioned contract boundaries instead of introducing a

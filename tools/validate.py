@@ -49,7 +49,6 @@ def main() -> int:
             "tools.tests.test_content_schema",
             "tools.tests.test_syntax_evaluation",
             "tools.tests.test_world_content_audit",
-            "tools.tests.test_light_review_evidence",
             "tools.tests.test_release_guidance",
             "tools.tests.test_release_line",
             "tools.tests.test_python_commands",

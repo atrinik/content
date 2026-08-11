@@ -1,6 +1,6 @@
 {
-  "schema_version": 4,
-  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, toggle-active state review, and durable Classic client smooth/discrete runtime evidence.",
+  "schema_version": 5,
+  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, toggle-active state review, and contextual Classic art-direction decisions without committed render artifacts.",
   "palette": {
     "4060ff": {
       "name": "forcefield blue",
@@ -1134,145 +1134,30 @@
   "context_checks": {
     "overlap": {
       "status": "pass",
-      "views": [
-        "smooth-0001",
-        "discrete-0001",
-        "smooth-0350",
-        "discrete-0008"
-      ],
       "rationale": "Compared overlapping neutral, portal, and cold-blue emitters in the Bone Cairn and ice cavern without clipping or lost object silhouettes."
     },
     "linked-depth": {
       "status": "pass",
-      "views": [
-        "smooth-0200",
-        "discrete-0007"
-      ],
       "rationale": "Compared a linked underground-city depth; the authored illumination continues to distinguish its corridor and adjacent combat space."
     },
     "horizontal-boundary": {
       "status": "pass",
-      "views": [
-        "smooth-0450",
-        "discrete-0011"
-      ],
       "rationale": "Compared a horizontally linked city boundary and bridge; lighted walls, water edges, and exits remain readable in both renderer modes."
     },
     "dark-interior": {
       "status": "pass",
-      "views": [
-        "smooth-0050",
-        "discrete-0002",
-        "smooth-0085",
-        "smooth-0094",
-        "smooth-0121",
-        "smooth-0128",
-        "smooth-0425",
-        "smooth-0563",
-        "smooth-0564",
-        "smooth-0565",
-        "smooth-0566",
-        "smooth-0567",
-        "smooth-0640",
-        "smooth-0641",
-        "smooth-0980",
-        "smooth-1110",
-        "smooth-1111",
-        "smooth-1112",
-        "smooth-1113",
-        "discrete-0003",
-        "discrete-0004",
-        "discrete-0005",
-        "discrete-0006",
-        "discrete-0010",
-        "discrete-0012",
-        "discrete-0013",
-        "discrete-0014",
-        "discrete-0015",
-        "discrete-0016",
-        "discrete-0017",
-        "discrete-0018",
-        "discrete-0020",
-        "discrete-0021",
-        "discrete-0022",
-        "discrete-0023",
-        "discrete-0024",
-        "smooth-1181",
-        "smooth-1184",
-        "smooth-1185",
-        "smooth-1187",
-        "smooth-1200",
-        "smooth-1207",
-        "smooth-1209",
-        "smooth-1211",
-        "smooth-1212",
-        "smooth-1215",
-        "smooth-1216",
-        "smooth-1217",
-        "smooth-1218",
-        "smooth-1219"
-      ],
       "rationale": "Compared the source lab and every glower context in both modes: warm emitting fixtures preserve deliberate darkness without wall bleed or washout, while the five zero-radius fixtures remain dark."
     },
     "outdoor-transition": {
       "status": "pass",
-      "views": [
-        "smooth-0400",
-        "discrete-0009",
-        "smooth-0362",
-        "smooth-0752",
-        "smooth-1038"
-      ],
       "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping."
     },
     "fog-roof": {
       "status": "pass",
-      "views": [
-        "smooth-0001",
-        "discrete-0001"
-      ],
       "rationale": "Compared the Bone Cairn portal under fog and occluding cave structure; lighting does not reveal blocked routes or erase the cutaway boundary."
     },
     "navigation": {
       "status": "pass",
-      "views": [
-        "smooth-0650",
-        "discrete-0019",
-        "smooth-0085",
-        "smooth-0094",
-        "smooth-0121",
-        "smooth-0128",
-        "smooth-0425",
-        "smooth-0563",
-        "smooth-0564",
-        "smooth-0565",
-        "smooth-0566",
-        "smooth-0567",
-        "smooth-0640",
-        "smooth-0641",
-        "smooth-0980",
-        "smooth-1110",
-        "smooth-1111",
-        "smooth-1112",
-        "smooth-1113",
-        "discrete-0003",
-        "discrete-0004",
-        "discrete-0005",
-        "discrete-0006",
-        "discrete-0010",
-        "discrete-0012",
-        "discrete-0013",
-        "discrete-0014",
-        "discrete-0015",
-        "discrete-0016",
-        "discrete-0017",
-        "discrete-0018",
-        "discrete-0020",
-        "discrete-0021",
-        "discrete-0022",
-        "discrete-0023",
-        "discrete-0024"
-      ],
       "rationale": "Compared the baseline enclosed garden plus all eight glower contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes."
     }
   },

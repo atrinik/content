@@ -76,7 +76,7 @@ python3 tools/world_content_audit.py all > build/world-content-audit.json
 ```
 
 Pass `quests`, `regions`, `artifacts`, `world`, or `lights` for a focused report.
-The checked light-source baseline and its rendered review workflow are
+The checked semantic light-source baseline and review workflow are
 documented in [`docs/LIGHT_SOURCE_AUDIT.md`](docs/LIGHT_SOURCE_AUDIT.md). The
 audit emits deterministic JSON and never modifies authored content. It is a
 review aid, not a replacement for `tools/validate.py` or the typed catalog.

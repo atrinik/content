@@ -7,6 +7,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color a060ff
 end
 
 Object crystal_purple_s
@@ -18,6 +19,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color a060ff
 end
 
 Object crystal_red
@@ -29,6 +31,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color ff3030
 end
 
 Object crystal_red_s
@@ -40,6 +43,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color ff3030
 end
 
 Object crystal_yellow
@@ -51,6 +55,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color ffe060
 end
 
 Object crystal_yellow_s
@@ -95,6 +100,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color 60d0ff
 end
 
 Object crystal_blue_s
@@ -106,6 +112,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color 60d0ff
 end
 
 Object crystal_white
@@ -117,6 +124,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color fff0c0
 end
 
 Object crystal_white_s
@@ -128,6 +136,7 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl crystals
+light_color fff0c0
 end
 
 Object crystal10

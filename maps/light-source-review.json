@@ -630,23 +630,23 @@
     },
     "crystal10": {
       "rationale": "The authored 8040ff tint matches crystal10's blue-violet facets.",
-      "semantic_sha256": "e5e7a18667ef6af7f41e2f9f4b41b72febda9d2fc1d74abc4227991b43747109"
+      "semantic_sha256": "deb551f9ab9833b43dba50bb6b6235c2ca6b5ece1cb9663ed48104ce69604f4f"
     },
     "crystal11": {
       "rationale": "The authored 40ff60 tint matches crystal11's saturated green facets.",
-      "semantic_sha256": "f2c90955bdb612329a11ad02c5b6acca645370602bbadd2979f877d8e540ff5d"
+      "semantic_sha256": "fb449dd9dabe258df624b16e99c446bfcf9b9e8fe2cbbf1fa7207f09fb8381fe"
     },
     "crystal12": {
       "rationale": "The authored ff6030 tint matches crystal12's red-orange facets.",
-      "semantic_sha256": "5ea51b9676579e7e2b492f79a8bd7155691bd0c755fbf4c29e370ac546828c75"
+      "semantic_sha256": "a461aae6e95286f294a29d28a9df01af54a74d9db6d8ffb8bb096370797e1983"
     },
     "crystal13": {
       "rationale": "The authored c0e0ff tint matches crystal13's white facets and blue-gray shadows.",
-      "semantic_sha256": "01a839d2695ec1ebe687edaa41b55eb2f9870717e424e8b22458ef3235133ad7"
+      "semantic_sha256": "f509209b01f3f7282b34b4ba79b413999dd1e64298287bdafb56b0aa3edffb30"
     },
     "crystal14": {
       "rationale": "The authored ff60c0 tint matches crystal14's magenta facets.",
-      "semantic_sha256": "ed1aebc2ce6a29631041b6579d5429894180c2ebdfab8571b6defca4512466e3"
+      "semantic_sha256": "717bca9bec6dc224f1b8e670c956c78ddd3eaebd237bc2f947dfbc60b393b4b2"
     },
     "crystal_light": {
       "rationale": "The activated pale crystal uses explicit soft-white light matching its animated facets.",
@@ -1091,6 +1091,42 @@
     "water_still": {
       "rationale": "The authored 60d0ff tint matches the visible art for water_still.",
       "semantic_sha256": "2677435533c01316677895fb243290bda1f1f208550e739f30d426bf7b6afd81"
+    },
+    "crystal_blue": {
+      "rationale": "The authored 60d0ff tint matches the crystal's saturated blue facets and cool highlights.",
+      "semantic_sha256": "ead2e24a32ac639fae7dc8fe9016b82272387be49563bc23f478d0f5d82b20ab"
+    },
+    "crystal_blue_s": {
+      "rationale": "The authored 60d0ff tint matches the small crystal's saturated blue facets and cool highlights.",
+      "semantic_sha256": "7c339e310122da7a2fc88744469f3eb9b6fe9df9a2c318ac9404614e97c1563b"
+    },
+    "crystal_purple": {
+      "rationale": "The authored a060ff tint matches the crystal's violet facets and lavender highlights.",
+      "semantic_sha256": "0872579d13aba0d211a815e009e380cbb81072ca1cefedab08c65cc75654a95d"
+    },
+    "crystal_purple_s": {
+      "rationale": "The authored a060ff tint matches the small crystal's violet facets and lavender highlights.",
+      "semantic_sha256": "2bf844b037189098425589f79eac26f4dc4eb9777b49efb680d1a1083de9a5e9"
+    },
+    "crystal_red": {
+      "rationale": "The authored ff3030 tint matches the crystal's saturated red facets and warm highlights.",
+      "semantic_sha256": "8968aff467db6a072ce786b1f0bc00ce1a9283d785daf11eb0b862070c3fd618"
+    },
+    "crystal_red_s": {
+      "rationale": "The authored ff3030 tint matches the small crystal's saturated red facets and warm highlights.",
+      "semantic_sha256": "0d4c596c606d67790a4756e6b0769ae4b5253ea34a8bb24459f77f5c971e158e"
+    },
+    "crystal_white": {
+      "rationale": "The authored fff0c0 tint matches the crystal's pale facets and warm pearl highlights.",
+      "semantic_sha256": "d0664807248f8fff8e019eb18e80e4b728a63e6b6195efb3dcbc2e090e3648a6"
+    },
+    "crystal_white_s": {
+      "rationale": "The authored fff0c0 tint matches the small crystal's pale facets and warm pearl highlights.",
+      "semantic_sha256": "d079ecba60fc3b3eb0ecaa35a8068b55c3e94cfcac33d9dcca629992a3c84234"
+    },
+    "crystal_yellow": {
+      "rationale": "The authored ffe060 tint matches the crystal's golden facets and yellow highlights.",
+      "semantic_sha256": "facce0b99a58d951b45d2fec768649a88393ee854366b686b3a9214c2b1467d0"
     }
   },
   "toggle_states": {
@@ -1104,7 +1140,7 @@
     },
     "5dbc04fdedf142a2eff34287688b3a7ffe7a28f06fa3b41db05ee4d9e6df421a": {
       "rationale": "Applied runtime review covers halloween_abyss_jackolantern at active radius 5 with ff8030 light and its Classic clone-derived jackolantern art.",
-      "semantic_sha256": "755e4ca5c38690e0ce81cf9ce581d5be24daf1db6bc373f84a369e37b239e081"
+      "semantic_sha256": "deb77200d29bd4395059f76a98efedecc9ae81e728693abcc51b9737a1c34853"
     },
     "68cda6f9640dc0016ffbc2ef90394508aae5b2ca44a4603b93091b5cbaa4a926": {
       "rationale": "Applied runtime review covers grave_fire.101 at active radius 5 with ff6030 light and its Classic clone-derived grave_fire.101 art.",
@@ -1144,7 +1180,7 @@
     },
     "f2a2532e32a058e7e810d7e0c766ac0c9a516019b14ae5c0abf5afc8fa662404": {
       "rationale": "Applied runtime review covers mithril_lamp at active radius 5 with 60d0ff light and its Classic clone-derived mithril_lamp art.",
-      "semantic_sha256": "4919424bc119e506e22db8c8ed60d2de9380a7a5d73a0497f4002e11b4e8ecc8"
+      "semantic_sha256": "18d008dec6fb83aa9fed97fd7b84fff2adf27ff359e6650d1c1cb9b1f5e7f9ab"
     },
     "ff4808f53872611d84dc81468f582151c7f9efb34153beb0aed4442ba1a40aaf": {
       "rationale": "Applied runtime review covers the directly registered crystal_light4 artifact clone at active radius 5 with fff0c0 light and its pale crystal animation.",
@@ -1154,7 +1190,7 @@
   "context_checks": {
     "overlap": {
       "status": "pass",
-      "rationale": "Compared overlapping neutral, portal, and cold-blue emitters in the Bone Cairn and ice cavern without clipping or lost object silhouettes.",
+      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control.",
       "classic_views": [
         "smooth-0001",
         "discrete-0001",
@@ -1164,7 +1200,7 @@
     },
     "linked-depth": {
       "status": "pass",
-      "rationale": "Compared a linked underground-city depth; the authored illumination continues to distinguish its corridor and adjacent combat space.",
+      "rationale": "Compared linked Zechna depths and the established underground-city control; colored pools remain bounded to their authored levels.",
       "classic_views": [
         "smooth-0200",
         "discrete-0003"
@@ -1172,7 +1208,7 @@
     },
     "horizontal-boundary": {
       "status": "pass",
-      "rationale": "Compared a horizontally linked city boundary and bridge; lighted walls, water edges, and exits remain readable in both renderer modes.",
+      "rationale": "Compared Zechna linked neighbors and the established city-boundary control; seams remain readable without light leakage.",
       "classic_views": [
         "smooth-0450",
         "discrete-0006"
@@ -1180,7 +1216,7 @@
     },
     "dark-interior": {
       "status": "pass",
-      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable.",
+      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes.",
       "classic_views": [
         "smooth-0050",
         "discrete-0002",
@@ -1202,7 +1238,7 @@
     },
     "outdoor-transition": {
       "status": "pass",
-      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping.",
+      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting.",
       "classic_views": [
         "smooth-0400",
         "discrete-0005",
@@ -1213,7 +1249,7 @@
     },
     "fog-roof": {
       "status": "pass",
-      "rationale": "Compared the Bone Cairn portal under fog and occluding cave structure; lighting does not reveal blocked routes or erase the cutaway boundary.",
+      "rationale": "Retained the unchanged Bone Cairn fog-and-roof control; lighting still does not reveal blocked routes or erase cutaway boundaries.",
       "classic_views": [
         "smooth-0001",
         "discrete-0001"
@@ -1221,7 +1257,7 @@
     },
     "navigation": {
       "status": "pass",
-      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes.",
+      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast.",
       "classic_views": [
         "smooth-0650",
         "discrete-0007"
@@ -1290,7 +1326,7 @@
       "rationale": "Rendered Clearhaven Mine in the issue65_0008 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "5db2d433ecd46e68d88a7ba33d749a325871925b1da26bca969c04661c80934c"
+      "semantic_sha256": "3cbff3ebb9611282ee9cee91dc5a09f2cebcc54747313c096077630084cd5b73"
     },
     "maps/shattered_islands/eld_woods_island/clearhaven/mine/mine_entrance_a": {
       "uncolored_disposition": "neutral",
@@ -1477,12 +1513,12 @@
     },
     "maps/shattered_islands/strakewood_island/brynknot/abyss/abyss": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered In the Abyss in the issue65_0025 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered In the Abyss in paired smooth and discrete issue-102 views; crystal-owned red and purple pools retain lava contrast, the existing cold-blue context, silhouettes, and linked cavern seams.",
       "visible_neutral": {},
       "art_overrides": {
-        "6376": "Map-local face or animation override was rendered with its explicit contextual light color."
+        "6355": "Map-local face or animation override was rendered with its explicit contextual light color."
       },
-      "semantic_sha256": "caf4cee5a8a5f87d2ba7beeba1a894f92a4f8277ca9fe93392a676332c0ff798"
+      "semantic_sha256": "479687141816d7d513012bf5f8433da8881f0c1dce246c1dc509ce9b7b5ab733"
     },
     "maps/shattered_islands/strakewood_island/brynknot/sewers/lab": {
       "uncolored_disposition": "neutral",
@@ -2284,10 +2320,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned soft-white pools preserve the entrance chamber, portal silhouette, and linked seams.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7ed737228505f3ecca9e68395afae39ea31039a5340b9555f6aa57023696afb7"
+      "semantic_sha256": "2439d9d7c2646fcf33867debad90405080046be1819893505366bf33538c5123"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0_-1": {
       "uncolored_disposition": "neutral",
@@ -2298,17 +2334,17 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_c batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; the crystal-owned red pool and two fixture-owned orange-red braziers preserve corridor walls, doors, interior hierarchy, and linked-depth readability without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "26d27190bda3e112d6be06ca6a4de7b0d2ec363b2f90116cf42639ba6c9396c6"
+      "semantic_sha256": "dc6c4c8de34e02d06466199f692d3065d19a27f80754786632cb515db79aa5fc"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_d batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned blue, red, and purple pools preserve corridor navigation, doors, and dark-room boundaries.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "24aec41734ce2e69f45c0dcbe848ec90b7ed0072289176ff9765407b9d39551e"
+      "semantic_sha256": "fe02936f38ba8bf02afabf718b65952b0d1b8a19b249a80023eeb1bba638e27a"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_1": {
       "uncolored_disposition": "neutral",
@@ -2333,10 +2369,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_1_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_d batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned red and purple pools retain stairs, exits, monster silhouettes, and neighboring-map seams.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1ee08ec130855d66efe5f382010caeb58cff429b7a62891faf9a014edd848d95"
+      "semantic_sha256": "1daf2db3c4016668ceaf79c36f89084c5c029f195fce978801c3d9766175e5d9"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_0": {
       "uncolored_disposition": "neutral",
@@ -2347,10 +2383,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_0_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; the crystal-owned blue pool preserves the chamber route and linked-depth boundary.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "671391026b28b01f451de4c9e71dafd45f975b22981ce8d5eb71ec5885ccda19"
+      "semantic_sha256": "49ebff6dd35f7bb0e800ab72516fa11fdecfac97fb5667f9455a2af813196b0e"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_0_-2": {
       "uncolored_disposition": "neutral",
@@ -2361,10 +2397,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_0_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_d batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; overlapping crystal-owned red and purple pools preserve combat silhouettes, doors, and traversable floor edges.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "458bcf1f49704f8fa11919eaa430ae3e3c1e34a3180832236f046fa80650b700"
+      "semantic_sha256": "7da9bc79d8bae7d3778ba05e9af3324874112569f983b0e28824ccc762babffa"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1": {
       "uncolored_disposition": "neutral",
@@ -2382,17 +2418,17 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_c batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; the crystal-owned yellow pool preserves corridor doors, wall torches, and stair navigation.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "09134488e86391dbdc215f763e4171a60667dd873344cef957a2aae0332725e7"
+      "semantic_sha256": "4470f7aa47bee362e6e237d9102f120b01e56514a8deb9427afe0c5de8c48c49"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in the zechna_temple_d batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned red and purple pools preserve monster silhouettes, exits, floor detail, and linked seams.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8d481e267d60c729bbe9c7e657206cf658c90db369bdf61e415e017b6e150d5d"
+      "semantic_sha256": "2ef5b7e10ee38e0ad4ff968e3fa6e003d3562f9d4b2a44a5c93f335fba6c961a"
     },
     "maps/shattered_islands/world_-1_41": {
       "uncolored_disposition": "neutral",

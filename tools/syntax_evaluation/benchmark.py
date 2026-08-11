@@ -474,6 +474,43 @@ def _server_measurements(
     }
 
 
+def _topology_input_components(topology: Any) -> dict[str, Any]:
+    components = topology.get("components")
+    dependencies = topology.get("dependencies")
+    providers = topology.get("providers", {})
+    if (
+        not isinstance(components, dict)
+        or not isinstance(dependencies, list)
+        or not dependencies
+        or not isinstance(providers, dict)
+        or any(not isinstance(name, str) for name in dependencies)
+        or "server" not in dependencies
+        or "content" not in dependencies
+    ):
+        raise PrototypeError("wrapper topology is missing server/content inputs")
+    resolved = {
+        name: providers.get(name, name)
+        for name in dependencies
+    }
+    if any(
+        not isinstance(component, str) or component not in components
+        for component in resolved.values()
+    ):
+        raise PrototypeError("wrapper topology is missing server/content inputs")
+    inputs = {
+        name: {
+            "commit": components[resolved[name]]["head"],
+            "dirty": components[resolved[name]]["dirty"],
+            "path": components[resolved[name]]["path"],
+        }
+        for name in sorted(dependencies)
+    }
+    dirty = [name for name, value in inputs.items() if value["dirty"]]
+    if dirty:
+        raise PrototypeError("benchmark topology inputs must be clean: {}".format(", ".join(dirty)))
+    return inputs
+
+
 def _topology_inputs(workspace_root: Path, profile: str) -> dict[str, Any]:
     result = _run(
         (
@@ -492,29 +529,7 @@ def _topology_inputs(workspace_root: Path, profile: str) -> dict[str, Any]:
         topology = json.loads(result.stdout)
     except json.JSONDecodeError as error:
         raise PrototypeError("wrapper topology output is not JSON") from error
-    components = topology.get("components")
-    dependencies = topology.get("dependencies")
-    if (
-        not isinstance(components, dict)
-        or not isinstance(dependencies, list)
-        or not dependencies
-        or any(not isinstance(name, str) or name not in components for name in dependencies)
-        or "server" not in dependencies
-        or "content" not in dependencies
-    ):
-        raise PrototypeError("wrapper topology is missing server/content inputs")
-    inputs = {
-        name: {
-            "commit": components[name]["head"],
-            "dirty": components[name]["dirty"],
-            "path": components[name]["path"],
-        }
-        for name in sorted(dependencies)
-    }
-    dirty = [name for name, value in inputs.items() if value["dirty"]]
-    if dirty:
-        raise PrototypeError("benchmark topology inputs must be clean: {}".format(", ".join(dirty)))
-    return inputs
+    return _topology_input_components(topology)
 
 
 def _implementation_digest(root: Path) -> str:

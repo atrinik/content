@@ -46,11 +46,21 @@ uses `vMAJOR.MINOR.PATCH` tags. `main` published `v1.9.0` after this branch's
 `v1.8.1` fork and owns that version permanently, so the maintenance line is
 bounded to `>=1.8.1 <1.9.0` even though `main` has since established the 2.x
 replacement line. The historical `feat(release)` bootstrap commit is classified
-as a patch by one exact analyzer rule; this permits the first maintenance
-release at `v1.8.2` without weakening normal feature or breaking-change
-classification. Future `1.x` changes are maintenance fixes, not features.
-Published releases and dry runs must remain in `>=1.8.1 <1.9.0` on channel
-`1.x`.
+as a patch by an exact analyzer rule; this permitted the first maintenance
+release at `v1.8.2`. Six feature commits merged before the patch-only
+pull-request policy are also matched by exact type, scope, and subject rules:
+colored-light authoring (#64), the Incuna Sam objective (#63), effective
+light-source auditing (#67), the Incuna apartment flow (#112), fire-fixture
+lighting (#115), and crystal-light ownership (#116). These bounded recovery
+rules cannot classify a different feature subject as a patch.
+
+The `Conventional PR title` check rejects every new `feat` or breaking title
+whose base is `1.x`, while leaving `main` feature and breaking behavior
+unchanged. Future `1.x` changes are maintenance fixes, not features. Published
+releases and dry runs must remain in `>=1.8.1 <1.9.0` on channel `1.x`. The
+GitHub release plugin deliberately disables its failure-issue hook. Release
+failures remain visible in the workflow log, and an issue-creation or label
+validation failure cannot obscure the originating Semantic Release error.
 
 The release has three integrity layers:
 

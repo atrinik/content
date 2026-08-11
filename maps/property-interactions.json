@@ -6,7 +6,7 @@
       "quest_id": "lost_memories",
       "quest_part_id": "apartment_tutorial",
       "npc_id": "incuna_apartment_steward",
-      "property_id": "strakewood_island_apartment",
+      "property_id": "incuna_apartment",
       "npc_binding": {
         "map": "/shattered_islands/world_4_85",
         "x": 9,
@@ -19,7 +19,7 @@
         "x": 10,
         "y": 4,
         "archetype": "exit",
-        "property_id": "strakewood_island_apartment",
+        "property_id": "incuna_apartment",
         "return_x": 10,
         "return_y": 5
       },
@@ -42,7 +42,7 @@
       "runtime_owners": {
         "main": "typed_property_service",
         "classic_1x": "classic_apartment_adapter",
-        "classic_entitlement_tag": "strakewood_island_apartment"
+        "classic_entitlement_tag": "incuna_apartment"
       }
     }
   ]

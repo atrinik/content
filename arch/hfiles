@@ -1626,14 +1626,14 @@ An apartment is a private map belonging to your character. Other players cannot 
 
 [title]Portals And Returning[/title]
 
-Apartment portals are regional. Entering through one records that portal as the return point, so the exit inside your apartment takes you back where you entered. The same Strakewood apartment can be reached from Incuna during [i]Lost Memories[/i] and from Brynknot after the voyage.
+Apartment ownership is regional. Incuna's beach nook, Strakewood apartments, and Eld Woods treehomes are separate properties, and each portal opens only the property for its own region. Entering records that portal as the return point, so the exit inside takes you back where you entered.
 
 [title]Beds And Recall[/title]
 
-Use the bed inside your apartment to save your character and set the apartment as your recall point. Word of Recall and other return-to-bed behavior will then bring you there.
+Use the bed or hammock inside your apartment to save your character and set the apartment as your recall point. Word of Recall and other return-to-bed behavior will then bring you there.
 
 [title]Later Upgrades[/title]
 
-Apartment stewards in larger settlements sell roomier apartments. Buying an upgrade replaces the regional apartment layout while safely transferring the items from the old apartment. The ordinary purchase and upgrade prices still apply to those later choices.
+Some regional apartment stewards sell roomier layouts. Buying an upgrade within that region replaces its apartment layout while safely transferring the items from the old apartment. Apartments in other regions are purchased and stored separately.
 endmsg
 end

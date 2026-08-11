@@ -1056,10 +1056,10 @@ x 7
 y 3
 end
 arch exit
-name Incuna Strakewood apartment portal
-property_id strakewood_island_apartment
+name Incuna beach nook portal
+property_id incuna_apartment
 msg
-The apartment portal stewarded by Elara Harth. It opens only for the owner of a Strakewood apartment.
+The portal to the tiny private beach stewarded by Elara Harth. It opens only for the owner of an Incuna apartment.
 endmsg
 animation portal_azure
 hp 10

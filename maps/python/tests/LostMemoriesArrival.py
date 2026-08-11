@@ -452,18 +452,27 @@ class LostMemoriesArrivalSuite(TestSuite):
                 )
                 self.assertEqual((10, 5), (activator.x, activator.y))
 
-                # Exercise the same object deserialization used when player
-                # state is reconstructed after a relog.  The live test player
-                # cannot disconnect without terminating the embedded plugin
-                # test, so rebuild an independent player object from the saved
-                # representation and verify its entitlement before continuing.
+                # Rebuild an independent player object from the saved
+                # representation, as a relog does for the player's object and
+                # inventory state.  Verify the entitlement fields from which
+                # the private map and return point are reconstructed.
                 reconstructed = Atrinik.LoadObject(serialized_player)
                 reconstructed_apartment = reconstructed.FindObject(
                     archname="player_info", name=APARTMENT_TAG
                 )
                 self.assertIsNotNone(reconstructed_apartment)
                 self.assertEqual(tier, reconstructed_apartment.slaying)
-                self.assertEqual(expected_path, reconstructed_apartment.race)
+                self.assertEqual(
+                    "/shattered_islands/world_4_85",
+                    reconstructed_apartment.race,
+                )
+                self.assertEqual(
+                    (10, 5),
+                    (
+                        reconstructed_apartment.last_sp,
+                        reconstructed_apartment.last_grace,
+                    ),
+                )
 
                 # Force the vacated private map through the normal server swap
                 # path.  Re-entry must therefore load the marker from the map

@@ -233,9 +233,14 @@ class TagCompilerInterface(BaseTagCompiler):
         self.handlers["precond"] = TagCompilerPrecond
 
     def compile(self, elem):
-        self.compiler.npc = elem.get("npc_id") or elem.get("npc")
+        npc_id = elem.get("npc_id")
+        self.compiler.npc = npc_id or elem.get("npc")
 
-        if self.compiler.npc:
+        if npc_id:
+            # Content validation guarantees a stable ID. Preserve it verbatim:
+            # punctuation is significant and distinct IDs must not collide.
+            self.compiler.npc = npc_id
+        elif self.compiler.npc:
             self.compiler.npc = re.sub(
                 r"\W+", "", self.compiler.npc.lower().replace(" ", "_")
             )

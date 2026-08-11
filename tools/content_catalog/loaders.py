@@ -811,40 +811,43 @@ def _load_interfaces(catalog: ContentCatalog, maps_root: Path) -> List[dict]:
 def _map_object_bindings(
     path: Path, catalog: ContentCatalog
 ) -> Tuple[List[dict], Optional[int], Optional[int]]:
-    """Return effective identity fields for nested objects in one map."""
+    """Return effective bindings from the authoritative lossless map model."""
 
+    # Import lazily because content_core's project index consumes this catalog.
+    from tools.content_core import parse_bytes
+
+    relative = path.relative_to(catalog.root).as_posix()
+    document = parse_bytes(path.read_bytes(), path=relative, format_name="map")
+    if not document.valid or document.map_header is None:
+        raise ValueError("property binding map is not valid authored content")
+
+    def integer_value(node, field: str, default: int) -> int:
+        value = node.last_value(field)
+        return int(value) if value is not None else default
+
+    header = document.map_header
+    width = integer_value(header, "width", 0)
+    height = integer_value(header, "height", 0)
     bindings: List[dict] = []
-    stack: List[dict] = []
-    width: Optional[int] = None
-    height: Optional[int] = None
-    for _line_number, line in _iter_source_lines(path, catalog):
-        field, value = _split(line)
-        if field == "arch" and value:
-            parent = stack[-1] if stack else {}
-            stack.append({
-                "archetype": value.split()[0],
-                "x": parent.get("x", 0),
-                "y": parent.get("y", 0),
-            })
-        elif field == "end" and not value:
-            if stack:
-                bindings.append(stack.pop())
-        elif stack and field in ("name", "npc_id", "property_id", "x", "y"):
-            stack[-1][field] = int(value) if field in ("x", "y") else value
-            if len(stack) == 1 and stack[-1].get("archetype") == "map":
-                if field == "x":
-                    width = stack[-1][field]
-                elif field == "y":
-                    height = stack[-1][field]
-        elif stack and len(stack) == 1 and field in ("width", "height"):
-            try:
-                dimension = int(value)
-            except ValueError:
-                dimension = None
-            if field == "width":
-                width = dimension
-            else:
-                height = dimension
+
+    def visit(node, parent_x: int = 0, parent_y: int = 0) -> None:
+        binding = {
+            "archetype": node.name,
+            "x": integer_value(node, "x", parent_x),
+            "y": integer_value(node, "y", parent_y),
+        }
+        for field in ("name", "npc_id", "property_id"):
+            value = node.last_value(field)
+            if value is not None:
+                binding[field] = value
+        bindings.append(binding)
+        for handle in node.child_handles:
+            visit(document.node(handle), binding["x"], binding["y"])
+
+    for handle in document.top_level_handles:
+        node = document.node(handle)
+        if node.kind == "object":
+            visit(node)
     return bindings, width, height
 
 

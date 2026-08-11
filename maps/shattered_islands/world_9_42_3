@@ -218,10 +218,7 @@ end
 arch brazier_lit
 x 23
 y 19
-end
-arch light9
-x 23
-y 19
+glow_radius 9
 end
 arch floor_white2d
 z 3
@@ -231,10 +228,7 @@ end
 arch brazier_lit
 x 23
 y 20
-end
-arch light9
-x 23
-y 20
+glow_radius 9
 end
 arch floor_white2c
 z 3

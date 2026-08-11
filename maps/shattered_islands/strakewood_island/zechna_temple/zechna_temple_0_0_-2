@@ -1342,10 +1342,6 @@ arch brazier_lit
 x 11
 y 1
 end
-arch light5
-x 11
-y 1
-end
 arch floor_sblack1b
 x 11
 y 2
@@ -1955,10 +1951,6 @@ x 16
 y 1
 end
 arch brazier_lit
-x 16
-y 1
-end
-arch light5
 x 16
 y 1
 end

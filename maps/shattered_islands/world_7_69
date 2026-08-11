@@ -657,10 +657,7 @@ end
 arch fireplace_left
 x 4
 y 3
-end
-arch light5
-x 4
-y 3
+glow_radius 5
 end
 arch ship_floor_we_dark_4
 x 4

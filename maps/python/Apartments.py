@@ -4,6 +4,21 @@
 
 ## Dictionary of all the possible apartments.
 apartments_info = {
+    "incuna":
+    {
+        "apartments":
+        {
+            "cheap":
+            {
+                "info": "The Incuna beach nook is tiny and has a hammock and a single chest.",
+                "price": 0,
+                "path": "/shattered_islands/incuna/apartments/beach_nook",
+                "x": 11,
+                "y": 12,
+            },
+        },
+        "tag": "incuna_apartment",
+    },
     "strakewood_island":
     {
         "apartments":

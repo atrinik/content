@@ -29,11 +29,12 @@
                 <response destination="remember" message="Not really..."/>
             </dialog>
             <dialog name="remember">
-                <message>Well, at any rate, I think you should visit the local church priest. Brelend Lee is his name, if I remember correctly. You should be able to find directions to him easily, perhaps by asking around the local townsfolk. A map would come in handy, hmm... I know, go visit Gulliver in the dock house. He's an old friend of mine, he might have a spare map for you.</message>
+                <message>Before you visit the local church priest, I want you to learn about apartments. Speak with Elara Harth, the apartment steward in the dock house beside Gulliver. She has arranged a tiny place of your own here in Incuna.</message>
+                <message>Once Elara has registered it, use the glowing portal beside her, enter your apartment, and use its hammock. Then you can seek out Brelend Lee, the local priest, to continue recovering your memories.</message>
                 <message>Ah, one last thing! Here, take the rest of our mushroom supplies - I'll get us something better. No offense, but I feel I wouldn't be able to stomach any more of those things...</message>
                 <object arch="sack" message="sack with mushroom supplies"/>
                 <notification action="/help basics_containers" delay="90000" message="Tutorial Available: Containers" shortcut="?HELP"/>
-                <action start="speak_priest"/>
+                <action start="apartment_tutorial"/>
                 <action complete="speak_sam"/>
                 <response action="close" message="I'll do that."/>
             </dialog>
@@ -944,6 +945,33 @@ def dialog_hello(self):
                 </code>
             </interface>
             <interface inherit="arrival" npc="Sam Goodberry" state="need_complete"/>
+        </part>
+        <part name="Your First Apartment" uid="apartment_tutorial">
+            <info>Visit apartment steward Elara Harth in Incuna's dock house beside Gulliver. Claim your tiny beach nook, enter through the glowing portal beside her, and use the hammock inside.</info>
+            <interface npc="Elara Harth" npc_id="incuna_apartment_steward" property_id="incuna_apartment" state="need_complete">
+                <dialog name="hello">
+                    <message>Welcome. Sam asked me to teach you how apartments work before you leave Incuna.</message>
+                    <message>An apartment is a private, persistent space. Only its owner can enter, and anything stored inside remains there between visits. Your Incuna apartment is a very small beach nook with one chest, but the sea view is difficult to beat.</message>
+                    <message>Apartment ownership is regional, so this is separate from any home you may later buy in Strakewood or Eld Woods. The exit returns you to this portal. Use the hammock inside to set your recall point and prove you can return safely.</message>
+                    <response destination="claim" property_action_id="lost_memories_incuna_apartment_grant" message="Please register my apartment."/>
+                    <response action="close" message="I need a moment."/>
+                </dialog>
+                <code>
+def dialog_claim(self):
+    from LostMemoriesApartment import ensure_incuna_apartment
+
+    apartment, created = ensure_incuna_apartment(self._activator)
+    if not apartment:
+        self.add_msg("I could not register the apartment safely. Nothing has advanced; please ask me to try again.")
+        self.add_link("Please try again.", dest="claim")
+        self.add_link("I'll return later.", action="close")
+        return
+
+    self.add_msg("Your Incuna beach nook is ready. If you already owned it, its contents were left untouched; otherwise, it is now yours at no charge.")
+    self.add_msg("Step into the glowing portal beside me, then use the hammock inside. Talking to me alone will not complete Sam's lesson.")
+    self.add_link("I'll visit it now.", action="close")
+                </code>
+            </interface>
         </part>
     </quest>
 </interfaces>

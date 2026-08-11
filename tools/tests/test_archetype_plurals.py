@@ -331,10 +331,10 @@ class ArchetypePluralTest(unittest.TestCase):
         path = ROOT / MANIFEST_PATH
         manifest = load_manifest(path)
         self.assertEqual(
-            "6c4eede454e239911049bb87c9ce5f96aeb328d0d11b6d7d9468ffb8c9569660",
+            "740e28c4f6ce9f45d031224f3ff91d423754228c789048352557648d4d35e100",
             hashlib.sha256(path.read_bytes()).hexdigest(),
         )
-        self.assertEqual(3559, len(manifest["rows"]))
+        self.assertEqual(3561, len(manifest["rows"]))
         self.assertEqual(
             53,
             sum(
@@ -345,10 +345,18 @@ class ArchetypePluralTest(unittest.TestCase):
         required = {
             row["archetype_id"]: row["name_pl"]
             for row in manifest["rows"]
-            if row["archetype_id"] in {"torch", "torch_burnt"}
+            if row["archetype_id"] in {
+                "hammock_a", "hammock_b", "torch", "torch_burnt",
+            }
         }
         self.assertEqual(
-            {"torch": "torches", "torch_burnt": "burnt out torches"}, required
+            {
+                "hammock_a": "hammocks",
+                "hammock_b": "hammocks",
+                "torch": "torches",
+                "torch_burnt": "burnt out torches",
+            },
+            required,
         )
 
         comparison = json.loads((ROOT / COMPARISON_PATH).read_text(encoding="utf-8"))

@@ -93,6 +93,12 @@ class ReleaseLineTests(unittest.TestCase):
                     "subject": "give Rockforge teleporter a focal glow (#117)",
                     "release": "patch",
                 },
+                {
+                    "type": "feat",
+                    "scope": "archetypes",
+                    "subject": "make toxic pools emit matching light (#118)",
+                    "release": "patch",
+                },
             ],
         )
         self.assertNotIn(

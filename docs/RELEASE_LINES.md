@@ -47,13 +47,13 @@ uses `vMAJOR.MINOR.PATCH` tags. `main` published `v1.9.0` after this branch's
 bounded to `>=1.8.1 <1.9.0` even though `main` has since established the 2.x
 replacement line. The historical `feat(release)` bootstrap commit is classified
 as a patch by an exact analyzer rule; this permitted the first maintenance
-release at `v1.8.2`. Seven feature commits merged before the patch-only
+release at `v1.8.2`. Eight feature commits merged before the patch-only
 pull-request policy are also matched by exact type, scope, and subject rules:
 colored-light authoring (#64), the Incuna Sam objective (#63), effective
 light-source auditing (#67), the Incuna apartment flow (#112), fire-fixture
-lighting (#115), crystal-light ownership (#116), and the Rockforge teleporter
-glow (#117). These bounded recovery rules cannot classify a different feature
-subject as a patch.
+lighting (#115), crystal-light ownership (#116), the Rockforge teleporter glow
+(#117), and toxic-pool lighting (#118). These bounded recovery rules cannot
+classify a different feature subject as a patch.
 
 The `Conventional PR title` check rejects every new `feat` or breaking title
 whose base is `1.x`, while leaving `main` feature and breaking behavior

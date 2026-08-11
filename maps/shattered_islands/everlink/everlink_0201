@@ -636,10 +636,6 @@ direction 7
 x 4
 y 1
 end
-arch light3
-x 4
-y 1
-end
 arch grassd_7
 x 4
 y 2

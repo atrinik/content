@@ -39,9 +39,7 @@ y 19
 end
 arch brazier_lit
 y 19
-end
-arch light9
-y 19
+glow_radius 9
 end
 arch floor_white2d
 z 3
@@ -49,9 +47,7 @@ y 20
 end
 arch brazier_lit
 y 20
-end
-arch light9
-y 20
+glow_radius 9
 end
 arch floor_white2a
 z 3

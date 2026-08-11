@@ -64,3 +64,10 @@ Optional Classic renderer inspection may inform that decision, but its captures
 are not merge or release prerequisites and must not enter content Git status.
 The ledger and audit never change archetypes, maps, light behavior, or packaged
 runtime content.
+
+The base `power_crystal` and its six artifact variants inherit one radius-1
+`fff0c0` source. Charge capacity, artifact upgrades, and multiple instances do
+not alter that per-object radius or color. The deterministic Classic lifecycle
+checks for ground, inventory, containment, trade, stronger-light precedence,
+map transitions, logout/login, and death are recorded in
+[`POWER_CRYSTAL_LIGHT_REVIEW.md`](POWER_CRYSTAL_LIGHT_REVIEW.md).

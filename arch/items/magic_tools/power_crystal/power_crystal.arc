@@ -6,6 +6,8 @@ face power_crystal.101
 animation power_crystal
 is_animated 1
 anim_speed 5
+glow_radius 1
+light_color fff0c0
 type 156
 weight 300
 value 30000

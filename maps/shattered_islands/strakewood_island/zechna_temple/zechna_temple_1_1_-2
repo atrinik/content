@@ -390,10 +390,7 @@ end
 arch crystal_yellow
 x 3
 y 15
-end
-arch light5
-x 3
-y 15
+glow_radius 5
 end
 arch floor_sblack2b
 x 3

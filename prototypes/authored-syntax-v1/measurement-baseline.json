@@ -908,7 +908,7 @@
     {
       "bytes": 8400,
       "comments": 0,
-      "corpus_count": 3650,
+      "corpus_count": 3651,
       "corpus_index": 365,
       "logical_id": "/shattered_islands/world_5_65_2",
       "objects": 259,
@@ -919,7 +919,7 @@
     {
       "bytes": 16002,
       "comments": 0,
-      "corpus_count": 3650,
+      "corpus_count": 3651,
       "corpus_index": 1825,
       "logical_id": "/shattered_islands/world_-4_65",
       "objects": 576,
@@ -930,8 +930,8 @@
     {
       "bytes": 23918,
       "comments": 0,
-      "corpus_count": 3650,
-      "corpus_index": 3284,
+      "corpus_count": 3651,
+      "corpus_index": 3285,
       "logical_id": "/shattered_islands/world_-4_57",
       "objects": 867,
       "path": "maps/shattered_islands/world_-4_57",
@@ -941,8 +941,8 @@
     {
       "bytes": 95629,
       "comments": 0,
-      "corpus_count": 3650,
-      "corpus_index": 3649,
+      "corpus_count": 3651,
+      "corpus_index": 3650,
       "logical_id": "/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",
       "objects": 2779,
       "path": "maps/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",

@@ -10,8 +10,8 @@ from Apartments import apartments_info
 from LostMemoriesApartment import (
     APARTMENT_TAG,
     complete_apartment_tutorial,
-    ensure_strakewood_apartment,
-    find_strakewood_apartment,
+    ensure_incuna_apartment,
+    find_incuna_apartment,
     notify_apartment_entry,
 )
 from QuestManager import QuestManager
@@ -42,11 +42,13 @@ class LostMemoriesArrivalSuite(TestSuite):
         )
 
     def tearDown(self):
-        apartment = activator.FindObject(
-            archname="player_info", name=APARTMENT_TAG
-        )
-        if apartment:
-            apartment.Destroy()
+        for region in ("incuna", "strakewood_island"):
+            apartment = activator.FindObject(
+                archname="player_info",
+                name=apartments_info[region]["tag"],
+            )
+            if apartment:
+                apartment.Destroy()
         for obj in self.quest_items:
             if obj:
                 obj.Destroy()
@@ -246,32 +248,31 @@ class LostMemoriesArrivalSuite(TestSuite):
                 if obj not in sacks_before:
                     obj.Destroy()
 
-    def test_apartment_grant_is_free_once_and_preserves_existing_tier(self):
+    def test_apartment_grant_is_free_once_and_regionally_independent(self):
         self.assertFalse(notify_apartment_entry(activator))
-        apartment, created = ensure_strakewood_apartment(activator)
+        strakewood = activator.CreateObject("player_info")
+        strakewood.name = apartments_info["strakewood_island"]["tag"]
+        strakewood.slaying = "luxurious"
+
+        apartment, created = ensure_incuna_apartment(activator)
         self.assertTrue(created)
         self.assertEqual(APARTMENT_TAG, apartment.name)
         self.assertEqual("cheap", apartment.slaying)
+        self.assertNotEqual(strakewood.name, apartment.name)
+        self.assertEqual("luxurious", strakewood.slaying)
 
-        repeated, created = ensure_strakewood_apartment(activator)
+        repeated, created = ensure_incuna_apartment(activator)
         self.assertFalse(created)
         self.assertEqual(apartment, repeated)
         self.assertEqual(1, len(activator.FindObjects(
             archname="player_info", name=APARTMENT_TAG
         )))
 
-        for tier in ("normal", "expensive", "luxurious"):
-            apartment.slaying = tier
-            existing, created = ensure_strakewood_apartment(activator)
-            self.assertFalse(created)
-            self.assertEqual(apartment, existing)
-            self.assertEqual(tier, existing.slaying)
-
     def test_failed_apartment_grant_does_not_advance_and_can_retry(self):
         memories = QuestManager(activator, lost_memories)
         memories.start("apartment_tutorial")
 
-        apartment, created = ensure_strakewood_apartment(
+        apartment, created = ensure_incuna_apartment(
             activator, creator=lambda archname: None
         )
         self.assertIsNone(apartment)
@@ -282,14 +283,14 @@ class LostMemoriesArrivalSuite(TestSuite):
         )
         self.assertFalse(memories.started("speak_priest"))
 
-        apartment, created = ensure_strakewood_apartment(
+        apartment, created = ensure_incuna_apartment(
             activator, ready_map=lambda path: None
         )
         self.assertIsNone(apartment)
         self.assertFalse(created)
-        self.assertIsNone(find_strakewood_apartment(activator))
+        self.assertIsNone(find_incuna_apartment(activator))
 
-        apartment, created = ensure_strakewood_apartment(activator)
+        apartment, created = ensure_incuna_apartment(activator)
         self.assertTrue(created)
         self.assertIsNotNone(apartment)
 
@@ -308,14 +309,14 @@ class LostMemoriesArrivalSuite(TestSuite):
         steward = self.find_map_object(lambda obj: obj.name == "Elara Harth")
         self.assertIsNotNone(steward)
 
-        original_ensure = LostMemoriesApartment.ensure_strakewood_apartment
+        original_ensure = LostMemoriesApartment.ensure_incuna_apartment
         try:
-            LostMemoriesApartment.ensure_strakewood_apartment = (
+            LostMemoriesApartment.ensure_incuna_apartment = (
                 lambda player: (None, False)
             )
             self.run_steward_interface(steward, "claim")
         finally:
-            LostMemoriesApartment.ensure_strakewood_apartment = original_ensure
+            LostMemoriesApartment.ensure_incuna_apartment = original_ensure
 
         self.assertIsNone(activator.FindObject(
             archname="player_info", name=APARTMENT_TAG
@@ -338,7 +339,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertFalse(complete_apartment_tutorial(activator))
         self.assertFalse(memories.started("speak_priest"))
 
-        apartment, created = ensure_strakewood_apartment(activator)
+        apartment, created = ensure_incuna_apartment(activator)
         self.assertTrue(created)
         self.assertTrue(complete_apartment_tutorial(activator))
         self.assertTrue(memories.completed("apartment_tutorial"))
@@ -359,7 +360,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             if obj.name == "Elara Harth":
                 steward = obj
         for obj in activator.map.Objects(10, 4):
-            if obj.name == "Incuna Strakewood apartment portal":
+            if obj.name == "Incuna beach nook portal":
                 portal = obj
 
         self.assertIsNotNone(steward)
@@ -373,7 +374,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertEqual(
             "/python/generic/apartment_teleport.py", portal_event.race
         )
-        self.assertEqual("strakewood_island", portal_event.slaying)
+        self.assertEqual("incuna", portal_event.slaying)
 
         packets = activator.Controller().s_packets
         packets.clear()
@@ -386,121 +387,130 @@ class LostMemoriesArrivalSuite(TestSuite):
             for packet in packets
         ))
 
-    def test_every_strakewood_tier_enters_persists_and_completes_at_bed(self):
-        region = apartments_info["strakewood_island"]
-        apartment, created = ensure_strakewood_apartment(activator)
+    def test_incuna_beach_nook_persists_and_completes_at_hammock(self):
+        region = apartments_info["incuna"]
+        info = region["apartments"]["cheap"]
+        apartment, created = ensure_incuna_apartment(activator)
         self.assertTrue(created)
+        expected_path = activator.map.GetPath(
+            info["path"], True, activator.name
+        )
+        self.assertIsNotNone(Atrinik.ReadyMap(expected_path))
+        memories = QuestManager(activator, lost_memories)
+        memories.start("apartment_tutorial")
 
-        for tier, info in region["apartments"].items():
-            with self.subTest(tier=tier):
-                self.clear_quests()
-                apartment.slaying = tier
-                expected_path = activator.map.GetPath(
-                    info["path"], True, activator.name
-                )
-                self.assertIsNotNone(Atrinik.ReadyMap(expected_path))
-                memories = QuestManager(activator, lost_memories)
-                memories.start("apartment_tutorial")
+        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
+        portal = self.find_map_object(
+            lambda obj: obj.name == "Incuna beach nook portal"
+        )
+        self.assertIsNotNone(portal)
+        self.walk_into_portal(portal)
+        self.assertEqual(expected_path, activator.map.path)
+        self.assertEqual((10, 13), (activator.x, activator.y))
 
-                activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
-                portal = self.find_map_object(
-                    lambda obj: obj.name ==
-                    "Incuna Strakewood apartment portal"
-                )
-                self.assertIsNotNone(portal)
-                self.walk_into_portal(portal)
-                self.assertEqual(expected_path, activator.map.path)
+        sand_tiles = self.find_map_objects(
+            lambda obj: obj.archname.startswith("floor_sand_d")
+        )
+        blocked_tiles = self.find_map_objects(
+            lambda obj: obj.archname == "blocked"
+        )
+        chests = self.find_map_objects(
+            lambda obj: obj.archname == "chest_sw_1"
+        )
+        hammocks = self.find_map_objects(
+            lambda obj: obj.name == "hammock to reality"
+        )
+        self.assertEqual(12, len(sand_tiles))
+        self.assertEqual(18, len(blocked_tiles))
+        self.assertEqual(1, len(chests))
+        self.assertEqual(2, len(hammocks))
+        for hammock in hammocks:
+            self.assertTrue(self.event_with_race(
+                hammock,
+                "/python/items/lost_memories_apartment_bed.py",
+            ))
 
-                marker = activator.map.CreateObject(
-                    "sword", activator.x, activator.y
-                )
-                marker.title = "issue 105 persistence marker"
-                beds = self.find_map_objects(
-                    lambda obj: obj.name == "bed to reality"
-                )
-                self.assertGreaterEqual(len(beds), 1)
-                for bed in beds:
-                    self.assertTrue(self.event_with_race(
-                        bed,
-                        "/python/items/lost_memories_apartment_bed.py",
-                    ))
-                bed = beds[0]
-                activator.SetPosition(bed.x, bed.y)
-                activator.Apply(bed)
-                self.assertTrue(memories.completed("apartment_tutorial"))
-                self.assertEqual(
-                    Atrinik.QUEST_STATUS_STARTED,
-                    memories.get_quest_status("speak_priest"),
-                )
-                activator.map.Save()
-                activator.Controller().Save()
-                serialized_apartment = apartment.Save()
-                with open(expected_path, "r", encoding="utf-8") as saved:
-                    self.assertIn(
-                        "title issue 105 persistence marker", saved.read()
-                    )
+        marker = activator.map.CreateObject(
+            "sword", activator.x, activator.y
+        )
+        marker.title = "issue 105 persistence marker"
+        hammock = hammocks[0]
+        activator.SetPosition(hammock.x, hammock.y)
+        activator.Apply(hammock)
+        self.assertTrue(memories.completed("apartment_tutorial"))
+        self.assertEqual(
+            Atrinik.QUEST_STATUS_STARTED,
+            memories.get_quest_status("speak_priest"),
+        )
+        self.assertEqual(expected_path, activator.Controller().savebed_map)
+        self.assertEqual(
+            (hammock.x, hammock.y),
+            (activator.Controller().bed_x, activator.Controller().bed_y),
+        )
+        activator.map.Save()
+        activator.Controller().Save()
+        serialized_apartment = apartment.Save()
+        with open(expected_path, "r", encoding="utf-8") as saved:
+            self.assertIn("title issue 105 persistence marker", saved.read())
 
-                apartment_exit = self.find_map_object(
-                    lambda obj: self.event_with_race(
-                        obj, "/python/generic/apartment_out.py"
-                    )
-                )
-                self.assertIsNotNone(apartment_exit)
-                activator.SetPosition(apartment_exit.x, apartment_exit.y)
-                activator.Apply(apartment_exit)
-                self.assertEqual(
-                    "/shattered_islands/world_4_85", activator.map.path
-                )
-                self.assertEqual((10, 5), (activator.x, activator.y))
+        apartment_exit = self.find_map_object(
+            lambda obj: self.event_with_race(
+                obj, "/python/generic/apartment_out.py"
+            )
+        )
+        self.assertIsNotNone(apartment_exit)
+        activator.SetPosition(apartment_exit.x, apartment_exit.y)
+        activator.Apply(apartment_exit)
+        self.assertEqual("/shattered_islands/world_4_85", activator.map.path)
+        self.assertEqual((10, 5), (activator.x, activator.y))
 
-                # Rebuild the apartment entitlement from its saved inventory
-                # representation, as player loading does during a relog.
-                # Verify the fields from which the private map and return
-                # point are reconstructed.
-                serialized_fields = serialized_apartment.splitlines()[1:-1]
-                reconstructed_apartment = Atrinik.CreateObject("player_info")
-                reconstructed_apartment.Load(
-                    "{}\n".format("\n".join(serialized_fields))
-                )
-                self.assertIsNotNone(reconstructed_apartment)
-                self.assertEqual(tier, reconstructed_apartment.slaying)
-                self.assertEqual(
-                    "/shattered_islands/world_4_85",
-                    reconstructed_apartment.race,
-                )
-                self.assertEqual(
-                    (10, 5),
-                    (
-                        reconstructed_apartment.last_sp,
-                        reconstructed_apartment.last_grace,
-                    ),
-                )
-                reconstructed_apartment.Destroy()
+        # Rebuild the apartment entitlement from its saved inventory
+        # representation, as player loading does during a relog.
+        serialized_fields = serialized_apartment.splitlines()[1:-1]
+        reconstructed_apartment = Atrinik.CreateObject("player_info")
+        reconstructed_apartment.Load(
+            "{}\n".format("\n".join(serialized_fields))
+        )
+        self.assertIsNotNone(reconstructed_apartment)
+        self.assertEqual("cheap", reconstructed_apartment.slaying)
+        self.assertEqual(
+            "/shattered_islands/world_4_85",
+            reconstructed_apartment.race,
+        )
+        self.assertEqual(
+            (10, 5),
+            (
+                reconstructed_apartment.last_sp,
+                reconstructed_apartment.last_grace,
+            ),
+        )
+        reconstructed_apartment.Destroy()
 
-                # Force the vacated private map through the normal server swap
-                # path.  Re-entry must therefore load the marker from the map
-                # file rather than observe the still-resident map object.
-                del marker, beds, bed, apartment_exit
-                apartment_map = Atrinik.ReadyMap(expected_path)
-                self.assertIsNotNone(apartment_map)
-                apartment_map.timeout = 1
-                del apartment_map
-                if self.npc:
-                    self.npc.Destroy()
-                    self.npc = None
-                simulate_server(count=2, wait=False)
+        # Force the vacated private map through the normal server swap path.
+        # Re-entry must load the marker from disk, not the resident map object.
+        del (
+            marker, sand_tiles, blocked_tiles, chests, hammocks, hammock,
+            apartment_exit,
+        )
+        apartment_map = Atrinik.ReadyMap(expected_path)
+        self.assertIsNotNone(apartment_map)
+        apartment_map.timeout = 1
+        del apartment_map
+        if self.npc:
+            self.npc.Destroy()
+            self.npc = None
+        simulate_server(count=2, wait=False)
 
-                portal = self.find_map_object(
-                    lambda obj: obj.name ==
-                    "Incuna Strakewood apartment portal"
-                )
-                self.walk_into_portal(portal)
-                self.assertEqual(expected_path, activator.map.path)
-                persisted = self.find_map_object(
-                    lambda obj: obj.title == "issue 105 persistence marker"
-                )
-                self.assertIsNotNone(persisted)
-                persisted.Destroy()
+        portal = self.find_map_object(
+            lambda obj: obj.name == "Incuna beach nook portal"
+        )
+        self.walk_into_portal(portal)
+        self.assertEqual(expected_path, activator.map.path)
+        persisted = self.find_map_object(
+            lambda obj: obj.title == "issue 105 persistence marker"
+        )
+        self.assertIsNotNone(persisted)
+        persisted.Destroy()
 
     def test_arrival_preserves_legacy_lost_memories_states(self):
         states = (

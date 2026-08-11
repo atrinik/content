@@ -8,23 +8,23 @@ from Packet import Notification
 from QuestManager import QuestManager
 
 
-APARTMENT_REGION = "strakewood_island"
+APARTMENT_REGION = "incuna"
 APARTMENT_TIER = "cheap"
 APARTMENT_TAG = apartments_info[APARTMENT_REGION]["tag"]
 TUTORIAL_PART = "apartment_tutorial"
 NEXT_PART = "speak_priest"
 
 
-def find_strakewood_apartment(player):
-    """Return the player's existing Strakewood apartment entitlement."""
+def find_incuna_apartment(player):
+    """Return the player's existing Incuna apartment entitlement."""
 
     return player.FindObject(archname="player_info", name=APARTMENT_TAG)
 
 
-def ensure_strakewood_apartment(player, creator=None, ready_map=None):
-    """Create the free cheap entitlement once, preserving any existing tier."""
+def ensure_incuna_apartment(player, creator=None, ready_map=None):
+    """Create the free Incuna beach entitlement exactly once."""
 
-    apartment = find_strakewood_apartment(player)
+    apartment = find_incuna_apartment(player)
     if apartment:
         return apartment, False
 
@@ -47,7 +47,7 @@ def ensure_strakewood_apartment(player, creator=None, ready_map=None):
             apartment.Destroy()
         return None, False
 
-    verified = find_strakewood_apartment(player)
+    verified = find_incuna_apartment(player)
     if verified != apartment or verified.slaying != APARTMENT_TIER:
         apartment.Destroy()
         return None, False
@@ -63,7 +63,7 @@ def notify_apartment_entry(player):
             manager.get_quest_status(TUTORIAL_PART) !=
             Atrinik.QUEST_STATUS_STARTED):
         return False
-    if not find_strakewood_apartment(player):
+    if not find_incuna_apartment(player):
         return False
 
     Notification(
@@ -84,7 +84,7 @@ def complete_apartment_tutorial(player):
             manager.get_quest_status(TUTORIAL_PART) !=
             Atrinik.QUEST_STATUS_STARTED):
         return False
-    if not find_strakewood_apartment(player):
+    if not find_incuna_apartment(player):
         return False
 
     if not manager.started(NEXT_PART):

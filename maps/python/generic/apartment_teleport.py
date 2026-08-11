@@ -23,7 +23,7 @@ def main():
 
         info = apartment["apartments"][pinfo.slaying]
         activator.TeleportTo(activator.map.GetPath(info["path"], True, activator.name), info["x"], info["y"])
-        if GetOptions() == "strakewood_island":
+        if GetOptions() == "incuna":
             notify_apartment_entry(activator)
 
 main()

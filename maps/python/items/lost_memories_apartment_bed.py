@@ -1,4 +1,4 @@
-"""Complete the Lost Memories apartment lesson when its bed is used."""
+"""Complete the Lost Memories apartment lesson when its hammock is used."""
 
 from Atrinik import COLOR_GREEN, WhoIsActivator
 from LostMemoriesApartment import complete_apartment_tutorial

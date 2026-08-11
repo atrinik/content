@@ -83,10 +83,11 @@ existing emitter's effective source, position, radius, color, face, visibility,
 or map context also invalidate its semantic digest. Do not refresh a digest or
 copy an old disposition without opening the map in a current Classic render.
 
-For this baseline, the wrapper profile `issue-65-light-colors-pinned` selected
-the issue's `content-1x` worktree and the isolated topology
-`issue-65-lighting-proof-pinned`, scenario `issue-65-lighting-proof`, and state
-`scenario-issue-65-lighting-proof`.
+For this baseline, the wrapper profile `issue-103-glower-1x` selected the
+issue's `content-1x` worktree at the source checkpoint recorded in the
+manifest. The isolated topology and scenario were both
+`issue-103-glower-lighting`, with state
+`scenario-issue-103-glower-lighting`.
 The Classic client at the commit recorded in
 `maps/light-source-evidence/manifest.json` connected to that profile, enabled
 its default smooth RGB renderer, teleported an invulnerable review character

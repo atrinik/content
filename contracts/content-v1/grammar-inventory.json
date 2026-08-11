@@ -181,6 +181,7 @@
       "layer",
       "level",
       "lifesave",
+      "light_color",
       "luck",
       "magic",
       "make_ethereal",

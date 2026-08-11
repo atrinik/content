@@ -5172,6 +5172,33 @@
           "additionalProperties": false,
           "properties": {
             "field_id": {
+              "const": "object.light_color"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "maxLength": 6,
+              "minLength": 6,
+              "pattern": "^[0-9A-Fa-f]{6}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
               "const": "object.luck"
             },
             "kind": {

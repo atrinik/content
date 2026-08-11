@@ -32,5 +32,6 @@ monster 1
 no_pick 1
 level 1
 faction monsters
+light_color 80ff40
 name_pl green jellies
 end

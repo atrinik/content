@@ -377,6 +377,44 @@ class ContentSchemaTest(unittest.TestCase):
             ):
                 _audit_artifact_text_constraints(fixture_root, schema_root=ROOT)
 
+    def test_light_color_is_exact_classic_rgb(self):
+        source = load_schema_source(ROOT)
+        light_color = next(
+            field
+            for field in field_definitions(source)
+            if field["field_id"] == "object.light_color"
+        )
+        self.assertEqual(
+            {
+                "maxLength": 6,
+                "minLength": 6,
+                "pattern": "^[0-9A-Fa-f]{6}$",
+            },
+            light_color["constraints"],
+        )
+
+        logical = self.valid_map()
+        logical["body"][0]["object"]["body"].append(
+            standard("object.light_color", "ffC080", 241, 250)
+        )
+        validate_logical_document(ROOT, logical)
+        for malformed in ("#ffc080", "ffc08", "ffc08000", "gggggg"):
+            logical["body"][0]["object"]["body"][-1]["value"] = malformed
+            with self.assertRaisesRegex(
+                SchemaError, "must match exactly one schema alternative"
+            ):
+                validate_logical_document(ROOT, logical)
+
+    def test_gridarta_projection_exposes_light_color(self):
+        gridarta_types = (
+            ROOT / "arch" / "dev" / "editor" / "conf" / "types.xml"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            '<attribute arch="light_color" editor="light color" type="string">',
+            gridarta_types,
+        )
+        self.assertIn("hexadecimal digits in RRGGBB form", gridarta_types)
+
     def test_schema_source_rejects_a_linked_parent_directory(self):
         with tempfile.TemporaryDirectory() as temporary:
             temporary_root = Path(temporary)

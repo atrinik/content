@@ -14,6 +14,7 @@ no_pick 1
 layer 5
 face pillar_blue10.101
 glow_radius 4
+light_color 60d0ff
 name crystal chill
 dam 11
 attack_cold 100
@@ -32,6 +33,7 @@ no_pick 1
 layer 5
 face pillar_blue9.101
 glow_radius 4
+light_color 60d0ff
 name crystal chill
 dam 11
 attack_cold 100
@@ -54,6 +56,7 @@ no_pick 1
 layer 5
 face crystal13.101
 glow_radius 4
+light_color 60d0ff
 name crystal chill
 dam 11
 attack_cold 100
@@ -67,6 +70,7 @@ no_pick 1
 layer 5
 face crystal_purple_s.101
 glow_radius 4
+light_color a060ff
 name crystal chill
 dam 11
 attack_cold 100

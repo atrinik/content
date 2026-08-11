@@ -17,6 +17,7 @@ food 500
 speed 0.15
 last_eat 1
 last_sp 3
+light_color ffc080
 can_stack 1
 name_pl torches
 end

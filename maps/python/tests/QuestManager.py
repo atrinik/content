@@ -1,3 +1,4 @@
+import time
 import unittest
 from collections import OrderedDict
 
@@ -470,16 +471,13 @@ class QuestManagerSuite(TestSuite):
         self.assertFalse(qm.fail("attempt"))
 
     def test_09_failed_repeat_quest_resets(self):
-        old_level = activator.level
         quest_container = activator.Controller().quest_container
         old_magic = quest_container.magic
         old_exp = quest_container.exp
-        self.addCleanup(setattr, activator, "level", old_level)
         self.addCleanup(setattr, quest_container, "magic", old_magic)
         self.addCleanup(setattr, quest_container, "exp", old_exp)
-        activator.level = 10
         quest_container.magic = 0
-        quest_container.exp = 0
+        quest_container.exp = int(time.time())
 
         quest = {
             "parts": OrderedDict((("attempt", {
@@ -492,11 +490,13 @@ class QuestManagerSuite(TestSuite):
             "repeat": True,
         }
         qm = QuestManager(activator, quest)
-        self.assertGreater(qm.get_qp_remaining(), 1)
+        self.assertEqual(qm.get_qp_remaining(), qm.get_qp_max())
         qm.start("attempt")
         self.assertTrue(qm.fail("attempt"))
         self.assertTrue(qm.failed())
 
+        quest_container.exp = int(time.time()) - 60 * 60 * 20
+        self.assertEqual(qm.get_qp_restored(), qm.get_qp_max())
         qm = QuestManager(activator, quest)
         self.assertFalse(qm.started())
 

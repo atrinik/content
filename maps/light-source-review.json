@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, complete fixture-group placement review, toggle-active state review, and contextual Classic art-direction decisions without committed render artifacts.",
+  "review_method": "Exact main-line effective semantic inventory ported from the pinned Classic review, with complete fixture-group placement review; color, rationale, contextual decisions, and provenance are retained without claiming replacement rendering.",
   "palette": {
     "4060ff": {
       "name": "forcefield and portal blue",
@@ -162,27 +162,27 @@
     "forcefield_blue_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_0 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "90dc72a69b5d97d1a4bf2ca4394503ca309f89a69a76326546b65236271badb4"
+      "semantic_sha256": "b01e1b4446b44bd7db9db78d8d2edd5c6b49dba12320791571e540b3573986bd"
     },
     "forcefield_blue_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_1 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "4ddf6f2b70b915ee43d8cc6e4a0b1dc79f203ac067d2a315186d54d55fcd2cef"
+      "semantic_sha256": "abd037ba93a843dd91f8935c508eedf0e6f2874eb6c832cc23792361ff3f9b52"
     },
     "forcefield_blue_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_3 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "8ca320e2fd725f54d572f24d0d6b83e013b9af159430f900a5da6d6f888deaa1"
+      "semantic_sha256": "fa2eecb10248ebf8e9b6656b9b8f052407d4017d5fdca000ed63d4fa124dfc2f"
     },
     "forcefield_blue_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_4 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "74e6bd00993a72ca8b8342a15a9f5663409b46cd1bed651f99ffe098f521a2e3"
+      "semantic_sha256": "6fcc8d209b443ac363ad5e08954fde728d249acb35c6ce0cbf05fc5c8c476c12"
     },
     "forcefield_blue_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_blue_8 uses the forcefield blue palette entry to match its visible art.",
-      "semantic_sha256": "6a7ba1d6aafe4e43bd205699f20dc16733efaf23207ed0ae494104d9e77b6c4d"
+      "semantic_sha256": "b3c1e4ef53f9ef6bd63d2b20a3485f8f1fd9e83a9e30ccc835880a9c6bda8495"
     },
     "forcefield_green_0": {
       "uncolored_disposition": "neutral",
@@ -287,27 +287,27 @@
     "forcefield_red_0": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_0 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "bbc7020ee63c7b9e06b136fbe8b2c81ed2d13f3c569ae51c5b9eeb86f9110738"
+      "semantic_sha256": "5ce224f437af0ad56ba5e8e2cd4dd951740ac2cb46f27cad5affb157aa367a07"
     },
     "forcefield_red_1": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_1 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "c759bea2a2f719f5fd8eb4011b6e280efcb25bdbdeedc733c9dd60c16fe4e411"
+      "semantic_sha256": "c0959eab139c26a251e0f9e7213cec557367731f2e0df7cad22e0ae9699ebe2b"
     },
     "forcefield_red_3": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_3 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "aef8a1c26e239fa14ce632450f848f3f6dc7b7d3085eb843c0e6eb8bb1ec3244"
+      "semantic_sha256": "20c37cdb5736ec7586deb1a40b85bd60017b13746904e20461c0e8a048c7e8f0"
     },
     "forcefield_red_4": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_4 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "21629e653f468be2d42797e22f654fb645c5e760bf352d01dc8e907348b14865"
+      "semantic_sha256": "b8485b9d3047d7800898e9fa290e64a2b873d92e9974955480f495a83780ff54"
     },
     "forcefield_red_8": {
       "uncolored_disposition": "neutral",
       "rationale": "forcefield_red_8 uses the forcefield red palette entry to match its visible art.",
-      "semantic_sha256": "81edd4a68af9d54c668b4227b9d1d53cf72e53057112c9f12a27dae1d55ee8ae"
+      "semantic_sha256": "01cfcef27b9c11ea777961b7729bd64e3d81fd981a5b33c5c6d39896d7d4fbf2"
     },
     "forcefield_white_0": {
       "uncolored_disposition": "neutral",
@@ -856,23 +856,23 @@
     },
     "forcefield_blue_0": {
       "rationale": "The authored 4060ff tint matches the visible art for forcefield_blue_0.",
-      "semantic_sha256": "fc95afad2d5c59e79bed5f02d20b75dc23ea002415e5c8ccdba46144bfe43f23"
+      "semantic_sha256": "31a96dc9a076565b99b4d5d9160e0a21efaefff3f0a9812c45be1bfa3aa57e79"
     },
     "forcefield_blue_1": {
       "rationale": "The authored 4060ff tint matches the visible art for forcefield_blue_1.",
-      "semantic_sha256": "86415b70a4d562f284ee9860088a9170d858cab0693da37bda63b02a298fb202"
+      "semantic_sha256": "dad36a3e5f13312a72677862d922aa63fa3354b3a2d2f598f8530dca86459651"
     },
     "forcefield_blue_3": {
       "rationale": "The authored 4060ff tint matches the visible art for forcefield_blue_3.",
-      "semantic_sha256": "09ece9869c03b1d46bf97b75612c7abd89ab9d79bd6114001d20c26f2a980a77"
+      "semantic_sha256": "6cbe9f4f2a51cc84098aa17acb673a47763787ab9a6ecb48d1705544ea5d0dc8"
     },
     "forcefield_blue_4": {
       "rationale": "The authored 4060ff tint matches the visible art for forcefield_blue_4.",
-      "semantic_sha256": "d76d3dca45b3823c939eb5b0a9f5a92da34c1710f937e980d5eee02b103e4745"
+      "semantic_sha256": "ad4667182c78ba495b4d7d6d29eef86d0db8a9d8d60b2ea6eb266f8f687278b5"
     },
     "forcefield_blue_8": {
       "rationale": "The authored 4060ff tint matches the visible art for forcefield_blue_8.",
-      "semantic_sha256": "a819e385d822ed8e6680d7037606fb19ada5ccf2c3cb58f1acef98d7fa296919"
+      "semantic_sha256": "b056ed4d59f1920da2a5d1b20110e7feabc99b5f14e918819b0d66a4c8577e00"
     },
     "forcefield_green_0": {
       "rationale": "The authored 40ff60 tint matches the visible art for forcefield_green_0.",
@@ -956,23 +956,23 @@
     },
     "forcefield_red_0": {
       "rationale": "The authored ff3030 tint matches the visible art for forcefield_red_0.",
-      "semantic_sha256": "47a1307ee5cecf4a3ad7c8fd10c4801ed7b49ca4855c8da8445d0f2b8d4fa531"
+      "semantic_sha256": "c8f6470fa9fe94348f85b488fb7fa8c507374ed0ee1c84c963e5b794395dc324"
     },
     "forcefield_red_1": {
       "rationale": "The authored ff3030 tint matches the visible art for forcefield_red_1.",
-      "semantic_sha256": "23be0d41b9a69cb0b859499bfa5e80d9fc886fb334e78dc8ec5e2cf6cd746654"
+      "semantic_sha256": "1ddf32ce5da9ae4ff8cb1f50f6a14da9b5eb560c1358a40607eef7d757044606"
     },
     "forcefield_red_3": {
       "rationale": "The authored ff3030 tint matches the visible art for forcefield_red_3.",
-      "semantic_sha256": "0f1657e1f91311255a16e7e751a6e62e0aaec302510cd0a0a6da3e6db307d46e"
+      "semantic_sha256": "00dcef79659808edd13dbac0650836fcc6edc6f12899447f71c79bc0cd43ac72"
     },
     "forcefield_red_4": {
       "rationale": "The authored ff3030 tint matches the visible art for forcefield_red_4.",
-      "semantic_sha256": "80f7d38c98363e526428b23e23c7bd152ca6f2c151719548bda14dd8e009c630"
+      "semantic_sha256": "2f016aa61fda3c17823ecfeb4001955173311dfd899ec84c9704e5ecea562c21"
     },
     "forcefield_red_8": {
       "rationale": "The authored ff3030 tint matches the visible art for forcefield_red_8.",
-      "semantic_sha256": "1ab59adee56dfdc002851d7ceba153730a31b13bd988cdd11c97a9492c90d32a"
+      "semantic_sha256": "30d89835553227bc6f69fb01b590d44c1f7e1109babca447a8416ab2bd64edd4"
     },
     "forcefield_yellow_0": {
       "rationale": "The authored ffe060 tint matches the visible art for forcefield_yellow_0.",
@@ -1355,32 +1355,79 @@
   },
   "context_checks": {
     "overlap": {
+      "status": "pass",
       "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control. The Marigold radius-1 blue crystal-ball display and radius-1 pale-gold power crystal sit beside stronger neutral helper lights without stacked or clipped focal color. The four-color Wizards’ Tower portals remain compact beside neutral fill and existing crystal focal lights, without stacked or clipped color. Compared the merged warm glower and wall-fireplace pools in Greyton Jail in both renderers; adjacent fixtures retain distinct silhouettes without wall bleed.",
-      "status": "pass"
+      "classic_views": [
+        "smooth-0001",
+        "discrete-0001",
+        "smooth-0350",
+        "discrete-0004"
+      ]
     },
     "linked-depth": {
+      "status": "pass",
       "rationale": "Compared linked Zechna depths and the established underground-city control; colored pools remain bounded to their authored levels. Portal cues remain bound to their authored depth and do not recolor adjacent combat spaces. Compared the underground-city depth and its preserved radius-2 fireplace footprint; corridors and combat space remain readable.",
-      "status": "pass"
+      "classic_views": [
+        "smooth-0200",
+        "discrete-0003"
+      ]
     },
     "horizontal-boundary": {
+      "status": "pass",
       "rationale": "Compared Zechna linked neighbors and the established city-boundary control; seams remain readable without light leakage. Colored portal cues remain readable at tower and city boundaries without seam leakage. Compared the direction-7 Everlink fireplace beside linked exterior boundaries; walls, water, and exits remain legible.",
-      "status": "pass"
+      "classic_views": [
+        "smooth-0450",
+        "discrete-0006"
+      ]
     },
     "dark-interior": {
       "status": "pass",
-      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes. Compared every affected toxic-pool placement in smooth and discrete modes; magenta and green pools preserve deliberate darkness, hazard identity, and traversable routes. The Loki temple, dark lair, and sewer portals add compact route cues without replacing deliberate darkness. Compared merged fixtures in Greyton Jail and both controlled source pools; warm illumination remains visible without erasing deliberate darkness."
+      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes. Compared every affected toxic-pool placement in smooth and discrete modes; magenta and green pools preserve deliberate darkness, hazard identity, and traversable routes. The Loki temple, dark lair, and sewer portals add compact route cues without replacing deliberate darkness. Compared merged fixtures in Greyton Jail and both controlled source pools; warm illumination remains visible without erasing deliberate darkness.",
+      "classic_views": [
+        "smooth-0050",
+        "discrete-0002",
+        "smooth-1180",
+        "smooth-1183",
+        "smooth-1184",
+        "smooth-1186",
+        "smooth-1199",
+        "smooth-1206",
+        "smooth-1208",
+        "smooth-1210",
+        "smooth-1211",
+        "smooth-1214",
+        "smooth-1215",
+        "smooth-1216",
+        "smooth-1217",
+        "smooth-1218"
+      ]
     },
     "outdoor-transition": {
-      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting. Plane-of-Creation and outdoor portal transitions retain ambient hierarchy while keeping the exit color legible. The Incuna private-beach transition retains outdoor ambient hierarchy while keeping its azure exit legible. Compared the merged mountain-inn glower and fireplaces at the outdoor transition in both renderers; exterior and interior detail remain stable.",
-      "status": "pass"
+      "status": "pass",
+      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting. Plane-of-Creation and outdoor portal transitions retain ambient hierarchy while keeping the exit color legible. Incuna's owner-gated beach portal adds a compact cyan route cue without replacing the outdoor ambient hierarchy. Compared the merged mountain-inn glower and fireplaces at the outdoor transition in both renderers; exterior and interior detail remain stable.",
+      "classic_views": [
+        "smooth-0400",
+        "discrete-0005",
+        "smooth-0362",
+        "smooth-0752",
+        "smooth-1038"
+      ]
     },
     "fog-roof": {
+      "status": "pass",
       "rationale": "Retained the unchanged Bone Cairn fog-and-roof control; lighting still does not reveal blocked routes or erase cutaway boundaries. The Bone Cairn azure portal remains a radius-1 cue that does not expose blocked routes or erase the cutaway boundary. Compared an Everlink roof/wall context in both renderers; the fireplace does not reveal occluded routes or flatten the cutaway boundary.",
-      "status": "pass"
+      "classic_views": [
+        "smooth-0001",
+        "discrete-0001"
+      ]
     },
     "navigation": {
       "status": "pass",
-      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct. The multi-portal tower keeps each colored exit distinct while preserving walls, entrances, and walkable routes. The owner-gated Incuna beach portal remains a compact cyan destination cue without obscuring its gated interaction. Compared a direction-1 city fireplace at midnight; surrounding entrances, walkable floor, and wall geometry remain navigable."
+      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct. The multi-portal tower keeps each colored exit distinct while preserving walls, entrances, and walkable routes. Incuna's private-beach exit remains a compact navigation cue with its ownership gate and destination unchanged. Compared a direction-1 city fireplace at midnight; surrounding entrances, walkable floor, and wall geometry remain navigable.",
+      "classic_views": [
+        "smooth-0650",
+        "discrete-0007"
+      ]
     },
     "candle-dense-cluster": {
       "status": "pass",
@@ -1845,7 +1892,7 @@
       "rationale": "Rendered Old Outpost with smooth and discrete lighting; all three poison pools retain their former co-located radius-7 footprints while their toxic-green tint distinguishes the hazards from neutral ambient light.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b8f7aa16f672b1888324be99d2601c0fc4968ff8b96fdfcd8d7c2518d3cb2756"
+      "semantic_sha256": "210bcad8e9079268a29521120af247f8b76e6703f7b5a6cf72483e3d53397c39"
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0204": {
       "uncolored_disposition": "neutral",
@@ -2671,7 +2718,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c151e28ebb8ff6c68bec3e9b640cb18eef5b09efedb00ba0f6e9e3077edcf9f0"
+      "semantic_sha256": "5e3b6983d0d20fa73c32ef8f6ef1399c4106370fae1b6feacbb4c92639d9e616"
     },
     "maps/shattered_islands/world_-1_67": {
       "uncolored_disposition": "neutral",
@@ -2918,7 +2965,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0ebd93e360bafc9de76be651f0fefc06d693694d424ffbbc6fcd0d2d8730d254"
+      "semantic_sha256": "a93cea7377879c4e2a97640cd251ec209ba14e12f948a1f19953de2a212e7207"
     },
     "maps/shattered_islands/world_0_62": {
       "uncolored_disposition": "neutral",
@@ -4059,7 +4106,7 @@
     },
     "maps/shattered_islands/world_3_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "The warm radius-7 interior glower retains its established Asteria footprint while the fixture-owned orange-red firelight preserves the surrounding neutral outdoor hierarchy without double emission.",
+      "rationale": "The warm radius-7 interior glower retains its established Asteria footprint while fixture-owned orange-red firelight preserves the surrounding neutral outdoor hierarchy without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "d45efe39248a4948eaf32a6e7f720b0b3f4f7eb1d37bad19f4d2ee13b8138a87"
@@ -5488,7 +5535,7 @@
     },
     "maps/shattered_islands/world_7_64_1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Inn In The Mountains in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 5 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "The warm radius-4 glower preserves the mountain inn's compact interior footprint while the fixture-owned orange-red fireplace light and surrounding neutral sources remain independent. Reviewed all 5 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "ed790a30b94bd37c796b0bdbdb973ea0caa5bd02e620ab6621b5753871e6aa60"
@@ -5519,7 +5566,7 @@
       "rationale": "Rendered Abandoned Mine in the issue65_0182 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bae5e06fb2ded4ab56580da3e8221512eec9fe770b92b50e3ab3740716bf04db"
+      "semantic_sha256": "ae02f92ba72933b3b2a95e7b8c59b1cf060ad3e531e8c9457e295d46bb736535"
     },
     "maps/shattered_islands/world_7_67_-1": {
       "uncolored_disposition": "neutral",
@@ -6171,5 +6218,19 @@
       "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the four-part composite retains one candle source, and the mixed candle/fireplace tile retains only its visible fireplace source.",
       "semantic_sha256": "17c454eefa8e4f344816979214f7ae87cbd83a793c3a08ebaa5f33fab53c272c"
     }
+  },
+  "source_review": {
+    "branch": "1.x",
+    "commit": "958b557650252518b9ea2850200920d07c879bd2",
+    "pull_request": "https://github.com/atrinik/content/pull/67"
+  },
+  "runtime_verification": {
+    "status": "unavailable",
+    "rationale": "The replacement stack does not yet provide integrated content build, runtime, or rendering adapters, so this line validates authored and semantic contracts without claiming visual activation.",
+    "tracked_by": [
+      "https://github.com/atrinik/atrinik/issues/266",
+      "https://github.com/atrinik/atrinik/issues/269",
+      "https://github.com/atrinik/atrinik/issues/270"
+    ]
   }
 }

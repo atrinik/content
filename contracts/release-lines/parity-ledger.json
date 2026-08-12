@@ -1,0 +1,1191 @@
+{
+  "schema_version": 1,
+  "repository": "atrinik/content",
+  "fork": {
+    "tag": "v1.8.1",
+    "commit": "01b1fdb65c2243df4bafe9c8109fc93229df0121"
+  },
+  "horizons": {
+    "main": "3ebb1710dd90a57779e4e025778f8ed9dec8053e",
+    "1.x": "07f9bd418926066503d569b8457175191176434d"
+  },
+  "terminal_plan": {
+    "state": "declared",
+    "main": {
+      "horizon": "3ebb1710dd90a57779e4e025778f8ed9dec8053e",
+      "commits": [
+        {
+          "ordinal": 1,
+          "issue": 137,
+          "pull_request": 183,
+          "paths": [
+            "contracts/release-lines/parity-ledger.json",
+            "contracts/release-lines/parity-ledger.schema.json",
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_release_line_parity.py",
+            "tools/validate.py"
+          ]
+        },
+        {
+          "ordinal": 2,
+          "issue": 139,
+          "pull_request": 185,
+          "paths": [
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_release_line_parity.py"
+          ]
+        }
+      ]
+    },
+    "1.x": {
+      "horizon": "07f9bd418926066503d569b8457175191176434d",
+      "commits": [
+        {
+          "ordinal": 1,
+          "issue": 137,
+          "pull_request": 182,
+          "paths": [
+            "contracts/release-lines/parity-ledger.json",
+            "contracts/release-lines/parity-ledger.schema.json",
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_release_line_parity.py",
+            "tools/validate.py"
+          ]
+        },
+        {
+          "ordinal": 2,
+          "issue": 139,
+          "pull_request": 184,
+          "paths": [
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_release_line_parity.py"
+          ]
+        }
+      ]
+    }
+  },
+  "outcomes": [
+    {
+      "id": "outcome-001",
+      "issue_repository": "atrinik/content",
+      "issue": 41,
+      "classification": "exempt",
+      "source": [
+        {
+          "line": "main",
+          "commit": "60a3a53c4e3e64293cdba21c91caf0c7a618764d",
+          "pull_request": 47
+        }
+      ],
+      "destination": [],
+      "domains": [
+        "provenance",
+        "release",
+        "tooling"
+      ],
+      "prerequisites": [],
+      "rationale": "The clean-room provenance registry and replacement release boundary are main-only inputs and must not be copied to Classic content."
+    },
+    {
+      "id": "outcome-002",
+      "issue_repository": "atrinik/content",
+      "issue": 45,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "1bcdf41d5ee90edd29ad6e11c981e90b24a31778",
+          "pull_request": 48
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "144c976618bc5cd2d64746e5b1784c5f3800e2a8",
+          "pull_request": 49
+        }
+      ],
+      "domains": [
+        "guidance",
+        "release"
+      ],
+      "prerequisites": [],
+      "rationale": "The paired bootstrap commits establish different branch-native release identities while documenting the same v1.8.1 split."
+    },
+    {
+      "id": "outcome-003",
+      "issue_repository": "atrinik/content",
+      "issue": 45,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "7e6b8327d412decfc310666d03ac4f1d06537c47",
+          "pull_request": 51
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "3b2d4dd7f52187c2752f3b2d3a7370c6205b5c1e",
+          "pull_request": 50
+        }
+      ],
+      "domains": [
+        "release"
+      ],
+      "prerequisites": [],
+      "rationale": "Both lines received the same semantic-release Node pin as an identical patch."
+    },
+    {
+      "id": "outcome-004",
+      "issue_repository": "atrinik/content",
+      "issue": 45,
+      "classification": "exempt",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "2796dee0b9ac5337bd8b10dd591da124319ffea3",
+          "pull_request": 52
+        }
+      ],
+      "destination": [],
+      "domains": [
+        "release",
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "The maintenance-range guard is specific to the 1.x patch channel; main owns the replacement release line."
+    },
+    {
+      "id": "outcome-005",
+      "issue_repository": "atrinik/atrinik",
+      "issue": 294,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "b769de959028ddcc0c80bc0b35c8206fd4b3a6ba",
+          "pull_request": 53
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "e0f3797647f13e1b59ab8853151cfb20e9f85b94",
+          "pull_request": 54
+        }
+      ],
+      "domains": [
+        "guidance"
+      ],
+      "prerequisites": [],
+      "rationale": "Both branches collapse validation guidance to their respective aggregate validator while retaining line-native command details."
+    },
+    {
+      "id": "outcome-006",
+      "issue_repository": "atrinik/content",
+      "issue": 45,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "89e28ef27d32bddc67e71fac4fa8c847a9dbcbc3",
+          "pull_request": 56
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "54472d807dafb1c8091f821260f22f6b47c2b28e",
+          "pull_request": 55
+        }
+      ],
+      "domains": [
+        "guidance",
+        "release"
+      ],
+      "prerequisites": [],
+      "rationale": "The release documentation describes the same split from each branch's native consumer and version perspective."
+    },
+    {
+      "id": "outcome-007",
+      "issue_repository": "atrinik/content",
+      "issue": 58,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "8b50df52355ae6ae4d529838272e41b5d678c84b",
+          "pull_request": 59
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "440b45a85603642f6edd37bb5bf45c2034ed0410",
+          "pull_request": 60
+        }
+      ],
+      "domains": [
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "Both lines received the identical validator restriction for Classic-compatible glow values."
+    },
+    {
+      "id": "outcome-008",
+      "issue_repository": "atrinik/content",
+      "issue": 66,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "0eea49ef65f21b7b02defda2fdaaf7f8292c17fd",
+          "pull_request": 64
+        },
+        {
+          "line": "1.x",
+          "commit": "9d5aa3c88becabd33247418af76b2866376ce92b",
+          "pull_request": 67
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "fde585e2dce52915704fa49608c07e8889f77bf5",
+          "pull_request": 124
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        65
+      ],
+      "rationale": "The two Classic authoring and audit commits were reconciled into one main port with equivalent authored light assignments and line-native review metadata."
+    },
+    {
+      "id": "outcome-009",
+      "issue_repository": "atrinik/content",
+      "issue": 57,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "ead72ef831444c874f65da841498924bab625e99",
+          "pull_request": 63
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "040e63d96cb50eb1afc8e819297ee3859ad34620",
+          "pull_request": 70
+        }
+      ],
+      "domains": [
+        "authored"
+      ],
+      "prerequisites": [],
+      "rationale": "The persistent Incuna Sam objective was forward-ported as an identical authored patch."
+    },
+    {
+      "id": "outcome-010",
+      "issue_repository": "atrinik/content",
+      "issue": 68,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "8576f6dcf1d03ecbcbfa55c80b275568b519491b",
+          "pull_request": 72
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "e9254f86f2bc54600e67d92f0f826f5bba4984f0",
+          "pull_request": 71
+        }
+      ],
+      "domains": [
+        "guidance"
+      ],
+      "prerequisites": [],
+      "rationale": "Both branches require paired issue delivery while naming their own checkout and release-line conventions."
+    },
+    {
+      "id": "outcome-011",
+      "issue_repository": "atrinik/content",
+      "issue": 69,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "348065600579b8517267b4fe79a907b82e197432",
+          "pull_request": 74
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "50d92776be3431e1da66adb22bf73451160e9f41",
+          "pull_request": 73
+        }
+      ],
+      "domains": [
+        "runtime",
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "Hexadecimal light colors are accepted on both lines with tests adapted to each branch's command runner."
+    },
+    {
+      "id": "outcome-012",
+      "issue_repository": "atrinik/content",
+      "issue": 62,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "3da37c25c9cc2c9d8bf6cd9761d15d6e73ecb1be",
+          "pull_request": 76
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "f23cf6603b5b223efaee7ee6e2e9bc1203fc1323",
+          "pull_request": 75
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "Explicit archetype plurals are equivalent; generated inventories and guidance retain branch-native integration."
+    },
+    {
+      "id": "outcome-013",
+      "issue_repository": "atrinik/content",
+      "issue": 81,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "bf460d92ce8e42cb169cdff57c99638df2fd4d95",
+          "pull_request": 109
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "875ef6f7a44c1b8d9b864137eda321a3d29526e5",
+          "pull_request": 108
+        }
+      ],
+      "domains": [
+        "authored",
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "Both lines expose the same slowness effect while preserving their branch-native audit integration."
+    },
+    {
+      "id": "outcome-014",
+      "issue_repository": "atrinik/content",
+      "issue": 103,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "969b53c2b953772970d0cc6c76e702a262b1d09d",
+          "pull_request": 114
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "face10804945063077def796b86040b5aa29ff42",
+          "pull_request": 156
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        66
+      ],
+      "rationale": "The glower fixture ownership result is semantically equal; review digests and prose are regenerated per line."
+    },
+    {
+      "id": "outcome-015",
+      "issue_repository": "atrinik/content",
+      "issue": 126,
+      "classification": "exempt",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "b342d5632563730b12806414041cd4a4f575e07d",
+          "pull_request": 127
+        }
+      ],
+      "destination": [],
+      "domains": [
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        124
+      ],
+      "rationale": "Classic removed obsolete committed renderer evidence that was never present on main; no authored gameplay changed."
+    },
+    {
+      "id": "outcome-016",
+      "issue_repository": "atrinik/content",
+      "issue": 105,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "ca2ed0f966cc66de40f6e393cc8e93a7c97867f0",
+          "pull_request": 112
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "908fd377848a3a1ee20971b50f7271c5722ddd76",
+          "pull_request": 111
+        }
+      ],
+      "domains": [
+        "authored",
+        "runtime",
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "The apartment tutorial outcome is equivalent while each line retains its consumer-specific Python event boundary."
+    },
+    {
+      "id": "outcome-017",
+      "issue_repository": "atrinik/content",
+      "issue": 135,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "3a474433f31535e9656c05e9aed831e791591149",
+          "pull_request": 157
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "6cd8d9d89a4e86e3101617937845877ddb903da8",
+          "pull_request": 158
+        }
+      ],
+      "domains": [
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        103
+      ],
+      "rationale": "Both lines derive the same grammar field count through tests adapted to their existing validation suites."
+    },
+    {
+      "id": "outcome-018",
+      "issue_repository": "atrinik/content",
+      "issue": 136,
+      "classification": "exempt",
+      "source": [
+        {
+          "line": "main",
+          "commit": "ba93d4759506fd687b925331afe6e96b2bd081a8",
+          "pull_request": 159
+        }
+      ],
+      "destination": [],
+      "domains": [
+        "release",
+        "validation"
+      ],
+      "prerequisites": [
+        135
+      ],
+      "rationale": "Main synchronized its copy of the Classic descriptor; the authoritative 1.x descriptor already had the correct value."
+    },
+    {
+      "id": "outcome-019",
+      "issue_repository": "atrinik/content",
+      "issue": 91,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "d2387818a014536da84833d6f8179e9112b9f6c8",
+          "pull_request": 115
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "0d3f8eb89097b878ed3766409b70a15142bd7575",
+          "pull_request": 129
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        136
+      ],
+      "rationale": "Fire fixtures emit equivalent light on both lines; review metadata and generated syntax measurements are line-native."
+    },
+    {
+      "id": "outcome-020",
+      "issue_repository": "atrinik/content",
+      "issue": 102,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "7575b438ae985bfa4a2347776a27c37368f5ee0a",
+          "pull_request": 116
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "12770b5022dca657ae26d5b4ca59cbf0107fd954",
+          "pull_request": 161
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        91
+      ],
+      "rationale": "Crystal placements own the same light semantics with line-specific review digests and validation context."
+    },
+    {
+      "id": "outcome-021",
+      "issue_repository": "atrinik/content",
+      "issue": 99,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "941a2e12c89a72ad6d4ea25a4a519e369c3b2e76",
+          "pull_request": 117
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "b0985c07642c9d063b97c365d32a450390389902",
+          "pull_request": 163
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        102
+      ],
+      "rationale": "The Rockforge teleporter has the same focal glow while review coordinates remain native to each branch."
+    },
+    {
+      "id": "outcome-022",
+      "issue_repository": "atrinik/content",
+      "issue": 98,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "4711f1e754506d4786e12116d61bec7ea9f0da56",
+          "pull_request": 118
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "a14e70cc83686723405196b70ff4fca18bc975e8",
+          "pull_request": 165
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        99
+      ],
+      "rationale": "Toxic pools emit matching light on both lines with branch-native review and measurement records."
+    },
+    {
+      "id": "outcome-023",
+      "issue_repository": "atrinik/content",
+      "issue": 162,
+      "classification": "exempt",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "9279e0460179df8322d30e05f2c748dd2e3d2272",
+          "pull_request": 164
+        }
+      ],
+      "destination": [],
+      "domains": [
+        "release",
+        "validation"
+      ],
+      "prerequisites": [
+        118
+      ],
+      "rationale": "The release recovery changes only the 1.x patch publication workflow and has no main counterpart."
+    },
+    {
+      "id": "outcome-024",
+      "issue_repository": "atrinik/content",
+      "issue": 95,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "371845c879955cb6910e2ac86b8ecf7ce7fca65e",
+          "pull_request": 119
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "81d71a575e0969ebe964893aa7c0ef9bfb63cb16",
+          "pull_request": 167
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        98
+      ],
+      "rationale": "Power crystals provide the same restrained carried light with line-native review metadata."
+    },
+    {
+      "id": "outcome-025",
+      "issue_repository": "atrinik/content",
+      "issue": 96,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "ca3733ef1892a973402d60df173d3a12e8195e75",
+          "pull_request": 120
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "ac933611ae366d25a1f5d199471ac37624e965f5",
+          "pull_request": 168
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        95
+      ],
+      "rationale": "Displayed crystal balls receive the same blue light while each line retains its own review coordinates."
+    },
+    {
+      "id": "outcome-026",
+      "issue_repository": "atrinik/content",
+      "issue": 86,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "b033b8ca034acd26c19102ce90299a1ff5f69800",
+          "pull_request": 122
+        },
+        {
+          "line": "1.x",
+          "commit": "58c20187edec7351177da7ee0b3008a82ce6439c",
+          "pull_request": 171
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "3a0a7e044032ea042b949f24e0f62103c3a0fd74",
+          "pull_request": 176
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        96
+      ],
+      "rationale": "The original and corrective Classic portal commits combine into the canonical main result for all 38 active portal exits."
+    },
+    {
+      "id": "outcome-027",
+      "issue_repository": "atrinik/atrinik",
+      "issue": 356,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "cae03960664062eb7cb8bffcc9d5d6231a802d70",
+          "pull_request": 170
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "c1b825552710d9fa338d5a5ff7e33602660ce63b",
+          "pull_request": 169
+        }
+      ],
+      "domains": [
+        "runtime",
+        "validation"
+      ],
+      "prerequisites": [],
+      "rationale": "The repeat-delay compatibility correction is an identical patch on both release lines."
+    },
+    {
+      "id": "outcome-028",
+      "issue_repository": "atrinik/atrinik",
+      "issue": 356,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "0018b81c251bec97d1aa2ecb7554b5b1d65501d5",
+          "pull_request": 173
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "92d49f95a6aa0f00a70d54b119757b30491c0862",
+          "pull_request": 172
+        }
+      ],
+      "domains": [
+        "validation"
+      ],
+      "prerequisites": [
+        169
+      ],
+      "rationale": "The repeat-reset prerequisite isolation test is an identical patch on both release lines."
+    },
+    {
+      "id": "outcome-029",
+      "issue_repository": "atrinik/atrinik",
+      "issue": 356,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "7179e684adbc0716db334425de16d788ddc0c87e",
+          "pull_request": 175
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "80fc2eb32f1eee7a1f4712954e78e5205caff47b",
+          "pull_request": 174
+        }
+      ],
+      "domains": [
+        "runtime",
+        "validation"
+      ],
+      "prerequisites": [
+        169
+      ],
+      "rationale": "The repeat-point restoration model is an identical patch on both release lines."
+    },
+    {
+      "id": "outcome-030",
+      "issue_repository": "atrinik/content",
+      "issue": 92,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "d863b1d66967841ad56ae5f205e88d87c681a688",
+          "pull_request": 123
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "7075ad95519f24877718af2f9e9f10a3671fd26a",
+          "pull_request": 177
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "validation"
+      ],
+      "prerequisites": [
+        86
+      ],
+      "rationale": "Wall fireplaces have equivalent emission ownership while syntax measurements and review context remain branch-native."
+    },
+    {
+      "id": "outcome-031",
+      "issue_repository": "atrinik/content",
+      "issue": 90,
+      "classification": "equivalent",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "08ebe8d39eb2d8af0dddbb120af178d87e1fb7f6",
+          "pull_request": 121
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "dc37068cc514c4a22a02f0156f54b74f6c845938",
+          "pull_request": 178
+        }
+      ],
+      "domains": [
+        "authored",
+        "guidance",
+        "runtime",
+        "validation"
+      ],
+      "prerequisites": [
+        92
+      ],
+      "rationale": "All 478 warm candle fixtures and helper transfers match; contracts and runtime packaging retain release-line-specific integration."
+    },
+    {
+      "id": "outcome-032",
+      "issue_repository": "atrinik/content",
+      "issue": 138,
+      "classification": "exact",
+      "source": [
+        {
+          "line": "1.x",
+          "commit": "07f9bd418926066503d569b8457175191176434d",
+          "pull_request": 179
+        }
+      ],
+      "destination": [
+        {
+          "line": "main",
+          "commit": "3ebb1710dd90a57779e4e025778f8ed9dec8053e",
+          "pull_request": 180
+        }
+      ],
+      "domains": [
+        "guidance",
+        "tooling",
+        "validation"
+      ],
+      "prerequisites": [
+        90
+      ],
+      "rationale": "The provider-topology benchmark correction is an identical implementation patch on both release lines."
+    }
+  ],
+  "tree_exceptions": [
+    {
+      "path": ".github/workflows/pr-title.yml",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "The 1.x workflow enforces its patch-only title policy."
+    },
+    {
+      "path": ".releaserc.json",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "Each branch owns a distinct semantic-release channel and version range."
+    },
+    {
+      "path": "AGENTS.md",
+      "classification": "exempt",
+      "domain": "guidance",
+      "rationale": "Agent guidance names branch-native consumers, commands, and release restrictions."
+    },
+    {
+      "path": "PROVENANCE.md",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Main alone owns the replacement clean-room provenance boundary."
+    },
+    {
+      "path": "README.md",
+      "classification": "exempt",
+      "domain": "guidance",
+      "rationale": "The branch readmes describe different consumers and release products."
+    },
+    {
+      "path": "arch/magic/forcefield/forcefield_blue/forcefield_blue.arc",
+      "classification": "equivalent",
+      "domain": "authored",
+      "rationale": "The same name_pl and light_color values appear in harmlessly different field order."
+    },
+    {
+      "path": "arch/magic/forcefield/forcefield_red/forcefield_red.arc",
+      "classification": "equivalent",
+      "domain": "authored",
+      "rationale": "The same name_pl and light_color values appear in harmlessly different field order."
+    },
+    {
+      "path": "docs/ARCHETYPE_PLURALS.md",
+      "classification": "equivalent",
+      "domain": "guidance",
+      "rationale": "Plural guidance records equivalent authored results with branch-native validation wording."
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "classification": "exempt",
+      "domain": "guidance",
+      "rationale": "Architecture guidance describes different replacement and Classic consumers."
+    },
+    {
+      "path": "docs/LIGHT_SOURCE_AUDIT.md",
+      "classification": "equivalent",
+      "domain": "guidance",
+      "rationale": "Both lines enforce the same semantic lighting policy through branch-native measurements."
+    },
+    {
+      "path": "docs/RELEASE_LINES.md",
+      "classification": "exempt",
+      "domain": "guidance",
+      "rationale": "The release-line guide is intentionally maintained from each branch's perspective."
+    },
+    {
+      "path": "maps/interfaces/quests/lost_memories/quest.xml",
+      "classification": "exempt",
+      "domain": "authored",
+      "rationale": "The apartment tutorial quest result is equivalent across consumer-specific event integration."
+    },
+    {
+      "path": "maps/light-source-review.json",
+      "classification": "exempt",
+      "domain": "authored",
+      "rationale": "This authored review ledger covers the same lights with line-native source digests and context."
+    },
+    {
+      "path": "maps/python/LostMemoriesApartment.py",
+      "classification": "equivalent",
+      "domain": "runtime",
+      "rationale": "Classic owns a dedicated apartment event script while main uses its typed event boundary."
+    },
+    {
+      "path": "maps/python/generic/apartment_teleport.py",
+      "classification": "equivalent",
+      "domain": "runtime",
+      "rationale": "Apartment teleport integration preserves equivalent gameplay through different consumer APIs."
+    },
+    {
+      "path": "maps/python/items/lost_memories_apartment_bed.py",
+      "classification": "equivalent",
+      "domain": "runtime",
+      "rationale": "Classic owns the bed event adapter while main expresses the same result in its event model."
+    },
+    {
+      "path": "maps/python/tests/Atrinik_tests/Player.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Classic test fixtures expose runtime APIs that do not exist on the replacement line."
+    },
+    {
+      "path": "maps/python/tests/LostMemoriesArrival.py",
+      "classification": "equivalent",
+      "domain": "validation",
+      "rationale": "Apartment arrival tests target equivalent behavior through line-native runtimes."
+    },
+    {
+      "path": "maps/shattered_islands/incuna/apartments/beach_nook",
+      "classification": "exempt",
+      "domain": "authored",
+      "rationale": "The apartment map retains equivalent tutorial semantics with consumer-specific event objects."
+    },
+    {
+      "path": "maps/shattered_islands/world_4_85",
+      "classification": "exempt",
+      "domain": "authored",
+      "rationale": "The arrival map retains equivalent tutorial and portal-light semantics with line-native events."
+    },
+    {
+      "path": "provenance/m1/README.md",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement clean-room provenance exists only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/classic-conformance-corpus.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement clean-room conformance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/client.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement client provenance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/content-toolkit-mit.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement toolkit provenance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/editor.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement editor provenance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/renderer-test.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement renderer provenance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/resources.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement resource provenance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/allowlists/website.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement website provenance inputs exist only on main."
+    },
+    {
+      "path": "provenance/m1/materials.json",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement material provenance records exist only on main."
+    },
+    {
+      "path": "provenance/m1/python-behaviors.jsonl",
+      "classification": "exempt",
+      "domain": "provenance",
+      "rationale": "Replacement clean-room behavior evidence exists only on main."
+    },
+    {
+      "path": "release-line.txt",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "The release-line identity must differ by definition."
+    },
+    {
+      "path": "tools/build_runtime.py",
+      "classification": "exempt",
+      "domain": "runtime",
+      "rationale": "Runtime packaging selects different provider and consumer boundaries."
+    },
+    {
+      "path": "tools/check_pr_title.py",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "The patch-only 1.x title policy is branch-specific."
+    },
+    {
+      "path": "tools/m1_foundations.py",
+      "classification": "exempt",
+      "domain": "tooling",
+      "rationale": "Replacement foundation validation exists only on main."
+    },
+    {
+      "path": "tools/package-release.sh",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "Each release line packages a different artifact contract."
+    },
+    {
+      "path": "tools/tests/test_content_catalog.py",
+      "classification": "equivalent",
+      "domain": "validation",
+      "rationale": "Catalog tests cover equivalent content through branch-native fixture expectations."
+    },
+    {
+      "path": "tools/tests/test_m1_foundations.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Replacement foundation tests exist only on main."
+    },
+    {
+      "path": "tools/tests/test_release_line.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Classic patch-range validation exists only on 1.x."
+    },
+    {
+      "path": "tools/tests/test_syntax_evaluation.py",
+      "classification": "equivalent",
+      "domain": "validation",
+      "rationale": "Syntax tests retain line-native historical measurement context."
+    },
+    {
+      "path": "tools/tests/test_world_content_audit.py",
+      "classification": "equivalent",
+      "domain": "validation",
+      "rationale": "Lighting tests cover equivalent authored results with line-native review digests."
+    },
+    {
+      "path": "tools/validate-release-line.sh",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "The Classic maintenance-range wrapper exists only on 1.x."
+    },
+    {
+      "path": "tools/validate.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Aggregate validation composes branch-native replacement or Classic checks."
+    },
+    {
+      "path": "tools/world_content_audit.py",
+      "classification": "equivalent",
+      "domain": "validation",
+      "rationale": "The audit enforces equivalent lighting semantics with branch-native runtime exclusion rules."
+    }
+  ]
+}

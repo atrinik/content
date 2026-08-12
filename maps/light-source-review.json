@@ -1316,7 +1316,7 @@
       "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes. Compared every affected toxic-pool placement in smooth and discrete modes; magenta and green pools preserve deliberate darkness, hazard identity, and traversable routes. The Loki temple, dark lair, and sewer portals add compact route cues without replacing deliberate darkness."
     },
     "outdoor-transition": {
-      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting. Plane-of-Creation and outdoor portal transitions retain ambient hierarchy while keeping the exit color legible.",
+      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting. Plane-of-Creation and outdoor portal transitions retain ambient hierarchy while keeping the exit color legible. The Incuna private-beach transition retains outdoor ambient hierarchy while keeping its azure exit legible.",
       "status": "pass"
     },
     "fog-roof": {
@@ -1325,7 +1325,7 @@
     },
     "navigation": {
       "status": "pass",
-      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct. The multi-portal tower keeps each colored exit distinct while preserving walls, entrances, and walkable routes."
+      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct. The multi-portal tower keeps each colored exit distinct while preserving walls, entrances, and walkable routes. The owner-gated Incuna beach portal remains a compact cyan destination cue without obscuring its gated interaction."
     }
   },
   "maps": {
@@ -4480,10 +4480,12 @@
     },
     "maps/shattered_islands/world_4_85": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The owner-gated private-beach portal adds a compact cyan navigation cue without replacing the map’s outdoor ambient hierarchy.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "4239d6dfc6b683a210b02b3098c0386338f25c3c26aa8f8c955a91ce18defe79"
+      "art_overrides": {
+        "1062": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal."
+      },
+      "semantic_sha256": "0d3e804ba1c5e59e79661fea8ed49b2627630f9dca8fa3faa731a311425b137d"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",

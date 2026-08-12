@@ -8,8 +8,8 @@ type 77
 layer 5
 no_pick 1
 glow_radius 5
-light_color ff3030
 name_pl red force fields
+light_color ff3030
 end
 
 Object forcefield_red_1
@@ -22,8 +22,8 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
-light_color ff3030
 name_pl red force fields
+light_color ff3030
 end
 
 Object forcefield_red_3
@@ -36,8 +36,8 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
-light_color ff3030
 name_pl red force fields
+light_color ff3030
 end
 
 Object forcefield_red_4
@@ -50,8 +50,8 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
-light_color ff3030
 name_pl red force fields
+light_color ff3030
 end
 
 Object forcefield_red_8
@@ -64,6 +64,6 @@ type 77
 layer 5
 no_pick 1
 glow_radius 4
-light_color ff3030
 name_pl red force fields
+light_color ff3030
 end

@@ -17,6 +17,7 @@ from tools.archetype_plurals import (
     audit as audit_archetype_plurals,
     load_manifest,
 )
+from tools.release_line_parity import load_and_validate as validate_release_line_parity
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -37,6 +38,16 @@ def main() -> int:
             if path.is_symlink():
                 raise ValueError(f"symbolic links are not allowed: {path.relative_to(ROOT)}")
 
+    parity_report = validate_release_line_parity(ROOT)
+    print(
+        "Release-line parity ledger: {} commits in {} outcomes; {} tree exceptions.".format(
+            parity_report["commits"],
+            parity_report["outcomes"],
+            parity_report["tree_exceptions"],
+        ),
+        flush=True,
+    )
+
     subprocess.run(
         [
             sys.executable,
@@ -52,6 +63,7 @@ def main() -> int:
             "tools.tests.test_world_content_audit",
             "tools.tests.test_release_guidance",
             "tools.tests.test_release_line",
+            "tools.tests.test_release_line_parity",
             "tools.tests.test_python_commands",
         ],
         cwd=ROOT,

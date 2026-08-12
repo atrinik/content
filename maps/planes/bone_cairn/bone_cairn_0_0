@@ -1936,6 +1936,8 @@ y 17
 end
 arch exit_green
 animation portal_azure
+glow_radius 1
+light_color 60d0ff
 slaying /shattered_islands/strakewood_island/underground_city/underground_city_3_3_-2
 hp 1
 sp 2

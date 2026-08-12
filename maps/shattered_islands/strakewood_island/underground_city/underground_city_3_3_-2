@@ -29,6 +29,8 @@ end
 arch exit
 name portal
 animation portal_yellow
+glow_radius 1
+light_color ffe060
 slaying /planes/bone_cairn/bone_cairn_0_0
 hp 10
 sp 15

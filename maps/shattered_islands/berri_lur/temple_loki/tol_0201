@@ -736,6 +736,8 @@ y 1
 end
 arch exit
 animation portal_big
+glow_radius 1
+light_color 4060ff
 slaying tol_0101
 hp 15
 sp 10

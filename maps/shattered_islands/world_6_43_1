@@ -315,10 +315,7 @@ end
 arch brazier_lit
 x 4
 y 18
-end
-arch light4
-x 4
-y 18
+glow_radius 4
 end
 arch map_info
 name asteria_palace

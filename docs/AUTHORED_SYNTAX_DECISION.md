@@ -167,7 +167,7 @@ the Linux timing run.
 
 Maps are regular, non-symlink authored files with the exact classic map header,
 sorted by `(byte size, relative path)`. The runner selects nearest-rank p10,
-p50, p90, and maximum entries from 3,650 candidates, rejects maps outside the
+p50, p90, and maximum entries from 3,651 candidates, rejects maps outside the
 #17 grammar, and excludes `no_save` maps that cannot exercise swap behavior.
 
 The following values are medians of 20 observations. Time is milliseconds.
@@ -178,6 +178,13 @@ The following values are medians of 20 observations. Time is milliseconds.
 | p50 | 16,002 / 576 | 413,172 / 25.82× | 15.24 / 70.90 | 295,307 / 18.45× | 62.88 / 135.49 |
 | p90 | 23,908 / 848 | 611,111 / 25.56× | 28.53 / 119.94 | 437,450 / 18.30× | 90.19 / 185.19 |
 | maximum | 95,618 / 2,778 | 2,199,259 / 23.00× | 83.88 / 366.86 | 1,580,686 / 16.53× | 298.04 / 613.05 |
+
+The table preserves the captured candle timing run. The current maximum
+representative map is 95,641 bytes and 2,777 objects after its portal-light
+fields were authored and its same-tile fireplace and candle helpers were
+transferred to the visible fixtures; its exact digest is recorded in the raw
+report's `representative_maps` selection. A new complete measurement run is
+required before replacing the captured expansion and timing observations.
 
 These expansion ratios measure the same deliberately verbose physical-record
 scaffold, not the future typed schema or runtime representation. YAML's lighter

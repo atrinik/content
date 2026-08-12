@@ -266,10 +266,7 @@ x 2
 y 14
 end
 arch pool_acid
-x 2
-y 14
-end
-arch light3
+glow_radius 3
 x 2
 y 14
 end

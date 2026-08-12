@@ -902,6 +902,23 @@ arch bridge_wood_EW.101
 x 6
 y 3
 end
+arch spawn_point
+x 9
+y 4
+arch female2
+name Elara Harth
+npc_id incuna_apartment_steward
+type 83
+direction 3
+stand_still 1
+faction incuna_citizens
+invulnerable 1
+arch event_obj
+sub_type 6
+race /interfaces/quests/lost_memories/incuna_apartment_steward.py
+end
+end
+end
 arch bridge_wood_EW.101
 x 6
 y 4
@@ -1041,6 +1058,25 @@ end
 arch bridge_wood_EW.101
 x 7
 y 3
+end
+arch exit
+name Incuna beach nook portal
+property_id incuna_apartment
+msg
+The portal to the tiny private beach stewarded by Elara Harth. It opens only for the owner of an Incuna apartment.
+endmsg
+animation portal_azure
+glow_radius 1
+light_color 60d0ff
+hp 10
+sp 5
+x 10
+y 4
+arch event_obj
+sub_type 10
+race /python/generic/apartment_teleport.py
+slaying incuna
+end
 end
 arch bridge_wood_EW.101
 x 7

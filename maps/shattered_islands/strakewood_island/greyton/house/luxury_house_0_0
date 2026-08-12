@@ -1497,10 +1497,7 @@ end
 arch wmask_fire_on_1
 x 8
 y 7
-end
-arch light3
-x 8
-y 7
+glow_radius 3
 end
 arch floor_wood3a
 x 8
@@ -11682,6 +11679,8 @@ y 26
 end
 arch exit
 animation portal_big
+glow_radius 1
+light_color 4060ff
 x 46
 y 26
 arch event_obj

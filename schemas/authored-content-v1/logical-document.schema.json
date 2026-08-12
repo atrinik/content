@@ -5870,6 +5870,31 @@
           "additionalProperties": false,
           "properties": {
             "field_id": {
+              "const": "object.npc_id"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
               "const": "object.nrof"
             },
             "kind": {
@@ -6233,6 +6258,31 @@
               "maximum": 9007199254740991,
               "minimum": -9007199254740991,
               "type": "integer"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.property_id"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "type": "string"
             }
           },
           "required": [

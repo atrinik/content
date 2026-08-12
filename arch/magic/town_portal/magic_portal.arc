@@ -7,6 +7,8 @@ walk_on 1
 fly_on 1
 face magic_portal.111
 animation perm_magic_portal
+glow_radius 1
+light_color 60d0ff
 is_animated 1
 anim_speed 3
 speed 1

@@ -1342,10 +1342,6 @@ arch brazier_lit
 x 11
 y 1
 end
-arch light5
-x 11
-y 1
-end
 arch floor_sblack1b
 x 11
 y 2
@@ -1552,10 +1548,7 @@ end
 arch crystal_red
 x 12
 y 13
-end
-arch light5
-x 12
-y 13
+glow_radius 5
 end
 arch floor_sblack2b
 x 12
@@ -1955,10 +1948,6 @@ x 16
 y 1
 end
 arch brazier_lit
-x 16
-y 1
-end
-arch light5
 x 16
 y 1
 end

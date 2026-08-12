@@ -730,6 +730,8 @@ sp 4
 zoom 70
 align 7
 animation portal_yellow
+glow_radius 1
+light_color ffe060
 x 3
 y 3
 end
@@ -851,10 +853,6 @@ arch brazier_lit
 x 3
 y 10
 end
-arch light5
-x 3
-y 10
-end
 arch floor_fs_grey1d
 x 3
 y 11
@@ -868,10 +866,6 @@ x 3
 y 13
 end
 arch brazier_lit
-x 3
-y 13
-end
-arch light5
 x 3
 y 13
 end
@@ -958,6 +952,8 @@ sp 16
 zoom 70
 align 7
 animation portal_big
+glow_radius 1
+light_color 4060ff
 x 3
 y 20
 end
@@ -1475,10 +1471,6 @@ arch brazier_lit
 x 6
 y 10
 end
-arch light5
-x 6
-y 10
-end
 arch floor_fs_grey1b
 x 6
 y 11
@@ -1492,10 +1484,6 @@ x 6
 y 13
 end
 arch brazier_lit
-x 6
-y 13
-end
-arch light5
 x 6
 y 13
 end
@@ -2289,10 +2277,6 @@ arch brazier_lit
 x 10
 y 3
 end
-arch light5
-x 10
-y 3
-end
 arch floor_fs_grey1d
 x 10
 y 4
@@ -2306,10 +2290,6 @@ x 10
 y 6
 end
 arch brazier_lit
-x 10
-y 6
-end
-arch light5
 x 10
 y 6
 end
@@ -2368,10 +2348,6 @@ is_magical 1
 x 10
 y 17
 end
-arch light5
-x 10
-y 17
-end
 arch floor_fs_grey1d
 x 10
 y 18
@@ -2385,10 +2361,6 @@ x 10
 y 20
 end
 arch brazier_lit
-x 10
-y 20
-end
-arch light5
 x 10
 y 20
 end
@@ -2596,10 +2568,6 @@ arch brazier_lit
 x 13
 y 3
 end
-arch light5
-x 13
-y 3
-end
 arch floor_fs_grey1c
 x 13
 y 4
@@ -2613,10 +2581,6 @@ x 13
 y 6
 end
 arch brazier_lit
-x 13
-y 6
-end
-arch light5
 x 13
 y 6
 end
@@ -2646,10 +2610,6 @@ arch brazier_lit
 x 13
 y 17
 end
-arch light5
-x 13
-y 17
-end
 arch floor_fs_grey1a
 x 13
 y 18
@@ -2663,10 +2623,6 @@ x 13
 y 20
 end
 arch brazier_lit
-x 13
-y 20
-end
-arch light5
 x 13
 y 20
 end
@@ -3450,10 +3406,6 @@ is_magical 1
 x 17
 y 10
 end
-arch light5
-x 17
-y 10
-end
 arch floor_fs_grey1a
 x 17
 y 11
@@ -3467,10 +3419,6 @@ x 17
 y 13
 end
 arch brazier_lit
-x 17
-y 13
-end
-arch light5
 x 17
 y 13
 end
@@ -4005,6 +3953,8 @@ sp 4
 zoom 70
 align 7
 animation portal_azure
+glow_radius 1
+light_color 60d0ff
 x 20
 y 3
 end
@@ -4069,10 +4019,6 @@ arch brazier_lit
 x 20
 y 10
 end
-arch light5
-x 20
-y 10
-end
 arch floor_fs_grey1c
 x 20
 y 11
@@ -4086,10 +4032,6 @@ x 20
 y 13
 end
 arch brazier_lit
-x 20
-y 13
-end
-arch light5
 x 20
 y 13
 end
@@ -4161,6 +4103,8 @@ sp 19
 zoom 70
 align 7
 animation portal_red
+glow_radius 1
+light_color ff3030
 x 20
 y 20
 end

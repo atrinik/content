@@ -9,7 +9,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.build_runtime import build as build_runtime, review_only_map_entries
+from tools.build_runtime import (
+    build as build_runtime,
+    review_only_map_entries,
+    validate_source_tree,
+)
 from tools.content_catalog import ContentCatalog, ContentId, load_catalog
 from tools.content_catalog.__main__ import main as catalog_main
 
@@ -33,6 +37,69 @@ class ContentCatalogTest(unittest.TestCase):
         return path
 
     def create_valid_tree(self):
+        self.write(
+            "maps/content-identities.json",
+            '{"schema_version":1,"npcs":[{"id":"sample_npc"}],'
+            '"properties":[{"id":"sample_property"}]}',
+        )
+
+        self.write(
+            "maps/python/Apartments.py",
+            'apartments_info = {"sample": {"tag": "sample_property"}}\n',
+        )
+        self.write(
+            "maps/property-interactions.json",
+            json.dumps({
+                "schema_version": 1,
+                "interactions": [{
+                    "id": "sample_property_grant",
+                    "quest_id": "sample_quest",
+                    "quest_part_id": "first_part",
+                    "npc_id": "sample_npc",
+                    "property_id": "sample_property",
+                    "npc_binding": {
+                        "map": "/start", "x": 1, "y": 1,
+                        "archetype": "base", "npc_id": "sample_npc",
+                    },
+                    "portal_binding": {
+                        "map": "/start", "x": 2, "y": 1,
+                        "archetype": "base", "property_id": "sample_property",
+                        "return_x": 2, "return_y": 2,
+                    },
+                    "layout_binding": {
+                        "map": "/apartment",
+                        "entry": {
+                            "x": 1, "y": 1, "floor_archetype": "base",
+                        },
+                        "exit": {
+                            "x": 0, "y": 1, "archetype": "base",
+                            "property_id": "sample_property",
+                        },
+                        "save_beds": [{
+                            "x": 1, "y": 0, "archetype": "base",
+                            "name": "sample bed",
+                            "property_id": "sample_property",
+                        }],
+                    },
+                    "grant": {
+                        "operation": "ensure_ownership", "tier": "cheap",
+                        "price": 0, "emit_purchase_event": False,
+                        "preserve_existing_tier": True,
+                        "idempotency_scope": "character_property",
+                    },
+                    "completion": {
+                        "event": "property_bed_used",
+                        "next_quest_part_id": "speak_priest",
+                        "transition_order": ["start_next", "complete_current"],
+                    },
+                    "runtime_owners": {
+                        "main": "typed_property_service",
+                        "classic_1x": "classic_apartment_adapter",
+                        "classic_entitlement_tag": "sample_property",
+                    },
+                }],
+            }),
+        )
         self.write(
             "arch/objects.arc",
             """Object base
@@ -58,9 +125,8 @@ More
 Object multipart_tail
 type 1
 end
-            """,
+""",
         )
-
         self.write(
             "arch/items.art",
             """Allowed all
@@ -98,6 +164,8 @@ end
         self.write(
             "maps/start",
             """arch map
+width 4
+height 4
 region town
 tile_path_1 next
 end
@@ -109,6 +177,18 @@ arch special_item
 end
 arch wand
 spell_id spell_minor_healing
+end
+arch base
+npc_id sample_npc
+name Sample Steward
+x 1
+y 1
+end
+arch base
+property_id sample_property
+name Sample Portal
+x 2
+y 1
 end
 """,
         )
@@ -122,15 +202,40 @@ end
 """,
         )
         self.write(
+            "maps/apartment",
+            """arch map
+width 3
+height 3
+end
+arch base
+x 1
+y 1
+end
+arch base
+property_id sample_property
+x 0
+y 1
+end
+arch base
+name sample bed
+type 106
+property_id sample_property
+x 1
+y 0
+end
+""",
+        )
+        self.write(
             "maps/interfaces/quests/sample_quest/quest.xml",
             """<?xml version="1.0"?>
 <interfaces>
   <quest name="Sample Quest">
     <part uid="first_part">
       <part uid="nested_part"/>
-      <interface>
+      <interface npc_id="sample_npc" property_id="sample_property">
         <action start="first_part::nested_part" cast="minor healing"
                 teleport="/start 1 1" region_map="town"/>
+        <response property_action_id="sample_property_grant" message="Grant"/>
         <object arch="special_item"/>
       </interface>
     </part>
@@ -174,6 +279,9 @@ end
         self.assertIn(ContentId("skill", "skill_literacy"), ids)
         self.assertIn(ContentId("archetype", "sample_monster_variant"), ids)
         self.assertIn(ContentId("quest", "sample_quest"), ids)
+        self.assertIn(ContentId("npc", "sample_npc"), ids)
+        self.assertIn(ContentId("property", "sample_property"), ids)
+        self.assertIn(ContentId("property-action", "sample_property_grant"), ids)
         self.assertIn(
             ContentId("quest-part", "sample_quest::first_part::nested_part"), ids
         )
@@ -194,6 +302,121 @@ end
                 for reference in catalog.references
             )
         )
+        self.assertTrue(any(
+            reference.field == "property_action_id"
+            and reference.key == "sample_property_grant"
+            for reference in catalog.references
+        ))
+
+    def test_rejects_property_action_in_the_wrong_interface_context(self):
+        self.create_valid_tree()
+        quest = self.root / "maps/interfaces/quests/sample_quest/quest.xml"
+        quest.write_text(
+            quest.read_text(encoding="utf-8").replace(
+                'npc_id="sample_npc"', 'npc_id="different_npc"'
+            ),
+            encoding="utf-8",
+        )
+
+        catalog = load_catalog(self.root)
+
+        self.assertIn(
+            "invalid-property-action-context",
+            {diagnostic.code for diagnostic in catalog.diagnostics},
+        )
+
+    def test_rejects_duplicate_property_action_contexts(self):
+        self.create_valid_tree()
+        quest = self.root / "maps/interfaces/quests/sample_quest/quest.xml"
+        contents = quest.read_text(encoding="utf-8")
+        quest.write_text(
+            contents.replace(
+                '<response property_action_id="sample_property_grant" message="Grant"/>',
+                '<response property_action_id="sample_property_grant" message="Grant"/>'
+                '<response property_action_id="sample_property_grant" message="Again"/>',
+            ),
+            encoding="utf-8",
+        )
+
+        catalog = load_catalog(self.root)
+
+        self.assertIn(
+            "invalid-property-action-context",
+            {diagnostic.code for diagnostic in catalog.diagnostics},
+        )
+
+    def test_rejects_invalid_property_map_and_return_coordinates(self):
+        self.create_valid_tree()
+        path = self.root / "maps/property-interactions.json"
+        document = json.loads(path.read_text(encoding="utf-8"))
+        interaction = document["interactions"][0]
+        interaction["npc_binding"]["map"] = None
+        interaction["portal_binding"]["return_x"] = -1
+        path.write_text(json.dumps(document), encoding="utf-8")
+
+        catalog = load_catalog(self.root)
+
+        messages = [
+            diagnostic.message for diagnostic in catalog.diagnostics
+            if diagnostic.code == "invalid-property-binding"
+        ]
+        self.assertTrue(any("map must be an absolute string" in item for item in messages))
+        self.assertTrue(any("return coordinates" in item for item in messages))
+
+    def test_rejects_property_binding_for_a_different_stable_id(self):
+        self.create_valid_tree()
+        path = self.root / "maps/property-interactions.json"
+        document = json.loads(path.read_text(encoding="utf-8"))
+        document["interactions"][0]["npc_binding"]["npc_id"] = "other_npc"
+        path.write_text(json.dumps(document), encoding="utf-8")
+
+        catalog = load_catalog(self.root)
+
+        self.assertTrue(any(
+            diagnostic.code == "invalid-property-binding" and
+            "stable ID must match" in diagnostic.message
+            for diagnostic in catalog.diagnostics
+        ))
+
+    def test_rejects_invalid_or_incomplete_property_layout_bindings(self):
+        self.create_valid_tree()
+        path = self.root / "maps/property-interactions.json"
+        document = json.loads(path.read_text(encoding="utf-8"))
+        layout = document["interactions"][0]["layout_binding"]
+        layout["entry"]["x"] = 99
+        layout["save_beds"][0]["archetype"] = "missing_bed"
+        path.write_text(json.dumps(document), encoding="utf-8")
+
+        catalog = load_catalog(self.root)
+
+        diagnostics = [
+            (item.code, item.message) for item in catalog.diagnostics
+        ]
+        self.assertIn(
+            ("invalid-property-layout", "layout entry is outside the authored map"),
+            diagnostics,
+        )
+        self.assertTrue(any(
+            code == "missing-property-layout-binding" and
+            "save bed" in message
+            for code, message in diagnostics
+        ))
+
+    def test_rejects_windows_device_content_ids(self):
+        for identifier in ("con", "aux.config", "com1", "lpt9.handler"):
+            with self.subTest(identifier=identifier):
+                self.create_valid_tree()
+                path = self.root / "maps/content-identities.json"
+                document = json.loads(path.read_text(encoding="utf-8"))
+                document["npcs"][0]["id"] = identifier
+                path.write_text(json.dumps(document), encoding="utf-8")
+
+                catalog = load_catalog(self.root)
+
+                self.assertIn(
+                    "invalid-content-identity",
+                    {item.code for item in catalog.diagnostics},
+                )
 
     def test_reports_duplicate_missing_wrong_domain_and_cycles(self):
         catalog = ContentCatalog(self.root)
@@ -327,34 +550,6 @@ end
         self.assertNotIn(external_directory, diagnostics[0].format())
         self.assertEqual((), catalog.definitions)
 
-    def test_runtime_collection_excludes_semantic_review_and_caches(self):
-        maps = self.root / "maps"
-        self.assertEqual(
-            {
-                "__pycache__",
-                "light-source-review.json",
-                "stale.pyc",
-            },
-            review_only_map_entries(
-                str(maps),
-                [
-                    "world",
-                    "__pycache__",
-                    "light-source-review.json",
-                    "stale.pyc",
-                ],
-                maps,
-            ),
-        )
-        self.assertEqual(
-            {"__pycache__", "nested.pyc"},
-            review_only_map_entries(
-                str(maps / "nested"),
-                ["local-render.png", "__pycache__", "nested.pyc"],
-                maps,
-            ),
-        )
-
     def test_runtime_staging_does_not_dereference_tool_links(self):
         self.create_valid_tree()
         (self.root / "tools").mkdir()
@@ -374,6 +569,60 @@ end
                     "0" * 40,
                 )
         self.assertEqual("existing output\n", sentinel.read_text(encoding="utf-8"))
+
+    def test_runtime_staging_rejects_linked_schema_and_contract_roots(self):
+        self.create_valid_tree()
+        (self.root / "tools").mkdir()
+        with tempfile.TemporaryDirectory() as external_directory:
+            external = Path(external_directory)
+            for component in ("schemas", "contracts"):
+                with self.subTest(component=component):
+                    for required in ("schemas", "contracts"):
+                        root = self.root / required
+                        if root.is_symlink():
+                            root.unlink()
+                        root.mkdir(exist_ok=True)
+                    target = external / component
+                    target.mkdir()
+                    (self.root / component).rmdir()
+                    (self.root / component).symlink_to(
+                        target, target_is_directory=True
+                    )
+
+                    with self.assertRaisesRegex(
+                        ValueError, "required source directory is missing or unsafe"
+                    ):
+                        validate_source_tree(self.root)
+
+    def test_runtime_collection_excludes_semantic_review_and_caches(self):
+        maps = self.root / "maps"
+        self.assertEqual(
+            {
+                "__pycache__",
+                "light-source-fixture-contract.json",
+                "light-source-review.json",
+                "stale.pyc",
+            },
+            review_only_map_entries(
+                str(maps),
+                [
+                    "world",
+                    "__pycache__",
+                    "light-source-fixture-contract.json",
+                    "light-source-review.json",
+                    "stale.pyc",
+                ],
+                maps,
+            ),
+        )
+        self.assertEqual(
+            {"__pycache__", "nested.pyc"},
+            review_only_map_entries(
+                str(maps / "nested"),
+                ["local-render.png", "__pycache__", "nested.pyc"],
+                maps,
+            ),
+        )
 
     def test_runtime_build_rejects_linked_and_ancestor_outputs(self):
         self.create_valid_tree()
@@ -399,6 +648,7 @@ end
         self.create_valid_tree()
         self.create_release_contract()
         (self.root / "tools").mkdir()
+        (self.root / "schemas").mkdir()
         self.write("tools/collect.py", "raise SystemExit(1)\n")
         output = self.root / "build" / "runtime"
         output.mkdir(parents=True)

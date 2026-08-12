@@ -73,10 +73,14 @@
   is released by semantic-release.
 - `1.x` releases use semantic-release maintenance range/channel `1.x`. Because
   `main` owns the post-fork `v1.9.0` tag, this line can publish only patch
-  versions in `>=1.8.1 <1.9.0`. Keep the one exact analyzer exception for the
-  historical `feat(release)` bootstrap commit; do not weaken ordinary feature
-  or breaking-change classification. Published releases and dry runs must stay
-  in that range on channel `1.x`.
+  versions in `>=1.8.1 <1.9.0`. Keep analyzer exceptions limited to the exact
+  historical `feat(release)` bootstrap and eight pre-policy feature subjects
+  documented in `docs/RELEASE_LINES.md`; do not weaken ordinary feature or
+  breaking-change classification. The pull-request title policy rejects all
+  new feature and breaking titles targeting `1.x`. Published releases and dry
+  runs must stay in that range on channel `1.x`. Keep the GitHub plugin's
+  failure-issue hook disabled so an issue-creation failure cannot obscure the
+  original Semantic Release error in the workflow log.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

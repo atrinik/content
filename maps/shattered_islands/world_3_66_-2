@@ -4167,6 +4167,8 @@ slaying strakewood_island/brynknot/sewers/lab
 hp 19
 sp 13
 animation portal_green
+glow_radius 1
+light_color 40ff60
 anim_speed 2
 x 23
 y 12

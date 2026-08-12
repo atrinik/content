@@ -361,8 +361,14 @@
       "inv_face": [
         "face"
       ],
+      "npc_id": [
+        "npc"
+      ],
       "other_arch": [
         "archetype"
+      ],
+      "property_id": [
+        "property"
       ],
       "randomitems": [
         "treasure"

@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAP_ROOT = ROOT / "maps"
 ARCH_ROOT = ROOT / "arch"
 LIGHT_REVIEW_NAME = "light-source-review.json"
+LIGHT_FIXTURE_CONTRACT_NAME = "light-source-fixture-contract.json"
 LIGHT_COLOR_RE = re.compile(r"^[0-9a-f]{6}$")
 
 
@@ -646,20 +647,30 @@ def _light_review() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _required_context_checks(review: dict) -> set[str]:
+def _light_fixture_contract() -> dict:
+    """Load the source-independent required fixture inventory contract."""
+
+    path = MAP_ROOT / LIGHT_FIXTURE_CONTRACT_NAME
+    if not path.is_file():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _required_context_checks(review: dict, contract: dict) -> set[str]:
     """Return baseline checks plus fixture-specific semantic review checks."""
 
     checks = {
         "overlap", "linked-depth", "horizontal-boundary", "dark-interior",
         "outdoor-transition", "fog-roof", "navigation",
     }
-    fixture_groups = review.get("fixture_groups", {})
-    if isinstance(fixture_groups, dict):
-        for entry in fixture_groups.values():
-            if isinstance(entry, dict) and isinstance(entry.get("checks"), list):
-                checks.update(
-                    check for check in entry["checks"] if isinstance(check, str)
-                )
+    for source in (review, contract):
+        fixture_groups = source.get("fixture_groups", {})
+        if isinstance(fixture_groups, dict):
+            for entry in fixture_groups.values():
+                if isinstance(entry, dict) and isinstance(entry.get("checks"), list):
+                    checks.update(
+                        check for check in entry["checks"] if isinstance(check, str)
+                    )
     return checks
 
 
@@ -691,18 +702,28 @@ def light_inventory() -> dict:
     """Resolve every effective archetype, artifact, and map light emitter."""
 
     review = _light_review()
+    fixture_contract = _light_fixture_contract()
     archetypes = load_archetypes()
     fixture_reviews = review.get("fixture_groups", {})
     if not isinstance(fixture_reviews, dict):
         fixture_reviews = {}
-    fixture_groups_by_archetype: dict[str, list[str]] = defaultdict(list)
+    contract_reviews = fixture_contract.get("fixture_groups", {})
+    if not isinstance(contract_reviews, dict):
+        contract_reviews = {}
+    fixture_archetypes: dict[str, set[str]] = defaultdict(set)
     fixture_rows: dict[str, list[dict]] = defaultdict(list)
-    for group_id, entry in sorted(fixture_reviews.items()):
-        if not isinstance(entry, dict) or not isinstance(entry.get("archetypes"), list):
-            continue
-        for archetype in entry["archetypes"]:
-            if isinstance(archetype, str):
-                fixture_groups_by_archetype[archetype].append(group_id)
+    for source in (fixture_reviews, contract_reviews):
+        for group_id, entry in sorted(source.items()):
+            if not isinstance(entry, dict) or not isinstance(entry.get("archetypes"), list):
+                continue
+            fixture_archetypes[group_id].update(
+                archetype for archetype in entry["archetypes"]
+                if isinstance(archetype, str)
+            )
+    fixture_groups_by_archetype: dict[str, list[str]] = defaultdict(list)
+    for group_id, members in sorted(fixture_archetypes.items()):
+        for archetype in sorted(members):
+            fixture_groups_by_archetype[archetype].append(group_id)
     archetype_rows = []
     for archetype, definition in sorted(archetypes.items()):
         attrs = definition["attrs"]
@@ -1168,7 +1189,7 @@ def light_inventory() -> dict:
             )
         group = {
             "id": group_id,
-            "archetypes": sorted(fixture_reviews[group_id]["archetypes"]),
+            "archetypes": sorted(fixture_archetypes[group_id]),
             "maps": len({placement["path"] for placement in placements}),
             "placements": placements,
         }
@@ -1289,6 +1310,7 @@ def validate_light_inventory(report: dict) -> list[str]:
 
     errors = []
     review = _light_review()
+    fixture_contract = _light_fixture_contract()
     if review.get("schema_version") != 6:
         errors.append("light-source review must use schema_version 6")
     if (
@@ -1317,6 +1339,36 @@ def validate_light_inventory(report: dict) -> list[str]:
     fixture_report = {
         row["id"]: row for row in report.get("fixture_groups", ())
     }
+    if fixture_contract.get("schema_version") != 1:
+        errors.append("light fixture contract must use schema_version 1")
+    required_fixtures = fixture_contract.get("fixture_groups")
+    if not isinstance(required_fixtures, dict):
+        errors.append("light fixture contract fixture_groups must be an object")
+        required_fixtures = {}
+    for group_id, contract_entry in sorted(required_fixtures.items()):
+        if not isinstance(contract_entry, dict):
+            errors.append("required fixture group {} must be an object".format(group_id))
+            continue
+        for field in ("archetypes", "checks"):
+            values = contract_entry.get(field)
+            if (
+                not isinstance(values, list)
+                or not values
+                or values != sorted(set(values))
+                or any(not isinstance(value, str) or not value for value in values)
+            ):
+                errors.append(
+                    "required fixture group {} has invalid {}".format(group_id, field)
+                )
+        review_entry = fixture_review.get(group_id)
+        if not isinstance(review_entry, dict):
+            errors.append("required fixture group {} is missing from review".format(group_id))
+            continue
+        for field in ("archetypes", "checks"):
+            if review_entry.get(field) != contract_entry.get(field):
+                errors.append(
+                    "required fixture group {} {} changed".format(group_id, field)
+                )
     for missing in sorted(set(fixture_review) - set(fixture_report)):
         errors.append("fixture group {} has no inventoried placements".format(missing))
     for stale in sorted(set(fixture_report) - set(fixture_review)):
@@ -1550,7 +1602,7 @@ def validate_light_inventory(report: dict) -> list[str]:
                         row["id"], field
                     )
                 )
-    required_checks = _required_context_checks(review)
+    required_checks = _required_context_checks(review, fixture_contract)
     for section, expected_ids in expected.items():
         entries = review.get(section)
         if not isinstance(entries, dict):

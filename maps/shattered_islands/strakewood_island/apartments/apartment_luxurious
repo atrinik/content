@@ -686,6 +686,7 @@ end
 arch candlelight1.101
 x 5
 y 9
+glow_radius 0
 end
 arch wall_marble1.141
 x 5

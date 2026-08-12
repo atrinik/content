@@ -20,6 +20,12 @@ per-archetype placement counts, map coverage, intentional non-emitting members,
 applicable contextual checks, and a digest of every resolved placement. These
 checks are derived entirely from authored sources: fixture groups do not carry
 view IDs or depend on screenshots, capture manifests, or image files.
+Required families are anchored independently in
+[`maps/light-source-fixture-contract.json`](../maps/light-source-fixture-contract.json).
+The audit inventories the contract's archetypes even if the review row is
+missing, and validation requires the exact contracted archetype and contextual
+check sets. Removing a required ledger group therefore fails closed instead of
+silently disabling its placement, non-emitter, or overlap checks.
 
 Run the read-only inventory and acceptance check from the repository root:
 
@@ -32,7 +38,8 @@ The first command writes a generated diagnostic below the ignored `build/`
 tree. The second requires complete row sets, current semantic hashes, palette
 and contextual rationales, and zero unreviewed emitters. The aggregate
 `python3 tools/validate.py` command runs the same check and excludes the
-semantic review ledger from playable runtime packages.
+semantic review ledger and required-fixture contract from playable runtime
+packages.
 
 ## Rendered imagery is generated outside content Git
 
@@ -71,3 +78,10 @@ Optional Classic renderer inspection may inform that decision, but its captures
 are not merge or release prerequisites and must not enter content Git status.
 The ledger and audit never change archetypes, maps, light behavior, or packaged
 runtime content.
+
+The base `power_crystal` and its six artifact variants inherit one radius-1
+`fff0c0` source. Charge capacity, artifact upgrades, and multiple instances do
+not alter that per-object radius or color. The deterministic Classic lifecycle
+checks for ground, inventory, containment, trade, stronger-light precedence,
+map transitions, logout/login, and death are recorded in
+[`POWER_CRYSTAL_LIGHT_REVIEW.md`](POWER_CRYSTAL_LIGHT_REVIEW.md).

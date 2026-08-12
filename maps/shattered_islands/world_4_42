@@ -3236,10 +3236,7 @@ arch fire_cauld.131
 direction 5
 x 18
 y 19
-end
-arch light5
-x 18
-y 19
+glow_radius 5
 end
 arch floor_marble6d
 z 50

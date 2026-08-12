@@ -5,13 +5,13 @@ The authored vocabulary is
 [`tools/archetype-plurals-v1.json`](../tools/archetype-plurals-v1.json), keyed
 by stable archetype ID rather than display text or source position. Its reviewed
 SHA-256 is
-`6c4eede454e239911049bb87c9ce5f96aeb328d0d11b6d7d9468ffb8c9569660`.
+`740e28c4f6ce9f45d031224f3ff91d423754228c789048352557648d4d35e100`.
 
 The manifest records the expected effective singular, object type, approved
-plural, and review classification for all 3,559 definitions. It includes the
+plural, and review classification for all 3,561 definitions. It includes the
 53 definitions that use their Object ID as the effective singular. The reviewed
-baseline has 3,506 explicit singular names, 1,083 distinct effective singulars,
-1,354 archetype files, 225 multipart continuations, and nine nested objects.
+baseline has 3,508 explicit singular names, 1,084 distinct effective singulars,
+1,355 archetype files, 225 multipart continuations, and nine nested objects.
 Multipart continuations and nested objects are deliberately excluded.
 
 `tools/archetype_plurals.py` resolves definitions through the content catalog

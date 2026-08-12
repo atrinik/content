@@ -13,10 +13,11 @@ import subprocess
 import sys
 import tempfile
 
+REVIEW_ONLY_MAP_ENTRIES = {
+    "light-source-fixture-contract.json",
+    "light-source-review.json",
+}
 RUNTIME_SOURCE_COMPONENTS = ("arch", "maps", "tools", "contracts", "schemas")
-
-
-REVIEW_ONLY_MAP_ENTRIES = {"light-source-review.json"}
 
 
 def review_only_map_entries(directory: str, names: list[str], map_root: Path) -> set[str]:

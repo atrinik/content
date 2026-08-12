@@ -1105,6 +1105,7 @@ z 10
 align 38
 x 9
 y 4
+glow_radius 4
 end
 arch candle_on
 layer 5
@@ -1112,12 +1113,14 @@ z 18
 align 20
 x 9
 y 4
+glow_radius 0
 end
 arch candle_on
 z 1
 align 20
 x 9
 y 4
+glow_radius 0
 end
 arch candle_on
 layer 3
@@ -1125,6 +1128,7 @@ z 10
 align 4
 x 9
 y 4
+glow_radius 0
 end
 arch spawn_point
 x 9
@@ -1153,10 +1157,6 @@ unaggressive 1
 faction centennial_animals
 type 83
 end
-end
-arch light4
-x 9
-y 4
 end
 arch floor_wood2_l1
 x 9

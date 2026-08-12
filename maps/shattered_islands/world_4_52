@@ -542,10 +542,7 @@ end
 arch candlelight4.101
 x 3
 y 19
-end
-arch light5
-x 3
-y 19
+glow_radius 5
 end
 arch floor_grey9
 x 3
@@ -1123,10 +1120,7 @@ end
 arch candlelight4.101
 x 7
 y 19
-end
-arch light5
-x 7
-y 19
+glow_radius 5
 end
 arch floor_grey9
 x 7
@@ -1153,10 +1147,7 @@ end
 arch candlelight4.101
 x 7
 y 22
-end
-arch light5
-x 7
-y 22
+glow_radius 5
 end
 arch floor_grey9
 x 7
@@ -1264,12 +1255,9 @@ end
 arch candlelight4.101
 x 8
 y 16
+glow_radius 5
 end
 arch wall_flagstone1.181
-x 8
-y 16
-end
-arch light5
 x 8
 y 16
 end

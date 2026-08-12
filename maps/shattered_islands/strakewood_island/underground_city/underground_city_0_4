@@ -392,10 +392,7 @@ end
 arch candlelight4.101
 x 2
 y 10
-end
-arch light2
-x 2
-y 10
+glow_radius 2
 end
 arch floor_stone_b4
 x 2
@@ -448,10 +445,7 @@ end
 arch candlelight4.101
 x 2
 y 15
-end
-arch light2
-x 2
-y 15
+glow_radius 2
 end
 arch floor_stone_b2
 x 2

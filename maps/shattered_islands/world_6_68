@@ -191,10 +191,7 @@ end
 arch candlelight4.101
 x 1
 y 6
-end
-arch light7
-x 1
-y 6
+glow_radius 7
 end
 arch floor_ostone11
 x 1
@@ -656,12 +653,9 @@ end
 arch candlelight2.101
 x 4
 y 9
+glow_radius 7
 end
 arch wall_pattern4.111
-x 4
-y 9
-end
-arch light7
 x 4
 y 9
 end
@@ -762,12 +756,9 @@ end
 arch candlelight1.101
 x 5
 y 3
+glow_radius 7
 end
 arch wall_pattern4.131
-x 5
-y 3
-end
-arch light7
 x 5
 y 3
 end

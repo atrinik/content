@@ -3435,12 +3435,9 @@ end
 arch candlelight4.101
 x 19
 y 6
+glow_radius 5
 end
 arch wall_stone4_w.111
-x 19
-y 6
-end
-arch light5
 x 19
 y 6
 end
@@ -3955,12 +3952,9 @@ end
 arch candlelight4.101
 x 22
 y 4
+glow_radius 5
 end
 arch wall_stone4_3
-x 22
-y 4
-end
-arch light5
 x 22
 y 4
 end

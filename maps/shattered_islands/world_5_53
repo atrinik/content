@@ -119,11 +119,9 @@ y 19
 end
 arch candlelight4.101
 y 19
+glow_radius 5
 end
 arch wall_flagstone1.111
-y 19
-end
-arch light5
 y 19
 end
 arch floor_marble2b
@@ -378,12 +376,9 @@ end
 arch candlelight4.101
 x 2
 y 5
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 2
-y 5
-end
-arch light5
 x 2
 y 5
 end
@@ -418,12 +413,9 @@ end
 arch candlelight4.101
 x 2
 y 9
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 2
-y 9
-end
-arch light5
 x 2
 y 9
 end
@@ -458,12 +450,9 @@ end
 arch candlelight4.101
 x 2
 y 13
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 2
-y 13
-end
-arch light5
 x 2
 y 13
 end
@@ -498,12 +487,9 @@ end
 arch candlelight4.101
 x 2
 y 17
+glow_radius 5
 end
 arch wall_flagstone1.131
-x 2
-y 17
-end
-arch light5
 x 2
 y 17
 end

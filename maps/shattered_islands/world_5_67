@@ -691,10 +691,7 @@ end
 arch candlelight1.101
 x 4
 y 6
-end
-arch light5
-x 4
-y 6
+glow_radius 5
 end
 arch floor_wood2_l2
 x 4
@@ -1209,10 +1206,7 @@ end
 arch candlelight4.101
 x 7
 y 6
-end
-arch light5
-x 7
-y 6
+glow_radius 5
 end
 arch floor_wood2_l2
 x 7
@@ -1427,12 +1421,9 @@ end
 arch candlelight4.101
 x 8
 y 10
+glow_radius 5
 end
 arch wall_wood1_1
-x 8
-y 10
-end
-arch light5
 x 8
 y 10
 end
@@ -3548,10 +3539,6 @@ arch candlelight1.101
 x 21
 y 5
 end
-arch light3
-x 21
-y 5
-end
 arch floor_wood2_l2
 x 21
 y 6
@@ -3717,10 +3704,6 @@ x 22
 y 9
 end
 arch wall_wood2_3
-x 22
-y 9
-end
-arch light3
 x 22
 y 9
 end

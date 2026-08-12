@@ -16,13 +16,14 @@ import tempfile
 
 
 REVIEW_ONLY_MAP_ENTRIES = {
+    "light-source-fixture-contract.json",
     "light-source-review.json",
 }
 RUNTIME_SOURCE_COMPONENTS = ("arch", "maps", "tools", "contracts", "schemas")
 
 
 def review_only_map_entries(directory: str, names: list[str], map_root: Path) -> set[str]:
-    """Return the semantic review ledger and generated cache entries."""
+    """Return semantic review controls and generated cache entries."""
 
     ignored = {
         name for name in names

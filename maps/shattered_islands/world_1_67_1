@@ -113,10 +113,6 @@ arch candlelight4.101
 x 2
 y 13
 end
-arch light3
-x 2
-y 13
-end
 arch floor_wood3a
 x 2
 y 14
@@ -319,10 +315,6 @@ arch candlelight4.101
 x 5
 y 13
 end
-arch light3
-x 5
-y 13
-end
 arch floor_wood3a
 x 5
 y 14
@@ -514,10 +506,6 @@ arch candlelight4.101
 x 8
 y 13
 end
-arch light3
-x 8
-y 13
-end
 arch floor_wood3a
 x 8
 y 14
@@ -705,10 +693,6 @@ x 11
 y 13
 end
 arch candlelight4.101
-x 11
-y 13
-end
-arch light3
 x 11
 y 13
 end
@@ -1093,10 +1077,7 @@ z 26
 align 16
 x 16
 y 19
-end
-arch light3
-x 16
-y 19
+glow_radius 3
 end
 arch floor_wood3a
 x 16

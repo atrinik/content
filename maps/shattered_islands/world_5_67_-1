@@ -361,10 +361,6 @@ arch candlelight4.101
 x 3
 y 15
 end
-arch light3
-x 3
-y 15
-end
 arch floor_grey1b2
 x 3
 y 16
@@ -406,10 +402,6 @@ x 4
 y 5
 end
 arch candlelight4.101
-x 4
-y 5
-end
-arch light3
 x 4
 y 5
 end
@@ -635,10 +627,6 @@ x 5
 y 12
 end
 arch candlelight4.101
-x 5
-y 12
-end
-arch light3
 x 5
 y 12
 end
@@ -1044,12 +1032,9 @@ end
 arch candlelight4.101
 x 7
 y 19
+glow_radius 4
 end
 arch wall_dungeon_3
-x 7
-y 19
-end
-arch light4
 x 7
 y 19
 end
@@ -1076,12 +1061,9 @@ end
 arch candlelight4.101
 x 7
 y 22
+glow_radius 4
 end
 arch wall_dungeon_3
-x 7
-y 22
-end
-arch light4
 x 7
 y 22
 end
@@ -1170,10 +1152,6 @@ x 8
 y 15
 end
 arch candlelight4.101
-x 8
-y 15
-end
-arch light3
 x 8
 y 15
 end
@@ -1334,10 +1312,6 @@ arch candlelight4.101
 x 9
 y 12
 end
-arch light3
-x 9
-y 12
-end
 arch floor_grey1a1
 x 9
 y 13
@@ -1438,10 +1412,6 @@ arch candlelight4.101
 x 10
 y 5
 end
-arch light3
-x 10
-y 5
-end
 arch floor_grey1b1
 x 10
 y 6
@@ -1537,12 +1507,9 @@ end
 arch candlelight4.101
 x 10
 y 19
+glow_radius 4
 end
 arch wall_dungeon_3
-x 10
-y 19
-end
-arch light4
 x 10
 y 19
 end
@@ -1569,12 +1536,9 @@ end
 arch candlelight4.101
 x 10
 y 22
+glow_radius 4
 end
 arch wall_dungeon_3
-x 10
-y 22
-end
-arch light4
 x 10
 y 22
 end
@@ -2015,10 +1979,6 @@ arch candlelight4.101
 x 13
 y 15
 end
-arch light3
-x 13
-y 15
-end
 arch floor_grey1a1
 x 13
 y 16
@@ -2034,12 +1994,9 @@ end
 arch candlelight4.101
 x 13
 y 17
+glow_radius 4
 end
 arch wall_dungeon_3
-x 13
-y 17
-end
-arch light4
 x 13
 y 17
 end
@@ -2078,12 +2035,9 @@ end
 arch candlelight4.101
 x 13
 y 22
+glow_radius 4
 end
 arch wall_dungeon_3
-x 13
-y 22
-end
-arch light4
 x 13
 y 22
 end
@@ -2128,10 +2082,6 @@ x 14
 y 5
 end
 arch candlelight4.101
-x 14
-y 5
-end
-arch light3
 x 14
 y 5
 end
@@ -2353,10 +2303,6 @@ x 15
 y 12
 end
 arch candlelight4.101
-x 15
-y 12
-end
-arch light3
 x 15
 y 12
 end

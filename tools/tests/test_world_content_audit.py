@@ -168,7 +168,7 @@ end
             "maps/light-source-review.json",
             json.dumps(
                 {
-                    "schema_version": 5,
+                    "schema_version": 6,
                     "review_method": "test semantic inventory and art-direction review",
                     "palette": {
                         "4060ff": {"rationale": "focused blue magic"},
@@ -199,6 +199,18 @@ end
                         },
                     },
                     "toggle_states": {},
+                    "fixture_groups": {
+                        "warm-fixtures": {
+                            "archetypes": ["colored_lamp"],
+                            "default_radii": {"colored_lamp": 4},
+                            "expected_color": "ff8040",
+                            "expected_maps": 1,
+                            "expected_placements": {"colored_lamp": 1},
+                            "intentional_non_emitters": {},
+                            "checks": ["overlap"],
+                            "rationale": "Tracks every warm fixture placement.",
+                        }
+                    },
                     "context_checks": {
                         check: {
                             "status": "pass",
@@ -227,6 +239,20 @@ end
                 }
             ),
         )
+        contract_path = self.write(
+            "maps/light-source-fixture-contract.json",
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "fixture_groups": {
+                        "warm-fixtures": {
+                            "archetypes": ["colored_lamp"],
+                            "checks": ["overlap"],
+                        }
+                    },
+                }
+            ),
+        )
 
         report = audit.light_inventory()
         review = json.loads(review_path.read_text())
@@ -241,6 +267,9 @@ end
                 review[section][row[identity]]["semantic_sha256"] = row[
                     "semantic_sha256"
                 ]
+        review["fixture_groups"]["warm-fixtures"]["semantic_sha256"] = report[
+            "fixture_groups"
+        ][0]["semantic_sha256"]
         review_path.write_text(json.dumps(review))
         report = audit.light_inventory()
 
@@ -250,6 +279,8 @@ end
                 "artifacts": 1,
                 "color_sources": 2,
                 "toggle_states": 0,
+                "fixture_groups": 1,
+                "fixture_placements": 1,
                 "maps": 1,
                 "map_instances": 3,
                 "visible_map_instances": 2,
@@ -262,6 +293,32 @@ end
             report["summary"],
         )
         self.assertEqual([], audit.validate_light_inventory(report))
+
+        fixture_group = report["fixture_groups"][0]
+        self.assertEqual("warm-fixtures", fixture_group["id"])
+        self.assertEqual(["colored_lamp"], fixture_group["archetypes"])
+        self.assertEqual(1, fixture_group["maps"])
+        self.assertEqual("maps/scene:6", fixture_group["placements"][0]["source_id"])
+        self.assertNotIn("views", review["fixture_groups"]["warm-fixtures"])
+
+        deleted_review = json.loads(review_path.read_text())
+        del deleted_review["fixture_groups"]["warm-fixtures"]
+        del deleted_review["context_checks"]["overlap"]
+        review_path.write_text(json.dumps(deleted_review))
+        deleted_report = audit.light_inventory()
+        self.assertEqual(1, deleted_report["summary"]["fixture_placements"])
+        deleted_errors = audit.validate_light_inventory(deleted_report)
+        self.assertIn(
+            "required fixture group warm-fixtures is missing from review",
+            deleted_errors,
+        )
+        self.assertIn("unreviewed fixture group: warm-fixtures", deleted_errors)
+        self.assertIn(
+            "contextual lighting check overlap must record pass",
+            deleted_errors,
+        )
+        review_path.write_text(json.dumps(review))
+        self.assertTrue(contract_path.is_file())
 
         scene = report["maps"][0]
         self.assertEqual("3", scene["darkness"])
@@ -643,7 +700,7 @@ end
         report = audit.light_inventory()
         errors = audit.validate_light_inventory(report)
 
-        self.assertIn("light-source review must use schema_version 5", errors)
+        self.assertIn("light-source review must use schema_version 6", errors)
         self.assertIn("light-source review needs a concise review_method", errors)
         self.assertIn("light-source review archetypes must be an object", errors)
         self.assertIn("1 effective light sources remain unreviewed", errors)

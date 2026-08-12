@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, toggle-active state review, and contextual Classic art-direction decisions without committed render artifacts.",
+  "schema_version": 6,
+  "review_method": "Effective semantic inventory with exact field and animation provenance, source-specific color review, complete fixture-group placement review, toggle-active state review, and contextual Classic art-direction decisions without committed render artifacts.",
   "palette": {
     "4060ff": {
       "name": "forcefield and portal blue",
@@ -633,6 +633,36 @@
       "uncolored_disposition": "neutral",
       "rationale": "wmask_fire_on_1 uses the lava and open fire palette entry to match its visible flame art; the darkness-4 control confirms radius 1 is the smallest rendered-effective default.",
       "semantic_sha256": "154ccb12b5883aa8b5fe2d1fbee6fdde304ad1d99023c4f91f0b3d9bd8bf0262"
+    },
+    "candle2_on": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "70bbdc221fb9053b0ee02fb62cb0e926a884083149d30db3729bbc8e444f69fb"
+    },
+    "candle_on": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "316b458c95cf66640bd1fe71004653195a9908257b3f2dcfba96af1b44c55fb2"
+    },
+    "candlelight1.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "bfa25288c4f4c2c0411189df524f69042e1e1da706372b41c93adaad65696d19"
+    },
+    "candlelight2.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "af972e7d52ec46c5c04094a454ebcee93958864f4ed2a842e5d72728255e5edb"
+    },
+    "candlelight3.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "d54f378927ac9835dacc1d9b8890eeca313a0294f1bfe06251a6cc71c0cbe7e5"
+    },
+    "candlelight4.101": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
+      "semantic_sha256": "52070159cc2f75830a37d7fcae4e2da3b60db951876fd7eadcbb096ef149f9b3"
     }
   },
   "artifacts": {
@@ -701,12 +731,12 @@
       "semantic_sha256": "d6137f6d13a5dfec8f38c900cae6cc38f5e6c4d1097f9f956f39aa715783a522"
     },
     "candlelight3.101": {
-      "rationale": "The authored ffd080 tint matches the visible art for candlelight3.101.",
-      "semantic_sha256": "e031e83d2b5ac8da3c1b4d452f73df6d9b82d46dfb94113039c3632b4f9a12ae"
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight3.101.",
+      "semantic_sha256": "4aff2f167443b53d75ab5f2474edbd229e1f5255b135103a4a09aadabe709092"
     },
     "candlelight4.101": {
-      "rationale": "The authored ffd080 tint matches the visible art for candlelight4.101.",
-      "semantic_sha256": "a7555346a03eb4380019360d7538417913e078e0c8914fa3153b5e945912430b"
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight4.101.",
+      "semantic_sha256": "82e3de175eb6314488ccb493113f7837e0be73d02df1a4d175063cfe28d2e716"
     },
     "crystal10": {
       "rationale": "The authored 8040ff tint matches crystal10's blue-violet facets.",
@@ -1247,6 +1277,22 @@
     "wmask_fire_on_1": {
       "rationale": "The authored ff6030 tint follows the visible wall-fireplace flame and produces a red-dominant radius-1 pool in the controlled source view.",
       "semantic_sha256": "00747abdccc8bc373f11ce31a3f6089f703cb1224558da2d46f123c89a98cafd"
+    },
+    "candle2_on": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candle2_on.",
+      "semantic_sha256": "2f5189112bc9f1ce250dccb97249e433def630537d8cd876de81e6ca4164b428"
+    },
+    "candle_on": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candle_on.",
+      "semantic_sha256": "56a78d156e51c1be08d07bc971669c327c5a1b69d7a25b68555e7abd9350ec81"
+    },
+    "candlelight1.101": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight1.101.",
+      "semantic_sha256": "0805b1b0384cc8501944e6ee9d7b3f5d3686cb6b9cfba64efcaeb4e2e06e6a36"
+    },
+    "candlelight2.101": {
+      "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight2.101.",
+      "semantic_sha256": "7a89e15244245564c5fa883f29a75149a9034716d4542f590e573b589ceee5a9"
     }
   },
   "toggle_states": {
@@ -1280,7 +1326,7 @@
     },
     "a2d081576ab13890635c74a2dc9642f802ca6862f39b39ddfd2c81d0fd61c286": {
       "rationale": "Applied runtime review covers lamp_wall at active radius 5 with ffd080 light and its Classic clone-derived lamp_wall art.",
-      "semantic_sha256": "a8d8d92d51a320bdcc47c092eb5c902de67b5b88e353fcc98882bc7e8fc18234"
+      "semantic_sha256": "55fa31d4a16498995af941fa25db724e96751fbaeff1c929174bb67e42d8dd26"
     },
     "bbd4bac3ab6ee56b280ac6b7ee304a48c051384586982bb0e518f718ca8db41c": {
       "rationale": "Applied runtime review covers torch_wall_1 at active radius 5 with ffc080 light and its Classic clone-derived torch_wall_1 art.",
@@ -1288,11 +1334,11 @@
     },
     "c72bb232af06c8b3fcae2b566674894d27bc71e4c470b36c7d89c898b4d4672e": {
       "rationale": "Applied runtime review covers torch at active radius 3 with ffc080 light and its Classic clone-derived torch art.",
-      "semantic_sha256": "d8cfc013a239cf00e4b00d9b9889ff03b477f32299ca0a08a277c99cfe7f2953"
+      "semantic_sha256": "a28928e18f778b19c907063fb7a6cb1e96e9ba2baa509dd9de3bd06379386b3c"
     },
     "d4a8b47cfd0bdfa350827fbf3ce1c6e7d7e0b73113da3b0c70443953e9ecedba": {
       "rationale": "Applied runtime review covers lamp at active radius 5 with ffd080 light and its Classic clone-derived lamp art.",
-      "semantic_sha256": "0a00d8e1785075e53f1fb00663de8f4f4e251c47f0d298da6879b28738b5e97b"
+      "semantic_sha256": "22cde423a8263173c21a359d10dc39d6e9cc650d4bb33bce2f2181f10796437a"
     },
     "e8e6324b96ec0ed934a9807cb5beb5c995f665dc09f0f12aae0744191c861349": {
       "rationale": "Applied runtime review covers jackolantern at active radius 5 with ff8030 light and its Classic clone-derived jackolantern art.",
@@ -1335,6 +1381,78 @@
     "navigation": {
       "status": "pass",
       "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct. The multi-portal tower keeps each colored exit distinct while preserving walls, entrances, and walkable routes. The owner-gated Incuna beach portal remains a compact cyan destination cue without obscuring its gated interaction. Compared a direction-1 city fireplace at midnight; surrounding entrances, walkable floor, and wall geometry remain navigable."
+    },
+    "candle-dense-cluster": {
+      "status": "pass",
+      "rationale": "Compared Centennial's four-part candle composite in both renderers and against the isolated candle form; one retained radius-4 source gives a warm local pool without additive over-lighting."
+    },
+    "candle-form-candle-on": {
+      "status": "pass",
+      "rationale": "The isolated candle_on form and its dense in-map composite retain visible flame identity and a warm-gold pool."
+    },
+    "candle-form-candle2-on": {
+      "status": "pass",
+      "rationale": "The isolated candle2_on form retains its distinct silhouette and small warm-gold pool; the Brynknot Tavern pair preserves the surrounding room hierarchy."
+    },
+    "candle-form-candlelight1": {
+      "status": "pass",
+      "rationale": "The isolated and underground-city candlelight1 form remains legible with warm light beside walls and other fixture variants."
+    },
+    "candle-form-candlelight2": {
+      "status": "pass",
+      "rationale": "The isolated and underground-city candlelight2 form remains legible with warm light beside walls and other fixture variants."
+    },
+    "candle-form-candlelight3": {
+      "status": "pass",
+      "rationale": "The isolated and mixed-radius candlelight3 form preserves flame identity and warm room-scale hierarchy."
+    },
+    "candle-form-candlelight4": {
+      "status": "pass",
+      "rationale": "The isolated and mixed-radius candlelight4 form preserves flame identity and warm room-scale hierarchy."
+    },
+    "candle-map-seam": {
+      "status": "pass",
+      "rationale": "Compared candles adjacent to linked-map edges at two underground-city depths; smooth pools stop naturally at occlusion while adjacent geometry remains readable."
+    },
+    "candle-mixed-color-overlap": {
+      "status": "pass",
+      "rationale": "Warm candle pools remain distinct where they overlap cooler and neutral underground-city emitters, without clipping fixture art or walkable boundaries."
+    },
+    "candle-radius-2": {
+      "status": "pass",
+      "rationale": "Reviewed radius-2 candle placements and both radius-2 source defaults; their compact pools illuminate the fixture without flattening the dark interior."
+    },
+    "candle-radius-3": {
+      "status": "pass",
+      "rationale": "Reviewed the radius-3 defaults and a mixed-form seam context; each form produces a consistent small warm pool."
+    },
+    "candle-radius-4": {
+      "status": "pass",
+      "rationale": "The preserved radius-4 Centennial source illuminates the four-part composite once, without cumulative brightness."
+    },
+    "candle-radius-5": {
+      "status": "pass",
+      "rationale": "A mixed-radius fixture room shows the radius-5 warm pool retaining floor, wall, and furniture contrast."
+    },
+    "candle-radius-6": {
+      "status": "pass",
+      "rationale": "A mixed-radius fixture room shows radius-6 warm pools preserving overlap hierarchy and navigable boundaries."
+    },
+    "candle-radius-7": {
+      "status": "pass",
+      "rationale": "A mixed-radius fixture room shows radius-7 warm pools covering their authored footprint without washing nearby structure."
+    },
+    "candle-radius-8": {
+      "status": "pass",
+      "rationale": "The ruins context preserves deliberate darkness and stone detail across the reviewed radius-8 candle footprint."
+    },
+    "candle-radius-9": {
+      "status": "pass",
+      "rationale": "The Everlink interior remains warmly readable across the reviewed radius-9 footprint without obscuring doors, walls, or furnishings."
+    },
+    "candle-wall-adjacency": {
+      "status": "pass",
+      "rationale": "Compared candle fixtures directly beside walls in two dense interiors; smooth lighting respects occlusion and preserves fixture silhouettes and entrances."
     }
   },
   "maps": {
@@ -1472,7 +1590,7 @@
       "rationale": "Rendered Vielumin Ruins in the issue65_0017 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8dc23c980695ae84d9468a78929bcb36e2ca45c64599a745a726735ae4d894a5"
+      "semantic_sha256": "a9d5d3517518689e063b664508be55b642f4df9336ebd2ce511305df9207b270"
     },
     "maps/shattered_islands/eld_woods_island/vielumin_ruins/ruins_0201": {
       "uncolored_disposition": "neutral",
@@ -1486,21 +1604,21 @@
       "rationale": "Rendered Vielumin Ruins in the issue65_0019 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "5c11ea5d09b883adc57f3af4d287811a7d7d609080a28fa432842e338cda919c"
+      "semantic_sha256": "7b98c0cb5023f85a97d5260e8e89f18fff351639b41ff179aaf9b4db406a7bf2"
     },
     "maps/shattered_islands/eld_woods_island/vielumin_ruins/ruins_0303": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Vielumin Ruins in the issue65_0020 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b8d90f0eef0f1e60229fdba75c98c71111bec1cb249f77a3d15193d491db1895"
+      "semantic_sha256": "616e241f176980ae9a18af8f8ed4a5473ef280f9b222efaf01c10cf2d8d62f13"
     },
     "maps/shattered_islands/everlink/everlink_0101": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7bc2284529126ff0040d4766bbfc543f1af720b4c06bbd04b65a01c3cdd5be2b"
+      "semantic_sha256": "8c007e3a4bd8b731a19291066bd2a0199597771c6ec55d985d704af57fcb2a67"
     },
     "maps/shattered_islands/everlink/everlink_0102": {
       "uncolored_disposition": "neutral",
@@ -1509,7 +1627,7 @@
       "art_overrides": {
         "561": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
       },
-      "semantic_sha256": "2a7f543dd5c2f673698f3fb382389819140b5952cf5227d1f029b6afbec386e2"
+      "semantic_sha256": "a69e9a7c4d38cd905d0a7e08788a13f4a64b8e6d0135586c9cae06b3149a2c1e"
     },
     "maps/shattered_islands/everlink/everlink_0201": {
       "uncolored_disposition": "neutral",
@@ -1530,14 +1648,14 @@
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "5b2c13a676cafc884c72b3100d749ffa4e21f088e507fd036f41202d2a8675f2"
+      "semantic_sha256": "2bcd8a0e4a60f559006077d663210c2e0982e375b49cbb286ddddadf662d7b09"
     },
     "maps/shattered_islands/everlink/everlink_0302": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "14b10af6f750e90d1ab7d86a8eea937a4d85297f714d936c4e06668644e3004d"
+      "semantic_sha256": "d123de8914ae2703d4ebe815dc91c8b0366629ed5772d07637e1be0f0865b329"
     },
     "maps/shattered_islands/everlink/everlink_0401": {
       "uncolored_disposition": "neutral",
@@ -1551,14 +1669,14 @@
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fef67d1517ddf3e19475c571acbf058d1debcdb180aadb81a73babdcdbb1895f"
+      "semantic_sha256": "586981b72a2c0f2338f818e9fddfddca8b48df24592fc423b0848a3bf1a6d5f9"
     },
     "maps/shattered_islands/incuna/ellamin": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna - Below Ellamin's House in the issue65_0021 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0432ded0f0f52cb495b5acd2fb817a0dcbd2ab5b1248ea4fa5a7f19809a9bd39"
+      "semantic_sha256": "62b69d3b30c99797f4f12ad771cc7536d958822d964cdabed844ba430e3b3132"
     },
     "maps/shattered_islands/lyondale_archipelago/morliana/hierro/hierro_lair": {
       "uncolored_disposition": "neutral",
@@ -1676,9 +1794,9 @@
         "peasant": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {
-        "11683": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+        "11680": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
       },
-      "semantic_sha256": "7b6e06563aa20ab221a43614d53e1b17078794febd7575bb09b513865740863b"
+      "semantic_sha256": "ca267468d91ca6fb89ffdcc5719b8651cc24bfeeaadb716d3913c5a101edca81"
     },
     "maps/shattered_islands/strakewood_island/greyton/jail/jail": {
       "uncolored_disposition": "neutral",
@@ -1762,7 +1880,7 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "65943b9916b55881853308cc2fedb4c24aac91ebc82531b8abdb9070b567883d"
+      "semantic_sha256": "c7ac2b361abd0f4760bc499923fe49f3b4d0cf999d4a27ceaa1638f818056baf"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0103": {
       "uncolored_disposition": "neutral",
@@ -1776,16 +1894,16 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {
-        "2357": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture."
+        "2354": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture."
       },
-      "semantic_sha256": "bf41098e5c3847d2a5ab68bfaef83f6a4ef305180e3d7d3f388841445ede6fb6"
+      "semantic_sha256": "b6651c70940d349db3c320bb785275434aae6f9f5a5c4254173ee9ff0d11c250"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0105": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b0c7083b6542effece4006a83383b354a93277619fc73b9da140ada13ea51fa1"
+      "semantic_sha256": "6debc3e0b1f5c2cf3383cf7a3b1c716fc53ecd23d76a8e21025ed98bf13b3231"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0201": {
       "uncolored_disposition": "neutral",
@@ -1883,7 +2001,7 @@
       "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fffc95d38c8021465d783f3b5f50d66da750a9c0a7968b10258ccfe7a0a4ab9e"
+      "semantic_sha256": "5bded45f32ab87ce69c48ec80327be62ca590bb8c04f88a4e7d52397a4a19302"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_aa05": {
       "uncolored_disposition": "neutral",
@@ -1921,7 +2039,7 @@
         "314": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture.",
         "1053": "Map-local wall-lamp animation uses explicit amber light matching the visible fixture."
       },
-      "semantic_sha256": "b3c92d9c7ea0c1246a466582cf92cb16291ac260e4cecb059c193468ddb44ef9"
+      "semantic_sha256": "691a1b4094d4594a3498bf6c34cbe935b4568b796b7e8a4044b7fdb6082ff09e"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_ab05": {
       "uncolored_disposition": "neutral",
@@ -1935,21 +2053,21 @@
       "rationale": "Rendered Rockforge: City in the rockforge2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 6 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c0973a0fe2d1926c3fdf671e56565b9f8f1236709bac29b413e2e5a3f6c9d5a5"
+      "semantic_sha256": "ceff5f8420758ca5b8e77348c483524c7e490df3b3aa330ede8be807dbb3048d"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_b_aa04": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Rockforge: City in the rockforge2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9c12bed96e7aae18403175e81e4c6deb925862660a86c81ed5cae75d4aee9ea8"
+      "semantic_sha256": "492e3e1d8122ad6cb6727c8a4d08e535566c7c616fee29b84f96e4e3b8201132"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_0": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e7eaf0879aa9890b926981fbed1d28ed0a1237048c603feca5f23a238007a110"
+      "semantic_sha256": "8a2a26bbc1a19869adbf7cf84384633722ebebb12e2139ff35e01c1e8431670e"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_0_-2": {
       "uncolored_disposition": "neutral",
@@ -1963,7 +2081,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The removed same-tile light2 helper is preserved as a radius-2 fireplace override.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "23094d5fdb20e2b55b356eadc56b3f5029d24049b194379c343de4264c9a10a0"
+      "semantic_sha256": "f2ac5c4fb663a38a7ae795bbcf490b16868bf21ed6dbe3cbd4fe036ee7e1918d"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_1_-2": {
       "uncolored_disposition": "neutral",
@@ -1977,7 +2095,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "204dc671233f1aff721d56ee253d2c22164964adf22d84a86b544b45da48062c"
+      "semantic_sha256": "0d2ba6085a7926472c7c71425a5fe6e7891964b1d66a1dd3bf3aa9e93380b3fd"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_2_-2": {
       "uncolored_disposition": "neutral",
@@ -1991,14 +2109,14 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9225497ab2a5174675b84f48fb222a2400b01bcf901f20d14a8a554b5026e4d0"
+      "semantic_sha256": "c714c8723bc884873de07bc16a094ef455b516c92d068c9c4b544567885a30ca"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_4": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ae1ac5b61bb9b3eee2918c72cd048fe3da4e8865629f4f6f9702821aab4b30b6"
+      "semantic_sha256": "29964e1f8a373579d4876598487c095052a180a8670a87fd84d2d354710bf9ac"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_-1_-2": {
       "uncolored_disposition": "neutral",
@@ -2026,7 +2144,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2879c727ad28f4b1d56e92b9c85b42e165f365f75aa9591394b739a47d05cbb1"
+      "semantic_sha256": "e6fcd79f6ae491bba987b80c0ebe65b124426e4209f44513b1b425523d648f9d"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_0_-2": {
       "uncolored_disposition": "neutral",
@@ -2043,7 +2161,7 @@
         "statue_white2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "3146ea3942a7e6fa11a0264fcbc1bd8ee1cffa2c01cbd05c60949f54e71130cd"
+      "semantic_sha256": "789da6952ab7c24fe7866fbc16d542232469bbb88afc28fb95639078c22d81f5"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_1_-2": {
       "uncolored_disposition": "neutral",
@@ -2059,7 +2177,7 @@
         "statue_black1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "a0e841c040547a83106884425bba6dd0c487ede3c4272fb8b69bf49f5c987c3e"
+      "semantic_sha256": "202931bdcf1ba094f2b89eefee05a134691aad92ac7011a371946e520d91eab9"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_1_2_-2": {
       "uncolored_disposition": "neutral",
@@ -2122,7 +2240,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The removed same-tile light3 helper is preserved as a radius-3 fireplace override.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "68e153b1745852b913043941af9e03ae9dacf369beb803954519784dbcc16140"
+      "semantic_sha256": "25b486938394487fea25ba3fecd8f495d7ebd1792c0af056a715378df15df705"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_0_-2": {
       "uncolored_disposition": "neutral",
@@ -2136,21 +2254,21 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "97d66684e6f0f5c9796697d10e978ee9f392efad5d1f7f76e787ce59dae834c5"
+      "semantic_sha256": "ffc631318116c92e672093026dadf0f35e4f5b76459dc13425bf45aa7f437f84"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7e90a9f42a9238859368a4e79f6c55ef4c8c165383ea144917d4257eb0437e63"
+      "semantic_sha256": "45cf78ddc03e9e3ac05e799949aed39a16bd9ee0dd29ec04e1bfb866d182bb22"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6bf38401c95f6e13bb792e48957f019ad920e755171a6f34eb5e8ac4fcf86cff"
+      "semantic_sha256": "9f6cb5bf57df158c87703234f88694446e9bb57c5871aa5e3e7de9d85a5806a6"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3_-1": {
       "uncolored_disposition": "neutral",
@@ -2229,7 +2347,7 @@
       "rationale": "Rendered The Underground City II in the underground_city_a batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e91fce49e344441b725a7e0d338bc56e3467cf98b1ceac54616dbd830ca861a9"
+      "semantic_sha256": "0d19fcf074c8d3b9052d46e9a642187157f4013847f2729fbddf3dc37e7e83a6"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_3_3_-2": {
       "uncolored_disposition": "neutral",
@@ -2273,7 +2391,7 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "990bb806d01e191b7a36ef63f2f6025a3c37febb79abbb799e771e3cc749ab33"
+      "semantic_sha256": "23bad92d746b9d0ec50296ec9bcf1c7deb2214f732223d5a21a2403a9801a9db"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_0_-3": {
       "uncolored_disposition": "neutral",
@@ -2287,14 +2405,14 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "05e004d3290f9b7f3afbda038aebcd95452c8d26fa570af9fe0cc8042f03efa5"
+      "semantic_sha256": "cbbaf9ba91c07dd902fcf017b2cae44fedb1ca9e79c97f6ac98543de5fae0607"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The removed same-tile light3 helper is preserved as a radius-3 fireplace override.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7d8f12b8ea5e6ac33c76a88a7df7cdfcb17eb6a4800c2a05caeb444f59079973"
+      "semantic_sha256": "2cbea2863638dfbca23e85d13f1148a100f24d3b96c1a00812d93597a2df7cd7"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_2_-1": {
       "uncolored_disposition": "neutral",
@@ -2567,14 +2685,14 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a362405269f56735ee3797a3a17b3df3bcb7635cae1d2ff41f06e328351776b1"
+      "semantic_sha256": "b0c27a091b30e689fb4e81173065d9e75ef7e1b9318394a7fd10bef2ad4f0ef7"
     },
     "maps/shattered_islands/world_-1_69": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "354db572d7a7497323a21223fbcd9d1405a14d108666446b030c6b8933ab5b6e"
+      "semantic_sha256": "f8e754d42c1a4074146c841d0e72ac00f53c064c6cdec027ec77790613f684e0"
     },
     "maps/shattered_islands/world_-1_70": {
       "uncolored_disposition": "neutral",
@@ -2786,7 +2904,7 @@
       "rationale": "Rendered Centennial in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7968b1ebeb2006f0c869d0e42b30d1b74b8d0f4f405f828073490b27e35c8b41"
+      "semantic_sha256": "c630a22de8d93a2a536c955c4c53ca7cbf85d7dcddd5d21bd4a823df21f4c816"
     },
     "maps/shattered_islands/world_0_53": {
       "uncolored_disposition": "neutral",
@@ -2835,14 +2953,14 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cadcd8e49e7c90df4244accfd12eb794a83b4e45c44fc57ea177660429795cd5"
+      "semantic_sha256": "b87d92e4306cde48514229ce7957dd8fa77189c3f335aae5dcdd06754fe75a09"
     },
     "maps/shattered_islands/world_0_67_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "24780d5997d117b9e41b8819e578c3685ef0d783cfcda17f3a014163342a19d6"
+      "semantic_sha256": "725b11b663b4fe90bbebdcd13ae7ab2f85be0320e57f4d790f154415d8d65030"
     },
     "maps/shattered_islands/world_0_68": {
       "uncolored_disposition": "neutral",
@@ -2870,7 +2988,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1b13616476306d9c4910dc36dc2ea565621a0d439e0f1631bc724af3db467147"
+      "semantic_sha256": "99d10c1d7dead903653c5553b81a03908ad1e6924be46db5f27dfc7f1568c828"
     },
     "maps/shattered_islands/world_0_69_-1": {
       "uncolored_disposition": "neutral",
@@ -2988,7 +3106,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6ce38f144ced83c3de9cae8e93110768467bf68efca092ba64e4560cf28ce0e0"
+      "semantic_sha256": "b5358bcc30ad559d3748938f4efffbd071bd59eca4b934ae582dd829742b31a9"
     },
     "maps/shattered_islands/world_10_67_1": {
       "uncolored_disposition": "neutral",
@@ -3016,9 +3134,9 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {
-        "2004": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+        "2001": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
       },
-      "semantic_sha256": "82e9d974138e5f8529fb6adb0004be6a081b14f353548368f12580758ae89c9c"
+      "semantic_sha256": "8a17d2392855b61e26fe580290d150b4df17d5518e3b24005da9a401302fbf1a"
     },
     "maps/shattered_islands/world_10_69_1": {
       "uncolored_disposition": "neutral",
@@ -3049,7 +3167,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fd394d0bf7d631051f8b7f72e04ab242921ba8bfac597c2bab2dd42e3de948ef"
+      "semantic_sha256": "0d439b0771991b03f108d30d6b72ce9003a03a560101c966aad2e865baa75638"
     },
     "maps/shattered_islands/world_11_67_1": {
       "uncolored_disposition": "neutral",
@@ -3112,7 +3230,7 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "057e98c008bfd697dc8d9180ba2b111e40b4fbd62ffe02d487e5ae9fa2a982d6"
+      "semantic_sha256": "4f0400d0c79e9b4655d0dd98343213d06c7e08e021d0f2766fcb9cb8eb4bc2d4"
     },
     "maps/shattered_islands/world_12_4_1": {
       "uncolored_disposition": "neutral",
@@ -3126,14 +3244,14 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "83862d3d40028605022a541019383c93ec87981ff8e582de945a8667e128ec4f"
+      "semantic_sha256": "437dfc58016e6ea6953bb105b704a0ff26d1d4600b06cc7dbbc4974d1de68a82"
     },
     "maps/shattered_islands/world_12_6": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4261ec0f1ecc1cd37cdb870626985290e6aa2dbd396028f954fff5dc32fe5f55"
+      "semantic_sha256": "5cdb2b8162e867e2c23554c2fa29581205b03ceeb95bf5f5d65753eb54ef8a75"
     },
     "maps/shattered_islands/world_12_62": {
       "uncolored_disposition": "neutral",
@@ -3189,21 +3307,21 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6f7569b5c16a4e4b3db4ba53b13fd7d7bf7033e5ca451e0c36b2fb1022e8c6b3"
+      "semantic_sha256": "d8380929586c4a9c0c6a6fd9b2ba2896d5a3d9719f699e536ca313e5262e4e38"
     },
     "maps/shattered_islands/world_13_5": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 3 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8dd7c11b4a44a0fd5d414e619a8c2e70692d7c61079ef37b52402e6dbdd1e0c2"
+      "semantic_sha256": "74d43b4847233359de89f61a974057ac01e7032dec9ea33df5c573f22e8f86a9"
     },
     "maps/shattered_islands/world_13_6": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "36cc5d737d681d76f532e2cc2ddcaa68dcd938b297abfdcaa0dee52368da133e"
+      "semantic_sha256": "bbc75d80f9ef4da7748a86566a1780d7fc949f88a4ec7cd092eb9960d543af6f"
     },
     "maps/shattered_islands/world_13_62": {
       "uncolored_disposition": "neutral",
@@ -3238,21 +3356,21 @@
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0c86845357a346b6011298e5c9988f8955336d96df3a76c7d3bb60da091108ee"
+      "semantic_sha256": "67b6a8bc30a0edf4db5decaadf21bf7830f62774f493bc3bf322d9882c030ae1"
     },
     "maps/shattered_islands/world_14_5": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4c8ef0b04a3c405476056a21597bfcc348ea34c9ac0eee544d00f49861e9b90d"
+      "semantic_sha256": "db7d7c968ae5d79b18255d965737aca4905794153a0e781c6267ee605c56acb5"
     },
     "maps/shattered_islands/world_14_6": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cf06cab9eb2b35567651102a0c9b25638d78fb2e19584fdf8a788a3721b377ba"
+      "semantic_sha256": "bd7f16395645f14e8e806fc28e82678f4498ebf2773c458d824fa2a6dbeda94f"
     },
     "maps/shattered_islands/world_14_64": {
       "uncolored_disposition": "neutral",
@@ -3347,7 +3465,7 @@
         "4041": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
         "4213": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
       },
-      "semantic_sha256": "39b628eede6e4755cfaa5d2799b1f2cab712e17a5f5a74ee9e39d8c19a66d036"
+      "semantic_sha256": "f6ba1ccd4d32cd0632a3911377f9a39a21b6d4fd57f320b83a2af21031b3ac94"
     },
     "maps/shattered_islands/world_17_2_3": {
       "uncolored_disposition": "neutral",
@@ -3359,7 +3477,7 @@
         "4286": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
         "4468": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
       },
-      "semantic_sha256": "bfb055b08b99d2feba9111d5e890c1810107ab49fc3762adbc52068e8d7498ff"
+      "semantic_sha256": "3be42f23838cba70a79601c92fef1c3ad6f8a9b1ff7724d60942e9721ddb8dfb"
     },
     "maps/shattered_islands/world_17_2_4": {
       "uncolored_disposition": "neutral",
@@ -3371,7 +3489,7 @@
         "4168": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
         "4340": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
       },
-      "semantic_sha256": "ca5462a87e7c94ab58c6efca99d41bb4812937b07fe263ab77555f7e963ccbb4"
+      "semantic_sha256": "414ebbda2903fc2d74171af5b70b63000c1ced4bc550e43b3337bbfae08e691c"
     },
     "maps/shattered_islands/world_17_2_5": {
       "uncolored_disposition": "neutral",
@@ -3453,7 +3571,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1cd3b88d1beabf52e07920ce7e3c1cfe632138e16cb2948e3dc0827f6a55079c"
+      "semantic_sha256": "ba9854338d8808f29500b438e66eb099bed534f05a49b3d22ea7919e63985a04"
     },
     "maps/shattered_islands/world_1_49": {
       "uncolored_disposition": "neutral",
@@ -3467,7 +3585,7 @@
       "rationale": "Rendered Outpost of Dr'kass in the issue65_0073 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a73bbea31ab18cf3aa7ae191864f31a17cc11d7fbe478acb6bb6e74776b3a429"
+      "semantic_sha256": "c8499e48a8d041426bc8f505c96d96a4ecd57ca9713686d1ebd85f8a626769a4"
     },
     "maps/shattered_islands/world_1_50_-1": {
       "uncolored_disposition": "neutral",
@@ -3558,7 +3676,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3a7f74caa6ffaddc12f7fca25a1ed22110ee01abe2d0369d1d0ea04402af0e08"
+      "semantic_sha256": "9e39f5b6bdac757a6e95657a096cabad7ece8d7659f1b692a5fd765cc042716f"
     },
     "maps/shattered_islands/world_1_67_-1": {
       "uncolored_disposition": "neutral",
@@ -3579,7 +3697,7 @@
       "rationale": "Rendered Brynknot Tavern in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ee7bfca40592f09eb69e84b49380123656816c212dd2e5cc553dedbba92be5d3"
+      "semantic_sha256": "3bb6edaa63dad2e9fd7cbc4a7fa819c386905ef098e73f58b147093fb4570e7e"
     },
     "maps/shattered_islands/world_1_68": {
       "uncolored_disposition": "neutral",
@@ -3609,7 +3727,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d16eb22d8d015f48734c461739255cd00393a7b7f0b0b685c71f9e0b231e0b4c"
+      "semantic_sha256": "17e49754cc6338d5faaf475f497ee6be06f871c8e5c235aea64494bbcef6f084"
     },
     "maps/shattered_islands/world_1_69_-1": {
       "uncolored_disposition": "neutral",
@@ -3809,7 +3927,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0214d0dc6d4540232216f232cf2112f7f9a4d8f8ebfc5e76781225a2229005c7"
+      "semantic_sha256": "05d7677aeeb5f45a886fc978c8c2a3953135ed7dc5e7eab502941a78235e0246"
     },
     "maps/shattered_islands/world_2_67_-1": {
       "uncolored_disposition": "neutral",
@@ -3830,7 +3948,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4dfd245c750284905ddb98620355a4fc1ab29f0d2e8d23eb890a99ac9fecc4f6"
+      "semantic_sha256": "6ac71d37401d2154c598cce707b427c1af80e2b04f21cecbcc8555e7e2297c41"
     },
     "maps/shattered_islands/world_2_68_-1": {
       "uncolored_disposition": "neutral",
@@ -3872,7 +3990,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "5328c4225e0b8951a50c8735764b82684a18c68ee8a4d1d25698f099deadf430"
+      "semantic_sha256": "f16f04db7fbe89499448aec0bf095b24ea6b6a46ef89c7f13df4b5f3dec4884e"
     },
     "maps/shattered_islands/world_2_69_-1": {
       "uncolored_disposition": "neutral",
@@ -3951,7 +4069,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8751a376afd75505ee0a5aa688ec78f4fadc2e88e740d6406f90236337c7872b"
+      "semantic_sha256": "3dc17d3852d9fec4aea7e76b66de3c9256ffd780ac1af4d9f9894fa28f2f1319"
     },
     "maps/shattered_islands/world_3_47": {
       "uncolored_disposition": "neutral",
@@ -4058,7 +4176,7 @@
         "priest_church": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "74d7cb5c5a158431b08d5c4fcc8ca93f3ddb761ac6a3354e4f0987cd2b3a26a1"
+      "semantic_sha256": "eb8b64c30647c0016f4eb0b2ec480bbc19bb2f1311ff33c8c8b14bd15475e1c5"
     },
     "maps/shattered_islands/world_3_59": {
       "uncolored_disposition": "neutral",
@@ -4132,7 +4250,7 @@
       "rationale": "Rendered Forgotten Tunnels in the forgotten_tunnels batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8221c2e399ebdace50616d967d75cb686693525be0e3fa25bbe2e6a43df8718b"
+      "semantic_sha256": "52e0065041f6f20689f0f410ea7087cecec22ad34d4ed37a87991259ebe66452"
     },
     "maps/shattered_islands/world_3_82": {
       "uncolored_disposition": "neutral",
@@ -4153,7 +4271,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cfbcebd1359f1f316738fa93a2094f56c769e82fbc00d5d9d7646beb4dbe9b53"
+      "semantic_sha256": "3c6fcad9d9dc9cd698b41581b4418e42dae2130edc8283f9b60e2919386874d6"
     },
     "maps/shattered_islands/world_3_83_-1": {
       "uncolored_disposition": "neutral",
@@ -4174,7 +4292,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The removed same-tile light1 helper migrates exactly to the radius-1 fireplace default.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9477877a6f922b85c2a37026b652170a4242c24423f097c62077bd59df9878b3"
+      "semantic_sha256": "c66ae09887a2e02056f4b554395cc5e6bff85b09c737eb6b3c7ff1047eebe020"
     },
     "maps/shattered_islands/world_3_84_-1": {
       "uncolored_disposition": "neutral",
@@ -4216,7 +4334,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bd5aa09abe78f6c322160aae105caecca2dd57c2b14c5d736b188496567c554f"
+      "semantic_sha256": "d542bf0a10a1b3001f161555c4de30ace9b29f983f7a6f525ea72670b5c1d903"
     },
     "maps/shattered_islands/world_4_44": {
       "uncolored_disposition": "neutral",
@@ -4230,7 +4348,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "652d7dfe8d68c5b5461de51305e34da6e7897fd1b9b04550876872111a416ed2"
+      "semantic_sha256": "79c13845fe82d151758f45b886305a01029d3797d8f8298ee17492c27d8f58f5"
     },
     "maps/shattered_islands/world_4_46": {
       "uncolored_disposition": "neutral",
@@ -4244,7 +4362,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy. The crystal ball at (11, 18) is fixed fortune-teller display scenery co-located with its table and uses a small blue focal light.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "192c897b257e09a8a867621ca4609e778ac4491bd4f49aaa6dac68600aca18b1"
+      "semantic_sha256": "22c9183f7a4c969f95ca0b4dfb9410c030a15584176bc825f231506b3ebf05b6"
     },
     "maps/shattered_islands/world_4_48": {
       "uncolored_disposition": "neutral",
@@ -4286,7 +4404,7 @@
       "rationale": "Rendered Fort Sether in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "94d72dc8c263ded01b3a1ac5050d96ae3f6fa1c293760c7714c88a583d99e0b4"
+      "semantic_sha256": "0c929dded20fda622374f8ca37da2095be9435290e9f55a39e1ae7143600b17c"
     },
     "maps/shattered_islands/world_4_52_-2": {
       "uncolored_disposition": "neutral",
@@ -4307,14 +4425,14 @@
       "rationale": "Rendered Fort Sether in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3803ab8cff041f8c4df796b2c77afdc4069dc9674199d9a101e24b3b8e91c31c"
+      "semantic_sha256": "76157674a6c91cd9a38d2ab6cc7b701aa6bf48744b4dc7b8b25bd7043bcdd797"
     },
     "maps/shattered_islands/world_4_53_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Below Fort Sether in the issue65_0127 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "760cae3738cda9ae71dffa23367358a5254781fdac45e5e4a2a7b0863bcca506"
+      "semantic_sha256": "fed979209712c7d3d1b4a780d99cb486c2ea152e8dac78b860120fd8896d7daa"
     },
     "maps/shattered_islands/world_4_53_-2": {
       "uncolored_disposition": "neutral",
@@ -4363,7 +4481,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 4 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "afd58897cb3101eaa694f1a35aa2adc46e8f788dfedde9012edb88f893db9cc8"
+      "semantic_sha256": "f629ec560ccbef23f820f0265c1c166496805c49ad5d7ce6134e89bfb621d3e7"
     },
     "maps/shattered_islands/world_4_66_-2": {
       "uncolored_disposition": "neutral",
@@ -4433,7 +4551,7 @@
       "rationale": "Rendered Forgotten Tunnels in the forgotten_tunnels batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8d78e2ce5eab8461680b943abd09eb911eb80146691fdc03eb68d0a96892d008"
+      "semantic_sha256": "ad3b0251594e5f92a3b9a15b8484d42cbb193ba7a8ebd0573ebd4d0a7d39c3b4"
     },
     "maps/shattered_islands/world_4_82": {
       "uncolored_disposition": "neutral",
@@ -4457,21 +4575,21 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1dabc28ff09bcf5156a283b4bf33e4de7742dadef497d3cdf61875d16a38f8fd"
+      "semantic_sha256": "d0fb4d99b952084cd082cccb47188b8fe0e0508c0cabdbfbfb6f2bdb6e09c13a"
     },
     "maps/shattered_islands/world_4_83_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna in the incuna_-1 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a6ed1fe71c40d94e7857e9eaf9279f3fcfc1b2419a5dea5552ef74cab483134d"
+      "semantic_sha256": "a5fe6b19cc409f538889baa3b2b0d9f6e6bad5f829a9bf295c628ffc980d74eb"
     },
     "maps/shattered_islands/world_4_84": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0b6e33d8cb8cf96949859d79b91dafb0b732d1d0d9eddf0d9a04a82c61b12ec4"
+      "semantic_sha256": "7cfac95295d022cd6252db021c82c3726f49ad5ac7df7acf03d572965c5f764e"
     },
     "maps/shattered_islands/world_4_84_-1": {
       "uncolored_disposition": "neutral",
@@ -4515,7 +4633,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4f200d92a9ca4e56df0f71cd47cd5b17823ac2fd72ebc9f5dae4e4969392a4c0"
+      "semantic_sha256": "631ac352e83400f1dea956b5912800434f2b9e151d457834ba3986c941439f96"
     },
     "maps/shattered_islands/world_5_42": {
       "uncolored_disposition": "neutral",
@@ -4564,7 +4682,7 @@
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "805126a68f66268dc115ead08b468f0a23f519800aeed765da0542f7acbd35a4"
+      "semantic_sha256": "5ab214c062f2b23260bf239bbc60ddb1a5951382009d87e4df0b3291f0447f0a"
     },
     "maps/shattered_islands/world_5_45": {
       "uncolored_disposition": "neutral",
@@ -4578,7 +4696,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e29b0dfdcd44780e487d41984c20fa610f7054d3cb51539edf3d85bbaca28090"
+      "semantic_sha256": "15b79c3822f2553771d3d570fdf3281332bafc757ed312907dfe455c021978b3"
     },
     "maps/shattered_islands/world_5_46": {
       "uncolored_disposition": "neutral",
@@ -4601,7 +4719,7 @@
         "floor_wood2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "9114e039f49c0bc9236fd7edf7acfad545ca49e79cc2ddf99abece0f26dd6d6e"
+      "semantic_sha256": "0900eae6940c42a333ffcad687e3c7da092fb1e69bdd261958a20d33ccfa2d1b"
     },
     "maps/shattered_islands/world_5_48_-1": {
       "uncolored_disposition": "neutral",
@@ -4620,7 +4738,7 @@
         "floor_wood2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "58193db285597a41e1aeecc54a4ca4400257f026b7a4113fd2627a3d8621c6a3"
+      "semantic_sha256": "a78555a5fcae97105c697d3f0aa0d587d6b884be98db21c38c859e6e6d50f02e"
     },
     "maps/shattered_islands/world_5_49": {
       "uncolored_disposition": "neutral",
@@ -4666,7 +4784,7 @@
       "rationale": "Rendered Fort Sether in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a069dc0fe9bc62453d46035629a32cfc2118ecb43ead4036bd8b1974fd535b68"
+      "semantic_sha256": "a917b79f1af9a087ce07913ed1ee85b5843c8ffb170440eef35f696f11de1a29"
     },
     "maps/shattered_islands/world_5_53_-2": {
       "uncolored_disposition": "neutral",
@@ -4743,14 +4861,14 @@
       "rationale": "Rendered Fort Ghzal in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6dcecd2261dd2b5cf682b2b2f14333de04069c1da662da4a4d36a79185861df3"
+      "semantic_sha256": "a382e582681d5fa36160bf5d1504b5fb7deb05b6937d7b2d696c1413a8795f19"
     },
     "maps/shattered_islands/world_5_67_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Under Fort Ghzal in the issue65_0143 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fa9b6fc128df6ae695f3ff96160520c9ddbf610b95df3de95fdf6fc840ef937b"
+      "semantic_sha256": "f0666c93ff05c8c652a8078dd7013262871b461166a0747897b75219f195eebb"
     },
     "maps/shattered_islands/world_5_67_1": {
       "uncolored_disposition": "neutral",
@@ -4759,14 +4877,14 @@
       "art_overrides": {
         "94": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "44f311508f848bd7da33c11b804050543557c7993c6ddbc1c3745f73b53b5ad8"
+      "semantic_sha256": "dbbf029d802cf4ee6121aa847a7f10365072f49a80a2a97803219d8e183a837a"
     },
     "maps/shattered_islands/world_5_68": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "91f7c5fc817300811577d76008aa9e9f03a898f7b9cd6d5cab0c9bfc07210120"
+      "semantic_sha256": "24f2e8160c9043b263f9cd5157c2084e4b92fd3a1683e1663e2729b3387348c7"
     },
     "maps/shattered_islands/world_5_68_-1": {
       "uncolored_disposition": "neutral",
@@ -4831,7 +4949,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c175e334a2bcf843754eaeae6ae4754778578a8cf497de4ef8b9b9110fc9c19f"
+      "semantic_sha256": "61410e2684a5da69404c0207d4166bf9b0fe8bd869ded9989143a18a7ece11a6"
     },
     "maps/shattered_islands/world_5_84_-2": {
       "uncolored_disposition": "neutral",
@@ -4894,14 +5012,14 @@
       "rationale": "Rendered Asteria Palace Dungeon in the issue65_0147 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "050a0cca6f6382aefb2ded7521f960f6befe3ae864ed71a12b921d424fcbc6c7"
+      "semantic_sha256": "04373ffa42ab88c20656b384ad0bc05217a701f3e04b46a4a6287bb3445ced9a"
     },
     "maps/shattered_islands/world_6_43_1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6ae4b8528738d9a89e97edc0650e257d0d99f61567124c39ac0575a4b41d0e35"
+      "semantic_sha256": "b4eb9f1e228a481abc4ba12934ce184733958fc55bf36c43acfbd4efbd759bd3"
     },
     "maps/shattered_islands/world_6_44": {
       "uncolored_disposition": "neutral",
@@ -4929,7 +5047,7 @@
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3b6a0d16fc02dcb43d9517bac2d3831c2fc40baee27903a0258bb59337390f7d"
+      "semantic_sha256": "89578eb120acb9fe721831aa7cd4d954c9fcb2219c1db296bbe27b596ac4f316"
     },
     "maps/shattered_islands/world_6_45": {
       "uncolored_disposition": "neutral",
@@ -5070,7 +5188,7 @@
       "rationale": "Rendered Morg'eean's Cellar in the issue65_0160 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ec1e34b2f287f5eb6895ee8dbebe84ad92ed3ccce1aead2f2fdd58fbdf869d8d"
+      "semantic_sha256": "0c44927007f733ee68e794ca09736e84ea4a670c1bb3f05184a75dedfbaba042"
     },
     "maps/shattered_islands/world_6_51_-2": {
       "uncolored_disposition": "neutral",
@@ -5091,7 +5209,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2425d44065a07b32117a668db5bcc41536fac288e910554a3e4c7d1a257a29b0"
+      "semantic_sha256": "f50f1607649bc9259e0eef756bb9fcd01a3d58a10e396f9883b572472150f15b"
     },
     "maps/shattered_islands/world_6_66_-1": {
       "uncolored_disposition": "neutral",
@@ -5112,7 +5230,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c822a0dfa680c3a01533d28aa852073d945ce128037008e14866f38eb09773af"
+      "semantic_sha256": "0f1947055c886a9e0d99f6095c2e31b321a01ab643a44922abe6e071eedf283e"
     },
     "maps/shattered_islands/world_6_68_-1": {
       "uncolored_disposition": "neutral",
@@ -5219,7 +5337,7 @@
       "art_overrides": {
         "2044": "Map-local fire-trail animation uses its explicit warm fire illumination."
       },
-      "semantic_sha256": "38c4f5968860989b35b3b16b196ba02cac915b5fcb32fb650485d04be5a96829"
+      "semantic_sha256": "871bd85de79aa4bcff7c984c93cd49b9af2678727ee70aa32240f215e6dd9d5c"
     },
     "maps/shattered_islands/world_7_44_-1": {
       "uncolored_disposition": "neutral",
@@ -5240,7 +5358,7 @@
       "rationale": "Rendered Asteria Palace in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3a1b1b0ed56bca1d0a1f7fd73fd8f2f38d79f89f754079867100bafe7211bd0a"
+      "semantic_sha256": "d133330cd642395d03eea4d737ff3e9ff989ed7bfa0039701b1dbd169e3ab7f8"
     },
     "maps/shattered_islands/world_7_45": {
       "uncolored_disposition": "neutral",
@@ -5352,7 +5470,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 3 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2fc8d0fd9011c88fa009e413e270ebd084e6e854c0baee7df6afc6fa4e278126"
+      "semantic_sha256": "d583f5d1e5d834fde4e0ae7df79b5b9d845ff504d2961d13907557fa7937c92c"
     },
     "maps/shattered_islands/world_7_64_-1": {
       "uncolored_disposition": "neutral",
@@ -5373,14 +5491,14 @@
       "rationale": "Rendered Inn In The Mountains in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 5 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9e0ff0f18b857e04e37a995463584cacfab3ebb581f76728d24c60834a05fc83"
+      "semantic_sha256": "ed790a30b94bd37c796b0bdbdb973ea0caa5bd02e620ab6621b5753871e6aa60"
     },
     "maps/shattered_islands/world_7_64_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Inn In The Mountains in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "54aebce5fdd90374502a02f0b983e8fce28c57dc235605cbc622c03e71e3c9e7"
+      "semantic_sha256": "eb3baa84be0d982a125c6d0954d645ac772ca5500f679af4f954a9a82e6b4c6f"
     },
     "maps/shattered_islands/world_7_65_-1": {
       "uncolored_disposition": "neutral",
@@ -5394,7 +5512,7 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "06e9ed9408ee690fa54a71e7ef8e724974262f23fcda6eb68f2a2e721c3e4960"
+      "semantic_sha256": "e5c92d959dfcce1c18e6d37b9da163843e7e782b4e4a182d80dc91ad31529b1e"
     },
     "maps/shattered_islands/world_7_66_-1": {
       "uncolored_disposition": "neutral",
@@ -5417,14 +5535,14 @@
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "474213c18650871db0cc3bc4983e2face351018ae1938877706f7e7c2ada69f1"
+      "semantic_sha256": "7d3ad92fa62a3a57bfaf96af0c326107828b6f2165a84a0c18bb3a137eaf1677"
     },
     "maps/shattered_islands/world_7_69": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Strakewood Island in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "134fdd5117cb3e005dacaaf2b668efc8c428b7429925a5c43717c07b082bf3f3"
+      "semantic_sha256": "13fc6247667a1a850f1a04a390aea07af77cef06851e8b088749a415e48b3c85"
     },
     "maps/shattered_islands/world_7_71": {
       "uncolored_disposition": "neutral",
@@ -5475,7 +5593,7 @@
       "rationale": "Rendered Clearhaven in the eld_woods_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2a00f18dc01f263d7b4b9f0d73c2fdad5ae964d9fbe2f3cf51b027188970853b"
+      "semantic_sha256": "fb2bae8328ce2407bc4b6f09977129ffa6253de6169d5e09879f77db869cbb30"
     },
     "maps/shattered_islands/world_8_40": {
       "uncolored_disposition": "neutral",
@@ -5559,14 +5677,14 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1a84d4da7c9c290423a3e9dffc0a7600c14a7d4f1ab08a4d9aa7b457fc74a79d"
+      "semantic_sha256": "00d03b17d3456c9759d014a1d374f4374181b87c281e9ebb2a942936a4c39098"
     },
     "maps/shattered_islands/world_8_46_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Thieves Guild in the issue65_0188 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "94ff457f121848d531dcbcb3a54b52a219ac0ada5bb42ccf8d980dac6ace8b4f"
+      "semantic_sha256": "f808b39d386262116c42a57c2fa9423f16bf3549f995d69bf08f0ccb58758c55"
     },
     "maps/shattered_islands/world_8_47": {
       "uncolored_disposition": "neutral",
@@ -5669,7 +5787,7 @@
       "rationale": "Rendered Clearhaven in the eld_woods_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c695a58c12c28838edcd6d254e4fd925db3748e89044d0fa920f6a6ace343401"
+      "semantic_sha256": "70bbb706f9556ee06ffea0d32dffa73e7c36aaaf1010717e843e49aa76badb35"
     },
     "maps/shattered_islands/world_8_79": {
       "uncolored_disposition": "neutral",
@@ -5732,7 +5850,7 @@
       "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "91ab02a4c593289fe2f7eefe6051d09d4209ca8f08ceffd86062671911747f97"
+      "semantic_sha256": "7041b78ea4c8ba1c8880d0a707c63a0abfb92bb650fe624a75d51aaaa46a9394"
     },
     "maps/shattered_islands/world_9_44_1": {
       "uncolored_disposition": "neutral",
@@ -5797,7 +5915,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8f95aa5ca7d9dd745734ce4f42ea0e1bc7eb8f5c4a23446e39f663d3a058d538"
+      "semantic_sha256": "f4bf24732f70d1838d6d41c0d4a480bc41a1ac76e24945635618ca5e5073d314"
     },
     "maps/shattered_islands/world_9_67_1": {
       "uncolored_disposition": "neutral",
@@ -5846,7 +5964,7 @@
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1ba22a577920fc8a51524120d46277cf0e74472d392181d4abd22fea7b48bb07"
+      "semantic_sha256": "878f682883edbc9beaab3bcb63b1d7e2e374bc71ace55586bcce531a3c513636"
     },
     "maps/shattered_islands/world_9_69_1": {
       "uncolored_disposition": "neutral",
@@ -5907,42 +6025,42 @@
       "rationale": "Rendered the Quick Wolves guild hall for issue #91; inherited fireplace firelight preserves the room footprint and navigation without a redundant helper source. Reviewed all 2 wall-fireplace placements (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "39a14e8509fdea0d947e4c665c56f06ea22198e99b028bc8c34e71db3c9dce2e"
+      "semantic_sha256": "fbe122c88039753ba9ac4dc58ab744f4c8f8a56b46ea854e2d3f22b9f38bab0a"
     },
     "maps/guilds/quick_wolves/oracle": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered the Quick Wolves oracle room for issue #91; inherited fireplace firelight preserves the room footprint and navigation without a redundant helper source. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b877fc399135cfaae759ff376c2b138a15fd08f1e7a79ce65790f7515ffcd39b"
+      "semantic_sha256": "1d7987f7a93905c6137a69f64a45fe51c921157331fa2980e0275027d1e64c4f"
     },
     "maps/guilds/quick_wolves/storage": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered the Quick Wolves storage room for issue #91; inherited fireplace firelight preserves the room footprint and navigation without a redundant helper source. Reviewed all 2 wall-fireplace placements (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d3976b7ef7373507f1eda5a30f295f5f4ae21987f70a04fd162147f56b7e0bca"
+      "semantic_sha256": "30fd76757a7c9e97e0ec275db28429740a7617ebe063466474c4c40bcf087203"
     },
     "maps/hall_of_dms": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered the Hall of DMs for issue #91; inherited fireplace firelight preserves the hall footprint and navigation without a redundant helper source. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b15e27b2e820e44c0e99d82a5446ad4c6e11dee883e8aeb8f0b75e5361fcd53a"
+      "semantic_sha256": "b8200cc3e5f1a6afd479b633aa2daf4de00895ae1e9781681a18c4cce14df15b"
     },
     "maps/shattered_islands/strakewood_island/apartments/apartment_expensive": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered the expensive apartment for issue #91; inherited fireplace firelight preserves the room footprint and navigation without a redundant helper source. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "03fd80f748ee6975c23ff443a13ff5edb01344a1826987b2c44b2c6d31fdb3ee"
+      "semantic_sha256": "c591903d2a3183d0c5f8a27809fb512484e2b02441f2579020be2f95fced2eab"
     },
     "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered the luxurious apartment for issue #91; inherited fireplace firelight preserves the room footprint and navigation without a redundant helper source. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered the luxurious apartment for issue #91; inherited fireplace firelight preserves the room footprint and navigation without a redundant helper source. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The co-located candle is an intentional radius-zero member so the visible wall fireplace remains the sole compact source without mixed-color doubling.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1c84b5001af477152b16c90392e4bfbbd52ea82f8f0a2891898d0f7ad833f684"
+      "semantic_sha256": "d5a9916de51b55efb03ef25c1def4a85c6c8c118e8cac242b6fe267e428bb7df"
     },
     "maps/shattered_islands/strakewood_island/greyton/jail/jail_a": {
       "uncolored_disposition": "neutral",
@@ -5972,7 +6090,7 @@
       "rationale": "Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3e782974d70b3d95ff88c533f8453c83f80d1181b3b37e40c7a811fb94621d0e"
+      "semantic_sha256": "d87719fb1b80950ee696e621bebac85c01e7fb27d97b501a76ead275154dd4cb"
     },
     "maps/shattered_islands/world_8_49": {
       "uncolored_disposition": "neutral",
@@ -5980,6 +6098,78 @@
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "f0eab1b708a8f304d3fbca56139e78d17fa85accc1a0b337ad0cd12b55fbd80f"
+    },
+    "maps/shattered_islands/strakewood_island/apartments/apartment_cheap": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Cheap Apartment for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "7c5f02dfa315291a8bfa9182c33b9d80440afabbc610b213fab5ccc79bb88908"
+    },
+    "maps/shattered_islands/world_6_48_1": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Asteria for the warm-candle fixture review; warm-gold candle pools preserve the scene hierarchy while remaining map-local.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "4810311aab606235327343a7d38827a5d9f156061532c509db2ace87f302b9c5"
+    }
+  },
+  "fixture_groups": {
+    "warm-candle-fixtures": {
+      "archetypes": [
+        "candle2_on",
+        "candle_on",
+        "candlelight1.101",
+        "candlelight2.101",
+        "candlelight3.101",
+        "candlelight4.101"
+      ],
+      "checks": [
+        "candle-dense-cluster",
+        "candle-form-candle-on",
+        "candle-form-candle2-on",
+        "candle-form-candlelight1",
+        "candle-form-candlelight2",
+        "candle-form-candlelight3",
+        "candle-form-candlelight4",
+        "candle-map-seam",
+        "candle-mixed-color-overlap",
+        "candle-radius-2",
+        "candle-radius-3",
+        "candle-radius-4",
+        "candle-radius-5",
+        "candle-radius-6",
+        "candle-radius-7",
+        "candle-radius-8",
+        "candle-radius-9",
+        "candle-wall-adjacency"
+      ],
+      "default_radii": {
+        "candle2_on": 2,
+        "candle_on": 2,
+        "candlelight1.101": 3,
+        "candlelight2.101": 3,
+        "candlelight3.101": 3,
+        "candlelight4.101": 3
+      },
+      "expected_color": "ffd080",
+      "expected_maps": 119,
+      "expected_placements": {
+        "candle2_on": 1,
+        "candle_on": 5,
+        "candlelight1.101": 47,
+        "candlelight2.101": 25,
+        "candlelight3.101": 122,
+        "candlelight4.101": 278
+      },
+      "intentional_non_emitters": {
+        "maps/shattered_islands/world_0_52_1:9:4:candle_on:2": "One candle in the four-part composite owns the original radius-4 source; this member is locally dark to prevent additive over-lighting.",
+        "maps/shattered_islands/world_0_52_1:9:4:candle_on:3": "One candle in the four-part composite owns the original radius-4 source; this member is locally dark to prevent additive over-lighting.",
+        "maps/shattered_islands/world_0_52_1:9:4:candle_on:4": "One candle in the four-part composite owns the original radius-4 source; this member is locally dark to prevent additive over-lighting.",
+        "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious:5:9:candlelight1.101:1": "The co-located visible wall fireplace owns the reviewed compact source; this candle is locally dark to prevent mixed-color additive over-lighting."
+      },
+      "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the four-part composite retains one candle source, and the mixed candle/fireplace tile retains only its visible fireplace source.",
+      "semantic_sha256": "17c454eefa8e4f344816979214f7ae87cbd83a793c3a08ebaa5f33fab53c272c"
     }
   }
 }

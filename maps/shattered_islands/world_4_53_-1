@@ -542,10 +542,7 @@ end
 arch candlelight4.101
 x 5
 y 13
-end
-arch light5
-x 5
-y 13
+glow_radius 5
 end
 arch floor_grey9
 x 5
@@ -944,10 +941,7 @@ end
 arch candlelight4.101
 x 8
 y 17
-end
-arch light5
-x 8
-y 17
+glow_radius 5
 end
 arch floor_grey9
 x 8
@@ -1107,10 +1101,7 @@ end
 arch candlelight4.101
 x 9
 y 13
-end
-arch light5
-x 9
-y 13
+glow_radius 5
 end
 arch floor_grey9
 x 9

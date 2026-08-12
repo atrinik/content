@@ -1578,10 +1578,7 @@ end
 arch candlelight3.101
 x 8
 y 15
-end
-arch light7
-x 8
-y 15
+glow_radius 7
 end
 arch floor_wood3g
 x 8

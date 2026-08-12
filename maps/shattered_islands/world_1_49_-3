@@ -710,10 +710,7 @@ end
 arch candlelight3.101
 x 19
 y 6
-end
-arch light5
-x 19
-y 6
+glow_radius 5
 end
 arch floor_ostone8
 x 19
@@ -749,10 +746,7 @@ end
 arch candlelight3.101
 x 19
 y 10
-end
-arch light5
-x 19
-y 10
+glow_radius 5
 end
 arch floor_ostone8
 x 19
@@ -787,10 +781,7 @@ end
 arch candlelight3.101
 x 19
 y 12
-end
-arch light5
-x 19
-y 12
+glow_radius 5
 end
 arch floor_ostone8
 x 19
@@ -816,10 +807,7 @@ end
 arch candlelight2.101
 x 19
 y 16
-end
-arch light5
-x 19
-y 16
+glow_radius 5
 end
 arch floor_ostone8
 x 19
@@ -1038,10 +1026,7 @@ end
 arch candlelight3.101
 x 21
 y 4
-end
-arch light5
-x 21
-y 4
+glow_radius 5
 end
 arch floor_ostone8
 x 21
@@ -1198,10 +1183,7 @@ end
 arch candlelight3.101
 x 22
 y 12
-end
-arch light5
-x 22
-y 12
+glow_radius 5
 end
 arch floor_ostone8
 x 22
@@ -1222,10 +1204,7 @@ end
 arch candlelight3.101
 x 22
 y 16
-end
-arch light5
-x 22
-y 16
+glow_radius 5
 end
 arch floor_ostone8
 x 22

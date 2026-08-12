@@ -599,6 +599,7 @@ end
         self.assertEqual(
             {
                 "__pycache__",
+                "light-source-fixture-contract.json",
                 "light-source-review.json",
                 "stale.pyc",
             },
@@ -607,6 +608,7 @@ end
                 [
                     "world",
                     "__pycache__",
+                    "light-source-fixture-contract.json",
                     "light-source-review.json",
                     "stale.pyc",
                 ],

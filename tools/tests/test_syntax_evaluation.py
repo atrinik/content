@@ -15,6 +15,7 @@ from tools.syntax_evaluation.benchmark import (
     _implementation_digest,
     _parse_server_output,
     _summary,
+    _topology_input_components,
     select_representative_maps,
 )
 from tools.syntax_evaluation.evaluation import evaluate_corpus, validate_baseline_lock
@@ -27,6 +28,139 @@ CONTRACT_ROOT = ROOT / "contracts" / "content-v1"
 
 
 class SyntaxEvaluationTest(unittest.TestCase):
+    def test_topology_inputs_accept_role_and_provider_component_keys(self):
+        content = {
+            "head": "1" * 40,
+            "dirty": False,
+            "path": "/worktrees/content",
+        }
+        server = {
+            "head": "2" * 40,
+            "dirty": False,
+            "path": "/worktrees/server",
+        }
+        expected = {
+            "content": {
+                "commit": content["head"],
+                "dirty": False,
+                "path": content["path"],
+            },
+            "server": {
+                "commit": server["head"],
+                "dirty": False,
+                "path": server["path"],
+            },
+        }
+        role_keyed = {
+            "components": {"content": content, "server": server},
+            "dependencies": ["server", "content"],
+        }
+        provider_keyed = {
+            "components": {
+                "content-1x": content,
+                "classic-server": server,
+                "resources": content,
+            },
+            "dependencies": ["server", "resources", "content"],
+            "providers": {
+                "content": "content-1x",
+                "resources": "resources",
+                "server": "classic-server",
+            },
+        }
+        provider_expected = {
+            **expected,
+            "resources": expected["content"],
+        }
+
+        self.assertEqual(expected, _topology_input_components(role_keyed))
+        self.assertEqual(provider_expected, _topology_input_components(provider_keyed))
+
+    def test_topology_inputs_fail_closed_on_invalid_provider_mappings(self):
+        component = {
+            "head": "1" * 40,
+            "dirty": False,
+            "path": "/worktrees/component",
+        }
+        provider_keyed = {
+            "components": {
+                "content-1x": component,
+                "classic-server": component,
+            },
+            "dependencies": ["content", "server"],
+            "providers": {
+                "content": "content-1x",
+                "server": "classic-server",
+            },
+        }
+        invalid = (
+            {**provider_keyed, "providers": {"content": "content-1x"}},
+            {**provider_keyed, "providers": {"content": "content-1x", "server": 7}},
+            {
+                **provider_keyed,
+                "providers": {"content": "content-1x", "server": "missing"},
+            },
+            {**provider_keyed, "providers": []},
+            {
+                "components": {"content": component, "server": component},
+                "dependencies": ["content", "server"],
+                "providers": None,
+            },
+            {
+                "components": {
+                    "content": component,
+                    "server": component,
+                    "different-server": component,
+                },
+                "dependencies": ["content", "server"],
+                "providers": {
+                    "content": "content",
+                    "server": "different-server",
+                },
+            },
+            {
+                "components": {
+                    "content": component,
+                    "content-1x": component,
+                    "classic-server": component,
+                },
+                "dependencies": ["content", "server"],
+                "providers": {
+                    "content": "content-1x",
+                    "server": "classic-server",
+                },
+            },
+        )
+
+        for topology in invalid:
+            with self.subTest(topology=topology), self.assertRaises(PrototypeError):
+                _topology_input_components(topology)
+
+    def test_topology_inputs_fail_closed_on_invalid_component_metadata(self):
+        component = {
+            "head": "1" * 40,
+            "dirty": False,
+            "path": "/worktrees/component",
+        }
+        invalid = (
+            {**component, "head": None},
+            {**component, "dirty": "false"},
+            {**component, "path": None},
+        )
+        for bad_component in invalid:
+            with self.subTest(component=bad_component), self.assertRaises(
+                PrototypeError
+            ):
+                _topology_input_components(
+                    {
+                        "components": {
+                            "content": component,
+                            "server": bad_component,
+                        },
+                        "dependencies": ["content", "server"],
+                    }
+                )
+
     def test_locked_corpus_roundtrips_both_surfaces_deterministically(self):
         first = evaluate_corpus(ROOT)
         second = evaluate_corpus(ROOT)

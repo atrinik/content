@@ -3,16 +3,16 @@
   "review_method": "Exact main-line effective semantic inventory ported from the pinned Classic review; color, rationale, and contextual decisions are retained without claiming replacement rendering.",
   "palette": {
     "4060ff": {
-      "name": "forcefield blue",
-      "rationale": "Saturated blue follows the blue forcefield animation without washing nearby neutral floor."
+      "name": "forcefield and portal blue",
+      "rationale": "Saturated blue follows blue forcefields and portals without washing nearby neutral floor."
     },
     "40ff60": {
-      "name": "forcefield green",
-      "rationale": "Saturated green follows the green forcefield animation and stays distinct from cyan cold magic."
+      "name": "forcefield and portal green",
+      "rationale": "Saturated green follows green forcefields and portals while staying distinct from cyan magic."
     },
     "60d0ff": {
-      "name": "crystal cyan",
-      "rationale": "Cyan-blue matches blue crystal and rune art while retaining a cool magical identity."
+      "name": "crystal and portal cyan",
+      "rationale": "Cyan-blue matches crystal, rune, azure-portal, and town-portal art with a cool magical identity."
     },
     "66ff66": {
       "name": "green flame",
@@ -44,7 +44,7 @@
     },
     "ff3030": {
       "name": "emissive red",
-      "rationale": "Saturated red follows red forcefields, spotted fungi, and red-ant art."
+      "rationale": "Saturated red follows red forcefields, portals, spotted fungi, and red-ant art."
     },
     "ff6030": {
       "name": "lava and open fire",
@@ -67,8 +67,8 @@
       "rationale": "Warm gold follows enclosed lantern, lamp, candle, and small-flame art."
     },
     "ffe060": {
-      "name": "forcefield yellow",
-      "rationale": "Yellow follows the yellow forcefield animation without drifting into orange fire."
+      "name": "forcefield and portal yellow",
+      "rationale": "Yellow follows yellow forcefields and portals without drifting into orange fire."
     },
     "fff0c0": {
       "name": "holy gold-white",
@@ -598,6 +598,36 @@
       "uncolored_disposition": "neutral",
       "rationale": "The visible right-facing multipart fireplace root owns bounded radius-2 orange-red firelight; its child and off variant remain dark.",
       "semantic_sha256": "8d9a00c10239395a5791896453cbec154f4a8c747f935d591b965f0c5898ce27"
+    },
+    "perm_magic_portal": {
+      "uncolored_disposition": "neutral",
+      "rationale": "perm_magic_portal uses radius 1 and town-portal cyan so its animated portal reads as emissive without becoming ambient room light.",
+      "semantic_sha256": "0f55d94893ff5155370a5f4a2ebca53b6110ccb48e52716b33bf877ab8bdc108"
+    },
+    "portal_azure": {
+      "uncolored_disposition": "neutral",
+      "rationale": "portal_azure uses radius 1 and portal cyan so its animated portal reads as emissive without becoming ambient room light.",
+      "semantic_sha256": "06bd25d0d884251b7b7cd1a3379cef9ff00e8cc6ec5b9c269a6e77e20cc4c16d"
+    },
+    "portal_big": {
+      "uncolored_disposition": "neutral",
+      "rationale": "portal_big uses radius 1 and portal blue so its animated portal reads as emissive without becoming ambient room light.",
+      "semantic_sha256": "67d20fcd96386f400788bd0e7f60d83a29d9a1fe288ad2d3348301efcf654463"
+    },
+    "portal_green": {
+      "uncolored_disposition": "neutral",
+      "rationale": "portal_green uses radius 1 and portal green so its animated portal reads as emissive without becoming ambient room light.",
+      "semantic_sha256": "2999a1225e270831d3c8c2c8a5b10d026823c6c2b16a1c4777e379019b03f5cc"
+    },
+    "portal_red": {
+      "uncolored_disposition": "neutral",
+      "rationale": "portal_red uses radius 1 and portal red so its animated portal reads as emissive without becoming ambient room light.",
+      "semantic_sha256": "103ca7793181ca8120f8e1e9a07487aac3506608ce61cbc818184f13a50d0927"
+    },
+    "portal_yellow": {
+      "uncolored_disposition": "neutral",
+      "rationale": "portal_yellow uses radius 1 and portal yellow so its animated portal reads as emissive without becoming ambient room light.",
+      "semantic_sha256": "cd20119864d6587d69a83bd3ec55d1e89ac4bfdee15ea577e2101f376100e822"
     }
   },
   "artifacts": {
@@ -1184,6 +1214,30 @@
     "crystal_yellow": {
       "rationale": "The authored ffe060 tint matches the crystal's golden facets and yellow highlights.",
       "semantic_sha256": "facce0b99a58d951b45d2fec768649a88393ee854366b686b3a9214c2b1467d0"
+    },
+    "perm_magic_portal": {
+      "rationale": "The authored 60d0ff tint follows the visible town-portal cyan art.",
+      "semantic_sha256": "11b5c4356bd28f13cadff6286fc6613351a128359264608635d1f16a83f19986"
+    },
+    "portal_azure": {
+      "rationale": "The authored 60d0ff tint follows the visible portal cyan art.",
+      "semantic_sha256": "cdea0ed854d1918d35065ddcbf530eab035511c2c77ea89bd927381f33f9b763"
+    },
+    "portal_big": {
+      "rationale": "The authored 4060ff tint follows the visible portal blue art.",
+      "semantic_sha256": "b51033b656a44516593a50781688eb4e8c125baa01d17c66bb1be36a5d6133ab"
+    },
+    "portal_green": {
+      "rationale": "The authored 40ff60 tint follows the visible portal green art.",
+      "semantic_sha256": "ba179a670c990780e42d565aeac23511530c2d064977cb32d5f2cb833b427a82"
+    },
+    "portal_red": {
+      "rationale": "The authored ff3030 tint follows the visible portal red art.",
+      "semantic_sha256": "2a0194cd009038c03b72bf864dadf5705c1bb7e12ed84880ae4fece864085901"
+    },
+    "portal_yellow": {
+      "rationale": "The authored ffe060 tint follows the visible portal yellow art.",
+      "semantic_sha256": "38db6dea44a0b345aa3e58ff461b10a547ac4cc11c60411e6c40b3f7ca07dcc1"
     }
   },
   "toggle_states": {
@@ -1247,7 +1301,7 @@
   "context_checks": {
     "overlap": {
       "status": "pass",
-      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control. The Marigold radius-1 blue crystal-ball display and radius-1 pale-gold power crystal sit beside stronger neutral helper lights without stacked or clipped focal color.",
+      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control. The Marigold radius-1 blue crystal-ball display and radius-1 pale-gold power crystal sit beside stronger neutral helper lights without stacked or clipped focal color. The four-color Wizards’ Tower portals remain compact beside neutral fill and existing crystal focal lights, without stacked or clipped color.",
       "classic_views": [
         "smooth-0001",
         "discrete-0001",
@@ -1257,7 +1311,7 @@
     },
     "linked-depth": {
       "status": "pass",
-      "rationale": "Compared linked Zechna depths and the established underground-city control; colored pools remain bounded to their authored levels.",
+      "rationale": "Compared linked Zechna depths and the established underground-city control; colored pools remain bounded to their authored levels. Portal cues remain bound to their authored depth and do not recolor adjacent combat spaces.",
       "classic_views": [
         "smooth-0200",
         "discrete-0003"
@@ -1265,7 +1319,7 @@
     },
     "horizontal-boundary": {
       "status": "pass",
-      "rationale": "Compared Zechna linked neighbors and the established city-boundary control; seams remain readable without light leakage.",
+      "rationale": "Compared Zechna linked neighbors and the established city-boundary control; seams remain readable without light leakage. Colored portal cues remain readable at tower and city boundaries without seam leakage.",
       "classic_views": [
         "smooth-0450",
         "discrete-0006"
@@ -1273,7 +1327,7 @@
     },
     "dark-interior": {
       "status": "pass",
-      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes. Compared every affected toxic-pool placement in smooth and discrete modes; magenta and green pools preserve deliberate darkness, hazard identity, and traversable routes.",
+      "rationale": "Compared the source lab, all fixture-specific views, every glower context, and the exact Asteria cauldron/sconce co-location in both applicable renderer modes. Emitting fixtures preserve deliberate darkness without wall bleed, washout, clipping, or oversaturation; radius-zero glowers remain dark and routes remain readable. The crystal pilot additionally covers the dark Abyss and Zechna interiors, where colored pools preserve darkness, object art, and traversable routes. Compared every affected toxic-pool placement in smooth and discrete modes; magenta and green pools preserve deliberate darkness, hazard identity, and traversable routes. The Loki temple, dark lair, and sewer portals add compact route cues without replacing deliberate darkness.",
       "classic_views": [
         "smooth-0050",
         "discrete-0002",
@@ -1295,7 +1349,7 @@
     },
     "outdoor-transition": {
       "status": "pass",
-      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting.",
+      "rationale": "Compared street/interior transitions and colored-animation contexts; outdoor detail remains readable without palette clipping. Retained unchanged outdoor and street-transition controls to ensure the focused crystal palette does not alter unrelated lighting. Plane-of-Creation and outdoor portal transitions retain ambient hierarchy while keeping the exit color legible. Incuna's owner-gated beach portal adds a compact cyan route cue without replacing the outdoor ambient hierarchy.",
       "classic_views": [
         "smooth-0400",
         "discrete-0005",
@@ -1306,7 +1360,7 @@
     },
     "fog-roof": {
       "status": "pass",
-      "rationale": "Retained the unchanged Bone Cairn fog-and-roof control; lighting still does not reveal blocked routes or erase cutaway boundaries.",
+      "rationale": "Retained the unchanged Bone Cairn fog-and-roof control; lighting still does not reveal blocked routes or erase cutaway boundaries. The Bone Cairn azure portal remains a radius-1 cue that does not expose blocked routes or erase the cutaway boundary.",
       "classic_views": [
         "smooth-0001",
         "discrete-0001"
@@ -1314,7 +1368,7 @@
     },
     "navigation": {
       "status": "pass",
-      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct.",
+      "rationale": "Compared the baseline enclosed garden plus all glower and fire-fixture contexts; fixture-owned illumination retains entrances, walls, and walkable routes in both renderer modes. The crystal pilot additionally covers Zechna corridors, stairs, doors, and linked boundaries without losing navigation contrast. Compared an enclosed city garden and adjoining passages, then Rockforge's dwarven teleporter in smooth and discrete modes; the warm focal pool, independent wall and room fill, entrances, and walkable routes remain distinct. The multi-portal tower keeps each colored exit distinct while preserving walls, entrances, and walkable routes. Incuna's private-beach exit remains a compact navigation cue with its ownership gate and destination unchanged.",
       "classic_views": [
         "smooth-0650",
         "discrete-0007"
@@ -1326,8 +1380,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Bone Cairn in the bone_cairn batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "d23459a259291010c889a75b732168518bb006578074df9125502a4c0876e456"
+      "art_overrides": {
+        "1937": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal."
+      },
+      "semantic_sha256": "fcee95ee029e628664463dae26a02c2f5f8470f34049c1b370f2a048280ae3f4"
     },
     "maps/shattered_islands/berri_lur/temple_loki/desert_plane/passage_0101": {
       "uncolored_disposition": "neutral",
@@ -1340,8 +1396,12 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Temple of Loki in the issue65_0002 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "a184ff3d40530f8022e9220f524a2e8cbb546ac90bd66021f2d08f4ae6e90295"
+      "art_overrides": {
+        "1162": "Map-local portal animation uses explicit radius-1 red light matching the visible portal.",
+        "2932": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
+        "3514": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "04ac18d7c3302f1a6c0d384253bf3f3ee5d1cf7ddf0714d4541a06e05ea4fb25"
     },
     "maps/shattered_islands/deserted_tutorial_island/mushroom_cavern": {
       "uncolored_disposition": "neutral",
@@ -1484,8 +1544,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "668a5f64b64e74f615c78cf33ea9620045dc17c56264c75bf4ce6aeda104091f"
+      "art_overrides": {
+        "561": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+      },
+      "semantic_sha256": "61fbb9585765e7d7af381dfcf2a99694fc6f39bcf4e0d233f91403d9fc54eb4f"
     },
     "maps/shattered_islands/everlink/everlink_0201": {
       "uncolored_disposition": "neutral",
@@ -1581,15 +1643,20 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Nyhelobo's Lab in the issue65_0026 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "c7bee5de9e792a8bd355d522dd3469761a569c2d53c474976447fdcb224b1c88"
+      "art_overrides": {
+        "2086": "Map-local portal animation uses explicit radius-1 green light matching the visible portal.",
+        "3592": "Map-local portal animation uses explicit radius-1 green light matching the visible portal."
+      },
+      "semantic_sha256": "793ce72f7aff640c4ea90e7733370761ea838074b038469b754f2cf3b78901e1"
     },
     "maps/shattered_islands/strakewood_island/brynknot/sewers/lab_nyhelobo": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Nyhelobo's Lab in the issue65_0027 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "58dd0b43569f6af5d2e5831720ebced0e6b9ba378945dd2ae9941f92cd4eb160"
+      "art_overrides": {
+        "2885": "Map-local portal animation uses explicit radius-1 green light matching the visible portal."
+      },
+      "semantic_sha256": "a5f0331a31068dc66efb70fda77d3fd277fa200ef34b504f2af26bc56f0599ba"
     },
     "maps/shattered_islands/strakewood_island/dark_cave/dark_cave_0101": {
       "uncolored_disposition": "neutral",
@@ -1646,8 +1713,10 @@
       "visible_neutral": {
         "peasant": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
-      "art_overrides": {},
-      "semantic_sha256": "dd8e02e35af6aebf572ba4afa973821e4f8fcf93d36b011faa279561a1325252"
+      "art_overrides": {
+        "11686": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+      },
+      "semantic_sha256": "3e68a8c7233d72c88c28430d40a06938df227d97260943e4dd3fbd98e17cc27f"
     },
     "maps/shattered_islands/strakewood_island/greyton/jail/jail": {
       "uncolored_disposition": "neutral",
@@ -1932,14 +2001,14 @@
       "rationale": "Rendered The Underground City in the underground_city batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bd9a7cbc08f8bae3280907a4177bde8a34609222c50dae8b0c2b55e83653281b"
+      "semantic_sha256": "13e739284ae7e731412f3ce26baaf514ef8b842b228050c97fdec8ffbf5cf451"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_1_-2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "93070a4781b26afefb49cf547ac948ff530f52d005ca5a6d5af2a766653dbb1b"
+      "semantic_sha256": "4370a0325196553e80e4b7b19c66cf711572e63996483fe86fb3a2257b8ee4ec"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_0_2": {
       "uncolored_disposition": "neutral",
@@ -2135,7 +2204,7 @@
         "bridge_wood_NS.101": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "d5e995a1a9a891c64b8aad9c5f6f1e436cc62799e0bc765ca8d33e967c8ea03c"
+      "semantic_sha256": "b17c29e7a9a387007dd493be826802941d30c6a342bf1a47940d5b5c63121f32"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_4": {
       "uncolored_disposition": "neutral",
@@ -2204,8 +2273,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "2fa706d2fe97586c1e340f6383b52a1e8c56ea118a617a3c5ffa880336cbe7b3"
+      "art_overrides": {
+        "29": "Map-local portal animation uses explicit radius-1 yellow light matching the visible portal."
+      },
+      "semantic_sha256": "cff656175038700b3192349136e31de7d7445b9f32a6261cd55a4549b69b8217"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_3_4": {
       "uncolored_disposition": "neutral",
@@ -2982,8 +3053,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered The City of Greyton in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "5d5cab46194e26311997b13e3d7f0809bb21ed0ed43f815bcda27ce0cc634eca"
+      "art_overrides": {
+        "2004": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+      },
+      "semantic_sha256": "cdfd1c31c9ae1d6ebddea1e0cadf916890105761e11dde93d20e37647fffc8d7"
     },
     "maps/shattered_islands/world_10_69_1": {
       "uncolored_disposition": "neutral",
@@ -3294,36 +3367,61 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Lyondale Archipelago in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "8dfc6f879db0a561825d3049fd2f3774ac1903da9da1af658c8c94608173138f"
+      "art_overrides": {
+        "1074": "Map-local portal animation uses explicit radius-1 yellow light matching the visible portal.",
+        "1182": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal.",
+        "3376": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
+        "3484": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "73fea48dd125587463b47699642fc88a142f6f46ece9678ca7f4774b03733a4a"
     },
     "maps/shattered_islands/world_17_2_2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Wizards' Tower: Daffodil in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "3646e89c1608544bf1c68d2536ad99d279d8292f8f7ca254daf039b6f1bd5a54"
+      "art_overrides": {
+        "680": "Map-local portal animation uses explicit radius-1 yellow light matching the visible portal.",
+        "852": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal.",
+        "4041": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
+        "4213": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "39b628eede6e4755cfaa5d2799b1f2cab712e17a5f5a74ee9e39d8c19a66d036"
     },
     "maps/shattered_islands/world_17_2_3": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Wizards' Tower: Lingholm in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "25b8f380eeb803737b63c394483bc4e2dbdab3155015be4bd6fe34007bb0a293"
+      "art_overrides": {
+        "676": "Map-local portal animation uses explicit radius-1 yellow light matching the visible portal.",
+        "858": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal.",
+        "4286": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
+        "4468": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "bfb055b08b99d2feba9111d5e890c1810107ab49fc3762adbc52068e8d7498ff"
     },
     "maps/shattered_islands/world_17_2_4": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Wizards' Tower: Marigold with its fixed radius-1 blue crystal-ball display beside the radius-1 pale-gold power crystal; the stronger neutral helper lights retain the room hierarchy without stacked or clipped focal color.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "0096c67594121b028e44b327b63e1e1902c3afdbfdfd86c465b0fb0329d74648"
+      "art_overrides": {
+        "592": "Map-local portal animation uses explicit radius-1 yellow light matching the visible portal.",
+        "764": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal.",
+        "4168": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
+        "4340": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "ca5462a87e7c94ab58c6efca99d41bb4812937b07fe263ab77555f7e963ccbb4"
     },
     "maps/shattered_islands/world_17_2_5": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Wizards' Tower: Commelina in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "5cf6d91a500e35a273c084e8e1c79d89e8f7ad81e46d3f0ca3abb3b5d9f43dae"
+      "art_overrides": {
+        "726": "Map-local portal animation uses explicit radius-1 yellow light matching the visible portal.",
+        "948": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal.",
+        "3949": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal.",
+        "4099": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "a6f2e100521c590b2576b35238c0169c137a4cb851c4b8453c8b01b042a2772b"
     },
     "maps/shattered_islands/world_17_3": {
       "uncolored_disposition": "neutral",
@@ -3525,8 +3623,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Brynknot retains neutral ambient hierarchy; its four separately reviewed glowers are explicitly radius zero and remain non-emitting.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "a41198e06f84f023f6ad2af34c5e35f05948a618eada88752bab73433f0efbda"
+      "art_overrides": {
+        "3049": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+      },
+      "semantic_sha256": "bb55fc57024b93b2872cda28c082431762f66658153ce793d112adf0101992bf"
     },
     "maps/shattered_islands/world_1_68_-1": {
       "uncolored_disposition": "neutral",
@@ -4016,8 +4116,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Brynknot Sewers in the issue65_0121 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "876db5824c51ea5dd2c2d351a3ffcdf09f6652d6aedb558b271b774e50bd2de9"
+      "art_overrides": {
+        "4162": "Map-local portal animation uses explicit radius-1 green light matching the visible portal."
+      },
+      "semantic_sha256": "3e4bec57db867b80651ba5e7ed039bd5e461e944ddd09c02265122801bf8ed4e"
     },
     "maps/shattered_islands/world_3_67_-2": {
       "uncolored_disposition": "neutral",
@@ -4425,10 +4527,12 @@
     },
     "maps/shattered_islands/world_4_85": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The owner-gated private-beach portal adds a compact cyan navigation cue without replacing the map’s outdoor ambient hierarchy.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "b52b2f200f5ef63a8197a1156b942391147f4687f856e422bf4bb2fcde479ae4"
+      "art_overrides": {
+        "1058": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal."
+      },
+      "semantic_sha256": "7da76105ee44b4c6d71a6705290000cdc7f6be9ca2bf7b1f6979e84b4eeb5048"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",
@@ -4713,8 +4817,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Dragons Island in the dragons_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "6e68fa11d368987efc30a4b7ace7949fd345490f320ace30bbd42ed3d287f237"
+      "art_overrides": {
+        "1150": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal."
+      },
+      "semantic_sha256": "2b1ffe5a9a72a8e6d0a75f1beaf9e080d4464d44a2e5af7efdcc36d08fd0d578"
     },
     "maps/shattered_islands/world_5_72": {
       "uncolored_disposition": "neutral",
@@ -5037,7 +5143,7 @@
       "rationale": "Rendered Abandoned Mine in the issue65_0164 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bd58b09753bc0468408a3155309193f1444902d55a10f1eccabbcc078170ca69"
+      "semantic_sha256": "7595ab7b9a35c83e05555bc90d503055f11450c1a1f1cfb448d97de0009ee41f"
     },
     "maps/shattered_islands/world_6_68": {
       "uncolored_disposition": "neutral",
@@ -5065,7 +5171,7 @@
       "rationale": "Rendered Dragons Island in the dragons_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "677f4215b78045dc1d4cc99f2a63b674790f1d31c0a2d417ed3303425c1a0bdd"
+      "semantic_sha256": "db2259f6d6da65b7f89d075ed89848ade9281c2009ef390a4c6d239597ea8ef8"
     },
     "maps/shattered_islands/world_6_73": {
       "uncolored_disposition": "neutral",
@@ -5342,7 +5448,7 @@
       "art_overrides": {
         "1119": "Map-local red-portal animation uses its explicit red illumination."
       },
-      "semantic_sha256": "16abbd7bdbfaf03a8aa1becd28b5cde41af262f5c03bc5c24ebe40b9fdca61af"
+      "semantic_sha256": "e8fdce14a14c424d8e7ec98d0be356a37c244da5d50a50de8253571dcf502f67"
     },
     "maps/shattered_islands/world_7_68": {
       "uncolored_disposition": "neutral",
@@ -5362,8 +5468,10 @@
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Dragons Island in the dragons_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "2981da22c335b1049aa52ea924d04b080a5e3633716a9173c94d6a5ea11c7102"
+      "art_overrides": {
+        "2423": "Map-local portal animation uses explicit radius-1 red light matching the visible portal."
+      },
+      "semantic_sha256": "b078a207423ca0a355cde38c55eafb31ac64a83584686ff865de795add34ac5b"
     },
     "maps/shattered_islands/world_7_72": {
       "uncolored_disposition": "neutral",
@@ -5880,6 +5988,22 @@
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "cd4f6a22c9be996a48aad32ceed93596346e2d5e040537a1c5ce45990fe42f1f"
+    },
+    "maps/planes/creation/creation_0601": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Plane of Creation for issue #86; radius-1 portal light marks the exit without replacing the map's ambient hierarchy.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "b8acbde8a5efb7b362ac54a15102dd6b64f41d8d391d8e24d6496889386fafa3"
+    },
+    "maps/shattered_islands/berri_lur/temple_loki/tol_0201": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Temple of Loki for issue #86; radius-1 portal light marks the exit without replacing the map's ambient hierarchy.",
+      "visible_neutral": {},
+      "art_overrides": {
+        "737": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+      },
+      "semantic_sha256": "5a4c9688f4403e0ed960d9b9f683b8b1452407ef27735ab54572113ebd3b265f"
     }
   },
   "source_review": {

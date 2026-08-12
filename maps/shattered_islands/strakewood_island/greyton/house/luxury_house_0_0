@@ -11685,6 +11685,8 @@ y 26
 end
 arch exit
 animation portal_big
+glow_radius 1
+light_color 4060ff
 x 46
 y 26
 arch event_obj

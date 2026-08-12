@@ -939,7 +939,7 @@
       "source_sha256": "cdb6570cbf9240c32f2e9864948c96804b5b53b20cabfb55bbda70750f1ec813"
     },
     {
-      "bytes": 95629,
+      "bytes": 95662,
       "comments": 0,
       "corpus_count": 3651,
       "corpus_index": 3650,
@@ -947,7 +947,7 @@
       "objects": 2779,
       "path": "maps/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",
       "size_class": "max",
-      "source_sha256": "6009770c13f15504ce19a6894cd2d0bf9d53c7cf8a5d3cfeadb404ecf32ef96e"
+      "source_sha256": "a09f114d4396df66c0de389528635fca1e2a5a22caab54b12ca6566ed8bfa4ae"
     }
   ],
   "schema_version": 1,

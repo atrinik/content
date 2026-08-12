@@ -862,6 +862,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 3
 sp 18
 end
@@ -1142,6 +1143,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 3
 sp 18
 end
@@ -1409,6 +1411,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 3
 sp 18
 end
@@ -1726,6 +1729,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 11
 sp 18
 end
@@ -1999,6 +2003,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 11
 sp 18
 end
@@ -2233,6 +2238,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 11
 sp 18
 end
@@ -2505,6 +2511,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 11
 sp 18
 end

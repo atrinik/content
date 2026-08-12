@@ -1062,6 +1062,8 @@ msg
 The portal to the tiny private beach stewarded by Elara Harth. It opens only for the owner of an Incuna apartment.
 endmsg
 animation portal_azure
+glow_radius 1
+light_color 60d0ff
 hp 10
 sp 5
 x 10

@@ -179,6 +179,12 @@ The following values are medians of 20 observations. Time is milliseconds.
 | p90 | 23,918 / 867 | 623,449 / 26.07× | 12.82 / 62.67 | 446,148 / 18.65× | 48.74 / 97.43 |
 | maximum | 95,629 / 2,779 | 2,199,804 / 23.00× | 44.47 / 216.91 | 1,581,075 / 16.53× | 167.09 / 341.70 |
 
+The table preserves the captured timing run. The current maximum representative
+map is 95,662 bytes after its portal-light fields were authored; its exact
+digest is recorded in the raw report's `representative_maps` selection. A new
+complete measurement run is required before replacing the captured expansion
+and timing observations.
+
 These expansion ratios measure the same deliberately verbose physical-record
 scaffold, not the future typed schema or runtime representation. YAML's lighter
 punctuation makes that scaffold 28-29% smaller. The dependency-free prototype

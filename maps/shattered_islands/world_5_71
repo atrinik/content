@@ -1149,6 +1149,8 @@ y 15
 end
 arch exit_green
 animation portal_azure
+glow_radius 1
+light_color 60d0ff
 slaying world_6_72
 hp 17
 sp 11

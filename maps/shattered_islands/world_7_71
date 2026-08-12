@@ -2422,6 +2422,8 @@ y 22
 end
 arch exit_green
 animation portal_red
+glow_radius 1
+light_color ff3030
 slaying world_6_72
 hp 17
 sp 11

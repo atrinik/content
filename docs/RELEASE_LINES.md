@@ -99,3 +99,36 @@ that declaration. Any missing, extra, reordered, missing-path, or
 out-of-allowlist commit invalidates the declaration and requires a new horizon.
 Actual squash SHAs are bound durably to the declared ordinals after merge; no
 commit is required to contain its own SHA.
+
+## Semantic cross-line audit
+
+After both terminal candidates exist, compare their clean local checkouts with
+an explicit opposite root:
+
+```sh
+python3 tools/release_line_parity.py \
+  --root /path/to/content-main \
+  --other-root /path/to/content-1x \
+  --candidate-terminal \
+  --json
+```
+
+The candidate flag relaxes only the final squash-subject binding, which GitHub
+adds at merge. It still requires the declared horizon, exact two-commit suffix,
+ordinal order, and exact changed-path set. At merged tips omit that flag; every
+suffix commit must then bind the declared pull request in its subject.
+
+The audit is local, deterministic, network-free, and read-only. It validates
+both ledger copies and their complete post-fork histories, proves every
+`exact` outcome with stable patch IDs, compares content-catalog definitions and
+references through stable identities, and classifies the complete tracked-tree
+delta in both directions. An exception that no longer differs is stale and
+fails, just as an unclassified addition, removal, or value change fails.
+
+Shared authored ADS is parsed through the lossless content core. Field records
+are compared as typed multisets while object and child order remains
+significant, so the two forcefield files prove equal despite harmless field
+serialization order. An authored `equivalent` exception must pass that semantic
+comparison; consumer-specific authored differences instead require an explicit
+authored-domain exemption and rationale. Generated renderer evidence and
+capture state remain outside both the ledger and the audit.

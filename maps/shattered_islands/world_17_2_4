@@ -596,6 +596,8 @@ sp 4
 zoom 70
 align 7
 animation portal_yellow
+glow_radius 1
+light_color ffe060
 x 3
 y 3
 end
@@ -766,6 +768,8 @@ sp 19
 zoom 70
 align 7
 animation portal_big
+glow_radius 1
+light_color 4060ff
 x 3
 y 20
 end
@@ -4168,6 +4172,8 @@ sp 4
 zoom 70
 align 7
 animation portal_azure
+glow_radius 1
+light_color 60d0ff
 x 20
 y 3
 end
@@ -4338,6 +4344,8 @@ sp 16
 zoom 70
 align 7
 animation portal_red
+glow_radius 1
+light_color ff3030
 x 20
 y 20
 end

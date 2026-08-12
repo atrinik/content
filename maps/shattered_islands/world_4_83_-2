@@ -836,6 +836,7 @@ y 19
 arch portal_big
 no_pass 1
 is_invisible 1
+glow_radius 0
 hp 1
 sp 19
 end
@@ -849,6 +850,7 @@ y 19
 arch portal_big
 no_pass 1
 is_invisible 1
+glow_radius 0
 hp 1
 sp 19
 end
@@ -886,6 +888,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 1
 sp 19
 end
@@ -910,6 +913,7 @@ arch water_lt4
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 1
 sp 19
 end
@@ -960,6 +964,7 @@ no_teleport 1
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 1
 sp 19
 end
@@ -991,6 +996,7 @@ no_teleport 1
 end
 arch portal_big
 is_invisible 1
+glow_radius 0
 hp 1
 sp 19
 end

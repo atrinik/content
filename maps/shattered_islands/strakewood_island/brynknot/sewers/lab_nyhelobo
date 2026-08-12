@@ -2887,6 +2887,8 @@ slaying /shattered_islands/world_4_66_-2
 hp 0
 sp 12
 animation portal_green
+glow_radius 1
+light_color 40ff60
 anim_speed 2
 x 19
 y 12

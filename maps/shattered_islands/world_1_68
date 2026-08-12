@@ -3048,6 +3048,8 @@ y 7
 end
 arch exit
 animation portal_big
+glow_radius 1
+light_color 4060ff
 slaying /hall_of_dms
 hp 5
 sp 19

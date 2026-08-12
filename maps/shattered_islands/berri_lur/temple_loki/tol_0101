@@ -1161,6 +1161,8 @@ y 1
 end
 arch exit
 animation portal_red
+glow_radius 1
+light_color ff3030
 slaying tol_0101
 hp 15
 sp 10
@@ -2932,6 +2934,8 @@ msg
 You squeeze headfirst through the tiny portal.
 endmsg
 animation portal_azure
+glow_radius 1
+light_color 60d0ff
 z 30
 zoom 30
 align 15
@@ -3512,6 +3516,8 @@ msg
 You squeeze headfirst through the tiny portal.
 endmsg
 animation portal_red
+glow_radius 1
+light_color ff3030
 z 30
 zoom 30
 align 15

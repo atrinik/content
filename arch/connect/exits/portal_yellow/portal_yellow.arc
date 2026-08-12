@@ -10,6 +10,8 @@ sub_type 1
 layer 5
 no_pick 1
 animation portal_yellow
+glow_radius 1
+light_color ffe060
 is_animated 1
 anim_speed 2
 player_only 1

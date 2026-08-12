@@ -2003,6 +2003,8 @@ y 15
 end
 arch exit
 animation portal_big
+glow_radius 1
+light_color 4060ff
 x 12
 y 15
 arch event_obj

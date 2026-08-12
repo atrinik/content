@@ -181,7 +181,7 @@ class QuestManager:
             self.quest_container.exp = int(time.time())
 
         delay = self.quest.get("repeat_delay", None)
-        assert(isinstance(delay, (int, None)))
+        assert(isinstance(delay, (int, type(None))))
 
         if delay:
             self.quest_object.exp = int(time.time()) + delay

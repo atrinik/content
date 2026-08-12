@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atrinik.org/schema/content/v1/release-line-parity-ledger.schema.json",
+  "title": "Atrinik release-line parity ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repository",
+    "fork",
+    "horizons",
+    "terminal_plan",
+    "outcomes",
+    "tree_exceptions"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "repository": { "const": "atrinik/content" },
+    "fork": { "$ref": "#/$defs/fork" },
+    "horizons": { "$ref": "#/$defs/horizons" },
+    "terminal_plan": { "$ref": "#/$defs/terminalPlan" },
+    "outcomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/outcome" }
+    },
+    "tree_exceptions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/treeException" }
+    }
+  },
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "fork": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tag", "commit"],
+      "properties": {
+        "tag": { "const": "v1.8.1" },
+        "commit": { "$ref": "#/$defs/sha" }
+      }
+    },
+    "horizons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["main", "1.x"],
+      "properties": {
+        "main": { "$ref": "#/$defs/sha" },
+        "1.x": { "$ref": "#/$defs/sha" }
+      }
+    },
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line", "commit", "pull_request"],
+      "properties": {
+        "line": { "enum": ["main", "1.x"] },
+        "commit": { "$ref": "#/$defs/sha" },
+        "pull_request": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "issue_repository",
+        "issue",
+        "classification",
+        "source",
+        "destination",
+        "domains",
+        "prerequisites",
+        "rationale"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^outcome-[0-9]{3}$" },
+        "issue_repository": {
+          "enum": ["atrinik/content", "atrinik/atrinik"]
+        },
+        "issue": { "type": "integer", "minimum": 1 },
+        "classification": {
+          "enum": ["exact", "equivalent", "exempt", "pending"]
+        },
+        "source": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/endpoint" }
+        },
+        "destination": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/endpoint" }
+        },
+        "domains": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "authored",
+              "guidance",
+              "provenance",
+              "release",
+              "runtime",
+              "tooling",
+              "validation"
+            ]
+          }
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 }
+        },
+        "rationale": { "type": "string", "minLength": 12, "maxLength": 1000 }
+      }
+    },
+    "nullablePullRequest": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "integer", "minimum": 1 }
+      ]
+    },
+    "terminalCommit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ordinal", "issue", "pull_request", "paths"],
+      "properties": {
+        "ordinal": { "type": "integer", "minimum": 1 },
+        "issue": { "enum": [137, 139] },
+        "pull_request": { "$ref": "#/$defs/nullablePullRequest" },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/path" }
+        }
+      }
+    },
+    "terminalLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizon", "commits"],
+      "properties": {
+        "horizon": { "$ref": "#/$defs/sha" },
+        "commits": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/terminalCommit" }
+        }
+      }
+    },
+    "terminalPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "main", "1.x"],
+      "properties": {
+        "state": { "enum": ["prepublication", "declared"] },
+        "main": { "$ref": "#/$defs/terminalLine" },
+        "1.x": { "$ref": "#/$defs/terminalLine" }
+      }
+    },
+    "treeException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "classification", "domain", "rationale"],
+      "properties": {
+        "path": { "$ref": "#/$defs/path" },
+        "classification": { "enum": ["equivalent", "exempt"] },
+        "domain": {
+          "enum": [
+            "authored",
+            "guidance",
+            "provenance",
+            "release",
+            "runtime",
+            "tooling",
+            "validation"
+          ]
+        },
+        "rationale": { "type": "string", "minLength": 12, "maxLength": 1000 }
+      }
+    }
+  }
+}

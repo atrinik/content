@@ -4,6 +4,8 @@ face wmask_fire_on.u.151
 animation wmask_fire_on_1
 is_animated 0
 anim_speed 1
+glow_radius 1
+light_color ff6030
 is_turnable 1
 direction 1
 no_pick 1

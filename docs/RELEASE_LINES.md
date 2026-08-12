@@ -74,3 +74,44 @@ classic release range, consumer modules, replacement exclusion, every file
 digest, and every packaged license/attribution digest. A consumer must reject a
 manifest whose branch is not `1.x`, whose `replacement_ready` flag is not
 false, or whose commit/checksum does not match the pinned release.
+
+## Machine-readable parity ledger
+
+`contracts/release-lines/parity-ledger.json` accounts for every commit after
+the `v1.8.1` fork through immutable, line-specific horizons. Its Draft 2020-12
+schema is `contracts/release-lines/parity-ledger.schema.json`; the repository's
+dependency-free contract validator checks the schema before relational ledger
+checks run.
+
+An outcome owns every listed source and destination commit exactly once. A
+single outcome can contain more than one source or destination commit when a
+release line intentionally split or combined delivery. `exact` means the
+stable patches are identical, `equivalent` means reviewed branch-native
+integration produces the same intended result, `exempt` records a narrow
+single-line product, and `pending` is reserved for undelivered work. Delivered
+horizons reject pending outcomes. Equivalent and exempt outcomes must carry an
+evidence-backed rationale, affected domains, owning issue and pull requests,
+immutable commit coordinates, and prerequisites.
+
+The ledger also lists every intentional resulting-tree difference explicitly.
+Authored paths remain authored-domain records even when their serialized bytes
+differ; in particular, `maps/light-source-review.json` is never release-control
+maintenance. The two forcefield archetypes are equivalent because their field
+values match independent of order. Replacement provenance and Classic-only
+release/runtime products use narrow exemptions. Renderer evidence, capture
+manifests, proof scenes, mutable state, and generated output are forbidden.
+
+Run the local, network-free ledger validation from either branch:
+
+```sh
+python3 tools/release_line_parity.py --json
+```
+
+The terminal plan starts in `prepublication` state while its four pull request
+identities are being allocated. Before any terminal merge it must become
+`declared`, with exactly two commits per line in the order #137 then #139 and
+the exact changed-path set for each ordinal. The horizons are immutable after
+that declaration. Any missing, extra, reordered, missing-path, or
+out-of-allowlist commit invalidates the declaration and requires a new horizon.
+Actual squash SHAs are bound durably to the declared ordinals after merge; no
+commit is required to contain its own SHA.

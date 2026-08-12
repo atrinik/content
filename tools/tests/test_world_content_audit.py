@@ -135,10 +135,24 @@ y 5
 end
 """,
         )
+        contract_path = self.write(
+            "maps/light-source-fixture-contract.json",
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "fixture_groups": {
+                        "warm-fixtures": {
+                            "archetypes": ["warm_lamp"],
+                            "checks": ["overlap"],
+                        }
+                    },
+                }
+            ),
+        )
 
         report = audit.light_inventory()
         review = {
-            "schema_version": 5,
+            "schema_version": 6,
             "review_method": "Port the pinned Classic semantic review without claiming replacement rendering.",
             "source_review": {
                 "branch": "1.x",
@@ -176,6 +190,18 @@ end
                 }
             },
             "toggle_states": {},
+            "fixture_groups": {
+                "warm-fixtures": {
+                    "archetypes": ["warm_lamp"],
+                    "default_radii": {"warm_lamp": 4},
+                    "expected_color": "ffc080",
+                    "expected_maps": 1,
+                    "expected_placements": {"warm_lamp": 1},
+                    "intentional_non_emitters": {},
+                    "checks": ["overlap"],
+                    "rationale": "Tracks every required warm fixture placement.",
+                }
+            },
             "maps": {
                 "maps/scene": {
                     "uncolored_disposition": "neutral",
@@ -211,6 +237,9 @@ end
                 review[section][row[identity]]["semantic_sha256"] = row[
                     "semantic_sha256"
                 ]
+        review["fixture_groups"]["warm-fixtures"]["semantic_sha256"] = report[
+            "fixture_groups"
+        ][0]["semantic_sha256"]
         review_path = self.write(
             "maps/light-source-review.json", json.dumps(review)
         )
@@ -219,6 +248,32 @@ end
         self.assertEqual(0, report["summary"]["unreviewed"])
         self.assertEqual("ffc080", report["archetypes"][1]["color"])
         self.assertEqual([], audit.validate_light_inventory(report))
+
+        fixture_group = report["fixture_groups"][0]
+        self.assertEqual("warm-fixtures", fixture_group["id"])
+        self.assertEqual(["warm_lamp"], fixture_group["archetypes"])
+        self.assertEqual(1, fixture_group["maps"])
+        self.assertEqual("maps/scene:5", fixture_group["placements"][0]["source_id"])
+        self.assertNotIn("views", review["fixture_groups"]["warm-fixtures"])
+
+        deleted_review = json.loads(review_path.read_text())
+        del deleted_review["fixture_groups"]["warm-fixtures"]
+        del deleted_review["context_checks"]["overlap"]
+        review_path.write_text(json.dumps(deleted_review))
+        deleted_report = audit.light_inventory()
+        self.assertEqual(1, deleted_report["summary"]["fixture_placements"])
+        deleted_errors = audit.validate_light_inventory(deleted_report)
+        self.assertIn(
+            "required fixture group warm-fixtures is missing from review",
+            deleted_errors,
+        )
+        self.assertIn("unreviewed fixture group: warm-fixtures", deleted_errors)
+        self.assertIn(
+            "contextual lighting check overlap must record pass",
+            deleted_errors,
+        )
+        review_path.write_text(json.dumps(review))
+        self.assertTrue(contract_path.is_file())
 
         changed = json.loads(review_path.read_text())
         changed["archetypes"]["warm_lamp"]["semantic_sha256"] = "0" * 64
@@ -236,11 +291,13 @@ end
 
         errors = audit.validate_light_inventory(audit.light_inventory())
 
-        self.assertIn("light-source review must use schema_version 5", errors)
+        self.assertIn("light-source review must use schema_version 6", errors)
         self.assertIn("light-source review must pin its Classic source review", errors)
         self.assertIn(
             "light-source review must record replacement runtime limits", errors
         )
+        self.assertIn("light-source review needs a concise review_method", errors)
+        self.assertIn("light-source review archetypes must be an object", errors)
         self.assertIn("1 effective light sources remain unreviewed", errors)
 
 

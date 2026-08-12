@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "fixture_groups": {
+    "warm-candle-fixtures": {
+      "archetypes": [
+        "candle2_on",
+        "candle_on",
+        "candlelight1.101",
+        "candlelight2.101",
+        "candlelight3.101",
+        "candlelight4.101"
+      ],
+      "checks": [
+        "candle-dense-cluster",
+        "candle-form-candle-on",
+        "candle-form-candle2-on",
+        "candle-form-candlelight1",
+        "candle-form-candlelight2",
+        "candle-form-candlelight3",
+        "candle-form-candlelight4",
+        "candle-map-seam",
+        "candle-mixed-color-overlap",
+        "candle-radius-2",
+        "candle-radius-3",
+        "candle-radius-4",
+        "candle-radius-5",
+        "candle-radius-6",
+        "candle-radius-7",
+        "candle-radius-8",
+        "candle-radius-9",
+        "candle-wall-adjacency"
+      ]
+    }
+  }
+}

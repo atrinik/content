@@ -2888,10 +2888,6 @@ layer 5
 x 16
 y 14
 end
-arch light3
-x 16
-y 14
-end
 arch floor_wood1b
 z 26
 x 16

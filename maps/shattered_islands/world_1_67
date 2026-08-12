@@ -2298,13 +2298,10 @@ end
 arch candlelight4.101
 x 13
 y 16
+glow_radius 5
 end
 arch bar1
 direction 4
-x 13
-y 16
-end
-arch light5
 x 13
 y 16
 end
@@ -2941,12 +2938,9 @@ end
 arch candlelight4.101
 x 17
 y 14
+glow_radius 5
 end
 arch wall_wood2_3
-x 17
-y 14
-end
-arch light5
 x 17
 y 14
 end
@@ -2989,12 +2983,9 @@ end
 arch candlelight4.101
 x 17
 y 19
+glow_radius 5
 end
 arch wall_wood1_3
-x 17
-y 19
-end
-arch light5
 x 17
 y 19
 end

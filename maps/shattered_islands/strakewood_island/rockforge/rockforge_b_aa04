@@ -1283,13 +1283,10 @@ end
 arch candlelight4.101
 x 7
 y 6
+glow_radius 5
 end
 arch bar1
 direction 4
-x 7
-y 6
-end
-arch light5
 x 7
 y 6
 end

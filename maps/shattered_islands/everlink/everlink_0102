@@ -1080,10 +1080,7 @@ end
 arch candlelight3.101
 x 8
 y 23
-end
-arch light9
-x 8
-y 23
+glow_radius 9
 end
 arch water_lt4
 x 9
@@ -1817,12 +1814,9 @@ end
 arch candlelight3.101
 x 13
 y 23
+glow_radius 9
 end
 arch carpet1.151
-x 13
-y 23
-end
-arch light9
 x 13
 y 23
 end

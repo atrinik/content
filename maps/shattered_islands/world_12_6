@@ -3291,10 +3291,7 @@ end
 arch candlelight4.101
 x 23
 y 1
-end
-arch light5
-x 23
-y 1
+glow_radius 5
 end
 arch floor_ostone12
 x 23
@@ -3357,10 +3354,7 @@ end
 arch candlelight4.101
 x 23
 y 7
-end
-arch light5
-x 23
-y 7
+glow_radius 5
 end
 arch floor_ostone12
 x 23

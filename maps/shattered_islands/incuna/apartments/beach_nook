@@ -2352,6 +2352,10 @@ no_magic 1
 damned 1
 x 10
 y 11
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch hammock_b
 name hammock to reality
@@ -2361,6 +2365,10 @@ no_magic 1
 damned 1
 x 11
 y 11
+arch event_obj
+sub_type 1
+race /python/items/lost_memories_apartment_bed.py
+end
 end
 arch tree_small
 x 12
@@ -2379,6 +2387,11 @@ name Incuna beach portal
 property_id incuna_apartment
 x 10
 y 13
+arch event_obj
+sub_type 10
+race /python/generic/apartment_out.py
+slaying incuna
+end
 end
 arch chest_sw_1
 name beach chest

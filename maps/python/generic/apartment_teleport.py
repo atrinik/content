@@ -5,6 +5,7 @@
 
 from Atrinik import *
 from Apartments import apartments_info
+from LostMemoriesApartment import notify_apartment_entry
 
 
 def main():
@@ -22,6 +23,8 @@ def main():
 
         info = apartment["apartments"][pinfo.slaying]
         activator.TeleportTo(activator.map.GetPath(info["path"], True, activator.name), info["x"], info["y"])
+        if GetOptions() == "incuna":
+            notify_apartment_entry(activator)
 
 main()
 SetReturnValue(1)

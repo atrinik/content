@@ -470,6 +470,17 @@ class QuestManagerSuite(TestSuite):
         self.assertFalse(qm.fail("attempt"))
 
     def test_09_failed_repeat_quest_resets(self):
+        old_level = activator.level
+        quest_container = activator.Controller().quest_container
+        old_magic = quest_container.magic
+        old_exp = quest_container.exp
+        self.addCleanup(setattr, activator, "level", old_level)
+        self.addCleanup(setattr, quest_container, "magic", old_magic)
+        self.addCleanup(setattr, quest_container, "exp", old_exp)
+        activator.level = 10
+        quest_container.magic = 0
+        quest_container.exp = 0
+
         quest = {
             "parts": OrderedDict((("attempt", {
                 "info": "",
@@ -481,6 +492,7 @@ class QuestManagerSuite(TestSuite):
             "repeat": True,
         }
         qm = QuestManager(activator, quest)
+        self.assertGreater(qm.get_qp_remaining(), 1)
         qm.start("attempt")
         self.assertTrue(qm.fail("attempt"))
         self.assertTrue(qm.failed())

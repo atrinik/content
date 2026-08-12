@@ -52,3 +52,11 @@ radius. Update the matching ledger row with the semantic hash from the read-only
 inventory, then run `python3 tools/world_content_audit.py lights --check` and
 `python3 tools/validate.py`. Genuine replacement-specific divergences must be
 documented rather than copied mechanically from `1.x`.
+
+The base `power_crystal` and its six artifact variants inherit one radius-1
+`fff0c0` source. Charge capacity, artifact upgrades, and multiple instances do
+not alter that per-object radius or color. The deterministic Classic lifecycle
+checks for ground, inventory, containment, trade, stronger-light precedence,
+map transitions, logout/login, and death are retained as source-behavior
+provenance in [`POWER_CRYSTAL_LIGHT_REVIEW.md`](POWER_CRYSTAL_LIGHT_REVIEW.md);
+they do not claim integrated replacement-runtime verification.

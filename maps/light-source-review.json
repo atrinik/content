@@ -4657,9 +4657,9 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The owner-gated private-beach portal adds a compact cyan navigation cue without replacing the map’s outdoor ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {
-        "1058": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal."
+        "1062": "Map-local portal animation uses explicit radius-1 cyan light matching the visible portal."
       },
-      "semantic_sha256": "7da76105ee44b4c6d71a6705290000cdc7f6be9ca2bf7b1f6979e84b4eeb5048"
+      "semantic_sha256": "0d3e804ba1c5e59e79661fea8ed49b2627630f9dca8fa3faa731a311425b137d"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",

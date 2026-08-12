@@ -1,40 +1,40 @@
 # Content release lines
 
-`main` is the forward authoring line for the replacement stack. `1.x` is the
-maintained classic-content line consumed only by `atrinik/classic` client,
-editor, and server. Both descend from `v1.8.1` commit
+`main` is the sole forward authoring line. It publishes replacement and Classic
+targets. `1.x` is frozen rollback and migration evidence while consumers move
+to the explicit Classic artifact published from `main`. Both descend from `v1.8.1` commit
 `01b1fdb65c2243df4bafe9c8109fc93229df0121`; the branch split changes no file's
 license or attribution.
 
 ## Choosing a target
 
-- Assess every issue-driven authored-content fix against both `main` and `1.x`;
-  a fix discovered on `1.x` must also reach `main` whenever compatible.
-- Use `1.x` for compatible Classic-maintenance changes, including shared
-  authored-content defects and Classic-only compatibility, security,
-  attribution, or data-loss fixes that work with its ADS/Python consumers.
-- Use `main` for compatible shared authored-content defects and for replacement
-  schemas, compiled artifacts, content-toolkit adoption, and forward authoring.
-- Compatible shared fixes normally ship to both lines through separate
-  worktrees, validation runs, commits, and linked pull requests. Preserve the
-  original author and explain any conflict resolution independently.
-- For paired delivery, the canonical `main` pull request is the only one that
-  closes the issue; its `1.x` companion links both the issue and canonical pull
-  request without using a closing keyword.
-- A single-line exception must record explicit evidence and rationale
-  explaining why the other line is unaffected or incompatible, such as
-  replacement-only schemas or tooling, Classic-only formats or consumers,
-  runtime incompatibility, or provenance or attribution constraints. The sole
-  applicable pull request is canonical: a `main` pull request uses a closing
-  keyword; a `1.x` pull request links without one, and the issue is closed
-  manually after merge.
-- Never merge branches wholesale or share generated output between worktrees.
-- Identify a companion as a `backport to 1.x` when it originates on `main`, or
-  a `forward-port to main` when it originates on `1.x`, and link the source
-  pull request in its body. An ambiguous destination or incomplete attribution
-  record blocks the change.
+New authored work lands only on `main`. Classic compatibility is a deterministic
+target from that same revision:
 
-Every `1.x` pull request runs the stable `Content validation` and
+```sh
+python3 tools/build_runtime.py --target classic \
+  --source-commit SHA --output build/classic-runtime
+```
+
+The target emits schema-2 compatibility metadata for `classic-ads-v1`, names
+`main` as its source branch, binds every payload and attribution digest, and
+remains explicitly `replacement_ready: false`. Co-located Classic Python stays
+behind that target boundary and is not reusable by clean-room replacement
+implementations.
+
+- Do not deliver independent `1.x` features. During cutover, change it only for
+  an explicitly reviewed reconciliation or rollback that keeps the frozen line
+  truthful.
+- Use `main` for authored defects, Classic target behavior, replacement schemas,
+  compiled artifacts, content-toolkit adoption, and forward authoring.
+- Reconciliation changes require separate worktrees, validation, commits, and
+  linked pull requests; the canonical `main` PR owns closing only after
+  downstream integration and branch-specific release machinery have retired.
+  Preserve the original author and explain conflict resolution independently.
+- Never merge histories wholesale or share generated output between worktrees.
+
+Every exceptional reconciliation `1.x` pull request runs the stable
+`Content validation` and
 `Conventional PR title` checks. Direct pushes, force pushes, deletion, and
 nonlinear history are prohibited by organization rules. Builds use the
 wrapper's distinct `content-1x` checkout and never share output with `content`.
@@ -54,10 +54,11 @@ commit permitted `v1.8.2` without weakening normal feature or breaking-change
 classification. Published releases and dry runs must remain in that range on
 channel `1.x`.
 
-Classic releases carry source branch/commit, content and artifact formats,
-compatible classic versions, consumer modules, checksums, and exact license
-digests. They set `replacement_ready` and `replacement_toolkit_package` false;
-main-side tooling must reject them as replacement inputs.
+The explicit Classic target released from `main` carries source branch/commit,
+target identity, content and artifact formats, compatible Classic versions,
+consumer modules, checksums, and exact license digests. It sets
+`replacement_ready` and `replacement_toolkit_package` false; replacement
+tooling must reject it as an input.
 
 ## Machine-readable parity ledger
 

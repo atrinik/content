@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "target": "classic",
+  "component": "content",
+  "repository": "atrinik/content",
+  "branch": "main",
+  "content_format": "classic-ads-v1",
+  "artifact_format": "atrinik-classic-runtime-content-v1",
+  "compatible_classic_releases": ">=5.10.1 <6.0.0",
+  "consumers": [
+    "classic/client",
+    "classic/editor",
+    "classic/server"
+  ],
+  "replacement_ready": false,
+  "replacement_toolkit_package": false
+}

@@ -262,7 +262,7 @@ class SyntaxEvaluationTest(unittest.TestCase):
         # advances the current baseline lock without relabelling the inputs
         # used by this already-captured benchmark.
         self.assertEqual(
-            "135866c5ba80e30cf83aa0fce8ef6611ee4e48aadd6e9d11170c69b916a66f17",
+            "126102873f5356eae0114d6876df25b54cb616719387f0bb466279bb6ecd460d",
             report["inputs"]["content_v1_baseline_sha256"],
         )
         self.assertEqual(

@@ -2980,13 +2980,10 @@ end
 arch candlelight4.101
 x 18
 y 19
+glow_radius 5
 end
 arch bar1
 direction 3
-x 18
-y 19
-end
-arch light5
 x 18
 y 19
 end

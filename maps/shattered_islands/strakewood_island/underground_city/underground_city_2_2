@@ -617,10 +617,6 @@ arch candlelight3.101
 x 5
 y 2
 end
-arch light3
-x 5
-y 2
-end
 arch floor_stone_b4
 x 5
 y 3
@@ -796,10 +792,6 @@ x 6
 y 9
 end
 arch candlelight3.101
-x 6
-y 9
-end
-arch light3
 x 6
 y 9
 end
@@ -1079,10 +1071,6 @@ x 8
 y 12
 end
 arch candlelight3.101
-x 8
-y 12
-end
-arch light3
 x 8
 y 12
 end
@@ -1441,9 +1429,6 @@ end
 arch candlelight3.101
 x 11
 end
-arch light3
-x 11
-end
 arch floor_stone_b3
 x 11
 y 1
@@ -1470,10 +1455,6 @@ x 11
 y 4
 end
 arch candlelight3.101
-x 11
-y 4
-end
-arch light3
 x 11
 y 4
 end

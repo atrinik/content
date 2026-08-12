@@ -503,12 +503,9 @@ end
 arch candlelight3.101
 x 6
 y 16
+glow_radius 5
 end
 arch wall_marble1.131a
-x 6
-y 16
-end
-arch light5
 x 6
 y 16
 end
@@ -1085,12 +1082,9 @@ end
 arch candlelight3.101
 x 10
 y 16
+glow_radius 5
 end
 arch wall_marble1.131a
-x 10
-y 16
-end
-arch light5
 x 10
 y 16
 end
@@ -1464,12 +1458,9 @@ end
 arch candlelight3.101
 x 13
 y 16
+glow_radius 5
 end
 arch wall_marble1.131a
-x 13
-y 16
-end
-arch light5
 x 13
 y 16
 end
@@ -2029,12 +2020,9 @@ end
 arch candlelight3.101
 x 17
 y 16
+glow_radius 5
 end
 arch wall_marble1.131
-x 17
-y 16
-end
-arch light5
 x 17
 y 16
 end

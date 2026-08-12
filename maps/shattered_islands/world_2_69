@@ -849,10 +849,7 @@ end
 arch candlelight4.101
 x 6
 y 7
-end
-arch light6
-x 6
-y 7
+glow_radius 6
 end
 arch grassd_6
 x 6

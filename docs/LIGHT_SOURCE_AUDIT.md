@@ -13,6 +13,19 @@ pins the semantic digest of its effective fields and exact source locations, so
 a new, removed, or changed emitter fails validation until it is deliberately
 reviewed.
 
+Schema version 6 also supports semantic `fixture_groups` for an authored
+fixture family. A group pins its archetype set, default radii and color,
+per-archetype placement counts, map coverage, intentional non-emitting members,
+applicable contextual checks, and a digest of every resolved placement. These
+checks are derived entirely from authored sources: fixture groups do not carry
+view IDs or depend on screenshots, capture manifests, or image files.
+Required families are anchored independently in
+[`maps/light-source-fixture-contract.json`](../maps/light-source-fixture-contract.json).
+The audit inventories the contract's archetypes even if the review row is
+missing, and validation requires the exact contracted archetype and contextual
+check sets. Removing a required ledger group therefore fails closed instead of
+silently disabling its placement, non-emitter, or overlap checks.
+
 Run the read-only inventory and acceptance check from the repository root:
 
 ```sh
@@ -24,7 +37,8 @@ The first command exposes current source locations and semantic hashes for
 review; the second requires a complete palette, rationales, contextual
 decisions, exact row sets, current hashes, and zero unreviewed emitters. The
 aggregate `python3 tools/validate.py` command runs the same check and excludes
-the review ledger from runtime packages.
+semantic review ledger and required-fixture contract from playable runtime
+packages.
 
 ## Review provenance and runtime boundary
 

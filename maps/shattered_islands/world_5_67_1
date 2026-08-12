@@ -233,12 +233,9 @@ end
 arch candlelight4.101
 x 6
 y 8
+glow_radius 5
 end
 arch wall_wood2_1
-x 6
-y 8
-end
-arch light5
 x 6
 y 8
 end

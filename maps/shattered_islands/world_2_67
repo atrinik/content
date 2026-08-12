@@ -956,10 +956,7 @@ end
 arch candlelight3.101
 x 5
 y 18
-end
-arch light5
-x 5
-y 18
+glow_radius 5
 end
 arch floor_red1
 x 5

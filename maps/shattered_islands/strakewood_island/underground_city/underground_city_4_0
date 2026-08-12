@@ -1742,10 +1742,6 @@ arch candlelight2.101
 x 14
 y 12
 end
-arch light3
-x 14
-y 12
-end
 arch floor_stone_b4
 x 14
 y 13
@@ -1763,10 +1759,6 @@ x 14
 y 15
 end
 arch candlelight4.101
-x 14
-y 15
-end
-arch light3
 x 14
 y 15
 end
@@ -1803,10 +1795,6 @@ x 14
 y 20
 end
 arch candlelight1.101
-x 14
-y 20
-end
-arch light3
 x 14
 y 20
 end
@@ -2415,10 +2403,6 @@ arch candlelight4.101
 x 18
 y 20
 end
-arch light3
-x 18
-y 20
-end
 arch floor_stone_b2
 x 18
 y 21
@@ -2813,10 +2797,6 @@ arch candlelight3.101
 x 21
 y 12
 end
-arch light3
-x 21
-y 12
-end
 arch floor_stone_b3
 x 21
 y 13
@@ -2845,10 +2825,6 @@ arch candlelight4.101
 x 21
 y 16
 end
-arch light3
-x 21
-y 16
-end
 arch floor_stone_b3
 x 21
 y 17
@@ -2870,10 +2846,6 @@ x 21
 y 20
 end
 arch candlelight3.101
-x 21
-y 20
-end
-arch light3
 x 21
 y 20
 end

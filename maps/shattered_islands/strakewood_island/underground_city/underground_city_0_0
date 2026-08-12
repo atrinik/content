@@ -1916,10 +1916,7 @@ end
 arch candlelight3.101
 x 14
 y 9
-end
-arch light6
-x 14
-y 9
+glow_radius 6
 end
 arch floor_stone_b4
 x 14
@@ -2078,10 +2075,7 @@ end
 arch candlelight3.101
 x 15
 y 15
-end
-arch light6
-x 15
-y 15
+glow_radius 6
 end
 arch floor_stone_b1
 x 15
@@ -2384,10 +2378,7 @@ end
 arch candlelight4.101
 x 18
 y 9
-end
-arch light6
-x 18
-y 9
+glow_radius 6
 end
 arch floor_stone_b3
 x 18

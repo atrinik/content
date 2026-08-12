@@ -943,10 +943,7 @@ end
 arch candlelight4.101
 x 5
 y 7
-end
-arch light7
-x 5
-y 7
+glow_radius 7
 end
 arch floor_ruin6
 x 5
@@ -2666,10 +2663,7 @@ end
 arch candlelight4.101
 x 13
 y 7
-end
-arch light7
-x 13
-y 7
+glow_radius 7
 end
 arch floor_ruin6
 x 13

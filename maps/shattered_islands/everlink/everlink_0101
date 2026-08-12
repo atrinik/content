@@ -1446,10 +1446,7 @@ end
 arch candlelight3.101
 x 11
 y 4
-end
-arch light9
-x 11
-y 4
+glow_radius 9
 end
 arch floor_wood3a
 x 11
@@ -1876,10 +1873,7 @@ end
 arch candlelight3.101
 x 14
 y 3
-end
-arch light9
-x 14
-y 3
+glow_radius 9
 end
 arch floor_wood3h
 x 14
@@ -2798,10 +2792,7 @@ end
 arch candlelight3.101
 x 20
 y 1
-end
-arch light9
-x 20
-y 1
+glow_radius 9
 end
 arch floor_wood3g
 x 20

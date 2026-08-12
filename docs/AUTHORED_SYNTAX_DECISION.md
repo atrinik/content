@@ -201,6 +201,12 @@ It records raw observations, min/median/p95/max summaries, map digests, tool and
 component commits, clean topology state, the syntax implementation digest, and
 the wrapper-runner digest.
 
+Topology inputs remain keyed by logical dependency role in the report. The
+benchmark accepts the wrapper's legacy role-keyed component table or its
+current provider-keyed table with a complete `providers` mapping. Missing,
+non-string, unresolved, or conflicting role-to-provider mappings fail closed;
+the resolved component's exact head, dirty state, and path are recorded.
+
 Collection used a fresh output directory for each of three observations. It
 did not flush the operating-system page cache. Median collection time was
 13.635 seconds and p95 was 14.230 seconds.

@@ -252,8 +252,8 @@ class PlayerMethodsSuite(PlayerCommonSuite):
         obj = self.pl.ob.CreateObject("sword")
         self.assertIsNone(self.pl.FindMarkedObject())
 
-        # TODO: remove hard-coded command ID (15 = item mark command)
-        data = struct.pack("!HBI", 5, 15, obj.count)
+        # TODO: remove hard-coded command ID (14 = item mark command)
+        data = struct.pack("!HBI", 5, 14, obj.count)
         self.pl.s_packet_recv_cmd += data
         simulate_server(count=30, wait=False)
         self.assertEqual(self.pl.FindMarkedObject(), obj)

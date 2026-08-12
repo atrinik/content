@@ -12,6 +12,7 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from tools.content_core import audit_project
+from tools.build_runtime import build as build_runtime
 from tools.archetype_plurals import (
     MANIFEST_PATH,
     audit as audit_archetype_plurals,
@@ -55,6 +56,7 @@ def main() -> int:
             "-m",
             "unittest",
             "tools.tests.test_content_catalog",
+            "tools.tests.test_classic_target",
             "tools.tests.test_interface_compiler",
             "tools.tests.test_archetype_plurals",
             "tools.tests.test_content_contracts",
@@ -181,6 +183,38 @@ def main() -> int:
         ]
         if runtime_plurals != authored_plurals:
             raise ValueError("runtime collection did not preserve authored name_pl lines")
+
+        classic_output = Path(temporary) / "classic-runtime"
+        source_commit = subprocess.run(
+            ["git", "-C", str(ROOT), "rev-parse", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        build_runtime(
+            ROOT,
+            classic_output,
+            source_commit,
+            target="classic",
+        )
+        classic_manifest = json.loads(
+            (classic_output / "manifest.json").read_text(encoding="utf-8")
+        )
+        if (
+            classic_manifest["schema_version"] != 2
+            or classic_manifest["target"] != "classic"
+            or classic_manifest["source"]
+            != {
+                "repository": "atrinik/content",
+                "branch": "main",
+                "commit": source_commit,
+            }
+            or classic_manifest["content_format"] != "classic-ads-v1"
+            or classic_manifest["replacement_ready"] is not False
+            or classic_manifest["replacement_toolkit_package"] is not False
+            or not classic_manifest["license_files"]
+        ):
+            raise ValueError("classic runtime target metadata is invalid")
 
     subprocess.run(
         [

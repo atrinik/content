@@ -46,24 +46,15 @@
   absolute paths, generated placeholders, or duplicated parsers.
 - Generated runtime collection belongs under `build/` or another isolated
   output directory, never in source. Do not overwrite mutable server state.
-- `main` owns replacement forward authoring. Branch `1.x` is the separately
-  maintained classic line described by `contracts/release-lines/classic-1x.json`
-  and `docs/RELEASE_LINES.md`.
-- Assess every issue-driven authored-content fix against both `main` and `1.x`;
-  a fix discovered on `1.x` must also reach `main` whenever compatible.
-  Compatible shared fixes
-  normally ship to both lines through separate worktrees, validation runs,
-  commits, and linked pull requests. For paired delivery, the canonical `main`
-  pull request is the only one that closes the issue; its `1.x` companion links
-  both the issue and canonical pull request without using a closing keyword. A
-  single-line exception must record explicit evidence and rationale explaining
-  why the other line is unaffected or incompatible, such as replacement-only
-  schemas or tooling, Classic-only formats or consumers, runtime
-  incompatibility, or provenance or attribution constraints. The sole
-  applicable pull request is canonical: a `main` pull request uses a closing
-  keyword; a `1.x` pull request links without one, and the issue is closed
-  manually after merge. Never merge branches wholesale or share generated
-  output between worktrees.
+- `main` is the sole forward authoring line and publishes explicit target
+  artifacts. Use `python3 tools/build_runtime.py --target classic` for the
+  schema-2 `classic-ads-v1` target; it remains `replacement_ready: false` and
+  does not authorize replacement consumers to execute Classic-only GPL Python.
+- `1.x` is frozen rollback and migration evidence while consumers cut over.
+  Reconciliation changes require separate worktrees, validation, commits, and
+  linked pull requests; the canonical `main` PR owns closing only after downstream
+  integration and branch-specific release machinery have retired. Never merge
+  histories wholesale or share generated output between worktrees.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
@@ -78,9 +69,9 @@
   use wrapper builds/topologies for gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release.
-- `1.x` releases use semantic-release maintenance range/channel `1.x` and stay
-  in `>=1.8.1 <1.9.0` below main's `v1.9.0`; the classic artifact is explicitly
-  not replacement-ready.
+- Historical `1.x` releases remain immutable. Do not remove their release
+  machinery until every consumer has cut over and the separately authorized
+  governance gate is ready.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

@@ -1,4 +1,4 @@
-"""Regression tests for synchronized dual-release-line guidance."""
+"""Regression tests for synchronized single-source transition guidance."""
 
 from __future__ import annotations
 
@@ -13,20 +13,16 @@ GUIDANCE_PATHS = (
     Path("docs/RELEASE_LINES.md"),
 )
 REQUIRED_POLICY = (
-    "Assess every issue-driven authored-content fix against both `main` and `1.x`",
-    "a fix discovered on `1.x` must also reach `main` whenever compatible",
-    "Compatible shared fixes normally ship to both lines through separate worktrees, validation runs, commits, and linked pull requests",
-    "For paired delivery, the canonical `main` pull request is the only one that closes the issue",
-    "`1.x` companion links both the issue and canonical pull request without using a closing keyword",
-    "single-line exception must record explicit evidence and rationale",
-    "replacement-only schemas or tooling, Classic-only formats or consumers, runtime incompatibility, or provenance or attribution constraints",
-    "The sole applicable pull request is canonical: a `main` pull request uses a closing keyword; a `1.x` pull request links without one, and the issue is closed manually after merge",
-    "Never merge branches wholesale or share generated output between worktrees",
+    "`main` is the sole forward authoring line",
+    "`1.x` is frozen rollback and migration evidence",
+    "Reconciliation changes require separate worktrees, validation, commits, and linked pull requests",
+    "canonical `main` PR owns closing only after downstream integration and branch-specific release machinery have retired",
+    "Never merge histories wholesale or share generated output between worktrees",
 )
 
 
 class ReleaseGuidanceTests(unittest.TestCase):
-    def test_every_guidance_surface_preserves_dual_line_delivery_policy(self) -> None:
+    def test_every_guidance_surface_preserves_transition_policy(self) -> None:
         for relative_path in GUIDANCE_PATHS:
             with self.subTest(path=str(relative_path)):
                 guidance = " ".join(

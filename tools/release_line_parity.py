@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import json
 from pathlib import Path, PurePosixPath
 import subprocess
@@ -18,6 +19,8 @@ from tools.content_contracts.contracts import (  # noqa: E402
     validate_instance,
     validate_schema,
 )
+from tools.content_catalog.loaders import load_catalog  # noqa: E402
+from tools.content_core.parser import LegacyParser  # noqa: E402
 
 
 LEDGER_PATH = Path("contracts/release-lines/parity-ledger.json")
@@ -228,9 +231,367 @@ def load_and_validate(root: Path, *, check_history: bool = True) -> dict[str, An
     return validate_document(document, root=root, check_history=check_history)
 
 
+def _load_ledger(root: Path) -> Mapping[str, Any]:
+    try:
+        value = load_json(root.resolve() / LEDGER_PATH)
+    except ContractError as error:
+        raise ParityError(str(error)) from error
+    if not isinstance(value, dict):
+        raise ParityError("parity ledger root must be an object")
+    return value
+
+
+def _tree_blobs(root: Path) -> dict[str, tuple[str, str, str]]:
+    blobs: dict[str, tuple[str, str, str]] = {}
+    for line in _git(root, "ls-tree", "-r", "HEAD").splitlines():
+        metadata, separator, path = line.partition("\t")
+        parts = metadata.split()
+        if not separator or len(parts) != 3 or parts[1] != "blob":
+            raise ParityError("malformed git tree record")
+        if path in blobs:
+            raise ParityError("duplicate tracked path: {}".format(path))
+        blobs[path] = (parts[0], parts[1], parts[2])
+    return blobs
+
+
+def _blob_bytes(root: Path, entry: tuple[str, str, str]) -> bytes:
+    mode, object_type, object_id = entry
+    if object_type != "blob" or mode not in {"100644", "100755", "120000"}:
+        raise ParityError(
+            "unsupported tracked object {} {} {}".format(mode, object_type, object_id)
+        )
+    try:
+        return subprocess.run(
+            ["git", "-C", str(root), "cat-file", "blob", object_id],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        ).stdout
+    except subprocess.CalledProcessError as error:
+        detail = error.stderr.decode("utf-8", errors="replace").strip()
+        raise ParityError(
+            "cannot read committed blob {}: {}".format(object_id, detail)
+        ) from error
+
+
+def _field_value(field: Any) -> str:
+    value = field.typed_value if field.typed_value is not None else field.value
+    return json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+
+
+def _semantic_ads_signature(source: bytes, *, path: str, schema_root: Path) -> Any:
+    format_name = "archetype" if path.startswith("arch/") else "map"
+    document = LegacyParser(schema_root).parse(source, path=path, format_name=format_name)
+    errors = sorted(
+        diagnostic["code"]
+        for diagnostic in document.diagnostics
+        if diagnostic["severity"] == "error"
+    )
+    if errors:
+        raise ParityError("{} has lossless-parser errors: {}".format(path, errors))
+
+    def node_signature(handle: str) -> Any:
+        node = document.node(handle)
+        fields = sorted(
+            (field.name.casefold(), field.value_kind, _field_value(field))
+            for field in node.fields
+        )
+        messages = [(message.text, message.terminated) for message in node.messages]
+        children = [node_signature(child) for child in node.child_handles]
+        return (node.kind, node.name, fields, messages, children)
+
+    return [node_signature(handle) for handle in document.top_level_handles]
+
+
+def evaluate_tree_differences(
+    main_files: Mapping[str, bytes | None],
+    one_files: Mapping[str, bytes | None],
+    exceptions: list[Mapping[str, Any]],
+    *,
+    schema_root: Path | None = None,
+    observed_paths: set[str] | None = None,
+) -> dict[str, int]:
+    """Classify a supplied resulting-tree delta for tests and the live audit."""
+
+    paths = set(main_files) | set(one_files)
+    computed = {
+        path
+        for path in paths
+        if path not in main_files
+        or path not in one_files
+        or main_files[path] != one_files[path]
+    }
+    observed = computed if observed_paths is None else set(observed_paths)
+    if not computed <= observed:
+        raise ParityError("authoritative tree differences omit changed bytes")
+    if not observed <= paths:
+        raise ParityError("authoritative tree differences name unavailable paths")
+    exception_by_path = {entry["path"]: entry for entry in exceptions}
+    if len(exception_by_path) != len(exceptions):
+        raise ParityError("duplicate resulting-tree exception")
+    unclassified = sorted(observed - set(exception_by_path))
+    stale = sorted(set(exception_by_path) - observed)
+    if unclassified:
+        raise ParityError("unclassified resulting-tree differences: {}".format(unclassified))
+    if stale:
+        raise ParityError("stale resulting-tree exceptions: {}".format(stale))
+
+    semantic_equal = 0
+    for path in sorted(observed):
+        entry = exception_by_path[path]
+        if entry["classification"] != "equivalent" or entry["domain"] != "authored":
+            continue
+        left = main_files.get(path)
+        right = one_files.get(path)
+        if left is None or right is None:
+            raise ParityError("equivalent authored path is absent on one line: {}".format(path))
+        if not (path.startswith("arch/") and path.endswith(".arc")):
+            raise ParityError("equivalent authored path lacks a semantic comparator: {}".format(path))
+        if schema_root is None:
+            raise ParityError("authored semantic comparison requires a schema root")
+        if _semantic_ads_signature(left, path=path, schema_root=schema_root) != _semantic_ads_signature(
+            right, path=path, schema_root=schema_root
+        ):
+            raise ParityError("equivalent authored values changed: {}".format(path))
+        semantic_equal += 1
+    return {
+        "differences": len(observed),
+        "exceptions": len(exception_by_path),
+        "semantic_equal_authored": semantic_equal,
+    }
+
+
+def _catalog_identity(root: Path) -> tuple[dict[Any, Any], Counter[Any]]:
+    catalog = load_catalog(root)
+    if catalog.has_errors:
+        errors = [item.format() for item in catalog.diagnostics if item.severity == "error"]
+        raise ParityError("content catalog has errors: {}".format(errors[:10]))
+    definitions = {
+        (definition.content_id.domain, definition.content_id.key): (
+            definition.location.path,
+            json.dumps(definition.metadata, sort_keys=True, separators=(",", ":")),
+        )
+        for definition in catalog.definitions
+    }
+    references: Counter[Any] = Counter()
+    for reference in catalog.references:
+        source = None
+        if reference.source is not None:
+            source = (reference.source.domain, reference.source.key)
+        references[
+            (
+                source,
+                reference.field,
+                reference.key,
+                reference.allowed_domains,
+                reference.location.path,
+            )
+        ] += 1
+    return definitions, references
+
+
+def _catalog_audit(main_root: Path, one_root: Path, exception_paths: set[str]) -> dict[str, int]:
+    main_definitions, main_references = _catalog_identity(main_root)
+    one_definitions, one_references = _catalog_identity(one_root)
+    definition_delta = set(main_definitions) ^ set(one_definitions)
+    changed_definitions = {
+        identity
+        for identity in set(main_definitions) & set(one_definitions)
+        if main_definitions[identity] != one_definitions[identity]
+    }
+    for identity in sorted(definition_delta | changed_definitions):
+        paths = set()
+        if identity in main_definitions:
+            paths.add(main_definitions[identity][0])
+        if identity in one_definitions:
+            paths.add(one_definitions[identity][0])
+        if not paths or not paths <= exception_paths:
+            raise ParityError(
+                "unclassified catalog definition difference {} at {}".format(identity, sorted(paths))
+            )
+
+    reference_delta = (main_references - one_references) + (one_references - main_references)
+    for reference in reference_delta:
+        path = reference[4]
+        if path not in exception_paths:
+            raise ParityError(
+                "unclassified catalog reference difference at {}: {}".format(path, reference)
+            )
+    return {
+        "definitions_main": len(main_definitions),
+        "definitions_1x": len(one_definitions),
+        "definition_differences": len(definition_delta | changed_definitions),
+        "reference_differences": sum(reference_delta.values()),
+    }
+
+
+def _patch_id(root: Path, commit: str) -> str:
+    try:
+        patch = subprocess.run(
+            ["git", "-C", str(root), "show", "--pretty=format:", "--binary", commit],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        ).stdout
+        result = subprocess.run(
+            ["git", "patch-id", "--stable"],
+            input=patch,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        ).stdout.decode("ascii").split()
+    except (subprocess.CalledProcessError, UnicodeError) as error:
+        raise ParityError("cannot compute stable patch ID for {}".format(commit)) from error
+    if len(result) < 2:
+        raise ParityError("commit {} has no stable patch ID".format(commit))
+    return result[0]
+
+
+def _exact_patch_audit(
+    document: Mapping[str, Any], roots: Mapping[str, Path]
+) -> dict[str, int]:
+    exact = 0
+    for outcome in document["outcomes"]:
+        if outcome["classification"] != "exact":
+            continue
+        patch_ids = {
+            _patch_id(roots[endpoint["line"]], endpoint["commit"])
+            for side in ("source", "destination")
+            for endpoint in outcome[side]
+        }
+        if len(patch_ids) != 1:
+            raise ParityError("{} exact patches differ".format(outcome["id"]))
+        exact += 1
+    return {"exact_outcomes": exact}
+
+
+def _terminal_audit(
+    root: Path,
+    document: Mapping[str, Any],
+    *,
+    allow_candidate: bool,
+) -> dict[str, Any]:
+    line = _line_identity(root)
+    terminal = document["terminal_plan"]
+    if terminal["state"] != "declared":
+        raise ParityError("terminal plan is not durably declared")
+    plan = terminal[line]
+    suffix = _git(
+        root, "rev-list", "--reverse", "{}..HEAD".format(plan["horizon"])
+    ).splitlines()
+    if len(suffix) != len(plan["commits"]):
+        raise ParityError(
+            "{} terminal suffix length is {}; expected {}".format(
+                line, len(suffix), len(plan["commits"])
+            )
+        )
+    for commit, expected in zip(suffix, plan["commits"]):
+        paths = sorted(
+            _git(root, "diff-tree", "--no-commit-id", "--name-only", "-r", commit).splitlines()
+        )
+        if paths != expected["paths"]:
+            raise ParityError(
+                "{} ordinal {} paths differ; observed={}, expected={}".format(
+                    line, expected["ordinal"], paths, expected["paths"]
+                )
+            )
+        subject = _git(root, "show", "-s", "--format=%s", commit).strip()
+        marker = "(#{})".format(expected["pull_request"])
+        if subject.endswith(marker):
+            continue
+        if not allow_candidate:
+            raise ParityError(
+                "{} ordinal {} is not bound to PR #{}".format(
+                    line, expected["ordinal"], expected["pull_request"]
+                )
+            )
+        if subject.endswith(")") and "(#" in subject:
+            raise ParityError(
+                "{} ordinal {} is bound to the wrong pull request".format(
+                    line, expected["ordinal"]
+                )
+            )
+    return {"line": line, "commits": suffix, "candidate": allow_candidate}
+
+
+def audit_release_lines(
+    root: Path,
+    other_root: Path,
+    *,
+    allow_candidate_terminal: bool = False,
+) -> dict[str, Any]:
+    """Run the full local, deterministic, read-only cross-line audit."""
+
+    root = root.resolve()
+    other_root = other_root.resolve()
+    root_line = _line_identity(root)
+    other_line = _line_identity(other_root)
+    if root_line == other_line or {root_line, other_line} != {"main", "1.x"}:
+        raise ParityError("--other-root must name the opposite release line")
+    roots = {root_line: root, other_line: other_root}
+    for line, line_root in roots.items():
+        if _git(line_root, "status", "--porcelain").strip():
+            raise ParityError("{} audit root is dirty".format(line))
+        load_and_validate(line_root)
+
+    main_document = _load_ledger(roots["main"])
+    one_document = _load_ledger(roots["1.x"])
+    if main_document != one_document:
+        raise ParityError("release-line ledgers are not identical")
+    document = main_document
+
+    main_blobs = _tree_blobs(roots["main"])
+    one_blobs = _tree_blobs(roots["1.x"])
+    differing_paths = {
+        path
+        for path in set(main_blobs) | set(one_blobs)
+        if main_blobs.get(path) != one_blobs.get(path)
+    }
+    main_files = {
+        path: _blob_bytes(roots["main"], main_blobs[path]) if path in main_blobs else None
+        for path in differing_paths
+    }
+    one_files = {
+        path: _blob_bytes(roots["1.x"], one_blobs[path]) if path in one_blobs else None
+        for path in differing_paths
+    }
+    tree_report = evaluate_tree_differences(
+        main_files,
+        one_files,
+        document["tree_exceptions"],
+        schema_root=roots["main"],
+        observed_paths=differing_paths,
+    )
+    exception_paths = {entry["path"] for entry in document["tree_exceptions"]}
+    return {
+        "schema_version": 1,
+        "fork": document["fork"]["commit"],
+        "horizons": dict(document["horizons"]),
+        "tree": tree_report,
+        "catalog": _catalog_audit(roots["main"], roots["1.x"], exception_paths),
+        "patches": _exact_patch_audit(document, roots),
+        "terminal": {
+            line: _terminal_audit(
+                line_root, document, allow_candidate=allow_candidate_terminal
+            )
+            for line, line_root in sorted(roots.items())
+        },
+    }
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument(
+        "--other-root",
+        type=Path,
+        help="opposite release-line checkout for the full semantic audit",
+    )
+    parser.add_argument(
+        "--candidate-terminal",
+        action="store_true",
+        help="accept unmerged candidate subjects while still enforcing suffix order and paths",
+    )
     parser.add_argument("--json", action="store_true", help="emit a stable JSON report")
     return parser
 
@@ -238,12 +599,30 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     arguments = _parser().parse_args(argv)
     try:
-        report = load_and_validate(arguments.root)
+        if arguments.other_root is None:
+            if arguments.candidate_terminal:
+                raise ParityError("--candidate-terminal requires --other-root")
+            report = load_and_validate(arguments.root)
+        else:
+            report = audit_release_lines(
+                arguments.root,
+                arguments.other_root,
+                allow_candidate_terminal=arguments.candidate_terminal,
+            )
     except ParityError as error:
         print("release-line parity: {}".format(error), file=sys.stderr)
         return 1
     if arguments.json:
         print(json.dumps(report, sort_keys=True, separators=(",", ":")))
+    elif arguments.other_root is not None:
+        print(
+            "Release-line semantic parity: {differences} classified tree differences; "
+            "{semantic_equal_authored} authored order-only equivalences; "
+            "{exact_outcomes} exact patch outcomes.".format(
+                exact_outcomes=report["patches"]["exact_outcomes"],
+                **report["tree"],
+            )
+        )
     else:
         print(
             "Release-line parity ledger: {commits} commits in {outcomes} outcomes; "

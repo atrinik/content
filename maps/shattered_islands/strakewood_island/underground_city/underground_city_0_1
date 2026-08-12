@@ -108,9 +108,7 @@ end
 arch wmask_fire_on_1
 direction 7
 y 17
-end
-arch light2
-y 17
+glow_radius 2
 end
 arch floor_stone_b1
 y 18

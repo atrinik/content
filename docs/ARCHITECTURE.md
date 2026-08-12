@@ -16,8 +16,11 @@ The source-to-runtime flow is:
 5. `tools/validate.py` runs catalog, schema, grammar-contract, corpus, checked
    effective-light review, collection, and licensing checks without modifying
    authored sources; and
-6. `tools/build_runtime.py` creates an isolated runtime tree and digest manifest
-   below `build/` or another explicit output path.
+6. `tools/build_runtime.py` creates isolated runtime trees and digest manifests
+   below `build/` or another explicit output path. Its explicit `classic`
+   target derives `classic-ads-v1` from the same main revision, emits the
+   schema-2 consumer and license contract, and remains distinct from the
+   generic replacement-facing runtime.
 
 Stable identity ownership and rename/removal policy are documented in
 [`CONTENT_IDENTITIES.md`](CONTENT_IDENTITIES.md). The complete legacy ADS grammar
@@ -58,3 +61,10 @@ A new
 loader, writer, checker, collector, or analyzer must use the existing catalog,
 lossless core, and versioned contract boundaries instead of introducing a
 duplicate parser or inventory.
+
+The Classic target contract is
+`contracts/release-lines/classic-main.json`. A release publishes a distinct
+`atrinik-content-VERSION-classic-runtime.tar.gz`; its manifest binds target,
+repository, `main` branch, exact commit, format, supported consumers, compatible
+Classic range, every payload digest and size, and every packaged attribution
+file. Building that target from a dirty or mismatched checkout fails closed.

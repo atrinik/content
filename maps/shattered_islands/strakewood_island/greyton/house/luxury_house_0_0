@@ -1497,10 +1497,7 @@ end
 arch wmask_fire_on_1
 x 8
 y 7
-end
-arch light3
-x 8
-y 7
+glow_radius 3
 end
 arch floor_wood3a
 x 8

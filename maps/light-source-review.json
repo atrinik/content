@@ -1246,7 +1246,7 @@
   },
   "context_checks": {
     "overlap": {
-      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control. The Marigold radius-1 power crystal sits beside stronger neutral helper lights and a currently non-emitting crystal ball without stacked focal color.",
+      "rationale": "Compared overlapping red, purple, and cold-blue crystal pools in Brynknot Abyss in both renderers, plus the unchanged Bone Cairn control. The Marigold radius-1 blue crystal-ball display and radius-1 pale-gold power crystal sit beside stronger neutral helper lights without stacked or clipped focal color.",
       "status": "pass"
     },
     "linked-depth": {
@@ -3266,10 +3266,10 @@
     },
     "maps/shattered_islands/world_17_2_4": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Wizards' Tower: Marigold with its radius-1 pale-gold power-crystal focus beside the currently non-emitting crystal ball; the stronger neutral helper lights retain the room hierarchy without stacked focal color.",
+      "rationale": "Rendered Wizards' Tower: Marigold with its fixed radius-1 blue crystal-ball display beside the radius-1 pale-gold power crystal; the stronger neutral helper lights retain the room hierarchy without stacked or clipped focal color.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2122d13accbe02dbaecc1445f98416b7a92c54301423f5b5b2b925e9dda492dd"
+      "semantic_sha256": "0096c67594121b028e44b327b63e1e1902c3afdbfdfd86c465b0fb0329d74648"
     },
     "maps/shattered_islands/world_17_2_5": {
       "uncolored_disposition": "neutral",
@@ -4130,10 +4130,10 @@
     },
     "maps/shattered_islands/world_4_47": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy. The crystal ball at (11, 18) is fixed fortune-teller display scenery co-located with its table and uses a small blue focal light.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b624147d29e798fb862489ca67d58cfe55d0d451c227b91745a0ff280aef90e9"
+      "semantic_sha256": "192c897b257e09a8a867621ca4609e778ac4491bd4f49aaa6dac68600aca18b1"
     },
     "maps/shattered_islands/world_4_48": {
       "uncolored_disposition": "neutral",

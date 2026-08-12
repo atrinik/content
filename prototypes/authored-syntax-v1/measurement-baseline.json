@@ -111,7 +111,7 @@
     "content_v1_baseline_sha256": "126102873f5356eae0114d6876df25b54cb616719387f0bb466279bb6ecd460d",
     "profile": "issue-90-syntax-benchmark",
     "state": "syntax-benchmark",
-    "syntax_implementation_sha256": "887e626ed604f5aea2b3150f21b0e912bd76cdc48cec0351038b277e6738fde0",
+    "syntax_implementation_sha256": "66ee02231579189622dc74d23117fee42be4969a922eba7b2d9e540d89dc49af",
     "tools_commit": "843a3dff3a36135a9a60aff7c6a3fcc762f704d3",
     "topology_components": {
       "client": {

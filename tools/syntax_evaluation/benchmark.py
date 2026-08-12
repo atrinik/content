@@ -474,6 +474,64 @@ def _server_measurements(
     }
 
 
+def _topology_input_components(topology: Any) -> dict[str, Any]:
+    if not isinstance(topology, dict):
+        raise PrototypeError("wrapper topology is missing server/content inputs")
+    components = topology.get("components")
+    dependencies = topology.get("dependencies")
+    if (
+        not isinstance(components, dict)
+        or not isinstance(dependencies, list)
+        or not dependencies
+        or any(not isinstance(name, str) or not name for name in dependencies)
+        or len(set(dependencies)) != len(dependencies)
+        or "server" not in dependencies
+        or "content" not in dependencies
+    ):
+        raise PrototypeError("wrapper topology is missing server/content inputs")
+
+    if "providers" not in topology:
+        if any(name not in components for name in dependencies):
+            raise PrototypeError("wrapper topology is missing server/content inputs")
+        resolved = {name: name for name in dependencies}
+    else:
+        providers = topology["providers"]
+        if not isinstance(providers, dict):
+            raise PrototypeError("wrapper topology provider mapping is invalid")
+        resolved = {name: providers.get(name) for name in dependencies}
+        if any(not isinstance(name, str) or not name for name in resolved.values()):
+            raise PrototypeError("wrapper topology provider mapping is invalid")
+        if any(name not in components for name in resolved.values()):
+            raise PrototypeError("wrapper topology provider mapping is unresolved")
+        if any(
+            name in components and resolved[name] != name
+            for name in dependencies
+        ):
+            raise PrototypeError("wrapper topology provider mapping is ambiguous")
+
+    inputs = {}
+    for name in sorted(dependencies):
+        component = components[resolved[name]]
+        if not isinstance(component, dict):
+            raise PrototypeError("wrapper topology component input is invalid")
+        commit = component.get("head")
+        dirty = component.get("dirty")
+        path = component.get("path")
+        if (
+            not isinstance(commit, str)
+            or not commit
+            or not isinstance(dirty, bool)
+            or not isinstance(path, str)
+            or not path
+        ):
+            raise PrototypeError("wrapper topology component input is invalid")
+        inputs[name] = {"commit": commit, "dirty": dirty, "path": path}
+    dirty = [name for name, value in inputs.items() if value["dirty"]]
+    if dirty:
+        raise PrototypeError("benchmark topology inputs must be clean: {}".format(", ".join(dirty)))
+    return inputs
+
+
 def _topology_inputs(workspace_root: Path, profile: str) -> dict[str, Any]:
     result = _run(
         (
@@ -492,29 +550,7 @@ def _topology_inputs(workspace_root: Path, profile: str) -> dict[str, Any]:
         topology = json.loads(result.stdout)
     except json.JSONDecodeError as error:
         raise PrototypeError("wrapper topology output is not JSON") from error
-    components = topology.get("components")
-    dependencies = topology.get("dependencies")
-    if (
-        not isinstance(components, dict)
-        or not isinstance(dependencies, list)
-        or not dependencies
-        or any(not isinstance(name, str) or name not in components for name in dependencies)
-        or "server" not in dependencies
-        or "content" not in dependencies
-    ):
-        raise PrototypeError("wrapper topology is missing server/content inputs")
-    inputs = {
-        name: {
-            "commit": components[name]["head"],
-            "dirty": components[name]["dirty"],
-            "path": components[name]["path"],
-        }
-        for name in sorted(dependencies)
-    }
-    dirty = [name for name, value in inputs.items() if value["dirty"]]
-    if dirty:
-        raise PrototypeError("benchmark topology inputs must be clean: {}".format(", ".join(dirty)))
-    return inputs
+    return _topology_input_components(topology)
 
 
 def _implementation_digest(root: Path) -> str:

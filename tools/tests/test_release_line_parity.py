@@ -44,7 +44,7 @@ class ReleaseLineParityTests(unittest.TestCase):
         self.assertEqual(61, report["commits"])
         self.assertEqual({"main": 29, "1.x": 32}, report["commits_by_line"])
         self.assertEqual(32, report["outcomes"])
-        self.assertEqual(43, report["tree_exceptions"])
+        self.assertEqual(48, report["tree_exceptions"])
 
     def test_schema_rejects_unknown_classification(self):
         document = self.mutate()

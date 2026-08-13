@@ -17,12 +17,12 @@ acceptance scenario, and provides exact reusable-material package allowlists.
 It does not relicense the corpus or authorize copying implementation from the
 historical Python sources.
 
-`main` and maintained classic branch `1.x` have distinct ownership and release
-contracts. Main uses release line `2.0`; classic maintenance uses the bounded
-`1.x` channel.
-See [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target selection,
-linked backport/forward-port policy, compatibility metadata, and the bounded
-maintenance channel.
+`main` is the sole authored and released source for replacement and Classic
+targets. The final `1.x` release
+`v1.8.19@566bd25f78b80b08d5f75f4b02017ab2429204db` remains immutable rollback and migration
+evidence, not an active maintenance channel. See
+[`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target selection,
+compatibility metadata, preserved history, and the emergency recovery boundary.
 
 Build and validate a runtime tree without modifying authored sources:
 

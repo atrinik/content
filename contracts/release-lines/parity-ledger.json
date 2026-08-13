@@ -930,22 +930,40 @@
   ],
   "tree_exceptions": [
     {
+      "path": ".github/workflows/check.yml",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "The frozen 1.x ref retains validation required by its live ruleset until separately authorized deletion; main validates only its active source."
+    },
+    {
       "path": ".github/workflows/pr-title.yml",
       "classification": "exempt",
       "domain": "release",
       "rationale": "The 1.x workflow enforces its patch-only title policy."
     },
     {
+      "path": ".github/workflows/release.yml",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "Semantic Release exists only on the sole active main source."
+    },
+    {
       "path": ".releaserc.json",
       "classification": "exempt",
       "domain": "release",
-      "rationale": "Each branch owns a distinct semantic-release channel and version range."
+      "rationale": "Semantic Release configuration exists only on the sole active main source."
     },
     {
       "path": "AGENTS.md",
       "classification": "exempt",
       "domain": "guidance",
       "rationale": "Agent guidance names branch-native consumers, commands, and release restrictions."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "classification": "exempt",
+      "domain": "guidance",
+      "rationale": "Contribution guidance distinguishes active main delivery from immutable 1.x recovery."
     },
     {
       "path": "PROVENANCE.md",
@@ -1140,6 +1158,12 @@
       "rationale": "Each release line packages a different artifact contract."
     },
     {
+      "path": "tools/tests/test_classic_target.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Main-only Classic target publisher tests validate the active artifact."
+    },
+    {
       "path": "tools/tests/test_content_catalog.py",
       "classification": "equivalent",
       "domain": "validation",
@@ -1150,6 +1174,12 @@
       "classification": "exempt",
       "domain": "validation",
       "rationale": "Replacement foundation tests exist only on main."
+    },
+    {
+      "path": "tools/tests/test_release_guidance.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Guidance tests enforce branch-native active-source and frozen-ref boundaries."
     },
     {
       "path": "tools/tests/test_release_line.py",

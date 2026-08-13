@@ -1867,14 +1867,14 @@
     },
     "maps/shattered_islands/everlink/everlink_0101": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Four co-located radius-7 magic-lantern helpers use warm gold while the visible candles and fireplace retain their inherited gold and orange-red colors. Indoor table fill, statue lighting, and broad outdoor navigation sources remain deliberately neutral so the tile keeps distinct landmarks without a uniform wash.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8c007e3a4bd8b731a19291066bd2a0199597771c6ec55d985d704af57fcb2a67"
+      "semantic_sha256": "aa0a52255b727cf065d9676f66b09f43a55a3c0ccc4a2d60cdf90dabfb583ac7"
     },
     "maps/shattered_islands/everlink/everlink_0102": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "The blue portal, two warm candles, two wall fireplaces, and multipart fireplace retain distinct inherited colors. Broad path and garden fill remains deliberately neutral, and magic lanterns without an exact helper remain dark for the separately sequenced fixture-ownership review, preserving the tile's routes and boundary contrast.",
       "visible_neutral": {},
       "art_overrides": {
         "561": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
@@ -1883,45 +1883,45 @@
     },
     "maps/shattered_islands/everlink/everlink_0201": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Eight compact radius-3 garden sources use organic yellow-green around the planted seating and central flower-tree bed. The existing campfire helper matches its orange-red fixture and the one exact radius-9 magic-lantern helper uses warm gold; all other broad outdoor sources remain neutral to protect navigation and linked-map transitions.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b52725942e8bb57ae01d97f52d3e7151ce36180638c6d65b33e405644c83e0bc"
+      "semantic_sha256": "fe3434eb17ae9a95f1c8c81306c19c7c40e9f919a281370a825fbedc078bf07d"
     },
     "maps/shattered_islands/everlink/everlink_0202": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "All radius-9 sources remain deliberately neutral navigation fill on this tile. Magic lanterns without exact co-located helpers remain dark for the separately sequenced fixture-ownership review, avoiding broad gold overlaps across the dense garden and preserving the tile's outer and internal transitions.",
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "309a27f6849d58bbffa540fbed04cd34a1b9d75ef332e4e6193650eca2aae2dc"
     },
     "maps/shattered_islands/everlink/everlink_0301": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Eight exact radius-9 magic-lantern helpers use warm gold at their visible fixtures. The other radius-9 building, path, altar, and garden sources remain deliberately neutral, while the fireplace and candle retain inherited fire and candle colors; this confines gold to established fixtures instead of recoloring the tile's navigation grid.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "2bcd8a0e4a60f559006077d663210c2e0982e375b49cbb286ddddadf662d7b09"
+      "semantic_sha256": "546386452c4d15301674db19b0046aa72c31f6bdcd72fa0eb926f6754b38b033"
     },
     "maps/shattered_islands/everlink/everlink_0302": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Two exact magic-lantern helpers use warm gold at the southeast garden edge. Construction-floor and shop navigation fill remains deliberately neutral, while the wall fireplace and candle retain compact inherited colors, keeping the tile boundary readable without turning the six broad interior sources into a wash.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d123de8914ae2703d4ebe815dc91c8b0366629ed5772d07637e1be0f0865b329"
+      "semantic_sha256": "e4ec71e6093160613965b3c0bdb723e171dda23e8470b447b54183095837f06e"
     },
     "maps/shattered_islands/everlink/everlink_0401": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The exact magic-pool helper uses cyan, three exact magic-lantern helpers use warm gold, the bounded table-garden source uses organic yellow-green, and the campfire helper matches its orange-red fixture. Grave fire, cauldron, and campfire colors remain distinct; the two remaining broad radius-9 sources stay neutral to preserve the water edge and routes.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f74f03ae1d69de08807f7983c31cca5e07d9f442fe7656e8acfd78c76ddd4378"
+      "semantic_sha256": "a4102f07edb5128237739b85cbe00cc91ca08c23e81dd979b0b7d168decd8282"
     },
     "maps/shattered_islands/everlink/everlink_0402": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Three exact magic-lantern helpers use warm gold, while the candle and fireplace retain inherited gold and orange-red. The remaining building and path radius-9 sources stay deliberately neutral, including the west boundary row, so the compact colored landmarks do not flatten the outer transition or indoor route contrast.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "586981b72a2c0f2338f818e9fddfddca8b48df24592fc423b0848a3bf1a6d5f9"
+      "semantic_sha256": "58ef1cd603984d7922fe9a1b50aeb2607305061b5182a707b69c81e1293d754a"
     },
     "maps/shattered_islands/incuna/ellamin": {
       "uncolored_disposition": "neutral",

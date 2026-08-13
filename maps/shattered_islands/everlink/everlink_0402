@@ -134,6 +134,7 @@ arch lantern2_magic.131
 y 18
 end
 arch light9
+light_color ffd080
 y 18
 end
 arch fstone1c
@@ -619,6 +620,7 @@ x 3
 y 18
 end
 arch light9
+light_color ffd080
 x 3
 y 18
 end
@@ -823,6 +825,7 @@ x 4
 y 21
 end
 arch light9
+light_color ffd080
 x 4
 y 21
 end

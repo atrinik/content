@@ -1302,7 +1302,7 @@
     },
     "4e0242dabcccccc1970b80d5ee64b7057bd556b1bdc1eebe7ad1aaa3d63c7b11": {
       "rationale": "Applied runtime review covers torch_wall_1 at active radius 9 with ffc080 light and its Classic clone-derived torch_wall_1 art.",
-      "semantic_sha256": "c0a5817ab1734842f952046c6868e87191d1dea1369b4123300cf78f51ba97ee"
+      "semantic_sha256": "9f17ac8419a0aa4cbd1884fccd1267d93a037def51b9c41a970d55b7bea24ae7"
     },
     "5dbc04fdedf142a2eff34287688b3a7ffe7a28f06fa3b41db05ee4d9e6df421a": {
       "rationale": "Applied runtime review covers halloween_abyss_jackolantern at active radius 5 with ff8030 light and its Classic clone-derived jackolantern art.",
@@ -1727,7 +1727,7 @@
     },
     "maps/shattered_islands/lyondale_archipelago/morliana/hierro/hierro_lair": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Hierro's Lair in the issue65_0022 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Checked Hierro's Lair in paired smooth and discrete Classic views; the two purple crystal pools and one red crystal pool match their visible art, remain distinct from the warm amber torch route, preserve neutral structural fill, and retain readable floor, wall, entrance, route, and boss-chamber boundaries without implying new encounter mechanics.",
       "visible_neutral": {},
       "art_overrides": {
         "1342": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
@@ -1735,13 +1735,13 @@
         "1392": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "1417": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "1442": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2548": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2573": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2598": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2623": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
-        "2648": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
+        "2551": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
+        "2576": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
+        "2601": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
+        "2626": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
+        "2651": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "1cdcf3d7a2fa24b3b29a8e678b1ae497cee52edbec301bf5b609bd5eb6f47709"
+      "semantic_sha256": "feaf1d0b79ceb8b90623384342d6480f6e83ae7b99f097520050141fd7f24a0d"
     },
     "maps/shattered_islands/ships/ship_1": {
       "uncolored_disposition": "neutral",

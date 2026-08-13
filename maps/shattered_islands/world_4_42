@@ -117,9 +117,6 @@ sub_layer 2
 blocksview 0
 y 15
 end
-arch light7
-y 15
-end
 arch floor_fs_grey1b
 z 50
 sub_layer 1
@@ -163,9 +160,6 @@ y 20
 end
 arch wall_fortified_high_c.111
 sub_layer 2
-y 20
-end
-arch light7
 y 20
 end
 arch floor_fs_grey1b
@@ -1770,10 +1764,6 @@ arch lantern_black
 x 9
 y 11
 end
-arch light7
-x 9
-y 11
-end
 arch floor_fs_grey1b
 z 50
 x 9
@@ -1808,10 +1798,6 @@ x 9
 y 16
 end
 arch lantern_black
-x 9
-y 16
-end
-arch light7
 x 9
 y 16
 end
@@ -2540,10 +2526,6 @@ arch lantern_black
 x 14
 y 11
 end
-arch light7
-x 14
-y 11
-end
 arch floor_fs_grey1b
 z 50
 x 14
@@ -2578,10 +2560,6 @@ x 14
 y 16
 end
 arch lantern_black
-x 14
-y 16
-end
-arch light7
 x 14
 y 16
 end
@@ -3338,10 +3316,6 @@ arch lantern_black
 x 19
 y 11
 end
-arch light7
-x 19
-y 11
-end
 arch floor_fs_grey1b
 z 50
 x 19
@@ -3376,10 +3350,6 @@ x 19
 y 16
 end
 arch lantern_black
-x 19
-y 16
-end
-arch light7
 x 19
 y 16
 end

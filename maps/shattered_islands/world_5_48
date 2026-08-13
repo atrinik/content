@@ -2545,10 +2545,6 @@ arch lantern_black
 x 15
 y 12
 end
-arch light7
-x 15
-y 12
-end
 arch grassd_1
 x 15
 y 13
@@ -2574,10 +2570,6 @@ x 15
 y 17
 end
 arch lantern_black
-x 15
-y 17
-end
-arch light7
 x 15
 y 17
 end
@@ -2618,10 +2610,6 @@ x 15
 y 23
 end
 arch lantern_black
-x 15
-y 23
-end
-arch light7
 x 15
 y 23
 end
@@ -3144,10 +3132,6 @@ arch lantern_black
 x 19
 y 12
 end
-arch light7
-x 19
-y 12
-end
 arch grassd_3
 x 19
 y 13
@@ -3173,10 +3157,6 @@ x 19
 y 17
 end
 arch lantern_black
-x 19
-y 17
-end
-arch light7
 x 19
 y 17
 end
@@ -3213,10 +3193,6 @@ x 19
 y 23
 end
 arch lantern_black
-x 19
-y 23
-end
-arch light7
 x 19
 y 23
 end

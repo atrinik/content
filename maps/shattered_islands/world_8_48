@@ -335,10 +335,6 @@ arch lantern_black
 x 2
 y 10
 end
-arch light7
-x 2
-y 10
-end
 arch floor_fs_grey1b
 x 2
 y 11

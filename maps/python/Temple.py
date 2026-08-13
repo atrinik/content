@@ -1,42 +1,23 @@
 """Temple.py: Implements temple-related functions."""
 
-from collections import OrderedDict
-
 from Atrinik import *
 from Interface import InterfaceBuilder
+from TempleServices import (
+    SERVICES,
+    execute_treatment,
+    provider_for,
+    quote as service_quote,
+    snapshot as service_snapshot,
+)
 
 
-temple_services = OrderedDict((
-    ("remove depletion", [
-        lambda activator: activator.level / 2 * 130 + 525,
-        "Removal of depletion",
-        "Depletion most commonly occurs when you die, and it drains some of your stat attributes. In order to get them back, [green]remove depletion[/green] prayer can be used. I can cast this prayer on you, if you wish.",
-    ]),
-    ("remove curse", [
-        3000,
-        "Removal of curse from all cursed items",
-        "I will remove any curse from all cursed items in your inventory. Note that the curse may still come back, if the item is permanently cursed...",
-    ]),
-    ("remove damnation", [
-        5000,
-        "Removal of damnation from all damned items",
-        "I will remove any damnation from all damned items in your inventory. Note that the damnation may still come back, if the item is permanently damned...",
-    ]),
-    ("cure disease", [
-        1000,
-        "Curing of disease",
-        "I can attempt to cure any disease that is troubling you.",
-    ]),
-    ("cure poison", [
-        500,
-        "Curing of poison",
-        "I can heal your poisoning, if you wish.",
-    ]),
-    ("food", [
-        0,
-        "Spare bit of food",
-    ]),
-))
+service_descriptions = {
+    "remove depletion": "Depletion most commonly occurs when you die, and it drains some of your stat attributes. I can restore them with a remove depletion prayer.",
+    "remove curse": "I will remove ordinary curses from cursed items in your inventory. A permanent curse may return.",
+    "remove damnation": "I will remove damnation from damned items in your inventory. A permanent damnation may return.",
+    "cure disease": "I can cure diseases that are within my service training.",
+    "cure poison": "I can cleanse poison that is within my service training.",
+}
 
 class Temple(InterfaceBuilder):
     """Temple interface builder."""
@@ -49,69 +30,182 @@ class Temple(InterfaceBuilder):
     def subdialog_services(self):
         """Show the available temple services."""
 
-        for service in temple_services:
-            self.add_link(temple_services[service][1], dest = service)
+        for service in SERVICES.values():
+            self.add_link(service.title, dest=service.spell)
 
-        self.add_link("Tell me about {}.".format(self.temple_name), dest = self.temple_name)
+        self.add_link("Spare bit of food", dest="food")
+        self.add_link("Tell me about {}.".format(self.temple_name), dest=self.temple_name)
 
         if self.enemy_temple_name:
-            self.add_link("Tell me about {}.".format(self.enemy_temple_name), dest = self.enemy_temple_name)
+            self.add_link(
+                "Tell me about {}.".format(self.enemy_temple_name),
+                dest=self.enemy_temple_name,
+            )
 
     def dialog_hello(self):
         """Default hello dialog handler."""
 
-        self.add_msg("Welcome to the church of {god}. I am {npc.name}, a devoted servant of {god}.", god = self.temple_name)
+        self.add_msg(
+            "Welcome to the church of {god}. I am {npc.name}, a devoted servant of {god}.",
+            god=self.temple_name,
+        )
 
         if self.enemy_temple_name:
-            self.add_msg("Beware that followers of {enemy_god} are not welcome here.", enemy_god = self.enemy_temple_name)
+            self.add_msg(
+                "Beware that followers of {enemy_god} are not welcome here.",
+                enemy_god=self.enemy_temple_name,
+            )
 
         self.add_msg("I can offer you the following services.")
         self.subdialog_services()
+
+    def _provider(self):
+        return provider_for(self._npc.name, self._npc.map.path)
+
+    def _snapshot(self, service_name):
+        return service_snapshot(service_name, self._activator.inv, Type.DISEASE)
+
+    def _current_quote(self, service_name):
+        provider = self._provider()
+        if provider is None:
+            self.add_msg(
+                "My temple-service training is not configured, so I cannot safely offer this treatment."
+            )
+            return None
+
+        condition = self._snapshot(service_name)
+        if condition.count == 0:
+            self.add_msg("You do not have a condition this service can treat.")
+            return None
+
+        try:
+            current = service_quote(
+                service_name,
+                self._activator.level,
+                provider.service_rank,
+                condition,
+            )
+        except ValueError:
+            self.add_msg(
+                "This condition has difficulty {difficulty}, but my service rank is only {rank}. I cannot reliably treat it, so I will not cast or charge you.",
+                difficulty=condition.difficulty,
+                rank=provider.service_rank,
+            )
+            return None
+
+        return provider, condition, current
+
+    def _show_quote(self, current):
+        if current.free:
+            self.add_msg(
+                "Newcomer care covers this difficulty-{difficulty} treatment. There is no charge.",
+                difficulty=current.difficulty,
+            )
+        else:
+            self.add_msg(
+                "This difficulty-{difficulty} treatment will cost {cost}.",
+                difficulty=current.difficulty,
+                cost=CostString(current.cost),
+            )
+        self.add_link(
+            "Confirm treatment",
+            dest="buy {}|{}".format(current.service, current.token),
+        )
+
+    def _cast(self, provider, service_name):
+        old_level = self._npc.level
+        try:
+            self._npc.level = provider.service_rank
+            spell = GetArchetype(
+                "spell_" + service_name.replace(" ", "_")
+            ).clone.sp
+            self._npc.Cast(spell, self._activator)
+        finally:
+            self._npc.level = old_level
+
+    def _confirm(self, service_name, presented_token, provider, before, current):
+        preview = current._replace(token=presented_token)
+        result = execute_treatment(
+            preview,
+            current,
+            self._activator.GetMoney(),
+            before,
+            lambda: self._cast(provider, service_name),
+            lambda: self._snapshot(service_name),
+            self._activator.PayAmount,
+        )
+        if result.outcome == "drift":
+            self.add_msg(
+                "Your condition or quote changed before confirmation. I have not cast or charged you; please review the new quote."
+            )
+            self._show_quote(current)
+        elif result.outcome == "insufficient-funds":
+            self.add_msg(
+                "You do not have enough money. I have not cast or charged you."
+            )
+        elif result.outcome == "failure":
+            self.add_msg("The prayer had no effect. You are not charged.")
+        elif result.outcome == "payment-failure":
+            self.add_msg(
+                "The treatment had an effect, but payment could not be collected. You are not charged."
+            )
+        else:
+            if result.outcome == "partial":
+                self.add_msg(
+                    "The prayer helped, but some of the condition remains. The confirmed partial-success policy applies."
+                )
+            else:
+                self.add_msg("The treatment succeeds.")
+            if result.charged:
+                self.add_msg(
+                    "You pay {cost}.",
+                    cost=CostString(result.charged),
+                    color=COLOR_YELLOW,
+                )
+            else:
+                self.add_msg("No payment is due under newcomer care.")
 
     def dialog(self, msg):
         """Handle services and speaking about particular gods."""
 
         if msg == self.temple_name:
             self.add_msg(self.temple_desc)
-        elif msg == self.enemy_temple_name:
+            return
+        if msg == self.enemy_temple_name:
             self.add_msg(self.enemy_temple_desc)
-        else:
-            if msg.startswith("buy "):
-                msg = msg[4:]
-                is_buy = True
+            return
+        if msg == "food":
+            if self._activator.food < 500:
+                self._activator.food = 500
+                self.add_msg("Your stomach is filled again.")
             else:
-                is_buy = False
+                self.add_msg("You don't look very hungry to me...")
+            return
 
-            service = temple_services.get(msg)
-
-            if not service:
+        presented_token = None
+        if msg.startswith("buy "):
+            service_name, separator, presented_token = msg[4:].partition("|")
+            if not separator:
                 return
+        else:
+            service_name = msg
 
-            if msg == "food":
-                if self._activator.food < 500:
-                    self._activator.food = 500
-                    self.add_msg("Your stomach is filled again.")
-                else:
-                    self.add_msg("You don't look very hungry to me...")
-            else:
-                self.add_msg("[title]{service[1]}[/title]", service = service)
-                cost = service[0]
-                if not isinstance(cost, int):
-                    cost = int(cost(self._activator))
+        service = SERVICES.get(service_name)
+        if service is None:
+            return
 
-                if not is_buy:
-                    self.add_msg(service[2])
-                    self.add_msg("This will cost you {cost}.", cost = CostString(cost))
-                    self.add_link("Confirm", dest = "buy " + msg)
-                else:
-                    if self._activator.PayAmount(cost):
-                        if cost:
-                            self.add_msg("You pay {cost}.", cost = CostString(cost), color = COLOR_YELLOW)
-
-                        self.add_msg("Okay, I will cast [green]{origmsg}[/green] on you now.", origmsg = msg)
-                        self._npc.Cast(GetArchetype("spell_" + msg.replace(" ", "_")).clone.sp, self._activator)
-                    else:
-                        self.add_msg("You do not have enough money...")
+        self.add_msg("[title]{title}[/title]", title=service.title)
+        self.add_msg(service_descriptions[service_name])
+        quoted = self._current_quote(service_name)
+        if quoted is None:
+            return
+        provider, before, current = quoted
+        if presented_token is None:
+            self._show_quote(current)
+        else:
+            self._confirm(
+                service_name, presented_token, provider, before, current
+            )
 
 class TempleGrunhilde(Temple):
     """Grunhilde temple."""

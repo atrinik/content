@@ -21,6 +21,7 @@ def run():
     import tests.Interface
     import tests.LostMemoriesArrival
     import tests.QuestManager
+    import tests.Temple
 
     all_suites = []
     all_suites += tests.Atrinik_tests.Archetype.suites
@@ -34,6 +35,7 @@ def run():
     all_suites += tests.Interface.suites
     all_suites += tests.LostMemoriesArrival.suites
     all_suites += tests.QuestManager.suites
+    all_suites += tests.Temple.suites
     old_all_tests = unittest.TestSuite(all_suites)
 
     unit_test = Atrinik.GetSettings()["plugin_unit_test"]

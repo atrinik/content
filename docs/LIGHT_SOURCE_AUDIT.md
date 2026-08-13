@@ -48,11 +48,15 @@ packages.
 
 ## Review provenance and runtime boundary
 
-The palette and contextual decisions were reviewed on Classic `1.x` in
-[PR #67](https://github.com/atrinik/content/pull/67) at commit
+The baseline palette and historical source contexts were reviewed on Classic
+`1.x` in [PR #67](https://github.com/atrinik/content/pull/67) at commit
 `958b557650252518b9ea2850200920d07c879bd2`. The main-line ledger preserves the
-identifiers of those Classic views as historical provenance but does not copy
-their screenshots, capture manifest, proof scene, or Classic-only tooling.
+identifiers of those Classic views as historical provenance but does not
+attribute later fixture-ownership or contextual decisions to that review, nor
+copy its screenshots, capture manifest, proof scene, or Classic-only tooling.
+Current fixture-group rationales and semantic hashes document those later
+main-line decisions; associated pull requests summarize any optional Classic
+smooth/discrete diagnostics performed for them.
 
 The replacement stack does not yet provide integrated content build, runtime,
 or renderer adapters. That boundary is tracked by atrinik/atrinik

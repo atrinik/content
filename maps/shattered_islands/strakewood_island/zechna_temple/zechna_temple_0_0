@@ -1005,10 +1005,6 @@ sp 9
 x 7
 y 7
 end
-arch light2
-x 7
-y 7
-end
 arch floor_sblack2b
 x 7
 y 8

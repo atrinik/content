@@ -6373,14 +6373,14 @@
     },
     "maps/planes/creation/creation_0501": {
       "uncolored_disposition": "neutral",
-      "rationale": "The two trigger-disabled Plane of Creation stock green exits use the inherited radius-3 40ff60 footprint without helper sources, preserving their destinations and map-edge placement.",
+      "rationale": "The two stock Plane of Creation green exits use the inherited radius-3 40ff60 footprint without helper sources, preserving their inherited walk/fly triggers, destinations, and map-edge placement.",
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "3c5a1f4b3507a7192a5f4bfe6926e3fe67f4465b99079d792493b79103140db4"
     },
     "maps/planes/creation/creation_0601": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Plane of Creation for issue #86; the two trigger-disabled stock green exits now use inherited radius-3 40ff60 footprints without helper sources, preserving the map's ambient hierarchy and linked-edge navigation.",
+      "rationale": "Rendered Plane of Creation for issue #86; the two stock green exits now use inherited radius-3 40ff60 footprints without helper sources, preserving their inherited walk/fly triggers, the map's ambient hierarchy, and linked-edge navigation.",
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "1fc020dfa10ccd55ec716afaa16977249392624c12d6390b879a476b70e613ad"
@@ -6540,7 +6540,7 @@
         "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious:5:9:candlelight1.101:1": "The co-located visible wall fireplace owns the reviewed compact source; this candle is locally dark to prevent mixed-color additive over-lighting."
       },
       "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the four-part composite retains one candle source, and the mixed candle/fireplace tile retains only its visible fireplace source.",
-      "semantic_sha256": "76e24050d374f0e5424f7a85418d168c9e77a98cf625555806e0eb428b9ded8f"
+      "semantic_sha256": "4cd2fd70c5597c2a9cf7575e79cccd3b40f16d5fcad7f690093d62dbe884b9c0"
     },
     "lava-floor-fixtures": {
       "archetypes": [

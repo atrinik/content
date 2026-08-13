@@ -1640,7 +1640,11 @@
     },
     "lantern-dense-cluster": {
       "status": "pass",
-      "rationale": "The 23-fixture world_5_43 anchor retains one radius-7 source per black lantern without stacked same-tile helpers."
+      "rationale": "The 23-fixture world_5_43 anchor retains one radius-7 source per black lantern without stacked same-tile helpers; its midnight smooth and discrete views preserve distinct fixtures, paths, walls, and deliberate darkness without additive washout.",
+      "classic_views": [
+        "issue88-smooth-world-5-43",
+        "issue88-discrete-world-5-43"
+      ]
     },
     "lantern-form-black": {
       "status": "pass",
@@ -1648,11 +1652,21 @@
     },
     "lantern-form-blue": {
       "status": "pass",
-      "rationale": "All 12 blue fixtures resolve to the reviewed radius-5 golden-amber family result."
+      "rationale": "All 12 blue fixtures resolve to the reviewed radius-5 golden-amber family result; the world_4_84 duplicate-helper and world_3_83 isolated anchors show the yellow aperture and compact pool in both Classic renderers.",
+      "classic_views": [
+        "issue88-smooth-world-4-84",
+        "issue88-discrete-world-4-84",
+        "issue88-smooth-world-3-83",
+        "issue88-discrete-world-3-83"
+      ]
     },
     "lantern-form-red": {
       "status": "pass",
-      "rationale": "The source-only red fixture resolves semantically to the same yellow-aperture palette and conservative radius-5 family default; Classic smooth/discrete behavior is verified separately from this ledger."
+      "rationale": "An ephemeral source-only lantern_red at the world_4_84 anchor shows its red frame, yellow aperture, and bounded radius-5 family footprint in both Classic smooth and discrete lighting without washing nearby structures.",
+      "classic_views": [
+        "issue88-smooth-red-world-4-84",
+        "issue88-discrete-red-world-4-84"
+      ]
     },
     "lantern-map-seam": {
       "status": "pass",
@@ -1660,7 +1674,13 @@
     },
     "lantern-newly-lit": {
       "status": "pass",
-      "rationale": "The two Asteria lanterns formerly lacking sources now inherit the family default without changing walls, clipping geometry, obstruction, or placement; visual navigation effects are verified separately."
+      "rationale": "The two Asteria lanterns formerly lacking sources inherit the family default without changing walls, clipping geometry, obstruction, or placement; midnight views at world_8_47 (6,22) and world_8_48 (6,3) show bounded smooth and discrete pools while both bridge routes remain readable.",
+      "classic_views": [
+        "issue88-smooth-world-8-47",
+        "issue88-discrete-world-8-47",
+        "issue88-smooth-world-8-48",
+        "issue88-discrete-world-8-48"
+      ]
     },
     "lantern-radius-5": {
       "status": "pass",
@@ -1676,7 +1696,15 @@
     },
     "lantern-wall-navigation": {
       "status": "pass",
-      "rationale": "The review anchors preserve coordinates, collision fields, walls, and routes byte-for-byte; visual wall bleed and navigation effects are verified separately."
+      "rationale": "The review anchors preserve coordinates, collision fields, walls, and routes byte-for-byte; midnight smooth and discrete views at the world_8_47/world_8_48 bridges and world_5_43 palace walls preserve route contrast and keep illumination bounded by surrounding walls.",
+      "classic_views": [
+        "issue88-smooth-world-8-47",
+        "issue88-discrete-world-8-47",
+        "issue88-smooth-world-8-48",
+        "issue88-discrete-world-8-48",
+        "issue88-smooth-world-5-43",
+        "issue88-discrete-world-5-43"
+      ]
     }
   },
   "maps": {

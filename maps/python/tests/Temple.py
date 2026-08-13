@@ -86,18 +86,19 @@ class TempleSuite(TestSuite):
         self.assertIn("changed before confirmation", temple._msg)
 
     def test_insufficient_funds_does_not_cast(self):
-        self.assertTrue(activator.PayAmount(activator.GetMoney()))
         depletion = self.create("depletion")
         depletion.Str = -2
         temple, provider, before, current = self.quote("remove depletion")
         self.assertGreater(current.cost, 0)
+        money = activator.GetMoney()
+        unaffordable = current._replace(cost=money + 1)
 
         temple._confirm(
-            "remove depletion", current.token, provider, before, current
+            "remove depletion", current.token, provider, before, unaffordable
         )
 
         self.assertTrue(depletion)
-        self.assertEqual(activator.GetMoney(), 0)
+        self.assertEqual(activator.GetMoney(), money)
         self.assertIn("not have enough money", temple._msg)
 
     def test_total_failure_is_free_and_partial_success_uses_exact_quote(self):

@@ -9,6 +9,8 @@ is_turnable 1
 speed -0.02
 last_eat 1
 maxsp 1
+glow_radius 1
+light_color ff3030
 no_pick 1
 sys_object 1
 dam -1

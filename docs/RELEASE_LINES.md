@@ -1,67 +1,27 @@
 # Content release lines
 
-`main` is the forward authoring line for the replacement stack. `1.x` is the
-maintained classic-content line consumed only by `atrinik/classic` client,
-editor, and server. Both descend from `v1.8.1` commit
+`main` is the sole authored and released content source. This `1.x` branch is
+immutable rollback and migration evidence, not an authored source, maintenance
+line, or release channel. Both descend from `v1.8.1` commit
 `01b1fdb65c2243df4bafe9c8109fc93229df0121`; the branch split changes no file's
 license or attribution.
 
 ## Choosing a target
 
-- Assess every issue-driven authored-content fix against both `main` and `1.x`;
-  a fix discovered on `1.x` must also reach `main` whenever compatible.
-- Use `1.x` for compatible Classic-maintenance changes, including shared
-  authored-content defects and Classic-only compatibility, security,
-  attribution, or data-loss fixes that work with its ADS/Python consumers.
-- Use `main` for compatible shared authored-content defects and for replacement
-  schemas, compiled artifacts, content-toolkit adoption, and forward authoring.
-- Compatible shared fixes normally ship to both lines through separate
-  worktrees, validation runs, commits, and linked pull requests. Preserve the
-  original author and explain any conflict resolution independently.
-- For paired delivery, the canonical `main` pull request is the only one that
-  closes the issue; its `1.x` companion links both the issue and canonical pull
-  request without using a closing keyword.
-- A single-line exception must record explicit evidence and rationale
-  explaining why the other line is unaffected or incompatible, such as
-  replacement-only schemas or tooling, Classic-only formats or consumers,
-  runtime incompatibility, or provenance or attribution constraints. The sole
-  applicable pull request is canonical: a `main` pull request uses a closing
-  keyword; a `1.x` pull request links without one, and the issue is closed
-  manually after merge.
-- Never merge branches wholesale or share generated output between worktrees.
-- Identify a companion as a `backport to 1.x` when it originates on `main`, or
-  a `forward-port to main` when it originates on `1.x`, and link the source
-  pull request in its body. An ambiguous destination or incomplete attribution
-  record blocks the change.
-
-Every `1.x` pull request runs the stable `Content validation` and
-`Conventional PR title` checks. Direct pushes, force pushes, deletion, and
-nonlinear history are prohibited by organization rules. Builds use the
-wrapper's distinct `content-1x` checkout and never share output with `content`.
+All authored defects, Classic compatibility, schemas, compiled artifacts,
+content-toolkit adoption, and forward authoring target `main`. Do not deliver
+changes to `1.x` or restore a maintenance channel. Emergency recreation or
+maintenance requires a new explicit organization-owner decision and restored
+governance. Until exact deletion, branch validation and title policy remain to
+protect the frozen ref.
 
 ## Releases
 
-Semantic-release treats `1.x` as maintenance range `1.x` on channel `1.x` and
-uses `vMAJOR.MINOR.PATCH` tags. `main` published `v1.9.0` after this branch's
-`v1.8.1` fork and owns that version permanently, so the maintenance line is
-bounded to `>=1.8.1 <1.9.0` even though `main` has since established the 2.x
-replacement line. The historical `feat(release)` bootstrap commit is classified
-as a patch by an exact analyzer rule; this permitted the first maintenance
-release at `v1.8.2`. Eight feature commits merged before the patch-only
-pull-request policy are also matched by exact type, scope, and subject rules:
-colored-light authoring (#64), the Incuna Sam objective (#63), effective
-light-source auditing (#67), the Incuna apartment flow (#112), fire-fixture
-lighting (#115), crystal-light ownership (#116), the Rockforge teleporter glow
-(#117), and toxic-pool lighting (#118). These bounded recovery rules cannot
-classify a different feature subject as a patch.
-
-The `Conventional PR title` check rejects every new `feat` or breaking title
-whose base is `1.x`, while leaving `main` feature and breaking behavior
-unchanged. Future `1.x` changes are maintenance fixes, not features. Published
-releases and dry runs must remain in `>=1.8.1 <1.9.0` on channel `1.x`. The
-GitHub release plugin deliberately disables its failure-issue hook. Release
-failures remain visible in the workflow log, and an issue-creation or label
-validation failure cannot obscure the originating Semantic Release error.
+Semantic Release is retired on this branch. The final rollback release is
+`v1.8.19@566bd25f78b80b08d5f75f4b02017ab2429204db`. Its tag, release,
+source/runtime archives, `SHA256SUMS`, manifests, licenses, and attribution are
+immutable recovery evidence. No tag, release, or asset is moved, replaced, or
+deleted during retirement.
 
 The release has three integrity layers:
 

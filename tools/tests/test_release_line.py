@@ -23,90 +23,24 @@ class ReleaseLineTests(unittest.TestCase):
         self.assertFalse(contract["replacement_ready"])
         self.assertFalse(contract["replacement_toolkit_package"])
 
-    def test_semantic_release_has_bounded_maintenance_channel(self) -> None:
-        configuration = json.loads((ROOT / ".releaserc.json").read_text(encoding="utf-8"))
-        maintenance = [
-            branch
-            for branch in configuration["branches"]
-            if isinstance(branch, dict) and branch.get("name") == "1.x"
-        ]
+    def test_preserved_main_classic_contract_matches_the_cutover_source(self) -> None:
+        contract = json.loads(
+            (ROOT / "contracts/release-lines/classic-main.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(contract["branch"], "main")
+        self.assertEqual(contract["component"], "content")
         self.assertEqual(
-            maintenance,
-            [{"name": "1.x", "range": "1.x", "channel": "1.x"}],
+            contract["consumers"],
+            ["classic/client", "classic/editor", "classic/server"],
         )
-        self.assertEqual(configuration["branches"], [maintenance[0], "main"])
-        analyzer = configuration["plugins"][0]
-        self.assertEqual(analyzer[0], "@semantic-release/commit-analyzer")
-        historical_rules = [
-            rule
-            for rule in analyzer[1]["releaseRules"]
-            if rule.get("type") == "feat" and rule.get("release") == "patch"
-        ]
-        self.assertEqual(
-            historical_rules,
-            [
-                {
-                    "type": "feat",
-                    "scope": "release",
-                    "subject": "establish classic content maintenance line*",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "lighting",
-                    "subject": "author colored light sources (#64)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "maps",
-                    "subject": "persist the Incuna Sam objective (#63)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "lighting",
-                    "subject": "audit effective light-source colors (#67)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "quests",
-                    "subject": "teach the Incuna apartment flow on 1.x (#112)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "archetypes",
-                    "subject": "make fire fixtures emit light (#115)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "maps",
-                    "subject": "transfer crystal light ownership (#116)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "maps",
-                    "subject": "give Rockforge teleporter a focal glow (#117)",
-                    "release": "patch",
-                },
-                {
-                    "type": "feat",
-                    "scope": "archetypes",
-                    "subject": "make toxic pools emit matching light (#118)",
-                    "release": "patch",
-                },
-            ],
-        )
-        self.assertNotIn(
-            {"type": "feat", "release": "minor"}, analyzer[1]["releaseRules"]
-        )
-        github = configuration["plugins"][-1]
-        self.assertEqual(github[0], "@semantic-release/github")
-        self.assertIs(github[1]["failComment"], False)
+        self.assertFalse(contract["replacement_ready"])
+        self.assertFalse(contract["replacement_toolkit_package"])
+
+    def test_semantic_release_is_retired(self) -> None:
+        self.assertFalse((ROOT / ".releaserc.json").exists())
+        self.assertFalse((ROOT / ".github/workflows/release.yml").exists())
 
     def test_pull_request_title_policy_preserves_main_and_bounds_1x(self) -> None:
         self.assertIsNone(check_pr_title.validation_error("main", "feat: add content"))

@@ -1,4 +1,4 @@
-"""Regression tests for synchronized dual-release-line guidance."""
+"""Regression tests for the retired 1.x release-line boundary."""
 
 from __future__ import annotations
 
@@ -13,20 +13,15 @@ GUIDANCE_PATHS = (
     Path("docs/RELEASE_LINES.md"),
 )
 REQUIRED_POLICY = (
-    "Assess every issue-driven authored-content fix against both `main` and `1.x`",
-    "a fix discovered on `1.x` must also reach `main` whenever compatible",
-    "Compatible shared fixes normally ship to both lines through separate worktrees, validation runs, commits, and linked pull requests",
-    "For paired delivery, the canonical `main` pull request is the only one that closes the issue",
-    "`1.x` companion links both the issue and canonical pull request without using a closing keyword",
-    "single-line exception must record explicit evidence and rationale",
-    "replacement-only schemas or tooling, Classic-only formats or consumers, runtime incompatibility, or provenance or attribution constraints",
-    "The sole applicable pull request is canonical: a `main` pull request uses a closing keyword; a `1.x` pull request links without one, and the issue is closed manually after merge",
-    "Never merge branches wholesale or share generated output between worktrees",
+    "This `1.x` branch is immutable rollback and migration evidence",
+    "not an authored source, maintenance line, or release channel",
+    "`main` is the sole authored and released content source",
+    "explicit organization-owner decision",
 )
 
 
 class ReleaseGuidanceTests(unittest.TestCase):
-    def test_every_guidance_surface_preserves_dual_line_delivery_policy(self) -> None:
+    def test_every_guidance_surface_preserves_retirement_policy(self) -> None:
         for relative_path in GUIDANCE_PATHS:
             with self.subTest(path=str(relative_path)):
                 guidance = " ".join(
@@ -34,6 +29,16 @@ class ReleaseGuidanceTests(unittest.TestCase):
                 )
                 for policy in REQUIRED_POLICY:
                     self.assertIn(policy, guidance)
+
+    def test_release_automation_is_absent_but_branch_validation_remains(self) -> None:
+        self.assertFalse((ROOT / ".releaserc.json").exists())
+        self.assertFalse((ROOT / ".github/workflows/release.yml").exists())
+        for relative_path in (
+            Path(".github/workflows/check.yml"),
+            Path(".github/workflows/pr-title.yml"),
+        ):
+            workflow = (ROOT / relative_path).read_text(encoding="utf-8")
+            self.assertIn("1.x", workflow)
 
 
 if __name__ == "__main__":

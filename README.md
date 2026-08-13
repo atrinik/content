@@ -5,11 +5,13 @@ the collection tools that turn those sources into server runtime input.
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the ownership boundaries
 and source-to-runtime validation flow.
 
-This checkout's `1.x` branch is the maintained classic release line. See
-[`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target selection,
-backport/forward-port rules, the bounded semantic-release channel, and exact
-runtime compatibility metadata. `1.x` packages are explicitly not
-replacement-ready.
+This checkout is the final immutable `1.x` rollback and migration record at
+`v1.8.19@566bd25f78b80b08d5f75f4b02017ab2429204db`. It is
+not an authored source, maintenance line, or release channel; `main` publishes
+all replacement and Classic targets. See
+[`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for preserved release evidence,
+runtime compatibility metadata, and the emergency recovery boundary. Historical
+`1.x` packages remain explicitly not replacement-ready.
 
 The content has heterogeneous licensing. `arch/COPYING`, `maps/COPYING`, and
 the nearest `LICENSE` file for an asset are authoritative; the repository does

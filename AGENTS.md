@@ -44,22 +44,12 @@
   exact branch/commit, classic formats and consumers, licenses, and
   `replacement_ready: false`. Never merge replacement `main` wholesale into
   this branch or accept replacement-only formats/tooling.
-- Assess every issue-driven authored-content fix against both `main` and `1.x`;
-  a fix discovered on `1.x` must also reach `main` whenever compatible.
-  Compatible shared fixes
-  normally ship to both lines through separate worktrees, validation runs,
-  commits, and linked pull requests. For paired delivery, the canonical `main`
-  pull request is the only one that closes the issue; its `1.x` companion links
-  both the issue and canonical pull request without using a closing keyword. A
-  single-line exception must record explicit evidence and rationale explaining
-  why the other line is unaffected or incompatible, such as replacement-only
-  schemas or tooling, Classic-only formats or consumers, runtime
-  incompatibility, or provenance or attribution constraints. The sole
-  applicable pull request is canonical: a `main` pull request uses a closing
-  keyword; a `1.x` pull request links without one, and the issue is closed
-  manually after merge. Never merge branches wholesale or share generated
-  output between worktrees. Port linkage and review rules are
-  documented in `docs/RELEASE_LINES.md`.
+- This `1.x` branch is immutable rollback and migration evidence. It is not an
+  authored source, maintenance line, or release channel; `main` is the sole
+  authored and released content source. Preserve final tags, releases, assets,
+  checksums, licenses, attribution, parity records, and reachable history. Do
+  not add authored changes or restore Semantic Release. Emergency recreation or
+  maintenance requires a new explicit organization-owner decision.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
@@ -69,18 +59,9 @@
   lossless-core tests/audit, release-line/license gates, and an isolated runtime
   build. Run focused commands or the read-only world audit only when relevant;
   use wrapper builds/topologies for gameplay verification.
-- Commits and pull-request titles use Conventional Commits. Every squash merge
-  is released by semantic-release.
-- `1.x` releases use semantic-release maintenance range/channel `1.x`. Because
-  `main` owns the post-fork `v1.9.0` tag, this line can publish only patch
-  versions in `>=1.8.1 <1.9.0`. Keep analyzer exceptions limited to the exact
-  historical `feat(release)` bootstrap and eight pre-policy feature subjects
-  documented in `docs/RELEASE_LINES.md`; do not weaken ordinary feature or
-  breaking-change classification. The pull-request title policy rejects all
-  new feature and breaking titles targeting `1.x`. Published releases and dry
-  runs must stay in that range on channel `1.x`. Keep the GitHub plugin's
-  failure-issue hook disabled so an issue-creation failure cannot obscure the
-  original Semantic Release error in the workflow log.
+- Commits and pull-request titles use Conventional Commits. The final retirement
+  merge is deliberately non-releasing; branch validation and title policy remain
+  until the separately authorized governance gate deletes the ref.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

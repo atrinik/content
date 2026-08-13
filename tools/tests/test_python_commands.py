@@ -12,6 +12,7 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[2]
 COMMON_PATH = ROOT / "maps" / "python" / "Common.py"
 COMMANDS_PATH = ROOT / "maps" / "python" / "commands"
+CONSOLE_PATH = COMMANDS_PATH / "console.py"
 
 
 def load_common():
@@ -53,6 +54,11 @@ class DrawInfoRecorder:
 
     def DrawInfo(self, message, color):
         self.messages.append((message, color))
+
+
+class InvalidActivator:
+    def __bool__(self):
+        return False
 
 
 class PythonCommandTests(unittest.TestCase):
@@ -150,6 +156,49 @@ class PythonCommandTests(unittest.TestCase):
         obj.y = 0
 
         return atrinik, recorder
+
+    def load_console(self):
+        activator = types.SimpleNamespace(name="Operator")
+        atrinik = types.ModuleType("Atrinik")
+        atrinik.CacheGet = mock.Mock(side_effect=ValueError)
+        atrinik.CacheAdd = mock.Mock()
+        atrinik.CacheRemove = mock.Mock()
+        atrinik.Logger = mock.Mock()
+        atrinik.WhatIsMessage = lambda: "exit()"
+        atrinik.activator = activator
+        interface = types.ModuleType("Interface")
+        interface.Interface = mock.Mock()
+        markup = types.ModuleType("Markup")
+        markup.markup_escape = lambda value: value
+
+        with mock.patch.dict(
+            sys.modules,
+            {
+                "Atrinik": atrinik,
+                "Common": self.common,
+                "Interface": interface,
+                "Markup": markup,
+            },
+        ):
+            return runpy.run_path(str(CONSOLE_PATH), run_name="console_test")
+
+    def test_console_stdout_teardown_tolerates_invalid_activator(self):
+        namespace = self.load_console()
+        console = namespace["PyConsole"](types.SimpleNamespace(name="Operator"))
+        console.activator = InvalidActivator()
+
+        namespace["stdout_inf"](console).flush()
+
+    def test_console_push_restores_stdout_after_flush_failure(self):
+        namespace = self.load_console()
+        console = namespace["PyConsole"](types.SimpleNamespace(name="Operator"))
+        console.show = mock.Mock(side_effect=RuntimeError("interface unavailable"))
+        original_stdout = sys.stdout
+
+        with self.assertRaisesRegex(RuntimeError, "interface unavailable"):
+            console.push("print('output')")
+
+        self.assertIs(sys.stdout, original_stdout)
 
     def test_create_destroys_object_after_malformed_color(self):
         for message in (

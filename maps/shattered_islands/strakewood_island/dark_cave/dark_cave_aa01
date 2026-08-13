@@ -143,6 +143,7 @@ x 15
 y 4
 end
 arch light2
+light_color ff6030
 x 15
 y 4
 end
@@ -298,6 +299,7 @@ x 16
 y 18
 end
 arch light2
+light_color ff6030
 x 16
 y 18
 end
@@ -472,6 +474,7 @@ x 18
 y 13
 end
 arch light2
+light_color ff6030
 x 18
 y 13
 end
@@ -642,6 +645,7 @@ x 20
 y 7
 end
 arch light2
+light_color ff6030
 x 20
 y 7
 end
@@ -797,6 +801,7 @@ x 21
 y 21
 end
 arch light2
+light_color ff6030
 x 21
 y 21
 end
@@ -816,6 +821,7 @@ x 22
 y 1
 end
 arch light2
+light_color ff6030
 x 22
 y 1
 end

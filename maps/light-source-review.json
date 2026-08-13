@@ -504,6 +504,31 @@
       "rationale": "lightning uses the lightning blue-white palette entry to match its visible art.",
       "semantic_sha256": "b6e3a2162d5dc57ddbbd4235bc43b4041d1e68b17904f2b0c9d8264d41d4a393"
     },
+    "meffect_blue": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The transient blue magic glow uses the smallest rendered-effective radius and the established saturated-blue palette entry; permanent Morliana overlays opt out locally.",
+      "semantic_sha256": "f6a5837ce060483afed3a055f5eff6533e047ad4aac4cf8a6e91f2c7bb33a51c"
+    },
+    "meffect_green": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The transient green magic glow uses the smallest rendered-effective radius and the established saturated-green palette entry.",
+      "semantic_sha256": "cca11a5c37dd29e9f96e9389ea392ee8ceeb6a19c96e150bf621f80b3a8d6ad9"
+    },
+    "meffect_pink": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The transient pink magic glow uses the smallest rendered-effective radius and the established saturated-pink palette entry.",
+      "semantic_sha256": "af079407930f4bc25e6d28d150174a1f23065528f915267240b827a115cb18a2"
+    },
+    "meffect_purple": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The transient purple magic glow uses the smallest rendered-effective radius and the established arcane-purple palette entry.",
+      "semantic_sha256": "6e2192df6b0d5aa0c7ce457a9098427a458808f2961cd204f6e14a84af734913"
+    },
+    "meffect_yellow": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The transient yellow magic glow uses the smallest rendered-effective radius and the established saturated-yellow palette entry.",
+      "semantic_sha256": "6cb62cf73e2c31d7cfdb3f71a3c22aea941ce446e36e263cda7cad2bb4e4eb8b"
+    },
     "mithril_lamp": {
       "uncolored_disposition": "neutral",
       "rationale": "The lit mithril lamp uses explicit cyan light matching its only chromatic blue-green glass and metal pixels.",
@@ -1101,6 +1126,26 @@
     "lightning": {
       "rationale": "The authored c0e0ff tint matches the visible art for lightning.",
       "semantic_sha256": "e1e9db8cb823bb4ea02ddfeae0003979b71793da19b7ecb20642ad6c7eea414b"
+    },
+    "meffect_blue": {
+      "rationale": "The authored 4060ff tint matches the transient blue magic-glow animation.",
+      "semantic_sha256": "57ab265efdbded399479a6e67274bd3137f7e755e0b92345d1cdf595a7da18d8"
+    },
+    "meffect_green": {
+      "rationale": "The authored 40ff60 tint matches the transient green magic-glow animation.",
+      "semantic_sha256": "b232fb100b017e4c9d051c28990ad082a5d9c55da4ad364d8e5c5bfc6fb507dd"
+    },
+    "meffect_pink": {
+      "rationale": "The authored ff60c0 tint matches the transient pink magic-glow animation.",
+      "semantic_sha256": "830725d4c3263779c228123b0f59267b6ba668860524f334280bc2eda2e0b438"
+    },
+    "meffect_purple": {
+      "rationale": "The authored a060ff tint matches the transient purple magic-glow animation.",
+      "semantic_sha256": "58cd1183a0d346ca426f8c7f6e3f41c9e1911b53cf9a268476aa1b61a3ee4d8d"
+    },
+    "meffect_yellow": {
+      "rationale": "The authored ffe060 tint matches the transient yellow magic-glow animation.",
+      "semantic_sha256": "635eb8b093997fca6ce8d9b0e959d2771c9f6ca458bffa6b7ff023b5172965d0"
     },
     "mithril_lamp": {
       "rationale": "The authored 60d0ff tint matches mithril_lamp's cyan-blue chromatic pixels.",
@@ -3358,10 +3403,10 @@
     },
     "maps/shattered_islands/world_13_5": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Morliana in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 3 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered Morliana in the lyondale_archipelago batch; the permanent blue overlays at (12, 12) opt out of their transient archetype light, the adjacent (12, 11) helper is removed, and the co-located neutral light9 remains the sole intentional Great Blue Crystal focal provider. Reviewed all 3 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "74d43b4847233359de89f61a974057ac01e7032dec9ea33df5c573f22e8f86a9"
+      "semantic_sha256": "06f3da52ae79196c246ec8706df6ad3049ceb48d88a6925cd8b9c47242f7eddc"
     },
     "maps/shattered_islands/world_13_6": {
       "uncolored_disposition": "neutral",

@@ -33,6 +33,7 @@ arch chair2_111
 y 2
 end
 arch light3
+light_color c0ff60
 y 2
 end
 arch grassd_5
@@ -50,6 +51,7 @@ direction 5
 y 4
 end
 arch light3
+light_color c0ff60
 y 4
 end
 arch grassd_4
@@ -175,6 +177,7 @@ x 1
 y 3
 end
 arch light3
+light_color c0ff60
 x 1
 y 3
 end
@@ -204,6 +207,7 @@ x 1
 y 7
 end
 arch light3
+light_color c0ff60
 x 1
 y 7
 end
@@ -322,6 +326,7 @@ x 2
 y 1
 end
 arch light5
+light_color ff6030
 x 2
 y 1
 end
@@ -354,6 +359,7 @@ x 2
 y 6
 end
 arch light3
+light_color c0ff60
 x 2
 y 6
 end
@@ -375,6 +381,7 @@ x 2
 y 8
 end
 arch light3
+light_color c0ff60
 x 2
 y 8
 end
@@ -526,6 +533,7 @@ x 3
 y 7
 end
 arch light3
+light_color c0ff60
 x 3
 y 7
 end
@@ -1575,6 +1583,7 @@ x 10
 y 14
 end
 arch light3
+light_color c0ff60
 x 10
 y 14
 end
@@ -2862,6 +2871,7 @@ x 20
 y 7
 end
 arch light9
+light_color ffd080
 x 20
 y 7
 end

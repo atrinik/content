@@ -66,16 +66,17 @@ class Jail:
 
         force = player.CreateForce("jail_force", seconds=time)
         force.slaying = "jail_force"
-        force.PublishStatus(
-            "condition:jail",
-            "jail sentence",
-            "force.101",
-            (
-                "You are serving an indefinite jail sentence."
-                if time == 0
-                else "You are serving a jail sentence."
-            ),
-        )
+        if hasattr(force, "PublishStatus"):
+            force.PublishStatus(
+                "condition:jail",
+                "jail sentence",
+                "force.101",
+                (
+                    "You are serving an indefinite jail sentence."
+                    if time == 0
+                    else "You are serving a jail sentence."
+                ),
+            )
         pl.MetricAdd("social.jail_sentences")
         if time > 0:
             pl.MetricAdd("social.jail_time_sentenced", time)

@@ -46,12 +46,13 @@ def main():
             "weapon magic protection +20%"
         )
 
-    force.PublishStatus(
-        "consumable:pipeweed",
-        marked.GetName(activator),
-        marked.face[0],
-        tooltip,
-    )
+    if hasattr(force, "PublishStatus"):
+        force.PublishStatus(
+            "consumable:pipeweed",
+            marked.GetName(activator),
+            marked.face[0],
+            tooltip,
+        )
 
     # Decrease number of pipeweeds.
     marked.Decrease()

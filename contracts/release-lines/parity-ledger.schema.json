@@ -134,7 +134,7 @@
       "required": ["ordinal", "issue", "pull_request", "paths"],
       "properties": {
         "ordinal": { "type": "integer", "minimum": 1 },
-        "issue": { "enum": [137, 139, 166] },
+        "issue": { "enum": [137, 139, 154, 166] },
         "pull_request": { "$ref": "#/$defs/nullablePullRequest" },
         "paths": {
           "type": "array",

@@ -8,7 +8,7 @@ width 24
 height 24
 difficulty 39
 darkness 2
-bg_music 89-bubblysweep.ogg
+bg_music sewers.ogg
 region muddy_pit
 end
 arch blocked

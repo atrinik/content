@@ -36,6 +36,53 @@
             "tools/release_line_parity.py",
             "tools/tests/test_release_line_parity.py"
           ]
+        },
+        {
+          "ordinal": 3,
+          "issue": 154,
+          "pull_request": 186,
+          "paths": [
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "contracts/release-lines/classic-main.json",
+            "docs/ARCHITECTURE.md",
+            "docs/RELEASE_LINES.md",
+            "maps/interfaces/quests/lost_memories/quest.xml",
+            "maps/light-source-review.json",
+            "maps/python/LostMemoriesApartment.py",
+            "maps/python/generic/apartment_teleport.py",
+            "maps/python/items/lost_memories_apartment_bed.py",
+            "maps/python/tests/Atrinik_tests/Player.py",
+            "maps/python/tests/LostMemoriesArrival.py",
+            "maps/shattered_islands/incuna/apartments/beach_nook",
+            "maps/shattered_islands/world_4_85",
+            "tools/build_runtime.py",
+            "tools/package-release.sh",
+            "tools/tests/test_classic_target.py",
+            "tools/tests/test_release_guidance.py",
+            "tools/validate.py"
+          ]
+        },
+        {
+          "ordinal": 4,
+          "issue": 166,
+          "pull_request": 190,
+          "paths": [
+            ".github/workflows/check.yml",
+            ".github/workflows/pr-title.yml",
+            ".github/workflows/release.yml",
+            ".releaserc.json",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "README.md",
+            "contracts/release-lines/parity-ledger.json",
+            "contracts/release-lines/parity-ledger.schema.json",
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_m1_foundations.py",
+            "tools/tests/test_release_guidance.py",
+            "tools/tests/test_release_line_parity.py"
+          ]
         }
       ]
     },
@@ -62,6 +109,36 @@
           "paths": [
             "docs/RELEASE_LINES.md",
             "tools/release_line_parity.py",
+            "tools/tests/test_release_line_parity.py"
+          ]
+        },
+        {
+          "ordinal": 3,
+          "issue": 154,
+          "pull_request": 187,
+          "paths": [
+            "arch/magic/forcefield/forcefield_blue/forcefield_blue.arc",
+            "arch/magic/forcefield/forcefield_red/forcefield_red.arc",
+            "maps/light-source-review.json"
+          ]
+        },
+        {
+          "ordinal": 4,
+          "issue": 166,
+          "pull_request": 189,
+          "paths": [
+            ".github/workflows/release.yml",
+            ".releaserc.json",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "README.md",
+            "contracts/release-lines/classic-main.json",
+            "contracts/release-lines/parity-ledger.json",
+            "contracts/release-lines/parity-ledger.schema.json",
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_release_guidance.py",
+            "tools/tests/test_release_line.py",
             "tools/tests/test_release_line_parity.py"
           ]
         }
@@ -930,22 +1007,40 @@
   ],
   "tree_exceptions": [
     {
+      "path": ".github/workflows/check.yml",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "The frozen 1.x ref retains validation required by its live ruleset until separately authorized deletion; main validates only its active source."
+    },
+    {
       "path": ".github/workflows/pr-title.yml",
       "classification": "exempt",
       "domain": "release",
       "rationale": "The 1.x workflow enforces its patch-only title policy."
     },
     {
+      "path": ".github/workflows/release.yml",
+      "classification": "exempt",
+      "domain": "release",
+      "rationale": "Semantic Release exists only on the sole active main source."
+    },
+    {
       "path": ".releaserc.json",
       "classification": "exempt",
       "domain": "release",
-      "rationale": "Each branch owns a distinct semantic-release channel and version range."
+      "rationale": "Semantic Release configuration exists only on the sole active main source."
     },
     {
       "path": "AGENTS.md",
       "classification": "exempt",
       "domain": "guidance",
       "rationale": "Agent guidance names branch-native consumers, commands, and release restrictions."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "classification": "exempt",
+      "domain": "guidance",
+      "rationale": "Contribution guidance distinguishes active main delivery from immutable 1.x recovery."
     },
     {
       "path": "PROVENANCE.md",
@@ -958,18 +1053,6 @@
       "classification": "exempt",
       "domain": "guidance",
       "rationale": "The branch readmes describe different consumers and release products."
-    },
-    {
-      "path": "arch/magic/forcefield/forcefield_blue/forcefield_blue.arc",
-      "classification": "equivalent",
-      "domain": "authored",
-      "rationale": "The same name_pl and light_color values appear in harmlessly different field order."
-    },
-    {
-      "path": "arch/magic/forcefield/forcefield_red/forcefield_red.arc",
-      "classification": "equivalent",
-      "domain": "authored",
-      "rationale": "The same name_pl and light_color values appear in harmlessly different field order."
     },
     {
       "path": "docs/ARCHETYPE_PLURALS.md",
@@ -994,60 +1077,6 @@
       "classification": "exempt",
       "domain": "guidance",
       "rationale": "The release-line guide is intentionally maintained from each branch's perspective."
-    },
-    {
-      "path": "maps/interfaces/quests/lost_memories/quest.xml",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "The apartment tutorial quest result is equivalent across consumer-specific event integration."
-    },
-    {
-      "path": "maps/light-source-review.json",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "This authored review ledger covers the same lights with line-native source digests and context."
-    },
-    {
-      "path": "maps/python/LostMemoriesApartment.py",
-      "classification": "equivalent",
-      "domain": "runtime",
-      "rationale": "Classic owns a dedicated apartment event script while main uses its typed event boundary."
-    },
-    {
-      "path": "maps/python/generic/apartment_teleport.py",
-      "classification": "equivalent",
-      "domain": "runtime",
-      "rationale": "Apartment teleport integration preserves equivalent gameplay through different consumer APIs."
-    },
-    {
-      "path": "maps/python/items/lost_memories_apartment_bed.py",
-      "classification": "equivalent",
-      "domain": "runtime",
-      "rationale": "Classic owns the bed event adapter while main expresses the same result in its event model."
-    },
-    {
-      "path": "maps/python/tests/Atrinik_tests/Player.py",
-      "classification": "exempt",
-      "domain": "validation",
-      "rationale": "Classic test fixtures expose runtime APIs that do not exist on the replacement line."
-    },
-    {
-      "path": "maps/python/tests/LostMemoriesArrival.py",
-      "classification": "equivalent",
-      "domain": "validation",
-      "rationale": "Apartment arrival tests target equivalent behavior through line-native runtimes."
-    },
-    {
-      "path": "maps/shattered_islands/incuna/apartments/beach_nook",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "The apartment map retains equivalent tutorial semantics with consumer-specific event objects."
-    },
-    {
-      "path": "maps/shattered_islands/world_4_85",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "The arrival map retains equivalent tutorial and portal-light semantics with line-native events."
     },
     {
       "path": "provenance/m1/README.md",
@@ -1140,6 +1169,12 @@
       "rationale": "Each release line packages a different artifact contract."
     },
     {
+      "path": "tools/tests/test_classic_target.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Main-only Classic target publisher tests validate the active artifact."
+    },
+    {
       "path": "tools/tests/test_content_catalog.py",
       "classification": "equivalent",
       "domain": "validation",
@@ -1150,6 +1185,12 @@
       "classification": "exempt",
       "domain": "validation",
       "rationale": "Replacement foundation tests exist only on main."
+    },
+    {
+      "path": "tools/tests/test_release_guidance.py",
+      "classification": "exempt",
+      "domain": "validation",
+      "rationale": "Guidance tests enforce branch-native active-source and frozen-ref boundaries."
     },
     {
       "path": "tools/tests/test_release_line.py",

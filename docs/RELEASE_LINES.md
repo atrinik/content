@@ -1,8 +1,9 @@
 # Content release lines
 
-`main` is the sole forward authoring line. It publishes replacement and Classic
-targets. `1.x` is frozen rollback and migration evidence while consumers move
-to the explicit Classic artifact published from `main`. Both descend from `v1.8.1` commit
+`main` is the sole authored and released content line. It publishes replacement
+and Classic targets. The `1.x` line is immutable rollback and migration
+evidence at its final Semantic Release coordinate, not a supported delivery
+target or active maintenance channel. Both descend from `v1.8.1` commit
 `01b1fdb65c2243df4bafe9c8109fc93229df0121`; the branch split changes no file's
 license or attribution.
 
@@ -22,37 +23,21 @@ remains explicitly `replacement_ready: false`. Co-located Classic Python stays
 behind that target boundary and is not reusable by clean-room replacement
 implementations.
 
-- Do not deliver independent `1.x` features. During cutover, change it only for
-  an explicitly reviewed reconciliation or rollback that keeps the frozen line
-  truthful.
+- Do not deliver changes to `1.x`. An emergency recreation or maintenance line
+  requires a new explicit organization-owner decision and restored governance.
 - Use `main` for authored defects, Classic target behavior, replacement schemas,
   compiled artifacts, content-toolkit adoption, and forward authoring.
-- Reconciliation changes require separate worktrees, validation, commits, and
-  linked pull requests; the canonical `main` PR owns closing only after
-  downstream integration and branch-specific release machinery have retired.
-  Preserve the original author and explain conflict resolution independently.
-- Never merge histories wholesale or share generated output between worktrees.
-
-Every exceptional reconciliation `1.x` pull request runs the stable
-`Content validation` and
-`Conventional PR title` checks. Direct pushes, force pushes, deletion, and
-nonlinear history are prohibited by organization rules. Builds use the
-wrapper's distinct `content-1x` checkout and never share output with `content`.
+- Preserve historical authorship and never merge histories wholesale or share
+  generated output across preserved checkouts.
 
 ## Releases
 
-`release-line.txt` is `2.0` on `main` and `1.x` on branch `1.x`.
-Validation treats either value appearing on the wrong branch as a release
-boundary defect.
-
-Semantic-release treats `1.x` as maintenance range `1.x` on channel `1.x` and
-uses `vMAJOR.MINOR.PATCH` tags. `main` published `v1.9.0` after the `v1.8.1`
-fork and owns that version permanently, so the maintenance line is bounded to
-`>=1.8.1 <1.9.0` even though `main` has since established the 2.x replacement
-line. The one exact analyzer rule for the historical `feat(release)` bootstrap
-commit permitted `v1.8.2` without weakening normal feature or breaking-change
-classification. Published releases and dry runs must remain in that range on
-channel `1.x`.
+`release-line.txt` is `2.0` on `main`. Semantic Release runs only from `main`.
+The final rollback release is
+`v1.8.19@566bd25f78b80b08d5f75f4b02017ab2429204db`. Its tag, release,
+source/runtime archives, `SHA256SUMS`, manifests,
+licenses, and attribution remain historical recovery evidence. No tag, release,
+or asset is moved, replaced, or deleted during retirement.
 
 The explicit Classic target released from `main` carries source branch/commit,
 target identity, content and artifact formats, compatible Classic versions,
@@ -92,14 +77,14 @@ Run the local, network-free ledger validation from either branch:
 python3 tools/release_line_parity.py --json
 ```
 
-The terminal plan starts in `prepublication` state while its four pull request
-identities are being allocated. Before any terminal merge it must become
-`declared`, with exactly two commits per line in the order #137 then #139 and
-the exact changed-path set for each ordinal. The horizons are immutable after
-that declaration. Any missing, extra, reordered, missing-path, or
-out-of-allowlist commit invalidates the declaration and requires a new horizon.
-Actual squash SHAs are bound durably to the declared ordinals after merge; no
-commit is required to contain its own SHA.
+The terminal plan is `declared` with exactly four squash commits per line:
+#137, then #139, then the cutover in #154, then release-line retirement in
+#166. Each line preserves its immutable pre-terminal horizon and the exact
+changed-path set for every ordinal. Any missing, extra, reordered, missing-path,
+or out-of-allowlist commit
+invalidates the declaration and requires a new horizon. Actual squash SHAs are
+bound durably to the declared ordinals after merge; no commit is required to
+contain its own SHA.
 
 ## Semantic cross-line audit
 
@@ -115,7 +100,7 @@ python3 tools/release_line_parity.py \
 ```
 
 The candidate flag relaxes only the final squash-subject binding, which GitHub
-adds at merge. It still requires the declared horizon, exact two-commit suffix,
+adds at merge. It still requires the declared horizon, exact four-commit suffix,
 ordinal order, and exact changed-path set. At merged tips omit that flag; every
 suffix commit must then bind the declared pull request in its subject.
 

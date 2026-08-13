@@ -1,5 +1,5 @@
 {
-  "branches": ["main", {"name": "1.x", "range": "1.x", "channel": "1.x"}],
+  "branches": ["main"],
   "tagFormat": "v${version}",
   "plugins": [
     ["@semantic-release/commit-analyzer", {"preset": "conventionalcommits", "releaseRules": [{"breaking": true, "release": "major"}, {"type": "feat", "release": "minor"}, {"type": "*", "release": "patch"}]}],

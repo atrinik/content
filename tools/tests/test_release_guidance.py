@@ -13,11 +13,10 @@ GUIDANCE_PATHS = (
     Path("docs/RELEASE_LINES.md"),
 )
 REQUIRED_POLICY = (
-    "`main` is the sole forward authoring line",
-    "`1.x` is frozen rollback and migration evidence",
-    "Reconciliation changes require separate worktrees, validation, commits, and linked pull requests",
-    "canonical `main` PR owns closing only after downstream integration and branch-specific release machinery have retired",
-    "Never merge histories wholesale or share generated output between worktrees",
+    "`main` is the sole authored and released",
+    "`1.x` line is immutable rollback and migration evidence",
+    "not a supported delivery target",
+    "explicit organization-owner decision",
 )
 
 
@@ -30,6 +29,17 @@ class ReleaseGuidanceTests(unittest.TestCase):
                 )
                 for policy in REQUIRED_POLICY:
                     self.assertIn(policy, guidance)
+
+    def test_only_main_is_an_active_workflow_and_release_source(self) -> None:
+        release = (ROOT / ".releaserc.json").read_text(encoding="utf-8")
+        self.assertIn('"branches": ["main"]', release)
+        for relative_path in (
+            Path(".github/workflows/check.yml"),
+            Path(".github/workflows/pr-title.yml"),
+            Path(".github/workflows/release.yml"),
+        ):
+            workflow = (ROOT / relative_path).read_text(encoding="utf-8")
+            self.assertNotIn("1.x", workflow)
 
 
 if __name__ == "__main__":

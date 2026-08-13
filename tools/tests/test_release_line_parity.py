@@ -44,7 +44,7 @@ class ReleaseLineParityTests(unittest.TestCase):
         self.assertEqual(61, report["commits"])
         self.assertEqual({"main": 29, "1.x": 32}, report["commits_by_line"])
         self.assertEqual(32, report["outcomes"])
-        self.assertEqual(43, report["tree_exceptions"])
+        self.assertEqual(37, report["tree_exceptions"])
 
     def test_schema_rejects_unknown_classification(self):
         document = self.mutate()
@@ -119,6 +119,12 @@ class ReleaseLineParityTests(unittest.TestCase):
         paths = document["terminal_plan"]["1.x"]["commits"][0]["paths"]
         paths.append(paths[0])
         with self.assertRaisesRegex(ParityError, "sorted and unique"):
+            validate_document(document, check_history=False)
+
+    def test_terminal_order_includes_release_line_retirement(self):
+        document = self.mutate()
+        document["terminal_plan"]["main"]["commits"].pop()
+        with self.assertRaisesRegex(ParityError, "#137 then #139 then #154 then #166"):
             validate_document(document, check_history=False)
 
     def test_retired_evidence_paths_are_forbidden(self):

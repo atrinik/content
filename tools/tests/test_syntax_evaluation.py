@@ -457,7 +457,7 @@ class SyntaxEvaluationTest(unittest.TestCase):
                         "luxury_house_0_0"
                     ),
                     "bytes": 95618,
-                    "objects": 2777,
+                    "objects": 2778,
                     "comments": 0,
                     "source_sha256": (
                         "2485aeab1aa727e8e001985806e33922cee79df5e765d7636dac4920a7406cb7"
@@ -503,6 +503,34 @@ class SyntaxEvaluationTest(unittest.TestCase):
         self.assertEqual(20, report["prototype"]["iterations_per_map"])
         self.assertEqual(3, report["collection"]["iterations"])
         self.assertEqual(5, report["checker"]["iterations_per_map"])
+
+    def test_changed_live_map_does_not_relabel_historical_measurements(self):
+        report = load_json(
+            ROOT
+            / "prototypes"
+            / "authored-syntax-v1"
+            / "measurement-baseline.json"
+        )
+        captured = {
+            entry["logical_id"]: entry
+            for entry in report["representative_maps"]
+        }
+        live = {
+            entry["logical_id"]: entry
+            for entry in select_representative_maps(ROOT)
+        }
+
+        logical_id = "/shattered_islands/world_-8_54"
+        self.assertEqual(23908, captured[logical_id]["bytes"])
+        self.assertEqual(
+            "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e",
+            captured[logical_id]["source_sha256"],
+        )
+        self.assertEqual(23907, live[logical_id]["bytes"])
+        self.assertNotEqual(
+            captured[logical_id]["source_sha256"],
+            live[logical_id]["source_sha256"],
+        )
         self.assertEqual(5, report["server"]["process_runs"])
         self.assertEqual(9, report["server"]["iterations_per_map_per_run"])
 

@@ -1942,6 +1942,7 @@ x 14
 y 12
 end
 arch light7
+light_color ffd080
 x 14
 y 12
 end
@@ -1975,6 +1976,7 @@ x 14
 y 15
 end
 arch light7
+light_color ffd080
 x 14
 y 15
 end
@@ -2383,6 +2385,7 @@ x 17
 y 6
 end
 arch light7
+light_color ffd080
 x 17
 y 6
 end
@@ -2836,6 +2839,7 @@ x 20
 y 6
 end
 arch light7
+light_color ffd080
 x 20
 y 6
 end

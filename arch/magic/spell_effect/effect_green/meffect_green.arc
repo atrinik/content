@@ -2,6 +2,8 @@ Object meffect_green
 name magic glow
 face effect1_green.101
 layer 7
+glow_radius 1
+light_color 40ff60
 no_save 1
 type 79
 animation meffect_green

@@ -241,6 +241,7 @@ x 2
 y 2
 end
 arch light9
+light_color ffd080
 x 2
 y 2
 end
@@ -780,6 +781,7 @@ x 6
 y 6
 end
 arch light9
+light_color ffd080
 x 6
 y 6
 end
@@ -885,6 +887,7 @@ x 7
 y 1
 end
 arch light9
+light_color ffd080
 x 7
 y 1
 end
@@ -2450,6 +2453,7 @@ x 18
 y 17
 end
 arch light5
+light_color c0ff60
 x 18
 y 17
 end
@@ -2720,6 +2724,7 @@ x 20
 y 14
 end
 arch light5
+light_color ff6030
 x 20
 y 14
 end

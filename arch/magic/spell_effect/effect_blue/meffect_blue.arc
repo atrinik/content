@@ -2,6 +2,8 @@ Object meffect_blue
 name magic glow
 face effect1_blue.101
 layer 7
+glow_radius 1
+light_color 4060ff
 no_save 1
 type 79
 animation meffect_blue

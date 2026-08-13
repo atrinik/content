@@ -2004,6 +2004,7 @@ arch floor_lava_3
 z 50
 x 12
 y 3
+glow_radius 0
 end
 arch damager
 layer 5

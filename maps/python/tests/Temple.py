@@ -86,6 +86,7 @@ class TempleSuite(TestSuite):
         self.assertIn("changed before confirmation", temple._msg)
 
     def test_insufficient_funds_does_not_cast(self):
+        self.assertTrue(activator.PayAmount(activator.GetMoney()))
         depletion = self.create("depletion")
         depletion.Str = -2
         temple, provider, before, current = self.quote("remove depletion")

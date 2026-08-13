@@ -55,9 +55,6 @@ arch wall_fortified_high_c.111
 sub_layer 2
 y 4
 end
-arch light7
-y 4
-end
 arch floor_fs_grey1b
 z 50
 sub_layer 1
@@ -101,9 +98,6 @@ y 9
 end
 arch wall_fortified_high_c.111
 sub_layer 2
-y 9
-end
-arch light7
 y 9
 end
 arch floor_fs_grey1b
@@ -155,9 +149,6 @@ sub_layer 2
 blocksview 0
 y 14
 end
-arch light7
-y 14
-end
 arch floor_fs_grey1b
 sub_layer 1
 z 32
@@ -207,9 +198,6 @@ y 19
 end
 arch wall_fortified_high_1.151
 sub_layer 2
-y 19
-end
-arch light7
 y 19
 end
 arch floor_fs_grey1b

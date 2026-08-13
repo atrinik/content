@@ -124,6 +124,11 @@
       "rationale": "enriched_uranium_pile uses the radioactive green palette entry to match its visible art.",
       "semantic_sha256": "210d858b22042b5e9daf4b1995a6a4a4664a228b9cc99d49e50376ff5d33f800"
     },
+    "exit_green": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Stock exit_green art uses radius 3 and portal green so the visible animation emits a small matching footprint; map-local animation replacements retain their explicit art-matched radius and color overrides.",
+      "semantic_sha256": "b7639aad7f76c101c7753283a4ac1ab021070601971bb1942a68cca5493db2aa"
+    },
     "firebolt": {
       "uncolored_disposition": "neutral",
       "rationale": "firebolt uses the lava and open fire palette entry to match its visible art.",
@@ -861,7 +866,7 @@
     },
     "exit_green": {
       "rationale": "The authored 40ff60 tint matches the visible art for exit_green.",
-      "semantic_sha256": "688aecdfa6f8a43542b9251704fa8a14fa9f280c2e37180bdfa19a9995acda82"
+      "semantic_sha256": "182867702df7714efdf17aefb01cf4cc80a98a15757aadb7308eba60aa0fe6fa"
     },
     "fairy": {
       "rationale": "The authored ffe060 tint matches the visible art for fairy.",
@@ -2086,14 +2091,14 @@
     },
     "maps/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Greyton Luxury House in the issue65_0035 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The removed same-tile light3 helper is preserved as a radius-3 fireplace override.",
+      "rationale": "Rendered Greyton Luxury House in the issue65_0035 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. The removed same-tile light3 helper is preserved as a radius-3 fireplace override. The stock green house exit now owns its radius-3 40ff60 footprint; the redundant co-located neutral light9 helper is removed so the portal is the sole source on its tile.",
       "visible_neutral": {
         "peasant": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {
-        "11680": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
+        "11676": "Map-local portal animation uses explicit radius-1 blue light matching the visible portal."
       },
-      "semantic_sha256": "ca267468d91ca6fb89ffdcc5719b8651cc24bfeeaadb716d3913c5a101edca81"
+      "semantic_sha256": "3b253f5964bb6fe7ac76d87d0533d02f40e02cb410d732ef6657f29797827ce7"
     },
     "maps/shattered_islands/strakewood_island/greyton/jail/jail": {
       "uncolored_disposition": "neutral",
@@ -2576,12 +2581,12 @@
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. At content head 462e04352, issue93-cluster-disabled-smooth and issue93-cluster-reset-discrete compared the positioned 25-wall stress map in both Classic renderers after an authored-state reset and live connections 102/201 activation through the existing 7:10 magic-mouth trigger. The local rune cues did not become a uniform red wash or cross blocked geometry, and issue93-colocated-light9-smooth/discrete confirmed that the two retained radius-9 helpers still own their blue room fill rather than forming accidental double sources.",
+      "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. At content head 462e04352, issue93-cluster-disabled-smooth and issue93-cluster-reset-discrete compared the positioned 25-wall stress map in both Classic renderers after an authored-state reset and live connections 102/201 activation through the existing 7:10 magic-mouth trigger. The local rune cues did not become a uniform red wash or cross blocked geometry, and issue93-colocated-light9-smooth/discrete confirmed that the two retained radius-9 helpers still own their blue room fill rather than forming accidental double sources. The stock green linked exit now owns its radius-3 40ff60 footprint; the redundant co-located neutral light5 helper is removed to avoid stacked illumination.",
       "visible_neutral": {
         "bridge_wood_NS.101": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "9851012f7bab92f80720f495c48e0ad45c2bff2d3122e2b92b5b9998cb340e1c"
+      "semantic_sha256": "94c7a6b076c28960475fe13a50513fd4c2a090f32b86eb2a5b8970caa0b8c7ef"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_4": {
       "uncolored_disposition": "neutral",
@@ -2769,10 +2774,10 @@
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_5_3_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered The Underground City II in the underground_city_a batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered The Underground City II in the underground_city_a batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. Its unobstructed stock green linked exit uses the inherited radius-3 40ff60 footprint without a helper source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "30174bfe69ba1e1f961c173b122dc8735df59298365fa404503e741040b3107c"
+      "semantic_sha256": "9a5b787726ca6d78263fb1c9fa54be90cb82cd771b45139a07b9383eac313cef"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_5_4_-1": {
       "uncolored_disposition": "neutral",
@@ -2825,10 +2830,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned soft-white pools preserve the entrance chamber, portal silhouette, and linked seams. Four initially disabled magic walls retain their radius-1 red rune cue; the co-located visible wall torch remains a deliberate independent amber fixture.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned soft-white pools preserve the entrance chamber, portal silhouette, and linked seams. Four initially disabled magic walls retain their radius-1 red rune cue; the co-located visible wall torch remains a deliberate independent amber fixture. The stock green linked exit now owns its radius-3 40ff60 footprint; the co-located neutral light2 helper is removed while the four diagonal radius-1 corner lights remain independent room accents.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "54753596e8debeb1a2603f99175dd853972551cd7f5aabe8af736aa53fbcc5b2"
+      "semantic_sha256": "e6ab20bb28d94093ed38c35f3a7c9e5c5c1e2d5cef0658960e9410a8ff93b6c9"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0_-1": {
       "uncolored_disposition": "neutral",
@@ -2846,10 +2851,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned blue, red, and purple pools preserve corridor navigation, doors, and dark-room boundaries.",
+      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; crystal-owned blue, red, and purple pools preserve corridor navigation, doors, and dark-room boundaries. The wall-adjacent stock green exit uses its inherited radius-3 40ff60 footprint; the nearby wall torches and blue crystals remain distinct architectural sources rather than redundant portal helpers.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "fe02936f38ba8bf02afabf718b65952b0d1b8a19b249a80023eeb1bba638e27a"
+      "semantic_sha256": "05f0562d88e004a8b36e41583ccbbc6db0d197d89ff42a8075e0de756ce47f83"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_1": {
       "uncolored_disposition": "neutral",
@@ -3830,10 +3835,10 @@
     },
     "maps/shattered_islands/world_19_4": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Lyondale Archipelago in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Lyondale Archipelago in the lyondale_archipelago batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The outdoor stock green exit uses its inherited radius-3 40ff60 footprint; the diagonally adjacent radius-5 neutral source remains an intentional wider snowfield light rather than a portal helper.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "aba121a866139b5a193c17aa40d1f902a4d350750d1a13e87ddb4d23ab0697b2"
+      "semantic_sha256": "94b4abfc472436c7a66dbe1a8906501010e0e2f293ea016b85c62414cdd67f09"
     },
     "maps/shattered_islands/world_19_5": {
       "uncolored_disposition": "neutral",
@@ -4284,10 +4289,10 @@
     },
     "maps/shattered_islands/world_2_69": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The stock green underground-city exit now owns its radius-3 40ff60 footprint; the redundant co-located neutral light1 helper is removed, while the adjacent light1 remains with the separate hole and shoreline composition.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f16f04db7fbe89499448aec0bf095b24ea6b6a46ef89c7f13df4b5f3dec4884e"
+      "semantic_sha256": "de15859a799596d1710fcac9e51aa862307795fd5c329d0a0d61f474ee808881"
     },
     "maps/shattered_islands/world_2_69_-1": {
       "uncolored_disposition": "neutral",
@@ -4897,10 +4902,10 @@
     },
     "maps/shattered_islands/world_4_84_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna - Water Well in the incuna_-2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Incuna - Water Well in the incuna_-2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. The existing map-local radius-3 stock green exit remains explicit and retains its reviewed 40ff60 footprint without any helper source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "61de3e382497ab0275fde4e12e31796c706a75606b7e6ef36690fe19a4a48aa8"
+      "semantic_sha256": "f7c9b0b61bee4f603ce6526f8fecc02f4c69d63512228a6c08a70cbc066ad711"
     },
     "maps/shattered_islands/world_4_85": {
       "uncolored_disposition": "neutral",
@@ -6366,12 +6371,19 @@
       "art_overrides": {},
       "semantic_sha256": "cd4f6a22c9be996a48aad32ceed93596346e2d5e040537a1c5ce45990fe42f1f"
     },
-    "maps/planes/creation/creation_0601": {
+    "maps/planes/creation/creation_0501": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Plane of Creation for issue #86; radius-1 portal light marks the exit without replacing the map's ambient hierarchy.",
+      "rationale": "The two trigger-disabled Plane of Creation stock green exits use the inherited radius-3 40ff60 footprint without helper sources, preserving their destinations and map-edge placement.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b8acbde8a5efb7b362ac54a15102dd6b64f41d8d391d8e24d6496889386fafa3"
+      "semantic_sha256": "3c5a1f4b3507a7192a5f4bfe6926e3fe67f4465b99079d792493b79103140db4"
+    },
+    "maps/planes/creation/creation_0601": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Rendered Plane of Creation for issue #86; the two trigger-disabled stock green exits now use inherited radius-3 40ff60 footprints without helper sources, preserving the map's ambient hierarchy and linked-edge navigation.",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "semantic_sha256": "1fc020dfa10ccd55ec716afaa16977249392624c12d6390b879a476b70e613ad"
     },
     "maps/shattered_islands/berri_lur/temple_loki/tol_0201": {
       "uncolored_disposition": "neutral",
@@ -6471,7 +6483,7 @@
         "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0:12:20:magic_wall:1": "The visible amber wall torch deliberately remains an independent fixture beside the disabled wall's local red rune cue."
       },
       "rationale": "All 57 visible magic walls across ten maps inherit a persistent radius-1 ff3030 rune cue; active, disabled, switched, isolated, dense, corner, corridor, and twelve intentional same-tile source contexts remain explicitly inventoried.",
-      "semantic_sha256": "09b3f3369251fa7e93f8e021349e9a2be33beddba7a86382583205dc799cbb54"
+      "semantic_sha256": "9df3668ff8444f7d8f3180555878ed79047f5c403d9eb5d6fc4eb540ba905dcb"
     },
     "warm-candle-fixtures": {
       "archetypes": [

@@ -2,6 +2,8 @@ Object meffect_yellow
 name magic glow
 face effect1_yellow.101
 layer 7
+glow_radius 1
+light_color ffe060
 no_save 1
 type 79
 animation meffect_yellow

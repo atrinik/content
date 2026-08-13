@@ -2,6 +2,8 @@ Object meffect_purple
 name magic glow
 face effect1_purble.101
 layer 7
+glow_radius 1
+light_color a060ff
 no_save 1
 type 79
 animation meffect_purple

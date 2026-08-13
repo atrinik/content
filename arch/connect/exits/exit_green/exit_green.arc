@@ -14,6 +14,7 @@ anim_speed 5
 walk_on 1
 fly_on 1
 race teleport.ogg
+glow_radius 3
 light_color 40ff60
 name_pl exits
 end

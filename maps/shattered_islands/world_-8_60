@@ -9,7 +9,7 @@ height 24
 difficulty 1
 darkness -1
 outdoor 1
-bg_music rainthunder.ogg
+bg_music thunderstorm.mid
 region rubble_mountains
 end
 arch floor_earth1e

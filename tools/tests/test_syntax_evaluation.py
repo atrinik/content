@@ -385,11 +385,6 @@ class SyntaxEvaluationTest(unittest.TestCase):
             / "authored-syntax-v1"
             / "measurement-baseline.json"
         )
-        selected = [
-            {key: value for key, value in entry.items() if not key.startswith("_")}
-            for entry in select_representative_maps(ROOT)
-        ]
-
         self.assertEqual(1, report["schema_version"])
         self.assertEqual("Linux", report["environment"]["system"])
         # Measurements are immutable historical evidence. Grammar evolution
@@ -400,10 +395,105 @@ class SyntaxEvaluationTest(unittest.TestCase):
             report["inputs"]["content_v1_baseline_sha256"],
         )
         self.assertEqual(
+            "354c41e56846e95c0a6d1e39750e15f67dd33c16",
+            report["inputs"]["content_commit"],
+        )
+        self.assertEqual(
             _implementation_digest(ROOT),
             report["inputs"]["syntax_implementation_sha256"],
         )
-        self.assertEqual(selected, report["representative_maps"])
+        representatives = report["representative_maps"]
+        self.assertEqual(
+            [
+                {
+                    "size_class": "p10",
+                    "corpus_index": 365,
+                    "corpus_count": 3651,
+                    "path": "maps/shattered_islands/world_5_65_2",
+                    "logical_id": "/shattered_islands/world_5_65_2",
+                    "bytes": 8400,
+                    "objects": 259,
+                    "comments": 0,
+                    "source_sha256": (
+                        "83b460efae5cf5d1ae89a3cd21b7a2ef9c5d00a51da7d20e24a1ccf6e7ca1e89"
+                    ),
+                },
+                {
+                    "size_class": "p50",
+                    "corpus_index": 1825,
+                    "corpus_count": 3651,
+                    "path": "maps/shattered_islands/world_-4_65",
+                    "logical_id": "/shattered_islands/world_-4_65",
+                    "bytes": 16002,
+                    "objects": 576,
+                    "comments": 0,
+                    "source_sha256": (
+                        "3a4bcfbf72daa8e654831c76a66990ad83b56eb2bedd80c1ac16e435d1cf0748"
+                    ),
+                },
+                {
+                    "size_class": "p90",
+                    "corpus_index": 3285,
+                    "corpus_count": 3651,
+                    "path": "maps/shattered_islands/world_-8_54",
+                    "logical_id": "/shattered_islands/world_-8_54",
+                    "bytes": 23908,
+                    "objects": 848,
+                    "comments": 0,
+                    "source_sha256": (
+                        "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e"
+                    ),
+                },
+                {
+                    "size_class": "max",
+                    "corpus_index": 3650,
+                    "corpus_count": 3651,
+                    "path": (
+                        "maps/shattered_islands/strakewood_island/greyton/house/"
+                        "luxury_house_0_0"
+                    ),
+                    "logical_id": (
+                        "/shattered_islands/strakewood_island/greyton/house/"
+                        "luxury_house_0_0"
+                    ),
+                    "bytes": 95618,
+                    "objects": 2778,
+                    "comments": 0,
+                    "source_sha256": (
+                        "2485aeab1aa727e8e001985806e33922cee79df5e765d7636dac4920a7406cb7"
+                    ),
+                },
+            ],
+            representatives,
+        )
+        measured = report["prototype"]["maps"]
+        self.assertEqual(
+            [
+                (entry["size_class"], entry["logical_id"], entry["bytes"])
+                for entry in representatives
+            ],
+            [
+                (entry["size_class"], entry["logical_id"], entry["legacy_bytes"])
+                for entry in measured
+            ],
+        )
+        for entry in measured:
+            for result in entry["formats"].values():
+                self.assertEqual(
+                    round(result["encoded_bytes"] / entry["legacy_bytes"], 6),
+                    result["expansion_ratio"],
+                )
+        for section in ("checker", "server"):
+            self.assertEqual(
+                [
+                    (entry["size_class"], entry["logical_id"])
+                    for entry in representatives
+                ],
+                [
+                    (entry["size_class"], entry["logical_id"])
+                    for entry in report[section]["maps"]
+                ],
+            )
         self.assertTrue(
             all(
                 not component["dirty"]
@@ -413,6 +503,34 @@ class SyntaxEvaluationTest(unittest.TestCase):
         self.assertEqual(20, report["prototype"]["iterations_per_map"])
         self.assertEqual(3, report["collection"]["iterations"])
         self.assertEqual(5, report["checker"]["iterations_per_map"])
+
+    def test_changed_live_map_does_not_relabel_historical_measurements(self):
+        report = load_json(
+            ROOT
+            / "prototypes"
+            / "authored-syntax-v1"
+            / "measurement-baseline.json"
+        )
+        captured = {
+            entry["logical_id"]: entry
+            for entry in report["representative_maps"]
+        }
+        live = {
+            entry["logical_id"]: entry
+            for entry in select_representative_maps(ROOT)
+        }
+
+        logical_id = "/shattered_islands/world_-8_54"
+        self.assertEqual(23908, captured[logical_id]["bytes"])
+        self.assertEqual(
+            "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e",
+            captured[logical_id]["source_sha256"],
+        )
+        self.assertEqual(23907, live[logical_id]["bytes"])
+        self.assertNotEqual(
+            captured[logical_id]["source_sha256"],
+            live[logical_id]["source_sha256"],
+        )
         self.assertEqual(5, report["server"]["process_runs"])
         self.assertEqual(9, report["server"]["iterations_per_map_per_run"])
 

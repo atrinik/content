@@ -1545,6 +1545,7 @@ x 9
 y 5
 end
 arch light2
+light_color a060ff
 x 9
 y 5
 end
@@ -1955,6 +1956,7 @@ x 11
 y 3
 end
 arch light4
+light_color ff3030
 x 11
 y 3
 end
@@ -1979,6 +1981,7 @@ x 11
 y 5
 end
 arch light2
+light_color a060ff
 x 11
 y 5
 end

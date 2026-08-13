@@ -40,6 +40,7 @@ arch floor_fire1a
 y 7
 end
 arch light2
+light_color ff6030
 y 7
 end
 arch floor_fire1a
@@ -197,6 +198,7 @@ x 4
 y 4
 end
 arch light2
+light_color ff6030
 x 4
 y 4
 end
@@ -445,6 +447,7 @@ x 10
 y 2
 end
 arch light2
+light_color ff6030
 x 10
 y 2
 end
@@ -507,6 +510,7 @@ x 11
 y 6
 end
 arch light2
+light_color ff6030
 x 11
 y 6
 end
@@ -819,6 +823,7 @@ x 19
 y 2
 end
 arch light2
+light_color ff6030
 x 19
 y 2
 end
@@ -882,6 +887,7 @@ x 20
 y 7
 end
 arch light2
+light_color ff6030
 x 20
 y 7
 end

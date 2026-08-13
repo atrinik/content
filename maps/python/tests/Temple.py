@@ -9,8 +9,6 @@ from tests import TestSuite
 class TempleSuite(TestSuite):
     def setUp(self):
         super().setUp()
-        self.old_level = activator.level
-        activator.level = 4
         self.npc = activator.map.CreateObject(
             "cleric_white_red", activator.x, activator.y
         )
@@ -24,7 +22,6 @@ class TempleSuite(TestSuite):
                 obj.Destroy()
         if self.npc:
             self.npc.Destroy()
-        activator.level = self.old_level
         super().tearDown()
 
     def create(self, archname):
@@ -50,7 +47,7 @@ class TempleSuite(TestSuite):
 
     def test_live_depletion_success_charges_after_effect_and_restores_rank(self):
         depletion = self.create("depletion")
-        depletion.Str = -1
+        depletion.Str = -2
         self.fund()
         money = activator.GetMoney()
         temple, provider, before, current = self.quote("remove depletion")
@@ -72,11 +69,11 @@ class TempleSuite(TestSuite):
 
     def test_quote_drift_does_not_cast_or_charge(self):
         depletion = self.create("depletion")
-        depletion.Str = -1
+        depletion.Str = -2
         self.fund()
         money = activator.GetMoney()
         temple, provider, before, current = self.quote("remove depletion")
-        depletion.Str = -2
+        depletion.Str = -3
         quoted = temple._current_quote("remove depletion")
 
         temple._confirm(
@@ -84,13 +81,13 @@ class TempleSuite(TestSuite):
         )
 
         self.assertTrue(depletion)
-        self.assertEqual(depletion.Str, -2)
+        self.assertEqual(depletion.Str, -3)
         self.assertEqual(activator.GetMoney(), money)
         self.assertIn("changed before confirmation", temple._msg)
 
     def test_insufficient_funds_does_not_cast(self):
         depletion = self.create("depletion")
-        depletion.Str = -1
+        depletion.Str = -2
         temple, provider, before, current = self.quote("remove depletion")
         self.assertGreater(current.cost, 0)
 

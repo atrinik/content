@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 from tools.content_contracts.contracts import load_json
 from tools.content_contracts.corpus import inspect_document
@@ -563,7 +564,22 @@ class SyntaxEvaluationTest(unittest.TestCase):
 
             self.assertNotEqual(before[2]["source_sha256"], after[2]["source_sha256"])
             self.assertNotEqual(before[2]["bytes"], after[2]["bytes"])
-            assert_historical_measurement_report(self, captured_report)
+            with (
+                mock.patch(
+                    f"{__name__}.select_representative_maps",
+                    side_effect=AssertionError(
+                        "historical report validation consulted live selection"
+                    ),
+                ),
+                mock.patch.object(
+                    Path,
+                    "read_bytes",
+                    side_effect=AssertionError(
+                        "historical report validation consulted live source bytes"
+                    ),
+                ),
+            ):
+                assert_historical_measurement_report(self, captured_report)
 
     def test_measurement_summaries_and_server_records_fail_closed(self):
         self.assertEqual(

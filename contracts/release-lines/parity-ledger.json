@@ -1055,18 +1055,6 @@
       "rationale": "The branch readmes describe different consumers and release products."
     },
     {
-      "path": "arch/magic/forcefield/forcefield_blue/forcefield_blue.arc",
-      "classification": "equivalent",
-      "domain": "authored",
-      "rationale": "The same name_pl and light_color values appear in harmlessly different field order."
-    },
-    {
-      "path": "arch/magic/forcefield/forcefield_red/forcefield_red.arc",
-      "classification": "equivalent",
-      "domain": "authored",
-      "rationale": "The same name_pl and light_color values appear in harmlessly different field order."
-    },
-    {
       "path": "docs/ARCHETYPE_PLURALS.md",
       "classification": "equivalent",
       "domain": "guidance",
@@ -1089,60 +1077,6 @@
       "classification": "exempt",
       "domain": "guidance",
       "rationale": "The release-line guide is intentionally maintained from each branch's perspective."
-    },
-    {
-      "path": "maps/interfaces/quests/lost_memories/quest.xml",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "The apartment tutorial quest result is equivalent across consumer-specific event integration."
-    },
-    {
-      "path": "maps/light-source-review.json",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "This authored review ledger covers the same lights with line-native source digests and context."
-    },
-    {
-      "path": "maps/python/LostMemoriesApartment.py",
-      "classification": "equivalent",
-      "domain": "runtime",
-      "rationale": "Classic owns a dedicated apartment event script while main uses its typed event boundary."
-    },
-    {
-      "path": "maps/python/generic/apartment_teleport.py",
-      "classification": "equivalent",
-      "domain": "runtime",
-      "rationale": "Apartment teleport integration preserves equivalent gameplay through different consumer APIs."
-    },
-    {
-      "path": "maps/python/items/lost_memories_apartment_bed.py",
-      "classification": "equivalent",
-      "domain": "runtime",
-      "rationale": "Classic owns the bed event adapter while main expresses the same result in its event model."
-    },
-    {
-      "path": "maps/python/tests/Atrinik_tests/Player.py",
-      "classification": "exempt",
-      "domain": "validation",
-      "rationale": "Classic test fixtures expose runtime APIs that do not exist on the replacement line."
-    },
-    {
-      "path": "maps/python/tests/LostMemoriesArrival.py",
-      "classification": "equivalent",
-      "domain": "validation",
-      "rationale": "Apartment arrival tests target equivalent behavior through line-native runtimes."
-    },
-    {
-      "path": "maps/shattered_islands/incuna/apartments/beach_nook",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "The apartment map retains equivalent tutorial semantics with consumer-specific event objects."
-    },
-    {
-      "path": "maps/shattered_islands/world_4_85",
-      "classification": "exempt",
-      "domain": "authored",
-      "rationale": "The arrival map retains equivalent tutorial and portal-light semantics with line-native events."
     },
     {
       "path": "provenance/m1/README.md",

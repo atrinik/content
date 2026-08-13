@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, replace
+import hashlib
 import json
 from pathlib import Path
 import unittest
@@ -402,6 +403,14 @@ class SyntaxEvaluationTest(unittest.TestCase):
             _implementation_digest(ROOT),
             report["inputs"]["syntax_implementation_sha256"],
         )
+        self.assertEqual(
+            report["inputs"]["content_commit"],
+            report["inputs"]["topology_components"]["content"]["commit"],
+        )
+        self.assertEqual(
+            report["inputs"]["tools_commit"],
+            report["checker"]["repository_commit"],
+        )
         representatives = report["representative_maps"]
         self.assertEqual(
             [
@@ -503,34 +512,6 @@ class SyntaxEvaluationTest(unittest.TestCase):
         self.assertEqual(20, report["prototype"]["iterations_per_map"])
         self.assertEqual(3, report["collection"]["iterations"])
         self.assertEqual(5, report["checker"]["iterations_per_map"])
-
-    def test_changed_live_map_does_not_relabel_historical_measurements(self):
-        report = load_json(
-            ROOT
-            / "prototypes"
-            / "authored-syntax-v1"
-            / "measurement-baseline.json"
-        )
-        captured = {
-            entry["logical_id"]: entry
-            for entry in report["representative_maps"]
-        }
-        live = {
-            entry["logical_id"]: entry
-            for entry in select_representative_maps(ROOT)
-        }
-
-        logical_id = "/shattered_islands/world_-8_54"
-        self.assertEqual(23908, captured[logical_id]["bytes"])
-        self.assertEqual(
-            "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e",
-            captured[logical_id]["source_sha256"],
-        )
-        self.assertEqual(23907, live[logical_id]["bytes"])
-        self.assertNotEqual(
-            captured[logical_id]["source_sha256"],
-            live[logical_id]["source_sha256"],
-        )
         self.assertEqual(5, report["server"]["process_runs"])
         self.assertEqual(9, report["server"]["iterations_per_map_per_run"])
 
@@ -545,6 +526,52 @@ class SyntaxEvaluationTest(unittest.TestCase):
                     check_summaries(child)
 
         check_summaries(report)
+
+    def test_unrelated_map_header_edit_does_not_relabel_historical_measurements(self):
+        report_path = (
+            ROOT / "prototypes" / "authored-syntax-v1" / "measurement-baseline.json"
+        )
+        report = load_json(report_path)
+        captured = {
+            entry["logical_id"]: entry
+            for entry in report["representative_maps"]
+        }
+        logical_id = "/shattered_islands/world_-8_54"
+        captured_entry = captured[logical_id]
+        live_path = ROOT / captured_entry["path"]
+        live_bytes = live_path.read_bytes()
+        header_end = live_bytes.index(b"\nend\n")
+        name_start = live_bytes.index(b"name ", 0, header_end)
+        name_end = live_bytes.index(b"\n", name_start, header_end)
+        edited_bytes = live_bytes[:name_end] + b" regression" + live_bytes[name_end:]
+        grammar = load_json(CONTRACT_ROOT / "grammar-inventory.json")
+        _, edited_summary = inspect_document(
+            live_path,
+            "map",
+            grammar,
+            display_path=captured_entry["path"],
+            source_bytes=edited_bytes,
+        )
+        edited_metadata = {
+            "bytes": len(edited_bytes),
+            "objects": edited_summary["objects"],
+            "comments": edited_summary["comments"],
+            "source_sha256": hashlib.sha256(edited_bytes).hexdigest(),
+        }
+
+        self.assertTrue(edited_summary["accepted"])
+        self.assertNotEqual(
+            {
+                key: captured_entry[key]
+                for key in ("bytes", "objects", "comments", "source_sha256")
+            },
+            edited_metadata,
+        )
+        reloaded = {
+            entry["logical_id"]: entry
+            for entry in load_json(report_path)["representative_maps"]
+        }
+        self.assertEqual(captured_entry, reloaded[logical_id])
 
     def test_measurement_summaries_and_server_records_fail_closed(self):
         self.assertEqual(

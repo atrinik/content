@@ -124,7 +124,7 @@ type 78
 end
 """,
         )
-        self.write(
+        map_path = self.write(
             "maps/scene",
             """arch map
 name Reviewed Scene
@@ -149,6 +149,7 @@ end
                         "warm-fixtures": {
                             "archetypes": ["warm_lamp"],
                             "checks": ["overlap"],
+                            "same_tile_review": "exact",
                         }
                     },
                 }
@@ -208,6 +209,9 @@ end
                     "expected_placements": {"warm_lamp": 1},
                     "expected_emitting_overlaps": 1,
                     "intentional_non_emitters": {},
+                    "intentional_same_tile_emitters": {
+                        "maps/scene:2:3:warm_lamp:1": "The independent neutral fill deliberately shares the fixture tile."
+                    },
                     "checks": ["overlap"],
                     "rationale": "Tracks every required warm fixture placement.",
                 }
@@ -266,7 +270,47 @@ end
         self.assertEqual(1, fixture_group["maps"])
         self.assertEqual(1, fixture_group["emitting_overlaps"])
         self.assertEqual("maps/scene:5", fixture_group["placements"][0]["source_id"])
+        self.assertEqual(
+            ["maps/scene:9"],
+            [
+                emitter["id"]
+                for emitter in fixture_group["placements"][0][
+                    "same_tile_emitters"
+                ]
+            ],
+        )
         self.assertNotIn("views", review["fixture_groups"]["warm-fixtures"])
+
+        original_map = map_path.read_text()
+        map_path.write_text(
+            original_map.replace("arch neutral_fill\n", "\narch neutral_fill\n")
+        )
+        replaced_same_tile_errors = audit.validate_light_inventory(
+            audit.light_inventory()
+        )
+        self.assertIn(
+            "fixture group warm-fixtures changed since review",
+            replaced_same_tile_errors,
+        )
+        map_path.write_text(original_map)
+
+        missing_same_tile = json.loads(review_path.read_text())
+        del missing_same_tile["fixture_groups"]["warm-fixtures"][
+            "intentional_same_tile_emitters"
+        ]
+        review_path.write_text(json.dumps(missing_same_tile))
+        missing_same_tile_errors = audit.validate_light_inventory(
+            audit.light_inventory()
+        )
+        self.assertIn(
+            "fixture group warm-fixtures same-tile source dispositions changed",
+            missing_same_tile_errors,
+        )
+        self.assertIn(
+            "emitting fixture maps/scene:2:3:warm_lamp:1 has an accidental same-tile source",
+            missing_same_tile_errors,
+        )
+        review_path.write_text(json.dumps(review))
 
         deleted_review = json.loads(review_path.read_text())
         del deleted_review["fixture_groups"]["warm-fixtures"]

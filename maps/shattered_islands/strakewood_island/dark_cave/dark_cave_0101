@@ -401,6 +401,7 @@ x 2
 y 20
 end
 arch light8
+light_color ff6030
 x 2
 y 20
 end
@@ -488,6 +489,7 @@ x 3
 y 12
 end
 arch light8
+light_color ff6030
 x 3
 y 12
 end
@@ -1260,6 +1262,7 @@ x 9
 y 14
 end
 arch light8
+light_color ff6030
 x 9
 y 14
 end
@@ -1686,6 +1689,7 @@ x 12
 y 19
 end
 arch light8
+light_color ff6030
 x 12
 y 19
 end

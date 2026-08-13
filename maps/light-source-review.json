@@ -1850,10 +1850,10 @@
     },
     "maps/shattered_islands/strakewood_island/dark_cave/dark_cave_0101": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Dark Cave in the issue65_0028 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The four existing radius-8 guide sources retain their deliberate scalar footprints and use map-local ff6030 to mark isolated hot-floor crossings without making every fire-floor tile emit.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "1dec4cf090cb22b12ac0ae7b54c55a3d497e1b4d50c2e46ce69893e0d650f57c"
+      "semantic_sha256": "873d33e348abdbc541dbef7e97627317e2a9cc72a7f64c459cd14483a3ea118c"
     },
     "maps/shattered_islands/strakewood_island/dark_cave/dark_cave_0102": {
       "uncolored_disposition": "neutral",
@@ -1864,24 +1864,24 @@
     },
     "maps/shattered_islands/strakewood_island/dark_cave/dark_cave_01aa": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Dark Cave in the issue65_0030 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The six existing radius-2 guide sources retain their sparse positions and use map-local ff6030 to follow the hot-floor route without turning the dense fire-floor field into a uniform orange wash.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3d3b0775f5f2f27279c9f7a1176f2260b95d17a0a882200e8a3522be8ce82da5"
+      "semantic_sha256": "06fa0c62443504de518be2f206f32238d58c0d92d45a9652afc6463dbec22dcc"
     },
     "maps/shattered_islands/strakewood_island/dark_cave/dark_cave_aa01": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Dark Cave in the issue65_0031 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The six existing radius-2 guide sources retain their sparse positions and use map-local ff6030 to follow the hot-floor route without turning the dense fire-floor field into a uniform orange wash.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8f256aa9281779acc6a5421e2ff768bd636abc889f6798bb5da6862b17794c8a"
+      "semantic_sha256": "57ab33e838400c49b0cfa60db71490b98dce4c618e9c60a7a570f47fab42ff88"
     },
     "maps/shattered_islands/strakewood_island/dark_cave/dark_cave_aaaa": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Dark Cave in the issue65_0032 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The two existing radius-2 guide sources retain their sparse positions and use map-local ff6030 to punctuate the hot-floor route while preserving darkness, boundaries, and encounter visibility.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "757ebc6ab4f3728d2bbee5beb9523898e49d385b07e3387c03890fef2e484f2a"
+      "semantic_sha256": "eae7c876fca1afb689de7ec84c245b251641249054d092aa2d1eb06a06bf2b48"
     },
     "maps/shattered_islands/strakewood_island/giant_stronghold/giant_stronghold_0101": {
       "uncolored_disposition": "neutral",

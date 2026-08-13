@@ -67,10 +67,11 @@ Run the local, network-free ledger validation from either branch:
 python3 tools/release_line_parity.py --json
 ```
 
-The terminal plan is `declared` with exactly three squash commits per line:
-#137, then #139, then the release-line retirement in #166. Each line preserves
-its immutable pre-terminal horizon and the exact changed-path set for every
-ordinal. Any missing, extra, reordered, missing-path, or out-of-allowlist commit
+The terminal plan is `declared` with exactly four squash commits per line:
+#137, then #139, then the cutover in #154, then release-line retirement in
+#166. Each line preserves its immutable pre-terminal horizon and the exact
+changed-path set for every ordinal. Any missing, extra, reordered, missing-path,
+or out-of-allowlist commit
 invalidates the declaration and requires a new horizon. Actual squash SHAs are
 bound durably to the declared ordinals after merge; no commit is required to
 contain its own SHA.
@@ -89,7 +90,7 @@ python3 tools/release_line_parity.py \
 ```
 
 The candidate flag relaxes only the final squash-subject binding, which GitHub
-adds at merge. It still requires the declared horizon, exact three-commit suffix,
+adds at merge. It still requires the declared horizon, exact four-commit suffix,
 ordinal order, and exact changed-path set. At merged tips omit that flag; every
 suffix commit must then bind the declared pull request in its subject.
 

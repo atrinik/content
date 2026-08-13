@@ -39,6 +39,32 @@
         },
         {
           "ordinal": 3,
+          "issue": 154,
+          "pull_request": 186,
+          "paths": [
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "contracts/release-lines/classic-main.json",
+            "docs/ARCHITECTURE.md",
+            "docs/RELEASE_LINES.md",
+            "maps/interfaces/quests/lost_memories/quest.xml",
+            "maps/light-source-review.json",
+            "maps/python/LostMemoriesApartment.py",
+            "maps/python/generic/apartment_teleport.py",
+            "maps/python/items/lost_memories_apartment_bed.py",
+            "maps/python/tests/Atrinik_tests/Player.py",
+            "maps/python/tests/LostMemoriesArrival.py",
+            "maps/shattered_islands/incuna/apartments/beach_nook",
+            "maps/shattered_islands/world_4_85",
+            "tools/build_runtime.py",
+            "tools/package-release.sh",
+            "tools/tests/test_classic_target.py",
+            "tools/tests/test_release_guidance.py",
+            "tools/validate.py"
+          ]
+        },
+        {
+          "ordinal": 4,
           "issue": 166,
           "pull_request": 190,
           "paths": [
@@ -88,6 +114,16 @@
         },
         {
           "ordinal": 3,
+          "issue": 154,
+          "pull_request": 187,
+          "paths": [
+            "arch/magic/forcefield/forcefield_blue/forcefield_blue.arc",
+            "arch/magic/forcefield/forcefield_red/forcefield_red.arc",
+            "maps/light-source-review.json"
+          ]
+        },
+        {
+          "ordinal": 4,
           "issue": 166,
           "pull_request": 189,
           "paths": [

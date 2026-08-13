@@ -103,9 +103,9 @@ def validate_document(
         commits = plan["commits"]
         if [entry["ordinal"] for entry in commits] != list(range(1, len(commits) + 1)):
             raise ParityError("{} terminal ordinals must be contiguous".format(line))
-        if [entry["issue"] for entry in commits] != [137, 139, 166]:
+        if [entry["issue"] for entry in commits] != [137, 139, 154, 166]:
             raise ParityError(
-                "{} terminal order must be #137 then #139 then #166".format(line)
+                "{} terminal order must be #137 then #139 then #154 then #166".format(line)
             )
         for entry in commits:
             paths = entry["paths"]

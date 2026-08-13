@@ -124,7 +124,7 @@ class ReleaseLineParityTests(unittest.TestCase):
     def test_terminal_order_includes_release_line_retirement(self):
         document = self.mutate()
         document["terminal_plan"]["main"]["commits"].pop()
-        with self.assertRaisesRegex(ParityError, "#137 then #139 then #166"):
+        with self.assertRaisesRegex(ParityError, "#137 then #139 then #154 then #166"):
             validate_document(document, check_history=False)
 
     def test_retired_evidence_paths_are_forbidden(self):

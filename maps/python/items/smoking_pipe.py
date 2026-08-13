@@ -37,9 +37,21 @@ def main():
         pl.DrawInfo("Ack, that was some rotten pipeweed!", COLOR_RED)
         force.Int = -5
         force.Pow = -5
+        tooltip = "Con -3, Dex -3, Int -5, Pow -5"
     else:
         force.SetProtection(ATNR_CONFUSION, 25)
         force.SetProtection(ATNR_WEAPON_MAGIC, 20)
+        tooltip = (
+            "Con -3, Dex -3, confusion protection +25%, "
+            "weapon magic protection +20%"
+        )
+
+    force.PublishStatus(
+        "consumable:pipeweed",
+        marked.GetName(activator),
+        marked.face[0],
+        tooltip,
+    )
 
     # Decrease number of pipeweeds.
     marked.Decrease()

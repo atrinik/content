@@ -175,15 +175,19 @@ class QuestManager:
         if not self.quest.get("repeat", False):
             return
 
+        delay = self.quest.get("repeat_delay")
+        if delay is not None and type(delay) is not int:
+            raise TypeError(
+                "Quest {!r} repeat_delay must be an integer or None, got {}"
+                .format(self.quest.get("uid"), type(delay).__name__)
+            )
+
         self.quest_container.magic += 1
 
         if self.quest_container.exp == 0:
             self.quest_container.exp = int(time.time())
 
-        delay = self.quest.get("repeat_delay", None)
-        assert(isinstance(delay, (int, type(None))))
-
-        if delay:
+        if delay is not None:
             self.quest_object.exp = int(time.time()) + delay
 
     def remove_quest_items(self, quest, obj):

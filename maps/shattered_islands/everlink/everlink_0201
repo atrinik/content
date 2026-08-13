@@ -2860,10 +2860,7 @@ arch lantern_magic.131
 direction 3
 x 20
 y 7
-end
-arch light9
-x 20
-y 7
+glow_radius 9
 end
 arch fstone1b
 x 20

@@ -26,6 +26,12 @@ missing, and validation requires the exact contracted archetype and contextual
 check sets. Removing a required ledger group therefore fails closed instead of
 silently disabling its placement, non-emitter, or overlap checks.
 
+The `magic-lantern-fixtures` group covers all 402 standing and wall-mounted
+magic lanterns across 66 maps. Standing fixtures inherit radius 5 and wall
+fixtures radius 7; map-local radius-3/4/5/6/7/9 fields preserve the established
+heterogeneous compositions. The visible fixtures own their warm-gold sources,
+so no neutral `light3`–`light9` helper remains co-located with a magic lantern.
+
 Run the read-only inventory and acceptance check from the repository root:
 
 ```sh

@@ -180,11 +180,11 @@ The following values are medians of 20 observations. Time is milliseconds.
 | maximum | 95,618 / 2,778 | 2,199,259 / 23.00× | 83.88 / 366.86 | 1,580,686 / 16.53× | 298.04 / 613.05 |
 
 The table preserves the captured candle timing run. The current maximum
-representative map is 95,641 bytes and 2,777 objects after its portal-light
-fields were authored and its same-tile fireplace and candle helpers were
-transferred to the visible fixtures; its exact digest is recorded in the raw
-report's `representative_maps` selection. A new complete measurement run is
-required before replacing the captured expansion and timing observations.
+representative map is 95,564 bytes and 2,774 objects after its same-tile
+lantern, fireplace, and candle helpers were transferred to the visible
+fixtures; its exact digest is recorded in the raw report's
+`representative_maps` selection. A new complete measurement run is required
+before replacing the captured expansion and timing observations.
 
 These expansion ratios measure the same deliberately verbose physical-record
 scaffold, not the future typed schema or runtime representation. YAML's lighter

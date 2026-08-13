@@ -959,10 +959,10 @@
       "corpus_count": 3651,
       "path": "maps/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",
       "logical_id": "/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",
-      "bytes": 95641,
-      "objects": 2777,
+      "bytes": 95564,
+      "objects": 2774,
       "comments": 0,
-      "source_sha256": "e19607b59b6be941ff488687c81b5dc2c6c776743226686e8acb8c1671cc976d"
+      "source_sha256": "860a02948c4a2c0867863dd608d3e462487272840e9d023b7edf3803937fbf60"
     }
   ],
   "schema_version": 1,

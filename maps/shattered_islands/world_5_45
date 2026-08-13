@@ -2070,10 +2070,6 @@ direction 5
 x 12
 y 10
 end
-arch light7
-x 12
-y 10
-end
 arch floor_white1d
 z 50
 x 12
@@ -2102,10 +2098,6 @@ end
 arch lantern2_magic.131
 glow_radius 7
 direction 5
-x 12
-y 14
-end
-arch light7
 x 12
 y 14
 end
@@ -4002,10 +3994,6 @@ end
 arch lantern2_magic.131
 glow_radius 7
 direction 5
-x 22
-y 17
-end
-arch light7
 x 22
 y 17
 end

@@ -2782,56 +2782,56 @@
       "rationale": "Rendered Glacial Hollow in the issue65_0044 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "bc1dfddc4f788f3be13fd5441b9ad6fe92c4b52bb4d933ffa00284c5f236e77f"
+      "semantic_sha256": "ea5280a6fcbb9ef676c727ba789fa7df716daa990335e05175e1e6d32d9b259c"
     },
     "maps/shattered_islands/world_-4_56_-2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0045 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ce58d2ce64afb8aa90eefc9034af3e6bc290a29f1ccbddfc62c02d53b34b9202"
+      "semantic_sha256": "82e85b5fb8a44cf33ea90f13b855fcbf488722f230696e21ddd589c4ee4a40a9"
     },
     "maps/shattered_islands/world_-4_57_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0046 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "74f1f185213d928c5fdeb1ba2aab39c3c0d196c196067ab6a9d8f374c7f5cf6a"
+      "semantic_sha256": "b1cfafd2fd9d40cc1ccc10151f990458d7cba419001b0a84b0bd11a87a88514f"
     },
     "maps/shattered_islands/world_-4_58_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0047 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "441208e0749365c63308edf059cea61d171939682b63309e9f780a8f9bc2a20f"
+      "semantic_sha256": "d63c74434fdcc7cef2d0722240ab3adaba7454a84450626edd1c5590fa8f531c"
     },
     "maps/shattered_islands/world_-5_56_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0048 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6f29866a4bfa7cff07bee740ad525b110beeeb56b87bc97e77b6994cdc0a6875"
+      "semantic_sha256": "f0f0860f0b1dacb39c8a96649732f15e3b7288121d115c255e19806b731aa563"
     },
     "maps/shattered_islands/world_-5_56_-2": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0049 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0d112bbf1fbc195e8be7af4ddfc1aff283ed9ade055947a2babb833bed72e884"
+      "semantic_sha256": "90ac4f3a01ff2252d27eb330ebccc676dde01e40b3afcabcaa9a26071630ea1a"
     },
     "maps/shattered_islands/world_-5_57_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0050 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "76a5b20f3b5087e616408cf938fdcdedba1731042ad3548b9d83828771298c02"
+      "semantic_sha256": "55485d25cb3d2dccd4d29deba3584776f7a28050034c3a2ed69257f85ed8699e"
     },
     "maps/shattered_islands/world_-5_58_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0051 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c175550f74a3b989c27c00faf6bcf662378249c21c482ae4c0a32b58d2abda6c"
+      "semantic_sha256": "a2a65f507d0383cb9ab0903e2105927c4783190f5152c0f5cab9ab208049d5a7"
     },
     "maps/shattered_islands/world_-5_76": {
       "uncolored_disposition": "neutral",
@@ -2851,21 +2851,21 @@
       "rationale": "Rendered Glacial Hollow in the issue65_0053 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ea22ce20113594b3c739aae37fe7b448d1948d9f4aaf8e44354bb07b84f7f5b2"
+      "semantic_sha256": "780277ddd3c3f4108d211e8c6a590e8769b8eb5154e7f273046ffb5ed2da3512"
     },
     "maps/shattered_islands/world_-6_57_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0054 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e5dbdb9ba98d458e04c39b5f76a4fdc0dd99bfcb0155084da969080741f9a0c1"
+      "semantic_sha256": "2358cfb5d58ac694b670c07ec32d151118245da12e74a5e6052f03d4b3224700"
     },
     "maps/shattered_islands/world_-6_58_-1": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Glacial Hollow in the issue65_0055 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "b8abb730b4f242167bf2b33b64478290d9a1352ab0b8b86a012345d131887ce8"
+      "semantic_sha256": "66dff603ba09962f0e52157bb04586f26ebdc56bf0d1ef848bf0362e0a5aa86c"
     },
     "maps/shattered_islands/world_-6_79": {
       "uncolored_disposition": "neutral",
@@ -2881,7 +2881,7 @@
       "rationale": "Rendered Muddy Pit in the issue65_0057 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ea96fda7844ec9cb03164282927cc4a3cff4d05e28e418837fbdc1701f04408f"
+      "semantic_sha256": "9dc87f65726bf5f331cc94cb4b010e811b594740dfcac76c6abcf19b38672950"
     },
     "maps/shattered_islands/world_-7_76": {
       "uncolored_disposition": "neutral",

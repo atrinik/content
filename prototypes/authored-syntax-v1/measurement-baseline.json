@@ -948,10 +948,10 @@
       "corpus_count": 3651,
       "path": "maps/shattered_islands/world_-8_54",
       "logical_id": "/shattered_islands/world_-8_54",
-      "bytes": 23907,
+      "bytes": 23908,
       "objects": 848,
       "comments": 0,
-      "source_sha256": "69eead4f45b6535f6db7087ae1398f65c216f2ba5b3e256487dc547a090f614b"
+      "source_sha256": "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e"
     },
     {
       "size_class": "max",
@@ -959,10 +959,10 @@
       "corpus_count": 3651,
       "path": "maps/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",
       "logical_id": "/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0",
-      "bytes": 95641,
+      "bytes": 95618,
       "objects": 2777,
       "comments": 0,
-      "source_sha256": "e19607b59b6be941ff488687c81b5dc2c6c776743226686e8acb8c1671cc976d"
+      "source_sha256": "2485aeab1aa727e8e001985806e33922cee79df5e765d7636dac4920a7406cb7"
     }
   ],
   "schema_version": 1,

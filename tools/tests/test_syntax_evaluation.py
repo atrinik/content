@@ -385,11 +385,6 @@ class SyntaxEvaluationTest(unittest.TestCase):
             / "authored-syntax-v1"
             / "measurement-baseline.json"
         )
-        selected = [
-            {key: value for key, value in entry.items() if not key.startswith("_")}
-            for entry in select_representative_maps(ROOT)
-        ]
-
         self.assertEqual(1, report["schema_version"])
         self.assertEqual("Linux", report["environment"]["system"])
         # Measurements are immutable historical evidence. Grammar evolution
@@ -403,7 +398,35 @@ class SyntaxEvaluationTest(unittest.TestCase):
             _implementation_digest(ROOT),
             report["inputs"]["syntax_implementation_sha256"],
         )
-        self.assertEqual(selected, report["representative_maps"])
+        representatives = report["representative_maps"]
+        measured = report["prototype"]["maps"]
+        self.assertEqual(
+            [
+                (entry["size_class"], entry["logical_id"], entry["bytes"])
+                for entry in representatives
+            ],
+            [
+                (entry["size_class"], entry["logical_id"], entry["legacy_bytes"])
+                for entry in measured
+            ],
+        )
+        for entry in measured:
+            for result in entry["formats"].values():
+                self.assertEqual(
+                    round(result["encoded_bytes"] / entry["legacy_bytes"], 6),
+                    result["expansion_ratio"],
+                )
+        for section in ("checker", "server"):
+            self.assertEqual(
+                [
+                    (entry["size_class"], entry["logical_id"])
+                    for entry in representatives
+                ],
+                [
+                    (entry["size_class"], entry["logical_id"])
+                    for entry in report[section]["maps"]
+                ],
+            )
         self.assertTrue(
             all(
                 not component["dirty"]

@@ -67,6 +67,7 @@ def main() -> int:
             "tools.tests.test_m1_foundations",
             "tools.tests.test_release_guidance",
             "tools.tests.test_release_line_parity",
+            "tools.tests.test_pr_metadata",
             "tools.tests.test_python_commands",
         ],
         cwd=ROOT,

@@ -68,7 +68,10 @@
   build. Run focused commands or the read-only world audit only when relevant;
   use wrapper builds/topologies for gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
-  is released by semantic-release.
+  is released by semantic-release. Use full GitHub issue URLs for nonclosing
+  cross-repository linkage in pull-request bodies; `owner/repository#number`
+  shorthand is reserved for explicit closing lines because release notes treat
+  otherwise leftover shorthand as closed issues.
 - Historical `1.x` releases remain immutable. Live ruleset removal and exact
   branch deletion belong only to the separately authorized governance gate.
 - Preserve unrelated work and finish with `git diff --check`.

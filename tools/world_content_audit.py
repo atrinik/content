@@ -596,6 +596,22 @@ def _source_semantic_sha256(row: dict) -> str:
     )
 
 
+def _fixture_emitter_projection(emitter: dict) -> dict:
+    """Pin one co-located emitter's identity and effective light semantics."""
+
+    return {
+        "id": emitter["id"],
+        "archetype": emitter["archetype"],
+        "radius": emitter["radius"],
+        "color": emitter["color"],
+        "activation": emitter["activation"],
+        "visible": emitter["visible"],
+        "face": emitter["face"],
+        "animation": emitter["animation"],
+        "semantic_sha256": _source_semantic_sha256(emitter),
+    }
+
+
 def _map_semantic_sha256(row: dict) -> str:
     emitters = [
         {
@@ -1172,25 +1188,33 @@ def light_inventory() -> dict:
         reviewed_maps[relative] = row
         map_rows.extend(emitters)
 
-    emitters_by_origin: dict[tuple[str, int, int], list[str]] = defaultdict(list)
+    emitters_by_origin: dict[tuple[str, int, int], list[dict]] = defaultdict(list)
     for emitter in map_rows:
         emitters_by_origin[(
             emitter["id"].rsplit(":", 1)[0], emitter["x"], emitter["y"]
-        )].append(emitter["id"])
+        )].append(emitter)
     fixture_group_rows = []
     for group_id, placements in sorted(fixture_rows.items()):
         for placement in placements:
             placement["same_tile_emitters"] = sorted(
-                identifier
-                for identifier in emitters_by_origin.get(
-                    (placement["path"], placement["x"], placement["y"]), ()
-                )
-                if identifier != placement["source_id"]
+                (
+                    _fixture_emitter_projection(emitter)
+                    for emitter in emitters_by_origin.get(
+                        (placement["path"], placement["x"], placement["y"]), ()
+                    )
+                    if emitter["id"] != placement["source_id"]
+                ),
+                key=lambda emitter: json.dumps(emitter, sort_keys=True),
             )
         group = {
             "id": group_id,
             "archetypes": sorted(fixture_archetypes[group_id]),
             "maps": len({placement["path"] for placement in placements}),
+            "emitting_overlaps": sum(
+                placement["radius"] is not None
+                and bool(placement["same_tile_emitters"])
+                for placement in placements
+            ),
             "placements": placements,
         }
         group["semantic_sha256"] = _semantic_sha256(group)
@@ -1311,8 +1335,8 @@ def validate_light_inventory(report: dict) -> list[str]:
     errors = []
     review = _light_review()
     fixture_contract = _light_fixture_contract()
-    if review.get("schema_version") != 6:
-        errors.append("light-source review must use schema_version 6")
+    if review.get("schema_version") != 7:
+        errors.append("light-source review must use schema_version 7")
     if (
         not isinstance(review.get("review_method"), str)
         or len(review["review_method"].strip()) < 12
@@ -1381,6 +1405,13 @@ def validate_light_inventory(report: dict) -> list[str]:
                 errors.append(
                     "required fixture group {} has invalid {}".format(group_id, field)
                 )
+        same_tile_review = contract_entry.get("same_tile_review")
+        if same_tile_review not in (None, "exact"):
+            errors.append(
+                "required fixture group {} has invalid same_tile_review".format(
+                    group_id
+                )
+            )
         review_entry = fixture_review.get(group_id)
         if not isinstance(review_entry, dict):
             errors.append("required fixture group {} is missing from review".format(group_id))
@@ -1426,6 +1457,16 @@ def validate_light_inventory(report: dict) -> list[str]:
             errors.append("fixture group {} placement counts changed".format(group_id))
         if entry.get("expected_maps") != group["maps"]:
             errors.append("fixture group {} map coverage changed".format(group_id))
+        expected_emitting_overlaps = entry.get("expected_emitting_overlaps")
+        if (
+            not isinstance(expected_emitting_overlaps, int)
+            or isinstance(expected_emitting_overlaps, bool)
+            or expected_emitting_overlaps < 0
+            or expected_emitting_overlaps != group["emitting_overlaps"]
+        ):
+            errors.append(
+                "fixture group {} emitting overlap count changed".format(group_id)
+            )
         expected_color = entry.get("expected_color")
         if not isinstance(expected_color, str) or LIGHT_COLOR_RE.fullmatch(
             expected_color
@@ -1473,6 +1514,37 @@ def validate_light_inventory(report: dict) -> list[str]:
                         identifier
                     )
                 )
+        intentional_same_tile = {
+            placement["id"]: placement
+            for placement in group["placements"]
+            if placement["radius"] is not None
+            and placement.get("same_tile_emitters")
+        }
+        contract_entry = required_fixtures.get(group_id)
+        exact_same_tile_review = (
+            isinstance(contract_entry, dict)
+            and contract_entry.get("same_tile_review") == "exact"
+        )
+        reviewed_same_tile = entry.get("intentional_same_tile_emitters")
+        if reviewed_same_tile is not None or exact_same_tile_review:
+            if not isinstance(reviewed_same_tile, dict):
+                errors.append(
+                    "fixture group {} intentional_same_tile_emitters must be an object".format(
+                        group_id
+                    )
+                )
+                reviewed_same_tile = {}
+            if set(reviewed_same_tile) != set(intentional_same_tile):
+                errors.append(
+                    "fixture group {} same-tile source dispositions changed".format(
+                        group_id
+                    )
+                )
+            for identifier, rationale in sorted(reviewed_same_tile.items()):
+                if not isinstance(rationale, str) or len(rationale.strip()) < 12:
+                    errors.append(
+                        "fixture {} needs a concise same-tile rationale".format(identifier)
+                    )
         for placement in group["placements"]:
             if placement.get("color") != expected_color:
                 errors.append(
@@ -1486,14 +1558,19 @@ def validate_light_inventory(report: dict) -> list[str]:
                     placement.get("local_radius") != 0
                     or not isinstance(same_tile, list)
                     or len(same_tile) != 1
-                    or same_tile[0] not in emitter_ids
+                    or not isinstance(same_tile[0], dict)
+                    or same_tile[0].get("id") not in emitter_ids
                 ):
                     errors.append(
                         "non-emitting fixture {} lacks one reviewed composite source".format(
                             placement["id"]
                         )
                     )
-            elif same_tile:
+            elif (
+                same_tile
+                and (reviewed_same_tile is not None or exact_same_tile_review)
+                and placement["id"] not in reviewed_same_tile
+            ):
                 errors.append(
                     "emitting fixture {} has an accidental same-tile source".format(
                         placement["id"]

@@ -3393,10 +3393,6 @@ arch lantern_black
 x 20
 y 4
 end
-arch light7
-x 20
-y 4
-end
 arch grassd_6
 z 50
 x 20
@@ -3497,10 +3493,6 @@ arch lantern_black
 x 20
 y 16
 end
-arch light7
-x 20
-y 16
-end
 arch grassd_8
 z 50
 x 20
@@ -3536,10 +3528,6 @@ x 20
 y 22
 end
 arch lantern_black
-x 20
-y 22
-end
-arch light7
 x 20
 y 22
 end

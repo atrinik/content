@@ -3629,10 +3629,6 @@ arch lantern_black
 x 22
 y 23
 end
-arch light7
-x 22
-y 23
-end
 arch floor_ruin4
 x 23
 end

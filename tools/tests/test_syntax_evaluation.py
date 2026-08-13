@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import asdict, replace
-import hashlib
 import json
 from pathlib import Path
+import tempfile
 import unittest
 
 from tools.content_contracts.contracts import load_json
@@ -13,7 +13,6 @@ from tools.content_contracts.corpus import inspect_document
 from tools.syntax_evaluation import SELECTED_SYNTAX
 from tools.syntax_evaluation import jsonc, yaml12
 from tools.syntax_evaluation.benchmark import (
-    _implementation_digest,
     _parse_server_output,
     _summary,
     _topology_input_components,
@@ -26,6 +25,149 @@ from tools.syntax_evaluation.model import from_legacy, validate as validate_mode
 
 ROOT = Path(__file__).parents[2].resolve()
 CONTRACT_ROOT = ROOT / "contracts" / "content-v1"
+
+
+def assert_historical_measurement_report(test: unittest.TestCase, report: dict) -> None:
+    """Validate captured measurement evidence without consulting live content."""
+    test.assertEqual(1, report["schema_version"])
+    test.assertEqual("Linux", report["environment"]["system"])
+    test.assertEqual(
+        "126102873f5356eae0114d6876df25b54cb616719387f0bb466279bb6ecd460d",
+        report["inputs"]["content_v1_baseline_sha256"],
+    )
+    test.assertEqual(
+        "354c41e56846e95c0a6d1e39750e15f67dd33c16",
+        report["inputs"]["content_commit"],
+    )
+    test.assertEqual(
+        "66ee02231579189622dc74d23117fee42be4969a922eba7b2d9e540d89dc49af",
+        report["inputs"]["syntax_implementation_sha256"],
+    )
+    test.assertEqual(
+        report["inputs"]["content_commit"],
+        report["inputs"]["topology_components"]["content"]["commit"],
+    )
+    test.assertEqual(
+        report["inputs"]["tools_commit"],
+        report["checker"]["repository_commit"],
+    )
+    test.assertEqual(report["inputs"]["profile"], report["server"]["profile"])
+    test.assertEqual(report["inputs"]["state"], report["server"]["state"])
+    representatives = report["representative_maps"]
+    test.assertEqual(
+        [
+            {
+                "size_class": "p10",
+                "corpus_index": 365,
+                "corpus_count": 3651,
+                "path": "maps/shattered_islands/world_5_65_2",
+                "logical_id": "/shattered_islands/world_5_65_2",
+                "bytes": 8400,
+                "objects": 259,
+                "comments": 0,
+                "source_sha256": (
+                    "83b460efae5cf5d1ae89a3cd21b7a2ef9c5d00a51da7d20e24a1ccf6e7ca1e89"
+                ),
+            },
+            {
+                "size_class": "p50",
+                "corpus_index": 1825,
+                "corpus_count": 3651,
+                "path": "maps/shattered_islands/world_-4_65",
+                "logical_id": "/shattered_islands/world_-4_65",
+                "bytes": 16002,
+                "objects": 576,
+                "comments": 0,
+                "source_sha256": (
+                    "3a4bcfbf72daa8e654831c76a66990ad83b56eb2bedd80c1ac16e435d1cf0748"
+                ),
+            },
+            {
+                "size_class": "p90",
+                "corpus_index": 3285,
+                "corpus_count": 3651,
+                "path": "maps/shattered_islands/world_-8_54",
+                "logical_id": "/shattered_islands/world_-8_54",
+                "bytes": 23908,
+                "objects": 848,
+                "comments": 0,
+                "source_sha256": (
+                    "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e"
+                ),
+            },
+            {
+                "size_class": "max",
+                "corpus_index": 3650,
+                "corpus_count": 3651,
+                "path": (
+                    "maps/shattered_islands/strakewood_island/greyton/house/"
+                    "luxury_house_0_0"
+                ),
+                "logical_id": (
+                    "/shattered_islands/strakewood_island/greyton/house/"
+                    "luxury_house_0_0"
+                ),
+                "bytes": 95618,
+                "objects": 2778,
+                "comments": 0,
+                "source_sha256": (
+                    "2485aeab1aa727e8e001985806e33922cee79df5e765d7636dac4920a7406cb7"
+                ),
+            },
+        ],
+        representatives,
+    )
+    measured = report["prototype"]["maps"]
+    test.assertEqual(
+        [
+            (entry["size_class"], entry["logical_id"], entry["bytes"])
+            for entry in representatives
+        ],
+        [
+            (entry["size_class"], entry["logical_id"], entry["legacy_bytes"])
+            for entry in measured
+        ],
+    )
+    for entry in measured:
+        for result in entry["formats"].values():
+            test.assertEqual(
+                round(result["encoded_bytes"] / entry["legacy_bytes"], 6),
+                result["expansion_ratio"],
+            )
+    for section in ("checker", "server"):
+        test.assertEqual(
+            [
+                (entry["size_class"], entry["logical_id"])
+                for entry in representatives
+            ],
+            [
+                (entry["size_class"], entry["logical_id"])
+                for entry in report[section]["maps"]
+            ],
+        )
+    test.assertTrue(
+        all(
+            not component["dirty"]
+            for component in report["inputs"]["topology_components"].values()
+        )
+    )
+    test.assertEqual(20, report["prototype"]["iterations_per_map"])
+    test.assertEqual(3, report["collection"]["iterations"])
+    test.assertEqual(5, report["checker"]["iterations_per_map"])
+    test.assertEqual(5, report["server"]["process_runs"])
+    test.assertEqual(9, report["server"]["iterations_per_map_per_run"])
+
+    def check_summaries(value):
+        if isinstance(value, dict):
+            if "raw" in value:
+                test.assertEqual(_summary(value["raw"]), value)
+            for child in value.values():
+                check_summaries(child)
+        elif isinstance(value, list):
+            for child in value:
+                check_summaries(child)
+
+    check_summaries(report)
 
 
 class SyntaxEvaluationTest(unittest.TestCase):
@@ -386,192 +528,42 @@ class SyntaxEvaluationTest(unittest.TestCase):
             / "authored-syntax-v1"
             / "measurement-baseline.json"
         )
-        self.assertEqual(1, report["schema_version"])
-        self.assertEqual("Linux", report["environment"]["system"])
         # Measurements are immutable historical evidence. Grammar evolution
-        # advances the current baseline lock without relabelling the inputs
-        # used by this already-captured benchmark.
-        self.assertEqual(
-            "126102873f5356eae0114d6876df25b54cb616719387f0bb466279bb6ecd460d",
-            report["inputs"]["content_v1_baseline_sha256"],
-        )
-        self.assertEqual(
-            "354c41e56846e95c0a6d1e39750e15f67dd33c16",
-            report["inputs"]["content_commit"],
-        )
-        self.assertEqual(
-            _implementation_digest(ROOT),
-            report["inputs"]["syntax_implementation_sha256"],
-        )
-        self.assertEqual(
-            report["inputs"]["content_commit"],
-            report["inputs"]["topology_components"]["content"]["commit"],
-        )
-        self.assertEqual(
-            report["inputs"]["tools_commit"],
-            report["checker"]["repository_commit"],
-        )
-        representatives = report["representative_maps"]
-        self.assertEqual(
-            [
-                {
-                    "size_class": "p10",
-                    "corpus_index": 365,
-                    "corpus_count": 3651,
-                    "path": "maps/shattered_islands/world_5_65_2",
-                    "logical_id": "/shattered_islands/world_5_65_2",
-                    "bytes": 8400,
-                    "objects": 259,
-                    "comments": 0,
-                    "source_sha256": (
-                        "83b460efae5cf5d1ae89a3cd21b7a2ef9c5d00a51da7d20e24a1ccf6e7ca1e89"
-                    ),
-                },
-                {
-                    "size_class": "p50",
-                    "corpus_index": 1825,
-                    "corpus_count": 3651,
-                    "path": "maps/shattered_islands/world_-4_65",
-                    "logical_id": "/shattered_islands/world_-4_65",
-                    "bytes": 16002,
-                    "objects": 576,
-                    "comments": 0,
-                    "source_sha256": (
-                        "3a4bcfbf72daa8e654831c76a66990ad83b56eb2bedd80c1ac16e435d1cf0748"
-                    ),
-                },
-                {
-                    "size_class": "p90",
-                    "corpus_index": 3285,
-                    "corpus_count": 3651,
-                    "path": "maps/shattered_islands/world_-8_54",
-                    "logical_id": "/shattered_islands/world_-8_54",
-                    "bytes": 23908,
-                    "objects": 848,
-                    "comments": 0,
-                    "source_sha256": (
-                        "876fea7b67e08ab433f1087cb14bb0e3d2e453f525c64a25b74645558eae4f6e"
-                    ),
-                },
-                {
-                    "size_class": "max",
-                    "corpus_index": 3650,
-                    "corpus_count": 3651,
-                    "path": (
-                        "maps/shattered_islands/strakewood_island/greyton/house/"
-                        "luxury_house_0_0"
-                    ),
-                    "logical_id": (
-                        "/shattered_islands/strakewood_island/greyton/house/"
-                        "luxury_house_0_0"
-                    ),
-                    "bytes": 95618,
-                    "objects": 2778,
-                    "comments": 0,
-                    "source_sha256": (
-                        "2485aeab1aa727e8e001985806e33922cee79df5e765d7636dac4920a7406cb7"
-                    ),
-                },
-            ],
-            representatives,
-        )
-        measured = report["prototype"]["maps"]
-        self.assertEqual(
-            [
-                (entry["size_class"], entry["logical_id"], entry["bytes"])
-                for entry in representatives
-            ],
-            [
-                (entry["size_class"], entry["logical_id"], entry["legacy_bytes"])
-                for entry in measured
-            ],
-        )
-        for entry in measured:
-            for result in entry["formats"].values():
-                self.assertEqual(
-                    round(result["encoded_bytes"] / entry["legacy_bytes"], 6),
-                    result["expansion_ratio"],
-                )
-        for section in ("checker", "server"):
-            self.assertEqual(
-                [
-                    (entry["size_class"], entry["logical_id"])
-                    for entry in representatives
-                ],
-                [
-                    (entry["size_class"], entry["logical_id"])
-                    for entry in report[section]["maps"]
-                ],
-            )
-        self.assertTrue(
-            all(
-                not component["dirty"]
-                for component in report["inputs"]["topology_components"].values()
-            )
-        )
-        self.assertEqual(20, report["prototype"]["iterations_per_map"])
-        self.assertEqual(3, report["collection"]["iterations"])
-        self.assertEqual(5, report["checker"]["iterations_per_map"])
-        self.assertEqual(5, report["server"]["process_runs"])
-        self.assertEqual(9, report["server"]["iterations_per_map_per_run"])
-
-        def check_summaries(value):
-            if isinstance(value, dict):
-                if "raw" in value:
-                    self.assertEqual(_summary(value["raw"]), value)
-                for child in value.values():
-                    check_summaries(child)
-            elif isinstance(value, list):
-                for child in value:
-                    check_summaries(child)
-
-        check_summaries(report)
+        # advances the live lock without relabelling already-captured inputs.
+        assert_historical_measurement_report(self, report)
 
     def test_unrelated_map_header_edit_does_not_relabel_historical_measurements(self):
         report_path = (
             ROOT / "prototypes" / "authored-syntax-v1" / "measurement-baseline.json"
         )
-        report = load_json(report_path)
-        captured = {
-            entry["logical_id"]: entry
-            for entry in report["representative_maps"]
-        }
-        logical_id = "/shattered_islands/world_-8_54"
-        captured_entry = captured[logical_id]
-        live_path = ROOT / captured_entry["path"]
-        live_bytes = live_path.read_bytes()
-        header_end = live_bytes.index(b"\nend\n")
-        name_start = live_bytes.index(b"name ", 0, header_end)
-        name_end = live_bytes.index(b"\n", name_start, header_end)
-        edited_bytes = live_bytes[:name_end] + b" regression" + live_bytes[name_end:]
-        grammar = load_json(CONTRACT_ROOT / "grammar-inventory.json")
-        _, edited_summary = inspect_document(
-            live_path,
-            "map",
-            grammar,
-            display_path=captured_entry["path"],
-            source_bytes=edited_bytes,
-        )
-        edited_metadata = {
-            "bytes": len(edited_bytes),
-            "objects": edited_summary["objects"],
-            "comments": edited_summary["comments"],
-            "source_sha256": hashlib.sha256(edited_bytes).hexdigest(),
-        }
+        captured_report = load_json(report_path)
+        with tempfile.TemporaryDirectory() as directory:
+            content_root = Path(directory)
+            contracts = content_root / "contracts" / "content-v1"
+            maps = content_root / "maps"
+            contracts.mkdir(parents=True)
+            maps.mkdir()
+            (contracts / "grammar-inventory.json").write_bytes(
+                (CONTRACT_ROOT / "grammar-inventory.json").read_bytes()
+            )
+            for index in range(10):
+                (maps / f"map_{index}").write_bytes(
+                    b"arch map\n"
+                    + f"name Map {index}".encode()
+                    + b" " * (index * 100)
+                    + b"\nwidth 1\nheight 1\nend\narch floor\nend\n"
+                )
 
-        self.assertTrue(edited_summary["accepted"])
-        self.assertNotEqual(
-            {
-                key: captured_entry[key]
-                for key in ("bytes", "objects", "comments", "source_sha256")
-            },
-            edited_metadata,
-        )
-        reloaded = {
-            entry["logical_id"]: entry
-            for entry in load_json(report_path)["representative_maps"]
-        }
-        self.assertEqual(captured_entry, reloaded[logical_id])
+            before = select_representative_maps(content_root)
+            edited_map = maps / "map_8"
+            edited_map.write_bytes(
+                edited_map.read_bytes().replace(b"name Map 8", b"name Edited Map 8")
+            )
+            after = select_representative_maps(content_root)
+
+            self.assertNotEqual(before[2]["source_sha256"], after[2]["source_sha256"])
+            self.assertNotEqual(before[2]["bytes"], after[2]["bytes"])
+            assert_historical_measurement_report(self, captured_report)
 
     def test_measurement_summaries_and_server_records_fail_closed(self):
         self.assertEqual(

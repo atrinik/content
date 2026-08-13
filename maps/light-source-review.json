@@ -1440,31 +1440,60 @@
     },
     "magic-wall-active-state": {
       "status": "pass",
-      "rationale": "All 26 initially active walls inherit the same radius-1 ff3030 source without changing last_eat, damage, timing, animation, collision, names, connections, or placement fields."
+      "rationale": "All 26 initially active walls inherit the same radius-1 ff3030 source without changing last_eat, damage, timing, animation, collision, names, connections, or placement fields. At content head 462e04352, issue93-isolated-smooth and issue93-isolated-discrete compared the active Plane of Creation walls in both Classic renderers; the red cue stayed on the rune surface without changing surrounding floor or fence contrast.",
+      "classic_views": [
+        "issue93-isolated-smooth",
+        "issue93-isolated-discrete"
+      ]
     },
     "magic-wall-corners": {
       "status": "pass",
-      "rationale": "The complete ten-map fixture inventory includes wall-adjacent and corner placements while constraining every inherited rune source to radius 1."
+      "rationale": "The complete ten-map fixture inventory includes wall-adjacent and corner placements while constraining every inherited rune source to radius 1. The paired Underground City views at content head 462e04352 retained distinct wall faces, blocked boundaries, and room corners in both Classic renderers, with no red light crossing adjacent geometry.",
+      "classic_views": [
+        "issue93-cluster-disabled-smooth",
+        "issue93-cluster-reset-discrete"
+      ]
     },
     "magic-wall-dense-cluster": {
       "status": "pass",
-      "rationale": "All 25 members of the Underground City security cluster are individually inventoried at radius 1, with no map-local radius enlargement or omitted wall."
+      "rationale": "All 25 members of the Underground City security cluster are individually inventoried at radius 1, with no map-local radius enlargement or omitted wall. At content head 462e04352, the same positioned Underground City stress view was compared in smooth and discrete Classic after the authored connection-201 security activation. The rune cues remained isolated points rather than a continuous red wash, while walls, water, rooms, and blocked boundaries retained their own contrast.",
+      "classic_views": [
+        "issue93-cluster-disabled-smooth",
+        "issue93-cluster-reset-discrete"
+      ]
     },
     "magic-wall-disabled-state": {
       "status": "pass",
-      "rationale": "All 31 initially disabled walls inherit the persistent radius-1 ff3030 rune cue while their last_eat 0 lifecycle state and every gameplay field remain unchanged."
+      "rationale": "All 31 initially disabled walls inherit the persistent radius-1 ff3030 rune cue while their last_eat 0 lifecycle state and every gameplay field remain unchanged. The isolated scenario reset reloaded the 25-wall map from its reviewed last_eat 0 authored state; moving the reviewer onto the existing 7:10 magic-mouth trigger then produced the authored security activation messages before paired smooth/discrete captures. The light footprint remained independent of that lifecycle transition.",
+      "classic_views": [
+        "issue93-cluster-disabled-smooth",
+        "issue93-cluster-reset-discrete"
+      ]
     },
     "magic-wall-narrow-corridors": {
       "status": "pass",
-      "rationale": "The ten-map inventory covers the authored narrow Underground City, temple, abyss, and Plane of Creation passages with a uniform radius-1 source and no geometry edits."
+      "rationale": "The ten-map inventory covers the authored narrow Underground City, temple, abyss, and Plane of Creation passages with a uniform radius-1 source and no geometry edits. Smooth/discrete Classic comparison at content head 462e04352 preserved the Underground City corridor, bridge, wall, and water boundaries without a red spill joining separate spaces.",
+      "classic_views": [
+        "issue93-cluster-disabled-smooth",
+        "issue93-cluster-reset-discrete"
+      ]
     },
     "magic-wall-same-tile-sources": {
       "status": "pass",
-      "rationale": "All twelve current same-tile sources are explicit: nine visible crystals retain independent reviewed pools, two invisible neutral helpers retain room fill, and one visible wall torch retains its amber fixture cue."
+      "rationale": "All twelve current same-tile sources are explicit: nine visible crystals retain independent reviewed pools, two invisible neutral helpers retain room fill, and one visible wall torch retains its amber fixture cue. At content head 462e04352, the paired Classic views beside Underground City wall 7:9 confirmed that the retained radius-9 light9 source still owns the blue room fill while the wall contributes only its bounded rune cue; no second room-scale pool or additive red wash appeared.",
+      "classic_views": [
+        "issue93-colocated-light9-smooth",
+        "issue93-colocated-light9-discrete"
+      ]
     },
     "magic-wall-switch-transitions": {
       "status": "pass",
-      "rationale": "The rune source is authored on the persistent magic_wall archetype and is independent of last_eat and type-62 activation, so switch transitions do not add, remove, or resize it."
+      "rationale": "The rune source is authored on the persistent magic_wall archetype and is independent of last_eat and type-62 activation, so switch transitions do not add, remove, or resize it. In the isolated scenario at content head 462e04352, resetting the map restored the serialized last_eat 0 state, then moving onto the authored 7:10 magic-mouth trigger exercised connections 102 and 201 and produced the existing INTRUDERS and Security system activated messages. Same-position smooth/discrete post-transition views retained the local rune-light footprint while the reset and trigger behavior remained unchanged.",
+      "classic_views": [
+        "issue93-cluster-positioned-smooth",
+        "issue93-cluster-reciprocal-smooth",
+        "issue93-cluster-reset-discrete"
+      ]
     },
     "candle-dense-cluster": {
       "status": "pass",
@@ -2363,7 +2392,7 @@
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. The 25-wall disabled security cluster retains a radius-1 red cue on every visible rune surface; the two co-located neutral radius-9 helpers remain deliberate room fill independent of the wall lifecycle.",
+      "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. At content head 462e04352, issue93-cluster-disabled-smooth and issue93-cluster-reset-discrete compared the positioned 25-wall stress map in both Classic renderers after an authored-state reset and live connections 102/201 activation through the existing 7:10 magic-mouth trigger. The local rune cues did not become a uniform red wash or cross blocked geometry, and issue93-colocated-light9-smooth/discrete confirmed that the two retained radius-9 helpers still own their blue room fill rather than forming accidental double sources.",
       "visible_neutral": {
         "bridge_wood_NS.101": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
@@ -6199,7 +6228,7 @@
     },
     "maps/planes/creation/creation_0801": {
       "uncolored_disposition": "neutral",
-      "rationale": "Both isolated active magic walls use a bounded radius-1 red rune cue that remains local to the visible surface.",
+      "rationale": "At content head 462e04352, issue93-isolated-smooth and issue93-isolated-discrete compared both isolated active magic walls in Classic. Their radius-1 red rune cues remained local to the visible surfaces without flattening adjacent floor, fence, or corner contrast.",
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "0795160ad83504ce73a37fee731af6a7b8ae86fd9fbd3da48cea0e99ac325262"

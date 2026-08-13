@@ -1271,7 +1271,6 @@ x 7
 y 9
 end
 arch statue_fire
-glow_radius 5
 x 7
 y 9
 end

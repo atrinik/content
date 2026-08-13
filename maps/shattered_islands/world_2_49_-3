@@ -1154,10 +1154,6 @@ z 72
 x 9
 y 8
 end
-arch light5
-x 9
-y 8
-end
 arch fstone1b
 x 9
 y 9
@@ -1204,10 +1200,6 @@ end
 arch statue_fire_black1
 layer 7
 z 72
-x 9
-y 14
-end
-arch light5
 x 9
 y 14
 end
@@ -1627,10 +1619,7 @@ z 30
 align 18
 x 12
 y 11
-end
-arch light9
-x 12
-y 11
+glow_radius 9
 end
 arch water_lt2
 x 12
@@ -2166,10 +2155,6 @@ z 72
 x 16
 y 8
 end
-arch light5
-x 16
-y 8
-end
 arch fstone1b
 x 16
 y 9
@@ -2224,10 +2209,6 @@ end
 arch statue_fire_black1
 layer 7
 z 72
-x 16
-y 14
-end
-arch light5
 x 16
 y 14
 end

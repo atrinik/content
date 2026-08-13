@@ -1,6 +1,7 @@
 import time
 import unittest
 from collections import OrderedDict
+from unittest import mock
 
 import Atrinik
 from tests import TestSuite
@@ -499,6 +500,85 @@ class QuestManagerSuite(TestSuite):
         self.assertEqual(qm.get_qp_restored(), qm.get_qp_max())
         qm = QuestManager(activator, quest)
         self.assertFalse(qm.started())
+
+    def test_10_missing_repeat_delay_has_no_cooldown(self):
+        quest_container = activator.Controller().quest_container
+        old_magic = quest_container.magic
+        old_exp = quest_container.exp
+        self.addCleanup(setattr, quest_container, "magic", old_magic)
+        self.addCleanup(setattr, quest_container, "exp", old_exp)
+
+        qm = QuestManager(activator, {
+            "name": "Missing Repeat Delay Test Quest",
+            "uid": "missing_repeat_delay_test_quest",
+            "repeat": True,
+        })
+        qm.ensure_quest_object()
+        quest_container.magic = 0
+        quest_container.exp = 0
+        qm.quest_object.exp = 0
+
+        with mock.patch("QuestManager.time.time", return_value=1000):
+            qm.use_qp()
+
+        self.assertEqual(quest_container.magic, 1)
+        self.assertEqual(quest_container.exp, 1000)
+        self.assertEqual(qm.quest_object.exp, 0)
+
+    def test_11_integer_repeat_delay_sets_cooldown(self):
+        quest_container = activator.Controller().quest_container
+        old_magic = quest_container.magic
+        old_exp = quest_container.exp
+        self.addCleanup(setattr, quest_container, "magic", old_magic)
+        self.addCleanup(setattr, quest_container, "exp", old_exp)
+
+        qm = QuestManager(activator, {
+            "name": "Integer Repeat Delay Test Quest",
+            "uid": "integer_repeat_delay_test_quest",
+            "repeat": True,
+            "repeat_delay": 300,
+        })
+        qm.ensure_quest_object()
+        quest_container.magic = 0
+        quest_container.exp = 0
+        qm.quest_object.exp = 0
+
+        with mock.patch("QuestManager.time.time", return_value=1000):
+            qm.use_qp()
+
+        self.assertEqual(quest_container.magic, 1)
+        self.assertEqual(quest_container.exp, 1000)
+        self.assertEqual(qm.quest_object.exp, 1300)
+
+    def test_12_invalid_repeat_delay_preserves_state(self):
+        quest_container = activator.Controller().quest_container
+        old_magic = quest_container.magic
+        old_exp = quest_container.exp
+        self.addCleanup(setattr, quest_container, "magic", old_magic)
+        self.addCleanup(setattr, quest_container, "exp", old_exp)
+
+        qm = QuestManager(activator, {
+            "name": "Invalid Repeat Delay Test Quest",
+            "uid": "invalid_repeat_delay_test_quest",
+            "repeat": True,
+            "repeat_delay": "300",
+        })
+        qm.ensure_quest_object()
+        quest_container.magic = 2
+        quest_container.exp = 321
+        qm.quest_object.exp = 654
+
+        with mock.patch("QuestManager.time.time") as time_mock:
+            with self.assertRaisesRegex(
+                    TypeError,
+                    "invalid_repeat_delay_test_quest.*repeat_delay must be "
+                    "an integer or None, got str"):
+                qm.use_qp()
+
+        time_mock.assert_not_called()
+        self.assertEqual(quest_container.magic, 2)
+        self.assertEqual(quest_container.exp, 321)
+        self.assertEqual(qm.quest_object.exp, 654)
 
 
 activator = Atrinik.WhoIsActivator()

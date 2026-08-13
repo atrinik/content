@@ -542,7 +542,7 @@
     "pool_poison": {
       "uncolored_disposition": "neutral",
       "rationale": "pool_poison uses the established green palette entry to match its saturated toxic liquid.",
-      "semantic_sha256": "889871c53ea1dd1c01920f35f952c83172cf52035f1198e848975642d1ba7aa9"
+      "semantic_sha256": "af79a601310b02adeb2dace83c892a8ad957840e2516f52ee02dc06eb12a920a"
     },
     "raw_mana": {
       "uncolored_disposition": "neutral",
@@ -663,6 +663,31 @@
       "uncolored_disposition": "neutral",
       "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
       "semantic_sha256": "52070159cc2f75830a37d7fcae4e2da3b60db951876fd7eadcbb096ef149f9b3"
+    },
+    "pool_ember": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The visibly hot ember pool uses the smallest effective radius and orange-red open-fire palette without becoming ambient room light.",
+      "semantic_sha256": "6e034c5c5c85c0103a8d252f874a849c924aa47c31165e7fb6641aae34f80053"
+    },
+    "pool_fire": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The source-only open-fire pool uses the smallest effective radius and orange-red open-fire palette for future authored placements.",
+      "semantic_sha256": "d5e7d32a66488f69efb6d929fded8738abc1e1a64d9bdfaf90c3e5d8b7f5927b"
+    },
+    "pool_magic": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The animated magic pool uses the smallest effective radius and crystal cyan palette; the established Everlink footprint remains a local radius-7 exception.",
+      "semantic_sha256": "e0b74a67c9b1a9593a0fe2211bd9466ef43b56ac7c7030fffb60da2c44e60546"
+    },
+    "statue_fire": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The animated fire statue owns radius-5 orange-red firelight; reviewed local radius-9 overrides preserve the larger Rockforge palace and city compositions.",
+      "semantic_sha256": "17839a1578d6f55654ebbb9cce5ec542a85de5737ffebd81ecbf52f99bebeb89"
+    },
+    "statue_fire_black1": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The animated black fire statue owns radius-5 orange-red firelight; reviewed local radius-9 overrides preserve the larger underground-city and outpost compositions.",
+      "semantic_sha256": "0f580b1b037bdfd4466e443112c339a2ebe95ea86bd438869f6bce758b0b2aaf"
     }
   },
   "artifacts": {
@@ -1176,7 +1201,7 @@
     },
     "pool_poison": {
       "rationale": "The authored 40ff60 tint matches pool_poison's saturated toxic-green liquid.",
-      "semantic_sha256": "47c37e83c9acfc5e69f21c7b9ae7ecfa5c523f4e1fb537752e20ad230cdf86f5"
+      "semantic_sha256": "bffa205574cd4dcbbf286082e86548751b494c8e6c6a14db9b550b0c9c1306a9"
     },
     "raw_mana": {
       "rationale": "The authored a060ff tint matches the visible art for raw_mana.",
@@ -1187,8 +1212,8 @@
       "semantic_sha256": "1a0ef16d277333d0322983984757c76ac7ee0852eed734f07ecbdb241ab39242"
     },
     "statue_fire": {
-      "rationale": "The authored ff6030 tint matches the visible art for statue_fire.",
-      "semantic_sha256": "c3007bdae0667b3b1c8be23d34436a20f785023deba74014b0ad7fd0e1199d95"
+      "rationale": "The authored ff6030 tint matches the visible orange-red flame on statue_fire.",
+      "semantic_sha256": "c6291e798014ff46e0f64093c32bda22839d4dbaf6fbd6f52e0662438623a8a0"
     },
     "torch": {
       "rationale": "The activated portable torch uses explicit warm light matching its flame animation.",
@@ -1293,6 +1318,22 @@
     "candlelight2.101": {
       "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight2.101.",
       "semantic_sha256": "7a89e15244245564c5fa883f29a75149a9034716d4542f590e573b589ceee5a9"
+    },
+    "pool_ember": {
+      "rationale": "The authored ff6030 tint matches the ember pool's orange-red heat.",
+      "semantic_sha256": "8c9e3e79bc8d9ea3fe3c46931d17586fe78b40e7220ccece97fe6c7184679c62"
+    },
+    "pool_fire": {
+      "rationale": "The authored ff6030 tint matches the open fire pool's visible flame art.",
+      "semantic_sha256": "78a7c742fc9c55f8006b69f198c337059cbc5f5c86b320f81151a0a064e0d2dc"
+    },
+    "pool_magic": {
+      "rationale": "The authored 60d0ff tint matches the animated magic pool's cyan energy.",
+      "semantic_sha256": "411db602891400248d33644055893ec4b6a51beeb9d167a9917871b9b6b391d4"
+    },
+    "statue_fire_black1": {
+      "rationale": "The authored ff6030 tint matches the visible orange-red flame on statue_fire_black1.",
+      "semantic_sha256": "391a158e5695b86d55d735f637c96b5074ba959e36a4c8adc94d246beb441ec8"
     }
   },
   "toggle_states": {
@@ -1706,10 +1747,10 @@
     },
     "maps/shattered_islands/everlink/everlink_0401": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Everlink in the everlink batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The Everlink magic pool inherits cyan while retaining its former co-located radius-7 footprint on the visible fixture; walls, roof boundaries, and nearby routes remain the contextual review targets.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f74f03ae1d69de08807f7983c31cca5e07d9f442fe7656e8acfd78c76ddd4378"
+      "semantic_sha256": "e64e62a1d0ccb442f12a04b6e4cd0f08c77536675adc473ee9ddecc1e0020df1"
     },
     "maps/shattered_islands/everlink/everlink_0402": {
       "uncolored_disposition": "neutral",
@@ -1885,14 +1926,14 @@
       "rationale": "Rendered Old Outpost with smooth and discrete lighting; both poison pools retain their former co-located radius-7 footprints while their toxic-green tint carries the visible liquid's art cue.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4e9162cd0962a540f2e0db7cc9727d1447f14111ecc0d852d5b164a9c31fdcd9"
+      "semantic_sha256": "50029c6bf1b2043dc1eda64e96eae0dd058fc0a0d3512922bff0d62b01a08ced"
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0203": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Old Outpost with smooth and discrete lighting; all three poison pools retain their former co-located radius-7 footprints while their toxic-green tint distinguishes the hazards from neutral ambient light.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "210bcad8e9079268a29521120af247f8b76e6703f7b5a6cf72483e3d53397c39"
+      "semantic_sha256": "a810fb9b398c613ea63f02eb6be27e96f4871fa33ee951798a03990dc89dd4bf"
     },
     "maps/shattered_islands/strakewood_island/old_outpost/old_outpost_a_0204": {
       "uncolored_disposition": "neutral",
@@ -1903,17 +1944,17 @@
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_0101": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Rockforge: Palace in the rockforge_palace batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Both palace fire statues own orange-red radius-9 light transferred from their co-located neutral helpers, preserving the established room footprint without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "16b04ffa154258f0e50e4e4a81198e20bb72712fafb3b42a6285388898fa058e"
+      "semantic_sha256": "61915d2a84f45d5911029c164c910ae1055769ffeea5e8133bb28a98aab64c53"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_0102": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Rockforge: Palace in the rockforge_palace batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "All four palace fire statues own orange-red radius-9 light transferred from their co-located neutral helpers, preserving the established room footprint without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d0ea7be00029fce2cc0ab15d015778ef2253dbf79568606c56309cb25a03f17f"
+      "semantic_sha256": "b4c17193f837dece582e9674a498e201a5c04ed2ef314166ed9792dc1ab433e8"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0101": {
       "uncolored_disposition": "neutral",
@@ -1931,10 +1972,10 @@
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0103": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Rockforge: City in the rockforge batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "All six city fire statues own orange-red radius-9 light transferred from their co-located neutral helpers, preserving the symmetrical hall composition without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e45f2b7caab141b2e7980aba256e9bf029e8527049011c194540451d75f0bceb"
+      "semantic_sha256": "a38bf1a3509155ac0833cf5d74721543551ea2da15d82cf085e9aac0041ec181"
     },
     "maps/shattered_islands/strakewood_island/rockforge/rockforge_a_0104": {
       "uncolored_disposition": "neutral",
@@ -2326,12 +2367,12 @@
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_3_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered The Underground City III in the underground_city_b batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Both black fire statues own orange-red radius-9 light transferred from their co-located neutral helpers, preserving the dark linked-depth composition without double emission.",
       "visible_neutral": {
         "bridge_wood_NS.101": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "b17c29e7a9a387007dd493be826802941d30c6a342bf1a47940d5b5c63121f32"
+      "semantic_sha256": "ee53670b24c4f112ebf88c5464a0291173e797a53f1c1e85378e37c3cce0d5e7"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_2_4": {
       "uncolored_disposition": "neutral",
@@ -2414,10 +2455,10 @@
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_3_4_-1": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered The Underground City II in the underground_city_a batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The black fire statue replaces its co-located neutral helper with the radius-5 orange-red default, preserving the compact underground room footprint.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a413f0355bebb52a9f4e79825c994dd4f092980a8a3a408786a44ca281b320a4"
+      "semantic_sha256": "ae819cdd41cac88547c9735711b18c208ec78517d1280c6d3fa90a589a0d95b5"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_3_5_-1": {
       "uncolored_disposition": "neutral",
@@ -2494,7 +2535,7 @@
       "rationale": "Rendered The Underground City II with smooth and discrete lighting; the previously unlit poison pool uses the archetype's minimal radius-1 toxic-green glow without disturbing the surrounding ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f05f898909604084b2197787e2d86f08a88c11ee496f760ed3fca6a63020cc1b"
+      "semantic_sha256": "f07da7f13d0d1de18480c42b6532c2c51e3db2d25c719803153dcf93588fa18a"
     },
     "maps/shattered_islands/strakewood_island/underground_city/underground_city_4_5_-1": {
       "uncolored_disposition": "neutral",
@@ -2662,7 +2703,7 @@
       "rationale": "Rendered Temple of Zechna with smooth and discrete lighting; the poison pool retains the former co-located radius-3 footprint while its toxic-green tint carries the visible liquid's art cue.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "c5c4fa696cf17526ff828b892eddf4d142d27e920453b9c7227396ea63d6fecc"
+      "semantic_sha256": "0f54af83e0675dd7427ebf8a9c3d9fdb6f55dcbc8929ace551740ffd7f4287bc"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-1": {
       "uncolored_disposition": "neutral",
@@ -2673,10 +2714,10 @@
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-2": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Temple of Zechna in paired smooth and discrete issue-102 views; the crystal-owned yellow pool preserves corridor doors, wall torches, and stair navigation.",
+      "rationale": "The ember pool uses the minimal radius-1 orange-red default beside the established yellow crystal source, preserving corridor doors, stairs, and color separation.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4470f7aa47bee362e6e237d9102f120b01e56514a8deb9427afe0c5de8c48c49"
+      "semantic_sha256": "f06630541b814956b962f6fd12b07a8549a0896951df51dab54e42e3679402dc"
     },
     "maps/shattered_islands/strakewood_island/zechna_temple/zechna_temple_1_1_-3": {
       "uncolored_disposition": "neutral",
@@ -2892,10 +2933,10 @@
     },
     "maps/shattered_islands/world_0_41": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Cathedral of Holy Wisdom in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The cathedral fire statue uses the radius-5 orange-red default as a bounded focal source while retaining the outdoor ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "95b1cd878c59c15a66a3e4d5c1ce6b1cb7d40e48117aa97f6eb47f8f77aea0d3"
+      "semantic_sha256": "f0eb8536b40d4b60ae987a04b9bd157c0ad152d7f68dbc2c8dff1f072fa4c8f2"
     },
     "maps/shattered_islands/world_0_42": {
       "uncolored_disposition": "neutral",
@@ -3323,10 +3364,10 @@
     },
     "maps/shattered_islands/world_12_65": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Portu Baserrian in the berri_lur batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The Portu Baserrian magic pool uses the minimal radius-1 cyan default while preserving its cleanliness gate, passability override, and surrounding outdoor route cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4788757fcc2a413fe503f18a792f875b8bab86e3e8ee559721cc1fff0f93ae3f"
+      "semantic_sha256": "eb9cf76ce16a60f0e9ee5cd6a0042b001c37b52d66e5138555c311de640180e6"
     },
     "maps/shattered_islands/world_12_68": {
       "uncolored_disposition": "neutral",
@@ -3869,10 +3910,10 @@
     },
     "maps/shattered_islands/world_2_49_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Outpost of Dr'kass in the issue65_0091 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Four black fire statues replace radius-5 helpers with the matching default; the central statue retains its transferred radius-9 footprint, preserving the outpost geometry without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "776927b93bad763b4eb8e1f5ca612f73db0aca3895f158b86468028aaa3e5bec"
+      "semantic_sha256": "a8ae1378ff45ebd794010fcadbb454365424da9ff2e8aca846f67034392ed568"
     },
     "maps/shattered_islands/world_2_50": {
       "uncolored_disposition": "neutral",
@@ -3897,10 +3938,10 @@
     },
     "maps/shattered_islands/world_2_50_-3": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Caverns in the issue65_0094 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "All six black fire statues replace their co-located radius-5 neutral helpers with the matching orange-red default, preserving the cavern layout without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9a22d03a7eae2474f16a7e7d761a6593f1a0dddaa8f9162344418577f4b1576e"
+      "semantic_sha256": "0b2d3612d40220b05dc073d49f507f700d20a02258e35334cb7ebb60e8ecf5b0"
     },
     "maps/shattered_islands/world_2_51_-1": {
       "uncolored_disposition": "neutral",
@@ -4619,10 +4660,10 @@
     },
     "maps/shattered_islands/world_4_83": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Both Incuna fire statues replace their co-located radius-5 neutral helpers with the matching orange-red default, preserving the outdoor transition without double emission.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d0fb4d99b952084cd082cccb47188b8fe0e0508c0cabdbfbfb6f2bdb6e09c13a"
+      "semantic_sha256": "7914a793ff95db040019fb9da9e213d9935942d89eee98c8895c57df4a336b19"
     },
     "maps/shattered_islands/world_4_83_-1": {
       "uncolored_disposition": "neutral",
@@ -4776,7 +4817,7 @@
         "713": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "796": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "b6a0ef7647901c26be085da2dd434d9bb57563d8f5aa8fb3816118e5ad736884"
+      "semantic_sha256": "ffc93d9a133bc7d12eb1f533765405206d687b4f09b552f04d39f0aaf4b7a191"
     },
     "maps/shattered_islands/world_5_48_1": {
       "uncolored_disposition": "neutral",
@@ -5184,7 +5225,7 @@
         "186": "Map-local wall-torch animation uses explicit warm light matching the visible flame.",
         "475": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "8e41872ddd9803bfaf2e50533041da134fc38377199c5d0dfe6a9716154cedf3"
+      "semantic_sha256": "9230dff472e733ececc86f4e5603ca781ab49b6ecd790766eaaa47defe69b6d1"
     },
     "maps/shattered_islands/world_6_48_-2": {
       "uncolored_disposition": "neutral",
@@ -5929,12 +5970,12 @@
     },
     "maps/shattered_islands/world_9_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "The Asteria fire statue's former map-local radius-5 override is deliberately removed because it is semantically identical to the new inherited radius-5 orange-red default.",
       "visible_neutral": {
         "dwarven_statue": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "774aa72326da4e65ab9d71849ffde8945994f318c0e87c936491cd56595dac33"
+      "semantic_sha256": "b1c20ac846aa62a9eaa5e106ff2507fc95ed44578131fb818c399852ea9ae460"
     },
     "maps/shattered_islands/world_9_46": {
       "uncolored_disposition": "neutral",
@@ -6159,6 +6200,13 @@
       "visible_neutral": {},
       "art_overrides": {},
       "semantic_sha256": "4810311aab606235327343a7d38827a5d9f156061532c509db2ace87f302b9c5"
+    },
+    "maps/planes/creation/creation_1007": {
+      "uncolored_disposition": "neutral",
+      "visible_neutral": {},
+      "art_overrides": {},
+      "rationale": "The isolated Plane of Creation magic pool uses the minimal radius-1 cyan default, preserving the outdoor transition and surrounding navigation.",
+      "semantic_sha256": "37fbaf9a6bd4218cba8574d4d9585d953a7076bfe49383fa62582ac1d643fe22"
     }
   },
   "fixture_groups": {
@@ -6216,7 +6264,7 @@
         "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious:5:9:candlelight1.101:1": "The co-located visible wall fireplace owns the reviewed compact source; this candle is locally dark to prevent mixed-color additive over-lighting."
       },
       "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the four-part composite retains one candle source, and the mixed candle/fireplace tile retains only its visible fireplace source.",
-      "semantic_sha256": "17c454eefa8e4f344816979214f7ae87cbd83a793c3a08ebaa5f33fab53c272c"
+      "semantic_sha256": "6599e36f5b7b6504557cbebe0ec3621ab0afb6292b325f458856b38896cd4c5a"
     }
   },
   "source_review": {

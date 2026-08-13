@@ -1171,10 +1171,6 @@ arch statue_fire
 x 6
 y 22
 end
-arch light5
-x 6
-y 22
-end
 arch floor_fs_grey1a
 x 6
 y 23
@@ -1631,10 +1627,6 @@ x 9
 y 22
 end
 arch statue_fire
-x 9
-y 22
-end
-arch light5
 x 9
 y 22
 end

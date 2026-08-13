@@ -1549,10 +1549,7 @@ end
 arch statue_fire_black1
 x 7
 y 9
-end
-arch light9
-x 7
-y 9
+glow_radius 9
 end
 arch magic_wall
 name drow security system
@@ -1670,10 +1667,7 @@ end
 arch statue_fire_black1
 x 7
 y 16
-end
-arch light9
-x 7
-y 16
+glow_radius 9
 end
 arch magic_wall
 name drow security system

@@ -13,17 +13,21 @@ pins the semantic digest of its effective fields and exact source locations, so
 a new, removed, or changed emitter fails validation until it is deliberately
 reviewed.
 
-Schema version 6 also supports semantic `fixture_groups` for an authored
-fixture family. A group pins its archetype set, default radii and color,
+Schema version 7 supports semantic `fixture_groups` for an authored fixture
+family. A group pins its archetype set, default radii and color,
 per-archetype placement counts, map coverage, intentional non-emitting members,
-intentional same-tile emitters, applicable contextual checks, and a digest of
-every resolved placement. `intentional_same_tile_emitters` maps each emitting
-fixture placement ID that shares a tile with another source to a concise review
-rationale. The exact placement keys and co-located source identities fail
-closed: adding, removing, moving, or replacing either source requires an
-explicit ledger refresh, not merely a copied semantic hash. These checks are
-derived entirely from authored sources: fixture groups do not carry view IDs
-or depend on screenshots, capture manifests, or image files.
+the reviewed count of emitting same-tile compositions, applicable contextual
+checks, and a digest of every resolved placement. A required family may set
+`same_tile_review` to `exact` in the fixture contract; its review must then
+provide `intentional_same_tile_emitters`, mapping
+each emitting fixture placement ID that shares a tile with another source to a
+concise review rationale. The count makes overlap acceptance explicit, while
+the contracted ledger additionally makes its exact placement keys fail closed.
+The semantic digest always pins co-located source identities, effective light
+fields, visible art, and source semantics, so adding, removing, moving, or
+replacing either source requires an explicit review refresh. These
+checks are derived entirely from authored sources: fixture groups do not carry
+view IDs or depend on screenshots, capture manifests, or image files.
 Required families are anchored independently in
 [`maps/light-source-fixture-contract.json`](../maps/light-source-fixture-contract.json).
 The audit inventories the contract's archetypes even if the review row is
@@ -69,7 +73,8 @@ and the pinned Classic decision. Preserve or revise the color and rationale
 intentionally; do not mass-color invisible or map-local lights by name or
 radius. Update the matching ledger row with the semantic hash from the read-only
 inventory. For a fixture that shares its tile with another emitter, also verify
-the exact `same_tile_emitters` identities in the inventory and add or update its
+the exact `same_tile_emitters` identities in the inventory. For a family whose
+fixture contract sets `same_tile_review` to `exact`, add or update its
 `intentional_same_tile_emitters` rationale. Then run
 `python3 tools/world_content_audit.py lights --check` and
 `python3 tools/validate.py`. Genuine replacement-specific divergences must be

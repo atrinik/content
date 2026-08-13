@@ -1473,6 +1473,31 @@ def validate_light_inventory(report: dict) -> list[str]:
                         identifier
                     )
                 )
+        intentional_same_tile = {
+            placement["id"]: placement
+            for placement in group["placements"]
+            if placement["radius"] is not None
+            and placement.get("same_tile_emitters")
+        }
+        reviewed_same_tile = entry.get("intentional_same_tile_emitters", {})
+        if not isinstance(reviewed_same_tile, dict):
+            errors.append(
+                "fixture group {} intentional_same_tile_emitters must be an object".format(
+                    group_id
+                )
+            )
+            reviewed_same_tile = {}
+        if set(reviewed_same_tile) != set(intentional_same_tile):
+            errors.append(
+                "fixture group {} same-tile source dispositions changed".format(
+                    group_id
+                )
+            )
+        for identifier, rationale in sorted(reviewed_same_tile.items()):
+            if not isinstance(rationale, str) or len(rationale.strip()) < 12:
+                errors.append(
+                    "fixture {} needs a concise same-tile rationale".format(identifier)
+                )
         for placement in group["placements"]:
             if placement.get("color") != expected_color:
                 errors.append(
@@ -1493,7 +1518,7 @@ def validate_light_inventory(report: dict) -> list[str]:
                             placement["id"]
                         )
                     )
-            elif same_tile:
+            elif same_tile and placement["id"] not in reviewed_same_tile:
                 errors.append(
                     "emitting fixture {} has an accidental same-tile source".format(
                         placement["id"]

@@ -1,6 +1,20 @@
 {
   "schema_version": 1,
   "fixture_groups": {
+    "magic-wall-rune-fixtures": {
+      "archetypes": [
+        "magic_wall"
+      ],
+      "checks": [
+        "magic-wall-active-state",
+        "magic-wall-corners",
+        "magic-wall-dense-cluster",
+        "magic-wall-disabled-state",
+        "magic-wall-narrow-corridors",
+        "magic-wall-same-tile-sources",
+        "magic-wall-switch-transitions"
+      ]
+    },
     "warm-candle-fixtures": {
       "archetypes": [
         "candle2_on",

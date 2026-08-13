@@ -1,6 +1,25 @@
 {
   "schema_version": 1,
   "fixture_groups": {
+    "street-lantern-fixtures": {
+      "archetypes": [
+        "lantern_black",
+        "lantern_blue",
+        "lantern_red"
+      ],
+      "checks": [
+        "lantern-dense-cluster",
+        "lantern-form-black",
+        "lantern-form-blue",
+        "lantern-form-red",
+        "lantern-map-seam",
+        "lantern-newly-lit",
+        "lantern-radius-5",
+        "lantern-radius-7",
+        "lantern-same-tile-transfer",
+        "lantern-wall-navigation"
+      ]
+    },
     "warm-candle-fixtures": {
       "archetypes": [
         "candle2_on",

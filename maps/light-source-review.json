@@ -663,6 +663,21 @@
       "uncolored_disposition": "neutral",
       "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
       "semantic_sha256": "52070159cc2f75830a37d7fcae4e2da3b60db951876fd7eadcbb096ef149f9b3"
+    },
+    "lantern_black": {
+      "rationale": "The black-painted street lantern's visible yellow aperture owns a reviewed radius-7 ffd080 golden-amber source matching its established world footprint.",
+      "semantic_sha256": "ef8c6ece3fec2dff99c6b2882803545360afc1c136432a1915c577bd111859dd",
+      "uncolored_disposition": "neutral"
+    },
+    "lantern_blue": {
+      "rationale": "The blue-painted street lantern's visible yellow aperture owns a reviewed radius-5 ffd080 golden-amber source matching its established world footprint.",
+      "semantic_sha256": "374de167e1d0b8314930c60cdbe5401162415d4d4808c17a574ddeaddeb45e92",
+      "uncolored_disposition": "neutral"
+    },
+    "lantern_red": {
+      "rationale": "The source-only red-painted street lantern shares the same visible yellow aperture and reviewed radius-5 ffd080 golden-amber family default.",
+      "semantic_sha256": "43470606c292b75fff0895480613eb98e65d76a7c5dd4cd0191c73bc446569b5",
+      "uncolored_disposition": "neutral"
     }
   },
   "artifacts": {
@@ -1079,8 +1094,8 @@
       "semantic_sha256": "51cbe8cb1bd8704d3e5f7a3c5a5e63085b8f19d0478e22b03647483dac28e9bb"
     },
     "lantern_black": {
-      "rationale": "The authored ffd080 tint matches the visible art for lantern_black.",
-      "semantic_sha256": "a61b81f1389a832c6b57e6f2f2fcd4ac1497ee614ffb1869140078c1bbb20182"
+      "rationale": "The authored ffd080 tint matches the visible yellow aperture and warm street-lantern art for lantern_black.",
+      "semantic_sha256": "49b168b7771856c0b0a80023b24e74486df4da5389c11a2c70ede10555b131eb"
     },
     "lantern_magic.131": {
       "rationale": "The authored ffd080 tint matches the visible art for lantern_magic.131.",
@@ -1293,6 +1308,14 @@
     "candlelight2.101": {
       "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight2.101.",
       "semantic_sha256": "7a89e15244245564c5fa883f29a75149a9034716d4542f590e573b589ceee5a9"
+    },
+    "lantern_blue": {
+      "rationale": "The authored ffd080 tint matches the visible yellow aperture and warm street-lantern art for lantern_blue.",
+      "semantic_sha256": "bcc54c911b2016422208383dec61cc05fd7e6a9821cd8a4f938c0c650c7dfb25"
+    },
+    "lantern_red": {
+      "rationale": "The authored ffd080 tint matches the visible yellow aperture and warm street-lantern art for lantern_red.",
+      "semantic_sha256": "3aa890b3e819194190381eba7d1af49a8a56af812d5a70f79c5c0541def21843"
     }
   },
   "toggle_states": {
@@ -1350,7 +1373,7 @@
     },
     "ff4808f53872611d84dc81468f582151c7f9efb34153beb0aed4442ba1a40aaf": {
       "rationale": "Applied runtime review covers the directly registered crystal_light4 artifact clone at active radius 5 with fff0c0 light and its pale crystal animation.",
-      "semantic_sha256": "d3c3c4c813656dfe5ae815aebe15b39db802f059589f10ff4ad63123806b787c"
+      "semantic_sha256": "7f506925fea8735eac82c454cfb83890bf1e692c0655dcbc770bd989bc9ac892"
     }
   },
   "context_checks": {
@@ -1500,6 +1523,46 @@
     "candle-wall-adjacency": {
       "status": "pass",
       "rationale": "Compared candle fixtures directly beside walls in two dense interiors; smooth lighting respects occlusion and preserves fixture silhouettes and entrances."
+    },
+    "lantern-dense-cluster": {
+      "status": "pass",
+      "rationale": "The 23-fixture world_5_43 anchor retains one radius-7 source per black lantern without stacked same-tile helpers."
+    },
+    "lantern-form-black": {
+      "status": "pass",
+      "rationale": "All 455 black fixtures resolve to the reviewed radius-7 golden-amber family result."
+    },
+    "lantern-form-blue": {
+      "status": "pass",
+      "rationale": "All 12 blue fixtures resolve to the reviewed radius-5 golden-amber family result."
+    },
+    "lantern-form-red": {
+      "status": "pass",
+      "rationale": "The source-only red fixture resolves semantically to the same yellow-aperture palette and conservative radius-5 family default; Classic smooth/discrete behavior is verified separately from this ledger."
+    },
+    "lantern-map-seam": {
+      "status": "pass",
+      "rationale": "The inherited fixture radii preserve the previously authored scalar footprints at linked outdoor map boundaries."
+    },
+    "lantern-newly-lit": {
+      "status": "pass",
+      "rationale": "The two Asteria lanterns formerly lacking sources now inherit the family default without changing walls, clipping geometry, obstruction, or placement; visual navigation effects are verified separately."
+    },
+    "lantern-radius-5": {
+      "status": "pass",
+      "rationale": "Every blue placement preserves its former radius-5 scalar footprint, including the reconciled duplicate-helper tile."
+    },
+    "lantern-radius-7": {
+      "status": "pass",
+      "rationale": "All 453 previously lit black placements preserve radius 7 and the two reviewed dark placements join the same family default."
+    },
+    "lantern-same-tile-transfer": {
+      "status": "pass",
+      "rationale": "All 446 neutral helpers are removed after transferring their 433 radius-7 and 13 radius-5 footprints to visible fixtures; no same-tile emitter remains."
+    },
+    "lantern-wall-navigation": {
+      "status": "pass",
+      "rationale": "The review anchors preserve coordinates, collision fields, walls, and routes byte-for-byte; visual wall bleed and navigation effects are verified separately."
     }
   },
   "maps": {
@@ -3099,10 +3162,10 @@
     },
     "maps/shattered_islands/world_10_42": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "dc2f80785c958fc2210d15c6c2e61ea50fc044d6508cdb4f78ec5f5f1c00a544"
+      "semantic_sha256": "c64301bac61665b2af09e7221fee3ae90eed6a84ddbb575eacd9c8772f6af09e"
     },
     "maps/shattered_islands/world_10_42_1": {
       "uncolored_disposition": "neutral",
@@ -3127,12 +3190,12 @@
     },
     "maps/shattered_islands/world_10_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {
         "46": "Map-local wall-torch animation uses explicit warm light matching the visible flame."
       },
-      "semantic_sha256": "7cf863624dee3254a08493619ba39245d474590c93308864c7b509bf68d3a837"
+      "semantic_sha256": "d0a8ab7ddb8ee5f1091138129d7b4e693041cc159c783d32bef2fc6ac90a9465"
     },
     "maps/shattered_islands/world_10_43_-2": {
       "uncolored_disposition": "neutral",
@@ -3143,10 +3206,10 @@
     },
     "maps/shattered_islands/world_10_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a72b0fb34b9b14da319c0a07caac096e771f7d3468899189c3c160574cd25934"
+      "semantic_sha256": "7475cfee2e44fd656ccfe55c52814765bcfcd3d9805a807980187d2f149adcba"
     },
     "maps/shattered_islands/world_10_67": {
       "uncolored_disposition": "neutral",
@@ -4120,10 +4183,10 @@
     },
     "maps/shattered_islands/world_3_47": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "50969fa925170d097af01fe0e861d9466d1c5a5b07773b1300db55c529be8bab"
+      "semantic_sha256": "05af7eecf6cc494992e5fa11eade602955f2959f0503e6de57737b92bdb010c7"
     },
     "maps/shattered_islands/world_3_49_-3": {
       "uncolored_disposition": "neutral",
@@ -4315,10 +4378,10 @@
     },
     "maps/shattered_islands/world_3_83": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3c6fcad9d9dc9cd698b41581b4418e42dae2130edc8283f9b60e2919386874d6"
+      "semantic_sha256": "57b5a9b52e5282580a79dd7dce3ba9bfb931fc2f33fb67dfa6a09cd900cfa713"
     },
     "maps/shattered_islands/world_3_83_-1": {
       "uncolored_disposition": "neutral",
@@ -4371,52 +4434,52 @@
     },
     "maps/shattered_islands/world_4_42": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e91ff6e262ea56641a77c8d732589d1b499b182a7f9833433ef0524d546bdf58"
+      "semantic_sha256": "cc09e4d2e90b8126122c97a1d248110be01adfda1900ff3050d1099abd51a7e6"
     },
     "maps/shattered_islands/world_4_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d542bf0a10a1b3001f161555c4de30ace9b29f983f7a6f525ea72670b5c1d903"
+      "semantic_sha256": "e3fc0a4dde309484e66ced753ac38582ccb5b14e1a1067b16223697992386060"
     },
     "maps/shattered_islands/world_4_44": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ce8930ee9dd79cd77a0d8d9c9df33066f9af7f1501fea7ed9a2c0e8a0b095be2"
+      "semantic_sha256": "68929f3883459f1be7e54199848cea3b5ba76c16b943400c2bbad72030a4a0ff"
     },
     "maps/shattered_islands/world_4_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "79c13845fe82d151758f45b886305a01029d3797d8f8298ee17492c27d8f58f5"
+      "semantic_sha256": "60a76e2f46d8699f0528838c1ec83175c042002139fd5db11b77037128e66f85"
     },
     "maps/shattered_islands/world_4_46": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a473d7797fc1146940d6734d433d9399cf4164181aa1757426e885215c955e8a"
+      "semantic_sha256": "926132613508137d7192bb31750ee0853808e090bfc911d0b32342697340843b"
     },
     "maps/shattered_islands/world_4_47": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy. The crystal ball at (11, 18) is fixed fortune-teller display scenery co-located with its table and uses a small blue focal light.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy. The crystal ball at (11, 18) is fixed fortune-teller display scenery co-located with its table and uses a small blue focal light. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "22c9183f7a4c969f95ca0b4dfb9410c030a15584176bc825f231506b3ebf05b6"
+      "semantic_sha256": "281c12cefafe85dbd73f72f881f5e4bb64e3afd4f95ad8cdc8821134fd357d8a"
     },
     "maps/shattered_islands/world_4_48": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "0f55a3c89f74e75c564551ea15dfb26117e2c1ee40d9dfa37f51d614b3a048ad"
+      "semantic_sha256": "b1ded4a179b3c5a6a507aa340b9cbd343bf29ad2fb0d8287ab9114824cf3f63a"
     },
     "maps/shattered_islands/world_4_48_1": {
       "uncolored_disposition": "neutral",
@@ -4619,10 +4682,10 @@
     },
     "maps/shattered_islands/world_4_83": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d0fb4d99b952084cd082cccb47188b8fe0e0508c0cabdbfbfb6f2bdb6e09c13a"
+      "semantic_sha256": "47b34794e36330c83d114a072f14170225559dfb19bc2510599805bc187cb3ae"
     },
     "maps/shattered_islands/world_4_83_-1": {
       "uncolored_disposition": "neutral",
@@ -4633,10 +4696,10 @@
     },
     "maps/shattered_islands/world_4_84": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source. The duplicate pair of radius-5 helpers at (14,5) is deliberately replaced by one radius-5 visible-fixture source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7cfac95295d022cd6252db021c82c3726f49ad5ac7df7acf03d572965c5f764e"
+      "semantic_sha256": "2fa8bdb12419236c782fb7504f40769d598cf2a6d726f4ef455981ad5d8ab922"
     },
     "maps/shattered_islands/world_4_84_-1": {
       "uncolored_disposition": "neutral",
@@ -4684,17 +4747,17 @@
     },
     "maps/shattered_islands/world_5_42": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f3c08201addd9fa87336a40dbe5484a44fe10ec067a34b1af23dbe9d3fa683e0"
+      "semantic_sha256": "3b1cecd84af3e1c33d5ec306dd5eabcf628b45e0cf8d824a46594e679c7d1169"
     },
     "maps/shattered_islands/world_5_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cd98de2a372f0d7892ee799761c5090270936049a1820f96df4bd60fe2f3d74d"
+      "semantic_sha256": "c3dadf7330d6507334a615065f61527282bda82a9dbd9a94dea4da081361faac"
     },
     "maps/shattered_islands/world_5_43_-1": {
       "uncolored_disposition": "neutral",
@@ -4712,10 +4775,10 @@
     },
     "maps/shattered_islands/world_5_44": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "913b4a3b2058fb9dab0197515a672ec04f063cdf2f2336f68c22e55c81672682"
+      "semantic_sha256": "c52ad5df1563ea9db943b4dca724af7cdc6080a650382246ea45cfa88233415f"
     },
     "maps/shattered_islands/world_5_44_-1": {
       "uncolored_disposition": "neutral",
@@ -4733,10 +4796,10 @@
     },
     "maps/shattered_islands/world_5_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "583365ed46fc9413e6c908918a4cf5e1e5a963f8f4fee9fd01082231bcbea591"
+      "semantic_sha256": "e09fa950e4a3ce3612bd9e86dcda254e43d164fb27ef7645801606e61b994a5a"
     },
     "maps/shattered_islands/world_5_45_1": {
       "uncolored_disposition": "neutral",
@@ -4747,10 +4810,10 @@
     },
     "maps/shattered_islands/world_5_46": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "d7a5e4759a0766d53a752985331b671d2dc84e724f2a3fd2a4584173b35e71af"
+      "semantic_sha256": "28922fb911b04bb19e057b774e21d6b8be672c43c329461e86ff8ac42014c4b9"
     },
     "maps/shattered_islands/world_5_47_-1": {
       "uncolored_disposition": "neutral",
@@ -4761,12 +4824,12 @@
     },
     "maps/shattered_islands/world_5_48": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {
         "floor_wood2": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "0900eae6940c42a333ffcad687e3c7da092fb1e69bdd261958a20d33ccfa2d1b"
+      "semantic_sha256": "96c1d6b9e25c25373093730a5dd3bd20378d0a759a1c0a33933f3604c71840a1"
     },
     "maps/shattered_islands/world_5_48_-1": {
       "uncolored_disposition": "neutral",
@@ -4789,10 +4852,10 @@
     },
     "maps/shattered_islands/world_5_49": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f32bee644848fc5a9d2b34390e547a8e8f871eeeaed7fd58fd921bc0ba4e4eba"
+      "semantic_sha256": "cca588dbd6919837543e3d34741b38ce559c89883dcaedf7c8bbe004bc494946"
     },
     "maps/shattered_islands/world_5_49_-1": {
       "uncolored_disposition": "neutral",
@@ -5028,10 +5091,10 @@
     },
     "maps/shattered_islands/world_6_42": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "01706196d3836b4bc9d228bf0e7ca617efb4df8972b40bde0d325435b5b2b2a9"
+      "semantic_sha256": "ebc90969b6e9f175c422d02f97b8e10f5d8f65267b904b4f56843c66f2e98f18"
     },
     "maps/shattered_islands/world_6_42_-2": {
       "uncolored_disposition": "neutral",
@@ -5042,10 +5105,10 @@
     },
     "maps/shattered_islands/world_6_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "25de0c162333d388f81c8cae47d6285575d3672b55f53ffe171ecc4e5d613bbc"
+      "semantic_sha256": "437a3ce909b1653dac321bd0891b2beceb0ce7f1552b7031d47f6411e626651c"
     },
     "maps/shattered_islands/world_6_43_-1": {
       "uncolored_disposition": "neutral",
@@ -5070,10 +5133,10 @@
     },
     "maps/shattered_islands/world_6_44": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "13d8d99dbfa926ea31ae0d9207dc383672403ebc868f260805db0849f4eae9ea"
+      "semantic_sha256": "b2121604f4ba52f8d3226f5f81ba9563dbb5c51a77531d5c23709d5e52dbc6fa"
     },
     "maps/shattered_islands/world_6_44_-1": {
       "uncolored_disposition": "neutral",
@@ -5098,10 +5161,10 @@
     },
     "maps/shattered_islands/world_6_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e30d1e34593e1a602a1058a348e1e9e690a7dbd5dcfb460fc94e0a95971e4719"
+      "semantic_sha256": "a0dc9e169d8e092a11d25d76b8957e8adab89a79715dba3b4e11b678eeb4556b"
     },
     "maps/shattered_islands/world_6_45_-1": {
       "uncolored_disposition": "neutral",
@@ -5126,10 +5189,10 @@
     },
     "maps/shattered_islands/world_6_46": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "dad8cd96f6ef6527c1c4e5e72186ef248607b6ec45283d9f59b076d5553cb6d7"
+      "semantic_sha256": "ce23fc8733829bf245dc940f1e9bbc3a76ac0b9898f25a08758b61c3def6309b"
     },
     "maps/shattered_islands/world_6_46_-1": {
       "uncolored_disposition": "neutral",
@@ -5147,10 +5210,10 @@
     },
     "maps/shattered_islands/world_6_47": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "8e8fb6d7ae047c114563623b0df9780fc15d4de0d77126fe6756e9553095ff42"
+      "semantic_sha256": "70d85a993021563ba6723554a362ca656e2f2319c34d867891de93e3c7f6423b"
     },
     "maps/shattered_islands/world_6_47_-1": {
       "uncolored_disposition": "neutral",
@@ -5168,12 +5231,12 @@
     },
     "maps/shattered_islands/world_6_48": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria for issue #91; the radius-3 orange-red cauldron and separately visible radius-5 amber wall sconce are deliberately retained as a mixed fixture pair for smooth and discrete comparison, while neutral fill preserves navigation. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered Asteria for issue #91; the radius-3 orange-red cauldron and separately visible radius-5 amber wall sconce are deliberately retained as a mixed fixture pair for smooth and discrete comparison, while neutral fill preserves navigation. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {
         "floor_wood2_l1": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "86609c7058fc01623baf6145c524e5f157b611ede1616e121af4eabb2cc66ed8"
+      "semantic_sha256": "4dd61c30e7eac2f9efd30d20b0e12b6ff26f6a039a8327f2ec55f9e65a6d5e3c"
     },
     "maps/shattered_islands/world_6_48_-1": {
       "uncolored_disposition": "neutral",
@@ -5195,10 +5258,10 @@
     },
     "maps/shattered_islands/world_6_49": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "4a44595c0019e1ad6c8165cabd800b39eaea78c44aa7dc903be7650e70c7688c"
+      "semantic_sha256": "32fc57e878e78411071090d2c3c831d37caa388077dbb7d1fecba43aaacc348a"
     },
     "maps/shattered_islands/world_6_49_-1": {
       "uncolored_disposition": "neutral",
@@ -5330,17 +5393,17 @@
     },
     "maps/shattered_islands/world_7_41": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "56f428671b75b798b429fbb1b5fb7f96fedfb99ba9be381862669982dba09971"
+      "semantic_sha256": "625fa9043b355d4d04754622053e99c0fd6e2996a938d8d1aa2362bb02d767a5"
     },
     "maps/shattered_islands/world_7_42": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "35b1c773b068d2e3842935fa7eededa0466356b9ad0a018613a35dda6879c0ad"
+      "semantic_sha256": "8875fd94c0fd30bd7e257c088fce819ff5f64add4cd4c37823239c37471860e8"
     },
     "maps/shattered_islands/world_7_42_-2": {
       "uncolored_disposition": "neutral",
@@ -5351,10 +5414,10 @@
     },
     "maps/shattered_islands/world_7_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "49de437c9fa1f756854d2821db95d1e41ab64af824ae273df8a155034b4a8309"
+      "semantic_sha256": "acb19469b9dd9bf9525760fb2a9eb1bac4ca7986936ad2e7aff1e26e308cabeb"
     },
     "maps/shattered_islands/world_7_43_-1": {
       "uncolored_disposition": "neutral",
@@ -5379,12 +5442,12 @@
     },
     "maps/shattered_islands/world_7_44": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {
-        "2044": "Map-local fire-trail animation uses its explicit warm fire illumination."
+        "2008": "Map-local fire-trail animation uses its explicit warm fire illumination."
       },
-      "semantic_sha256": "871bd85de79aa4bcff7c984c93cd49b9af2678727ee70aa32240f215e6dd9d5c"
+      "semantic_sha256": "c3b3183e06fb7c340ad4454c3d302f2ca7610cff357d82fc7e82ac30da4fc783"
     },
     "maps/shattered_islands/world_7_44_-1": {
       "uncolored_disposition": "neutral",
@@ -5409,10 +5472,10 @@
     },
     "maps/shattered_islands/world_7_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "09bb7902d1921856c45bb3556e497311453a9af10be965c483475260b7197d7c"
+      "semantic_sha256": "ff44123b56c10508cfa90a0a5d98e1c584d5a2e6beac30619687eee19ab8e72d"
     },
     "maps/shattered_islands/world_7_45_-1": {
       "uncolored_disposition": "neutral",
@@ -5430,10 +5493,10 @@
     },
     "maps/shattered_islands/world_7_46": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3b5c980bf1321e695d8f16e82a84437425e4963ca8ee589d8282298bd219272f"
+      "semantic_sha256": "bd9f26d7ceec50a6f93d8b72a953da7240d298030681c77a00e834104cb86e58"
     },
     "maps/shattered_islands/world_7_46_-1": {
       "uncolored_disposition": "neutral",
@@ -5458,10 +5521,10 @@
     },
     "maps/shattered_islands/world_7_48": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "96bdee40e7bdce8b82139825816b72fb4fa2004712d702a4becf846e2993ef5b"
+      "semantic_sha256": "258868a9e813aff018dcc17a159d6ffb0897e4b0317650d09a88ea1045b87033"
     },
     "maps/shattered_islands/world_7_48_-1": {
       "uncolored_disposition": "neutral",
@@ -5472,10 +5535,10 @@
     },
     "maps/shattered_islands/world_7_49": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 1) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "3eb98c4bd2d4db8048c68ddd37ea23419e7c3088885e73de5549d0aef7d924e3"
+      "semantic_sha256": "e6a7f7c326680e8e415f2fc1e9365c7c795738e4ed1d1a249301a80695dacc7a"
     },
     "maps/shattered_islands/world_7_49_-1": {
       "uncolored_disposition": "neutral",
@@ -5644,31 +5707,31 @@
     },
     "maps/shattered_islands/world_8_40": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ead081417337c8b43206abc91a1dcf29812dba260169a23a8e9a5016a968f379"
+      "semantic_sha256": "99b9a729d78d31ea88b22ee63a890585f294cd6a1a7f924794eb8a570494bd2f"
     },
     "maps/shattered_islands/world_8_41": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "02d6da4e459ed1211c117874cedc6a63785a47a777da84faf35ef3897cbd1757"
+      "semantic_sha256": "619a6b7875b2a3cf51315174388473133d77e4b8d3978a1e3f207f8208db881d"
     },
     "maps/shattered_islands/world_8_42": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "ea38e25ec1477cb42cee44727b9fe47e5fe63f012c6b17f33566ef6aa2912bb8"
+      "semantic_sha256": "4273d29d3cae81550b4d8396de65f1c70e86ce8a8a5458d5387c43897b3dc8eb"
     },
     "maps/shattered_islands/world_8_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "87ea5ca7b77a0204e9c167f96e4a8506fffdd74bbf14ee49b006184b98961af1"
+      "semantic_sha256": "6624ca6add08ea8658b2c04779d284c162d66d19ba48afed09cfbaae4cc48107"
     },
     "maps/shattered_islands/world_8_43_-2": {
       "uncolored_disposition": "neutral",
@@ -5679,7 +5742,7 @@
     },
     "maps/shattered_islands/world_8_44": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {
         "231": "Map-local lightning animation uses its explicit electric-blue illumination.",
@@ -5689,7 +5752,7 @@
         "1688": "Map-local lightning animation uses its explicit electric-blue illumination.",
         "1939": "Map-local still-water animation uses its explicit cyan illumination."
       },
-      "semantic_sha256": "0b0597fa3e489049e9bed931dbe02464fa2487352834cce3d802c7dd57cae927"
+      "semantic_sha256": "084346d469f6767400f5dad99a90e930b4993bf3cbf4f021875a3f10c314e716"
     },
     "maps/shattered_islands/world_8_44_-2": {
       "uncolored_disposition": "neutral",
@@ -5700,10 +5763,10 @@
     },
     "maps/shattered_islands/world_8_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "cecd388b3d5dd308342bb5c8932e4aa5bbd0cf497882466bcaec8b5673df8280"
+      "semantic_sha256": "ef4a921b3e852cfe86ec5f01c05687db75caa4dba165a3fff5cb32b1e5001c6d"
     },
     "maps/shattered_islands/world_8_45_-1": {
       "uncolored_disposition": "neutral",
@@ -5721,10 +5784,10 @@
     },
     "maps/shattered_islands/world_8_46": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "00d03b17d3456c9759d014a1d374f4374181b87c281e9ebb2a942936a4c39098"
+      "semantic_sha256": "a5063a3e91f2dfb0ae4a4273a00947bcfe63bc5fa116e1fdf9b2adfece96d005"
     },
     "maps/shattered_islands/world_8_46_-1": {
       "uncolored_disposition": "neutral",
@@ -5735,17 +5798,17 @@
     },
     "maps/shattered_islands/world_8_47": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source. The formerly unlit black lantern at (6,22) now uses the family-consistent radius-7 source as an outdoor navigation cue while every obstruction, wall, coordinate, and non-light field remains unchanged.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a97c2359df6528e132f7282690288a547dc0f7a30317f8a53e1984da3e6f7afe"
+      "semantic_sha256": "d911c77b5f957ce80df6232114c68f7c87d957bad794aee266a16e6d582dede9"
     },
     "maps/shattered_islands/world_8_48": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source. The formerly unlit black lantern at (6,3) now uses the family-consistent radius-7 source as an outdoor navigation cue while every obstruction, wall, coordinate, and non-light field remains unchanged.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "38ef54b1f5b4d491367e45b580238dc446ba9ca5d33700ef3fbcfc9a7544bace"
+      "semantic_sha256": "8f60d1063cdc70e96d9f0d4a643f7c177f3ee9b3174f8f50994b22cb18078da3"
     },
     "maps/shattered_islands/world_8_58": {
       "uncolored_disposition": "neutral",
@@ -5852,10 +5915,10 @@
     },
     "maps/shattered_islands/world_9_41": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria Docks in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "79649505384519263138381ebe419e6f46d48705f76301aa8b660c48410afc04"
+      "semantic_sha256": "16f7a3ed8ec397446deddef546f118222493e899815eff603afdbe0edc344be1"
     },
     "maps/shattered_islands/world_9_42": {
       "uncolored_disposition": "neutral",
@@ -5880,10 +5943,10 @@
     },
     "maps/shattered_islands/world_9_43": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 1 wall-fireplace placement (direction 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "17fbc8bb0ca6198470d66b32295897ac590e272ad397c8b2ecb22b9ed1538430"
+      "semantic_sha256": "8fc64eb76219f6ae58f59a6fbfc0cef7d1722464749a6e0d688a74909273c503"
     },
     "maps/shattered_islands/world_9_43_-2": {
       "uncolored_disposition": "neutral",
@@ -5894,10 +5957,10 @@
     },
     "maps/shattered_islands/world_9_44": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "7041b78ea4c8ba1c8880d0a707c63a0abfb92bb650fe624a75d51aaaa46a9394"
+      "semantic_sha256": "feb2843a41a36354c681d5c9d6b990e9a427e7bc2a0bba9505b66e7ae584e019"
     },
     "maps/shattered_islands/world_9_44_1": {
       "uncolored_disposition": "neutral",
@@ -5929,19 +5992,19 @@
     },
     "maps/shattered_islands/world_9_45": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {
         "dwarven_statue": "Map-local visible emitter intentionally retains neutral light after rendered contextual review."
       },
       "art_overrides": {},
-      "semantic_sha256": "774aa72326da4e65ab9d71849ffde8945994f318c0e87c936491cd56595dac33"
+      "semantic_sha256": "698cb3b717e593e56b30551c4aad998e9a030b1a4e0934fa04a5bbccf6b9715b"
     },
     "maps/shattered_islands/world_9_46": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
+      "rationale": "Rendered Asteria in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "9f9bb6f1889c8d238be36120db519617aae20beb1284857603f9b88aad6d8184"
+      "semantic_sha256": "72e06ad360cb5489abb5177ba535fbf34ec95dd04528c7e175d2a11478c33d55"
     },
     "maps/shattered_islands/world_9_64_-1": {
       "uncolored_disposition": "neutral",
@@ -6216,7 +6279,40 @@
         "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious:5:9:candlelight1.101:1": "The co-located visible wall fireplace owns the reviewed compact source; this candle is locally dark to prevent mixed-color additive over-lighting."
       },
       "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the four-part composite retains one candle source, and the mixed candle/fireplace tile retains only its visible fireplace source.",
-      "semantic_sha256": "17c454eefa8e4f344816979214f7ae87cbd83a793c3a08ebaa5f33fab53c272c"
+      "semantic_sha256": "43d4e321cf423913023239c7773bfdb3e51c61d7e5065751f0dcecba28adc36f"
+    },
+    "street-lantern-fixtures": {
+      "archetypes": [
+        "lantern_black",
+        "lantern_blue",
+        "lantern_red"
+      ],
+      "checks": [
+        "lantern-dense-cluster",
+        "lantern-form-black",
+        "lantern-form-blue",
+        "lantern-form-red",
+        "lantern-map-seam",
+        "lantern-newly-lit",
+        "lantern-radius-5",
+        "lantern-radius-7",
+        "lantern-same-tile-transfer",
+        "lantern-wall-navigation"
+      ],
+      "default_radii": {
+        "lantern_black": 7,
+        "lantern_blue": 5,
+        "lantern_red": 5
+      },
+      "expected_color": "ffd080",
+      "expected_maps": 51,
+      "expected_placements": {
+        "lantern_black": 455,
+        "lantern_blue": 12
+      },
+      "intentional_non_emitters": {},
+      "rationale": "Visible street lanterns own one golden-amber source each: black uses the established radius 7 and blue/red use radius 5; former helper objects and redundant local radii are absent.",
+      "semantic_sha256": "9cb7e0fdafc1ee8f96feb4c5eb6172b44c921d0a65286ab5d58b49b569614242"
     }
   },
   "source_review": {

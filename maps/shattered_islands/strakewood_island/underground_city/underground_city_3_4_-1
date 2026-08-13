@@ -434,10 +434,6 @@ arch statue_fire_black1
 x 6
 y 6
 end
-arch light5
-x 6
-y 6
-end
 arch floor_black2b
 x 6
 y 7

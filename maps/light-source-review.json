@@ -3403,10 +3403,10 @@
     },
     "maps/shattered_islands/world_13_5": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Morliana in the lyondale_archipelago batch; the permanent blue overlays at (12, 12) opt out of their transient archetype light, the adjacent (12, 11) helper is removed, and the co-located neutral light9 remains the sole intentional Great Blue Crystal focal provider. Reviewed all 3 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
+      "rationale": "Rendered Morliana in the lyondale_archipelago batch; the permanent blue overlays at (12, 12) opt out of their transient archetype light, the five surrounding neutral helpers are removed, and the co-located neutral light9 remains the sole intentional Great Blue Crystal focal provider. Reviewed all 3 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "06f3da52ae79196c246ec8706df6ad3049ceb48d88a6925cd8b9c47242f7eddc"
+      "semantic_sha256": "a72c7d9d2adc639ae91672a235ae7655c5b27134cb85c71242856e7079db172c"
     },
     "maps/shattered_islands/world_13_6": {
       "uncolored_disposition": "neutral",

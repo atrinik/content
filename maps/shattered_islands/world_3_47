@@ -2962,9 +2962,6 @@ end
 arch lantern_black
 x 21
 end
-arch light7
-x 21
-end
 arch grassd_5
 x 21
 y 1
@@ -3136,7 +3133,6 @@ x 22
 y 9
 end
 arch lantern_black
-glow_radius 7
 x 22
 y 9
 end
@@ -3192,7 +3188,6 @@ x 22
 y 15
 end
 arch lantern_black
-glow_radius 7
 x 22
 y 15
 end

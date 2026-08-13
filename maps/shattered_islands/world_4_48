@@ -642,7 +642,6 @@ arch grassd_5
 x 5
 end
 arch lantern_black
-glow_radius 7
 x 5
 end
 arch floor_fs_grey1b
@@ -1226,7 +1225,6 @@ x 9
 y 4
 end
 arch lantern_black
-glow_radius 7
 x 9
 y 4
 end
@@ -3105,10 +3103,6 @@ arch lantern_black
 x 22
 y 17
 end
-arch light7
-x 22
-y 17
-end
 arch floor_fs_grey1b
 x 22
 y 18
@@ -3142,10 +3136,6 @@ x 22
 y 21
 end
 arch lantern_black
-x 22
-y 21
-end
-arch light7
 x 22
 y 21
 end

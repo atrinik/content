@@ -333,10 +333,6 @@ arch lantern_black
 x 2
 y 3
 end
-arch light7
-x 2
-y 3
-end
 arch grassd_1
 z 44
 x 2
@@ -813,9 +809,6 @@ end
 arch lantern_black
 x 5
 end
-arch light7
-x 5
-end
 arch grassd_5
 z 30
 x 5
@@ -856,10 +849,6 @@ x 5
 y 7
 end
 arch lantern_black
-x 5
-y 7
-end
-arch light7
 x 5
 y 7
 end
@@ -1065,10 +1054,6 @@ x 6
 y 13
 end
 arch lantern_black
-x 6
-y 13
-end
-arch light7
 x 6
 y 13
 end
@@ -2356,10 +2341,6 @@ arch lantern_black
 x 14
 y 16
 end
-arch light7
-x 14
-y 16
-end
 arch floor_fs_grey1b
 z 50
 x 14
@@ -2568,10 +2549,6 @@ x 15
 y 22
 end
 arch lantern_black
-x 15
-y 22
-end
-arch light7
 x 15
 y 22
 end
@@ -3562,10 +3539,6 @@ x 22
 y 19
 end
 arch lantern_black
-x 22
-y 19
-end
-arch light7
 x 22
 y 19
 end

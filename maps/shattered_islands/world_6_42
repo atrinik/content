@@ -490,9 +490,6 @@ end
 arch lantern_black
 x 3
 end
-arch light7
-x 3
-end
 arch floor_fs_grey1b
 z 50
 x 3
@@ -625,10 +622,6 @@ arch lantern_black
 x 3
 y 20
 end
-arch light7
-x 3
-y 20
-end
 arch floor_fs_grey1b
 z 50
 x 3
@@ -681,10 +674,6 @@ x 4
 y 4
 end
 arch lantern_black
-x 4
-y 4
-end
-arch light7
 x 4
 y 4
 end
@@ -1408,10 +1397,6 @@ arch lantern_black
 x 8
 y 20
 end
-arch light7
-x 8
-y 20
-end
 arch floor_fs_grey1b
 z 50
 x 8
@@ -1440,9 +1425,6 @@ z 50
 x 9
 end
 arch lantern_black
-x 9
-end
-arch light7
 x 9
 end
 arch floor_fs_grey1b
@@ -1474,10 +1456,6 @@ x 9
 y 4
 end
 arch lantern_black
-x 9
-y 4
-end
-arch light7
 x 9
 y 4
 end
@@ -2164,10 +2142,6 @@ arch lantern_black
 x 13
 y 20
 end
-arch light7
-x 13
-y 20
-end
 arch floor_fs_grey1b
 z 50
 x 13
@@ -2196,9 +2170,6 @@ z 50
 x 14
 end
 arch lantern_black
-x 14
-end
-arch light7
 x 14
 end
 arch floor_fs_grey1b
@@ -2230,10 +2201,6 @@ x 14
 y 4
 end
 arch lantern_black
-x 14
-y 4
-end
-arch light7
 x 14
 y 4
 end
@@ -2904,10 +2871,6 @@ arch lantern_black
 x 18
 y 20
 end
-arch light7
-x 18
-y 20
-end
 arch floor_fs_grey1b
 z 50
 x 18
@@ -2936,9 +2899,6 @@ z 50
 x 19
 end
 arch lantern_black
-x 19
-end
-arch light7
 x 19
 end
 arch floor_fs_grey1b
@@ -2970,10 +2930,6 @@ x 19
 y 4
 end
 arch lantern_black
-x 19
-y 4
-end
-arch light7
 x 19
 y 4
 end
@@ -3625,10 +3581,6 @@ x 22
 y 20
 end
 arch lantern_black
-x 22
-y 20
-end
-arch light7
 x 22
 y 20
 end

@@ -90,10 +90,7 @@ class M1FoundationTests(unittest.TestCase):
             contract,
         )
         release = json.loads((ROOT / ".releaserc.json").read_text(encoding="utf-8"))
-        self.assertIn(
-            {"name": "1.x", "range": "1.x", "channel": "1.x"},
-            release["branches"],
-        )
+        self.assertEqual(["main"], release["branches"])
 
     def test_main_establishes_the_replacement_major_boundary(self) -> None:
         self.assertEqual(

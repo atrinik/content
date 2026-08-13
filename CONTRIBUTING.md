@@ -1,12 +1,11 @@
 # Contributing
 
-`main` is the sole forward authoring line. `1.x` is frozen rollback and
-migration evidence while consumers cut over. Reconciliation changes require
-separate worktrees, validation, commits, and linked pull requests; the canonical
-`main` PR owns closing only after downstream integration and branch-specific
-release machinery have retired. Never merge histories wholesale or share
-generated output between worktrees. Branch ownership, reconciliation linkage,
-conflict handling, and release safety rules are in
+`main` is the sole authored and released content source. The `1.x` line is
+immutable rollback and migration evidence at its final Semantic Release
+coordinate; it is not a supported delivery target. Historical tags, releases, assets,
+checksums, licenses, attribution, and parity records remain preserved. Do not
+recreate a maintenance line or change its governance without a new explicit
+organization-owner decision. Release ownership and recovery boundaries are in
 [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md).
 
 Open changes through a pull request whose title uses Conventional Commits

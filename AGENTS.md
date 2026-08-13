@@ -50,11 +50,11 @@
   artifacts. Use `python3 tools/build_runtime.py --target classic` for the
   schema-2 `classic-ads-v1` target; it remains `replacement_ready: false` and
   does not authorize replacement consumers to execute Classic-only GPL Python.
-- `1.x` is frozen rollback and migration evidence while consumers cut over.
-  Reconciliation changes require separate worktrees, validation, commits, and
-  linked pull requests; the canonical `main` PR owns closing only after downstream
-  integration and branch-specific release machinery have retired. Never merge
-  histories wholesale or share generated output between worktrees.
+- `main` is the sole authored and released source. The `1.x` line is immutable
+  rollback and migration evidence, not a supported delivery target.
+  Preserve its final tags, releases, assets, checksums, licenses, attribution,
+  parity ledger, and reachable history. Recreating maintenance requires a new
+  explicit organization-owner decision.
 - `tools/world_content_audit.py` is a read-only exploratory report. It may reveal
   review targets but never replaces `tools/validate.py` or the catalog, and its
   output is not generated source. Its map/archetype traversal must use the
@@ -69,9 +69,8 @@
   use wrapper builds/topologies for gameplay verification.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release.
-- Historical `1.x` releases remain immutable. Do not remove their release
-  machinery until every consumer has cut over and the separately authorized
-  governance gate is ready.
+- Historical `1.x` releases remain immutable. Live ruleset removal and exact
+  branch deletion belong only to the separately authorized governance gate.
 - Preserve unrelated work and finish with `git diff --check`.
 - Update this and any nested `AGENTS.md` in the same change when major rework
   alters content ownership, layout, identities, collection, or validation.

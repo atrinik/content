@@ -117,6 +117,11 @@ glow_radius 2
 sys_object 1
 type 78
 end
+Object alternate_fill
+glow_radius 3
+sys_object 1
+type 78
+end
 """,
         )
         self.write(
@@ -130,8 +135,8 @@ x 2
 y 3
 end
 arch neutral_fill
-x 4
-y 5
+x 2
+y 3
 end
 """,
         )
@@ -152,7 +157,7 @@ end
 
         report = audit.light_inventory()
         review = {
-            "schema_version": 6,
+            "schema_version": 7,
             "review_method": "Port the pinned Classic semantic review without claiming replacement rendering.",
             "source_review": {
                 "branch": "1.x",
@@ -174,6 +179,10 @@ end
                 }
             },
             "archetypes": {
+                "alternate_fill": {
+                    "uncolored_disposition": "neutral",
+                    "rationale": "The alternate invisible fill intentionally remains neutral.",
+                },
                 "warm_lamp": {
                     "uncolored_disposition": "neutral",
                     "rationale": "The explicit amber follows the visible lamp flame.",
@@ -197,6 +206,7 @@ end
                     "expected_color": "ffc080",
                     "expected_maps": 1,
                     "expected_placements": {"warm_lamp": 1},
+                    "expected_emitting_overlaps": 1,
                     "intentional_non_emitters": {},
                     "checks": ["overlap"],
                     "rationale": "Tracks every required warm fixture placement.",
@@ -246,13 +256,15 @@ end
 
         report = audit.light_inventory()
         self.assertEqual(0, report["summary"]["unreviewed"])
-        self.assertEqual("ffc080", report["archetypes"][1]["color"])
+        warm_row = next(row for row in report["archetypes"] if row["id"] == "warm_lamp")
+        self.assertEqual("ffc080", warm_row["color"])
         self.assertEqual([], audit.validate_light_inventory(report))
 
         fixture_group = report["fixture_groups"][0]
         self.assertEqual("warm-fixtures", fixture_group["id"])
         self.assertEqual(["warm_lamp"], fixture_group["archetypes"])
         self.assertEqual(1, fixture_group["maps"])
+        self.assertEqual(1, fixture_group["emitting_overlaps"])
         self.assertEqual("maps/scene:5", fixture_group["placements"][0]["source_id"])
         self.assertNotIn("views", review["fixture_groups"]["warm-fixtures"])
 
@@ -275,6 +287,33 @@ end
         review_path.write_text(json.dumps(review))
         self.assertTrue(contract_path.is_file())
 
+        changed_overlap = json.loads(review_path.read_text())
+        changed_overlap["fixture_groups"]["warm-fixtures"][
+            "expected_emitting_overlaps"
+        ] = 0
+        review_path.write_text(json.dumps(changed_overlap))
+        self.assertIn(
+            "fixture group warm-fixtures emitting overlap count changed",
+            audit.validate_light_inventory(audit.light_inventory()),
+        )
+        review_path.write_text(json.dumps(review))
+
+        original_fixture_sha = fixture_group["semantic_sha256"]
+        scene_path = self.root / "maps/scene"
+        scene_path.write_text(
+            scene_path.read_text().replace("arch neutral_fill", "arch alternate_fill")
+        )
+        swapped_report = audit.light_inventory()
+        swapped_fixture = swapped_report["fixture_groups"][0]
+        self.assertNotEqual(original_fixture_sha, swapped_fixture["semantic_sha256"])
+        self.assertIn(
+            "fixture group warm-fixtures changed since review",
+            audit.validate_light_inventory(swapped_report),
+        )
+        scene_path.write_text(
+            scene_path.read_text().replace("arch alternate_fill", "arch neutral_fill")
+        )
+
         changed = json.loads(review_path.read_text())
         changed["archetypes"]["warm_lamp"]["semantic_sha256"] = "0" * 64
         review_path.write_text(json.dumps(changed))
@@ -291,7 +330,7 @@ end
 
         errors = audit.validate_light_inventory(audit.light_inventory())
 
-        self.assertIn("light-source review must use schema_version 6", errors)
+        self.assertIn("light-source review must use schema_version 7", errors)
         self.assertIn("light-source review must pin its Classic source review", errors)
         self.assertIn(
             "light-source review must record replacement runtime limits", errors

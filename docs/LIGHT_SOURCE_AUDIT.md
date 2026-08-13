@@ -13,10 +13,13 @@ pins the semantic digest of its effective fields and exact source locations, so
 a new, removed, or changed emitter fails validation until it is deliberately
 reviewed.
 
-Schema version 6 also supports semantic `fixture_groups` for an authored
-fixture family. A group pins its archetype set, default radii and color,
+Schema version 7 supports semantic `fixture_groups` for an authored fixture
+family. A group pins its archetype set, default radii and color,
 per-archetype placement counts, map coverage, intentional non-emitting members,
-applicable contextual checks, and a digest of every resolved placement. These
+the reviewed count of emitting same-tile compositions, applicable contextual
+checks, and a digest of every resolved placement. The count makes overlap
+acceptance explicit while the digest pins the exact placements and co-emitter
+identities, effective light fields, visible art, and source semantics. These
 checks are derived entirely from authored sources: fixture groups do not carry
 view IDs or depend on screenshots, capture manifests, or image files.
 Required families are anchored independently in

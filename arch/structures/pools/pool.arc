@@ -23,6 +23,8 @@ name ember pool
 layer 5
 type 79
 face pool_ember.101
+glow_radius 1
+light_color ff6030
 no_pick 1
 name_pl ember pools
 end
@@ -32,6 +34,8 @@ name fire pool
 layer 5
 type 79
 face pool_fire.101
+glow_radius 1
+light_color ff6030
 no_pick 1
 name_pl fire pools
 end
@@ -80,6 +84,8 @@ name magic pool
 layer 5
 type 79
 face pool_magic.101
+glow_radius 1
+light_color 60d0ff
 no_pick 1
 no_pass 1
 animation pool_magic

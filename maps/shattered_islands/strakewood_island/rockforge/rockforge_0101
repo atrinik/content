@@ -203,10 +203,7 @@ layer 7
 blocksview 0
 x 7
 y 2
-end
-arch light9
-x 7
-y 2
+glow_radius 9
 end
 arch floor_marble1
 x 7
@@ -1710,10 +1707,7 @@ layer 7
 blocksview 0
 x 16
 y 2
-end
-arch light9
-x 16
-y 2
+glow_radius 9
 end
 arch floor_marble1
 x 16

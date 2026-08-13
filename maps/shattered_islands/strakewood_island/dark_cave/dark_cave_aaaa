@@ -153,6 +153,7 @@ x 17
 y 1
 end
 arch light2
+light_color ff6030
 x 17
 y 1
 end
@@ -298,6 +299,7 @@ x 20
 y 7
 end
 arch light2
+light_color ff6030
 x 20
 y 7
 end

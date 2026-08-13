@@ -9,9 +9,12 @@ organization-owner decision. Release ownership and recovery boundaries are in
 [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md).
 
 Open changes through a pull request whose title uses Conventional Commits
-style. Preserve nearby `LICENSE` files and update attribution whenever an asset
-is added, replaced, renamed, or moved. Do not assume a neighboring asset's
-license applies without evidence.
+style. Use a full GitHub issue URL for nonclosing cross-repository references;
+reserve `owner/repository#number` shorthand for explicit closing lines so
+Semantic Release does not report an unrelated issue as closed. Preserve nearby
+`LICENSE` files and update attribution whenever an asset is added, replaced,
+renamed, or moved. Do not assume a neighboring asset's license applies without
+evidence.
 
 Run `python3 tools/validate.py` before submitting a change. Generated collection
 output is ignored and must not be committed.

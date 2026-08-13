@@ -19,13 +19,14 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 2
     steps:
-      - name: Validate title
+      - name: Check out trusted policy
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Validate pull request metadata
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          pattern='^[a-z][a-z0-9-]*(\([a-z0-9][a-z0-9._/-]*\))?(!)?: .+'
-          if [[ ! ${PR_TITLE} =~ ${pattern} ]]; then
-            echo "PR title must use Conventional Commits style:" >&2
-            echo "  type(scope)!: concise description" >&2
-            exit 1
-          fi
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: python3 .github/scripts/check_pr_metadata.py

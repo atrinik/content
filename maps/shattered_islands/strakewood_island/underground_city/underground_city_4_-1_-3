@@ -12,13 +12,11 @@ bg_music thonkdonk.ogg
 region underground_city_c
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 end
 arch fwall_lava1f
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 1
 end
@@ -32,7 +30,6 @@ exp 2
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 y 2
 end
@@ -46,7 +43,6 @@ attack_internal 100
 y 2
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 y 3
 end
@@ -60,7 +56,6 @@ attack_internal 100
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 4
 end
@@ -74,7 +69,6 @@ attack_internal 100
 y 4
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 5
 end
@@ -94,7 +88,6 @@ arch floor_volcano_2
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 8
 end
@@ -108,7 +101,6 @@ attack_internal 100
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 9
 end
@@ -122,7 +114,6 @@ attack_internal 100
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 y 10
 end
@@ -136,7 +127,6 @@ attack_internal 100
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 11
 end
@@ -150,7 +140,6 @@ attack_internal 100
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 12
 end
@@ -164,7 +153,6 @@ exp 2
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 y 13
 end
@@ -178,7 +166,6 @@ exp 2
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 y 14
 end
@@ -213,7 +200,6 @@ arch fwall_rock1
 y 21
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 1
 end
@@ -221,7 +207,6 @@ arch fwall_lava1d
 x 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 1
 y 1
@@ -237,7 +222,6 @@ x 1
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 1
 y 2
@@ -262,7 +246,6 @@ x 1
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 1
 y 4
@@ -279,7 +262,6 @@ x 1
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 1
 y 5
@@ -308,7 +290,6 @@ x 1
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 1
 y 8
@@ -325,7 +306,6 @@ x 1
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 1
 y 9
@@ -350,7 +330,6 @@ x 1
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 1
 y 11
@@ -367,7 +346,6 @@ x 1
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 1
 y 12
@@ -383,7 +361,6 @@ x 1
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 1
 y 13
@@ -404,7 +381,6 @@ x 1
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 1
 y 14
@@ -454,7 +430,6 @@ x 1
 y 21
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 2
 end
@@ -462,7 +437,6 @@ arch fwall_lava1d
 x 2
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 1
@@ -478,7 +452,6 @@ x 2
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 2
@@ -495,7 +468,6 @@ x 2
 y 2
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 3
@@ -512,7 +484,6 @@ x 2
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 4
@@ -534,7 +505,6 @@ x 2
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 5
@@ -563,7 +533,6 @@ x 2
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 8
@@ -580,7 +549,6 @@ x 2
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 2
 y 9
@@ -597,7 +565,6 @@ x 2
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 2
 y 10
@@ -614,7 +581,6 @@ x 2
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 11
@@ -631,7 +597,6 @@ x 2
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 12
@@ -647,7 +612,6 @@ x 2
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 2
 y 13
@@ -663,7 +627,6 @@ x 2
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 2
 y 14
@@ -725,7 +688,6 @@ x 2
 y 22
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 3
 end
@@ -733,7 +695,6 @@ arch fwall_lava1d
 x 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 3
 y 1
@@ -743,7 +704,6 @@ x 3
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 3
 y 2
@@ -787,7 +747,6 @@ end
 end
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 3
 y 3
@@ -803,7 +762,6 @@ x 3
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 3
 y 4
@@ -836,7 +794,6 @@ x 3
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 3
 y 8
@@ -853,7 +810,6 @@ x 3
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 3
 y 9
@@ -869,7 +825,6 @@ x 3
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 3
 y 10
@@ -913,7 +868,6 @@ end
 end
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 3
 y 11
@@ -929,7 +883,6 @@ x 3
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 3
 y 12
@@ -945,7 +898,6 @@ x 3
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 3
 y 13
@@ -955,7 +907,6 @@ x 3
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 3
 y 14
@@ -1005,7 +956,6 @@ x 3
 y 22
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 4
 y 1
@@ -1015,7 +965,6 @@ x 4
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 2
@@ -1031,7 +980,6 @@ x 4
 y 2
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 3
@@ -1051,7 +999,6 @@ x 4
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 4
@@ -1076,7 +1023,6 @@ x 4
 y 6
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 4
 y 7
@@ -1093,7 +1039,6 @@ x 4
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 8
@@ -1110,7 +1055,6 @@ x 4
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 9
@@ -1131,7 +1075,6 @@ x 4
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 10
@@ -1147,7 +1090,6 @@ x 4
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 4
 y 11
@@ -1168,7 +1110,6 @@ x 4
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 4
 y 12
@@ -1184,7 +1125,6 @@ x 4
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 4
 y 13
@@ -1222,7 +1162,6 @@ x 4
 y 22
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 1
@@ -1232,7 +1171,6 @@ x 5
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 2
@@ -1248,7 +1186,6 @@ x 5
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 3
@@ -1264,7 +1201,6 @@ x 5
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 5
 y 4
@@ -1289,7 +1225,6 @@ x 5
 y 6
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 7
@@ -1306,7 +1241,6 @@ x 5
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 5
 y 8
@@ -1322,7 +1256,6 @@ x 5
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 9
@@ -1338,7 +1271,6 @@ x 5
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 10
@@ -1354,7 +1286,6 @@ x 5
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 11
@@ -1370,7 +1301,6 @@ x 5
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 5
 y 12
@@ -1386,7 +1316,6 @@ x 5
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 5
 y 13
@@ -1424,7 +1353,6 @@ x 5
 y 22
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 end
@@ -1432,7 +1360,6 @@ arch fwall_lava1f
 x 6
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 6
 y 1
@@ -1442,7 +1369,6 @@ x 6
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 y 2
@@ -1458,7 +1384,6 @@ x 6
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 y 3
@@ -1474,7 +1399,6 @@ x 6
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 6
 y 4
@@ -1503,7 +1427,6 @@ x 6
 y 6
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 6
 y 7
@@ -1520,7 +1443,6 @@ x 6
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 y 8
@@ -1537,7 +1459,6 @@ x 6
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 6
 y 9
@@ -1554,7 +1475,6 @@ x 6
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 y 10
@@ -1571,7 +1491,6 @@ x 6
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 y 11
@@ -1588,7 +1507,6 @@ x 6
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 6
 y 12
@@ -1604,7 +1522,6 @@ x 6
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 6
 y 13
@@ -1662,7 +1579,6 @@ x 6
 y 23
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 7
 end
@@ -1670,7 +1586,6 @@ arch fwall_lava1e
 x 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 7
 y 1
@@ -1686,7 +1601,6 @@ x 7
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 7
 y 2
@@ -1702,7 +1616,6 @@ x 7
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 7
 y 3
@@ -1718,7 +1631,6 @@ x 7
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 7
 y 4
@@ -1755,7 +1667,6 @@ x 7
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 7
 y 8
@@ -1772,7 +1683,6 @@ x 7
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 7
 y 9
@@ -1797,7 +1707,6 @@ x 7
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 7
 y 11
@@ -1814,7 +1723,6 @@ x 7
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 7
 y 12
@@ -1830,7 +1738,6 @@ x 7
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 7
 y 13
@@ -1840,7 +1747,6 @@ x 7
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 7
 y 14
@@ -1886,7 +1792,6 @@ x 7
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 end
@@ -1894,7 +1799,6 @@ arch fwall_lava1d
 x 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 8
 y 1
@@ -1910,7 +1814,6 @@ x 8
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 2
@@ -1931,7 +1834,6 @@ x 8
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 8
 y 3
@@ -1975,7 +1877,6 @@ end
 end
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 4
@@ -1992,7 +1893,6 @@ x 8
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 5
@@ -2017,7 +1917,6 @@ x 8
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 8
 y 8
@@ -2034,7 +1933,6 @@ x 8
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 8
 y 9
@@ -2051,7 +1949,6 @@ x 8
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 10
@@ -2068,7 +1965,6 @@ x 8
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 11
@@ -2113,7 +2009,6 @@ end
 end
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 12
@@ -2129,7 +2024,6 @@ x 8
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 13
@@ -2145,7 +2039,6 @@ x 8
 y 13
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 8
 y 14
@@ -2187,7 +2080,6 @@ x 8
 y 23
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 9
 end
@@ -2195,7 +2087,6 @@ arch fwall_lava1f
 x 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 9
 y 1
@@ -2211,7 +2102,6 @@ x 9
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 2
@@ -2227,7 +2117,6 @@ x 9
 y 2
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 3
@@ -2243,7 +2132,6 @@ x 9
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 4
@@ -2259,7 +2147,6 @@ x 9
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 5
@@ -2284,7 +2171,6 @@ x 9
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 9
 y 8
@@ -2301,7 +2187,6 @@ x 9
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 9
 y 9
@@ -2317,7 +2202,6 @@ x 9
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 9
 y 10
@@ -2333,7 +2217,6 @@ x 9
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 11
@@ -2349,7 +2232,6 @@ x 9
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 12
@@ -2365,7 +2247,6 @@ x 9
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 13
@@ -2381,7 +2262,6 @@ x 9
 y 13
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 14
@@ -2391,7 +2271,6 @@ x 9
 y 14
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 9
 y 15
@@ -2433,7 +2312,6 @@ x 9
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 10
 end
@@ -2441,7 +2319,6 @@ arch fwall_lava1e
 x 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 1
@@ -2451,7 +2328,6 @@ x 10
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 10
 y 2
@@ -2468,7 +2344,6 @@ x 10
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 3
@@ -2485,7 +2360,6 @@ x 10
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 4
@@ -2502,7 +2376,6 @@ x 10
 y 4
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 5
@@ -2527,7 +2400,6 @@ x 10
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 10
 y 8
@@ -2544,7 +2416,6 @@ x 10
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 9
@@ -2560,7 +2431,6 @@ x 10
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 10
@@ -2581,7 +2451,6 @@ x 10
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 11
@@ -2597,7 +2466,6 @@ x 10
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 10
 y 12
@@ -2613,7 +2481,6 @@ x 10
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 10
 y 13
@@ -2629,7 +2496,6 @@ x 10
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 14
@@ -2645,7 +2511,6 @@ x 10
 y 14
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 10
 y 15
@@ -2655,7 +2520,6 @@ x 10
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 10
 y 16
@@ -2713,7 +2577,6 @@ x 10
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 1
@@ -2723,7 +2586,6 @@ x 11
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 2
@@ -2748,7 +2610,6 @@ x 11
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 4
@@ -2765,7 +2626,6 @@ x 11
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 5
@@ -2794,7 +2654,6 @@ x 11
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 8
@@ -2811,7 +2670,6 @@ x 11
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 9
@@ -2828,7 +2686,6 @@ x 11
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 10
@@ -2844,7 +2701,6 @@ x 11
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 11
@@ -2860,7 +2716,6 @@ x 11
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 12
@@ -2877,7 +2732,6 @@ x 11
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 13
@@ -2894,7 +2748,6 @@ x 11
 y 13
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 14
@@ -2911,7 +2764,6 @@ x 11
 y 14
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 15
@@ -2927,7 +2779,6 @@ x 11
 y 15
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 11
 y 16
@@ -2937,7 +2788,6 @@ x 11
 y 16
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 11
 y 17
@@ -2979,7 +2829,6 @@ x 11
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 12
 y 1
@@ -2989,7 +2838,6 @@ x 12
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 2
@@ -3006,7 +2854,6 @@ x 12
 y 2
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 12
 y 3
@@ -3023,7 +2870,6 @@ x 12
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 12
 y 4
@@ -3040,7 +2886,6 @@ x 12
 y 4
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 5
@@ -3077,7 +2922,6 @@ x 12
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 12
 y 9
@@ -3094,7 +2938,6 @@ x 12
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 10
@@ -3110,7 +2953,6 @@ x 12
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 12
 y 11
@@ -3154,7 +2996,6 @@ end
 end
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 12
@@ -3179,7 +3020,6 @@ x 12
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 14
@@ -3196,7 +3036,6 @@ x 12
 y 14
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 15
@@ -3212,7 +3051,6 @@ x 12
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 16
@@ -3228,7 +3066,6 @@ x 12
 y 16
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 17
@@ -3238,7 +3075,6 @@ x 12
 y 17
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 18
@@ -3248,7 +3084,6 @@ x 12
 y 18
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 12
 y 19
@@ -3290,7 +3125,6 @@ x 12
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 1
@@ -3300,7 +3134,6 @@ x 13
 y 1
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 2
@@ -3316,7 +3149,6 @@ x 13
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 3
@@ -3332,7 +3164,6 @@ x 13
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 4
@@ -3348,7 +3179,6 @@ x 13
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 5
@@ -3365,7 +3195,6 @@ x 13
 y 5
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 6
@@ -3390,7 +3219,6 @@ x 13
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 9
@@ -3407,7 +3235,6 @@ x 13
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 10
@@ -3423,7 +3250,6 @@ x 13
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 11
@@ -3439,7 +3265,6 @@ x 13
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 12
@@ -3456,7 +3281,6 @@ x 13
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 13
@@ -3473,7 +3297,6 @@ x 13
 y 13
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 14
@@ -3490,7 +3313,6 @@ x 13
 y 14
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 15
@@ -3511,7 +3333,6 @@ x 13
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 16
@@ -3527,7 +3348,6 @@ x 13
 y 16
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 13
 y 17
@@ -3543,7 +3363,6 @@ x 13
 y 17
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 18
@@ -3559,7 +3378,6 @@ x 13
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 13
 y 19
@@ -3593,7 +3411,6 @@ x 13
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 1
@@ -3603,7 +3420,6 @@ x 14
 y 1
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 2
@@ -3613,7 +3429,6 @@ x 14
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 3
@@ -3629,7 +3444,6 @@ x 14
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 4
@@ -3673,7 +3487,6 @@ end
 end
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 5
@@ -3689,7 +3502,6 @@ x 14
 y 5
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 6
@@ -3714,7 +3526,6 @@ x 14
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 9
@@ -3731,7 +3542,6 @@ x 14
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 10
@@ -3747,7 +3557,6 @@ x 14
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 11
@@ -3763,7 +3572,6 @@ x 14
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 12
@@ -3779,7 +3587,6 @@ x 14
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 13
@@ -3795,7 +3602,6 @@ x 14
 y 13
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 14
@@ -3811,7 +3617,6 @@ x 14
 y 14
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 15
@@ -3827,7 +3632,6 @@ x 14
 y 15
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 16
@@ -3844,7 +3648,6 @@ x 14
 y 16
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 14
 y 17
@@ -3861,7 +3664,6 @@ x 14
 y 17
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 18
@@ -3878,7 +3680,6 @@ x 14
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 14
 y 19
@@ -3916,7 +3717,6 @@ x 14
 y 23
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 2
@@ -3926,7 +3726,6 @@ x 15
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 3
@@ -3942,7 +3741,6 @@ x 15
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 15
 y 4
@@ -3963,7 +3761,6 @@ x 15
 y 4
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 5
@@ -3979,7 +3776,6 @@ x 15
 y 5
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 6
@@ -4004,7 +3800,6 @@ x 15
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 15
 y 9
@@ -4021,7 +3816,6 @@ x 15
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 10
@@ -4038,7 +3832,6 @@ x 15
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 15
 y 11
@@ -4054,7 +3847,6 @@ x 15
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 15
 y 12
@@ -4070,7 +3862,6 @@ x 15
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 15
 y 13
@@ -4091,7 +3882,6 @@ x 15
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 14
@@ -4107,7 +3897,6 @@ x 15
 y 14
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 15
 y 15
@@ -4124,7 +3913,6 @@ x 15
 y 15
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 15
 y 16
@@ -4177,7 +3965,6 @@ x 15
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 16
 y 2
@@ -4187,7 +3974,6 @@ x 16
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 16
 y 3
@@ -4203,7 +3989,6 @@ x 16
 y 3
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 16
 y 4
@@ -4220,7 +4005,6 @@ x 16
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 16
 y 5
@@ -4237,7 +4021,6 @@ x 16
 y 5
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 16
 y 6
@@ -4279,7 +4062,6 @@ x 16
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 16
 y 10
@@ -4296,7 +4078,6 @@ x 16
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 16
 y 11
@@ -4313,7 +4094,6 @@ x 16
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 16
 y 12
@@ -4329,7 +4109,6 @@ x 16
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 16
 y 13
@@ -4373,7 +4152,6 @@ end
 end
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 16
 y 14
@@ -4390,7 +4168,6 @@ x 16
 y 14
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 16
 y 15
@@ -4473,7 +4250,6 @@ x 16
 y 23
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 2
@@ -4483,7 +4259,6 @@ x 17
 y 2
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 17
 y 3
@@ -4493,7 +4268,6 @@ x 17
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 4
@@ -4518,7 +4292,6 @@ x 17
 y 5
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 6
@@ -4540,7 +4313,6 @@ x 17
 y 6
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 7
@@ -4573,7 +4345,6 @@ x 17
 y 10
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 11
@@ -4590,7 +4361,6 @@ x 17
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 12
@@ -4607,7 +4377,6 @@ x 17
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 13
@@ -4624,7 +4393,6 @@ x 17
 y 13
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 14
@@ -4657,7 +4425,6 @@ x 17
 y 17
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 18
@@ -4674,7 +4441,6 @@ x 17
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 17
 y 19
@@ -4704,7 +4470,6 @@ x 17
 y 23
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 18
 y 3
@@ -4714,7 +4479,6 @@ x 18
 y 3
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 18
 y 4
@@ -4728,7 +4492,6 @@ x 18
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 18
 y 5
@@ -4745,7 +4508,6 @@ x 18
 y 5
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 18
 y 6
@@ -4762,7 +4524,6 @@ x 18
 y 6
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 18
 y 7
@@ -4779,7 +4540,6 @@ x 18
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 18
 y 8
@@ -4808,7 +4568,6 @@ x 18
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 18
 y 12
@@ -4825,7 +4584,6 @@ x 18
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 18
 y 13
@@ -4854,7 +4612,6 @@ x 18
 y 16
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 18
 y 17
@@ -4871,7 +4628,6 @@ x 18
 y 17
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 18
 y 18
@@ -4888,7 +4644,6 @@ x 18
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 18
 y 19
@@ -4930,7 +4685,6 @@ x 18
 y 23
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 19
 y 4
@@ -4940,7 +4694,6 @@ x 19
 y 4
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 19
 y 5
@@ -4950,7 +4703,6 @@ x 19
 y 5
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 19
 y 6
@@ -4966,7 +4718,6 @@ x 19
 y 6
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 19
 y 7
@@ -4982,7 +4733,6 @@ x 19
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 19
 y 8
@@ -4999,7 +4749,6 @@ x 19
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 19
 y 9
@@ -5048,7 +4797,6 @@ x 19
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 19
 y 16
@@ -5070,7 +4818,6 @@ x 19
 y 16
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 19
 y 17
@@ -5092,7 +4839,6 @@ x 19
 y 17
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 19
 y 18
@@ -5109,7 +4855,6 @@ x 19
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 19
 y 19
@@ -5119,7 +4864,6 @@ x 19
 y 19
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 20
 y 5
@@ -5129,7 +4873,6 @@ x 20
 y 5
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 20
 y 6
@@ -5139,7 +4882,6 @@ x 20
 y 6
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 20
 y 7
@@ -5183,7 +4925,6 @@ end
 end
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 20
 y 8
@@ -5204,7 +4945,6 @@ x 20
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 20
 y 9
@@ -5221,7 +4961,6 @@ x 20
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 20
 y 10
@@ -5258,7 +4997,6 @@ x 20
 y 14
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 20
 y 15
@@ -5275,7 +5013,6 @@ x 20
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 20
 y 16
@@ -5305,7 +5042,6 @@ x 20
 y 17
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 20
 y 18
@@ -5322,7 +5058,6 @@ x 20
 y 18
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 20
 y 19
@@ -5332,7 +5067,6 @@ x 20
 y 19
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 6
@@ -5342,7 +5076,6 @@ x 21
 y 6
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 7
@@ -5352,7 +5085,6 @@ x 21
 y 7
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 8
@@ -5368,7 +5100,6 @@ x 21
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 9
@@ -5384,7 +5115,6 @@ x 21
 y 9
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 10
@@ -5401,7 +5131,6 @@ x 21
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 11
@@ -5418,7 +5147,6 @@ x 21
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 12
@@ -5435,7 +5163,6 @@ x 21
 y 12
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 13
@@ -5452,7 +5179,6 @@ x 21
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 14
@@ -5469,7 +5195,6 @@ x 21
 y 14
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 15
@@ -5486,7 +5211,6 @@ x 21
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 16
@@ -5503,7 +5227,6 @@ x 21
 y 16
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 21
 y 17
@@ -5520,7 +5243,6 @@ x 21
 y 17
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 21
 y 18
@@ -5537,7 +5259,6 @@ x 21
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 21
 y 19
@@ -5547,7 +5268,6 @@ x 21
 y 19
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 7
@@ -5557,7 +5277,6 @@ x 22
 y 7
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 22
 y 8
@@ -5567,7 +5286,6 @@ x 22
 y 8
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 9
@@ -5583,7 +5301,6 @@ x 22
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 22
 y 10
@@ -5599,7 +5316,6 @@ x 22
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 11
@@ -5615,7 +5331,6 @@ x 22
 y 11
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 22
 y 12
@@ -5636,7 +5351,6 @@ x 22
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 22
 y 13
@@ -5652,7 +5366,6 @@ x 22
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 14
@@ -5668,7 +5381,6 @@ x 22
 y 14
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 15
@@ -5684,7 +5396,6 @@ x 22
 y 15
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 16
@@ -5728,7 +5439,6 @@ end
 end
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 17
@@ -5738,7 +5448,6 @@ x 22
 y 17
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 22
 y 18
@@ -5748,7 +5457,6 @@ x 22
 y 18
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 22
 y 19
@@ -5758,7 +5466,6 @@ x 22
 y 19
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 23
 y 8
@@ -5768,7 +5475,6 @@ x 23
 y 8
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 23
 y 9
@@ -5778,7 +5484,6 @@ x 23
 y 9
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 23
 y 10
@@ -5788,7 +5493,6 @@ x 23
 y 10
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 23
 y 11
@@ -5798,7 +5502,6 @@ x 23
 y 11
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 23
 y 12
@@ -5808,7 +5511,6 @@ x 23
 y 12
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 23
 y 13
@@ -5818,7 +5520,6 @@ x 23
 y 13
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 23
 y 14
@@ -5828,7 +5529,6 @@ x 23
 y 14
 end
 arch floor_lava_4
-glow_radius 3
 terrain_type 1
 x 23
 y 15
@@ -5838,7 +5538,6 @@ x 23
 y 15
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 23
 y 16
@@ -5848,7 +5547,6 @@ x 23
 y 16
 end
 arch floor_lava_3
-glow_radius 3
 terrain_type 1
 x 23
 y 17

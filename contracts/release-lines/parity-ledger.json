@@ -36,6 +36,27 @@
             "tools/release_line_parity.py",
             "tools/tests/test_release_line_parity.py"
           ]
+        },
+        {
+          "ordinal": 3,
+          "issue": 166,
+          "pull_request": 190,
+          "paths": [
+            ".github/workflows/check.yml",
+            ".github/workflows/pr-title.yml",
+            ".github/workflows/release.yml",
+            ".releaserc.json",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "README.md",
+            "contracts/release-lines/parity-ledger.json",
+            "contracts/release-lines/parity-ledger.schema.json",
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_m1_foundations.py",
+            "tools/tests/test_release_guidance.py",
+            "tools/tests/test_release_line_parity.py"
+          ]
         }
       ]
     },
@@ -62,6 +83,26 @@
           "paths": [
             "docs/RELEASE_LINES.md",
             "tools/release_line_parity.py",
+            "tools/tests/test_release_line_parity.py"
+          ]
+        },
+        {
+          "ordinal": 3,
+          "issue": 166,
+          "pull_request": 189,
+          "paths": [
+            ".github/workflows/release.yml",
+            ".releaserc.json",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "README.md",
+            "contracts/release-lines/classic-main.json",
+            "contracts/release-lines/parity-ledger.json",
+            "contracts/release-lines/parity-ledger.schema.json",
+            "docs/RELEASE_LINES.md",
+            "tools/release_line_parity.py",
+            "tools/tests/test_release_guidance.py",
+            "tools/tests/test_release_line.py",
             "tools/tests/test_release_line_parity.py"
           ]
         }

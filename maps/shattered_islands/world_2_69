@@ -42,9 +42,6 @@ hp 23
 sp 13
 y 6
 end
-arch light1
-y 6
-end
 arch grass_thick3
 player_only 1
 y 7

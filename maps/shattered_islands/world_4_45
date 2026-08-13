@@ -47,9 +47,6 @@ arch wall_fortified_high_c.111
 sub_layer 2
 y 3
 end
-arch light7
-y 3
-end
 arch floor_fs_grey1b
 z 50
 sub_layer 1
@@ -93,9 +90,6 @@ y 8
 end
 arch wall_fortified_high_c.111
 sub_layer 2
-y 8
-end
-arch light7
 y 8
 end
 arch floor_fs_grey1b
@@ -143,9 +137,6 @@ arch wall_fortified_high_c.111
 sub_layer 2
 y 13
 end
-arch light7
-y 13
-end
 arch floor_fs_grey1b
 z 50
 sub_layer 1
@@ -191,9 +182,6 @@ arch wall_fortified_high_c.111
 sub_layer 2
 y 18
 end
-arch light7
-y 18
-end
 arch floor_fs_grey1b
 z 50
 sub_layer 1
@@ -237,9 +225,6 @@ y 23
 end
 arch wall_fortified_high_c.111
 sub_layer 2
-y 23
-end
-arch light7
 y 23
 end
 arch earth_brown1

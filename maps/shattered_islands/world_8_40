@@ -828,10 +828,6 @@ arch lantern_black
 x 7
 y 23
 end
-arch light7
-x 7
-y 23
-end
 arch water_lt3
 x 8
 end
@@ -1329,10 +1325,6 @@ x 12
 y 23
 end
 arch lantern_black
-x 12
-y 23
-end
-arch light7
 x 12
 y 23
 end

@@ -293,7 +293,6 @@ x 2
 y 2
 end
 arch lantern_black
-glow_radius 7
 x 2
 y 2
 end
@@ -318,7 +317,6 @@ x 2
 y 5
 end
 arch lantern_black
-glow_radius 7
 x 2
 y 5
 end
@@ -369,7 +367,6 @@ x 2
 y 9
 end
 arch lantern_black
-glow_radius 7
 x 2
 y 9
 end
@@ -418,7 +415,6 @@ x 2
 y 15
 end
 arch lantern_black
-glow_radius 7
 x 2
 y 15
 end
@@ -467,7 +463,6 @@ x 2
 y 21
 end
 arch lantern_black
-glow_radius 7
 x 2
 y 21
 end
@@ -994,7 +989,6 @@ x 5
 y 2
 end
 arch lantern_black
-glow_radius 7
 x 5
 y 2
 end
@@ -1019,7 +1013,6 @@ x 5
 y 5
 end
 arch lantern_black
-glow_radius 7
 x 5
 y 5
 end
@@ -1592,7 +1585,6 @@ x 9
 y 2
 end
 arch lantern_black
-glow_radius 7
 x 9
 y 2
 end
@@ -1618,7 +1610,6 @@ x 9
 y 5
 end
 arch lantern_black
-glow_radius 7
 x 9
 y 5
 end
@@ -1675,7 +1666,6 @@ x 9
 y 18
 end
 arch lantern_black
-glow_radius 7
 x 9
 y 18
 end
@@ -2743,7 +2733,6 @@ x 14
 y 18
 end
 arch lantern_black
-glow_radius 7
 x 14
 y 18
 end
@@ -2772,7 +2761,6 @@ x 14
 y 22
 end
 arch lantern_black
-glow_radius 7
 x 14
 y 22
 end
@@ -2850,7 +2838,6 @@ x 15
 y 9
 end
 arch lantern_black
-glow_radius 7
 x 15
 y 9
 end
@@ -3025,7 +3012,6 @@ x 16
 y 13
 end
 arch lantern_black
-glow_radius 7
 x 16
 y 13
 end
@@ -3539,7 +3525,6 @@ x 19
 y 18
 end
 arch lantern_black
-glow_radius 7
 x 19
 y 18
 end
@@ -3568,7 +3553,6 @@ x 19
 y 22
 end
 arch lantern_black
-glow_radius 7
 x 19
 y 22
 end

@@ -238,10 +238,6 @@ arch lantern_black
 x 1
 y 21
 end
-arch light7
-x 1
-y 21
-end
 arch floor_fs_grey1b
 z 50
 x 1
@@ -625,10 +621,6 @@ arch lantern_black
 x 4
 y 4
 end
-arch light7
-x 4
-y 4
-end
 arch grassd_5
 z 50
 x 4
@@ -659,10 +651,6 @@ x 4
 y 9
 end
 arch lantern_black
-x 4
-y 9
-end
-arch light7
 x 4
 y 9
 end
@@ -699,10 +687,6 @@ arch lantern_black
 x 4
 y 14
 end
-arch light7
-x 4
-y 14
-end
 arch grassd_8
 z 50
 x 4
@@ -733,10 +717,6 @@ x 4
 y 19
 end
 arch lantern_black
-x 4
-y 19
-end
-arch light7
 x 4
 y 19
 end
@@ -1220,10 +1200,6 @@ arch lantern_black
 x 7
 y 4
 end
-arch light7
-x 7
-y 4
-end
 arch grass_flowers3
 z 50
 x 7
@@ -1257,10 +1233,6 @@ arch lantern_black
 x 7
 y 9
 end
-arch light7
-x 7
-y 9
-end
 arch grassd_8
 z 50
 x 7
@@ -1290,10 +1262,6 @@ arch lantern_black
 x 7
 y 14
 end
-arch light7
-x 7
-y 14
-end
 arch grassd_7
 z 50
 x 7
@@ -1320,10 +1288,6 @@ x 7
 y 19
 end
 arch lantern_black
-x 7
-y 19
-end
-arch light7
 x 7
 y 19
 end
@@ -3511,10 +3475,6 @@ arch lantern_black
 x 19
 y 2
 end
-arch light7
-x 19
-y 2
-end
 arch floor_fs_grey1b
 z 50
 x 19
@@ -3556,10 +3516,6 @@ arch lantern_black
 x 19
 y 7
 end
-arch light7
-x 19
-y 7
-end
 arch grassd_1
 z 50
 x 19
@@ -3586,10 +3542,6 @@ x 19
 y 12
 end
 arch lantern_black
-x 19
-y 12
-end
-arch light7
 x 19
 y 12
 end
@@ -3645,10 +3597,6 @@ arch lantern_black
 x 19
 y 17
 end
-arch light7
-x 19
-y 17
-end
 arch grassd_8
 z 50
 x 19
@@ -3675,10 +3623,6 @@ x 19
 y 22
 end
 arch lantern_black
-x 19
-y 22
-end
-arch light7
 x 19
 y 22
 end
@@ -4240,10 +4184,6 @@ arch lantern_black
 x 23
 y 2
 end
-arch light7
-x 23
-y 2
-end
 arch grassd_8
 z 50
 x 23
@@ -4274,10 +4214,6 @@ x 23
 y 7
 end
 arch lantern_black
-x 23
-y 7
-end
-arch light7
 x 23
 y 7
 end
@@ -4326,10 +4262,6 @@ arch lantern_black
 x 23
 y 12
 end
-arch light7
-x 23
-y 12
-end
 arch grassd_2
 z 50
 x 23
@@ -4363,10 +4295,6 @@ arch lantern_black
 x 23
 y 17
 end
-arch light7
-x 23
-y 17
-end
 arch grassd_4
 z 50
 x 23
@@ -4397,10 +4325,6 @@ x 23
 y 22
 end
 arch lantern_black
-x 23
-y 22
-end
-arch light7
 x 23
 y 22
 end

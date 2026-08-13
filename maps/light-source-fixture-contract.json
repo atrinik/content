@@ -60,6 +60,25 @@
         "lava-map-seams-and-wall-bleed",
         "lava-source-only-style-variant"
       ]
+    },
+    "street-lantern-fixtures": {
+      "archetypes": [
+        "lantern_black",
+        "lantern_blue",
+        "lantern_red"
+      ],
+      "checks": [
+        "lantern-dense-cluster",
+        "lantern-form-black",
+        "lantern-form-blue",
+        "lantern-form-red",
+        "lantern-map-seam",
+        "lantern-newly-lit",
+        "lantern-radius-5",
+        "lantern-radius-7",
+        "lantern-same-tile-transfer",
+        "lantern-wall-navigation"
+      ]
     }
   }
 }

@@ -7,6 +7,11 @@
       "context_sha256": "4d1c248a03f7d321a01264312f654825945c78b05873e68772bb789755b50064"
     },
     {
+      "path": "maps/python/Guild.py",
+      "scope": "Guild.log_add",
+      "context_sha256": "15b40c1c01de41badb530eaa91907895b2d00f37a8f1e4d617a6c734d8eea9f4"
+    },
+    {
       "path": "maps/python/Interface.py",
       "scope": "Interface.dbg",
       "context_sha256": "21417ab27059ae9210c757b38290553719e348d5d10822ed37ecd8a56679f261"
@@ -401,6 +406,15 @@
     }
   ],
   "audit_like_sites": [
+    {
+      "path": "maps/python/Guild.py",
+      "ast_path": "body[5].body[49]",
+      "scope": "Guild.log_add",
+      "facility": "Guild.log_add sink",
+      "classification": "operational/security-log",
+      "event_rate": "One protected file append per accepted guild audit message.",
+      "rationale": "This is the human-text persistence sink; path construction, append behavior, and arbitrary text must remain outside structured gameplay records."
+    },
     {
       "path": "maps/python/Interface.py",
       "ast_path": "body[5].body[2].body[1].value",

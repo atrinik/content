@@ -70,7 +70,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
         report = load_and_validate(ROOT)
         self.assertEqual(26, report["metric_sites"])
         self.assertEqual(21, report["metric_identities"])
-        self.assertEqual(16, report["audit_like_sites"])
+        self.assertEqual(18, report["audit_like_sites"])
 
     def test_unreviewed_metric_site_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -270,6 +270,21 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             _, logs = discover_sites(root)
             self.assertEqual("Atrinik.Logger", logs[0]["facility"])
 
+    def test_atrinik_print_is_discovered(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'import Atrinik as api\nAtrinik.print("one")\napi.print("two")\n',
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual(
+                ["Python.print", "Python.print"],
+                [row["facility"] for row in logs],
+            )
+
     def test_qualified_builtin_reflection_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -293,6 +308,108 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             )
             with self.assertRaisesRegex(ScriptedGameplayAuditError, "reserved reflective"):
                 discover_sites(root)
+
+    def test_qualified_builtin_alias_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "import builtins\n"
+                "lookup = builtins.getattr\n"
+                'lookup(player, "MetricAdd")("hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reserved reflective"):
+                discover_sites(root)
+
+    def test_imported_operator_reflection_fails_closed(self):
+        for callable_name in ("attrgetter", "methodcaller"):
+            with self.subTest(
+                callable_name=callable_name
+            ), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source = root / "maps" / "python" / "feature.py"
+                source.parent.mkdir(parents=True)
+                source.write_text(
+                    "from operator import {} as reflect\n".format(callable_name),
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(ScriptedGameplayAuditError, "reserved reflective"):
+                    discover_sites(root)
+
+    def test_methodcaller_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'operator.methodcaller("MetricAdd", "hidden")(player)\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "attribute construction"):
+                discover_sites(root)
+
+    def test_starred_reflection_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'getattr(*(player, "MetricAdd"))("hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_object_dict_getattribute_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'object.__dict__["__getattribute__"]'
+                '(player, "MetricAdd")("hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_dynamic_execution_is_reviewed_and_cannot_be_aliased(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text('eval("player.MetricAdd")\n', encoding="utf-8")
+            _, logs = discover_sites(root)
+            self.assertEqual("Python.eval", logs[0]["facility"])
+            source.write_text('run = eval\nrun(payload)\n', encoding="utf-8")
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reserved reflective"):
+                discover_sites(root)
+
+    def test_namespace_get_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text('globals().get("Logger")("hidden")\n', encoding="utf-8")
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "namespace access"):
+                discover_sites(root)
+
+    def test_sensitive_receiver_rebinding_fails_closed(self):
+        for source_text in (
+            'subject = player\nsubject = cache\nsubject.MetricAdd("cache.hit")\n',
+            'def bind():\n    subject = player\ndef reuse():\n    subject = cache\n    subject.MetricAdd("cache.hit")\n',
+        ):
+            with self.subTest(
+                source_text=source_text
+            ), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source = root / "maps" / "python" / "feature.py"
+                source.parent.mkdir(parents=True)
+                source.write_text(source_text, encoding="utf-8")
+                with self.assertRaisesRegex(ScriptedGameplayAuditError, "rebound telemetry"):
+                    discover_sites(root)
 
     def test_guild_factory_alias_is_discovered(self):
         with tempfile.TemporaryDirectory() as temporary:

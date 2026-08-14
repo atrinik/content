@@ -3,7 +3,8 @@
 `contracts/scripted-gameplay-audit/v1.json` is the reviewed, fail-closed
 inventory of every authored Python gameplay metric and audit-like logging call.
 The aggregate validator parses all `maps/**/*.py` source except test fixtures,
-rejects dynamic or indirect metric access, and binds every call to its source,
+rejects dynamic or indirect reserved telemetry access, inventories privileged
+dynamic execution boundaries, and binds every call to its source,
 lexical scope, AST location, and a normalized hash of the surrounding function
 or module. Moving, adding, removing, or semantically surrounding a site
 therefore requires an explicit noise, privacy, and recovery decision.
@@ -32,7 +33,8 @@ They must move behind the durable idempotent commit/reconciliation result when
 the typed APIs become available; generic payment or custody hooks must not add
 a second copy of a business-specific aggregate.
 
-The 16 current audit-like sites include generic Python diagnostics and prints,
+The 18 current audit-like sites include generic Python diagnostics and prints,
+the two privileged `eval`/`exec` execution boundaries,
 guild chat and console commands, guild-storage `Guild.log_add` calls, and their
 human-text file sink. Some carry
 display names or arbitrary operator/player text. That text must not enter
@@ -40,14 +42,17 @@ structured gameplay records. Successful storage custody instead belongs to the
 server's typed item transaction at the authoritative post-veto move boundary.
 
 High-volume movement, traversal, attacks, ordinary kills, damage, healing,
-regeneration, routine spell/skill/consumable use, chat, emotes, and every
-intermediate quest-state write have no scripted metric sites and remain
-unrecorded by authored Python. Adding one requires a reviewed contract row; it
-never becomes a journal producer merely because a metric is useful.
+regeneration, routine spell/skill/consumable use, emotes, and every intermediate
+quest-state write have no scripted metric sites and remain outside the
+structured gameplay journal. Classified guild chat remains only in its
+protected operational log. Adding a metric site requires a reviewed contract
+row; it never becomes a journal producer merely because a metric is useful.
 
 The stable quest contract from https://github.com/atrinik/classic/issues/161 is
-integrated by the shared `QuestManager`. Remaining executable economy
+integrated by the shared `QuestManager`. Crash-safe quest replay still requires
+the server-owned idempotency and disposition contract tracked by
+https://github.com/atrinik/classic/issues/321. Remaining executable economy
 integration depends on the scripted multi-step composition contract in
-https://github.com/atrinik/classic/issues/313. Content must use that typed API
-rather than append raw logs, invent a second audit store, or misuse
-quest/progression records for item and currency flows.
+https://github.com/atrinik/classic/issues/313. Content must use those typed APIs
+rather than append raw logs, invent a second audit store, or misuse one journal
+kind for unrelated item and currency flows.

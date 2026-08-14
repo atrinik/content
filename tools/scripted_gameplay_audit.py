@@ -23,6 +23,7 @@ SENSITIVE_RECEIVER_NAMES = frozenset(
     {"Atrinik", "activator", "controller", "guild", "pl", "player"}
 )
 SENSITIVE_REFLECTIVE_NAMES = frozenset((*METRIC_METHODS, "Logger", "log_add", "print"))
+DYNAMIC_EXECUTION_NAMES = frozenset({"compile", "eval", "exec", "__import__"})
 
 
 class ScriptedGameplayAuditError(ValueError):
@@ -128,6 +129,14 @@ def _contains_sensitive_receiver(node: ast.AST, aliases: set[str]) -> bool:
     return any(_sensitive_receiver(child, aliases) for child in ast.walk(node))
 
 
+def _loaded_names(node: ast.AST) -> set[str]:
+    return {
+        child.id
+        for child in ast.walk(node)
+        if isinstance(child, ast.Name) and isinstance(child.ctx, ast.Load)
+    }
+
+
 def _propagate_alias_target(
     target: ast.AST,
     value: ast.AST,
@@ -144,6 +153,18 @@ def _propagate_alias_target(
             changed = _propagate_alias_target(target_item, value_item, aliases) or changed
         return changed
     return False
+
+
+def _target_value_pairs(target: ast.AST, value: ast.AST) -> Iterator[tuple[str, ast.AST]]:
+    """Yield statically paired assignment names for conservative rebinding checks."""
+
+    if isinstance(target, ast.Name):
+        yield target.id, value
+    elif isinstance(target, (ast.Tuple, ast.List)) and isinstance(
+        value, (ast.Tuple, ast.List)
+    ):
+        for target_item, value_item in zip(target.elts, value.elts):
+            yield from _target_value_pairs(target_item, value_item)
 
 
 def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
@@ -166,6 +187,8 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     print_aliases = {"print"}
     atrinik_aliases = {"Atrinik"}
     builtins_aliases = {"__builtins__", "builtins"}
+    assignments: list[tuple[ast.AST, ast.AST, int]] = []
+    ambiguous_sensitive_aliases: set[str] = set()
     for imported in ast.walk(tree):
         if isinstance(imported, ast.Import):
             for name in imported.names:
@@ -178,7 +201,17 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 if name.name == "Logger":
                     logger_aliases.add(name.asname or name.name)
         if isinstance(imported, ast.ImportFrom) and imported.module == "builtins":
-            if any(name.name in {"getattr", "print", "vars"} for name in imported.names):
+            if any(
+                name.name in {"getattr", "print", "vars"} | DYNAMIC_EXECUTION_NAMES
+                for name in imported.names
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reserved reflective callable".format(
+                        relative, imported.lineno
+                    )
+                )
+        if isinstance(imported, ast.ImportFrom) and imported.module == "operator":
+            if any(name.name in {"attrgetter", "methodcaller"} for name in imported.names):
                 raise ScriptedGameplayAuditError(
                     "{}:{} aliases a reserved reflective callable".format(
                         relative, imported.lineno
@@ -197,70 +230,80 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 raise ScriptedGameplayAuditError(
                     "{}:{} shadows a reserved audit callable".format(relative, imported.lineno)
                 )
+        if isinstance(imported, ast.Assign):
+            assignments.extend(
+                (target, imported.value, imported.lineno) for target in imported.targets
+            )
+        elif isinstance(imported, ast.AnnAssign) and imported.value is not None:
+            assignments.append((imported.target, imported.value, imported.lineno))
+        elif isinstance(imported, ast.NamedExpr):
+            assignments.append((imported.target, imported.value, imported.lineno))
     changed = True
     while changed:
         changed = False
-        for assignment in ast.walk(tree):
-            targets: list[ast.expr] = []
-            value: ast.expr | None = None
-            if isinstance(assignment, ast.Assign):
-                targets = assignment.targets
-                value = assignment.value
-            elif isinstance(assignment, ast.AnnAssign):
-                targets = [assignment.target]
-                value = assignment.value
-            if value is None:
+        for target, value, lineno in assignments:
+            if isinstance(target, ast.Name) and target.id in {"Logger", "print"}:
+                raise ScriptedGameplayAuditError(
+                    "{}:{} shadows a reserved audit callable".format(relative, lineno)
+                )
+            if (
+                isinstance(target, ast.Name)
+                and target.id == "guild"
+                and not _sensitive_receiver(value, sensitive_aliases)
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} ambiguously rebinds the guild audit receiver".format(
+                        relative, lineno
+                    )
+                )
+            changed = _propagate_alias_target(target, value, sensitive_aliases) or changed
+            if not isinstance(target, ast.Name):
                 continue
-            for target in targets:
-                if isinstance(target, ast.Name) and target.id in {"Logger", "print"}:
-                    raise ScriptedGameplayAuditError(
-                        "{}:{} shadows a reserved audit callable".format(
-                            relative, assignment.lineno
-                        )
-                    )
-                if (
-                    isinstance(target, ast.Name)
-                    and target.id == "guild"
-                    and not _sensitive_receiver(value, sensitive_aliases)
-                ):
-                    raise ScriptedGameplayAuditError(
-                        "{}:{} ambiguously rebinds the guild audit receiver".format(
-                            relative, assignment.lineno
-                        )
-                    )
-                changed = _propagate_alias_target(
-                    target, value, sensitive_aliases
-                ) or changed
-                if not isinstance(target, ast.Name):
-                    continue
-                if isinstance(value, ast.Name):
-                    if value.id in reflection_aliases and target.id not in reflection_aliases:
-                        reflection_aliases.add(target.id)
-                        changed = True
-                    if value.id in logger_aliases and target.id not in logger_aliases:
-                        logger_aliases.add(target.id)
-                        changed = True
-                    if value.id in print_aliases and target.id not in print_aliases:
-                        print_aliases.add(target.id)
-                        changed = True
-                if (
-                    target.id in print_aliases
-                    and not (isinstance(value, ast.Name) and value.id in print_aliases)
-                ):
-                    raise ScriptedGameplayAuditError(
-                        "{}:{} ambiguously rebinds a print alias".format(
-                            relative, assignment.lineno
-                        )
-                    )
-                if (
-                    isinstance(value, ast.Attribute)
-                    and value.attr == "Logger"
-                    and isinstance(value.value, ast.Name)
-                    and value.value.id == "Atrinik"
-                    and target.id not in logger_aliases
-                ):
+            if isinstance(value, ast.Name):
+                if value.id in reflection_aliases and target.id not in reflection_aliases:
+                    reflection_aliases.add(target.id)
+                    changed = True
+                if value.id in logger_aliases and target.id not in logger_aliases:
                     logger_aliases.add(target.id)
                     changed = True
+                if value.id in print_aliases and target.id not in print_aliases:
+                    print_aliases.add(target.id)
+                    changed = True
+                if value.id in DYNAMIC_EXECUTION_NAMES:
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} aliases a reserved reflective callable".format(relative, lineno)
+                    )
+            if (
+                isinstance(value, ast.Attribute)
+                and isinstance(value.value, ast.Name)
+                and value.value.id in builtins_aliases
+                and value.attr in {"getattr", "vars"} | DYNAMIC_EXECUTION_NAMES
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reserved reflective callable".format(relative, lineno)
+                )
+            if target.id in print_aliases and not (
+                isinstance(value, ast.Name) and value.id in print_aliases
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} ambiguously rebinds a print alias".format(relative, lineno)
+                )
+            if (
+                isinstance(value, ast.Attribute)
+                and value.attr == "Logger"
+                and isinstance(value.value, ast.Name)
+                and value.value.id == "Atrinik"
+                and target.id not in logger_aliases
+            ):
+                logger_aliases.add(target.id)
+                changed = True
+
+    for target, value, lineno in assignments:
+        for name, assigned_value in _target_value_pairs(target, value):
+            if name in sensitive_aliases and not _sensitive_receiver(
+                assigned_value, sensitive_aliases
+            ):
+                ambiguous_sensitive_aliases.add(name)
 
     def visit(
         node: ast.AST,
@@ -288,6 +331,12 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if isinstance(node, ast.Call):
             scope = ".".join(scopes) or "<module>"
             if isinstance(node.func, ast.Attribute) and node.func.attr in METRIC_METHODS:
+                if _loaded_names(node.func.value) & ambiguous_sensitive_aliases:
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} uses an ambiguously rebound telemetry receiver".format(
+                            relative, node.lineno
+                        )
+                    )
                 if not _sensitive_receiver(node.func.value, sensitive_aliases):
                     raise ScriptedGameplayAuditError(
                         "{}:{} uses a reserved metric method on an unreviewed receiver".format(
@@ -324,7 +373,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 isinstance(node.func, ast.Attribute)
                 and node.func.attr == "print"
                 and isinstance(node.func.value, ast.Name)
-                and node.func.value.id in builtins_aliases
+                and node.func.value.id in builtins_aliases | atrinik_aliases
             ):
                 facility = "Python.print"
                 direct_log_references.add(id(node.func))
@@ -333,6 +382,12 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 and node.func.attr == "log_add"
                 and _sensitive_receiver(node.func.value, sensitive_aliases)
             ):
+                if _loaded_names(node.func.value) & ambiguous_sensitive_aliases:
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} uses an ambiguously rebound telemetry receiver".format(
+                            relative, node.lineno
+                        )
+                    )
                 facility = "Guild.log_add"
                 direct_log_references.add(id(node.func))
             if facility is not None:
@@ -345,6 +400,17 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                         "facility": facility,
                     }
                 )
+            if isinstance(node.func, ast.Name) and node.func.id in {"eval", "exec"}:
+                logs.append(
+                    {
+                        "path": relative,
+                        "ast_path": ast_path,
+                        "scope": scope,
+                        "context_sha256": context_sha256,
+                        "facility": "Python.{}".format(node.func.id),
+                    }
+                )
+                direct_log_references.add(id(node.func))
             if (
                 isinstance(node.func, ast.Name)
                 and node.func.id in {"getattr", "vars"}
@@ -389,12 +455,21 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Name)
             and isinstance(node.ctx, ast.Load)
-            and node.id in {"getattr", "vars", "print"}
+            and node.id in {"getattr", "vars", "print"} | DYNAMIC_EXECUTION_NAMES
             and id(node) not in direct_reflection_references
             and id(node) not in direct_log_references
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} aliases a reserved reflective callable".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Name)
+            and node.func.id in reflection_aliases
+            and any(isinstance(argument, ast.Starred) for argument in node.args)
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective telemetry access".format(relative, node.lineno)
             )
         if (
             isinstance(node, ast.Call)
@@ -453,9 +528,19 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)
             )
-        if isinstance(node, ast.Attribute) and node.attr == "attrgetter":
+        if isinstance(node, ast.Attribute) and node.attr in {"attrgetter", "methodcaller"}:
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective attribute construction".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Subscript)
+            and isinstance(node.value, ast.Attribute)
+            and node.value.attr == "__dict__"
+            and _static_string(node.slice)
+            in SENSITIVE_REFLECTIVE_NAMES | {"__getattribute__"}
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective telemetry access".format(relative, node.lineno)
             )
         if (
             isinstance(node, ast.Subscript)
@@ -468,6 +553,25 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     isinstance(node.value, ast.Call)
                     and isinstance(node.value.func, ast.Name)
                     and node.value.func.id in {"globals", "locals"}
+                )
+            )
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective namespace access".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Attribute)
+            and node.func.attr in {"get", "__getitem__"}
+            and (
+                (
+                    isinstance(node.func.value, ast.Call)
+                    and isinstance(node.func.value.func, ast.Name)
+                    and node.func.value.func.id in {"globals", "locals"}
+                )
+                or (
+                    isinstance(node.func.value, ast.Name)
+                    and node.func.value.id in builtins_aliases
                 )
             )
         ):

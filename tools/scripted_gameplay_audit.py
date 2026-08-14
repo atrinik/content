@@ -104,9 +104,22 @@ def _sensitive_receiver(node: ast.AST, aliases: set[str]) -> bool:
         return node.id in aliases
     if isinstance(node, ast.Attribute):
         return _sensitive_receiver(node.value, aliases)
-    if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
-        return node.func.attr == "Controller"
+    if isinstance(node, ast.Call):
+        if isinstance(node.func, ast.Attribute):
+            return node.func.attr == "Controller"
+        if isinstance(node.func, ast.Name):
+            return node.func.id in {"FindPlayer", "GetFirst", "Guild", "WhoIsActivator"}
+    if isinstance(node, ast.IfExp):
+        return _sensitive_receiver(node.body, aliases) or _sensitive_receiver(
+            node.orelse, aliases
+        )
+    if isinstance(node, ast.BoolOp):
+        return any(_sensitive_receiver(value, aliases) for value in node.values)
     return False
+
+
+def _contains_sensitive_receiver(node: ast.AST, aliases: set[str]) -> bool:
+    return any(_sensitive_receiver(child, aliases) for child in ast.walk(node))
 
 
 def _propagate_alias_target(
@@ -140,15 +153,38 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     logs: list[dict[str, str]] = []
     direct_metric_attributes: set[int] = set()
     direct_log_references: set[int] = set()
+    direct_reflection_references: set[int] = set()
     sensitive_aliases = set(SENSITIVE_RECEIVER_NAMES)
     reflection_aliases = {"getattr", "vars"}
     logger_aliases = {"Logger"}
     print_aliases = {"print"}
+    builtins_aliases = {"builtins"}
     for imported in ast.walk(tree):
+        if isinstance(imported, ast.Import):
+            for name in imported.names:
+                if name.name == "builtins":
+                    builtins_aliases.add(name.asname or name.name)
         if isinstance(imported, ast.ImportFrom) and imported.module == "Atrinik":
             for name in imported.names:
                 if name.name == "Logger":
                     logger_aliases.add(name.asname or name.name)
+        if isinstance(imported, ast.ImportFrom) and imported.module == "builtins":
+            if any(name.name in {"getattr", "print", "vars"} for name in imported.names):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reserved reflective callable".format(
+                        relative, imported.lineno
+                    )
+                )
+        if isinstance(imported, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+            arguments = (
+                [*imported.args.posonlyargs, *imported.args.args, *imported.args.kwonlyargs]
+                + ([imported.args.vararg] if imported.args.vararg is not None else [])
+                + ([imported.args.kwarg] if imported.args.kwarg is not None else [])
+            )
+            if any(argument.arg in {"Logger", "print"} for argument in arguments):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} shadows a reserved audit callable".format(relative, imported.lineno)
+                )
     changed = True
     while changed:
         changed = False
@@ -164,6 +200,22 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             if value is None:
                 continue
             for target in targets:
+                if isinstance(target, ast.Name) and target.id in {"Logger", "print"}:
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} shadows a reserved audit callable".format(
+                            relative, assignment.lineno
+                        )
+                    )
+                if (
+                    isinstance(target, ast.Name)
+                    and target.id == "guild"
+                    and not _sensitive_receiver(value, sensitive_aliases)
+                ):
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} ambiguously rebinds the guild audit receiver".format(
+                            relative, assignment.lineno
+                        )
+                    )
                 changed = _propagate_alias_target(
                     target, value, sensitive_aliases
                 ) or changed
@@ -179,6 +231,15 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     if value.id in print_aliases and target.id not in print_aliases:
                         print_aliases.add(target.id)
                         changed = True
+                if (
+                    target.id in print_aliases
+                    and not (isinstance(value, ast.Name) and value.id in print_aliases)
+                ):
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} ambiguously rebinds a print alias".format(
+                            relative, assignment.lineno
+                        )
+                    )
                 if (
                     isinstance(value, ast.Attribute)
                     and value.attr == "Logger"
@@ -200,9 +261,27 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
             next_scopes = (*scopes, node.name)
             next_context_sha256 = _context_sha256(node)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and (
+                (*scopes, node.name) == ("Guild", "log_add")
+            ):
+                logs.append(
+                    {
+                        "path": relative,
+                        "ast_path": ast_path,
+                        "scope": "Guild.log_add",
+                        "context_sha256": next_context_sha256,
+                        "facility": "Guild.log_add sink",
+                    }
+                )
         if isinstance(node, ast.Call):
             scope = ".".join(scopes) or "<module>"
             if isinstance(node.func, ast.Attribute) and node.func.attr in METRIC_METHODS:
+                if not _sensitive_receiver(node.func.value, sensitive_aliases):
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} uses a reserved metric method on an unreviewed receiver".format(
+                            relative, node.lineno
+                        )
+                    )
                 direct_metric_attributes.add(id(node.func))
                 metrics.append(
                     {
@@ -224,10 +303,16 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             elif (
                 isinstance(node.func, ast.Attribute)
                 and node.func.attr == "Logger"
-                and isinstance(node.func.value, ast.Name)
-                and node.func.value.id == "Atrinik"
             ):
                 facility = "Atrinik.Logger"
+                direct_log_references.add(id(node.func))
+            elif (
+                isinstance(node.func, ast.Attribute)
+                and node.func.attr == "print"
+                and isinstance(node.func.value, ast.Name)
+                and node.func.value.id in builtins_aliases
+            ):
+                facility = "Python.print"
                 direct_log_references.add(id(node.func))
             elif (
                 isinstance(node.func, ast.Attribute)
@@ -246,6 +331,11 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                         "facility": facility,
                     }
                 )
+            if (
+                isinstance(node.func, ast.Name)
+                and node.func.id in {"getattr", "vars"}
+            ):
+                direct_reflection_references.add(id(node.func))
         for edge, child in _children(node):
             visit(
                 child,
@@ -272,8 +362,6 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 and (
                     (
                         node.attr == "Logger"
-                        and isinstance(node.value, ast.Name)
-                        and node.value.id == "Atrinik"
                     )
                     or (
                         node.attr == "log_add"
@@ -284,6 +372,16 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         ) and id(node) not in direct_log_references:
             raise ScriptedGameplayAuditError(
                 "{}:{} uses an indirect audit-log reference".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Name)
+            and isinstance(node.ctx, ast.Load)
+            and node.id in {"getattr", "vars", "print"}
+            and id(node) not in direct_reflection_references
+            and id(node) not in direct_log_references
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} aliases a reserved reflective callable".format(relative, node.lineno)
             )
         if (
             isinstance(node, ast.Call)
@@ -314,8 +412,17 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Call)
             and isinstance(node.func, ast.Attribute)
-            and node.func.attr == "__getattribute__"
-            and _sensitive_receiver(node.func.value, sensitive_aliases)
+            and isinstance(node.func.value, ast.Name)
+            and node.func.value.id in builtins_aliases
+            and node.func.attr in {"getattr", "vars"}
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses qualified reflective access".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Attribute)
+            and node.attr == "__getattribute__"
+            and _contains_sensitive_receiver(node.value, sensitive_aliases)
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)
@@ -323,7 +430,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Attribute)
             and node.attr == "__dict__"
-            and _sensitive_receiver(node.value, sensitive_aliases)
+            and _contains_sensitive_receiver(node.value, sensitive_aliases)
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)
@@ -496,8 +603,10 @@ def load_and_validate(root: Path) -> dict[str, Any]:
             raise ScriptedGameplayAuditError("{} has no reviewed source context".format(context))
         facility = _require_text(row, "facility", context)
         classification = row["classification"]
-        if classification not in CLASSIFICATIONS:
-            raise ScriptedGameplayAuditError("{} has an unknown classification".format(context))
+        if classification not in {"operational/security-log", "not-recorded"}:
+            raise ScriptedGameplayAuditError(
+                "{} audit facility must remain operational or not recorded".format(context)
+            )
         _require_text(row, "event_rate", context)
         _require_text(row, "rationale", context)
         expected_logs.append(

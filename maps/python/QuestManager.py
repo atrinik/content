@@ -42,6 +42,30 @@ class QuestManager:
         )
         self.reset_quest()
 
+    def journal_begin(self, reason, subject, before, after, lineage=""):
+        """Begin one durable quest-state transition."""
+
+        return self.activator.Controller().JournalIntent(
+            "quest", reason, subject, before, after - before, after, lineage
+        )
+
+    def journal_commit(self, transaction):
+        """Commit one quest transition after its authoritative mutation."""
+
+        self.activator.Controller().JournalCommit(transaction)
+
+    def quest_subject(self):
+        """Return the stable qualified identity of the top-level quest."""
+
+        return "quest:{}".format(self.quest["uid"])
+
+    def part_subject(self, part_path):
+        """Return the stable qualified identity of a nested quest part."""
+
+        return "quest-part:{}::{}".format(
+            self.quest["uid"], "::".join(part_path)
+        )
+
     @staticmethod
     def create_quest_object(where, quest, uid):
         """
@@ -114,7 +138,16 @@ class QuestManager:
             if int(time.time()) < self.quest_object.exp:
                 return
 
-        self.quest_object.Destroy()
+        status = self.quest_object.magic
+        transaction = self.journal_begin(
+            "quest.repeat-reset",
+            self.quest_subject(),
+            status,
+            Atrinik.QUEST_STATUS_INVALID,
+            "actor:quest-manager",
+        )
+        self.quest_object.Destroy("quest.repeat-state-remove")
+        self.journal_commit(transaction)
         self.quest_object = None
 
     def get_qp_max(self):
@@ -224,7 +257,7 @@ class QuestManager:
                     tmp.WriteKey("soulbound_name", self.activator.name)
             else:
                 remove = min(max(1, tmp.nrof), nrof - removed)
-                tmp.Decrease(remove)
+                tmp.Decrease(remove, reason="quest.objective-remove")
                 removed += remove
 
                 if removed == nrof:
@@ -468,17 +501,39 @@ class QuestManager:
         :type sound: str
         """
 
-        self.ensure_quest_object()
-        new_quest = (
+        new_quest = self.quest_object is None or (
             self.quest_object.magic == Atrinik.QUEST_STATUS_INVALID
         )
+        part_path = [part] if isinstance(part, str) else list(part)
         part, quest = self.get_part(part)
+        if self.quest_object and self.quest_object.FindObject(name=part):
+            return
+
+        controller = self.activator.Controller()
+        part_transaction = self.journal_begin(
+            "quest.part-started",
+            self.part_subject(part_path),
+            Atrinik.QUEST_STATUS_INVALID,
+            Atrinik.QUEST_STATUS_STARTED,
+        )
+        quest_transaction = None
+        if new_quest:
+            quest_transaction = self.journal_begin(
+                "quest.started",
+                self.quest_subject(),
+                Atrinik.QUEST_STATUS_INVALID,
+                Atrinik.QUEST_STATUS_STARTED,
+            )
+        self.ensure_quest_object()
         self.create_quest_object(self.quest_object, quest, part)
         if new_quest:
             self.quest_object.magic = Atrinik.QUEST_STATUS_STARTED
-            self.activator.Controller().QuestStatus(
+            controller.QuestStatus(
                 self.quest["uid"], Atrinik.QUEST_STATUS_STARTED
             )
+        self.journal_commit(part_transaction)
+        if quest_transaction is not None:
+            self.journal_commit(quest_transaction)
         self.sound(sound)
 
     def complete(self, part, sound="learnspell.ogg"):
@@ -501,20 +556,28 @@ class QuestManager:
         if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
             return False
 
-        # Mark the quest part as completed.
-        obj.magic = Atrinik.QUEST_STATUS_COMPLETED
-        self.sound(sound)
-        self.remove_quest_items(quest, obj)
         qualified_part = "quest-part:{}::{}".format(
             self.quest["uid"], "::".join(part_path)
         )
         controller = self.activator.Controller()
+        part_transaction = self.journal_begin(
+            "quest.part-completed",
+            qualified_part,
+            Atrinik.QUEST_STATUS_STARTED,
+            Atrinik.QUEST_STATUS_COMPLETED,
+        )
+        # Leave the durable intent pending if any following state mutation is
+        # uncertain; recovery must inspect it instead of accepting an abort.
+        obj.magic = Atrinik.QUEST_STATUS_COMPLETED
+        self.sound(sound)
+        self.remove_quest_items(quest, obj)
         controller.MetricMarkUnique(
             "quests.completed_parts", qualified_part
         )
         controller.MetricKeyedAdd(
             "quests.part_completions_by_id", qualified_part
         )
+        self.journal_commit(part_transaction)
 
         # Check all quest parts. If all are completed, complete the
         # entire quest.
@@ -522,6 +585,12 @@ class QuestManager:
             return False
 
         # Complete the quest itself now.
+        quest_transaction = self.journal_begin(
+            "quest.completed",
+            self.quest_subject(),
+            Atrinik.QUEST_STATUS_STARTED,
+            Atrinik.QUEST_STATUS_COMPLETED,
+        )
         self.quest_object.magic = Atrinik.QUEST_STATUS_COMPLETED
         self.use_qp()
         controller.QuestStatus(
@@ -529,6 +598,7 @@ class QuestManager:
         )
         if self.quest.get("repeat", False):
             controller.MetricAdd("quests.repeatable_completed")
+        self.journal_commit(quest_transaction)
         return True
 
     def fail(self, part, sound="warning_statdown.ogg"):
@@ -545,15 +615,25 @@ class QuestManager:
 
         assert self.quest_object
 
+        part_path = [part] if isinstance(part, str) else list(part)
         part, quest = self.get_part(part)
         obj = self.quest_object.FindObject(name=part)
         if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
             return False
 
-        # Mark the quest part as failed.
+        controller = self.activator.Controller()
+        part_transaction = self.journal_begin(
+            "quest.part-failed",
+            self.part_subject(part_path),
+            Atrinik.QUEST_STATUS_STARTED,
+            Atrinik.QUEST_STATUS_FAILED,
+        )
+        # Leave the intent pending if cleanup or later state updates are
+        # uncertain so no failed/vetoed operation gains a false commit.
         obj.magic = Atrinik.QUEST_STATUS_FAILED
         self.sound(sound)
         self.remove_quest_items(quest, obj)
+        self.journal_commit(part_transaction)
 
         # Check all quest parts. If any are still started, no reason to fail
         # the entire quest just yet.
@@ -561,11 +641,18 @@ class QuestManager:
             return False
 
         # Fail the quest itself now.
+        quest_transaction = self.journal_begin(
+            "quest.failed",
+            self.quest_subject(),
+            Atrinik.QUEST_STATUS_STARTED,
+            Atrinik.QUEST_STATUS_FAILED,
+        )
         self.quest_object.magic = Atrinik.QUEST_STATUS_FAILED
         self.use_qp()
-        self.activator.Controller().QuestStatus(
+        controller.QuestStatus(
             self.quest["uid"], Atrinik.QUEST_STATUS_FAILED
         )
+        self.journal_commit(quest_transaction)
         return True
 
     def finished(self, part):

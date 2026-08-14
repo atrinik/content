@@ -498,8 +498,24 @@ class QuestManagerSuite(TestSuite):
 
         quest_container.exp = int(time.time()) - 60 * 60 * 20
         self.assertEqual(qm.get_qp_restored(), qm.get_qp_max())
-        qm = QuestManager(activator, quest)
+        intents = []
+        commits = []
+        def journal_begin(*args):
+            intents.append(args)
+            return "repeat-reset"
+
+        with mock.patch.object(
+                qm, "journal_begin", side_effect=journal_begin), \
+                mock.patch.object(
+                    qm, "journal_commit", side_effect=commits.append):
+            qm.reset_quest()
         self.assertFalse(qm.started())
+        self.assertEqual([
+            ("quest.repeat-reset", "quest:repeat_failure_test_quest",
+             Atrinik.QUEST_STATUS_FAILED, Atrinik.QUEST_STATUS_INVALID,
+             "actor:quest-manager"),
+        ], intents)
+        self.assertEqual(["repeat-reset"], commits)
 
     def test_10_missing_repeat_delay_has_no_cooldown(self):
         quest_container = activator.Controller().quest_container
@@ -579,6 +595,88 @@ class QuestManagerSuite(TestSuite):
         self.assertEqual(quest_container.magic, 2)
         self.assertEqual(quest_container.exp, 321)
         self.assertEqual(qm.quest_object.exp, 654)
+
+    def test_13_journal_hooks_use_stable_paths_exactly_once(self):
+        quest = {
+            "parts": OrderedDict((("outer", {
+                "info": "",
+                "uid": "outer",
+                "name": "Outer",
+                "parts": OrderedDict((("inner", {
+                    "info": "",
+                    "uid": "inner",
+                    "name": "Inner",
+                }),)),
+            }),)),
+            "name": "Journal Hook Quest",
+            "uid": "journal_hook_quest",
+        }
+        qm = QuestManager(activator, quest)
+        intents = []
+        commits = []
+
+        def journal_begin(reason, subject, before, after, lineage=""):
+            transaction = "transaction-{}".format(len(intents))
+            intents.append((reason, subject, before, after, lineage))
+            return transaction
+
+        with mock.patch.object(qm, "journal_begin", side_effect=journal_begin), \
+                mock.patch.object(qm, "journal_commit", side_effect=commits.append):
+            qm.start("outer")
+            qm.start(["outer", "inner"])
+            qm.start(["outer", "inner"])
+            self.assertFalse(qm.complete(["outer", "inner"]))
+            self.assertFalse(qm.complete(["outer", "inner"]))
+            self.assertTrue(qm.complete("outer"))
+            self.assertFalse(qm.complete("outer"))
+
+        self.assertEqual([
+            ("quest.part-started", "quest-part:journal_hook_quest::outer",
+             Atrinik.QUEST_STATUS_INVALID, Atrinik.QUEST_STATUS_STARTED, ""),
+            ("quest.started", "quest:journal_hook_quest",
+             Atrinik.QUEST_STATUS_INVALID, Atrinik.QUEST_STATUS_STARTED, ""),
+            ("quest.part-started",
+             "quest-part:journal_hook_quest::outer::inner",
+             Atrinik.QUEST_STATUS_INVALID, Atrinik.QUEST_STATUS_STARTED, ""),
+            ("quest.part-completed",
+             "quest-part:journal_hook_quest::outer::inner",
+             Atrinik.QUEST_STATUS_STARTED, Atrinik.QUEST_STATUS_COMPLETED, ""),
+            ("quest.part-completed", "quest-part:journal_hook_quest::outer",
+             Atrinik.QUEST_STATUS_STARTED, Atrinik.QUEST_STATUS_COMPLETED, ""),
+            ("quest.completed", "quest:journal_hook_quest",
+             Atrinik.QUEST_STATUS_STARTED, Atrinik.QUEST_STATUS_COMPLETED, ""),
+        ], intents)
+        self.assertEqual([
+            "transaction-0", "transaction-1", "transaction-2",
+            "transaction-3", "transaction-4", "transaction-5",
+        ], commits)
+
+    def test_14_kept_objective_item_is_retained_without_quest_flags(self):
+        quest = {
+            "parts": OrderedDict((("deliver", {
+                "info": "",
+                "item": {
+                    "arch": "sword",
+                    "name": "kept quest sword",
+                    "keep": True,
+                },
+                "uid": "deliver",
+                "name": "Delivery",
+            }),)),
+            "name": "Kept Objective Quest",
+            "uid": "kept_objective_quest",
+        }
+        qm = QuestManager(activator, quest)
+        qm.start("deliver")
+        sword = activator.CreateObject("sword")
+        sword.name = "kept quest sword"
+        sword.f_quest_item = True
+        sword.f_startequip = True
+        self.assertTrue(qm.complete("deliver"))
+        self.assertTrue(sword)
+        self.assertFalse(sword.f_quest_item)
+        self.assertFalse(sword.f_startequip)
+        sword.Destroy("test.quest-objective-cleanup")
 
 
 activator = Atrinik.WhoIsActivator()

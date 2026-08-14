@@ -140,6 +140,15 @@ def _loaded_names(node: ast.AST) -> set[str]:
     }
 
 
+def _interactive_console_receiver(node: ast.AST, code_aliases: set[str]) -> bool:
+    return (
+        isinstance(node, ast.Attribute)
+        and node.attr == "InteractiveConsole"
+        and isinstance(node.value, ast.Name)
+        and node.value.id in code_aliases
+    )
+
+
 def _propagate_alias_target(
     target: ast.AST,
     value: ast.AST,
@@ -296,6 +305,17 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 ):
                     raise ScriptedGameplayAuditError(
                         "{}:{} aliases a reserved reflective callable".format(
+                            relative, lineno
+                        )
+                    )
+                if (
+                    isinstance(assigned_value, ast.Attribute)
+                    and assigned_value.attr == "InteractiveConsole"
+                    and isinstance(assigned_value.value, ast.Name)
+                    and assigned_value.value.id in code_aliases
+                ):
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} aliases a reserved execution facility".format(
                             relative, lineno
                         )
                     )
@@ -644,6 +664,13 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 | DYNAMIC_EXECUTION_NAMES
                 | NAMESPACE_REFLECTION_NAMES
             ) or (
+                reflected_name == "InteractiveConsole"
+                and isinstance(node.args[0], ast.Name)
+                and node.args[0].id in code_aliases
+            ) or (
+                reflected_name == "push"
+                and _interactive_console_receiver(node.args[0], code_aliases)
+            ) or (
                 reflected_name is None
                 and (
                     _sensitive_receiver(node.args[0], sensitive_aliases)
@@ -651,6 +678,11 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                         isinstance(node.args[0], ast.Name)
                         and node.args[0].id in builtins_aliases
                     )
+                    or (
+                        isinstance(node.args[0], ast.Name)
+                        and node.args[0].id in code_aliases
+                    )
+                    or _interactive_console_receiver(node.args[0], code_aliases)
                 )
             ):
                 raise ScriptedGameplayAuditError(

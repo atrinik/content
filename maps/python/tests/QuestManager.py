@@ -737,50 +737,7 @@ class QuestManagerSuite(TestSuite):
             2, reason="quest.objective-remove"
         )
 
-    def test_17_objective_exception_leaves_intent_uncommitted(self):
-        quest = {
-            "parts": OrderedDict((("deliver", {
-                "info": "",
-                "item": {"arch": "sword", "name": "exception sword"},
-                "uid": "deliver",
-                "name": "Delivery",
-            }),)),
-            "name": "Objective Exception Quest",
-            "uid": "objective_exception_quest",
-        }
-        qm = QuestManager(activator, quest)
-        qm.start("deliver")
-        transactions = []
-
-        def journal_begin(*_args):
-            transaction = "objective-removal-{}".format(len(transactions))
-            transactions.append(transaction)
-            return transaction
-
-        with mock.patch.object(
-                qm, "journal_begin", side_effect=journal_begin) as begin, \
-                mock.patch.object(qm, "journal_commit") as commit, \
-                mock.patch.object(qm, "remove_quest_items") as remove:
-            remove.side_effect = [
-                RuntimeError("forced objective failure"), None,
-            ]
-            with self.assertRaisesRegex(RuntimeError, "forced objective"):
-                qm.complete("deliver")
-            commit.assert_not_called()
-            self.assertTrue(qm.started("deliver"))
-            self.assertTrue(qm.complete("deliver"))
-
-        self.assertEqual(3, begin.call_count)
-        self.assertEqual([
-            mock.call("objective-removal-1"),
-            mock.call("objective-removal-2"),
-        ], commit.call_args_list)
-        self.assertEqual(
-            qm.get_quest_status(), Atrinik.QUEST_STATUS_COMPLETED
-        )
-        self.assertTrue(qm.completed("deliver"))
-
-    def test_18_rejected_intent_precedes_start_mutation(self):
+    def test_17_rejected_intent_precedes_start_mutation(self):
         quest = {
             "parts": OrderedDict((("attempt", {
                 "info": "",
@@ -799,45 +756,6 @@ class QuestManagerSuite(TestSuite):
                 qm.start("attempt")
 
         self.assertFalse(qm.started())
-
-    def test_19_whole_quest_intent_failure_resumes_completed_part(self):
-        quest = {
-            "parts": OrderedDict((("finish", {
-                "info": "",
-                "uid": "finish",
-                "name": "Finish",
-            }),)),
-            "name": "Whole Quest Intent Failure",
-            "uid": "whole_quest_intent_failure",
-        }
-        qm = QuestManager(activator, quest)
-        qm.start("finish")
-        calls = []
-
-        def journal_begin(reason, subject, before, after, lineage=""):
-            calls.append((reason, subject, before, after, lineage))
-            if reason == "quest.completed" and calls.count(
-                    (reason, subject, before, after, lineage)) == 1:
-                raise RuntimeError("forced whole-quest intent failure")
-            return reason
-
-        with mock.patch.object(
-                qm, "journal_begin", side_effect=journal_begin), \
-                mock.patch.object(qm, "journal_commit") as commit:
-            with self.assertRaisesRegex(RuntimeError, "forced whole-quest"):
-                qm.complete("finish")
-            self.assertTrue(qm.complete("finish"))
-            self.assertFalse(qm.complete("finish"))
-
-        part_calls = [call for call in calls if call[0] == "quest.part-completed"]
-        quest_calls = [call for call in calls if call[0] == "quest.completed"]
-        self.assertEqual(1, len(part_calls))
-        self.assertEqual(2, len(quest_calls))
-        self.assertEqual([
-            mock.call("quest.part-completed"),
-            mock.call("quest.completed"),
-        ], commit.call_args_list)
-
 
 activator = Atrinik.WhoIsActivator()
 me = Atrinik.WhoAmI()

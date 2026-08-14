@@ -553,31 +553,37 @@ class QuestManager:
         part_path = [part] if isinstance(part, str) else list(part)
         part, quest = self.get_part(part)
         obj = self.quest_object.FindObject(name=part)
-        if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
+        if not obj or obj.magic not in {
+                Atrinik.QUEST_STATUS_STARTED,
+                Atrinik.QUEST_STATUS_COMPLETED}:
+            return False
+        if (obj.magic == Atrinik.QUEST_STATUS_COMPLETED and
+                self.quest_object.magic != Atrinik.QUEST_STATUS_STARTED):
             return False
 
-        qualified_part = "quest-part:{}::{}".format(
-            self.quest["uid"], "::".join(part_path)
-        )
         controller = self.activator.Controller()
-        part_transaction = self.journal_begin(
-            "quest.part-completed",
-            qualified_part,
-            Atrinik.QUEST_STATUS_STARTED,
-            Atrinik.QUEST_STATUS_COMPLETED,
-        )
-        # Leave the durable intent pending if any following state mutation is
-        # uncertain; recovery must inspect it instead of accepting an abort.
-        obj.magic = Atrinik.QUEST_STATUS_COMPLETED
-        self.sound(sound)
-        self.remove_quest_items(quest, obj)
-        controller.MetricMarkUnique(
-            "quests.completed_parts", qualified_part
-        )
-        controller.MetricKeyedAdd(
-            "quests.part_completions_by_id", qualified_part
-        )
-        self.journal_commit(part_transaction)
+        if obj.magic == Atrinik.QUEST_STATUS_STARTED:
+            qualified_part = "quest-part:{}::{}".format(
+                self.quest["uid"], "::".join(part_path)
+            )
+            part_transaction = self.journal_begin(
+                "quest.part-completed",
+                qualified_part,
+                Atrinik.QUEST_STATUS_STARTED,
+                Atrinik.QUEST_STATUS_COMPLETED,
+            )
+            # Perform fallible objective cleanup before making the part
+            # terminal so an exception can be retried against the same intent.
+            self.remove_quest_items(quest, obj)
+            obj.magic = Atrinik.QUEST_STATUS_COMPLETED
+            self.journal_commit(part_transaction)
+            controller.MetricMarkUnique(
+                "quests.completed_parts", qualified_part
+            )
+            controller.MetricKeyedAdd(
+                "quests.part_completions_by_id", qualified_part
+            )
+            self.sound(sound)
 
         # Check all quest parts. If all are completed, complete the
         # entire quest.
@@ -618,22 +624,27 @@ class QuestManager:
         part_path = [part] if isinstance(part, str) else list(part)
         part, quest = self.get_part(part)
         obj = self.quest_object.FindObject(name=part)
-        if not obj or obj.magic != Atrinik.QUEST_STATUS_STARTED:
+        if not obj or obj.magic not in {
+                Atrinik.QUEST_STATUS_STARTED,
+                Atrinik.QUEST_STATUS_FAILED}:
+            return False
+        if (obj.magic == Atrinik.QUEST_STATUS_FAILED and
+                self.quest_object.magic != Atrinik.QUEST_STATUS_STARTED):
             return False
 
         controller = self.activator.Controller()
-        part_transaction = self.journal_begin(
-            "quest.part-failed",
-            self.part_subject(part_path),
-            Atrinik.QUEST_STATUS_STARTED,
-            Atrinik.QUEST_STATUS_FAILED,
-        )
-        # Leave the intent pending if cleanup or later state updates are
-        # uncertain so no failed/vetoed operation gains a false commit.
-        obj.magic = Atrinik.QUEST_STATUS_FAILED
-        self.sound(sound)
-        self.remove_quest_items(quest, obj)
-        self.journal_commit(part_transaction)
+        if obj.magic == Atrinik.QUEST_STATUS_STARTED:
+            part_transaction = self.journal_begin(
+                "quest.part-failed",
+                self.part_subject(part_path),
+                Atrinik.QUEST_STATUS_STARTED,
+                Atrinik.QUEST_STATUS_FAILED,
+            )
+            # Keep the part retryable if objective cleanup fails.
+            self.remove_quest_items(quest, obj)
+            obj.magic = Atrinik.QUEST_STATUS_FAILED
+            self.journal_commit(part_transaction)
+            self.sound(sound)
 
         # Check all quest parts. If any are still started, no reason to fail
         # the entire quest just yet.

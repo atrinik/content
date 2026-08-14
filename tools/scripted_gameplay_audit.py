@@ -326,6 +326,17 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                         relative, binding.lineno
                     )
                 )
+            if (
+                isinstance(binding, (ast.ExceptHandler, ast.MatchAs, ast.MatchStar))
+                and binding.name == "Eval"
+            ) or (
+                isinstance(binding, ast.MatchMapping) and binding.rest == "Eval"
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} shadows the wildcard Atrinik.Eval binding".format(
+                        relative, binding.lineno
+                    )
+                )
     changed = True
     while changed:
         changed = False

@@ -1,4 +1,26 @@
 region world
+celestial_schema 1
+celestial_solar_mode global
+celestial_solar_rate 1/1
+celestial_solar_epoch 0
+celestial_solar_phase 0
+celestial_season_mode global
+celestial_season_rate 1/1
+celestial_season_epoch 0
+celestial_season_phase 0
+celestial_lunar_mode global
+celestial_lunar_rate 1/1
+celestial_lunar_epoch 0
+celestial_lunar_phase 0
+celestial_lunar_period 672
+celestial_day_color ffffff
+celestial_night_color 6080c0
+celestial_day_brightness 256
+celestial_night_brightness 256
+celestial_moon_color c0d0ff
+celestial_moon_max 20
+celestial_starlight_color 6080c0
+celestial_starlight_strength 2
 longname The World
 msg
 Somewhere in the world...

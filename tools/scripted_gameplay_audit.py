@@ -700,6 +700,10 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     isinstance(node.args[0], ast.Name)
                     and node.args[0].id in builtins_aliases
                 )
+                or (
+                    isinstance(node.args[0], ast.Name)
+                    and node.args[0].id in code_aliases
+                )
             )
         ):
             raise ScriptedGameplayAuditError(
@@ -731,8 +735,9 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 _contains_sensitive_receiver(node.value, sensitive_aliases)
                 or (
                     isinstance(node.value, ast.Name)
-                    and node.value.id in builtins_aliases
+                    and node.value.id in builtins_aliases | code_aliases
                 )
+                or _interactive_console_receiver(node.value, code_aliases)
             )
         ):
             raise ScriptedGameplayAuditError(

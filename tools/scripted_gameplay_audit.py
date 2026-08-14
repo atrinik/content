@@ -269,6 +269,22 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         changed = False
         for target, value, lineno in assignments:
             for _name, assigned_value in _target_value_pairs(target, value):
+                if isinstance(assigned_value, ast.Name):
+                    if (
+                        assigned_value.id in builtins_aliases
+                        and _name not in builtins_aliases
+                    ):
+                        builtins_aliases.add(_name)
+                        changed = True
+                    if (
+                        assigned_value.id in atrinik_aliases
+                        and _name not in atrinik_aliases
+                    ):
+                        atrinik_aliases.add(_name)
+                        changed = True
+                    if assigned_value.id in code_aliases and _name not in code_aliases:
+                        code_aliases.add(_name)
+                        changed = True
                 if (
                     isinstance(assigned_value, ast.Attribute)
                     and isinstance(assigned_value.value, ast.Name)

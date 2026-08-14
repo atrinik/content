@@ -19,7 +19,7 @@
     {
       "path": "maps/python/Jail.py",
       "scope": "Jail.jail",
-      "context_sha256": "2459e910d8174989cf023b47b8e6666a184d1ccce73ef1f6d7e15c0f3152406f"
+      "context_sha256": "e3922f75bc55c572f22ac62a4d058116945d6b15e18452ae8a1e52cb776868f3"
     },
     {
       "path": "maps/python/Merchant.py",
@@ -142,7 +142,7 @@
     },
     {
       "path": "maps/python/Jail.py",
-      "ast_path": "body[6].body[2].body[10].value",
+      "ast_path": "body[6].body[2].body[11].value",
       "scope": "Jail.jail",
       "method": "MetricAdd",
       "metric": "social.jail_sentences",
@@ -153,7 +153,7 @@
     },
     {
       "path": "maps/python/Jail.py",
-      "ast_path": "body[6].body[2].body[11].body[0].value",
+      "ast_path": "body[6].body[2].body[12].body[0].value",
       "scope": "Jail.jail",
       "method": "MetricAdd",
       "metric": "social.jail_time_sentenced",

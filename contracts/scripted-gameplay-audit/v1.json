@@ -39,7 +39,7 @@
     {
       "path": "maps/python/QuestManager.py",
       "scope": "QuestManager.complete",
-      "context_sha256": "67dbcd89b4bb30c2d571762f7d2aa0864b5243209ae894746937e84d61eeda1c"
+      "context_sha256": "fe39cddae92a37e0e3a488585cd93ae952a1a1e26b2f89309d799489bbe21ae6"
     },
     {
       "path": "maps/python/Thieves.py",
@@ -55,6 +55,11 @@
       "path": "maps/python/commands/console.py",
       "scope": "AutoComplete._assignment",
       "context_sha256": "0e603d575923c09f32f88f38968b1d34dd4760cfb6d250f42bc00c06b25c42ef"
+    },
+    {
+      "path": "maps/python/commands/console.py",
+      "scope": "PyConsole.push",
+      "context_sha256": "05655ddeaac50117dbb0f026a6d4b8f098deddc66cda4073c1840b0f7d150721"
     },
     {
       "path": "maps/python/commands/console.py",
@@ -229,18 +234,7 @@
     },
     {
       "path": "maps/python/QuestManager.py",
-      "ast_path": "body[4].body[26].body[14].body[0].value",
-      "scope": "QuestManager.complete",
-      "method": "MetricAdd",
-      "metric": "quests.repeatable_completed",
-      "classification": "gameplay-journal",
-      "proposed_journal_reason": "quest.completed",
-      "event_rate": "One per completed repeatable quest cycle.",
-      "rationale": "The durable quest.completed transition identifies the terminal repeat cycle; intermediate state writes remain unrecorded."
-    },
-    {
-      "path": "maps/python/QuestManager.py",
-      "ast_path": "body[4].body[26].body[8].body[5].value",
+      "ast_path": "body[4].body[26].body[12].value",
       "scope": "QuestManager.complete",
       "method": "MetricMarkUnique",
       "metric": "quests.completed_parts",
@@ -251,7 +245,7 @@
     },
     {
       "path": "maps/python/QuestManager.py",
-      "ast_path": "body[4].body[26].body[8].body[6].value",
+      "ast_path": "body[4].body[26].body[13].value",
       "scope": "QuestManager.complete",
       "method": "MetricKeyedAdd",
       "metric": "quests.part_completions_by_id",
@@ -259,6 +253,17 @@
       "proposed_journal_reason": "quest.part-completed",
       "event_rate": "One per successful top-level or nested quest-part completion.",
       "rationale": "Stable qualified part identity is shared with the durable quest.part-completed transition, never each intermediate state write."
+    },
+    {
+      "path": "maps/python/QuestManager.py",
+      "ast_path": "body[4].body[26].body[20].body[0].value",
+      "scope": "QuestManager.complete",
+      "method": "MetricAdd",
+      "metric": "quests.repeatable_completed",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "quest.completed",
+      "event_rate": "One per completed repeatable quest cycle.",
+      "rationale": "The durable quest.completed transition identifies the terminal repeat cycle; intermediate state writes remain unrecorded."
     },
     {
       "path": "maps/python/Thieves.py",
@@ -451,6 +456,15 @@
       "classification": "operational/security-log",
       "event_rate": "One expression evaluation per privileged console autocomplete assignment probe.",
       "rationale": "Dynamic operator-console evaluation is an explicit protected execution boundary and must never become structured gameplay evidence."
+    },
+    {
+      "path": "maps/python/commands/console.py",
+      "ast_path": "body[13].body[3].body[6].body[0].value",
+      "scope": "PyConsole.push",
+      "facility": "Python.InteractiveConsole.push",
+      "classification": "operational/security-log",
+      "event_rate": "One execution attempt per privileged console submission after multiline buffering.",
+      "rationale": "The interactive interpreter executes arbitrary operator-supplied Python and is a protected execution boundary, never structured gameplay evidence."
     },
     {
       "path": "maps/python/commands/console.py",

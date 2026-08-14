@@ -22,7 +22,9 @@ IDENTITY_MAX = 255
 SENSITIVE_RECEIVER_NAMES = frozenset(
     {"Atrinik", "activator", "controller", "guild", "pl", "player"}
 )
-SENSITIVE_REFLECTIVE_NAMES = frozenset((*METRIC_METHODS, "Logger", "log_add", "print"))
+SENSITIVE_REFLECTIVE_NAMES = frozenset(
+    (*METRIC_METHODS, "Eval", "Logger", "log_add", "print", "__getattribute__")
+)
 DYNAMIC_EXECUTION_NAMES = frozenset({"compile", "eval", "exec", "__import__"})
 
 
@@ -187,6 +189,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     print_aliases = {"print"}
     atrinik_aliases = {"Atrinik"}
     builtins_aliases = {"__builtins__", "builtins"}
+    code_aliases = {"code"}
     assignments: list[tuple[ast.AST, ast.AST, int]] = []
     ambiguous_sensitive_aliases: set[str] = set()
     for imported in ast.walk(tree):
@@ -196,10 +199,18 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     builtins_aliases.add(name.asname or name.name)
                 if name.name == "Atrinik":
                     atrinik_aliases.add(name.asname or name.name)
+                if name.name == "code":
+                    code_aliases.add(name.asname or name.name)
         if isinstance(imported, ast.ImportFrom) and imported.module == "Atrinik":
             for name in imported.names:
                 if name.name == "Logger":
                     logger_aliases.add(name.asname or name.name)
+                if name.name == "print":
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} aliases a reserved audit callable".format(
+                            relative, imported.lineno
+                        )
+                    )
         if isinstance(imported, ast.ImportFrom) and imported.module == "builtins":
             if any(
                 name.name in {"getattr", "print", "vars"} | DYNAMIC_EXECUTION_NAMES
@@ -242,6 +253,19 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     while changed:
         changed = False
         for target, value, lineno in assignments:
+            for _name, assigned_value in _target_value_pairs(target, value):
+                if (
+                    isinstance(assigned_value, ast.Attribute)
+                    and isinstance(assigned_value.value, ast.Name)
+                    and assigned_value.value.id in builtins_aliases
+                    and assigned_value.attr
+                    in {"getattr", "vars"} | DYNAMIC_EXECUTION_NAMES
+                ):
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} aliases a reserved reflective callable".format(
+                            relative, lineno
+                        )
+                    )
             if isinstance(target, ast.Name) and target.id in {"Logger", "print"}:
                 raise ScriptedGameplayAuditError(
                     "{}:{} shadows a reserved audit callable".format(relative, lineno)
@@ -257,6 +281,49 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     )
                 )
             changed = _propagate_alias_target(target, value, sensitive_aliases) or changed
+            if (
+                isinstance(value, ast.Attribute)
+                and isinstance(value.value, ast.Name)
+                and value.value.id in builtins_aliases
+                and value.attr in {"getattr", "vars"} | DYNAMIC_EXECUTION_NAMES
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reserved reflective callable".format(relative, lineno)
+                )
+            if (
+                isinstance(value, ast.Attribute)
+                and value.attr in {"get", "__getitem__"}
+                and isinstance(value.value, ast.Call)
+                and isinstance(value.value.func, ast.Name)
+                and value.value.func.id in {"globals", "locals"}
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reflective namespace lookup".format(relative, lineno)
+                )
+            if (
+                isinstance(value, ast.Call)
+                and isinstance(value.func, ast.Name)
+                and value.func.id in {"globals", "locals"}
+            ) or (
+                isinstance(value, ast.Name)
+                and value.id in {"globals", "locals"}
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reflective namespace".format(relative, lineno)
+                )
+            if (
+                isinstance(value, ast.Attribute)
+                and isinstance(value.value, ast.Name)
+                and (
+                    value.value.id in atrinik_aliases
+                    and value.attr == "print"
+                    or value.value.id in builtins_aliases
+                    and value.attr in {"print"} | DYNAMIC_EXECUTION_NAMES
+                )
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reserved audit callable".format(relative, lineno)
+                )
             if not isinstance(target, ast.Name):
                 continue
             if isinstance(value, ast.Name):
@@ -273,15 +340,6 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     raise ScriptedGameplayAuditError(
                         "{}:{} aliases a reserved reflective callable".format(relative, lineno)
                     )
-            if (
-                isinstance(value, ast.Attribute)
-                and isinstance(value.value, ast.Name)
-                and value.value.id in builtins_aliases
-                and value.attr in {"getattr", "vars"} | DYNAMIC_EXECUTION_NAMES
-            ):
-                raise ScriptedGameplayAuditError(
-                    "{}:{} aliases a reserved reflective callable".format(relative, lineno)
-                )
             if target.id in print_aliases and not (
                 isinstance(value, ast.Name) and value.id in print_aliases
             ):
@@ -412,6 +470,40 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 )
                 direct_log_references.add(id(node.func))
             if (
+                isinstance(node.func, ast.Attribute)
+                and isinstance(node.func.value, ast.Name)
+                and node.func.value.id in builtins_aliases
+                and node.func.attr in {"eval", "exec"}
+            ):
+                logs.append(
+                    {
+                        "path": relative,
+                        "ast_path": ast_path,
+                        "scope": scope,
+                        "context_sha256": context_sha256,
+                        "facility": "Python.{}".format(node.func.attr),
+                    }
+                )
+                direct_log_references.add(id(node.func))
+            if (
+                isinstance(node.func, ast.Attribute)
+                and node.func.attr == "push"
+                and isinstance(node.func.value, ast.Attribute)
+                and node.func.value.attr == "InteractiveConsole"
+                and isinstance(node.func.value.value, ast.Name)
+                and node.func.value.value.id in code_aliases
+            ):
+                logs.append(
+                    {
+                        "path": relative,
+                        "ast_path": ast_path,
+                        "scope": scope,
+                        "context_sha256": context_sha256,
+                        "facility": "Python.InteractiveConsole.push",
+                    }
+                )
+                direct_log_references.add(id(node.func))
+            if (
                 isinstance(node.func, ast.Name)
                 and node.func.id in {"getattr", "vars"}
             ):
@@ -446,6 +538,28 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     or (
                         node.attr == "log_add"
                     )
+                    or (
+                        node.attr == "print"
+                        and isinstance(node.value, ast.Name)
+                        and node.value.id in builtins_aliases | atrinik_aliases
+                    )
+                    or (
+                        node.attr in {"eval", "exec"}
+                        and isinstance(node.value, ast.Name)
+                        and node.value.id in builtins_aliases
+                    )
+                    or (
+                        node.attr == "Eval"
+                        and isinstance(node.value, ast.Name)
+                        and node.value.id in atrinik_aliases
+                    )
+                    or (
+                        node.attr == "push"
+                        and isinstance(node.value, ast.Attribute)
+                        and node.value.attr == "InteractiveConsole"
+                        and isinstance(node.value.value, ast.Name)
+                        and node.value.value.id in code_aliases
+                    )
                 )
             )
         ) and id(node) not in direct_log_references:
@@ -479,7 +593,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             and len(node.args) >= 2
         ):
             reflected_name = _static_string(node.args[1])
-            if reflected_name in SENSITIVE_REFLECTIVE_NAMES or (
+            if reflected_name in SENSITIVE_REFLECTIVE_NAMES | DYNAMIC_EXECUTION_NAMES or (
                 reflected_name is None
                 and _sensitive_receiver(node.args[0], sensitive_aliases)
             ):
@@ -492,7 +606,13 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             and node.func.id in reflection_aliases
             and node.func.id != "getattr"
             and node.args
-            and _sensitive_receiver(node.args[0], sensitive_aliases)
+            and (
+                _sensitive_receiver(node.args[0], sensitive_aliases)
+                or (
+                    isinstance(node.args[0], ast.Name)
+                    and node.args[0].id in builtins_aliases
+                )
+            )
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)
@@ -502,7 +622,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             and isinstance(node.func, ast.Attribute)
             and isinstance(node.func.value, ast.Name)
             and node.func.value.id in builtins_aliases
-            and node.func.attr in {"getattr", "vars"}
+            and node.func.attr in {"compile", "getattr", "vars", "__import__"}
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses qualified reflective access".format(relative, node.lineno)
@@ -537,7 +657,9 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             and isinstance(node.value, ast.Attribute)
             and node.value.attr == "__dict__"
             and _static_string(node.slice)
-            in SENSITIVE_REFLECTIVE_NAMES | {"__getattribute__"}
+            in SENSITIVE_REFLECTIVE_NAMES
+            | DYNAMIC_EXECUTION_NAMES
+            | {"attrgetter", "methodcaller"}
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)

@@ -298,6 +298,13 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertFalse(ac_force.f_is_used_up)
         self.assertEqual(activator.FindObject(type=Atrinik.Type.FORCE),
                          ac_force)
+        self.assertRaises(TypeError, ac_force.PublishStatus)
+        self.assertRaises(ValueError, ac_force.PublishStatus,
+                          "condition:test", "test condition",
+                          "face-that-does-not-exist.101", "test tooltip")
+        ac_force.PublishStatus("condition:test", "test condition",
+                               "force.101", "test tooltip")
+        self.assertEqual(ac_force.face[0], "force.101")
 
         force = self.obj.CreateForce("test-create-force", expiration=1)
         self.assertEqual(force.name, "test-create-force")

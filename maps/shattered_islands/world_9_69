@@ -1948,10 +1948,7 @@ arch lantern2_magic.131
 direction 7
 x 14
 y 1
-end
-arch light6
-x 14
-y 1
+glow_radius 6
 end
 arch grassd_2
 x 14
@@ -1973,10 +1970,7 @@ arch lantern2_magic.131
 direction 7
 x 14
 y 4
-end
-arch light6
-x 14
-y 4
+glow_radius 6
 end
 arch floor_flagm3
 x 14
@@ -1998,10 +1992,7 @@ arch lantern2_magic.131
 direction 7
 x 14
 y 7
-end
-arch light6
-x 14
-y 7
+glow_radius 6
 end
 arch grassd_4
 x 14
@@ -2027,10 +2018,7 @@ arch lantern2_magic.131
 direction 7
 x 14
 y 12
-end
-arch light6
-x 14
-y 12
+glow_radius 6
 end
 arch grassd_7
 x 14

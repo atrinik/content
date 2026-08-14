@@ -62,9 +62,7 @@ y 11
 end
 arch pool_magic
 y 11
-end
-arch light7
-y 11
+glow_radius 7
 end
 arch grassd_8
 y 12
@@ -242,6 +240,7 @@ direction 7
 x 2
 y 2
 glow_radius 9
+light_color ffd080
 end
 arch grassd_2
 x 2
@@ -778,6 +777,7 @@ direction 7
 x 6
 y 6
 glow_radius 9
+light_color ffd080
 end
 arch grassd_1
 x 6
@@ -880,6 +880,7 @@ direction 3
 x 7
 y 1
 glow_radius 9
+light_color ffd080
 end
 arch fstone1b
 x 7
@@ -2443,6 +2444,7 @@ x 18
 y 17
 end
 arch light5
+light_color c0ff60
 x 18
 y 17
 end
@@ -2713,6 +2715,7 @@ x 20
 y 14
 end
 arch light5
+light_color ff6030
 x 20
 y 14
 end

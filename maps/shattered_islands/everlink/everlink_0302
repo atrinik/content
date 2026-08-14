@@ -2594,6 +2594,7 @@ direction 7
 x 20
 y 19
 glow_radius 9
+light_color ffd080
 end
 arch fstone1b
 x 20
@@ -2624,6 +2625,7 @@ direction 7
 x 20
 y 22
 glow_radius 9
+light_color ffd080
 end
 arch grassd_2
 x 20

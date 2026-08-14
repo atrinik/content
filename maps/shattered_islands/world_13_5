@@ -2026,10 +2026,6 @@ arch sand_dm1
 x 11
 y 11
 end
-arch light9
-x 11
-y 11
-end
 arch water_still
 name Morliana water
 x 11
@@ -2039,20 +2035,12 @@ arch sand_dm9
 x 11
 y 12
 end
-arch light9
-x 11
-y 12
-end
 arch water_still
 name Morliana water
 x 11
 y 13
 end
 arch sand_dm2
-x 11
-y 13
-end
-arch light9
 x 11
 y 13
 end
@@ -2218,10 +2206,6 @@ arch sand_dm7
 x 12
 y 11
 end
-arch light9
-x 12
-y 11
-end
 arch floor_sand_d4
 x 12
 y 12
@@ -2231,6 +2215,7 @@ x 12
 y 12
 end
 arch meffect_blue
+glow_radius 0
 is_used_up 0
 no_save 0
 speed 0
@@ -2239,6 +2224,7 @@ x 12
 y 12
 end
 arch meffect_blue
+glow_radius 0
 is_used_up 0
 no_save 0
 speed 0
@@ -2257,10 +2243,6 @@ x 12
 y 13
 end
 arch sand_dm6
-x 12
-y 13
-end
-arch light9
 x 12
 y 13
 end
@@ -2418,10 +2400,6 @@ arch sand_dm4
 x 13
 y 11
 end
-arch light9
-x 13
-y 11
-end
 arch water_still
 name Morliana water
 x 13
@@ -2431,20 +2409,12 @@ arch sand_dm8
 x 13
 y 12
 end
-arch light9
-x 13
-y 12
-end
 arch water_still
 name Morliana water
 x 13
 y 13
 end
 arch sand_dm3
-x 13
-y 13
-end
-arch light9
 x 13
 y 13
 end

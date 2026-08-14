@@ -16,8 +16,6 @@ arch grassd_4
 end
 arch lantern_black
 end
-arch light7
-end
 arch map_info
 hp 23
 sp 8
@@ -42,9 +40,6 @@ arch grassd_1
 y 4
 end
 arch lantern_black
-y 4
-end
-arch light7
 y 4
 end
 arch grassd_4
@@ -680,9 +675,6 @@ end
 arch lantern_black
 x 5
 end
-arch light7
-x 5
-end
 arch floor_fs_grey1b
 x 5
 y 1
@@ -708,10 +700,6 @@ x 5
 y 4
 end
 arch lantern_black
-x 5
-y 4
-end
-arch light7
 x 5
 y 4
 end
@@ -1312,10 +1300,6 @@ arch lantern_black
 x 9
 y 5
 end
-arch light7
-x 9
-y 5
-end
 arch grassd_2
 x 9
 y 6
@@ -1395,10 +1379,6 @@ x 9
 y 13
 end
 arch lantern_black
-x 9
-y 13
-end
-arch light7
 x 9
 y 13
 end
@@ -1946,10 +1926,6 @@ arch lantern_black
 x 13
 y 5
 end
-arch light7
-x 13
-y 5
-end
 arch grassd_1
 x 13
 y 6
@@ -2023,10 +1999,6 @@ arch lantern_black
 x 13
 y 13
 end
-arch light7
-x 13
-y 13
-end
 arch grassd_6
 x 13
 y 14
@@ -2085,9 +2057,6 @@ end
 arch lantern_black
 x 14
 end
-arch light7
-x 14
-end
 arch floor_fs_grey1b
 x 14
 y 1
@@ -2113,10 +2082,6 @@ x 14
 y 4
 end
 arch lantern_black
-x 14
-y 4
-end
-arch light7
 x 14
 y 4
 end
@@ -2768,9 +2733,6 @@ end
 arch lantern_black
 x 19
 end
-arch light7
-x 19
-end
 arch floor_fs_grey1b
 x 19
 y 1
@@ -2796,10 +2758,6 @@ x 19
 y 4
 end
 arch lantern_black
-x 19
-y 4
-end
-arch light7
 x 19
 y 4
 end

@@ -1405,6 +1405,13 @@ def validate_light_inventory(report: dict) -> list[str]:
                 errors.append(
                     "required fixture group {} has invalid {}".format(group_id, field)
                 )
+        same_tile_review = contract_entry.get("same_tile_review")
+        if same_tile_review not in (None, "exact"):
+            errors.append(
+                "required fixture group {} has invalid same_tile_review".format(
+                    group_id
+                )
+            )
         review_entry = fixture_review.get(group_id)
         if not isinstance(review_entry, dict):
             errors.append("required fixture group {} is missing from review".format(group_id))
@@ -1507,6 +1514,37 @@ def validate_light_inventory(report: dict) -> list[str]:
                         identifier
                     )
                 )
+        intentional_same_tile = {
+            placement["id"]: placement
+            for placement in group["placements"]
+            if placement["radius"] is not None
+            and placement.get("same_tile_emitters")
+        }
+        contract_entry = required_fixtures.get(group_id)
+        exact_same_tile_review = (
+            isinstance(contract_entry, dict)
+            and contract_entry.get("same_tile_review") == "exact"
+        )
+        reviewed_same_tile = entry.get("intentional_same_tile_emitters")
+        if reviewed_same_tile is not None or exact_same_tile_review:
+            if not isinstance(reviewed_same_tile, dict):
+                errors.append(
+                    "fixture group {} intentional_same_tile_emitters must be an object".format(
+                        group_id
+                    )
+                )
+                reviewed_same_tile = {}
+            if set(reviewed_same_tile) != set(intentional_same_tile):
+                errors.append(
+                    "fixture group {} same-tile source dispositions changed".format(
+                        group_id
+                    )
+                )
+            for identifier, rationale in sorted(reviewed_same_tile.items()):
+                if not isinstance(rationale, str) or len(rationale.strip()) < 12:
+                    errors.append(
+                        "fixture {} needs a concise same-tile rationale".format(identifier)
+                    )
         for placement in group["placements"]:
             if placement.get("color") != expected_color:
                 errors.append(
@@ -1528,6 +1566,16 @@ def validate_light_inventory(report: dict) -> list[str]:
                             placement["id"]
                         )
                     )
+            elif (
+                same_tile
+                and (reviewed_same_tile is not None or exact_same_tile_review)
+                and placement["id"] not in reviewed_same_tile
+            ):
+                errors.append(
+                    "emitting fixture {} has an accidental same-tile source".format(
+                        placement["id"]
+                    )
+                )
         checks = entry.get("checks")
         if (
             not isinstance(checks, list)

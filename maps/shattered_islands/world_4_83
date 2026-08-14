@@ -296,10 +296,6 @@ arch lantern_blue
 x 1
 y 21
 end
-arch light5
-x 1
-y 21
-end
 arch grassd_1
 x 1
 y 22
@@ -1171,10 +1167,6 @@ arch statue_fire
 x 6
 y 22
 end
-arch light5
-x 6
-y 22
-end
 arch floor_fs_grey1a
 x 6
 y 23
@@ -1597,10 +1589,6 @@ arch lantern_blue
 x 9
 y 18
 end
-arch light5
-x 9
-y 18
-end
 arch floor_sand_d2
 x 9
 y 19
@@ -1631,10 +1619,6 @@ x 9
 y 22
 end
 arch statue_fire
-x 9
-y 22
-end
-arch light5
 x 9
 y 22
 end
@@ -2480,10 +2464,6 @@ arch lantern_blue
 x 14
 y 22
 end
-arch light5
-x 14
-y 22
-end
 arch grassd_3
 x 14
 y 23
@@ -3201,10 +3181,6 @@ x 18
 y 18
 end
 arch lantern_blue
-x 18
-y 18
-end
-arch light5
 x 18
 y 18
 end

@@ -8,7 +8,7 @@ width 24
 height 24
 difficulty 80
 darkness 2
-bg_music frozen.ogg
+bg_music ice_frontier.s3m
 region glacial_hollow
 end
 arch snow3

@@ -104,10 +104,16 @@ def _sensitive_receiver(node: ast.AST, aliases: set[str]) -> bool:
         return node.id in aliases
     if isinstance(node, ast.Attribute):
         return _sensitive_receiver(node.value, aliases)
+    if isinstance(node, ast.Subscript):
+        return _sensitive_receiver(node.value, aliases)
+    if isinstance(node, (ast.Tuple, ast.List, ast.Set)):
+        return any(_sensitive_receiver(value, aliases) for value in node.elts)
     if isinstance(node, ast.Call):
         if isinstance(node.func, ast.Attribute):
             return node.func.attr == "Controller"
         if isinstance(node.func, ast.Name):
+            if node.func.id == "type" and node.args:
+                return _sensitive_receiver(node.args[0], aliases)
             return node.func.id in {"FindPlayer", "GetFirst", "Guild", "WhoIsActivator"}
     if isinstance(node, ast.IfExp):
         return _sensitive_receiver(node.body, aliases) or _sensitive_receiver(
@@ -158,12 +164,15 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     reflection_aliases = {"getattr", "vars"}
     logger_aliases = {"Logger"}
     print_aliases = {"print"}
-    builtins_aliases = {"builtins"}
+    atrinik_aliases = {"Atrinik"}
+    builtins_aliases = {"__builtins__", "builtins"}
     for imported in ast.walk(tree):
         if isinstance(imported, ast.Import):
             for name in imported.names:
                 if name.name == "builtins":
                     builtins_aliases.add(name.asname or name.name)
+                if name.name == "Atrinik":
+                    atrinik_aliases.add(name.asname or name.name)
         if isinstance(imported, ast.ImportFrom) and imported.module == "Atrinik":
             for name in imported.names:
                 if name.name == "Logger":
@@ -181,7 +190,10 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 + ([imported.args.vararg] if imported.args.vararg is not None else [])
                 + ([imported.args.kwarg] if imported.args.kwarg is not None else [])
             )
-            if any(argument.arg in {"Logger", "print"} for argument in arguments):
+            if any(
+                argument.arg in logger_aliases | print_aliases
+                for argument in arguments
+            ):
                 raise ScriptedGameplayAuditError(
                     "{}:{} shadows a reserved audit callable".format(relative, imported.lineno)
                 )
@@ -303,6 +315,8 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             elif (
                 isinstance(node.func, ast.Attribute)
                 and node.func.attr == "Logger"
+                and isinstance(node.func.value, ast.Name)
+                and node.func.value.id in atrinik_aliases
             ):
                 facility = "Atrinik.Logger"
                 direct_log_references.add(id(node.func))
@@ -365,7 +379,6 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     )
                     or (
                         node.attr == "log_add"
-                        and _sensitive_receiver(node.value, sensitive_aliases)
                     )
                 )
             )
@@ -422,7 +435,6 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Attribute)
             and node.attr == "__getattribute__"
-            and _contains_sensitive_receiver(node.value, sensitive_aliases)
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)
@@ -430,10 +442,37 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Attribute)
             and node.attr == "__dict__"
-            and _contains_sensitive_receiver(node.value, sensitive_aliases)
+            and (
+                _contains_sensitive_receiver(node.value, sensitive_aliases)
+                or (
+                    isinstance(node.value, ast.Name)
+                    and node.value.id in builtins_aliases
+                )
+            )
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)
+            )
+        if isinstance(node, ast.Attribute) and node.attr == "attrgetter":
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective attribute construction".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Subscript)
+            and (
+                (
+                    isinstance(node.value, ast.Name)
+                    and node.value.id == "__builtins__"
+                )
+                or (
+                    isinstance(node.value, ast.Call)
+                    and isinstance(node.value.func, ast.Name)
+                    and node.value.func.id in {"globals", "locals"}
+                )
+            )
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective namespace access".format(relative, node.lineno)
             )
     return metrics, logs
 

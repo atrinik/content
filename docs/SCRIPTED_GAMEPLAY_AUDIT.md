@@ -7,6 +7,8 @@ rejects dynamic or indirect metric access, and binds every call to its source,
 lexical scope, AST location, and a normalized hash of the surrounding function
 or module. Moving, adding, removing, or semantically surrounding a site
 therefore requires an explicit noise, privacy, and recovery decision.
+The telemetry spellings `Metric*`, `Logger`, `print`, and `log_add` are reserved
+within authored maps; ambiguous shadowing, rebinding, or reflection is rejected.
 
 The four dispositions describe the intended telemetry boundary:
 

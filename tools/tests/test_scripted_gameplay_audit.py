@@ -407,6 +407,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "from Atrinik import print as emit\n",
             "from Atrinik import Eval as emit\n",
             "from code import InteractiveConsole as Runner\n",
+            "import code\nConsole = code.InteractiveConsole\n",
+            "import code\nruntime = code\nConsole = runtime.InteractiveConsole\n",
         ):
             with self.subTest(
                 source_text=source_text
@@ -434,6 +436,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "import builtins\nnamespace = builtins.globals\n",
             "import builtins\ngetattr(builtins, method)(payload)\n",
             "import builtins\nmodule = builtins\nlookup = module.getattr\n",
+            'import code\ngetattr(code, "InteractiveConsole").push(console, payload)\n',
+            'import code\ngetattr(code.InteractiveConsole, "push")(console, payload)\n',
         ):
             with self.subTest(
                 source_text=source_text

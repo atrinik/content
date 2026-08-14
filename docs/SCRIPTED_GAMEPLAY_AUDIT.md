@@ -41,8 +41,8 @@ They must move behind the durable idempotent commit/reconciliation result when
 the typed APIs become available; generic payment or custody hooks must not add
 a second copy of a business-specific aggregate.
 
-The 19 current audit-like sites include generic Python diagnostics and prints,
-the privileged `eval`, `exec`, and interactive-console execution boundaries,
+The 21 current audit-like sites include generic Python diagnostics and prints,
+the privileged `eval`, `exec`, engine callback, and interactive-console execution boundaries,
 guild chat and console commands, guild-storage `Guild.log_add` calls, and their
 human-text file sink. Some carry
 display names or arbitrary operator/player text. That text must not enter

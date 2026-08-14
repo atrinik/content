@@ -130,6 +130,16 @@
       "path": "maps/python/houses/manager.py",
       "scope": "main",
       "context_sha256": "d76efa6fb916a6a1c392afd6f0f00826895cbbd509b8d1b52081e4d0fa6e5a85"
+    },
+    {
+      "path": "maps/shattered_islands/strakewood_island/underground_city/scripts/torches.py",
+      "scope": "main",
+      "context_sha256": "7b56a0e80b8121fb3590108c49db695080e02601565120d8a324e48db8609efb"
+    },
+    {
+      "path": "maps/shattered_islands/strakewood_island/underground_city/scripts/torches.py",
+      "scope": "timer",
+      "context_sha256": "c7631e25ca659448db9592d625a84faa4f6e5a2ab991e990911634794b8cc0ee"
     }
   ],
   "metric_sites": [
@@ -591,6 +601,24 @@
       "classification": "operational/security-log",
       "event_rate": "One entry per permitted privileged bulk drop/take command.",
       "rationale": "The message includes arbitrary command text and is categorically prohibited from structured gameplay records."
+    },
+    {
+      "path": "maps/shattered_islands/strakewood_island/underground_city/scripts/torches.py",
+      "ast_path": "body[1].body[3].value",
+      "scope": "timer",
+      "facility": "Atrinik.Eval",
+      "classification": "operational/security-log",
+      "event_rate": "One delayed callback evaluation per active underground-city torch sequence step.",
+      "rationale": "The fixed authored callback expression is a privileged engine execution boundary, not a structured gameplay record."
+    },
+    {
+      "path": "maps/shattered_islands/strakewood_island/underground_city/scripts/torches.py",
+      "ast_path": "body[2].body[9].value",
+      "scope": "main",
+      "facility": "Atrinik.Eval",
+      "classification": "operational/security-log",
+      "event_rate": "One initial delayed callback evaluation when the torch sequence is activated.",
+      "rationale": "The fixed authored callback expression schedules operational script execution and carries no authoritative gameplay payload."
     }
   ]
 }

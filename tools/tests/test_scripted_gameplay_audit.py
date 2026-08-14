@@ -349,6 +349,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "Eval = harmless\nEval(payload)\n",
             "def run(Eval):\n    Eval(payload)\n",
             "def Eval(payload):\n    return payload\nEval(payload)\n",
+            "try:\n    pass\nexcept Exception as Eval:\n    Eval(payload)\n",
+            "match payload:\n    case Eval:\n        Eval(payload)\n",
         ):
             with self.subTest(
                 shadow=shadow

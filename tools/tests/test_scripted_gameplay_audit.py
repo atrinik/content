@@ -438,6 +438,9 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "import builtins\nmodule = builtins\nlookup = module.getattr\n",
             'import code\ngetattr(code, "InteractiveConsole").push(console, payload)\n',
             'import code\ngetattr(code.InteractiveConsole, "push")(console, payload)\n',
+            'import code\nvars(code)["InteractiveConsole"].push(console, payload)\n',
+            'import code\ncode.__dict__["InteractiveConsole"].push(console, payload)\n',
+            'import code\ncode.InteractiveConsole.__dict__["push"](console, payload)\n',
         ):
             with self.subTest(
                 source_text=source_text

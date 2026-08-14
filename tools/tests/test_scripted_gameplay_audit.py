@@ -351,6 +351,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "def Eval(payload):\n    return payload\nEval(payload)\n",
             "try:\n    pass\nexcept Exception as Eval:\n    Eval(payload)\n",
             "match payload:\n    case Eval:\n        Eval(payload)\n",
+            "from harmless import *\nEval(payload)\n",
+            "Eval(payload)\nfrom harmless import *\n",
         ):
             with self.subTest(
                 shadow=shadow
@@ -363,7 +365,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                     encoding="utf-8",
                 )
                 with self.assertRaisesRegex(
-                    ScriptedGameplayAuditError, "shadows the wildcard"
+                    ScriptedGameplayAuditError,
+                    "shadows the wildcard|overwrites wildcard Atrinik",
                 ):
                     discover_sites(root)
 

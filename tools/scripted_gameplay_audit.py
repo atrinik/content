@@ -327,6 +327,16 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     )
                 )
             if (
+                isinstance(binding, ast.ImportFrom)
+                and binding.module != "Atrinik"
+                and any(name.name == "*" for name in binding.names)
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} ambiguously overwrites wildcard Atrinik bindings".format(
+                        relative, binding.lineno
+                    )
+                )
+            if (
                 isinstance(binding, (ast.ExceptHandler, ast.MatchAs, ast.MatchStar))
                 and binding.name == "Eval"
             ) or (

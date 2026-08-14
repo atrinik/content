@@ -70,7 +70,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
         report = load_and_validate(ROOT)
         self.assertEqual(26, report["metric_sites"])
         self.assertEqual(21, report["metric_identities"])
-        self.assertEqual(18, report["audit_like_sites"])
+        self.assertEqual(19, report["audit_like_sites"])
 
     def test_unreviewed_metric_site_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -386,6 +386,72 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             source.write_text('run = eval\nrun(payload)\n', encoding="utf-8")
             with self.assertRaisesRegex(ScriptedGameplayAuditError, "reserved reflective"):
                 discover_sites(root)
+
+    def test_qualified_dynamic_execution_is_reviewed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'import builtins as runtime\nruntime.eval("payload")\n',
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual("Python.eval", logs[0]["facility"])
+
+    def test_dynamic_and_print_attribute_aliases_fail_closed(self):
+        for source_text in (
+            "import Atrinik\nemit = Atrinik.print\n",
+            "import builtins\nemit = builtins.print\n",
+            "import builtins\nemit = builtins.eval\n",
+            "from Atrinik import print as emit\n",
+        ):
+            with self.subTest(
+                source_text=source_text
+            ), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source = root / "maps" / "python" / "feature.py"
+                source.parent.mkdir(parents=True)
+                source.write_text(source_text, encoding="utf-8")
+                with self.assertRaisesRegex(
+                    ScriptedGameplayAuditError, "reserved audit|reserved reflective"
+                ):
+                    discover_sites(root)
+
+    def test_additional_reflection_paths_fail_closed(self):
+        for source_text in (
+            'import builtins\ngetattr(builtins, "eval")("payload")\n',
+            'getattr(player, "__getattribute__")("MetricAdd")\n',
+            'import builtins\nvars(builtins)["eval"]("payload")\n',
+            'import operator\noperator.__dict__["methodcaller"]("MetricAdd")\n',
+            "lookup = globals().get\n",
+            "namespace = globals()\n",
+            "lookup, = (builtins.getattr,)\n",
+        ):
+            with self.subTest(
+                source_text=source_text
+            ), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source = root / "maps" / "python" / "feature.py"
+                source.parent.mkdir(parents=True)
+                source.write_text(source_text, encoding="utf-8")
+                with self.assertRaises(ScriptedGameplayAuditError):
+                    discover_sites(root)
+
+    def test_interactive_console_execution_is_discovered(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "import code as runtime\n"
+                "runtime.InteractiveConsole.push(console, player_text)\n",
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual(
+                "Python.InteractiveConsole.push", logs[0]["facility"]
+            )
 
     def test_namespace_get_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:

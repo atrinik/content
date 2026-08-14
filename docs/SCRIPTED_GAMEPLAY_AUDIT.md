@@ -1,13 +1,21 @@
 # Scripted gameplay audit boundaries
 
-`contracts/scripted-gameplay-audit/v1.json` is the reviewed, fail-closed
-inventory of every authored Python gameplay metric and audit-like logging call.
+`contracts/scripted-gameplay-audit/v1.json` is the reviewed occurrence inventory
+of every authored Python gameplay metric and audit-like logging call.
 The aggregate validator parses all `maps/**/*.py` source except test fixtures,
 rejects dynamic or indirect reserved telemetry access, inventories privileged
 dynamic execution boundaries, and binds every call to its source,
 lexical scope, AST location, and a normalized hash of the surrounding function
 or module. Moving, adding, removing, or semantically surrounding a site
 therefore requires an explicit noise, privacy, and recovery decision.
+
+This is a governance check for trusted reviewed source, not a Python sandbox or
+a proof over arbitrary metaprogramming. Authored telemetry must use the direct
+forms represented by the contract; synthesizing it through imports, reflection,
+namespaces, dynamic execution, or callable aliases is prohibited. The validator
+rejects those reserved forms and fails closed when the direct-call inventory or
+its surrounding context drifts. Runtime authorization and operator-console
+security remain server responsibilities.
 The telemetry spellings `Metric*`, `Logger`, `print`, and `log_add` are reserved
 within authored maps; ambiguous shadowing, rebinding, or reflection is rejected.
 
@@ -33,8 +41,8 @@ They must move behind the durable idempotent commit/reconciliation result when
 the typed APIs become available; generic payment or custody hooks must not add
 a second copy of a business-specific aggregate.
 
-The 18 current audit-like sites include generic Python diagnostics and prints,
-the two privileged `eval`/`exec` execution boundaries,
+The 19 current audit-like sites include generic Python diagnostics and prints,
+the privileged `eval`, `exec`, and interactive-console execution boundaries,
 guild chat and console commands, guild-storage `Guild.log_add` calls, and their
 human-text file sink. Some carry
 display names or arbitrary operator/player text. That text must not enter

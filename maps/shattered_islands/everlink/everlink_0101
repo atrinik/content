@@ -1940,11 +1940,7 @@ arch lantern2_magic.131
 direction 7
 x 14
 y 12
-end
-arch light7
 light_color ffd080
-x 14
-y 12
 end
 arch fstone1c
 x 14
@@ -1974,11 +1970,7 @@ arch lantern2_magic.131
 direction 7
 x 14
 y 15
-end
-arch light7
 light_color ffd080
-x 14
-y 15
 end
 arch grassd_1
 x 14
@@ -2383,11 +2375,7 @@ end
 arch lantern2_magic.131
 x 17
 y 6
-end
-arch light7
 light_color ffd080
-x 17
-y 6
 end
 arch fstone1b
 x 17
@@ -2837,11 +2825,7 @@ end
 arch lantern2_magic.131
 x 20
 y 6
-end
-arch light7
 light_color ffd080
-x 20
-y 6
 end
 arch fstone1b
 x 20

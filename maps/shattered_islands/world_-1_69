@@ -127,9 +127,7 @@ end
 arch lantern_magic.131
 direction 3
 y 20
-end
-arch light7
-y 20
+glow_radius 7
 end
 arch floor_flagm4
 y 21
@@ -156,10 +154,7 @@ end
 arch lantern_magic.131
 x 1
 y 1
-end
-arch light7
-x 1
-y 1
+glow_radius 7
 end
 arch grassd_3
 x 1
@@ -589,13 +584,10 @@ arch lantern_magic.131
 direction 3
 x 3
 y 9
+glow_radius 7
 end
 arch flagwall_short_brick1.141
 sub_layer 1
-x 3
-y 9
-end
-arch light7
 x 3
 y 9
 end
@@ -623,13 +615,10 @@ arch lantern_magic.131
 direction 7
 x 3
 y 13
+glow_radius 7
 end
 arch flagwall_short_brick1.131
 sub_layer 1
-x 3
-y 13
-end
-arch light7
 x 3
 y 13
 end
@@ -1238,13 +1227,10 @@ arch lantern_magic.131
 direction 3
 x 6
 y 20
+glow_radius 7
 end
 arch flagwall_short_brick1.111
 sub_layer 1
-x 6
-y 20
-end
-arch light7
 x 6
 y 20
 end
@@ -1278,13 +1264,10 @@ arch lantern_magic.131
 direction 7
 x 7
 y 1
+glow_radius 7
 end
 arch flagwall_short_brick1.131
 sub_layer 1
-x 7
-y 1
-end
-arch light7
 x 7
 y 1
 end
@@ -1344,13 +1327,10 @@ arch lantern_magic.131
 direction 5
 x 7
 y 6
+glow_radius 7
 end
 arch flagwall_short_brick1.141
 sub_layer 1
-x 7
-y 6
-end
-arch light7
 x 7
 y 6
 end
@@ -1441,13 +1421,10 @@ arch lantern_magic.131
 direction 5
 x 7
 y 16
+glow_radius 7
 end
 arch flagwall_short_brick1.131
 sub_layer 1
-x 7
-y 16
-end
-arch light7
 x 7
 y 16
 end
@@ -1889,10 +1866,7 @@ arch lantern_magic.131
 direction 7
 x 11
 y 1
-end
-arch light7
-x 11
-y 1
+glow_radius 7
 end
 arch earth_brown4
 x 11
@@ -1933,13 +1907,10 @@ end
 arch lantern_magic.131
 x 11
 y 6
+glow_radius 7
 end
 arch flagwall_short_brick1.111
 sub_layer 1
-x 11
-y 6
-end
-arch light7
 x 11
 y 6
 end
@@ -2051,10 +2022,7 @@ end
 arch lantern_magic.131
 x 11
 y 16
-end
-arch light7
-x 11
-y 16
+glow_radius 7
 end
 arch earth_brown1
 x 11
@@ -2296,13 +2264,10 @@ arch lantern_magic.131
 direction 3
 x 12
 y 20
+glow_radius 7
 end
 arch flagwall_short_brick1.141
 sub_layer 1
-x 12
-y 20
-end
-arch light7
 x 12
 y 20
 end
@@ -2580,13 +2545,10 @@ end
 arch lantern_magic.131
 x 14
 y 10
+glow_radius 7
 end
 arch flagwall_short_brick1.131
 sub_layer 1
-x 14
-y 10
-end
-arch light7
 x 14
 y 10
 end
@@ -2610,13 +2572,10 @@ end
 arch lantern_magic.131
 x 14
 y 12
+glow_radius 7
 end
 arch flagwall_short_brick1.131
 sub_layer 1
-x 14
-y 12
-end
-arch light7
 x 14
 y 12
 end
@@ -3127,10 +3086,7 @@ arch lantern_magic.131
 direction 7
 x 17
 y 1
-end
-arch light7
-x 17
-y 1
+glow_radius 7
 end
 arch grassd_6
 x 17
@@ -3454,10 +3410,7 @@ arch lantern_magic.131
 direction 3
 x 18
 y 19
-end
-arch light7
-x 18
-y 19
+glow_radius 7
 end
 arch floor_flagm4
 x 18
@@ -3931,10 +3884,7 @@ arch lantern_magic.131
 direction 7
 x 22
 y 1
-end
-arch light7
-x 22
-y 1
+glow_radius 7
 end
 arch grassd_1
 x 22
@@ -4178,10 +4128,6 @@ arch lantern2_magic.131
 x 23
 y 17
 end
-arch light7
-x 23
-y 17
-end
 arch floor_flagm3
 x 23
 y 18
@@ -4222,8 +4168,5 @@ arch lantern_magic.131
 direction 7
 x 23
 y 23
-end
-arch light7
-x 23
-y 23
+glow_radius 7
 end

@@ -118,6 +118,30 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             with self.assertRaisesRegex(ScriptedGameplayAuditError, "indirectly"):
                 discover_sites(root)
 
+    def test_audit_log_alias_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'emit = guild.log_add\nemit("player text")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "indirect audit-log"):
+                discover_sites(root)
+
+    def test_audit_log_getattr_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'getattr(guild, "log_add")("player text")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "indirectly"):
+                discover_sites(root)
+
     def test_relocated_occurrence_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

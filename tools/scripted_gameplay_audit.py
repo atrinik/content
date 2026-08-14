@@ -88,6 +88,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     metrics: list[dict[str, str]] = []
     logs: list[dict[str, str]] = []
     direct_metric_attributes: set[int] = set()
+    direct_log_references: set[int] = set()
 
     def visit(
         node: ast.AST,
@@ -117,6 +118,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             facility = None
             if isinstance(node.func, ast.Name) and node.func.id == "Logger":
                 facility = "Logger"
+                direct_log_references.add(id(node.func))
             elif (
                 isinstance(node.func, ast.Attribute)
                 and node.func.attr == "Logger"
@@ -124,8 +126,10 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 and node.func.value.id == "Atrinik"
             ):
                 facility = "Atrinik.Logger"
+                direct_log_references.add(id(node.func))
             elif isinstance(node.func, ast.Attribute) and node.func.attr == "log_add":
                 facility = "Guild.log_add"
+                direct_log_references.add(id(node.func))
             if facility is not None:
                 logs.append(
                     {
@@ -152,12 +156,26 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     "{}:{} uses an indirect metric method reference".format(relative, node.lineno)
                 )
         if (
+            (
+                isinstance(node, ast.Name)
+                and isinstance(node.ctx, ast.Load)
+                and node.id == "Logger"
+            )
+            or (
+                isinstance(node, ast.Attribute)
+                and node.attr in {"Logger", "log_add"}
+            )
+        ) and id(node) not in direct_log_references:
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses an indirect audit-log reference".format(relative, node.lineno)
+            )
+        if (
             isinstance(node, ast.Constant)
             and isinstance(node.value, str)
-            and node.value in METRIC_METHODS
+            and (node.value in METRIC_METHODS or node.value in {"Logger", "log_add"})
         ):
             raise ScriptedGameplayAuditError(
-                "{}:{} names a metric method indirectly".format(relative, node.lineno)
+                "{}:{} names a telemetry method indirectly".format(relative, node.lineno)
             )
     return metrics, logs
 

@@ -27,9 +27,6 @@ end
 arch lantern_black
 y 1
 end
-arch light7
-y 1
-end
 arch floor_fs_grey1b
 z 50
 y 2
@@ -60,9 +57,6 @@ z 50
 y 6
 end
 arch lantern_black
-y 6
-end
-arch light7
 y 6
 end
 arch grassd_1
@@ -159,9 +153,6 @@ end
 arch lantern_black
 y 18
 end
-arch light7
-y 18
-end
 arch floor_fs_grey1b
 z 50
 y 19
@@ -188,9 +179,6 @@ arch grassd_m3
 y 22
 end
 arch lantern_black
-y 22
-end
-arch light7
 y 22
 end
 arch grassd_6
@@ -559,10 +547,6 @@ arch lantern_black
 x 3
 y 4
 end
-arch light7
-x 3
-y 4
-end
 arch floor_fs_grey1b
 z 50
 x 3
@@ -730,10 +714,6 @@ arch lantern_black
 x 4
 y 6
 end
-arch light7
-x 4
-y 6
-end
 arch floor_white2d
 z 50
 x 4
@@ -810,10 +790,6 @@ x 4
 y 12
 end
 arch lantern_black
-x 4
-y 12
-end
-arch light7
 x 4
 y 12
 end
@@ -896,10 +872,6 @@ arch lantern_black
 x 4
 y 18
 end
-arch light7
-x 4
-y 18
-end
 arch floor_fs_grey1b
 z 50
 x 4
@@ -933,10 +905,6 @@ x 4
 y 22
 end
 arch lantern_black
-x 4
-y 22
-end
-arch light7
 x 4
 y 22
 end
@@ -1303,7 +1271,6 @@ x 7
 y 9
 end
 arch statue_fire
-glow_radius 5
 x 7
 y 9
 end
@@ -1783,10 +1750,6 @@ arch lantern_black
 x 10
 y 6
 end
-arch light7
-x 10
-y 6
-end
 arch floor_white2d
 z 50
 x 10
@@ -1862,10 +1825,6 @@ x 10
 y 12
 end
 arch lantern_black
-x 10
-y 12
-end
-arch light7
 x 10
 y 12
 end
@@ -1947,10 +1906,6 @@ arch lantern_black
 x 10
 y 18
 end
-arch light7
-x 10
-y 18
-end
 arch floor_fs_grey1b
 z 50
 x 10
@@ -1980,10 +1935,6 @@ x 10
 y 22
 end
 arch lantern_black
-x 10
-y 22
-end
-arch light7
 x 10
 y 22
 end
@@ -2034,10 +1985,6 @@ x 11
 y 4
 end
 arch lantern_black
-x 11
-y 4
-end
-arch light7
 x 11
 y 4
 end
@@ -2507,10 +2454,6 @@ x 14
 y 1
 end
 arch lantern_black
-x 14
-y 1
-end
-arch light7
 x 14
 y 1
 end
@@ -3041,10 +2984,6 @@ arch lantern_black
 x 16
 y 22
 end
-arch light7
-x 16
-y 22
-end
 arch grassd_6
 z 50
 x 16
@@ -3275,10 +3214,6 @@ x 18
 y 4
 end
 arch lantern_black
-x 18
-y 4
-end
-arch light7
 x 18
 y 4
 end
@@ -4164,10 +4099,6 @@ x 22
 y 22
 end
 arch lantern_black
-x 22
-y 22
-end
-arch light7
 x 22
 y 22
 end

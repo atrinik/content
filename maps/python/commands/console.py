@@ -140,7 +140,8 @@ class stdout_inf:
             self.console.inf_data += s.split("\n")
 
     def flush(self):
-        self.console.show()
+        if self.console.is_valid():
+            self.console.show()
 
 ## Handles the console data.
 class PyConsole (code.InteractiveConsole):
@@ -192,12 +193,13 @@ class PyConsole (code.InteractiveConsole):
         self.inf_data.append(">>> {}".format(data))
         old_stdout = sys.stdout
         sys.stdout = self.stdout
-        code.InteractiveConsole.push(self, data)
+        try:
+            code.InteractiveConsole.push(self, data)
 
-        if do_flush:
-            sys.stdout.flush()
-
-        sys.stdout = old_stdout
+            if do_flush:
+                sys.stdout.flush()
+        finally:
+            sys.stdout = old_stdout
 
     def show (self, ac = None, append = None):
         inf = Interface(self.activator, self.activator)

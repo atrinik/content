@@ -2595,6 +2595,7 @@ x 20
 y 19
 end
 arch light9
+light_color ffd080
 x 20
 y 19
 end
@@ -2628,6 +2629,7 @@ x 20
 y 22
 end
 arch light9
+light_color ffd080
 x 20
 y 22
 end

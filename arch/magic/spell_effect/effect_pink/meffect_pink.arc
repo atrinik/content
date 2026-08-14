@@ -2,6 +2,8 @@ Object meffect_pink
 name magic glow
 face effect1_pink.101
 layer 7
+glow_radius 1
+light_color ff60c0
 type 79
 no_save 1
 animation meffect_pink

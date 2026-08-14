@@ -415,10 +415,6 @@ arch lantern_black
 x 2
 y 21
 end
-arch light7
-x 2
-y 21
-end
 arch floor_fs_grey1b
 z 50
 x 2
@@ -1240,10 +1236,6 @@ x 7
 y 21
 end
 arch lantern_black
-x 7
-y 21
-end
-arch light7
 x 7
 y 21
 end
@@ -2673,10 +2665,6 @@ arch lantern_black
 x 15
 y 21
 end
-arch light7
-x 15
-y 21
-end
 arch floor_fs_grey1b
 z 50
 x 15
@@ -3541,10 +3529,6 @@ x 20
 y 21
 end
 arch lantern_black
-x 20
-y 21
-end
-arch light7
 x 20
 y 21
 end

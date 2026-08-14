@@ -212,6 +212,19 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                             relative, imported.lineno
                         )
                     )
+                if name.name == "Eval":
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} aliases a reserved execution callable".format(
+                            relative, imported.lineno
+                        )
+                    )
+        if isinstance(imported, ast.ImportFrom) and imported.module == "code":
+            if any(name.name == "InteractiveConsole" for name in imported.names):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} aliases a reserved execution facility".format(
+                        relative, imported.lineno
+                    )
+                )
         if isinstance(imported, ast.ImportFrom) and imported.module == "builtins":
             if any(
                 name.name in {"getattr", "print", "vars"} | DYNAMIC_EXECUTION_NAMES
@@ -335,6 +348,15 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             if not isinstance(target, ast.Name):
                 continue
             if isinstance(value, ast.Name):
+                if value.id in builtins_aliases and target.id not in builtins_aliases:
+                    builtins_aliases.add(target.id)
+                    changed = True
+                if value.id in atrinik_aliases and target.id not in atrinik_aliases:
+                    atrinik_aliases.add(target.id)
+                    changed = True
+                if value.id in code_aliases and target.id not in code_aliases:
+                    code_aliases.add(target.id)
+                    changed = True
                 if value.id in reflection_aliases and target.id not in reflection_aliases:
                     reflection_aliases.add(target.id)
                     changed = True

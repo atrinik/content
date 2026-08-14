@@ -3366,10 +3366,7 @@ arch lantern2_magic.131
 direction 5
 x 22
 y 17
-end
-arch light5
-x 22
-y 17
+glow_radius 5
 end
 arch grassd_1
 x 22

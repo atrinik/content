@@ -3439,10 +3439,7 @@ arch lantern_magic.131
 direction 3
 x 21
 y 21
-end
-arch light7
-x 21
-y 21
+glow_radius 7
 end
 arch floor_flagm3
 x 21

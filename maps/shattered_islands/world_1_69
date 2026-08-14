@@ -101,9 +101,6 @@ end
 arch lantern2_magic.131
 y 14
 end
-arch light7
-y 14
-end
 arch floor_flagm2
 y 15
 end
@@ -314,9 +311,7 @@ end
 arch lantern_magic.131
 direction 7
 x 2
-end
-arch light7
-x 2
+glow_radius 7
 end
 arch grassd_1
 x 2
@@ -348,10 +343,6 @@ y 6
 end
 arch lantern2_magic.131
 direction 7
-x 2
-y 6
-end
-arch light7
 x 2
 y 6
 end
@@ -393,10 +384,6 @@ y 12
 end
 arch lantern2_magic.131
 direction 7
-x 2
-y 12
-end
-arch light7
 x 2
 y 12
 end
@@ -713,10 +700,7 @@ arch lantern_magic.131
 direction 7
 x 4
 y 20
-end
-arch light7
-x 4
-y 20
+glow_radius 7
 end
 arch grassd_4
 x 4
@@ -1119,10 +1103,7 @@ end
 arch lantern_magic.131
 x 8
 y 1
-end
-arch light7
-x 8
-y 1
+glow_radius 7
 end
 arch grassd_3
 x 8
@@ -1147,10 +1128,7 @@ end
 arch lantern_magic.131
 x 8
 y 6
-end
-arch light7
-x 8
-y 6
+glow_radius 7
 end
 arch floor_flagm1
 x 8
@@ -1187,10 +1165,7 @@ end
 arch lantern_magic.131
 x 8
 y 12
-end
-arch light7
-x 8
-y 12
+glow_radius 7
 end
 arch grassd_5
 x 8
@@ -1254,9 +1229,7 @@ end
 arch lantern_magic.131
 direction 7
 x 9
-end
-arch light7
-x 9
+glow_radius 7
 end
 arch grassd_3
 x 9
@@ -1564,10 +1537,6 @@ arch lantern2_magic.131
 x 10
 y 14
 end
-arch light7
-x 10
-y 14
-end
 arch floor_flagm2
 x 10
 y 15
@@ -1604,10 +1573,7 @@ arch lantern_magic.131
 direction 7
 x 10
 y 20
-end
-arch light7
-x 10
-y 20
+glow_radius 7
 end
 arch grassd_3
 x 10
@@ -2308,9 +2274,7 @@ end
 arch lantern_magic.131
 direction 7
 x 15
-end
-arch light7
-x 15
+glow_radius 7
 end
 arch grassd_4
 x 15
@@ -2612,10 +2576,6 @@ arch lantern2_magic.131
 x 16
 y 14
 end
-arch light7
-x 16
-y 14
-end
 arch floor_flagm4
 x 16
 y 15
@@ -2652,10 +2612,7 @@ arch lantern_magic.131
 direction 7
 x 16
 y 20
-end
-arch light7
-x 16
-y 20
+glow_radius 7
 end
 arch grassd_7
 x 16
@@ -3402,10 +3359,7 @@ arch lantern_magic.131
 direction 3
 x 22
 y 14
-end
-arch light7
-x 22
-y 14
+glow_radius 7
 end
 arch floor_flagm3
 x 22
@@ -3443,10 +3397,7 @@ arch lantern_magic.131
 direction 7
 x 22
 y 20
-end
-arch light7
-x 22
-y 20
+glow_radius 7
 end
 arch grassd_6
 x 22

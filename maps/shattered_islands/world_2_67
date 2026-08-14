@@ -659,10 +659,6 @@ arch lantern2_magic.131
 x 3
 y 21
 end
-arch light7
-x 3
-y 21
-end
 arch floor_flagm3
 x 3
 y 22
@@ -1542,10 +1538,7 @@ arch lantern_magic.131
 direction 5
 x 9
 y 15
-end
-arch light7
-x 9
-y 15
+glow_radius 7
 end
 arch grassd_8
 x 9
@@ -1579,10 +1572,7 @@ arch lantern_magic.131
 direction 3
 x 9
 y 21
-end
-arch light7
-x 9
-y 21
+glow_radius 7
 end
 arch floor_flagm2
 x 9
@@ -2393,10 +2383,7 @@ arch lantern_magic.131
 direction 3
 x 15
 y 13
-end
-arch light7
-x 15
-y 13
+glow_radius 7
 end
 arch floor_flagm3
 x 15
@@ -2449,10 +2436,7 @@ end
 arch lantern_magic.131
 x 15
 y 21
-end
-arch light7
-x 15
-y 21
+glow_radius 7
 end
 arch grassd_5
 x 15

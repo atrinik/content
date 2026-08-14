@@ -1432,10 +1432,6 @@ arch lantern2_magic.131
 x 11
 y 6
 end
-arch light7
-x 11
-y 6
-end
 arch fstone1b
 x 11
 y 7
@@ -1833,10 +1829,6 @@ x 14
 y 6
 end
 arch lantern2_magic.131
-x 14
-y 6
-end
-arch light7
 x 14
 y 6
 end

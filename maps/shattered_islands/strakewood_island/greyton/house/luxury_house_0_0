@@ -1644,10 +1644,6 @@ arch lantern2_magic.131
 x 8
 y 23
 end
-arch light7
-x 8
-y 23
-end
 arch floor_flagm2
 x 8
 y 24
@@ -2329,10 +2325,6 @@ x 11
 y 23
 end
 arch lantern2_magic.131
-x 11
-y 23
-end
-arch light7
 x 11
 y 23
 end
@@ -3120,10 +3112,6 @@ y 23
 end
 arch lantern2_magic.131
 sub_layer 1
-x 14
-y 23
-end
-arch light7
 x 14
 y 23
 end

@@ -1520,10 +1520,6 @@ direction 5
 x 9
 y 16
 end
-arch light5
-x 9
-y 16
-end
 arch grassd_4
 x 9
 y 17
@@ -1746,10 +1742,6 @@ y 20
 end
 arch lantern_magic.131
 direction 3
-x 10
-y 20
-end
-arch light5
 x 10
 y 20
 end
@@ -2744,10 +2736,6 @@ direction 5
 x 15
 y 22
 end
-arch light5
-x 15
-y 22
-end
 arch floor_sand_d2
 x 15
 y 23
@@ -2849,10 +2837,6 @@ x 16
 y 16
 end
 arch lantern_magic.131
-x 16
-y 16
-end
-arch light5
 x 16
 y 16
 end
@@ -3425,10 +3409,6 @@ x 19
 y 20
 end
 arch lantern_magic.131
-x 19
-y 20
-end
-arch light5
 x 19
 y 20
 end

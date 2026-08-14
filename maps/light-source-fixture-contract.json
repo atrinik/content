@@ -1,6 +1,28 @@
 {
   "schema_version": 1,
   "fixture_groups": {
+    "magic-lantern-fixtures": {
+      "archetypes": [
+        "lantern2_magic.131",
+        "lantern_magic.131"
+      ],
+      "checks": [
+        "magic-lantern-dark-interior",
+        "magic-lantern-dense-cluster",
+        "magic-lantern-form-standing",
+        "magic-lantern-form-wall",
+        "magic-lantern-linked-boundary",
+        "magic-lantern-mixed-color-overlap",
+        "magic-lantern-outdoor-night",
+        "magic-lantern-radius-3",
+        "magic-lantern-radius-4",
+        "magic-lantern-radius-5",
+        "magic-lantern-radius-6",
+        "magic-lantern-radius-7",
+        "magic-lantern-radius-9",
+        "magic-lantern-wall-adjacency"
+      ]
+    },
     "magic-wall-rune-fixtures": {
       "archetypes": [
         "magic_wall"

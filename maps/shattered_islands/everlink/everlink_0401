@@ -239,11 +239,8 @@ arch lantern_magic.131
 direction 7
 x 2
 y 2
-end
-arch light9
+glow_radius 9
 light_color ffd080
-x 2
-y 2
 end
 arch grassd_2
 x 2
@@ -779,11 +776,8 @@ arch lantern_magic.131
 direction 7
 x 6
 y 6
-end
-arch light9
+glow_radius 9
 light_color ffd080
-x 6
-y 6
 end
 arch grassd_1
 x 6
@@ -885,11 +879,8 @@ arch lantern_magic.131
 direction 3
 x 7
 y 1
-end
-arch light9
+glow_radius 9
 light_color ffd080
-x 7
-y 1
 end
 arch fstone1b
 x 7

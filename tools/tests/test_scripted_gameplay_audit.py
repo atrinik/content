@@ -405,6 +405,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "import builtins\nemit = builtins.print\n",
             "import builtins\nemit = builtins.eval\n",
             "from Atrinik import print as emit\n",
+            "from Atrinik import Eval as emit\n",
+            "from code import InteractiveConsole as Runner\n",
         ):
             with self.subTest(
                 source_text=source_text
@@ -414,7 +416,8 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 source.parent.mkdir(parents=True)
                 source.write_text(source_text, encoding="utf-8")
                 with self.assertRaisesRegex(
-                    ScriptedGameplayAuditError, "reserved audit|reserved reflective"
+                    ScriptedGameplayAuditError,
+                    "reserved audit|reserved reflective|reserved execution",
                 ):
                     discover_sites(root)
 
@@ -430,6 +433,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "from builtins import globals as namespace\n",
             "import builtins\nnamespace = builtins.globals\n",
             "import builtins\ngetattr(builtins, method)(payload)\n",
+            "import builtins\nmodule = builtins\nlookup = module.getattr\n",
         ):
             with self.subTest(
                 source_text=source_text
@@ -440,6 +444,24 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 source.write_text(source_text, encoding="utf-8")
                 with self.assertRaises(ScriptedGameplayAuditError):
                     discover_sites(root)
+
+    def test_builtin_module_alias_sites_are_discovered(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "import builtins\n"
+                "runtime = builtins\n"
+                "runtime.eval(payload)\n"
+                "runtime.print(payload)\n",
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual(
+                ["Python.eval", "Python.print"],
+                [row["facility"] for row in logs],
+            )
 
     def test_interactive_console_execution_is_discovered(self):
         with tempfile.TemporaryDirectory() as temporary:

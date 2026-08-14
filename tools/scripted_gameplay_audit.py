@@ -19,6 +19,10 @@ CLASSIFICATIONS = frozenset(
 METRIC_ID = re.compile(r"^[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+$")
 JOURNAL_REASON = re.compile(r"^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$")
 IDENTITY_MAX = 255
+SENSITIVE_RECEIVER_NAMES = frozenset(
+    {"Atrinik", "activator", "controller", "guild", "pl", "player"}
+)
+SENSITIVE_REFLECTIVE_NAMES = frozenset((*METRIC_METHODS, "Logger", "log_add"))
 
 
 class ScriptedGameplayAuditError(ValueError):
@@ -76,6 +80,33 @@ def _context_sha256(node: ast.AST) -> str:
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
+def _static_string(node: ast.AST) -> str | None:
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        return node.value
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Add):
+        left = _static_string(node.left)
+        right = _static_string(node.right)
+        if left is not None and right is not None:
+            return left + right
+    if isinstance(node, ast.JoinedStr):
+        parts: list[str] = []
+        for value in node.values:
+            part = _static_string(value)
+            if part is None:
+                return None
+            parts.append(part)
+        return "".join(parts)
+    return None
+
+
+def _sensitive_receiver(node: ast.AST, aliases: set[str]) -> bool:
+    if isinstance(node, ast.Name):
+        return node.id in aliases
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
+        return node.func.attr == "Controller"
+    return False
+
+
 def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     relative = source.relative_to(root).as_posix()
     try:
@@ -89,6 +120,25 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     logs: list[dict[str, str]] = []
     direct_metric_attributes: set[int] = set()
     direct_log_references: set[int] = set()
+    sensitive_aliases = set(SENSITIVE_RECEIVER_NAMES)
+    changed = True
+    while changed:
+        changed = False
+        for assignment in ast.walk(tree):
+            targets: list[ast.expr] = []
+            value: ast.expr | None = None
+            if isinstance(assignment, ast.Assign):
+                targets = assignment.targets
+                value = assignment.value
+            elif isinstance(assignment, ast.AnnAssign):
+                targets = [assignment.target]
+                value = assignment.value
+            if value is None or not _sensitive_receiver(value, sensitive_aliases):
+                continue
+            for target in targets:
+                if isinstance(target, ast.Name) and target.id not in sensitive_aliases:
+                    sensitive_aliases.add(target.id)
+                    changed = True
 
     def visit(
         node: ast.AST,
@@ -172,10 +222,42 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Constant)
             and isinstance(node.value, str)
-            and (node.value in METRIC_METHODS or node.value in {"Logger", "log_add"})
+            and node.value in SENSITIVE_REFLECTIVE_NAMES
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} names a telemetry method indirectly".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Name)
+            and node.func.id == "getattr"
+            and len(node.args) >= 2
+        ):
+            reflected_name = _static_string(node.args[1])
+            if reflected_name in SENSITIVE_REFLECTIVE_NAMES or (
+                reflected_name is None
+                and _sensitive_receiver(node.args[0], sensitive_aliases)
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} uses reflective telemetry access".format(relative, node.lineno)
+                )
+        if (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Name)
+            and node.func.id == "vars"
+            and node.args
+            and _sensitive_receiver(node.args[0], sensitive_aliases)
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective telemetry access".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Attribute)
+            and node.attr == "__dict__"
+            and _sensitive_receiver(node.value, sensitive_aliases)
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective telemetry access".format(relative, node.lineno)
             )
     return metrics, logs
 

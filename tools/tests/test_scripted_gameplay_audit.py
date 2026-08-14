@@ -115,7 +115,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 'getattr(player, "MetricAdd")("economy.new_action")\n',
                 encoding="utf-8",
             )
-            with self.assertRaisesRegex(ScriptedGameplayAuditError, "indirectly"):
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
                 discover_sites(root)
 
     def test_audit_log_alias_fails_closed(self):
@@ -139,7 +139,43 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 'getattr(guild, "log_add")("player text")\n',
                 encoding="utf-8",
             )
-            with self.assertRaisesRegex(ScriptedGameplayAuditError, "indirectly"):
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_computed_metric_getattr_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'getattr(player, "Metric" + "Add")("economy.hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_dynamic_aliased_metric_getattr_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'subject = player\ngetattr(subject, f"{kind}Add")("economy.hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_metric_dict_reflection_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'player.__dict__["Metric" + "Add"]("economy.hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
                 discover_sites(root)
 
     def test_relocated_occurrence_fails_closed(self):

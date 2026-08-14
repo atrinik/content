@@ -70,7 +70,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
         report = load_and_validate(ROOT)
         self.assertEqual(26, report["metric_sites"])
         self.assertEqual(21, report["metric_identities"])
-        self.assertEqual(19, report["audit_like_sites"])
+        self.assertEqual(21, report["audit_like_sites"])
 
     def test_unreviewed_metric_site_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -399,6 +399,18 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             _, logs = discover_sites(root)
             self.assertEqual("Python.eval", logs[0]["facility"])
 
+    def test_atrinik_wildcard_eval_is_discovered(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "from Atrinik import *\nEval(player_text)\n",
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual("Atrinik.Eval", logs[0]["facility"])
+
     def test_dynamic_and_print_attribute_aliases_fail_closed(self):
         for source_text in (
             "import Atrinik\nemit = Atrinik.print\n",
@@ -407,6 +419,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "from Atrinik import print as emit\n",
             "from Atrinik import Eval as emit\n",
             "from code import InteractiveConsole as Runner\n",
+            "from code import *\n",
             "import code\nConsole = code.InteractiveConsole\n",
             "import code\nruntime = code\nConsole = runtime.InteractiveConsole\n",
         ):

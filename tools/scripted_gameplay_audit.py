@@ -200,6 +200,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     atrinik_aliases = {"Atrinik"}
     builtins_aliases = {"__builtins__", "builtins"}
     code_aliases = {"code"}
+    atrinik_wildcard = False
     assignments: list[tuple[ast.AST, ast.AST, int]] = []
     ambiguous_sensitive_aliases: set[str] = set()
     for imported in ast.walk(tree):
@@ -213,6 +214,8 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     code_aliases.add(name.asname or name.name)
         if isinstance(imported, ast.ImportFrom) and imported.module == "Atrinik":
             for name in imported.names:
+                if name.name == "*":
+                    atrinik_wildcard = True
                 if name.name == "Logger":
                     logger_aliases.add(name.asname or name.name)
                 if name.name == "print":
@@ -228,7 +231,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                         )
                     )
         if isinstance(imported, ast.ImportFrom) and imported.module == "code":
-            if any(name.name == "InteractiveConsole" for name in imported.names):
+            if any(name.name in {"*", "InteractiveConsole"} for name in imported.names):
                 raise ScriptedGameplayAuditError(
                     "{}:{} aliases a reserved execution facility".format(
                         relative, imported.lineno
@@ -536,6 +539,21 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 )
                 direct_log_references.add(id(node.func))
             if (
+                atrinik_wildcard
+                and isinstance(node.func, ast.Name)
+                and node.func.id == "Eval"
+            ):
+                logs.append(
+                    {
+                        "path": relative,
+                        "ast_path": ast_path,
+                        "scope": scope,
+                        "context_sha256": context_sha256,
+                        "facility": "Atrinik.Eval",
+                    }
+                )
+                direct_log_references.add(id(node.func))
+            if (
                 isinstance(node.func, ast.Attribute)
                 and isinstance(node.func.value, ast.Name)
                 and node.func.value.id in builtins_aliases
@@ -641,6 +659,16 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} aliases a reserved reflective callable".format(relative, node.lineno)
+            )
+        if (
+            atrinik_wildcard
+            and isinstance(node, ast.Name)
+            and isinstance(node.ctx, ast.Load)
+            and node.id == "Eval"
+            and id(node) not in direct_log_references
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} aliases a reserved execution callable".format(relative, node.lineno)
             )
         if (
             isinstance(node, ast.Call)

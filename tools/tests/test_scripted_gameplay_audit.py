@@ -324,7 +324,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 discover_sites(root)
 
     def test_imported_operator_reflection_fails_closed(self):
-        for callable_name in ("attrgetter", "methodcaller"):
+        for callable_name in ("*", "attrgetter", "methodcaller"):
             with self.subTest(
                 callable_name=callable_name
             ), tempfile.TemporaryDirectory() as temporary:
@@ -332,10 +332,37 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 source = root / "maps" / "python" / "feature.py"
                 source.parent.mkdir(parents=True)
                 source.write_text(
-                    "from operator import {} as reflect\n".format(callable_name),
+                    (
+                        "from operator import *\n"
+                        if callable_name == "*"
+                        else "from operator import {} as reflect\n".format(
+                            callable_name
+                        )
+                    ),
                     encoding="utf-8",
                 )
                 with self.assertRaisesRegex(ScriptedGameplayAuditError, "reserved reflective"):
+                    discover_sites(root)
+
+    def test_atrinik_wildcard_eval_shadowing_fails_closed(self):
+        for shadow in (
+            "Eval = harmless\nEval(payload)\n",
+            "def run(Eval):\n    Eval(payload)\n",
+            "def Eval(payload):\n    return payload\nEval(payload)\n",
+        ):
+            with self.subTest(
+                shadow=shadow
+            ), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source = root / "maps" / "python" / "feature.py"
+                source.parent.mkdir(parents=True)
+                source.write_text(
+                    "from Atrinik import *\n" + shadow,
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ScriptedGameplayAuditError, "shadows the wildcard"
+                ):
                     discover_sites(root)
 
     def test_methodcaller_fails_closed(self):

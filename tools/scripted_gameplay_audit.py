@@ -249,7 +249,10 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     )
                 )
         if isinstance(imported, ast.ImportFrom) and imported.module == "operator":
-            if any(name.name in {"attrgetter", "methodcaller"} for name in imported.names):
+            if any(
+                name.name in {"*", "attrgetter", "methodcaller"}
+                for name in imported.names
+            ):
                 raise ScriptedGameplayAuditError(
                     "{}:{} aliases a reserved reflective callable".format(
                         relative, imported.lineno
@@ -276,6 +279,53 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             assignments.append((imported.target, imported.value, imported.lineno))
         elif isinstance(imported, ast.NamedExpr):
             assignments.append((imported.target, imported.value, imported.lineno))
+    if atrinik_wildcard:
+        for binding in ast.walk(tree):
+            if (
+                isinstance(binding, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))
+                and binding.name == "Eval"
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} shadows the wildcard Atrinik.Eval binding".format(
+                        relative, binding.lineno
+                    )
+                )
+            if isinstance(binding, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+                arguments = (
+                    [
+                        *binding.args.posonlyargs,
+                        *binding.args.args,
+                        *binding.args.kwonlyargs,
+                    ]
+                    + ([binding.args.vararg] if binding.args.vararg is not None else [])
+                    + ([binding.args.kwarg] if binding.args.kwarg is not None else [])
+                )
+                if any(argument.arg == "Eval" for argument in arguments):
+                    raise ScriptedGameplayAuditError(
+                        "{}:{} shadows the wildcard Atrinik.Eval binding".format(
+                            relative, binding.lineno
+                        )
+                    )
+            if (
+                isinstance(binding, ast.Name)
+                and isinstance(binding.ctx, (ast.Store, ast.Del))
+                and binding.id == "Eval"
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} shadows the wildcard Atrinik.Eval binding".format(
+                        relative, binding.lineno
+                    )
+                )
+            if isinstance(binding, (ast.Import, ast.ImportFrom)) and any(
+                (name.asname or name.name.split(".")[0]) == "Eval"
+                for name in binding.names
+                if name.name != "*"
+            ):
+                raise ScriptedGameplayAuditError(
+                    "{}:{} shadows the wildcard Atrinik.Eval binding".format(
+                        relative, binding.lineno
+                    )
+                )
     changed = True
     while changed:
         changed = False

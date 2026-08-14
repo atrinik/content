@@ -58,6 +58,7 @@ class PullRequestMetadataTests(unittest.TestCase):
         self.assertIn(".github/scripts/check_pr_metadata.py", policy_workflow)
         self.assertIn("python3 tools/validate.py", check_workflow)
         self.assertIn("tools.tests.test_pr_metadata", aggregate)
+        self.assertIn("tools.tests.test_scripted_gameplay_audit", aggregate)
 
 
 if __name__ == "__main__":

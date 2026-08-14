@@ -509,6 +509,7 @@ class QuestManagerSuite(TestSuite):
                 mock.patch.object(
                     qm, "journal_commit", side_effect=commits.append):
             qm.reset_quest()
+            qm.reset_quest()
         self.assertFalse(qm.started())
         self.assertEqual([
             ("quest.repeat-reset", "quest:repeat_failure_test_quest",
@@ -678,6 +679,83 @@ class QuestManagerSuite(TestSuite):
         self.assertFalse(sword.f_startequip)
         sword.Destroy("test.quest-objective-cleanup")
 
+    def test_15_failed_journal_hooks_are_exactly_once(self):
+        quest = {
+            "parts": OrderedDict((("attempt", {
+                "info": "",
+                "uid": "attempt",
+                "name": "Attempt",
+            }),)),
+            "name": "Failed Journal Hook Quest",
+            "uid": "failed_journal_hook_quest",
+        }
+        qm = QuestManager(activator, quest)
+        qm.start("attempt")
+        intents = []
+        commits = []
+
+        def journal_begin(reason, subject, before, after, lineage=""):
+            transaction = "failure-{}".format(len(intents))
+            intents.append((reason, subject, before, after, lineage))
+            return transaction
+
+        with mock.patch.object(qm, "journal_begin", side_effect=journal_begin), \
+                mock.patch.object(
+                    qm, "journal_commit", side_effect=commits.append):
+            self.assertTrue(qm.fail("attempt"))
+            self.assertFalse(qm.fail("attempt"))
+
+        self.assertEqual([
+            ("quest.part-failed",
+             "quest-part:failed_journal_hook_quest::attempt",
+             Atrinik.QUEST_STATUS_STARTED, Atrinik.QUEST_STATUS_FAILED, ""),
+            ("quest.failed", "quest:failed_journal_hook_quest",
+             Atrinik.QUEST_STATUS_STARTED, Atrinik.QUEST_STATUS_FAILED, ""),
+        ], intents)
+        self.assertEqual(["failure-0", "failure-1"], commits)
+
+    def test_16_objective_removal_uses_one_typed_decrease_per_stack(self):
+        qm = object.__new__(QuestManager)
+        qm.activator = mock.Mock()
+        first = mock.Mock(nrof=2)
+        second = mock.Mock(nrof=5)
+        qm.activator.FindObjects.return_value = [first, second]
+        objective = mock.Mock(sub_type=Atrinik.QUEST_TYPE_ITEM)
+
+        qm.remove_quest_items({
+            "item": {
+                "arch": "sword",
+                "name": "objective sword",
+                "nrof": 4,
+            },
+        }, objective)
+
+        first.Decrease.assert_called_once_with(
+            2, reason="quest.objective-remove"
+        )
+        second.Decrease.assert_called_once_with(
+            2, reason="quest.objective-remove"
+        )
+
+    def test_17_rejected_intent_precedes_start_mutation(self):
+        quest = {
+            "parts": OrderedDict((("attempt", {
+                "info": "",
+                "uid": "attempt",
+                "name": "Attempt",
+            }),)),
+            "name": "Rejected Intent Quest",
+            "uid": "rejected_intent_quest",
+        }
+        qm = QuestManager(activator, quest)
+
+        with mock.patch.object(
+                qm, "journal_begin",
+                side_effect=RuntimeError("forced intent rejection")):
+            with self.assertRaisesRegex(RuntimeError, "forced intent"):
+                qm.start("attempt")
+
+        self.assertFalse(qm.started())
 
 activator = Atrinik.WhoIsActivator()
 me = Atrinik.WhoAmI()

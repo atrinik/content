@@ -20,6 +20,7 @@ from tools.archetype_plurals import (
 )
 from tools.m1_foundations import validate as validate_m1_foundations
 from tools.release_line_parity import load_and_validate as validate_release_line_parity
+from tools.scripted_gameplay_audit import load_and_validate as validate_scripted_gameplay_audit
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -69,12 +70,23 @@ def main() -> int:
             "tools.tests.test_release_line_parity",
             "tools.tests.test_pr_metadata",
             "tools.tests.test_python_commands",
+            "tools.tests.test_scripted_gameplay_audit",
         ],
         cwd=ROOT,
         check=True,
     )
     plural_report = audit_archetype_plurals(
         ROOT, load_manifest(ROOT / MANIFEST_PATH)
+    )
+    scripted_audit = validate_scripted_gameplay_audit(ROOT)
+    print(
+        "Scripted gameplay audit: {} calls across {} metric identities; "
+        "{} audit-like facilities classified.".format(
+            scripted_audit["metric_sites"],
+            scripted_audit["metric_identities"],
+            scripted_audit["audit_like_sites"],
+        ),
+        flush=True,
     )
     print(
         "Archetype plurals: {} canonical definitions complete; {} multipart or "
@@ -216,6 +228,12 @@ def main() -> int:
             or not classic_manifest["license_files"]
         ):
             raise ValueError("classic runtime target metadata is invalid")
+        if (
+            classic_output / "contracts" / "scripted-gameplay-audit" / "v1.json"
+        ).exists() or (
+            classic_output / "maps" / "python" / "scripted-gameplay-audit-v1.json"
+        ).exists():
+            raise ValueError("review-only scripted gameplay audit entered runtime")
 
     subprocess.run(
         [

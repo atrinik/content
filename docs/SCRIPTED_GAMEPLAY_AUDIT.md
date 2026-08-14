@@ -28,8 +28,8 @@ They must move behind the durable idempotent commit/reconciliation result when
 the typed APIs become available; generic payment or custody hooks must not add
 a second copy of a business-specific aggregate.
 
-The ten current audit-like calls include generic Python diagnostics, guild chat
-and console commands, and guild-storage `Guild.log_add` calls. Some carry
+The 15 current audit-like calls include generic Python diagnostics and prints,
+guild chat and console commands, and guild-storage `Guild.log_add` calls. Some carry
 display names or arbitrary operator/player text. That text must not enter
 structured gameplay records. Successful storage custody instead belongs to the
 server's typed item transaction at the authoritative post-veto move boundary.

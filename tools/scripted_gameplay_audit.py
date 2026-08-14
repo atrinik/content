@@ -22,7 +22,7 @@ IDENTITY_MAX = 255
 SENSITIVE_RECEIVER_NAMES = frozenset(
     {"Atrinik", "activator", "controller", "guild", "pl", "player"}
 )
-SENSITIVE_REFLECTIVE_NAMES = frozenset((*METRIC_METHODS, "Logger", "log_add"))
+SENSITIVE_REFLECTIVE_NAMES = frozenset((*METRIC_METHODS, "Logger", "log_add", "print"))
 
 
 class ScriptedGameplayAuditError(ValueError):
@@ -102,8 +102,28 @@ def _static_string(node: ast.AST) -> str | None:
 def _sensitive_receiver(node: ast.AST, aliases: set[str]) -> bool:
     if isinstance(node, ast.Name):
         return node.id in aliases
+    if isinstance(node, ast.Attribute):
+        return _sensitive_receiver(node.value, aliases)
     if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
         return node.func.attr == "Controller"
+    return False
+
+
+def _propagate_alias_target(
+    target: ast.AST,
+    value: ast.AST,
+    aliases: set[str],
+) -> bool:
+    if isinstance(target, ast.Name) and _sensitive_receiver(value, aliases):
+        if target.id not in aliases:
+            aliases.add(target.id)
+            return True
+        return False
+    if isinstance(target, (ast.Tuple, ast.List)) and isinstance(value, (ast.Tuple, ast.List)):
+        changed = False
+        for target_item, value_item in zip(target.elts, value.elts):
+            changed = _propagate_alias_target(target_item, value_item, aliases) or changed
+        return changed
     return False
 
 
@@ -121,6 +141,14 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
     direct_metric_attributes: set[int] = set()
     direct_log_references: set[int] = set()
     sensitive_aliases = set(SENSITIVE_RECEIVER_NAMES)
+    reflection_aliases = {"getattr", "vars"}
+    logger_aliases = {"Logger"}
+    print_aliases = {"print"}
+    for imported in ast.walk(tree):
+        if isinstance(imported, ast.ImportFrom) and imported.module == "Atrinik":
+            for name in imported.names:
+                if name.name == "Logger":
+                    logger_aliases.add(name.asname or name.name)
     changed = True
     while changed:
         changed = False
@@ -133,11 +161,32 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             elif isinstance(assignment, ast.AnnAssign):
                 targets = [assignment.target]
                 value = assignment.value
-            if value is None or not _sensitive_receiver(value, sensitive_aliases):
+            if value is None:
                 continue
             for target in targets:
-                if isinstance(target, ast.Name) and target.id not in sensitive_aliases:
-                    sensitive_aliases.add(target.id)
+                changed = _propagate_alias_target(
+                    target, value, sensitive_aliases
+                ) or changed
+                if not isinstance(target, ast.Name):
+                    continue
+                if isinstance(value, ast.Name):
+                    if value.id in reflection_aliases and target.id not in reflection_aliases:
+                        reflection_aliases.add(target.id)
+                        changed = True
+                    if value.id in logger_aliases and target.id not in logger_aliases:
+                        logger_aliases.add(target.id)
+                        changed = True
+                    if value.id in print_aliases and target.id not in print_aliases:
+                        print_aliases.add(target.id)
+                        changed = True
+                if (
+                    isinstance(value, ast.Attribute)
+                    and value.attr == "Logger"
+                    and isinstance(value.value, ast.Name)
+                    and value.value.id == "Atrinik"
+                    and target.id not in logger_aliases
+                ):
+                    logger_aliases.add(target.id)
                     changed = True
 
     def visit(
@@ -166,8 +215,11 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     }
                 )
             facility = None
-            if isinstance(node.func, ast.Name) and node.func.id == "Logger":
-                facility = "Logger"
+            if isinstance(node.func, ast.Name) and node.func.id in logger_aliases:
+                facility = "Logger" if node.func.id == "Logger" else "Atrinik.Logger"
+                direct_log_references.add(id(node.func))
+            elif isinstance(node.func, ast.Name) and node.func.id in print_aliases:
+                facility = "Python.print"
                 direct_log_references.add(id(node.func))
             elif (
                 isinstance(node.func, ast.Attribute)
@@ -177,7 +229,11 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             ):
                 facility = "Atrinik.Logger"
                 direct_log_references.add(id(node.func))
-            elif isinstance(node.func, ast.Attribute) and node.func.attr == "log_add":
+            elif (
+                isinstance(node.func, ast.Attribute)
+                and node.func.attr == "log_add"
+                and _sensitive_receiver(node.func.value, sensitive_aliases)
+            ):
                 facility = "Guild.log_add"
                 direct_log_references.add(id(node.func))
             if facility is not None:
@@ -209,28 +265,31 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             (
                 isinstance(node, ast.Name)
                 and isinstance(node.ctx, ast.Load)
-                and node.id == "Logger"
+                and node.id in logger_aliases
             )
             or (
                 isinstance(node, ast.Attribute)
-                and node.attr in {"Logger", "log_add"}
+                and (
+                    (
+                        node.attr == "Logger"
+                        and isinstance(node.value, ast.Name)
+                        and node.value.id == "Atrinik"
+                    )
+                    or (
+                        node.attr == "log_add"
+                        and _sensitive_receiver(node.value, sensitive_aliases)
+                    )
+                )
             )
         ) and id(node) not in direct_log_references:
             raise ScriptedGameplayAuditError(
                 "{}:{} uses an indirect audit-log reference".format(relative, node.lineno)
             )
         if (
-            isinstance(node, ast.Constant)
-            and isinstance(node.value, str)
-            and node.value in SENSITIVE_REFLECTIVE_NAMES
-        ):
-            raise ScriptedGameplayAuditError(
-                "{}:{} names a telemetry method indirectly".format(relative, node.lineno)
-            )
-        if (
             isinstance(node, ast.Call)
             and isinstance(node.func, ast.Name)
-            and node.func.id == "getattr"
+            and node.func.id in reflection_aliases
+            and node.func.id != "vars"
             and len(node.args) >= 2
         ):
             reflected_name = _static_string(node.args[1])
@@ -244,9 +303,19 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if (
             isinstance(node, ast.Call)
             and isinstance(node.func, ast.Name)
-            and node.func.id == "vars"
+            and node.func.id in reflection_aliases
+            and node.func.id != "getattr"
             and node.args
             and _sensitive_receiver(node.args[0], sensitive_aliases)
+        ):
+            raise ScriptedGameplayAuditError(
+                "{}:{} uses reflective telemetry access".format(relative, node.lineno)
+            )
+        if (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Attribute)
+            and node.func.attr == "__getattribute__"
+            and _sensitive_receiver(node.func.value, sensitive_aliases)
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses reflective telemetry access".format(relative, node.lineno)

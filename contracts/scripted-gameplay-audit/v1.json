@@ -57,6 +57,21 @@
       "context_sha256": "81b7581b8f472245ea4c0a8a365ce8ded96f77aa674e7eb55537ef0374e3c539"
     },
     {
+      "path": "maps/python/events/init/documentation.py",
+      "scope": "dump_docstring",
+      "context_sha256": "71b799f5d3a46c7bd83415c588d8185b086b602831b33ebe8f3016096022fc9c"
+    },
+    {
+      "path": "maps/python/events/init/documentation.py",
+      "scope": "dump_obj",
+      "context_sha256": "c3f38e08b4b388f924a6ae25e2fa6ed100a42d0b0bce57c307b168fbeb6e9b9d"
+    },
+    {
+      "path": "maps/python/events/init/documentation.py",
+      "scope": "getargspec",
+      "context_sha256": "92f6cad6280fa2d3a4e955633f3858ce670d5ed56ebc8c3b71c1f40e388fd25e"
+    },
+    {
       "path": "maps/python/events/python_exception.py",
       "scope": "<module>",
       "context_sha256": "b0208223d2acee5b5ddea7fb793a077de563fe87b4390bba715833707af7d2db"
@@ -396,6 +411,15 @@
       "rationale": "Formatted developer diagnostics are human operational text and never structured gameplay evidence."
     },
     {
+      "path": "maps/python/auctions/clerk.py",
+      "ast_path": "body[16].body[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].body[4].body[0].value",
+      "scope": "main",
+      "facility": "Python.print",
+      "classification": "operational/security-log",
+      "event_rate": "At most one diagnostic when an auction-house sign is missing during clerk initialization.",
+      "rationale": "Map-configuration diagnostics are routed to the protected Python log and are not gameplay evidence."
+    },
+    {
       "path": "maps/python/commands/console.py",
       "ast_path": "body[18].body[2].value",
       "scope": "main",
@@ -412,6 +436,42 @@
       "classification": "operational/security-log",
       "event_rate": "One human log entry per accepted guild-chat message.",
       "rationale": "Player-authored chat is intentionally human operational text and prohibited from structured gameplay records."
+    },
+    {
+      "path": "maps/python/events/init/documentation.py",
+      "ast_path": "body[13].body[2].body[1].value",
+      "scope": "getargspec",
+      "facility": "Python.print",
+      "classification": "operational/security-log",
+      "event_rate": "One diagnostic per undocumented callable signature encountered during documentation generation.",
+      "rationale": "Developer-facing introspection text may contain object representations and remains operational only."
+    },
+    {
+      "path": "maps/python/events/init/documentation.py",
+      "ast_path": "body[14].body[3].body[2].body[0].value",
+      "scope": "dump_docstring",
+      "facility": "Python.print",
+      "classification": "operational/security-log",
+      "event_rate": "One diagnostic per malformed generated property documentation entry.",
+      "rationale": "Documentation diagnostics are implementation text, not structured gameplay evidence."
+    },
+    {
+      "path": "maps/python/events/init/documentation.py",
+      "ast_path": "body[14].body[3].body[4].body[0].value",
+      "scope": "dump_docstring",
+      "facility": "Python.print",
+      "classification": "operational/security-log",
+      "event_rate": "One diagnostic per generated property whose documented type cannot be parsed.",
+      "rationale": "Documentation diagnostics are implementation text, not structured gameplay evidence."
+    },
+    {
+      "path": "maps/python/events/init/documentation.py",
+      "ast_path": "body[16].body[3].body[3].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[8].body[0].value",
+      "scope": "dump_obj",
+      "facility": "Python.print",
+      "classification": "operational/security-log",
+      "event_rate": "One diagnostic per undocumented constant encountered during documentation generation.",
+      "rationale": "Generated-documentation warnings remain protected operational text."
     },
     {
       "path": "maps/python/events/python_exception.py",

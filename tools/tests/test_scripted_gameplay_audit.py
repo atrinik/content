@@ -70,7 +70,7 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
         report = load_and_validate(ROOT)
         self.assertEqual(26, report["metric_sites"])
         self.assertEqual(21, report["metric_identities"])
-        self.assertEqual(10, report["audit_like_sites"])
+        self.assertEqual(15, report["audit_like_sites"])
 
     def test_unreviewed_metric_site_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -177,6 +177,89 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             )
             with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
                 discover_sites(root)
+
+    def test_metric_class_dict_reflection_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'player.__class__.__dict__["Metric" + "Add"]("economy.hidden")\n',
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_aliased_getattr_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "lookup = getattr\nlookup(player, method)(\"economy.hidden\")\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_destructured_receiver_alias_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "subject, = (player,)\ngetattr(subject, method)(\"economy.hidden\")\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_getattribute_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "player.__getattribute__(method)(\"economy.hidden\")\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_aliased_vars_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "namespace = vars\nnamespace(player)[method](\"economy.hidden\")\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ScriptedGameplayAuditError, "reflective telemetry"):
+                discover_sites(root)
+
+    def test_imported_logger_alias_is_discovered(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'from Atrinik import Logger as emit\nemit("CHAT", player_text)\n',
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual("Atrinik.Logger", logs[0]["facility"])
+
+    def test_innocent_spelling_and_unrelated_log_add_are_ignored(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                'label = "Logger"\ncache.log_add("not an audit facility")\n',
+                encoding="utf-8",
+            )
+            self.assertEqual(([], []), discover_sites(root))
 
     def test_relocated_occurrence_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:

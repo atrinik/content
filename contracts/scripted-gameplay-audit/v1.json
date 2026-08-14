@@ -39,7 +39,7 @@
     {
       "path": "maps/python/QuestManager.py",
       "scope": "QuestManager.complete",
-      "context_sha256": "bf4777724dd4a928be16848912eb00fcb809817810647b7fc6ecfb8fc38ddabb"
+      "context_sha256": "fe39cddae92a37e0e3a488585cd93ae952a1a1e26b2f89309d799489bbe21ae6"
     },
     {
       "path": "maps/python/Thieves.py",
@@ -219,36 +219,36 @@
     },
     {
       "path": "maps/python/QuestManager.py",
-      "ast_path": "body[4].body[22].body[11].value",
+      "ast_path": "body[4].body[26].body[12].value",
       "scope": "QuestManager.complete",
       "method": "MetricMarkUnique",
       "metric": "quests.completed_parts",
       "classification": "gameplay-journal",
-      "proposed_journal_reason": "quest.part-complete",
+      "proposed_journal_reason": "quest.part-completed",
       "event_rate": "At most one unique mark per qualified quest part and character.",
-      "rationale": "This aggregate projects the same stable quest-part lifecycle transition and must follow its authoritative commit."
+      "rationale": "This aggregate projects the same stable quest-part lifecycle intent after authoritative state and objective updates; terminal journal uncertainty remains pending for reconciliation."
     },
     {
       "path": "maps/python/QuestManager.py",
-      "ast_path": "body[4].body[22].body[12].value",
+      "ast_path": "body[4].body[26].body[13].value",
       "scope": "QuestManager.complete",
       "method": "MetricKeyedAdd",
       "metric": "quests.part_completions_by_id",
       "classification": "gameplay-journal",
-      "proposed_journal_reason": "quest.part-complete",
+      "proposed_journal_reason": "quest.part-completed",
       "event_rate": "One per successful top-level or nested quest-part completion.",
-      "rationale": "Stable qualified part identity belongs on the lifecycle transition, never each intermediate state write."
+      "rationale": "Stable qualified part identity is shared with the durable quest.part-completed transition, never each intermediate state write."
     },
     {
       "path": "maps/python/QuestManager.py",
-      "ast_path": "body[4].body[22].body[17].body[0].value",
+      "ast_path": "body[4].body[26].body[20].body[0].value",
       "scope": "QuestManager.complete",
       "method": "MetricAdd",
       "metric": "quests.repeatable_completed",
       "classification": "gameplay-journal",
-      "proposed_journal_reason": "quest.repeat-complete",
+      "proposed_journal_reason": "quest.completed",
       "event_rate": "One per completed repeatable quest cycle.",
-      "rationale": "The terminal repeat transition is recovery-relevant; intermediate state writes remain unrecorded."
+      "rationale": "The durable quest.completed transition identifies the terminal repeat cycle; intermediate state writes remain unrecorded."
     },
     {
       "path": "maps/python/Thieves.py",

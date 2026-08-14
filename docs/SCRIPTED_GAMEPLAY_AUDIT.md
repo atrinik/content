@@ -15,15 +15,17 @@ The four dispositions describe the intended telemetry boundary:
 - `gameplay-journal` is a bounded semantic transition useful for support or
   recovery. Its proposed reason is ASCII, bounded to the Classic server's
   255-character gameplay-journal identifier limit, and contains no player
-  text. The server contract remains authoritative once the pending APIs land.
+  text. The Classic server contract is authoritative; quest lifecycle producers
+  now use it, while economy producers remain gated on the composition API.
 - `aggregate-only` retains bounded statistics without ordered event evidence.
 - `operational/security-log` remains protected human/operator diagnostics.
 - `not-recorded` is neither useful nor appropriate to retain.
 
 All 26 current metric calls are low-volume quest, post, auction, merchant,
-housing, bounty, guild, or jail outcomes proposed as projections of future
-gameplay-journal transactions. This classification does not claim that their
-legacy placement is transactionally safe. Merchant purchase metrics currently
+housing, bounty, guild, or jail outcomes classified as gameplay-journal
+projections. Quest lifecycle producers now use the stable Classic contract.
+This classification does not claim that the remaining legacy economy placement
+is transactionally safe. Merchant purchase metrics currently
 precede item or spell delivery, post collection precedes queue removal, and
 housing metrics can follow debit while preceding the ownership or fee update.
 They must move behind the durable idempotent commit/reconciliation result when
@@ -43,8 +45,9 @@ intermediate quest-state write have no scripted metric sites and remain
 unrecorded by authored Python. Adding one requires a reviewed contract row; it
 never becomes a journal producer merely because a metric is useful.
 
-Executable transaction integration depends on the stable quest contract in
-https://github.com/atrinik/classic/issues/161 and the scripted multi-step
-economy composition contract in https://github.com/atrinik/classic/issues/313.
-Content must use those typed APIs rather than append raw logs, invent a second
-audit store, or misuse quest/progression records for item and currency flows.
+The stable quest contract from https://github.com/atrinik/classic/issues/161 is
+integrated by the shared `QuestManager`. Remaining executable economy
+integration depends on the scripted multi-step composition contract in
+https://github.com/atrinik/classic/issues/313. Content must use that typed API
+rather than append raw logs, invent a second audit store, or misuse
+quest/progression records for item and currency flows.

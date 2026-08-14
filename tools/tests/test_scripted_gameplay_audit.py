@@ -463,6 +463,31 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
                 [row["facility"] for row in logs],
             )
 
+    def test_destructured_privileged_module_aliases_are_discovered(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "maps" / "python" / "feature.py"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "import Atrinik, builtins, code\n"
+                "runtime, = (builtins,)\n"
+                "api, = (Atrinik,)\n"
+                "engine, = (code,)\n"
+                "runtime.eval(payload)\n"
+                "api.print(payload)\n"
+                "engine.InteractiveConsole.push(console, payload)\n",
+                encoding="utf-8",
+            )
+            _, logs = discover_sites(root)
+            self.assertEqual(
+                [
+                    "Python.eval",
+                    "Python.print",
+                    "Python.InteractiveConsole.push",
+                ],
+                [row["facility"] for row in logs],
+            )
+
     def test_interactive_console_execution_is_discovered(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

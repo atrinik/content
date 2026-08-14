@@ -427,6 +427,9 @@ class ScriptedGameplayAuditTests(unittest.TestCase):
             "lookup = globals().get\n",
             "namespace = globals()\n",
             "lookup, = (builtins.getattr,)\n",
+            "from builtins import globals as namespace\n",
+            "import builtins\nnamespace = builtins.globals\n",
+            "import builtins\ngetattr(builtins, method)(payload)\n",
         ):
             with self.subTest(
                 source_text=source_text

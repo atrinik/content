@@ -26,6 +26,7 @@ SENSITIVE_REFLECTIVE_NAMES = frozenset(
     (*METRIC_METHODS, "Eval", "Logger", "log_add", "print", "__getattribute__")
 )
 DYNAMIC_EXECUTION_NAMES = frozenset({"compile", "eval", "exec", "__import__"})
+NAMESPACE_REFLECTION_NAMES = frozenset({"globals", "locals"})
 
 
 class ScriptedGameplayAuditError(ValueError):
@@ -214,6 +215,7 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
         if isinstance(imported, ast.ImportFrom) and imported.module == "builtins":
             if any(
                 name.name in {"getattr", "print", "vars"} | DYNAMIC_EXECUTION_NAMES
+                | NAMESPACE_REFLECTION_NAMES
                 for name in imported.names
             ):
                 raise ScriptedGameplayAuditError(
@@ -259,7 +261,9 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     and isinstance(assigned_value.value, ast.Name)
                     and assigned_value.value.id in builtins_aliases
                     and assigned_value.attr
-                    in {"getattr", "vars"} | DYNAMIC_EXECUTION_NAMES
+                    in {"getattr", "vars"}
+                    | DYNAMIC_EXECUTION_NAMES
+                    | NAMESPACE_REFLECTION_NAMES
                 ):
                     raise ScriptedGameplayAuditError(
                         "{}:{} aliases a reserved reflective callable".format(
@@ -285,7 +289,10 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                 isinstance(value, ast.Attribute)
                 and isinstance(value.value, ast.Name)
                 and value.value.id in builtins_aliases
-                and value.attr in {"getattr", "vars"} | DYNAMIC_EXECUTION_NAMES
+                and value.attr
+                in {"getattr", "vars"}
+                | DYNAMIC_EXECUTION_NAMES
+                | NAMESPACE_REFLECTION_NAMES
             ):
                 raise ScriptedGameplayAuditError(
                     "{}:{} aliases a reserved reflective callable".format(relative, lineno)
@@ -318,7 +325,8 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
                     value.value.id in atrinik_aliases
                     and value.attr == "print"
                     or value.value.id in builtins_aliases
-                    and value.attr in {"print"} | DYNAMIC_EXECUTION_NAMES
+                    and value.attr
+                    in {"print"} | DYNAMIC_EXECUTION_NAMES | NAMESPACE_REFLECTION_NAMES
                 )
             ):
                 raise ScriptedGameplayAuditError(
@@ -593,9 +601,19 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             and len(node.args) >= 2
         ):
             reflected_name = _static_string(node.args[1])
-            if reflected_name in SENSITIVE_REFLECTIVE_NAMES | DYNAMIC_EXECUTION_NAMES or (
+            if reflected_name in (
+                SENSITIVE_REFLECTIVE_NAMES
+                | DYNAMIC_EXECUTION_NAMES
+                | NAMESPACE_REFLECTION_NAMES
+            ) or (
                 reflected_name is None
-                and _sensitive_receiver(node.args[0], sensitive_aliases)
+                and (
+                    _sensitive_receiver(node.args[0], sensitive_aliases)
+                    or (
+                        isinstance(node.args[0], ast.Name)
+                        and node.args[0].id in builtins_aliases
+                    )
+                )
             ):
                 raise ScriptedGameplayAuditError(
                     "{}:{} uses reflective telemetry access".format(relative, node.lineno)
@@ -622,7 +640,9 @@ def _discover_source(root: Path, source: Path) -> tuple[list[dict[str, str]], li
             and isinstance(node.func, ast.Attribute)
             and isinstance(node.func.value, ast.Name)
             and node.func.value.id in builtins_aliases
-            and node.func.attr in {"compile", "getattr", "vars", "__import__"}
+            and node.func.attr
+            in {"compile", "getattr", "vars", "__import__"}
+            | NAMESPACE_REFLECTION_NAMES
         ):
             raise ScriptedGameplayAuditError(
                 "{}:{} uses qualified reflective access".format(relative, node.lineno)

@@ -228,6 +228,12 @@ def main() -> int:
             or not classic_manifest["license_files"]
         ):
             raise ValueError("classic runtime target metadata is invalid")
+        if (
+            classic_output / "contracts" / "scripted-gameplay-audit" / "v1.json"
+        ).exists() or (
+            classic_output / "maps" / "python" / "scripted-gameplay-audit-v1.json"
+        ).exists():
+            raise ValueError("review-only scripted gameplay audit entered runtime")
 
     subprocess.run(
         [

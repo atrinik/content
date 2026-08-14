@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "source_contexts": [
+    {
+      "path": "maps/python/Auction.py",
+      "scope": "item_buy",
+      "context_sha256": "4d1c248a03f7d321a01264312f654825945c78b05873e68772bb789755b50064"
+    },
+    {
+      "path": "maps/python/Interface.py",
+      "scope": "Interface.dbg",
+      "context_sha256": "21417ab27059ae9210c757b38290553719e348d5d10822ed37ecd8a56679f261"
+    },
+    {
+      "path": "maps/python/Jail.py",
+      "scope": "Jail.jail",
+      "context_sha256": "2459e910d8174989cf023b47b8e6666a184d1ccce73ef1f6d7e15c0f3152406f"
+    },
+    {
+      "path": "maps/python/Merchant.py",
+      "scope": "Seller.dialog",
+      "context_sha256": "9770db477756a28445f26026696932b7a42ce0425e59e86f5b6889a633d6418f"
+    },
+    {
+      "path": "maps/python/Merchant.py",
+      "scope": "SpellSeller.dialog",
+      "context_sha256": "ade70420a60bfd2e697cec35ce4fc7c9ffca95841f357412296dd3b0a2367ec9"
+    },
+    {
+      "path": "maps/python/PostOffice.py",
+      "scope": "PostOffice._withdraw_one",
+      "context_sha256": "8d3cdbef62c27714268c2af54a71eac8e8c79bc02937d3325178894a2eed9bbe"
+    },
+    {
+      "path": "maps/python/QuestManager.py",
+      "scope": "QuestManager.complete",
+      "context_sha256": "bf4777724dd4a928be16848912eb00fcb809817810647b7fc6ecfb8fc38ddabb"
+    },
+    {
+      "path": "maps/python/Thieves.py",
+      "scope": "clear_bounty",
+      "context_sha256": "a9b32636d482c49a13beacc45eb5c168ecbe0fb52d0b0988650c5445c2fb1cab"
+    },
+    {
+      "path": "maps/python/auctions/clerk.py",
+      "scope": "main",
+      "context_sha256": "be7b9f2cfa308032e2b8a58a0271ccc0b86e98dced524726d9fa16d655cfb3af"
+    },
+    {
+      "path": "maps/python/commands/console.py",
+      "scope": "main",
+      "context_sha256": "dfb065fe83c3c5830324949de4d1b0cd008b0587e1244a0dbfb0551cbe420ab9"
+    },
+    {
+      "path": "maps/python/commands/guild.py",
+      "scope": "main",
+      "context_sha256": "81b7581b8f472245ea4c0a8a365ce8ded96f77aa674e7eb55537ef0374e3c539"
+    },
+    {
+      "path": "maps/python/events/python_exception.py",
+      "scope": "<module>",
+      "context_sha256": "b0208223d2acee5b5ddea7fb793a077de563fe87b4390bba715833707af7d2db"
+    },
+    {
+      "path": "maps/python/events/python_print.py",
+      "scope": "<module>",
+      "context_sha256": "31c036d294a46d9801e6f48935230a66655442fc052c1f28dea34e6f0efe6061"
+    },
+    {
+      "path": "maps/python/generic/apartment_seller.py",
+      "scope": "main",
+      "context_sha256": "007f4e0263e7d42e362fb222d2401849516598f20ed37df4faa2f0c760d010b8"
+    },
+    {
+      "path": "maps/python/generic/postoffice_clerk.py",
+      "scope": "main",
+      "context_sha256": "9a7bee3014e61991225e521b86d1e3ba463439a5568ecf8b1f4d6ba0d9e0edcb"
+    },
+    {
+      "path": "maps/python/guilds/guild.py",
+      "scope": "main",
+      "context_sha256": "bb968b0f55372f2e91e4cbbaca7b631b74350b291781371f7088469c90dd9a66"
+    },
+    {
+      "path": "maps/python/guilds/storage.py",
+      "scope": "main",
+      "context_sha256": "07d4b6f8a12104f9cba172e7e94126d8b1a2fc0ce3c3d2ee276234724de13750"
+    },
+    {
+      "path": "maps/python/houses/fees_checker.py",
+      "scope": "main",
+      "context_sha256": "24fe8a6198208f94f3816abb81216551a33cd4a7356b3ef54a797f445690d088"
+    },
+    {
+      "path": "maps/python/houses/manager.py",
+      "scope": "main",
+      "context_sha256": "d76efa6fb916a6a1c392afd6f0f00826895cbbd509b8d1b52081e4d0fa6e5a85"
+    }
+  ],
+  "metric_sites": [
+    {
+      "path": "maps/python/Auction.py",
+      "ast_path": "body[11].body[15].value",
+      "scope": "item_buy",
+      "method": "MetricAdd",
+      "metric": "economy.auction_purchases",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "auction.purchase",
+      "event_rate": "One per successful player auction purchase.",
+      "rationale": "The debit, delivery, and payout need one recovery-grade transaction; this current post-payment metric site must move to that transaction's terminal success boundary."
+    },
+    {
+      "path": "maps/python/Auction.py",
+      "ast_path": "body[11].body[16].value",
+      "scope": "item_buy",
+      "method": "MetricAdd",
+      "metric": "economy.auction_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "auction.purchase",
+      "event_rate": "One per successful player auction purchase.",
+      "rationale": "This aggregate must advance exactly once only after the correlated debit, delivery, and payout commit."
+    },
+    {
+      "path": "maps/python/Jail.py",
+      "ast_path": "body[6].body[2].body[10].value",
+      "scope": "Jail.jail",
+      "method": "MetricAdd",
+      "metric": "social.jail_sentences",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.jail-placement",
+      "event_rate": "One per successful jail placement.",
+      "rationale": "Location, savebed, and sentence state form a rare support-relevant transition; the current site precedes all terminal player feedback."
+    },
+    {
+      "path": "maps/python/Jail.py",
+      "ast_path": "body[6].body[2].body[11].body[0].value",
+      "scope": "Jail.jail",
+      "method": "MetricAdd",
+      "metric": "social.jail_time_sentenced",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.jail-placement",
+      "event_rate": "One bounded duration value per successful non-lifetime sentence.",
+      "rationale": "The duration is typed context for the same placement, not an independent event."
+    },
+    {
+      "path": "maps/python/Merchant.py",
+      "ast_path": "body[10].body[13].body[10].value",
+      "scope": "SpellSeller.dialog",
+      "method": "MetricAdd",
+      "metric": "economy.shop_purchases",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "merchant.purchase",
+      "event_rate": "One per successful scripted spell purchase.",
+      "rationale": "This current pre-delivery metric can survive failed spell creation and must move behind an idempotent payment-and-learning commit."
+    },
+    {
+      "path": "maps/python/Merchant.py",
+      "ast_path": "body[10].body[13].body[11].value",
+      "scope": "SpellSeller.dialog",
+      "method": "MetricAdd",
+      "metric": "economy.shop_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "merchant.purchase",
+      "event_rate": "One per successful scripted spell purchase.",
+      "rationale": "The aggregate must advance once only after payment and spell creation commit together."
+    },
+    {
+      "path": "maps/python/Merchant.py",
+      "ast_path": "body[8].body[17].body[9].body[3].orelse[0].orelse[0].value",
+      "scope": "Seller.dialog",
+      "method": "MetricAdd",
+      "metric": "economy.shop_purchases",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "merchant.purchase",
+      "event_rate": "One per successful scripted item purchase.",
+      "rationale": "This current pre-clone/pre-delivery metric can record an incomplete purchase and must move behind the correlated commit."
+    },
+    {
+      "path": "maps/python/Merchant.py",
+      "ast_path": "body[8].body[17].body[9].body[3].orelse[0].orelse[1].value",
+      "scope": "Seller.dialog",
+      "method": "MetricAdd",
+      "metric": "economy.shop_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "merchant.purchase",
+      "event_rate": "One per successful scripted item purchase.",
+      "rationale": "The aggregate must advance once only after payment, delivery, and stock adjustment commit together."
+    },
+    {
+      "path": "maps/python/PostOffice.py",
+      "ast_path": "body[2].body[8].body[3].value",
+      "scope": "PostOffice._withdraw_one",
+      "method": "MetricAdd",
+      "metric": "social.post_items_received",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "post.receive",
+      "event_rate": "One per successfully delivered queued post item.",
+      "rationale": "The current site precedes durable queue removal; delivery, removal, and the aggregate need exact-once reconciliation."
+    },
+    {
+      "path": "maps/python/QuestManager.py",
+      "ast_path": "body[4].body[22].body[11].value",
+      "scope": "QuestManager.complete",
+      "method": "MetricMarkUnique",
+      "metric": "quests.completed_parts",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "quest.part-complete",
+      "event_rate": "At most one unique mark per qualified quest part and character.",
+      "rationale": "This aggregate projects the same stable quest-part lifecycle transition and must follow its authoritative commit."
+    },
+    {
+      "path": "maps/python/QuestManager.py",
+      "ast_path": "body[4].body[22].body[12].value",
+      "scope": "QuestManager.complete",
+      "method": "MetricKeyedAdd",
+      "metric": "quests.part_completions_by_id",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "quest.part-complete",
+      "event_rate": "One per successful top-level or nested quest-part completion.",
+      "rationale": "Stable qualified part identity belongs on the lifecycle transition, never each intermediate state write."
+    },
+    {
+      "path": "maps/python/QuestManager.py",
+      "ast_path": "body[4].body[22].body[17].body[0].value",
+      "scope": "QuestManager.complete",
+      "method": "MetricAdd",
+      "metric": "quests.repeatable_completed",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "quest.repeat-complete",
+      "event_rate": "One per completed repeatable quest cycle.",
+      "rationale": "The terminal repeat transition is recovery-relevant; intermediate state writes remain unrecorded."
+    },
+    {
+      "path": "maps/python/Thieves.py",
+      "ast_path": "body[2].body[3].value",
+      "scope": "clear_bounty",
+      "method": "MetricAdd",
+      "metric": "social.bounties_cleared",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.bounty-clear",
+      "event_rate": "One per successfully paid bounty clearance.",
+      "rationale": "The rare persistent faction transition has support value but must commit with its payment."
+    },
+    {
+      "path": "maps/python/Thieves.py",
+      "ast_path": "body[2].body[4].value",
+      "scope": "clear_bounty",
+      "method": "MetricAdd",
+      "metric": "economy.bounty_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.bounty-clear",
+      "event_rate": "One per successfully paid bounty clearance.",
+      "rationale": "Payment and faction-state clearance must be one terminal business outcome."
+    },
+    {
+      "path": "maps/python/Thieves.py",
+      "ast_path": "body[2].body[5].value",
+      "scope": "clear_bounty",
+      "method": "MetricKeyedAdd",
+      "metric": "social.bounties_cleared_by_faction",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.bounty-clear",
+      "event_rate": "One stable faction key per successfully cleared bounty.",
+      "rationale": "Faction identity is typed context for the same transaction, not an independent event."
+    },
+    {
+      "path": "maps/python/auctions/clerk.py",
+      "ast_path": "body[16].body[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].body[7].body[15].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.auction_listings",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "auction.list",
+      "event_rate": "One per successfully persisted auction listing.",
+      "rationale": "Player custody, listing identity, UID advancement, and map placement must reconcile before this metric commits."
+    },
+    {
+      "path": "maps/python/generic/apartment_seller.py",
+      "ast_path": "body[4].body[2].orelse[0].orelse[0].body[4].body[1].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.housing_purchases",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "housing.purchase",
+      "event_rate": "One per successful apartment purchase or upgrade.",
+      "rationale": "This current post-debit/pre-ownership metric must move behind payment, ownership, and apartment-swap commit."
+    },
+    {
+      "path": "maps/python/generic/apartment_seller.py",
+      "ast_path": "body[4].body[2].orelse[0].orelse[0].body[4].body[2].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.housing_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "housing.purchase",
+      "event_rate": "One per successful apartment purchase or upgrade.",
+      "rationale": "The aggregate must advance once only after every persistent apartment effect commits."
+    },
+    {
+      "path": "maps/python/generic/postoffice_clerk.py",
+      "ast_path": "body[5].body[0].orelse[0].orelse[0].body[5].body[2].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "social.post_items_sent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "post.send",
+      "event_rate": "One per successfully paid and queued post item.",
+      "rationale": "Payment, serialized delivery, source removal, and this aggregate need one exact-once transaction."
+    },
+    {
+      "path": "maps/python/generic/postoffice_clerk.py",
+      "ast_path": "body[5].body[0].orelse[0].orelse[0].body[5].body[3].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.postage_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "post.send",
+      "event_rate": "One per successfully paid and queued post item.",
+      "rationale": "The aggregate must be terminal evidence for the same correlated send, not merely proof of debit."
+    },
+    {
+      "path": "maps/python/guilds/guild.py",
+      "ast_path": "body[5].body[0].orelse[0].orelse[0].body[3].orelse[0].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "social.guild_departures",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.guild-departure",
+      "event_rate": "One per successful approved-member departure.",
+      "rationale": "A rare persistent membership-state transition is useful for support and recovery."
+    },
+    {
+      "path": "maps/python/guilds/guild.py",
+      "ast_path": "body[5].body[0].orelse[0].orelse[0].orelse[0].body[1].orelse[1].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "social.guild_applications",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "social.guild-application",
+      "event_rate": "One per successful guild application creation.",
+      "rationale": "A rare persistent membership-state transition is useful for support and recovery."
+    },
+    {
+      "path": "maps/python/houses/fees_checker.py",
+      "ast_path": "body[2].body[2].body[1].body[0].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.housing_fees_paid",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "housing.fee-payment",
+      "event_rate": "At most one per house-entry fee renewal.",
+      "rationale": "This current post-debit/pre-expiration metric must move behind the correlated payment and access-state commit."
+    },
+    {
+      "path": "maps/python/houses/fees_checker.py",
+      "ast_path": "body[2].body[2].body[1].body[1].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.housing_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "housing.fee-payment",
+      "event_rate": "At most one per house-entry fee renewal.",
+      "rationale": "The aggregate must advance once only after fee state is durable."
+    },
+    {
+      "path": "maps/python/houses/manager.py",
+      "ast_path": "body[5].body[0].orelse[0].orelse[0].orelse[0].orelse[0].body[0].orelse[0].body[0].body[0].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.housing_purchases",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "housing.purchase",
+      "event_rate": "One per successful house purchase.",
+      "rationale": "This current post-debit/pre-ownership metric must move behind the correlated ownership commit."
+    },
+    {
+      "path": "maps/python/houses/manager.py",
+      "ast_path": "body[5].body[0].orelse[0].orelse[0].orelse[0].orelse[0].body[0].orelse[0].body[0].body[1].value",
+      "scope": "main",
+      "method": "MetricAdd",
+      "metric": "economy.housing_currency_spent",
+      "classification": "gameplay-journal",
+      "proposed_journal_reason": "housing.purchase",
+      "event_rate": "One per successful house purchase.",
+      "rationale": "The aggregate must advance once only after payment and ownership commit together."
+    }
+  ],
+  "audit_like_sites": [
+    {
+      "path": "maps/python/Interface.py",
+      "ast_path": "body[5].body[2].body[1].value",
+      "scope": "Interface.dbg",
+      "facility": "Atrinik.Logger",
+      "classification": "operational/security-log",
+      "event_rate": "Only when interface debug mode is explicitly enabled.",
+      "rationale": "Formatted developer diagnostics are human operational text and never structured gameplay evidence."
+    },
+    {
+      "path": "maps/python/commands/console.py",
+      "ast_path": "body[18].body[2].value",
+      "scope": "main",
+      "facility": "Logger",
+      "classification": "operational/security-log",
+      "event_rate": "One protected log entry per privileged console submission.",
+      "rationale": "The entry deliberately contains arbitrary operator-supplied Python and must never enter structured gameplay records."
+    },
+    {
+      "path": "maps/python/commands/guild.py",
+      "ast_path": "body[4].body[6].value",
+      "scope": "main",
+      "facility": "Logger",
+      "classification": "operational/security-log",
+      "event_rate": "One human log entry per accepted guild-chat message.",
+      "rationale": "Player-authored chat is intentionally human operational text and prohibited from structured gameplay records."
+    },
+    {
+      "path": "maps/python/events/python_exception.py",
+      "ast_path": "body[4].body[0].body[0].value",
+      "scope": "<module>",
+      "facility": "Atrinik.Logger",
+      "classification": "operational/security-log",
+      "event_rate": "One line per uncaught Python exception traceback line.",
+      "rationale": "Runtime diagnostics may contain implementation details and belong only in the protected operational log."
+    },
+    {
+      "path": "maps/python/events/python_print.py",
+      "ast_path": "body[2].body[0].body[0].value",
+      "scope": "<module>",
+      "facility": "Atrinik.Logger",
+      "classification": "operational/security-log",
+      "event_rate": "One line per explicit Python print event.",
+      "rationale": "Free-form script diagnostics are operational text and never authoritative structured gameplay evidence."
+    },
+    {
+      "path": "maps/python/guilds/storage.py",
+      "ast_path": "body[7].body[0].orelse[0].body[2].value",
+      "scope": "main",
+      "facility": "Guild.log_add",
+      "classification": "operational/security-log",
+      "event_rate": "One entry per permitted guild-storage floor drop.",
+      "rationale": "Display names remain human access evidence; typed item custody must come from the server move boundary."
+    },
+    {
+      "path": "maps/python/guilds/storage.py",
+      "ast_path": "body[7].body[0].orelse[0].orelse[0].body[2].value",
+      "scope": "main",
+      "facility": "Guild.log_add",
+      "classification": "operational/security-log",
+      "event_rate": "One entry per permitted guild-storage container insertion.",
+      "rationale": "Display names remain human access evidence; typed item custody must come from the server move boundary."
+    },
+    {
+      "path": "maps/python/guilds/storage.py",
+      "ast_path": "body[7].body[0].orelse[0].orelse[0].orelse[0].body[2].body[0].value",
+      "scope": "main",
+      "facility": "Guild.log_add",
+      "classification": "operational/security-log",
+      "event_rate": "One entry per permitted pickup from a guild-storage container.",
+      "rationale": "Container and item display names must not be copied into structured records."
+    },
+    {
+      "path": "maps/python/guilds/storage.py",
+      "ast_path": "body[7].body[0].orelse[0].orelse[0].orelse[0].body[2].orelse[0].value",
+      "scope": "main",
+      "facility": "Guild.log_add",
+      "classification": "operational/security-log",
+      "event_rate": "One entry per permitted pickup from the guild-storage floor.",
+      "rationale": "Item display names remain human access evidence, while server custody events use stable typed identity."
+    },
+    {
+      "path": "maps/python/guilds/storage.py",
+      "ast_path": "body[7].body[0].orelse[0].orelse[0].orelse[0].orelse[0].orelse[0].body[1].value",
+      "scope": "main",
+      "facility": "Guild.log_add",
+      "classification": "operational/security-log",
+      "event_rate": "One entry per permitted privileged bulk drop/take command.",
+      "rationale": "The message includes arbitrary command text and is categorically prohibited from structured gameplay records."
+    }
+  ]
+}

@@ -565,6 +565,10 @@ direction 7
 x 13
 y 9
 end
+arch floor_earth1e
+x 13
+y 10
+end
 arch floor_earth1b
 x 13
 y 11

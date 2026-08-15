@@ -4441,7 +4441,7 @@
       "rationale": "Rendered Incuna - Under the Barn in the incuna_-2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "6568924a89091282649330f5e9ccc021b46b74433183e5dda956f434f988e77d"
+      "semantic_sha256": "3bdf20e4e11b81eab33e43a93796734c11affad1bc66b4858018a310fb44a410"
     },
     "maps/shattered_islands/world_2_87": {
       "uncolored_disposition": "neutral",
@@ -5012,7 +5012,7 @@
       "rationale": "Rendered Incuna - Water Well in the incuna_-2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues. The existing map-local radius-3 stock green exit remains explicit and retains its reviewed 40ff60 footprint without any helper source.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "f7c9b0b61bee4f603ce6526f8fecc02f4c69d63512228a6c08a70cbc066ad711"
+      "semantic_sha256": "ea586580b1831b9809825e3c875c51cafadbeec005c9d5d78cc8bbabdfc0a7a4"
     },
     "maps/shattered_islands/world_4_85": {
       "uncolored_disposition": "neutral",
@@ -5365,7 +5365,7 @@
       "rationale": "Rendered Incuna - Water Well in the incuna_-2 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "94b1a75ec9eb8aa96b5185ac6f8021c3ecd0f9c67d9064dc9a984627b7ea7ebd"
+      "semantic_sha256": "cf0bc6c488823244d70a98d798ebd0f71d1f76c2758068f7bd6f8655094bece0"
     },
     "maps/shattered_islands/world_5_85_-2": {
       "uncolored_disposition": "neutral",

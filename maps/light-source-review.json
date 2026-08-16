@@ -124,6 +124,11 @@
       "rationale": "The visibly lit candle fixture uses a small reviewed radius and warm-gold light matched to its flame and silhouette.",
       "semantic_sha256": "52070159cc2f75830a37d7fcae4e2da3b60db951876fd7eadcbb096ef149f9b3"
     },
+    "cause_wounds": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The source-only cause light wounds projectile uses radius-1 yellow light matched to its bright impact art; its live spell consumer has no static map placements.",
+      "semantic_sha256": "658d1c5a62ebee887037ecfc3189ebc710027edd3f891a73b818794093a6b987"
+    },
     "crystal_rune": {
       "uncolored_disposition": "neutral",
       "rationale": "crystal_rune uses the crystal cyan palette entry to match its visible art.",
@@ -554,6 +559,11 @@
       "rationale": "lava_blob uses the lava and open fire palette entry to match its visible art.",
       "semantic_sha256": "1333a3c53b896a30730a553f08f0c07720c1b3d04f6a8c26cc49d386423f00cd"
     },
+    "level_up": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The source-only level-up sparkle uses radius-1 cyan-blue light matched to its animation; its used-up lifecycle remains limited to the level-gain effect.",
+      "semantic_sha256": "64e480dad8dbd98ac07438f4d88793d1b01d17a064df6ba570086d64f6523359"
+    },
     "light1": {
       "uncolored_disposition": "neutral",
       "rationale": "Invisible map-local fill remains neutral so authored overlaps compose without a global hue.",
@@ -603,6 +613,11 @@
       "uncolored_disposition": "neutral",
       "rationale": "lightning uses the lightning blue-white palette entry to match its visible art.",
       "semantic_sha256": "b6e3a2162d5dc57ddbbd4235bc43b4041d1e68b17904f2b0c9d8264d41d4a393"
+    },
+    "magic_missile": {
+      "uncolored_disposition": "neutral",
+      "rationale": "The source-only magic missile uses radius-1 deep-blue light matched to its lightning projectile art; its live spell consumer has no static map placements.",
+      "semantic_sha256": "e6c670623cead903336e55b03e88b5b303e7ca30016d94b69a03ba7f0507e913"
     },
     "magic_wall": {
       "uncolored_disposition": "neutral",
@@ -858,6 +873,10 @@
     "candlelight4.101": {
       "rationale": "The authored ffd080 tint matches the visible warm flame and fixture art for candlelight4.101.",
       "semantic_sha256": "82e3de175eb6314488ccb493113f7837e0be73d02df1a4d175063cfe28d2e716"
+    },
+    "cause_wounds": {
+      "rationale": "The source-only cause light wounds projectile uses the reviewed ffe060 yellow tint for its bright impact art.",
+      "semantic_sha256": "6f4a74f5eb5e5887fc29e53bd80198f07b6cdcf77c2e929f43d1f8938e8ca085"
     },
     "crystal10": {
       "rationale": "The authored 8040ff tint matches crystal10's blue-violet facets.",
@@ -1271,9 +1290,17 @@
       "rationale": "The authored ff6030 tint matches the visible art for lavagolem.",
       "semantic_sha256": "a8363fcbab10cd9b461ea1f0685225c0113898053faa4b9c388e86308595ae52"
     },
+    "level_up": {
+      "rationale": "The source-only level-up sparkle uses the reviewed 60d0ff cyan-blue tint for its animation.",
+      "semantic_sha256": "08cfbae2bd1c24f4631838529ad57f2cf907e5e1816f88193fb4391ad2171c7a"
+    },
     "lightning": {
       "rationale": "The authored c0e0ff tint matches the visible art for lightning.",
       "semantic_sha256": "e1e9db8cb823bb4ea02ddfeae0003979b71793da19b7ecb20642ad6c7eea414b"
+    },
+    "magic_missile": {
+      "rationale": "The source-only magic missile projectile uses the reviewed 4060ff deep-blue tint for its lightning art.",
+      "semantic_sha256": "7acfc5516e737cf2352e873a4b4b8b6d30b705d48dd33a8a2bd16291dcd601cf"
     },
     "magic_wall": {
       "rationale": "The authored ff3030 tint matches the animated red and yellow runes while remaining a compact surface cue.",

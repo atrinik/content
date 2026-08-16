@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Old Outpost
 msg
 Created:  2009-09-18 Zoey Rose
@@ -7,9 +10,10 @@ endmsg
 width 24
 height 24
 difficulty 22
-darkness 2
-tile_path_1 old_outpost_a_0203
-tile_path_3 old_outpost_a_0201
+tile_path_1 /shattered_islands/strakewood_island/old_outpost/old_outpost_a_0203
+celestial_boundary_1 continuous
+tile_path_3 /shattered_islands/strakewood_island/old_outpost/old_outpost_a_0201
+celestial_boundary_3 continuous
 bg_music desert_town.mid
 region old_outpost
 end

@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Incuna
 msg
 Created:  2010-08-22 Edwin Miltenburg
@@ -7,8 +9,25 @@ endmsg
 width 24
 height 24
 difficulty 3
-outdoor 1
 bg_music tutorialisland.mid
+tile_path_1 /shattered_islands/world_3_81
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_4_82
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_3_83
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_2_82
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_4_81
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_4_83
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_2_83
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_2_81
+celestial_boundary_8 continuous
+tile_path_10 /shattered_islands/world_3_82_-1
+celestial_boundary_10 discontinuous
 region incuna
 end
 arch grass_flowers3
@@ -1072,7 +1091,6 @@ y 7
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 7
 y 7
 end
@@ -1082,7 +1100,6 @@ y 8
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 7
 y 8
 end
@@ -1092,7 +1109,6 @@ y 9
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 7
 y 9
 end
@@ -1102,7 +1118,6 @@ y 10
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 7
 y 10
 end
@@ -1252,7 +1267,6 @@ y 10
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 8
 y 10
 end
@@ -1262,7 +1276,6 @@ y 11
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 8
 y 11
 end
@@ -1272,7 +1285,6 @@ y 12
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 8
 y 12
 end
@@ -1436,7 +1448,6 @@ y 12
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 9
 y 12
 end
@@ -1446,7 +1457,6 @@ y 13
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 9
 y 13
 end
@@ -1536,7 +1546,6 @@ y 2
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 10
 y 2
 end
@@ -1546,7 +1555,6 @@ y 3
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 10
 y 3
 end
@@ -1625,7 +1633,6 @@ y 13
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 10
 y 13
 end
@@ -1635,7 +1642,6 @@ y 14
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 10
 y 14
 end
@@ -1719,7 +1725,6 @@ y 2
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 11
 y 2
 end
@@ -1806,7 +1811,6 @@ y 14
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 11
 y 14
 end
@@ -1893,7 +1897,6 @@ y 2
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 12
 y 2
 end
@@ -1988,7 +1991,6 @@ y 14
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 12
 y 14
 end
@@ -1998,7 +2000,6 @@ y 15
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 12
 y 15
 end
@@ -2081,7 +2082,6 @@ y 2
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 13
 y 2
 end
@@ -2181,7 +2181,6 @@ y 15
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 13
 y 15
 end
@@ -2191,7 +2190,6 @@ y 16
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 13
 y 16
 end
@@ -2269,7 +2267,6 @@ y 2
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 14
 y 2
 end
@@ -2386,7 +2383,6 @@ y 16
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 14
 y 16
 end
@@ -2460,7 +2456,6 @@ y 2
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 15
 y 2
 end
@@ -2560,7 +2555,6 @@ y 16
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 15
 y 16
 end
@@ -2633,7 +2627,6 @@ y 2
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 16
 y 2
 end
@@ -2732,7 +2725,6 @@ y 16
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 16
 y 16
 end
@@ -2794,7 +2786,6 @@ y 2
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 17
 y 2
 end
@@ -2804,7 +2795,6 @@ y 3
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 17
 y 3
 end
@@ -2890,7 +2880,6 @@ y 16
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 17
 y 16
 end
@@ -2973,7 +2962,6 @@ y 3
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 18
 y 3
 end
@@ -3083,7 +3071,6 @@ y 16
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 18
 y 16
 end
@@ -3093,7 +3080,6 @@ y 17
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 18
 y 17
 end
@@ -3166,7 +3152,6 @@ y 3
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 19
 y 3
 end
@@ -3176,7 +3161,6 @@ y 4
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 19
 y 4
 end
@@ -3274,7 +3258,6 @@ y 17
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 19
 y 17
 end
@@ -3356,7 +3339,6 @@ y 4
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 20
 y 4
 end
@@ -3366,7 +3348,6 @@ y 5
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 20
 y 5
 end
@@ -3464,7 +3445,6 @@ y 17
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 20
 y 17
 end
@@ -3545,7 +3525,6 @@ y 5
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 21
 y 5
 end
@@ -3555,7 +3534,6 @@ y 6
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 21
 y 6
 end
@@ -3565,7 +3543,6 @@ y 7
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 21
 y 7
 end
@@ -3639,7 +3616,6 @@ y 16
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 21
 y 16
 end
@@ -3649,7 +3625,6 @@ y 17
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 21
 y 17
 end
@@ -3744,7 +3719,6 @@ y 7
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 22
 y 7
 end
@@ -3754,7 +3728,6 @@ y 8
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 22
 y 8
 end
@@ -3764,7 +3737,6 @@ y 9
 end
 arch fwall_grit1c
 draw_double 0
-blocksview 0
 x 22
 y 9
 end
@@ -3806,7 +3778,6 @@ y 14
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 22
 y 14
 end
@@ -3816,7 +3787,6 @@ y 15
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 22
 y 15
 end
@@ -3826,7 +3796,6 @@ y 16
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 22
 y 16
 end
@@ -3944,7 +3913,6 @@ y 9
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 23
 y 9
 end
@@ -3954,7 +3922,6 @@ y 10
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 23
 y 10
 end
@@ -3964,7 +3931,6 @@ y 11
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 23
 y 11
 end
@@ -3974,7 +3940,6 @@ y 12
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 23
 y 12
 end
@@ -3984,7 +3949,6 @@ y 13
 end
 arch fwall_grit1b
 draw_double 0
-blocksview 0
 x 23
 y 13
 end
@@ -3994,7 +3958,6 @@ y 14
 end
 arch fwall_grit1a
 draw_double 0
-blocksview 0
 x 23
 y 14
 end

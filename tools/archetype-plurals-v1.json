@@ -3724,6 +3724,132 @@
       "classification": "review:reviewed-regular-s"
     },
     {
+      "archetype_id": "celestial_curtain1",
+      "singular": "red curtain",
+      "object_type": "20",
+      "name_pl": "red curtains",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_door1_locked",
+      "singular": "metal door",
+      "object_type": "20",
+      "name_pl": "metal doors",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_door_bar1",
+      "singular": "bar",
+      "object_type": "20",
+      "name_pl": "bars",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_door_wood1",
+      "singular": "wooden door",
+      "object_type": "20",
+      "name_pl": "wooden doors",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_door_wood2",
+      "singular": "wooden door",
+      "object_type": "20",
+      "name_pl": "wooden doors",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_gate1_locked",
+      "singular": "metal gate",
+      "object_type": "20",
+      "name_pl": "metal gates",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_gate_closed",
+      "singular": "gate",
+      "object_type": "91",
+      "name_pl": "gates",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_gate_open",
+      "singular": "gate",
+      "object_type": "91",
+      "name_pl": "gates",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_glass_fixture",
+      "singular": "celestial glass panel",
+      "object_type": "77",
+      "name_pl": "celestial glass panels",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_grate_closed",
+      "singular": "grate",
+      "object_type": "91",
+      "name_pl": "grates",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_grate_fixture",
+      "singular": "celestial grate panel",
+      "object_type": "77",
+      "name_pl": "celestial grate panels",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_grate_open",
+      "singular": "grate",
+      "object_type": "91",
+      "name_pl": "grates",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_piston_down",
+      "singular": "piston",
+      "object_type": "91",
+      "name_pl": "pistons",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_piston_up",
+      "singular": "piston",
+      "object_type": "91",
+      "name_pl": "pistons",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_portcullis_closed",
+      "singular": "portcullis",
+      "object_type": "91",
+      "name_pl": "portcullises",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_portcullis_open",
+      "singular": "portcullis",
+      "object_type": "91",
+      "name_pl": "portcullises",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_ship_rail_e_high",
+      "singular": "rail",
+      "object_type": "77",
+      "name_pl": "rails",
+      "classification": "review:fixture"
+    },
+    {
+      "archetype_id": "celestial_ship_rail_ne_high",
+      "singular": "rail",
+      "object_type": "77",
+      "name_pl": "rails",
+      "classification": "review:fixture"
+    },
+    {
       "archetype_id": "chain_hauberk",
       "singular": "chainmail hauberk",
       "object_type": "16",

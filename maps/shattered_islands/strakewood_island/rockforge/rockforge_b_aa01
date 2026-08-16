@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: City
 msg
 Created:  2011-06-12 Zoey Rose
@@ -6,11 +9,15 @@ endmsg
 width 24
 height 24
 difficulty 40
+tile_path_1 /shattered_islands/strakewood_island/rockforge/rockforge_b_aa02
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/strakewood_island/rockforge/rockforge_b_0101
+celestial_boundary_2 continuous
+tile_path_4 /shattered_islands/strakewood_island/rockforge/rockforge_b_ab01
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/strakewood_island/rockforge/rockforge_b_0102
+celestial_boundary_5 continuous
+tile_path_8 /shattered_islands/strakewood_island/rockforge/rockforge_b_ab02
+celestial_boundary_8 continuous
 region rockforge2
-darkness 3
-tile_path_1 rockforge_b_aa02
-tile_path_2 rockforge_b_0101
-tile_path_4 rockforge_b_ab01
-tile_path_5 rockforge_b_0102
-tile_path_8 rockforge_b_ab02
 end

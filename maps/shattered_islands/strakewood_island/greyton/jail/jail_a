@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Greyton Jail
 msg
 Created:  2010-06-16 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 12
 height 13
 difficulty 1
-darkness -1
 bg_music escape.mid
 region greyton
 end
@@ -495,9 +496,12 @@ arch floor_rhomb
 x 5
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 x 5
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_rhomb
 x 5
@@ -622,10 +626,13 @@ arch floor_rhomb
 x 6
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 6
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_rhomb
 x 6

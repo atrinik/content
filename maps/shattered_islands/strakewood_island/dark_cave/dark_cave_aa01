@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Dark Cave
 msg
 Created:  2010-01-19 Zoey Rose
@@ -7,13 +10,16 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 2
-tile_path_2 dark_cave_0101
-tile_path_3 dark_cave_aaaa
-tile_path_6 dark_cave_01aa
+tile_path_2 /shattered_islands/strakewood_island/dark_cave/dark_cave_0101
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/strakewood_island/dark_cave/dark_cave_aaaa
+celestial_boundary_3 continuous
+tile_path_6 /shattered_islands/strakewood_island/dark_cave/dark_cave_01aa
+celestial_boundary_6 continuous
 bg_music desert_town.mid
+tile_path_5 /shattered_islands/strakewood_island/dark_cave/dark_cave_0102
+celestial_boundary_5 continuous
 region dark_cave
-tile_path_5 dark_cave_0102
 end
 arch sign
 name geyser

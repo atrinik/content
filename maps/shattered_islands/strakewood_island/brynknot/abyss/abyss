@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 20
 name In the Abyss
 msg
 Created:  2010-10-30 Zoey Rose
@@ -8,7 +11,6 @@ width 45
 height 47
 swap_time 1000
 difficulty 1
-darkness 1
 no_save 1
 bg_music crystal_cave.ogg
 region brynknot

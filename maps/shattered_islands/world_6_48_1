@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria
 msg
 Created:  2009-08-09 emperorbma
@@ -7,10 +9,16 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness -1
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_4 /shattered_islands/world_5_48_1
+celestial_boundary_4 continuous
+tile_path_6 /shattered_islands/world_7_49_1
+celestial_boundary_6 continuous
+tile_path_9 /shattered_islands/world_6_48_2
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_6_48
+celestial_boundary_10 continuous
 region asteria
 end
 arch trans
@@ -65,8 +73,11 @@ end
 arch floor_wood2_l1
 y 19
 end
-arch door_wood2
+arch celestial_door_wood2
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood2_l1
 y 20
@@ -248,9 +259,12 @@ arch floor_wood2_l1
 x 2
 y 16
 end
-arch door_wood2
+arch celestial_door_wood2
 x 2
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_wood2_l1
 x 2
@@ -511,9 +525,12 @@ arch floor_wood2_l1
 x 4
 y 19
 end
-arch door_wood2
+arch celestial_door_wood2
 x 4
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood2_l1
 x 4

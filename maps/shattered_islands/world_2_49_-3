@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Outpost of Dr'kass
 msg
 Created:  2011-03-26 emperorbma
@@ -7,7 +10,6 @@ endmsg
 width 24
 height 24
 difficulty 30
-darkness 2
 bg_music unexpected.mid
 region strakewood_island_underground
 end
@@ -61,9 +63,12 @@ end
 arch floor_ostone8
 y 11
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 3
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_ostone8
 y 12
@@ -1558,9 +1563,12 @@ arch floor_ostone8
 x 12
 y 5
 end
-arch door_wood1
+arch celestial_door_wood1
 x 12
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch fstone1b
 x 12
@@ -1665,9 +1673,12 @@ arch fstone1a
 x 12
 y 22
 end
-arch grate_open
+arch celestial_grate_open
 x 12
 y 22
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch fstone1b
 x 12
@@ -1696,10 +1707,13 @@ arch floor_ostone8
 x 13
 y 5
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 7
 x 13
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch fstone1b
 x 13
@@ -1781,9 +1795,12 @@ arch fstone1c
 x 13
 y 22
 end
-arch grate_open
+arch celestial_grate_open
 x 13
 y 22
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch fstone1a
 x 13

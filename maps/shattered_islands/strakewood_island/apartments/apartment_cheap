@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Cheap Apartment
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 6
 height 5
 difficulty 1
-darkness -1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid

@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Incuna
 msg
 Created:  2010-08-22 Edwin Miltenburg
@@ -7,9 +9,28 @@ endmsg
 width 24
 height 24
 difficulty 3
-outdoor 1
 no_harm 1
 bg_music tutorialisland.mid
+tile_path_1 /shattered_islands/world_5_83
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_6_84
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_5_85
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_4_84
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_6_83
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_6_85
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_4_85
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_4_83
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_5_84_1
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_5_84_-1
+celestial_boundary_10 discontinuous
 region incuna
 end
 arch grassd_3
@@ -711,10 +732,13 @@ arch floor_wood1b
 x 4
 y 5
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 4
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood1b
 x 4
@@ -744,10 +768,13 @@ arch floor_wood1b
 x 4
 y 9
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 4
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_wood1b
 x 4
@@ -777,10 +804,13 @@ arch floor_wood1b
 x 4
 y 13
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 4
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood1b
 x 4
@@ -861,10 +891,13 @@ arch floor_pattern_brown1
 x 4
 y 22
 end
-arch curtain1
+arch celestial_curtain1
 direction 3
 x 4
 y 22
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_pattern_brown2
 x 4
@@ -1437,10 +1470,13 @@ arch floor_pattern_brown2
 x 7
 y 21
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 7
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_pattern_brown2
 x 7

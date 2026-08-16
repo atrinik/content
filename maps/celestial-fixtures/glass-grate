@@ -1,0 +1,16 @@
+arch map
+celestial_schema 1
+sky_above open
+name Celestial-v1 glass and grate transmission fixture
+width 7
+height 5
+region celestial_fixtures_fixed
+end
+arch celestial_glass_fixture
+x 2
+y 2
+end
+arch celestial_grate_fixture
+x 4
+y 2
+end

@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Aris
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,8 +9,25 @@ endmsg
 width 24
 height 24
 difficulty 5
-outdoor 1
 bg_music town.mod
+tile_path_1 /shattered_islands/world_3_58
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_4_59
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_3_60
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_2_59
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_4_58
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_4_60
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_2_60
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_2_58
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_3_59_1
+celestial_boundary_9 continuous
 region strakewood_island
 end
 arch grassd_6
@@ -1749,7 +1768,7 @@ arch floor_flagm1
 x 12
 y 13
 end
-arch gate1_locked
+arch celestial_gate1_locked
 msg
 The prison cell is locked.
 endmsg
@@ -1757,6 +1776,9 @@ slaying no_entry
 direction 3
 x 12
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_flagm2
 x 12
@@ -1783,7 +1805,7 @@ arch floor_flagm2
 x 12
 y 16
 end
-arch gate1_locked
+arch celestial_gate1_locked
 msg
 The prison cell is locked.
 endmsg
@@ -1791,6 +1813,9 @@ slaying no_entry
 direction 3
 x 12
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_flagm1
 x 12
@@ -1822,7 +1847,7 @@ arch floor_flagm1
 x 12
 y 19
 end
-arch gate1_locked
+arch celestial_gate1_locked
 msg
 The prison cell is locked.
 endmsg
@@ -1830,6 +1855,9 @@ slaying no_entry
 direction 3
 x 12
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_flagm2
 x 12
@@ -1843,7 +1871,7 @@ arch floor_flagm1
 x 12
 y 21
 end
-arch door1_locked
+arch celestial_door1_locked
 msg
 The door is locked.
 endmsg
@@ -1851,6 +1879,9 @@ slaying no_entry
 direction 3
 x 12
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_flagm3
 x 12
@@ -2069,10 +2100,13 @@ arch floor_flagm2
 x 14
 y 12
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 14
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_flagm1
 x 14
@@ -2602,10 +2636,13 @@ arch floor_flagm1
 x 17
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 17
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_flagm4
 x 17
@@ -2886,9 +2923,12 @@ arch floor_flagm1
 x 19
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 x 19
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_flagm1
 x 19
@@ -2910,9 +2950,12 @@ arch floor_flagm1
 x 19
 y 18
 end
-arch door1_locked
+arch celestial_door1_locked
 x 19
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_flagm4
 x 19
@@ -3186,10 +3229,13 @@ arch floor_flagm1
 x 21
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 21
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_flagm1
 x 21

@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 20
 name Incuna - Slime Pit
 msg
 Created:  2011-09-17 Edwin Miltenburg
@@ -7,7 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 1
+tile_path_9 /shattered_islands/world_5_86_-1
+celestial_boundary_9 discontinuous
 region incuna_-2
 end
 arch swamp1

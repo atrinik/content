@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Outpost of Dr'kass
 msg
 Created:  2011-03-26 emperorbma
@@ -7,7 +10,6 @@ endmsg
 width 24
 height 24
 difficulty 30
-darkness 2
 bg_music unexpected.mid
 region strakewood_island_underground
 end
@@ -1540,7 +1542,6 @@ x 17
 y 18
 end
 arch cave_deco_f3.101
-blocksview 1
 no_pass 1
 x 17
 y 18
@@ -1550,7 +1551,6 @@ x 17
 y 19
 end
 arch cave_deco_f2.101
-blocksview 1
 no_pass 1
 x 17
 y 19
@@ -1604,7 +1604,6 @@ x 18
 y 17
 end
 arch cave_deco_f3.101
-blocksview 1
 no_pass 1
 x 18
 y 17
@@ -1614,7 +1613,6 @@ x 18
 y 18
 end
 arch cave_deco_f2.101
-blocksview 1
 no_pass 1
 x 18
 y 18
@@ -1624,7 +1622,6 @@ x 18
 y 19
 end
 arch cave_deco_f3.101
-blocksview 1
 no_pass 1
 x 18
 y 19
@@ -1674,7 +1671,6 @@ x 19
 y 18
 end
 arch cave_deco_f3.101
-blocksview 1
 no_pass 1
 x 19
 y 18

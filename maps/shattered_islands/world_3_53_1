@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Fort Sether
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,8 +9,19 @@ endmsg
 width 24
 height 24
 difficulty 25
-outdoor 1
 bg_music solemn.mid
+tile_path_1 /shattered_islands/world_3_52_1
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_4_53_1
+celestial_boundary_2 discontinuous
+tile_path_3 /shattered_islands/world_3_54_1
+celestial_boundary_3 discontinuous
+tile_path_5 /shattered_islands/world_4_52_1
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_4_54_1
+celestial_boundary_6 discontinuous
+tile_path_10 /shattered_islands/world_3_53
+celestial_boundary_10 continuous
 region fort_sether
 end
 arch trans
@@ -17,7 +30,6 @@ y 21
 end
 arch wall_fstone_half.101
 draw_double 0
-blocksview 0
 z -3
 x 11
 y 21

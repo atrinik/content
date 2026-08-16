@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: Mines
 msg
 Created:  2011-06-12 Zoey Rose
@@ -6,14 +9,21 @@ endmsg
 width 24
 height 24
 difficulty 40
+tile_path_1 /shattered_islands/strakewood_island/rockforge/rockforge_c_0204
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/strakewood_island/rockforge/rockforge_c_0303
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/strakewood_island/rockforge/rockforge_c_0202
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/strakewood_island/rockforge/rockforge_c_0103
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/strakewood_island/rockforge/rockforge_c_0304
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/strakewood_island/rockforge/rockforge_c_0302
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/strakewood_island/rockforge/rockforge_c_0102
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/strakewood_island/rockforge/rockforge_c_0104
+celestial_boundary_8 continuous
 region rockforge_mines
-darkness 3
-tile_path_1 rockforge_c_0204
-tile_path_2 rockforge_c_0303
-tile_path_3 rockforge_c_0202
-tile_path_4 rockforge_c_0103
-tile_path_5 rockforge_c_0304
-tile_path_6 rockforge_c_0302
-tile_path_7 rockforge_c_0102
-tile_path_8 rockforge_c_0104
 end

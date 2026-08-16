@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 80
 name The City of Greyton
 msg
 Created:  2015-04-26 Zoey Rose
@@ -7,9 +10,10 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 3
 no_harm 1
 bg_music thonkdonk.ogg
+tile_path_9 /shattered_islands/world_8_68
+celestial_boundary_9 discontinuous
 region greyton
 end
 arch floor_cave2
@@ -996,19 +1000,25 @@ arch floor_fs_grey1d
 x 8
 y 11
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 8
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_fs_grey1d
 x 8
 y 12
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 8
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_fs_grey1a
 x 8
@@ -1466,9 +1476,12 @@ arch floor_fs_grey1b
 x 18
 y 8
 end
-arch gate1_locked
+arch celestial_gate1_locked
 x 18
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_fs_grey1c
 x 18
@@ -1498,9 +1511,12 @@ arch floor_fs_grey1b
 x 18
 y 15
 end
-arch gate1_locked
+arch celestial_gate1_locked
 x 18
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_fs_grey1b
 x 18
@@ -1710,31 +1726,40 @@ arch floor_fs_grey1b
 x 23
 y 11
 end
-arch gate_open
+arch celestial_gate_open
 direction 3
 connected 101
 x 23
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_fs_grey1d
 x 23
 y 12
 end
-arch gate_open
+arch celestial_gate_open
 direction 3
 connected 101
 x 23
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_fs_grey1a
 x 23
 y 13
 end
-arch gate_open
+arch celestial_gate_open
 direction 3
 connected 101
 x 23
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch wall_dungeon_1
 sub_layer 1

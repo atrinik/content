@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name The City of Greyton
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,9 +9,28 @@ endmsg
 width 24
 height 24
 difficulty 100
-outdoor 1
 no_harm 1
 bg_music town_music.ogg
+tile_path_1 /shattered_islands/world_9_67
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_10_68
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_9_69
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_8_68
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_10_67
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_10_69
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_8_69
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_8_67
+celestial_boundary_8 discontinuous
+tile_path_9 /shattered_islands/world_9_68_1
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_9_68_-1
+celestial_boundary_10 continuous
 region greyton
 end
 arch floor_flagm2
@@ -481,11 +502,14 @@ arch grassd_1
 x 2
 y 9
 end
-arch portcullis_closed
+arch celestial_portcullis_closed
 direction 3
 connected 103
 x 2
 y 9
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch pedestal
 hp 1
@@ -498,11 +522,14 @@ arch grassd_1
 x 2
 y 10
 end
-arch portcullis_closed
+arch celestial_portcullis_closed
 direction 3
 connected 103
 x 2
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch pedestal
 hp 1
@@ -515,11 +542,14 @@ arch grassd_8
 x 2
 y 11
 end
-arch portcullis_closed
+arch celestial_portcullis_closed
 direction 3
 connected 103
 x 2
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch pedestal
 hp 1
@@ -532,11 +562,14 @@ arch grassd_3
 x 2
 y 12
 end
-arch portcullis_closed
+arch celestial_portcullis_closed
 direction 3
 connected 103
 x 2
 y 12
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch pedestal
 hp 1
@@ -549,11 +582,14 @@ arch grassd_1
 x 2
 y 13
 end
-arch portcullis_closed
+arch celestial_portcullis_closed
 direction 3
 connected 103
 x 2
 y 13
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch pedestal
 hp 1
@@ -566,11 +602,14 @@ arch grassd_5
 x 2
 y 14
 end
-arch portcullis_closed
+arch celestial_portcullis_closed
 direction 3
 connected 103
 x 2
 y 14
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch pedestal
 hp 1
@@ -816,10 +855,13 @@ arch floor_flagm1
 x 4
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 4
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_flagm1
 x 4
@@ -965,10 +1007,13 @@ arch floor_flagm4
 x 4
 y 18
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 4
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_flagm2
 x 4

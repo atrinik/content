@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 80
 name Forgotten Tunnels
 msg
 Created:  2011-03-19 Zoey Rose
@@ -7,9 +10,10 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 3
 height_diff 1
 bg_music venturing_dragons.ogg
+tile_path_9 /shattered_islands/world_6_82
+celestial_boundary_9 discontinuous
 region forgotten_tunnels
 end
 arch floor_sand_d3

@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Temple of Loki
 msg
 Created:  2010-05-11 Asa
@@ -7,8 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 90
-darkness 3
-tile_path_4 tol_0101
+tile_path_4 /shattered_islands/berri_lur/temple_loki/tol_0101
+celestial_boundary_4 continuous
 bg_music comeback.mod
 region berri_lur
 end

@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Incuna - Water Well
 msg
 Created:  2011-05-09 Edwin Miltenburg
@@ -7,7 +10,10 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 2
+tile_path_9 /shattered_islands/world_5_84_-1
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/world_5_84_-3
+celestial_boundary_10 discontinuous
 region incuna_-2
 end
 arch floor_sand_d1
@@ -26,7 +32,6 @@ z 2
 y 4
 end
 arch wall_cave1.121
-blocksview 0
 y 4
 end
 arch floor_sand_d3
@@ -224,7 +229,6 @@ x 1
 y 9
 end
 arch wall_cave1b.161
-blocksview 0
 x 1
 y 9
 end
@@ -245,7 +249,6 @@ x 1
 y 12
 end
 arch wall_cave1.181
-blocksview 0
 x 1
 y 12
 end
@@ -491,7 +494,6 @@ x 2
 y 9
 end
 arch wall_cave1.151
-blocksview 0
 x 2
 y 9
 end
@@ -512,7 +514,6 @@ x 2
 y 12
 end
 arch wall_cave1.111
-blocksview 0
 x 2
 y 12
 end
@@ -563,10 +564,13 @@ arch floor_sand_d4
 x 2
 y 15
 end
-arch grate_closed
+arch celestial_grate_closed
 connected 199
 x 2
 y 15
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch duplicator
 slaying damager
@@ -817,7 +821,6 @@ x 3
 y 9
 end
 arch wall_cave1.151
-blocksview 0
 x 3
 y 9
 end
@@ -838,7 +841,6 @@ x 3
 y 12
 end
 arch wall_cave1.111
-blocksview 0
 x 3
 y 12
 end
@@ -889,10 +891,13 @@ arch floor_sand_d4
 x 3
 y 15
 end
-arch grate_closed
+arch celestial_grate_closed
 connected 199
 x 3
 y 15
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch duplicator
 slaying damager
@@ -1061,7 +1066,6 @@ x 4
 y 9
 end
 arch wall_cave1b.141
-blocksview 0
 x 4
 y 9
 end
@@ -1082,7 +1086,6 @@ x 4
 y 12
 end
 arch wall_cave1b.121
-blocksview 0
 x 4
 y 12
 end
@@ -1110,11 +1113,14 @@ arch wall_cave1.131
 x 4
 y 15
 end
-arch grate_closed
+arch celestial_grate_closed
 sub_layer 1
 connected 199
 x 4
 y 15
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_sand_d3
 x 4
@@ -1374,23 +1380,29 @@ arch wall_cave1.111
 x 6
 y 2
 end
-arch gate_open
+arch celestial_gate_open
 sub_layer 1
 direction 7
 connected 111
 x 6
 y 2
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_sand_d2
 x 6
 y 3
 end
-arch gate_open
+arch celestial_gate_open
 direction 7
 connected 111
 name flood protection gate
 x 6
 y 3
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_sand_d3
 x 6
@@ -1400,12 +1412,15 @@ arch wall_cave1.151
 x 6
 y 4
 end
-arch gate_open
+arch celestial_gate_open
 sub_layer 1
 direction 7
 connected 111
 x 6
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_sand_d2
 x 6
@@ -1418,14 +1433,12 @@ end
 arch water_lt4
 z 18
 sub_layer 1
-blocksview 1
 x 6
 y 10
 end
 arch water_lt3
 z 18
 sub_layer 1
-blocksview 1
 x 6
 y 11
 end
@@ -1624,7 +1637,6 @@ x 7
 y 12
 end
 arch wall_cave1.181
-blocksview 0
 x 7
 y 12
 end
@@ -1850,7 +1862,6 @@ x 8
 y 12
 end
 arch wall_cave1.111
-blocksview 0
 x 8
 y 12
 end
@@ -2096,7 +2107,6 @@ x 9
 y 9
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 y 9
 end
@@ -2122,7 +2132,6 @@ x 9
 y 12
 end
 arch wall_cave1.111
-blocksview 0
 x 9
 y 12
 end
@@ -2166,7 +2175,6 @@ x 9
 y 14
 end
 arch wall_cave1.101
-blocksview 0
 x 9
 y 14
 end
@@ -2424,11 +2432,14 @@ z 24
 x 20
 y 1
 end
-arch grate_open
+arch celestial_grate_open
 connected 111
 layer 4
 x 20
 y 1
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch creator
 connected 111
@@ -2447,11 +2458,14 @@ z 24
 x 20
 y 2
 end
-arch grate_open
+arch celestial_grate_open
 layer 4
 connected 112
 x 20
 y 2
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch button
 connected 112
@@ -2463,11 +2477,14 @@ z 24
 x 20
 y 3
 end
-arch grate_open
+arch celestial_grate_open
 connected 113
 layer 4
 x 20
 y 3
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch button
 connected 113
@@ -2492,11 +2509,14 @@ z 24
 x 20
 y 4
 end
-arch grate_open
+arch celestial_grate_open
 connected 114
 layer 4
 x 20
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000000a
 end
 arch button
 connected 114
@@ -2515,11 +2535,14 @@ z 24
 x 20
 y 5
 end
-arch grate_open
+arch celestial_grate_open
 connected 115
 layer 4
 x 20
 y 5
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000000b
 end
 arch button
 connected 115
@@ -2537,11 +2560,14 @@ z 24
 x 20
 y 6
 end
-arch grate_open
+arch celestial_grate_open
 connected 116
 layer 4
 x 20
 y 6
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000000c
 end
 arch button
 connected 116
@@ -2559,11 +2585,14 @@ z 24
 x 20
 y 7
 end
-arch grate_open
+arch celestial_grate_open
 connected 117
 layer 4
 x 20
 y 7
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000000d
 end
 arch button
 connected 117
@@ -2581,11 +2610,14 @@ z 24
 x 20
 y 8
 end
-arch grate_open
+arch celestial_grate_open
 connected 118
 layer 4
 x 20
 y 8
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000000e
 end
 arch button
 connected 118
@@ -2603,11 +2635,14 @@ z 24
 x 20
 y 9
 end
-arch grate_open
+arch celestial_grate_open
 connected 119
 layer 4
 x 20
 y 9
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000000f
 end
 arch button
 connected 119
@@ -2625,11 +2660,14 @@ z 24
 x 20
 y 10
 end
-arch grate_open
+arch celestial_grate_open
 connected 120
 layer 4
 x 20
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000010
 end
 arch button
 connected 120
@@ -2647,11 +2685,14 @@ z 24
 x 20
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 121
 layer 4
 x 20
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000011
 end
 arch button
 connected 121
@@ -2669,11 +2710,14 @@ z 24
 x 20
 y 12
 end
-arch grate_open
+arch celestial_grate_open
 connected 122
 layer 4
 x 20
 y 12
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000012
 end
 arch button
 connected 122
@@ -2691,11 +2735,14 @@ z 24
 x 20
 y 13
 end
-arch grate_open
+arch celestial_grate_open
 connected 123
 layer 4
 x 20
 y 13
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000013
 end
 arch button
 connected 123
@@ -2713,11 +2760,14 @@ z 24
 x 20
 y 14
 end
-arch grate_open
+arch celestial_grate_open
 connected 124
 layer 4
 x 20
 y 14
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000014
 end
 arch button
 connected 124
@@ -2735,11 +2785,14 @@ z 24
 x 20
 y 15
 end
-arch grate_open
+arch celestial_grate_open
 connected 125
 layer 4
 x 20
 y 15
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000015
 end
 arch button
 connected 125
@@ -2757,11 +2810,14 @@ z 24
 x 20
 y 16
 end
-arch grate_open
+arch celestial_grate_open
 connected 126
 layer 4
 x 20
 y 16
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000016
 end
 arch button
 connected 126
@@ -2786,11 +2842,14 @@ z 24
 x 20
 y 17
 end
-arch grate_open
+arch celestial_grate_open
 connected 127
 layer 4
 x 20
 y 17
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000017
 end
 arch button
 connected 127
@@ -2887,11 +2946,14 @@ z 24
 x 21
 y 18
 end
-arch grate_open
+arch celestial_grate_open
 connected 128
 layer 4
 x 21
 y 18
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000018
 end
 arch button
 connected 128
@@ -2929,11 +2991,14 @@ z 24
 x 22
 y 3
 end
-arch grate_open
+arch celestial_grate_open
 connected 143
 layer 4
 x 22
 y 3
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000019
 end
 arch button
 connected 143
@@ -2951,11 +3016,14 @@ z 24
 x 22
 y 4
 end
-arch grate_open
+arch celestial_grate_open
 connected 142
 layer 4
 x 22
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000001a
 end
 arch button
 connected 142
@@ -2973,11 +3041,14 @@ z 24
 x 22
 y 5
 end
-arch grate_open
+arch celestial_grate_open
 connected 141
 layer 4
 x 22
 y 5
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000001b
 end
 arch button
 connected 141
@@ -2995,11 +3066,14 @@ z 24
 x 22
 y 6
 end
-arch grate_open
+arch celestial_grate_open
 connected 140
 layer 4
 x 22
 y 6
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000001c
 end
 arch button
 connected 140
@@ -3017,11 +3091,14 @@ z 24
 x 22
 y 7
 end
-arch grate_open
+arch celestial_grate_open
 connected 139
 layer 4
 x 22
 y 7
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000001d
 end
 arch button
 connected 139
@@ -3040,11 +3117,14 @@ z 24
 x 22
 y 8
 end
-arch grate_open
+arch celestial_grate_open
 connected 138
 layer 4
 x 22
 y 8
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000001e
 end
 arch button
 connected 138
@@ -3062,11 +3142,14 @@ z 24
 x 22
 y 9
 end
-arch grate_open
+arch celestial_grate_open
 connected 137
 layer 4
 x 22
 y 9
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 000000000000001f
 end
 arch button
 connected 137
@@ -3084,11 +3167,14 @@ z 24
 x 22
 y 10
 end
-arch grate_open
+arch celestial_grate_open
 connected 136
 layer 4
 x 22
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000020
 end
 arch button
 connected 136
@@ -3106,11 +3192,14 @@ z 24
 x 22
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 135
 layer 4
 x 22
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000021
 end
 arch button
 connected 135
@@ -3128,11 +3217,14 @@ z 24
 x 22
 y 12
 end
-arch grate_open
+arch celestial_grate_open
 connected 134
 layer 4
 x 22
 y 12
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000022
 end
 arch button
 connected 134
@@ -3151,11 +3243,14 @@ z 24
 x 22
 y 13
 end
-arch grate_open
+arch celestial_grate_open
 connected 133
 layer 4
 x 22
 y 13
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000023
 end
 arch button
 connected 133
@@ -3174,11 +3269,14 @@ z 24
 x 22
 y 14
 end
-arch grate_open
+arch celestial_grate_open
 connected 132
 layer 4
 x 22
 y 14
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000024
 end
 arch button
 connected 132
@@ -3197,11 +3295,14 @@ z 24
 x 22
 y 15
 end
-arch grate_open
+arch celestial_grate_open
 connected 131
 layer 4
 x 22
 y 15
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000025
 end
 arch button
 connected 131
@@ -3220,11 +3321,14 @@ z 24
 x 22
 y 16
 end
-arch grate_open
+arch celestial_grate_open
 connected 130
 layer 4
 x 22
 y 16
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000026
 end
 arch button
 connected 130
@@ -3242,11 +3346,14 @@ z 24
 x 22
 y 17
 end
-arch grate_open
+arch celestial_grate_open
 connected 129
 layer 4
 x 22
 y 17
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000027
 end
 arch button
 connected 129

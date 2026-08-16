@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name The Underground City
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +10,15 @@ endmsg
 width 24
 height 24
 difficulty 35
-darkness 2
 bg_music thonkdonk.ogg
+tile_path_1 /shattered_islands/strakewood_island/underground_city/underground_city_4_3
+celestial_boundary_1 continuous
+tile_path_4 /shattered_islands/strakewood_island/underground_city/underground_city_3_4
+celestial_boundary_4 continuous
+tile_path_8 /shattered_islands/strakewood_island/underground_city/underground_city_3_3
+celestial_boundary_8 continuous
+tile_path_10 /shattered_islands/strakewood_island/underground_city/underground_city_4_4_-1
+celestial_boundary_10 discontinuous
 region underground_city
 end
 arch floor_stone_b2
@@ -309,9 +319,12 @@ arch floor_stone_b3
 x 2
 y 15
 end
-arch door1_locked
+arch celestial_door1_locked
 x 2
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_stone_b1
 x 2
@@ -871,10 +884,13 @@ arch floor_stone_b3
 x 7
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 7
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_stone_b1
 x 7
@@ -1551,10 +1567,13 @@ arch floor_stone_b2
 x 12
 y 20
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 12
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_stone_b2
 x 12
@@ -2054,19 +2073,25 @@ arch floor_stone_b2
 x 16
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 16
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_stone_b1
 x 16
 y 17
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 16
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_stone_b4
 x 16
@@ -2421,9 +2446,12 @@ arch floor_stone_b2
 x 19
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 x 19
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_stone_b1
 x 19

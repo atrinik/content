@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 160
 name Morliana
 msg
 Created:  2010-12-08 Zoey Rose
@@ -7,9 +10,18 @@ endmsg
 width 24
 height 24
 difficulty 20
-darkness 4
 no_harm 1
 bg_music campfire_tales.mid
+tile_path_2 /shattered_islands/world_13_4_1
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_12_5_1
+celestial_boundary_3 continuous
+tile_path_6 /shattered_islands/world_13_5_1
+celestial_boundary_6 continuous
+tile_path_9 /shattered_islands/world_12_4_2
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_12_4
+celestial_boundary_10 continuous
 region morliana
 end
 arch trans
@@ -475,10 +487,13 @@ arch floor_wood1b
 x 14
 y 10
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 14
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood2b
 x 14
@@ -500,10 +515,13 @@ arch floor_wood2b
 x 14
 y 13
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 14
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_wood1b
 x 14
@@ -530,10 +548,13 @@ arch floor_wood2b
 x 14
 y 16
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 14
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood2b
 x 14
@@ -555,10 +576,13 @@ arch floor_wood1b
 x 14
 y 19
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 14
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_wood2b
 x 14
@@ -705,10 +729,13 @@ arch floor_wood1b
 x 16
 y 10
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 16
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_wood1b
 x 16
@@ -730,10 +757,13 @@ arch floor_wood2b
 x 16
 y 13
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 16
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_wood1b
 x 16
@@ -755,10 +785,13 @@ arch floor_wood2b
 x 16
 y 16
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 16
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_wood2b
 x 16
@@ -785,10 +818,13 @@ arch floor_wood1b
 x 16
 y 19
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 16
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_wood2b
 x 16

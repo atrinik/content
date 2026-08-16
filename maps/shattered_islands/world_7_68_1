@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Strakewood Island
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +9,17 @@ endmsg
 width 24
 height 24
 difficulty 1
-outdoor 1
 bg_music jungle.ogg
+tile_path_1 /shattered_islands/world_7_67_1
+celestial_boundary_1 continuous
+tile_path_3 /shattered_islands/world_7_69_1
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_6_68_1
+celestial_boundary_4 discontinuous
+tile_path_7 /shattered_islands/world_6_69_1
+celestial_boundary_7 continuous
+tile_path_10 /shattered_islands/world_7_68
+celestial_boundary_10 continuous
 region strakewood_island
 end
 arch roof_wood

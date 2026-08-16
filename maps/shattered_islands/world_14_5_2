@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Morliana
 msg
 Created:  2010-12-08 Zoey Rose
@@ -7,10 +9,10 @@ endmsg
 width 24
 height 24
 difficulty 20
-darkness -1
-outdoor 1
 no_harm 1
 bg_music campfire_tales.mid
+tile_path_10 /shattered_islands/world_14_5_1
+celestial_boundary_10 continuous
 region morliana
 end
 arch roof_brick_brown

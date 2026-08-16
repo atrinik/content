@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,24 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_1 /shattered_islands/world_3_42
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_4_43
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_3_44
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_2_43
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_4_42
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_4_44
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_2_44
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_2_42
+celestial_boundary_8 discontinuous
 region asteria
 end
 arch water_lt4
@@ -92,7 +109,6 @@ arch grassd_8
 y 19
 end
 arch wall_fortified_high.131
-blocksview 0
 y 19
 end
 arch floor_fs_grey1b
@@ -226,7 +242,6 @@ x 1
 y 19
 end
 arch wall_fortified_high.131
-blocksview 0
 x 1
 y 19
 end
@@ -361,7 +376,6 @@ x 2
 y 19
 end
 arch wall_fortified_high.131
-blocksview 0
 x 2
 y 19
 end
@@ -504,7 +518,6 @@ x 3
 y 19
 end
 arch wall_fortified_high.131
-blocksview 0
 x 3
 y 19
 end
@@ -515,7 +528,6 @@ x 3
 y 20
 end
 arch wall_fortified_high.111
-blocksview 0
 x 3
 y 20
 end
@@ -526,7 +538,6 @@ x 3
 y 21
 end
 arch wall_fortified_high.111
-blocksview 0
 x 3
 y 21
 end
@@ -537,7 +548,6 @@ x 3
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 x 3
 y 22
 end
@@ -548,7 +558,6 @@ x 3
 y 23
 end
 arch wall_fortified_high.111
-blocksview 0
 x 3
 y 23
 end
@@ -2453,7 +2462,6 @@ z 24
 x 20
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 end
@@ -2463,7 +2471,6 @@ x 20
 y 1
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 1
@@ -2474,7 +2481,6 @@ x 20
 y 2
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 2
@@ -2485,7 +2491,6 @@ x 20
 y 3
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 3
@@ -2496,7 +2501,6 @@ x 20
 y 4
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 4
@@ -2507,7 +2511,6 @@ x 20
 y 5
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 5
@@ -2518,7 +2521,6 @@ x 20
 y 6
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 6
@@ -2529,7 +2531,6 @@ x 20
 y 7
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 7
@@ -2540,7 +2541,6 @@ x 20
 y 8
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 8
@@ -2551,7 +2551,6 @@ x 20
 y 9
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 9
@@ -2562,7 +2561,6 @@ x 20
 y 10
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 10
@@ -2573,7 +2571,6 @@ x 20
 y 11
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 11
@@ -2584,7 +2581,6 @@ x 20
 y 12
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 12
@@ -2595,7 +2591,6 @@ x 20
 y 13
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 13
@@ -2606,7 +2601,6 @@ x 20
 y 14
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 14
@@ -2617,7 +2611,6 @@ x 20
 y 15
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 15
@@ -2628,7 +2621,6 @@ x 20
 y 16
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 16
@@ -2639,7 +2631,6 @@ x 20
 y 17
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 17
@@ -2650,7 +2641,6 @@ x 20
 y 18
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 18
@@ -2661,7 +2651,6 @@ x 20
 y 19
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 19
@@ -2672,7 +2661,6 @@ x 20
 y 20
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 20
@@ -2683,7 +2671,6 @@ x 20
 y 21
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 21
@@ -2694,7 +2681,6 @@ x 20
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 22
@@ -2705,7 +2691,6 @@ x 20
 y 23
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 23

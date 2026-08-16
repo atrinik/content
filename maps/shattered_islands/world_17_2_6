@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Wizards' Tower: The Roof
 msg
 Created:  2014-12-27 Zoey Rose
@@ -7,9 +9,9 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness -1
-outdoor 1
 bg_music campfire_tales.mid
+tile_path_10 /shattered_islands/world_17_2_5
+celestial_boundary_10 continuous
 region lyondale_archipelago_wizard
 end
 arch fwall_fstone2c

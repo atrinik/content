@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria Palace
 msg
 Created:  2011-01-23 emperorbma
@@ -7,17 +9,34 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness -1
-outdoor 1
 no_harm 1
 bg_music kaitindam.mid
+tile_path_1 /shattered_islands/world_6_42_1
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_7_43_1
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_6_44_1
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_5_43_1
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_7_42_1
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_7_44_1
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_5_44_1
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_5_42_1
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_6_43_2
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_6_43
+celestial_boundary_10 continuous
 region asteria
 end
 arch trans
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 y 14
 end
@@ -25,7 +44,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 y 14
 end
 arch map_info
@@ -268,7 +286,6 @@ x 4
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 4
 y 14
@@ -277,7 +294,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 4
 y 14
 end
@@ -357,7 +373,6 @@ x 5
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 5
 y 14
@@ -366,7 +381,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 5
 y 14
 end
@@ -528,7 +542,6 @@ x 9
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 9
 y 14
@@ -537,7 +550,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 9
 y 14
 end
@@ -574,7 +586,6 @@ x 10
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 10
 y 14
@@ -583,7 +594,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 10
 y 14
 end
@@ -736,7 +746,6 @@ x 14
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 14
 y 14
@@ -745,7 +754,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 14
 y 14
 end
@@ -782,7 +790,6 @@ x 15
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 15
 y 14
@@ -791,7 +798,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 15
 y 14
 end
@@ -1093,7 +1099,6 @@ x 20
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 20
 y 14
@@ -1102,7 +1107,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 20
 y 14
 end
@@ -1126,9 +1130,12 @@ arch carpet2.111
 x 20
 y 17
 end
-arch door1_locked
+arch celestial_door1_locked
 x 20
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_fs_grey1b
 x 20
@@ -1159,7 +1166,6 @@ x 21
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 21
 y 14
@@ -1168,7 +1174,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 21
 y 14
 end

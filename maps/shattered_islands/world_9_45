@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_1 /shattered_islands/world_9_44
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_10_45
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_9_46
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_8_45
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_10_44
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_10_46
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_8_46
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_8_44
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_9_45_1
+celestial_boundary_9 continuous
 region asteria
 end
 arch floor_white1e
@@ -116,17 +135,23 @@ arch floor_bw1
 z 50
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_bw1
 z 50
 y 14
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_bw1
 z 50
@@ -2575,20 +2600,26 @@ z 50
 x 14
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 14
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_fs_grey1b
 z 50
 x 14
 y 14
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 14
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_fs_grey1b
 z 50
@@ -3132,11 +3163,14 @@ z 50
 x 17
 y 16
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 slaying no_open
 x 17
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_pattern1a
 z 50

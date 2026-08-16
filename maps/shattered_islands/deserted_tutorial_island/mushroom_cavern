@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Mushroom Cavern
 msg
 Created:  2011-08-20 Zoey Rose
@@ -7,7 +10,6 @@ endmsg
 width 12
 height 9
 difficulty 1
-darkness 2
 no_save 1
 bg_music fireside.mid
 region deserted_tutorial_island
@@ -291,7 +293,6 @@ x 3
 y 7
 end
 arch wall_cave2_m
-blocksview 0
 x 3
 y 7
 end
@@ -314,7 +315,6 @@ x 4
 y 1
 end
 arch wall_cave2_mu1
-blocksview 0
 x 4
 y 1
 end
@@ -453,7 +453,6 @@ x 6
 y 5
 end
 arch wall_cave2_md1
-blocksview 0
 x 6
 y 5
 end

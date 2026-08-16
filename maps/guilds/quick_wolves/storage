@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Quick Wolves Storage
 msg
 Created:  2009-10-14 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 25
 height 26
 difficulty 115
-darkness -1
 no_harm 1
 bg_music shanty.mid
 region strakewood_island
@@ -1599,19 +1600,25 @@ arch floor_wood2_l1
 x 8
 y 12
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 8
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood2_l2
 x 8
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 8
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_wood2_l2
 x 8
@@ -1670,19 +1677,25 @@ arch floor_wood2_l1
 x 8
 y 20
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 8
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood2_l1
 x 8
 y 21
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 8
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_wood2_l2
 x 8
@@ -2832,19 +2845,25 @@ arch floor_wood2_l1
 x 15
 y 11
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 15
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_wood2_l1
 x 15
 y 12
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 15
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_wood2_l1
 x 15
@@ -2874,19 +2893,25 @@ arch floor_wood2_l2
 x 15
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 15
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_wood2_l2
 x 15
 y 17
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 15
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_wood2_l2
 x 15
@@ -2940,10 +2965,13 @@ arch carpet1
 x 15
 y 23
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 15
 y 23
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_wood2_l1
 x 15

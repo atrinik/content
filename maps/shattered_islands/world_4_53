@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Fort Sether
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,8 +9,27 @@ endmsg
 width 24
 height 24
 difficulty 25
-outdoor 1
 bg_music solemn.mid
+tile_path_1 /shattered_islands/world_4_52
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_5_53
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_4_54
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_3_53
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_5_52
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_5_54
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_3_54
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_3_52
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_4_53_1
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/world_4_53_-1
+celestial_boundary_10 continuous
 region fort_sether
 end
 arch grassd_4
@@ -1376,9 +1397,12 @@ arch floor_marble2c
 x 7
 y 21
 end
-arch door1_locked
+arch celestial_door1_locked
 x 7
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_grey9
 x 7
@@ -1479,11 +1503,14 @@ arch floor_grey9
 x 8
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 slaying no_entry
 x 8
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_grey9
 x 8
@@ -1825,10 +1852,13 @@ arch grassd_m3
 x 9
 y 23
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 9
 y 23
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch grassd_2
 x 10
@@ -1925,9 +1955,12 @@ arch floor_grey9
 x 10
 y 11
 end
-arch door1_locked
+arch celestial_door1_locked
 x 10
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_grey9
 x 10
@@ -1965,9 +1998,12 @@ arch floor_grey9
 x 10
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 x 10
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_fs_grey1c
 x 10
@@ -2001,10 +2037,13 @@ arch grassd_m7
 x 10
 y 23
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 10
 y 23
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch grassd_8
 x 11
@@ -2223,10 +2262,13 @@ arch grassd_m5
 x 11
 y 23
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 11
 y 23
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch grassd_2
 x 12
@@ -2589,9 +2631,12 @@ arch floor_marble2a
 x 13
 y 21
 end
-arch door1_locked
+arch celestial_door1_locked
 x 13
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_grey9
 x 13
@@ -3739,10 +3784,13 @@ arch floor_grey1b1
 x 20
 y 4
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 20
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_grey1b1
 x 20
@@ -3772,10 +3820,13 @@ arch floor_grey1b1
 x 20
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 20
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000a
 end
 arch floor_grey1b1
 x 20
@@ -3810,10 +3861,13 @@ arch floor_grey1b1
 x 20
 y 12
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 20
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000b
 end
 arch floor_grey1b1
 x 20
@@ -3843,10 +3897,13 @@ arch floor_grey1b1
 x 20
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 20
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000c
 end
 arch floor_grey1b1
 x 20
@@ -3922,9 +3979,12 @@ arch floor_fs_grey1c
 x 21
 y 2
 end
-arch door1_locked
+arch celestial_door1_locked
 x 21
 y 2
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000d
 end
 arch floor_grey1a2
 x 21
@@ -4034,9 +4094,12 @@ arch floor_grey1b1
 x 21
 y 19
 end
-arch door1_locked
+arch celestial_door1_locked
 x 21
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000e
 end
 arch floor_fs_grey1c
 x 21
@@ -4107,10 +4170,13 @@ arch floor_grey1b1
 x 22
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 22
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000f
 end
 arch floor_grey1b1
 x 22
@@ -4140,10 +4206,13 @@ arch floor_grey1b1
 x 22
 y 9
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 22
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000010
 end
 arch floor_grey1b1
 x 22
@@ -4173,10 +4242,13 @@ arch floor_grey1b1
 x 22
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 22
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000011
 end
 arch floor_grey1b1
 x 22
@@ -4206,10 +4278,13 @@ arch floor_grey1b1
 x 22
 y 17
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 22
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000012
 end
 arch floor_grey1b1
 x 22

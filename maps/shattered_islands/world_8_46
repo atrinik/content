@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,28 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_1 /shattered_islands/world_8_45
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_9_46
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_8_47
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_7_46
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_9_45
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_9_47
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_7_47
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_7_45
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_8_46_1
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_8_46_-1
+celestial_boundary_10 discontinuous
 region asteria
 end
 arch grassd_4
@@ -905,9 +926,12 @@ arch carpet2.111
 x 5
 y 4
 end
-arch door_wood1
+arch celestial_door_wood1
 x 5
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_dungeon1b
 z 50
@@ -924,9 +948,12 @@ z 50
 x 5
 y 7
 end
-arch door_wood1
+arch celestial_door_wood1
 x 5
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_fs_grey1b
 z 50
@@ -1078,10 +1105,13 @@ z 50
 x 6
 y 4
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 7
 x 6
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_dungeon1b
 z 50
@@ -1098,10 +1128,13 @@ z 50
 x 6
 y 7
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 7
 x 6
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_fs_grey1b
 z 50
@@ -2569,7 +2602,7 @@ z 50
 x 15
 y 1
 end
-arch door1_locked
+arch celestial_door1_locked
 msg
 You need Asteria Dungeon Key 1 to enter here.
 endmsg
@@ -2577,6 +2610,9 @@ slaying asteria_dungeon_key1
 direction 3
 x 15
 y 1
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch check_inv
 slaying asteria_dungeon_key1
@@ -2892,9 +2928,12 @@ z 26
 x 16
 y 17
 end
-arch door_wood1
+arch celestial_door_wood1
 x 16
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_fs_grey1b
 z 26

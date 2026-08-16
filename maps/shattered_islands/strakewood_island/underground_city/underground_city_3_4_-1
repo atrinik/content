@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name The Underground City II
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 53
-darkness 2
 bg_music thonkdonk.ogg
+tile_path_9 /shattered_islands/strakewood_island/underground_city/underground_city_3_4
+celestial_boundary_9 discontinuous
 region underground_city_a
 end
 arch floor_black1b
@@ -111,10 +115,13 @@ arch floor_black1c
 x 1
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 1
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_black2a
 x 1
@@ -229,8 +236,11 @@ end
 arch floor_black1a
 x 3
 end
-arch door1_locked
+arch celestial_door1_locked
 x 3
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_black1a
 x 3
@@ -709,10 +719,13 @@ arch floor_black1c
 x 10
 y 4
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 10
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_black2b
 x 10
@@ -886,19 +899,25 @@ arch floor_black1c
 x 14
 y 1
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 14
 y 1
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_black2b
 x 14
 y 2
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 14
 y 2
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_black1c
 x 14
@@ -985,19 +1004,25 @@ arch floor_cave1
 x 17
 y 1
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 17
 y 1
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_cave5
 x 17
 y 2
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 17
 y 2
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_cave5
 x 17

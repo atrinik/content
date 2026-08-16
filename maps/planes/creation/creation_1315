@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Plane of Creation
 msg
 Created:  2011-03-25 Zoey Rose
@@ -7,12 +9,16 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness -1
-tile_path_2 creation_1415
-tile_path_3 creation_1314
-tile_path_4 creation_1215
-tile_path_6 creation_1414
-tile_path_7 creation_1214
+tile_path_2 /planes/creation/creation_1415
+celestial_boundary_2 continuous
+tile_path_3 /planes/creation/creation_1314
+celestial_boundary_3 continuous
+tile_path_4 /planes/creation/creation_1215
+celestial_boundary_4 continuous
+tile_path_6 /planes/creation/creation_1414
+celestial_boundary_6 continuous
+tile_path_7 /planes/creation/creation_1214
+celestial_boundary_7 continuous
 region creation
 end
 arch water_lt

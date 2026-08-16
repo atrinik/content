@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Temple of Zechna
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,8 +10,11 @@ endmsg
 width 24
 height 24
 difficulty 70
-darkness 2
 bg_music evil_temple.ogg
+tile_path_9 /shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_1
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_1_-2
+celestial_boundary_10 discontinuous
 region zechna_temple_b
 end
 arch floor_sblack1b
@@ -924,10 +930,13 @@ arch floor_sblack2b
 x 7
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 7
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_sblack3b
 x 7
@@ -978,10 +987,13 @@ arch floor_sblack2b
 x 7
 y 14
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 7
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_sblack2b
 x 7
@@ -1032,10 +1044,13 @@ arch floor_sblack1b
 x 7
 y 20
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 7
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_sblack2b
 x 7
@@ -1459,19 +1474,25 @@ arch floor_sblack1b
 x 11
 y 6
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 11
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_sblack2b
 x 11
 y 7
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 11
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_sblack1b
 x 11
@@ -1772,9 +1793,12 @@ arch floor_sblack2b
 x 13
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 x 13
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_sblack2b
 x 13
@@ -2054,10 +2078,13 @@ arch floor_sblack2b
 x 15
 y 16
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 15
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_sblack2b
 x 15
@@ -2438,9 +2465,12 @@ arch floor_sblack1b
 x 19
 y 14
 end
-arch door1_locked
+arch celestial_door1_locked
 x 19
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_sblack2b
 x 19
@@ -2737,10 +2767,13 @@ arch floor_sblack3b
 x 23
 y 7
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 23
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_sblack2b
 x 23

@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Greyton Luxury House
 msg
 Created:  2010-07-13 Zoey Rose
@@ -7,12 +9,12 @@ endmsg
 width 48
 height 34
 difficulty 50
-darkness -1
-outdoor 1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid
 region greyton
+tile_path_10 /shattered_islands/strakewood_island/greyton/house/luxury_house_0_0
+celestial_boundary_10 continuous
 end
 arch roof_wood
 direction 3

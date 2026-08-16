@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Aris
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,8 +9,15 @@ endmsg
 width 24
 height 24
 difficulty 5
-outdoor 1
 bg_music town.mod
+tile_path_2 /shattered_islands/world_6_58_1
+celestial_boundary_2 continuous
+tile_path_4 /shattered_islands/world_4_58_1
+celestial_boundary_4 continuous
+tile_path_7 /shattered_islands/world_4_59_1
+celestial_boundary_7 continuous
+tile_path_10 /shattered_islands/world_5_58
+celestial_boundary_10 continuous
 region strakewood_island
 end
 arch roof_brick

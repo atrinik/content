@@ -52,6 +52,7 @@
       "unique"
     ],
     "integer": [
+      "celestial_schema",
       "darkness",
       "difficulty",
       "enter_x",
@@ -64,7 +65,18 @@
     ],
     "string": [
       "bg_music",
+      "celestial_boundary_1",
+      "celestial_boundary_10",
+      "celestial_boundary_2",
+      "celestial_boundary_3",
+      "celestial_boundary_4",
+      "celestial_boundary_5",
+      "celestial_boundary_6",
+      "celestial_boundary_7",
+      "celestial_boundary_8",
+      "celestial_boundary_9",
       "name",
+      "sky_above",
       "weather"
     ],
     "references": {
@@ -205,6 +217,7 @@
       "ac_add",
       "align",
       "alpha",
+      "ambient_strength",
       "anim_speed",
       "attack_acid",
       "attack_blind",
@@ -332,6 +345,10 @@
       "weapon_speed"
     ],
     "string": [
+      "celestial_aperture_id",
+      "celestial_transmission",
+      "celestial_transmission_closed",
+      "celestial_transmission_open",
       "custom_name",
       "glow",
       "light_color",
@@ -339,6 +356,7 @@
       "name",
       "name_pl",
       "race",
+      "sky_state",
       "slaying",
       "title"
     ],
@@ -505,6 +523,40 @@
     ]
   },
   "field_constraints": {
+    "map-header.celestial_boundary_1": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_10": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_2": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_3": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_4": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_5": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_6": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_7": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_8": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_boundary_9": {
+      "pattern": "^(continuous|discontinuous)$"
+    },
+    "map-header.celestial_schema": {
+      "minimum": 1,
+      "maximum": 1
+    },
     "map-header.darkness": {
       "minimum": -1,
       "maximum": 7
@@ -518,12 +570,31 @@
     "map-header.height": {
       "minimum": 1
     },
+    "map-header.sky_above": {
+      "pattern": "^(open|linked|sealed)$"
+    },
     "map-header.width": {
       "minimum": 1
     },
     "object.alpha": {
       "minimum": 0,
       "maximum": 255
+    },
+    "object.ambient_strength": {
+      "minimum": 0,
+      "maximum": 40959
+    },
+    "object.celestial_aperture_id": {
+      "pattern": "^(?!0{16}$)[0-9a-f]{16}$"
+    },
+    "object.celestial_transmission": {
+      "pattern": "^(opaque|glass|grate|open)$"
+    },
+    "object.celestial_transmission_closed": {
+      "pattern": "^(opaque|glass|grate|open)$"
+    },
+    "object.celestial_transmission_open": {
+      "pattern": "^(opaque|glass|grate|open)$"
     },
     "object.direction": {
       "minimum": 0,
@@ -541,6 +612,9 @@
       "maxLength": 6,
       "minLength": 6,
       "pattern": "^[0-9A-Fa-f]{6}$"
+    },
+    "object.sky_state": {
+      "pattern": "^(open|covered)$"
     },
     "object.sub_layer": {
       "minimum": 0

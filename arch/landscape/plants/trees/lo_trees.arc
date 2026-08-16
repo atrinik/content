@@ -109,6 +109,7 @@ type 79
 mpart_id 15
 face lo_tree7.101
 no_pick 1
+blocksview 1
 name_pl trees
 end
 More
@@ -120,6 +121,7 @@ mpart_id 15
 mpart_nr 1
 x 1
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_b
@@ -130,6 +132,7 @@ mpart_id 15
 mpart_nr 2
 x 2
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_c
@@ -140,6 +143,7 @@ mpart_id 15
 mpart_nr 3
 x 3
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_d
@@ -150,6 +154,7 @@ mpart_id 15
 mpart_nr 4
 y 1
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_e
@@ -188,6 +193,7 @@ x 3
 y 1
 no_pass 1
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_h
@@ -198,6 +204,7 @@ mpart_id 15
 mpart_nr 8
 y 2
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_i
@@ -236,6 +243,7 @@ x 3
 y 2
 no_pass 1
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_l
@@ -246,6 +254,7 @@ mpart_id 15
 mpart_nr 12
 y 3
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_m
@@ -258,6 +267,7 @@ x 1
 y 3
 no_pass 1
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_n
@@ -270,6 +280,7 @@ x 2
 y 3
 no_pass 1
 no_pick 1
+blocksview 1
 end
 More
 Object lo_tree7_o
@@ -281,4 +292,5 @@ mpart_nr 15
 x 3
 y 3
 no_pick 1
+blocksview 1
 end

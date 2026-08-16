@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Plane of Creation
 msg
 Created:  2011-03-25 Zoey Rose
@@ -7,12 +9,16 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness -1
-tile_path_1 creation_0802
-tile_path_2 creation_0901
-tile_path_4 creation_0701
-tile_path_5 creation_0902
-tile_path_8 creation_0702
+tile_path_1 /planes/creation/creation_0802
+celestial_boundary_1 continuous
+tile_path_2 /planes/creation/creation_0901
+celestial_boundary_2 continuous
+tile_path_4 /planes/creation/creation_0701
+celestial_boundary_4 continuous
+tile_path_5 /planes/creation/creation_0902
+celestial_boundary_5 continuous
+tile_path_8 /planes/creation/creation_0702
+celestial_boundary_8 continuous
 region creation
 end
 arch floor_stone_b2
@@ -279,9 +285,12 @@ arch floor_stone_b3
 x 1
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 x 1
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_stone_b2
 x 1
@@ -295,9 +304,12 @@ arch floor_stone_b3
 x 1
 y 11
 end
-arch door1_locked
+arch celestial_door1_locked
 x 1
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_stone_b4
 x 1
@@ -396,10 +408,13 @@ arch floor_stone_b3
 x 2
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 2
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_stone_b4
 x 2
@@ -413,10 +428,13 @@ arch floor_stone_b3
 x 2
 y 11
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 2
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_stone_b4
 x 2
@@ -502,21 +520,27 @@ arch floor_stone_b1
 x 3
 y 2
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 3
 connected 101
 x 3
 y 2
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_stone_b4
 x 3
 y 3
 end
-arch grate_open
+arch celestial_grate_open
 direction 3
 connected 101
 x 3
 y 3
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_stone_b3
 x 3
@@ -586,11 +610,14 @@ arch floor_stone_b3
 x 3
 y 13
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 3
 connected 109
 x 3
 y 13
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_stone_b1
 x 3
@@ -612,11 +639,14 @@ arch floor_stone_b3
 x 3
 y 16
 end
-arch gate_closed
+arch celestial_gate_closed
 direction 3
 connected 108
 x 3
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_stone_b3
 x 3
@@ -646,11 +676,14 @@ arch floor_stone_b4
 x 3
 y 20
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 slaying creation_key_connect
 x 3
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch check_inv
 slaying creation_key_connect
@@ -663,11 +696,14 @@ arch floor_stone_b1
 x 3
 y 21
 end
-arch gate_closed
+arch celestial_gate_closed
 direction 7
 connected 104
 x 3
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000a
 end
 arch check_inv
 slaying creation_key_connect
@@ -1384,8 +1420,11 @@ end
 arch floor_stone_b4
 x 9
 end
-arch door1_locked
+arch celestial_door1_locked
 x 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000b
 end
 arch floor_stone_b3
 x 9
@@ -1538,9 +1577,12 @@ end
 arch floor_stone_b2
 x 10
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000c
 end
 arch floor_stone_b1
 x 10
@@ -1777,9 +1819,12 @@ arch floor_stone_b4
 x 11
 y 18
 end
-arch door1_locked
+arch celestial_door1_locked
 x 11
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000d
 end
 arch check_inv
 slaying creation_house_connection_marker

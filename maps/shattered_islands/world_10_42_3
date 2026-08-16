@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Asteria Docks
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,12 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_4 /shattered_islands/world_9_42_3
+celestial_boundary_4 continuous
+tile_path_10 /shattered_islands/world_10_42_2
+celestial_boundary_10 continuous
 region asteria
 end
 arch trans

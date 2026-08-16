@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Incuna Beach Nook
 msg
 A tiny private beach offered to new arrivals in Incuna.
@@ -6,7 +8,6 @@ endmsg
 width 24
 height 24
 difficulty 1
-outdoor 1
 no_summon 1
 no_harm 1
 bg_music tutorialisland.mid

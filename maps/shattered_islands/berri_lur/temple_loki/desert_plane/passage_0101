@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Desert Plane
 msg
 Created:  2010-06-19 Zoey Rose
@@ -7,9 +9,10 @@ endmsg
 width 24
 height 7
 difficulty 1
-darkness -1
-tile_path_2 passage_0201
-tile_path_4 passage_0301
+tile_path_2 /shattered_islands/berri_lur/temple_loki/desert_plane/passage_0201
+celestial_boundary_2 continuous
+tile_path_4 /shattered_islands/berri_lur/temple_loki/desert_plane/passage_0301
+celestial_boundary_4 continuous
 bg_music thonkdonk.ogg
 region berri_lur
 end

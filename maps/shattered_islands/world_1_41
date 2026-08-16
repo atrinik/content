@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,24 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music courage.mid
+tile_path_1 /shattered_islands/world_1_40
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_2_41
+celestial_boundary_2 discontinuous
+tile_path_3 /shattered_islands/world_1_42
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_0_41
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_2_40
+celestial_boundary_5 discontinuous
+tile_path_6 /shattered_islands/world_2_42
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_0_42
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_0_40
+celestial_boundary_8 continuous
 region asteria
 end
 arch grassd_5
@@ -290,7 +307,6 @@ sub_layer 1
 x 2
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 end
 arch blocked
@@ -305,7 +321,6 @@ x 2
 y 1
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 1
 end
@@ -321,7 +336,6 @@ x 2
 y 2
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 2
 end
@@ -337,7 +351,6 @@ x 2
 y 3
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 3
 end
@@ -353,7 +366,6 @@ x 2
 y 4
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 4
 end
@@ -369,7 +381,6 @@ x 2
 y 5
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 5
 end
@@ -385,7 +396,6 @@ x 2
 y 6
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 6
 end
@@ -401,7 +411,6 @@ x 2
 y 7
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 7
 end
@@ -417,7 +426,6 @@ x 2
 y 8
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 8
 end
@@ -433,7 +441,6 @@ x 2
 y 9
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 9
 end
@@ -449,7 +456,6 @@ x 2
 y 10
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 10
 end
@@ -465,7 +471,6 @@ x 2
 y 11
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 11
 end
@@ -481,7 +486,6 @@ x 2
 y 12
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 12
 end
@@ -497,7 +501,6 @@ x 2
 y 13
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 13
 end
@@ -513,7 +516,6 @@ x 2
 y 14
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 14
 end
@@ -529,7 +531,6 @@ x 2
 y 15
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 15
 end
@@ -545,7 +546,6 @@ x 2
 y 16
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 16
 end
@@ -561,7 +561,6 @@ x 2
 y 17
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 17
 end
@@ -577,7 +576,6 @@ x 2
 y 18
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 18
 end
@@ -593,7 +591,6 @@ x 2
 y 19
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 19
 end
@@ -609,7 +606,6 @@ x 2
 y 20
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 20
 end
@@ -625,7 +621,6 @@ x 2
 y 21
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 21
 end
@@ -641,7 +636,6 @@ x 2
 y 22
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 22
 end
@@ -657,7 +651,6 @@ x 2
 y 23
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 23
 end
@@ -693,7 +686,6 @@ x 3
 y 7
 end
 arch wall_cave1.121
-blocksview 0
 x 3
 y 7
 end
@@ -702,7 +694,6 @@ x 3
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 8
 end
@@ -712,7 +703,6 @@ x 3
 y 9
 end
 arch wall_cave1.121
-blocksview 0
 x 3
 y 9
 end
@@ -722,7 +712,6 @@ x 3
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 10
 end
@@ -732,7 +721,6 @@ x 3
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 11
 end
@@ -742,7 +730,6 @@ x 3
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 12
 end
@@ -752,7 +739,6 @@ x 3
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 13
 end
@@ -762,7 +748,6 @@ x 3
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 14
 end
@@ -772,7 +757,6 @@ x 3
 y 15
 end
 arch wall_cave1.121
-blocksview 0
 x 3
 y 15
 end
@@ -782,7 +766,6 @@ x 3
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 16
 end
@@ -792,7 +775,6 @@ x 3
 y 17
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 17
 end
@@ -802,7 +784,6 @@ x 3
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 18
 end
@@ -812,7 +793,6 @@ x 3
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 19
 end
@@ -822,7 +802,6 @@ x 3
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 20
 end
@@ -832,7 +811,6 @@ x 3
 y 21
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 21
 end
@@ -842,7 +820,6 @@ x 3
 y 22
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 22
 end
@@ -852,7 +829,6 @@ x 3
 y 23
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 23
 end
@@ -893,7 +869,6 @@ x 4
 y 8
 end
 arch wall_cave1.121
-blocksview 0
 x 4
 y 8
 end
@@ -903,7 +878,6 @@ x 4
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 9
 end
@@ -913,7 +887,6 @@ x 4
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 10
 end
@@ -923,7 +896,6 @@ x 4
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 11
 end
@@ -933,7 +905,6 @@ x 4
 y 12
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 12
 end
@@ -943,7 +914,6 @@ x 4
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 13
 end
@@ -953,7 +923,6 @@ x 4
 y 14
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 14
 end
@@ -963,7 +932,6 @@ x 4
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 15
 end
@@ -973,7 +941,6 @@ x 4
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 16
 end
@@ -983,7 +950,6 @@ x 4
 y 17
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 17
 end
@@ -993,7 +959,6 @@ x 4
 y 18
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 18
 end
@@ -1003,7 +968,6 @@ x 4
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 19
 end
@@ -1013,7 +977,6 @@ x 4
 y 20
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 20
 end
@@ -1023,7 +986,6 @@ x 4
 y 21
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 21
 end
@@ -1033,7 +995,6 @@ x 4
 y 22
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 22
 end
@@ -1043,7 +1004,6 @@ x 4
 y 23
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 23
 end
@@ -1100,7 +1060,6 @@ x 5
 y 12
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 12
 end
@@ -1110,7 +1069,6 @@ x 5
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 13
 end
@@ -1120,7 +1078,6 @@ x 5
 y 14
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 14
 end
@@ -1130,7 +1087,6 @@ x 5
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 15
 end
@@ -1140,7 +1096,6 @@ x 5
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 16
 end
@@ -1168,7 +1123,6 @@ x 5
 y 19
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 19
 end
@@ -1178,7 +1132,6 @@ x 5
 y 20
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 20
 end
@@ -1188,7 +1141,6 @@ x 5
 y 21
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 21
 end
@@ -1198,7 +1150,6 @@ x 5
 y 22
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 22
 end
@@ -1208,7 +1159,6 @@ x 5
 y 23
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 23
 end
@@ -1289,7 +1239,6 @@ x 6
 y 17
 end
 arch wall_cave1.121
-blocksview 0
 x 6
 y 17
 end
@@ -1299,7 +1248,6 @@ x 6
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 18
 end
@@ -1309,7 +1257,6 @@ x 6
 y 19
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 19
 end
@@ -1319,7 +1266,6 @@ x 6
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 20
 end
@@ -1329,7 +1275,6 @@ x 6
 y 21
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 21
 end
@@ -1339,7 +1284,6 @@ x 6
 y 22
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 22
 end
@@ -1349,7 +1293,6 @@ x 6
 y 23
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 23
 end

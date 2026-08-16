@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Battle of Fort Ghzal
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +9,23 @@ endmsg
 width 24
 height 24
 difficulty 25
-outdoor 1
 bg_music jungle.ogg
+tile_path_1 /shattered_islands/world_5_65
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_6_66
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_5_67
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_4_66
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_6_65
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_6_67
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_4_67
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_4_65
+celestial_boundary_8 continuous
 region strakewood_island
 end
 arch grassd_7
@@ -1020,7 +1037,6 @@ x 6
 y 20
 end
 arch tree_big4b
-blocksview 0
 x 6
 y 20
 end
@@ -1096,7 +1112,6 @@ x 7
 y 11
 end
 arch tree_big
-blocksview 0
 x 7
 y 11
 end
@@ -1653,7 +1668,6 @@ x 10
 y 20
 end
 arch wall_ruin_c3a
-blocksview 0
 x 10
 y 20
 end
@@ -1773,7 +1787,6 @@ x 11
 y 20
 end
 arch wall_ruin_c1a
-blocksview 0
 x 11
 y 20
 end
@@ -1946,7 +1959,6 @@ x 12
 y 20
 end
 arch wall_ruin_c2a
-blocksview 0
 x 12
 y 20
 end
@@ -2006,7 +2018,6 @@ x 13
 y 8
 end
 arch tree_big2
-blocksview 0
 x 13
 y 8
 end
@@ -2197,7 +2208,6 @@ x 14
 y 17
 end
 arch wall_ruin_c3a
-blocksview 0
 x 14
 y 17
 end
@@ -2317,7 +2327,6 @@ x 15
 y 17
 end
 arch wall_ruin_c1a
-blocksview 0
 x 15
 y 17
 end
@@ -2445,7 +2454,6 @@ x 16
 y 17
 end
 arch wall_ruin_c2a
-blocksview 0
 x 16
 y 17
 end
@@ -2532,7 +2540,6 @@ x 17
 y 8
 end
 arch tree_big3
-blocksview 0
 x 17
 y 8
 end
@@ -2553,7 +2560,6 @@ x 17
 y 12
 end
 arch wall_ruin_c3a
-blocksview 0
 x 17
 y 12
 end
@@ -2616,7 +2622,6 @@ x 17
 y 17
 end
 arch wall_ruin_c3a
-blocksview 0
 x 17
 y 17
 end
@@ -2738,7 +2743,6 @@ x 18
 y 12
 end
 arch wall_ruin_c1a
-blocksview 0
 x 18
 y 12
 end
@@ -2767,7 +2771,6 @@ x 18
 y 17
 end
 arch wall_ruin_c2a
-blocksview 0
 x 18
 y 17
 end
@@ -2875,7 +2878,6 @@ x 19
 y 12
 end
 arch wall_ruin_c2a
-blocksview 0
 x 19
 y 12
 end
@@ -3309,7 +3311,6 @@ x 22
 y 9
 end
 arch tree_big5b
-blocksview 0
 x 22
 y 9
 end

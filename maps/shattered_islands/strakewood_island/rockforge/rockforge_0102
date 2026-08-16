@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: Palace
 msg
 Created:  2011-06-02 Zoey Rose
@@ -7,8 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness 3
-tile_path_3 rockforge_0101
+tile_path_3 /shattered_islands/strakewood_island/rockforge/rockforge_0101
+celestial_boundary_3 continuous
 region rockforge_palace
 end
 arch blocked
@@ -187,7 +190,6 @@ x 7
 y 16
 end
 arch fwall_marble2c
-blocksview 0
 draw_double 0
 layer 3
 x 7
@@ -212,7 +214,6 @@ end
 arch statue_fire
 z 24
 layer 7
-blocksview 0
 x 7
 y 16
 glow_radius 9
@@ -238,7 +239,6 @@ x 7
 y 21
 end
 arch fwall_marble2c
-blocksview 0
 draw_double 0
 layer 3
 x 7
@@ -263,7 +263,6 @@ end
 arch statue_fire
 z 24
 layer 7
-blocksview 0
 x 7
 y 21
 glow_radius 9
@@ -1031,7 +1030,6 @@ x 16
 y 16
 end
 arch fwall_marble2c
-blocksview 0
 draw_double 0
 layer 3
 x 16
@@ -1056,7 +1054,6 @@ end
 arch statue_fire
 z 24
 layer 7
-blocksview 0
 x 16
 y 16
 glow_radius 9
@@ -1082,7 +1079,6 @@ x 16
 y 21
 end
 arch fwall_marble2c
-blocksview 0
 draw_double 0
 layer 3
 x 16
@@ -1107,7 +1103,6 @@ end
 arch statue_fire
 z 24
 layer 7
-blocksview 0
 x 16
 y 21
 glow_radius 9

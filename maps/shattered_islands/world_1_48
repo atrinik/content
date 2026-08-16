@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music jungle.ogg
+tile_path_1 /shattered_islands/world_1_47
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_2_48
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_1_49
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_0_48
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_2_47
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_2_49
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_0_49
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_0_47
+celestial_boundary_8 discontinuous
+tile_path_9 /shattered_islands/world_1_48_1
+celestial_boundary_9 continuous
 region asteria
 end
 arch water_lt2
@@ -1647,10 +1666,13 @@ arch carpet1.171
 x 9
 y 15
 end
-arch curtain1
+arch celestial_curtain1
 direction 3
 x 9
 y 15
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood2_l2
 x 9
@@ -1824,9 +1846,12 @@ arch floor_wood2_l1
 x 10
 y 17
 end
-arch door_wood2
+arch celestial_door_wood2
 x 10
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_sand_d3
 x 10
@@ -1934,10 +1959,13 @@ arch floor_wood2_l1
 x 11
 y 10
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 11
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood2_l2
 x 11
@@ -2027,10 +2055,13 @@ arch grassd_m8
 x 11
 y 20
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 11
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_sand_d3
 x 11

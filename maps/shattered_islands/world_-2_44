@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Asteria
 msg
 Created:  2011-03-20 Zoey Rose
@@ -7,9 +9,24 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music courage.mid
+tile_path_1 /shattered_islands/world_-2_43
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_-1_44
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_-2_45
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_-3_44
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_-1_43
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_-1_45
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_-3_45
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_-3_43
+celestial_boundary_8 discontinuous
 region asteria
 end
 arch water_lt2
@@ -2500,7 +2517,6 @@ arch grassd_8
 x 23
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 end
 arch grassd_8
@@ -2508,7 +2524,6 @@ x 23
 y 1
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 1
 end
@@ -2517,7 +2532,6 @@ x 23
 y 2
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 2
 end
@@ -2526,7 +2540,6 @@ x 23
 y 3
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 3
 end
@@ -2535,7 +2548,6 @@ x 23
 y 4
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 4
 end
@@ -2544,7 +2556,6 @@ x 23
 y 5
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 5
 end
@@ -2553,7 +2564,6 @@ x 23
 y 6
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 6
 end

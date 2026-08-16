@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Under Fort Ghzal
 msg
 Created:  2010-08-29 Zoey Rose
@@ -7,8 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 2
 bg_music lost_cavern.mid
+tile_path_9 /shattered_islands/world_6_68
+celestial_boundary_9 continuous
 region fort_ghzal
 end
 arch blocked

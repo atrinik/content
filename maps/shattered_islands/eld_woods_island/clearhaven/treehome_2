@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Clearhaven Treehome
 msg
 Created:  2010-07-06 Edwin Miltenburg
@@ -7,7 +9,6 @@ endmsg
 width 8
 height 8
 difficulty 5
-outdoor 1
 no_harm 1
 bg_music harmony2.mid
 region clearhaven

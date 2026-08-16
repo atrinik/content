@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Strakewood Island
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +9,25 @@ endmsg
 width 24
 height 24
 difficulty 18
-outdoor 1
 bg_music jungle.ogg
+tile_path_1 /shattered_islands/world_7_68
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_8_69
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_7_70
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_6_69
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_8_68
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_8_70
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_6_70
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_6_68
+celestial_boundary_8 discontinuous
+tile_path_9 /shattered_islands/world_7_69_1
+celestial_boundary_9 continuous
 region strakewood_island
 end
 arch grassd_6
@@ -197,9 +216,12 @@ arch carpet1.111
 x 1
 y 7
 end
-arch door_wood2
+arch celestial_door_wood2
 x 1
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_sand_d4
 x 1
@@ -482,10 +504,13 @@ arch ship_floor_we_dark_2
 x 3
 y 2
 end
-arch curtain1
+arch celestial_curtain1
 direction 3
 x 3
 y 2
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch ship_floor_we_dark_2
 x 3
@@ -1991,9 +2016,12 @@ arch carpet1.111
 x 12
 y 6
 end
-arch door_wood2
+arch celestial_door_wood2
 x 12
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_sand_d2
 x 12
@@ -2121,10 +2149,13 @@ arch floor_wood2_l2
 x 13
 y 2
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 3
 x 13
 y 2
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_wood2_l1
 x 13

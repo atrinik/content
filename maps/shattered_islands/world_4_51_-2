@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Below Fort Sether
 msg
 Created:  2010-11-22 Zoey Rose
@@ -7,7 +10,6 @@ endmsg
 width 24
 height 24
 difficulty 10
-darkness 2
 bg_music desert_town.mid
 region fort_sether
 end
@@ -1973,10 +1975,13 @@ arch floor_sand_d1
 x 13
 y 12
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 x 13
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_sand_d3
 x 13

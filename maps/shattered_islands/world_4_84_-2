@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Incuna - Water Well
 msg
 Created:  2011-05-09 Edwin Miltenburg
@@ -7,7 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 2
+tile_path_9 /shattered_islands/world_4_84_-1
+celestial_boundary_9 discontinuous
 region incuna_-2
 end
 arch floor_earth1b
@@ -1414,7 +1418,6 @@ x 21
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 3
 end
@@ -1424,7 +1427,6 @@ x 21
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 4
 end
@@ -1434,7 +1436,6 @@ x 21
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 5
 end
@@ -1623,34 +1624,43 @@ sub_layer 1
 x 22
 y 15
 end
-arch gate_open
+arch celestial_gate_open
 sub_layer 2
 direction 7
 connected 111
 x 22
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_sand_d1
 x 22
 y 16
 end
-arch gate_open
+arch celestial_gate_open
 direction 7
 connected 111
 name flood protection gate
 x 22
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_sand_d4
 x 22
 y 17
 end
-arch gate_open
+arch celestial_gate_open
 direction 7
 connected 111
 name flood protection gate
 x 22
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_sand_d1
 x 22
@@ -1661,12 +1671,15 @@ z 3
 x 22
 y 18
 end
-arch gate_open
+arch celestial_gate_open
 sub_layer 1
 direction 7
 connected 111
 x 22
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_sand_d4
 z 2
@@ -1692,7 +1705,6 @@ x 23
 y 4
 end
 arch wall_cave1.101
-blocksview 0
 no_pass 0
 x 23
 y 4
@@ -1708,7 +1720,6 @@ x 23
 y 5
 end
 arch wall_cave1.131
-blocksview 0
 no_pass 0
 x 23
 y 5

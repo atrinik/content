@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name The Underground City
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +10,13 @@ endmsg
 width 24
 height 24
 difficulty 35
-darkness 2
 bg_music thonkdonk.ogg
+tile_path_3 /shattered_islands/strakewood_island/underground_city/underground_city_4_1
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/strakewood_island/underground_city/underground_city_3_0
+celestial_boundary_4 continuous
+tile_path_7 /shattered_islands/strakewood_island/underground_city/underground_city_3_1
+celestial_boundary_7 continuous
 region underground_city
 end
 arch floor_stone_b4
@@ -842,10 +850,13 @@ arch floor_stone_b1
 x 7
 y 4
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 7
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_stone_b4
 x 7
@@ -1502,10 +1513,13 @@ arch floor_stone_b2
 x 12
 y 17
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 12
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_stone_b2
 x 12
@@ -2327,9 +2341,12 @@ arch floor_stone_b4
 x 18
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 x 18
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_stone_b1
 x 18

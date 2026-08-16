@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Inn In The Mountains
 msg
 Created:  2010-08-26 Zoey Rose
@@ -7,9 +9,11 @@ endmsg
 width 24
 height 24
 difficulty 10
-darkness -1
-outdoor 1
 bg_music joyful_life.mid
+tile_path_9 /shattered_islands/world_7_64_2
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_7_64
+celestial_boundary_10 continuous
 region strakewood_island
 end
 arch trans
@@ -237,9 +241,12 @@ arch floor_wood2_l1
 x 8
 y 9
 end
-arch curtain1
+arch celestial_curtain1
 x 8
 y 9
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood2_l2
 x 8
@@ -341,9 +348,12 @@ arch floor_wood2_l1
 x 9
 y 13
 end
-arch door_wood2
+arch celestial_door_wood2
 x 9
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_wood2_l2
 x 9
@@ -679,9 +689,12 @@ arch floor_wood2_l2
 x 13
 y 13
 end
-arch door_wood2
+arch celestial_door_wood2
 x 13
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood2_l1
 x 13
@@ -854,10 +867,13 @@ arch floor_wood2_l1
 x 15
 y 14
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 15
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_wood2_l1
 x 15
@@ -1034,10 +1050,13 @@ arch floor_wood2_l2
 x 18
 y 9
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 18
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_wood2_l2
 x 18
@@ -1075,10 +1094,13 @@ arch floor_wood2_l1
 x 18
 y 14
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 18
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_wood2_l2
 x 18

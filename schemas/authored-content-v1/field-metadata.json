@@ -63,6 +63,161 @@
     },
     {
       "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_1",
+      "legacy_name": "celestial_boundary_1",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_10",
+      "legacy_name": "celestial_boundary_10",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_2",
+      "legacy_name": "celestial_boundary_2",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_3",
+      "legacy_name": "celestial_boundary_3",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_4",
+      "legacy_name": "celestial_boundary_4",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_5",
+      "legacy_name": "celestial_boundary_5",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_6",
+      "legacy_name": "celestial_boundary_6",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_7",
+      "legacy_name": "celestial_boundary_7",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_8",
+      "legacy_name": "celestial_boundary_8",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_boundary_9",
+      "legacy_name": "celestial_boundary_9",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "maximum": 1,
+        "minimum": 1
+      },
+      "context": "map-header",
+      "field_id": "map-header.celestial_schema",
+      "legacy_name": "celestial_schema",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
+    },
+    {
+      "constraints": {
         "maximum": 7,
         "minimum": -1
       },
@@ -311,6 +466,20 @@
       ],
       "status": "active",
       "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "pattern": "^(open|linked|sealed)$"
+      },
+      "context": "map-header",
+      "field_id": "map-header.sky_above",
+      "legacy_name": "sky_above",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
     },
     {
       "constraints": {
@@ -631,6 +800,21 @@
       ],
       "status": "active",
       "value_kind": "reference"
+    },
+    {
+      "constraints": {
+        "maximum": 40959,
+        "minimum": 0
+      },
+      "context": "object",
+      "field_id": "object.ambient_strength",
+      "legacy_name": "ambient_strength",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "integer"
     },
     {
       "constraints": {
@@ -1306,6 +1490,62 @@
       ],
       "status": "active",
       "value_kind": "integer"
+    },
+    {
+      "constraints": {
+        "pattern": "^(?!0{16}$)[0-9a-f]{16}$"
+      },
+      "context": "object",
+      "field_id": "object.celestial_aperture_id",
+      "legacy_name": "celestial_aperture_id",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(opaque|glass|grate|open)$"
+      },
+      "context": "object",
+      "field_id": "object.celestial_transmission",
+      "legacy_name": "celestial_transmission",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(opaque|glass|grate|open)$"
+      },
+      "context": "object",
+      "field_id": "object.celestial_transmission_closed",
+      "legacy_name": "celestial_transmission_closed",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
+      "constraints": {
+        "pattern": "^(opaque|glass|grate|open)$"
+      },
+      "context": "object",
+      "field_id": "object.celestial_transmission_open",
+      "legacy_name": "celestial_transmission_open",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
     },
     {
       "constraints": {},
@@ -3804,6 +4044,20 @@
       "value_kind": "reference"
     },
     {
+      "constraints": {
+        "pattern": "^(open|covered)$"
+      },
+      "context": "object",
+      "field_id": "object.sky_state",
+      "legacy_name": "sky_state",
+      "reference_domains": [],
+      "roles": [
+        "general"
+      ],
+      "status": "active",
+      "value_kind": "string"
+    },
+    {
       "constraints": {},
       "context": "object",
       "field_id": "object.slaying",
@@ -4778,5 +5032,5 @@
   ],
   "schema_id": "atrinik-authored-content-v1",
   "schema_version": 1,
-  "source_sha256": "21bdff6753dfdd1b007b3af60ce6a9919d290df83e34f4718bb4070f3df02fa4"
+  "source_sha256": "5e4d5c591a711aab13c08685c29ffcfa2725e349ddb783d034ff53330b70fc12"
 }

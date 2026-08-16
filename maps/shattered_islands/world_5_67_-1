@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Under Fort Ghzal
 msg
 Created:  2010-08-29 Zoey Rose
@@ -7,8 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 25
-darkness 2
 bg_music lost_cavern.mid
+tile_path_9 /shattered_islands/world_5_67
+celestial_boundary_9 continuous
 region fort_ghzal
 end
 arch blocked
@@ -317,9 +321,12 @@ arch floor_grey1b1
 x 3
 y 7
 end
-arch door1_locked
+arch celestial_door1_locked
 x 3
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_grey1a1
 x 3
@@ -333,9 +340,12 @@ arch floor_grey1a1
 x 3
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 x 3
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_grey1a1
 x 3
@@ -1111,9 +1121,12 @@ arch floor_grey1b1
 x 8
 y 7
 end
-arch door1_locked
+arch celestial_door1_locked
 x 8
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_grey1a1
 x 8
@@ -1127,9 +1140,12 @@ arch floor_grey1b1
 x 8
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 x 8
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_grey1b2
 x 8
@@ -1935,9 +1951,12 @@ arch floor_grey1b1
 x 13
 y 7
 end
-arch door1_locked
+arch celestial_door1_locked
 x 13
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_grey1a1
 x 13
@@ -1951,9 +1970,12 @@ arch floor_grey1b2
 x 13
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 x 13
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_grey1a2
 x 13

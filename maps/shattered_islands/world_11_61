@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Berri Lur
 msg
 Created:  2010-05-27 Asa
@@ -11,10 +13,25 @@ enter_y 10
 reset_timeout 1
 swap_time 1
 difficulty 1
-outdoor 1
 fixed_login 1
 fixed_resettime 1
 bg_music ruins.mid
+tile_path_1 /shattered_islands/world_11_60
+celestial_boundary_1 discontinuous
+tile_path_2 /shattered_islands/world_12_61
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_11_62
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_10_61
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_12_60
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_12_62
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_10_62
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_10_60
+celestial_boundary_8 discontinuous
 region berri_lur
 end
 arch grassd_7
@@ -829,11 +846,14 @@ arch floor_ruin6
 x 5
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 104
 x 5
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_ruin3
 x 5
@@ -983,11 +1003,14 @@ arch floor_ruin6
 x 6
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 103
 x 6
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_ruin2
 x 6
@@ -1144,11 +1167,14 @@ arch floor_ruin1
 x 7
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 102
 x 7
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch light7
 x 7
@@ -1319,11 +1345,14 @@ xrays 1
 x 8
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 101
 x 8
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_ruin4
 x 8

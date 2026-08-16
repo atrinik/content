@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Asteria
 msg
 Created:  2011-03-20 Zoey Rose
@@ -7,9 +9,24 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music courage.mid
+tile_path_1 /shattered_islands/world_-1_43
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_0_44
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_-1_45
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_-2_44
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_0_43
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_0_45
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_-2_45
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_-2_43
+celestial_boundary_8 continuous
 region asteria
 end
 arch grassd_7
@@ -77,21 +94,18 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 y 6
 end
 arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 y 6
 end
 arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 y 6
 end
 arch wall_fortified_high_c.131
@@ -218,7 +232,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 1
 y 6
 end
@@ -226,7 +239,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 1
 y 6
 end
@@ -234,7 +246,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 1
 y 6
 end
@@ -380,7 +391,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 2
 y 6
 end
@@ -388,7 +398,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 2
 y 6
 end
@@ -396,7 +405,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 2
 y 6
 end
@@ -534,7 +542,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 3
 y 6
 end
@@ -542,7 +549,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 3
 y 6
 end
@@ -550,7 +556,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 3
 y 6
 end
@@ -688,7 +693,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 4
 y 6
 end
@@ -696,7 +700,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 4
 y 6
 end
@@ -704,7 +707,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 4
 y 6
 end
@@ -838,7 +840,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 5
 y 6
 end
@@ -846,7 +847,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 5
 y 6
 end
@@ -854,7 +854,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 5
 y 6
 end
@@ -993,7 +992,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 6
 y 6
 end
@@ -1001,7 +999,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 6
 y 6
 end
@@ -1009,7 +1006,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 6
 y 6
 end
@@ -1151,7 +1147,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 7
 y 6
 end
@@ -1159,7 +1154,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 7
 y 6
 end
@@ -1167,7 +1161,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 7
 y 6
 end
@@ -1321,7 +1314,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 8
 y 6
 end
@@ -1329,7 +1321,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 8
 y 6
 end
@@ -1337,7 +1328,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 8
 y 6
 end
@@ -1469,7 +1459,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 9
 y 6
 end
@@ -1477,7 +1466,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 9
 y 6
 end
@@ -1485,7 +1473,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 9
 y 6
 end
@@ -1892,7 +1879,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 12
 y 6
 end
@@ -1900,7 +1886,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 12
 y 6
 end
@@ -1908,7 +1893,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 12
 y 6
 end
@@ -2046,7 +2030,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 13
 y 6
 end
@@ -2054,7 +2037,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 13
 y 6
 end
@@ -2062,7 +2044,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 13
 y 6
 end
@@ -2194,7 +2175,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 14
 y 6
 end
@@ -2202,7 +2182,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 14
 y 6
 end
@@ -2210,7 +2189,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 14
 y 6
 end
@@ -2341,7 +2319,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 15
 y 6
 end
@@ -2349,7 +2326,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 15
 y 6
 end
@@ -2357,7 +2333,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 15
 y 6
 end
@@ -2488,7 +2463,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 16
 y 6
 end
@@ -2496,7 +2470,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 16
 y 6
 end
@@ -2504,7 +2477,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 16
 y 6
 end
@@ -2631,7 +2603,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 17
 y 6
 end
@@ -2639,7 +2610,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 17
 y 6
 end
@@ -2647,7 +2617,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 17
 y 6
 end
@@ -2774,7 +2743,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 18
 y 6
 end
@@ -2782,7 +2750,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 18
 y 6
 end
@@ -2790,7 +2757,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 18
 y 6
 end
@@ -2921,7 +2887,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 19
 y 6
 end
@@ -2929,7 +2894,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 19
 y 6
 end
@@ -2937,7 +2901,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 19
 y 6
 end
@@ -3068,7 +3031,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 20
 y 6
 end
@@ -3076,7 +3038,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 20
 y 6
 end
@@ -3084,7 +3045,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 20
 y 6
 end
@@ -3220,7 +3180,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 21
 y 6
 end
@@ -3228,7 +3187,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 21
 y 6
 end
@@ -3236,7 +3194,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 21
 y 6
 end
@@ -3367,7 +3324,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 22
 y 6
 end
@@ -3375,7 +3331,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 22
 y 6
 end
@@ -3383,7 +3338,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 22
 y 6
 end
@@ -3518,7 +3472,6 @@ y 6
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 23
 y 6
 end
@@ -3526,7 +3479,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 23
 y 6
 end
@@ -3534,7 +3486,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 23
 y 6
 end

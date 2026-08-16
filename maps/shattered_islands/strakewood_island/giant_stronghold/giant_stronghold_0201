@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Giant Stronghold
 msg
 Created:  2009-09-17 Zoey Rose
@@ -7,8 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 6
-darkness 2
-tile_path_4 giant_stronghold_0101
+tile_path_4 /shattered_islands/strakewood_island/giant_stronghold/giant_stronghold_0101
+celestial_boundary_4 continuous
 bg_music ruins.mid
 region giant_stronghold
 end

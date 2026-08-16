@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Normal Treehouse
 msg
 Created:  2010-07-06 Edwin Miltenburg
@@ -7,7 +9,6 @@ endmsg
 width 10
 height 10
 difficulty 1
-outdoor 1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid

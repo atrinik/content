@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name The Underground City III
 msg
 Created:  2010-06-05 Zoey Rose
@@ -7,7 +10,6 @@ endmsg
 width 24
 height 24
 difficulty 75
-darkness 2
 bg_music thonkdonk.ogg
 region underground_city_b
 end
@@ -3142,11 +3144,14 @@ arch floor_sand_d3
 x 19
 y 23
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 slaying drow_daorosio_portal
 x 19
 y 23
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying drow_daorosio_portal

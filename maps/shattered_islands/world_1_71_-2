@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Sewers
 msg
 Created:  2010-06-06 Edwin Miltenburg
@@ -9,7 +12,6 @@ height 24
 enter_x 10
 enter_y 12
 difficulty 7
-darkness 2
 fixed_login 1
 bg_music sewers.ogg
 region brynknot
@@ -1491,11 +1493,14 @@ arch floor_cave2
 x 10
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 204
 x 10
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_cave6
 x 10
@@ -1664,11 +1669,14 @@ arch floor_cave1
 x 11
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 203
 x 11
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_cave6
 x 11
@@ -1821,11 +1829,14 @@ arch floor_cave2
 x 12
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 202
 x 12
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_cave2
 x 12
@@ -1967,11 +1978,14 @@ arch floor_cave2
 x 13
 y 10
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 7
 connected 201
 x 13
 y 10
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_cave2
 x 13
@@ -3248,13 +3262,16 @@ arch floor_cave1
 x 21
 y 22
 end
-arch gate1_locked
+arch celestial_gate1_locked
 glow_radius 1
 direction 3
 slaying brynknot_sewers1
 sp 2
 x 21
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch check_inv
 slaying brynknot_sewers1

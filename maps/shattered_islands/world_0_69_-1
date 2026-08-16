@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 80
 name Brynknot Sewers
 msg
 Created:  2010-06-06 Edwin Miltenburg
@@ -7,8 +10,11 @@ endmsg
 width 24
 height 24
 difficulty 3
-darkness 3
 bg_music sewers.ogg
+tile_path_9 /shattered_islands/world_0_69
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_0_69_-2
+celestial_boundary_10 continuous
 region brynknot
 end
 arch blocked
@@ -2584,10 +2590,13 @@ arch floor_earth1a
 x 23
 y 15
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 3
 x 23
 y 15
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_earth1c
 x 23

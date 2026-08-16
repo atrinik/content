@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name The City of Greyton
 msg
 Created:  2015-04-26 Zoey Rose
@@ -7,10 +9,18 @@ endmsg
 width 24
 height 24
 difficulty 100
-darkness -1
-outdoor 1
 no_harm 1
 bg_music town_music.ogg
+tile_path_2 /shattered_islands/world_11_67_2
+celestial_boundary_2 continuous
+tile_path_4 /shattered_islands/world_9_67_2
+celestial_boundary_4 continuous
+tile_path_6 /shattered_islands/world_11_68_2
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_9_68_2
+celestial_boundary_7 continuous
+tile_path_10 /shattered_islands/world_10_67_1
+celestial_boundary_10 continuous
 region greyton
 end
 arch floor_fs_grey1c

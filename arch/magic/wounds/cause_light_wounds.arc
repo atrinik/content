@@ -7,6 +7,7 @@ face wounds.101
 animation cause_wounds
 is_animated 1
 last_sp 12
+glow_radius 1
 is_spell 1
 anim_speed 4
 is_turnable 0
@@ -20,5 +21,6 @@ level 1
 attack_weaponmagic 100
 terrain_flag 32767
 flying 1
+light_color ffe060
 name_pl cause light wounds
 end

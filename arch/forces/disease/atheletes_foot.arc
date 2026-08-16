@@ -1,7 +1,7 @@
 Object atheletes_foot
 name athelete's foot
 type 158
-face force.101
+face atheletes_foot.101
 sys_object 1
 attack_internal 100
 dam 1

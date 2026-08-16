@@ -2,7 +2,7 @@ Object disease_cold
 name cold
 type 158
 sys_object 1
-face force.101
+face disease_cold.101
 attack_internal 100
 wc 20
 magic 3

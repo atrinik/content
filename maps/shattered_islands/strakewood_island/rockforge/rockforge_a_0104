@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: City
 msg
 Created:  2011-06-03 Zoey Rose
@@ -7,15 +10,22 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness 3
-tile_path_1 rockforge_a_0105
-tile_path_2 rockforge_a_0204
-tile_path_3 rockforge_a_0103
-tile_path_4 rockforge_a_aa04
-tile_path_5 rockforge_a_0205
-tile_path_6 rockforge_a_0203
-tile_path_7 rockforge_a_aa03
-tile_path_8 rockforge_a_aa05
+tile_path_1 /shattered_islands/strakewood_island/rockforge/rockforge_a_0105
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/strakewood_island/rockforge/rockforge_a_0204
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/strakewood_island/rockforge/rockforge_a_0103
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa04
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/strakewood_island/rockforge/rockforge_a_0205
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/strakewood_island/rockforge/rockforge_a_0203
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa03
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa05
+celestial_boundary_8 continuous
 region rockforge
 end
 arch blocked
@@ -31,14 +41,12 @@ x 1
 y 11
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double_always 1
 layer 4
 x 1
 y 11
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double 0
 z 44
 x 1
@@ -55,14 +63,12 @@ x 1
 y 12
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double_always 1
 layer 4
 x 1
 y 12
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double 0
 z 44
 x 1
@@ -79,14 +85,12 @@ x 1
 y 13
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double_always 1
 layer 4
 x 1
 y 13
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double 0
 z 44
 x 1
@@ -584,11 +588,14 @@ arch floor_marble1
 x 5
 y 16
 end
-arch door_bar1
+arch celestial_door_bar1
 direction 3
 slaying rockforge_tavern
 x 5
 y 16
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying rockforge_tavern
@@ -1249,7 +1256,6 @@ x 11
 y 14
 end
 arch wall_marble1.181
-blocksview 0
 draw_double 0
 x 11
 y 14
@@ -1259,7 +1265,6 @@ x 11
 y 15
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double 0
 x 11
 y 15
@@ -1269,7 +1274,6 @@ x 11
 y 16
 end
 arch wall_marble1.111a
-blocksview 0
 draw_double 0
 x 11
 y 16
@@ -1310,9 +1314,12 @@ arch floor_marble1a
 x 11
 y 21
 end
-arch door1_locked
+arch celestial_door1_locked
 x 11
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_marble1a
 x 11
@@ -1372,7 +1379,6 @@ x 12
 y 14
 end
 arch wall_marble1.131
-blocksview 0
 draw_double 0
 x 12
 y 14
@@ -1443,10 +1449,13 @@ arch floor_marble1b
 x 12
 y 21
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 12
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_marble1a
 x 12
@@ -1506,7 +1515,6 @@ x 13
 y 14
 end
 arch wall_marble1.131
-blocksview 0
 draw_double 0
 x 13
 y 14
@@ -1625,7 +1633,6 @@ x 14
 y 14
 end
 arch wall_marble1.131a
-blocksview 0
 draw_double 0
 x 14
 y 14
@@ -1635,7 +1642,6 @@ x 14
 y 15
 end
 arch fwall_marble2a
-blocksview 0
 draw_double 0
 x 14
 y 15
@@ -1645,7 +1651,6 @@ x 14
 y 16
 end
 arch fwall_marble2a
-blocksview 0
 draw_double 0
 x 14
 y 16
@@ -2099,10 +2104,13 @@ arch floor_marble1b
 x 18
 y 16
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 18
 y 16
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_marble1b
 x 18

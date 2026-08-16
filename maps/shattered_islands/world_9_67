@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name The City of Greyton
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 100
-outdoor 1
 no_harm 1
 bg_music town_music.ogg
+tile_path_1 /shattered_islands/world_9_66
+celestial_boundary_1 discontinuous
+tile_path_2 /shattered_islands/world_10_67
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_9_68
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_8_67
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_10_66
+celestial_boundary_5 discontinuous
+tile_path_6 /shattered_islands/world_10_68
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_8_68
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_8_66
+celestial_boundary_8 discontinuous
+tile_path_9 /shattered_islands/world_9_67_1
+celestial_boundary_9 continuous
 region greyton
 end
 arch water_lt2
@@ -2098,21 +2117,27 @@ arch floor_flagm3
 x 13
 y 19
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 direction 3
 x 13
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_flagm1
 x 13
 y 20
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 direction 5
 x 13
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_flagm4
 x 13
@@ -3021,10 +3046,13 @@ arch shop_floor_normal
 x 19
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 x 19
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_flagm1
 x 19
@@ -3167,11 +3195,14 @@ arch shop_floor_normal
 x 20
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 direction 7
 x 20
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_flagm2
 x 20

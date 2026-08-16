@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 80
 name Incuna
 msg
 Created:  2011-09-17 Zoey Rose
@@ -7,9 +10,12 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 3
 no_harm 1
 bg_music tutorialisland.mid
+tile_path_9 /shattered_islands/world_5_84
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/world_5_84_-2
+celestial_boundary_10 discontinuous
 region incuna_-1
 end
 arch trans

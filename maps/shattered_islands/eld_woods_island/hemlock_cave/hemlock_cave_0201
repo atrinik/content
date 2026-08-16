@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Hemlock Cave
 msg
 Created:  2009-11-19 Zoey Rose
@@ -7,12 +9,16 @@ endmsg
 width 24
 height 24
 difficulty 35
-darkness -1
-tile_path_1 hemlock_cave_0202
-tile_path_2 hemlock_cave_0301
-tile_path_4 hemlock_cave_0101
-tile_path_5 hemlock_cave_0302
-tile_path_8 hemlock_cave_0102
+tile_path_1 /shattered_islands/eld_woods_island/hemlock_cave/hemlock_cave_0202
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/eld_woods_island/hemlock_cave/hemlock_cave_0301
+celestial_boundary_2 continuous
+tile_path_4 /shattered_islands/eld_woods_island/hemlock_cave/hemlock_cave_0101
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/eld_woods_island/hemlock_cave/hemlock_cave_0302
+celestial_boundary_5 continuous
+tile_path_8 /shattered_islands/eld_woods_island/hemlock_cave/hemlock_cave_0102
+celestial_boundary_8 continuous
 bg_music cave2.ogg
 region eld_woods_island
 end
@@ -434,9 +440,12 @@ arch floor_earth1a
 x 4
 y 4
 end
-arch door1_locked
+arch celestial_door1_locked
 x 4
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_earth1b
 x 4
@@ -569,10 +578,13 @@ arch floor_earth1a
 x 5
 y 4
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 5
 y 4
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_earth1d
 x 5
@@ -1025,19 +1037,25 @@ arch floor_earth1c
 x 8
 y 19
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 8
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_earth1b
 x 8
 y 20
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 8
 y 20
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_earth1a
 x 8
@@ -1175,19 +1193,25 @@ arch floor_earth1d
 x 10
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 10
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_earth1b
 x 10
 y 9
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 10
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_earth1e
 x 10
@@ -1410,19 +1434,25 @@ arch floor_earth1a
 x 13
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 13
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_earth1a
 x 13
 y 9
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 13
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_earth1a
 x 13
@@ -1950,19 +1980,25 @@ arch floor_earth1d
 x 17
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 17
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_earth1b
 x 17
 y 14
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 17
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000a
 end
 arch floor_earth1c
 x 17

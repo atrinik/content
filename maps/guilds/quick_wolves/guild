@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Quick Wolves Guild
 msg
 Created:  2009-10-13 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 24
 height 24
 difficulty 115
-darkness -1
 no_harm 1
 bg_music shanty.mid
 region strakewood_island
@@ -672,9 +673,12 @@ arch floor_wood2_l1
 x 5
 y 10
 end
-arch door_wood1
+arch celestial_door_wood1
 x 5
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood2_l1
 x 5
@@ -1443,9 +1447,12 @@ arch floor_wood2_l2
 x 13
 y 10
 end
-arch door_wood1
+arch celestial_door_wood1
 x 13
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_wood2_l2
 x 13
@@ -2299,9 +2306,12 @@ arch floor_wood2_l2
 x 20
 y 10
 end
-arch door_wood1
+arch celestial_door_wood1
 x 20
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_wood2_l2
 x 20

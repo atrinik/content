@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Bone Cairn
 msg
 Created:  2010-12-31 David Hanna
@@ -7,10 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 70
-darkness 3
 bg_music evil_temple.ogg
-region bone_cairn
 weather fog
+region bone_cairn
 end
 arch trans
 end

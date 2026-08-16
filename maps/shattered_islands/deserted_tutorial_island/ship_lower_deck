@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 320
 name Lower Deck
 msg
 Created:  2011-08-18 Zoey Rose
@@ -9,7 +12,6 @@ height 14
 enter_x 1
 enter_y 2
 difficulty 1
-darkness 5
 bg_music fireside.mid
 region deserted_tutorial_island
 end
@@ -71,7 +73,6 @@ y 5
 end
 arch ship_rail_sw_high
 no_pass 1
-blocksview 1
 y 5
 end
 arch ship_floor_ns_3
@@ -79,7 +80,6 @@ y 6
 end
 arch ship_rail_sw_high
 no_pass 1
-blocksview 1
 y 6
 end
 arch ship_floor_ns_3
@@ -109,7 +109,6 @@ z -3
 y 9
 end
 arch ship_prow_s_starboard_a
-blocksview 1
 y 9
 end
 arch ship_prow_s_starboard_a
@@ -124,7 +123,6 @@ arch ship_hull_prow_s_front_starboard_2
 y 10
 end
 arch ship_prow_s_starboard_b
-blocksview 1
 y 10
 end
 arch ship_prow_s_starboard_b
@@ -198,7 +196,6 @@ y 5
 end
 arch ship_rail_s_high
 no_pass 1
-blocksview 1
 x 1
 y 5
 end
@@ -271,7 +268,6 @@ x 1
 y 11
 end
 arch ship_prow_s_starboard_a
-blocksview 1
 x 1
 y 11
 end
@@ -290,7 +286,6 @@ x 1
 y 12
 end
 arch ship_prow_s_starboard_b
-blocksview 1
 x 1
 y 12
 end
@@ -340,7 +335,6 @@ y 5
 end
 arch ship_rail_s_high
 no_pass 1
-blocksview 1
 x 2
 y 5
 end
@@ -420,7 +414,6 @@ x 2
 y 13
 end
 arch ship_prow_s
-blocksview 1
 x 2
 y 13
 end
@@ -530,7 +523,6 @@ x 3
 y 11
 end
 arch ship_prow_s_strokeside_a
-blocksview 1
 x 3
 y 11
 end
@@ -545,7 +537,6 @@ x 3
 y 12
 end
 arch ship_prow_s_strokeside_b
-blocksview 1
 x 3
 y 12
 end
@@ -569,7 +560,7 @@ arch ship_floor_ns_4
 x 4
 y 1
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 1
@@ -578,7 +569,7 @@ arch ship_floor_ns_4
 x 4
 y 2
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 2
@@ -587,7 +578,7 @@ arch ship_floor_ns_4
 x 4
 y 3
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 3
@@ -596,7 +587,7 @@ arch ship_floor_ns_4
 x 4
 y 4
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 4
@@ -613,7 +604,6 @@ x 4
 y 5
 end
 arch ship_rail_se_high
-blocksview 1
 no_pass 1
 x 4
 y 5
@@ -622,7 +612,7 @@ arch ship_floor_ns_4
 x 4
 y 6
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 6
@@ -631,7 +621,7 @@ arch ship_floor_ns_4
 x 4
 y 7
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 7
@@ -640,7 +630,7 @@ arch ship_floor_ns_4
 x 4
 y 8
 end
-arch ship_rail_e_high
+arch celestial_ship_rail_e_high
 no_pass 1
 x 4
 y 8
@@ -657,7 +647,6 @@ x 4
 y 9
 end
 arch ship_prow_s_strokeside_a
-blocksview 1
 x 4
 y 9
 end
@@ -672,7 +661,6 @@ x 4
 y 10
 end
 arch ship_prow_s_strokeside_b
-blocksview 1
 x 4
 y 10
 end

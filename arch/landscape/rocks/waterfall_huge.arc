@@ -9,6 +9,7 @@ is_animated 1
 anim_speed 1
 no_pick 1
 no_pass 1
+blocksview 1
 name_pl waterfalls huge
 end
 More
@@ -41,6 +42,7 @@ mpart_id 6
 layer 5
 mpart_nr 3
 type 79
+blocksview 1
 end
 More
 Object waterfall_huge_d
@@ -51,6 +53,7 @@ mpart_id 6
 layer 5
 mpart_nr 4
 type 79
+blocksview 1
 end
 More
 Object waterfall_huge_e
@@ -61,6 +64,7 @@ mpart_id 6
 layer 5
 mpart_nr 5
 type 79
+blocksview 1
 end
 More
 Object waterfall_huge_f
@@ -70,6 +74,7 @@ mpart_id 6
 layer 5
 mpart_nr 6
 type 79
+blocksview 1
 end
 More
 Object waterfall_huge_g
@@ -80,6 +85,7 @@ mpart_id 6
 layer 5
 mpart_nr 7
 type 79
+blocksview 1
 no_pass 1
 end
 More
@@ -91,4 +97,5 @@ mpart_id 6
 layer 5
 mpart_nr 8
 type 79
+blocksview 1
 end

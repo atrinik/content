@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_1 /shattered_islands/world_7_40
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_8_41
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_7_42
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_6_41
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_8_40
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_8_42
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_6_42
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_6_40
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_7_41_1
+celestial_boundary_9 continuous
 region asteria
 end
 arch grassd_8
@@ -778,9 +797,12 @@ z 50
 x 4
 y 22
 end
-arch door_wood2
+arch celestial_door_wood2
 x 4
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_cave2
 z 50
@@ -2981,7 +3003,7 @@ z 50
 x 18
 y 22
 end
-arch door1_locked
+arch celestial_door1_locked
 msg
 You need Asteria Dungeon Key 1 to enter here.
 endmsg
@@ -2989,6 +3011,9 @@ slaying asteria_dungeon_key1
 direction 3
 x 18
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch check_inv
 slaying asteria_dungeon_key1

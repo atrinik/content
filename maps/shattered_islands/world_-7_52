@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Firos Woods
 msg
 Created: 2005-08-03 Daniel Liptrot
@@ -7,9 +9,23 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness -1
-outdoor 1
 bg_music jungle.ogg
+tile_path_1 /shattered_islands/world_-7_51
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_-6_52
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_-7_53
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_-8_52
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_-6_51
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_-6_53
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_-8_53
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_-8_51
+celestial_boundary_8 continuous
 region firos_woods
 end
 arch grassd_2
@@ -181,7 +197,6 @@ y 8
 end
 arch fog
 is_used_up 0
-blocksview 0
 changing 0
 x 1
 y 8
@@ -196,7 +211,6 @@ y 9
 end
 arch fog
 is_used_up 0
-blocksview 0
 changing 0
 x 1
 y 9
@@ -216,7 +230,6 @@ y 10
 end
 arch fog
 is_used_up 0
-blocksview 0
 changing 0
 x 1
 y 10

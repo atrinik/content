@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 80
 name Incuna
 msg
 Created:  2011-09-03 Zoey Rose
@@ -7,9 +10,12 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 3
 no_harm 1
 bg_music tutorialisland.mid
+tile_path_9 /shattered_islands/world_4_83
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/world_4_83_-2
+celestial_boundary_10 discontinuous
 region incuna_-1
 end
 arch trans
@@ -146,13 +152,16 @@ arch floor_pattern_brown2
 x 1
 y 11
 end
-arch gate1_locked
+arch celestial_gate1_locked
 slaying incuna_bank
 z 1
 align 1
 direction 3
 x 1
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying incuna_bank
@@ -288,10 +297,13 @@ arch floor_white1d
 x 2
 y 15
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 2
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_white1e
 x 2
@@ -379,13 +391,16 @@ arch floor_pattern_brown1
 x 3
 y 8
 end
-arch gate1_locked
+arch celestial_gate1_locked
 slaying incuna_bank
 z 1
 align 1
 direction 3
 x 3
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch check_inv
 slaying incuna_bank

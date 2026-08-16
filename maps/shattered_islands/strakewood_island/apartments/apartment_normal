@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Normal Apartment
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 7
 height 7
 difficulty 1
-darkness -1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid
@@ -88,9 +89,12 @@ arch floor_ostone5
 x 1
 y 3
 end
-arch door1_locked
+arch celestial_door1_locked
 x 1
 y 3
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_ostone5
 x 1

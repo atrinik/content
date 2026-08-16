@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Emergency Map
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 1
 height 1
 difficulty 1
-darkness -1
 no_save 1
 region creation
 end

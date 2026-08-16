@@ -29,6 +29,51 @@ jail /shattered_islands/strakewood_island/greyton/jail/jail_a 1 11
 child_maps true
 end
 
+# Celestial-v1 authored fixture regions.  Each child overrides only the fields
+# needed by its deterministic fixture so inheritance remains per-field.
+region celestial_fixtures_inherit
+parent world
+longname Celestial-v1 inherited environment fixtures
+end
+
+region celestial_fixtures_scaled
+parent world
+longname Celestial-v1 scaled solar and lunar fixtures
+celestial_solar_mode scaled
+celestial_solar_rate 1/2
+celestial_solar_epoch 24
+celestial_solar_phase 6
+celestial_lunar_mode scaled
+celestial_lunar_rate 2/1
+celestial_lunar_epoch 48
+celestial_lunar_phase 12
+celestial_day_color ffe0c0
+celestial_night_color 304080
+celestial_day_brightness 192
+celestial_night_brightness 320
+end
+
+region celestial_fixtures_fixed
+parent world
+longname Celestial-v1 fixed lunar and solar fixtures
+celestial_solar_mode fixed
+celestial_solar_rate 0/1
+celestial_solar_epoch 0
+celestial_solar_phase 12
+celestial_season_mode fixed
+celestial_season_rate 0/1
+celestial_season_epoch 0
+celestial_season_phase 336
+celestial_lunar_mode fixed
+celestial_lunar_rate 0/1
+celestial_lunar_epoch 0
+celestial_lunar_phase 336
+celestial_day_color d0e8ff
+celestial_night_color 181830
+celestial_day_brightness 0
+celestial_night_brightness 384
+end
+
 region creation
 parent world
 longname Plane of Creation

@@ -42,6 +42,7 @@ Object ship_rail_n_high
 name rail
 face ship_rail_n_high.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -52,6 +53,7 @@ Object ship_rail_n_high_double
 name rail
 face ship_rail_n_high.d.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -103,6 +105,7 @@ Object ship_rail_s_high
 name rail
 face ship_rail_s_high.101
 layer 7
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -113,6 +116,7 @@ Object ship_rail_s_high_double
 name rail
 face ship_rail_s_high.d.101
 layer 7
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -164,6 +168,7 @@ Object ship_rail_w_high
 name rail
 face ship_rail_w_high.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -174,6 +179,7 @@ Object ship_rail_w_high_double
 name rail
 face ship_rail_w_high.d.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -225,6 +231,7 @@ Object ship_rail_e_high
 name rail
 face ship_rail_e_high.101
 layer 7
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -235,6 +242,7 @@ Object ship_rail_e_high_double
 name rail
 face ship_rail_e_high.d.101
 layer 7
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -256,6 +264,7 @@ Object ship_rail_ne_high
 name rail
 face ship_rail_ne_high.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -266,6 +275,7 @@ Object ship_rail_ne_high_double
 name rail
 face ship_rail_ne_high.d.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -287,6 +297,7 @@ Object ship_rail_nw_high
 name rail
 face ship_rail_nw_high.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -297,6 +308,7 @@ Object ship_rail_nw_high_double
 name rail
 face ship_rail_nw_high.d.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -318,6 +330,7 @@ Object ship_rail_se_high
 name rail
 face ship_rail_se_high.101
 layer 7
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -328,6 +341,7 @@ Object ship_rail_se_high_double
 name rail
 face ship_rail_se_high.d.101
 layer 7
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -349,6 +363,7 @@ Object ship_rail_sw_high
 name rail
 face ship_rail_sw_high.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1
@@ -359,6 +374,7 @@ Object ship_rail_sw_high_double
 name rail
 face ship_rail_sw_high.d.101
 layer 5
+blocksview 1
 terrain_type 1
 type 77
 no_pick 1

@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria Palace
 msg
 Created:  2011-01-23 emperorbma
@@ -7,10 +9,28 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness -1
-outdoor 1
 no_harm 1
 bg_music kaitindam.mid
+tile_path_1 /shattered_islands/world_5_42_1
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_6_43_1
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_5_44_1
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_4_43_1
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_6_42_1
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_6_44_1
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_4_44_1
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_4_42_1
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_5_43_2
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_5_43
+celestial_boundary_10 continuous
 region asteria
 end
 arch wall_dungeon_8
@@ -63,7 +83,6 @@ x 18
 y 18
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 18
 y 18
@@ -72,7 +91,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 18
 y 18
 end
@@ -81,7 +99,6 @@ x 18
 y 19
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 18
 y 19
@@ -90,7 +107,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 18
 y 19
 end
@@ -406,7 +422,6 @@ x 23
 y 14
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 23
 y 14
@@ -415,7 +430,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 23
 y 14
 end

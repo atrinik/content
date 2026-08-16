@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Greyton Luxury House
 msg
 Created:  2010-07-13 Zoey Rose
@@ -7,12 +9,12 @@ endmsg
 width 48
 height 34
 difficulty 50
-darkness -1
-outdoor 1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid
 region greyton
+tile_path_9 /shattered_islands/strakewood_island/greyton/house/luxury_house_0_0_1
+celestial_boundary_9 continuous
 end
 arch water_lt
 end
@@ -1821,9 +1823,12 @@ arch floor_wood3a
 x 9
 y 17
 end
-arch curtain1
+arch celestial_curtain1
 x 9
 y 17
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch invis_exit
 x 9
@@ -1879,10 +1884,13 @@ player_only 1
 x 9
 y 22
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 x 9
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch invis_exit
 x 9
@@ -2093,11 +2101,14 @@ player_only 1
 x 10
 y 22
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 cursed 1
 x 10
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch invis_exit
 x 10
@@ -2263,9 +2274,12 @@ arch floor_wood3a
 x 11
 y 17
 end
-arch curtain1
+arch celestial_curtain1
 x 11
 y 17
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch invis_exit
 x 11
@@ -2487,19 +2501,25 @@ arch floor_wood3f
 x 12
 y 9
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 12
 y 9
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_wood3f
 x 12
 y 10
 end
-arch curtain1
+arch celestial_curtain1
 direction 3
 x 12
 y 10
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_wood3a
 x 12
@@ -2603,10 +2623,13 @@ player_only 1
 x 12
 y 22
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 x 12
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch invis_exit
 x 12
@@ -2852,11 +2875,14 @@ player_only 1
 x 13
 y 22
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 cursed 1
 x 13
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch invis_exit
 x 13

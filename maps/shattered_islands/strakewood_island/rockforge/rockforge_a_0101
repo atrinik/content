@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: City
 msg
 Created:  2011-06-02 Zoey Rose
@@ -7,12 +10,16 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness 3
-tile_path_1 rockforge_a_0102
-tile_path_2 rockforge_a_0201
-tile_path_4 rockforge_a_aa01
-tile_path_5 rockforge_a_0202
-tile_path_8 rockforge_a_aa02
+tile_path_1 /shattered_islands/strakewood_island/rockforge/rockforge_a_0102
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/strakewood_island/rockforge/rockforge_a_0201
+celestial_boundary_2 continuous
+tile_path_4 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa01
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/strakewood_island/rockforge/rockforge_a_0202
+celestial_boundary_5 continuous
+tile_path_8 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa02
+celestial_boundary_8 continuous
 region rockforge
 end
 arch blocked
@@ -416,7 +423,6 @@ x 6
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 6
 y 19
 end
@@ -426,7 +432,6 @@ y 20
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 20
@@ -443,7 +448,6 @@ y 21
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 21
@@ -460,7 +464,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 22
@@ -477,7 +480,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 23
@@ -635,7 +637,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 7
 y 23
@@ -794,7 +795,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 8
 y 23
@@ -878,7 +878,6 @@ x 9
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 9
 y 19
 end
@@ -887,7 +886,6 @@ x 9
 y 20
 end
 arch fwall_marble2a
-blocksview 0
 x 9
 y 20
 end
@@ -896,7 +894,6 @@ x 9
 y 21
 end
 arch fwall_marble2a
-blocksview 0
 x 9
 y 21
 end
@@ -906,7 +903,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 9
 y 22
@@ -917,7 +913,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 9
 y 23
@@ -1270,7 +1265,6 @@ x 14
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 14
 y 19
 end
@@ -1280,7 +1274,6 @@ y 20
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 20
@@ -1297,7 +1290,6 @@ y 21
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 21
@@ -1314,7 +1306,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 22
@@ -1331,7 +1322,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 23
@@ -1488,7 +1478,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 15
 y 23
@@ -1660,7 +1649,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 16
 y 23
@@ -1757,7 +1745,6 @@ x 17
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 17
 y 19
 end
@@ -1766,7 +1753,6 @@ x 17
 y 20
 end
 arch fwall_marble2a
-blocksview 0
 x 17
 y 20
 end
@@ -1775,7 +1761,6 @@ x 17
 y 21
 end
 arch fwall_marble2a
-blocksview 0
 x 17
 y 21
 end
@@ -1785,7 +1770,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 17
 y 22
@@ -1796,7 +1780,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 17
 y 23

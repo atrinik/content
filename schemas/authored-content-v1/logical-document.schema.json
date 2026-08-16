@@ -382,6 +382,292 @@
           "additionalProperties": false,
           "properties": {
             "field_id": {
+              "const": "map-header.celestial_boundary_1"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_10"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_2"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_3"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_4"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_5"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_6"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_7"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_8"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_boundary_9"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(continuous|discontinuous)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.celestial_schema"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "maximum": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
               "const": "map-header.darkness"
             },
             "kind": {
@@ -840,6 +1126,32 @@
               "maximum": 9007199254740991,
               "minimum": -9007199254740991,
               "type": "integer"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "map-header.sky_above"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(open|linked|sealed)$",
+              "type": "string"
             }
           },
           "required": [
@@ -1401,6 +1713,32 @@
             "value": {
               "minLength": 1,
               "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.ambient_strength"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "maximum": 40959,
+              "minimum": 0,
+              "type": "integer"
             }
           },
           "required": [
@@ -2638,6 +2976,110 @@
               "maximum": 9007199254740991,
               "minimum": -9007199254740991,
               "type": "integer"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.celestial_aperture_id"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(?!0{16}$)[0-9a-f]{16}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.celestial_transmission"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(opaque|glass|grate|open)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.celestial_transmission_closed"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(opaque|glass|grate|open)$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.celestial_transmission_open"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(opaque|glass|grate|open)$",
+              "type": "string"
             }
           },
           "required": [
@@ -7279,6 +7721,32 @@
             },
             "value": {
               "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "field_id",
+            "kind",
+            "span",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "const": "object.sky_state"
+            },
+            "kind": {
+              "const": "standard-property"
+            },
+            "span": {
+              "$ref": "#/$defs/source-span"
+            },
+            "value": {
+              "minLength": 1,
+              "pattern": "^(open|covered)$",
               "type": "string"
             }
           },

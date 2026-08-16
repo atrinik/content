@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name The Underground City II
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +10,11 @@ endmsg
 width 24
 height 24
 difficulty 60
-darkness 2
 bg_music thonkdonk.ogg
+tile_path_9 /shattered_islands/strakewood_island/underground_city/underground_city_2_3
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/strakewood_island/underground_city/underground_city_2_3_-2
+celestial_boundary_10 discontinuous
 region underground_city_a
 end
 arch floor_black2b
@@ -1165,9 +1171,12 @@ arch floor_black1a
 x 6
 y 23
 end
-arch door1_locked
+arch celestial_door1_locked
 x 6
 y 23
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch magic_mouth
 msg
@@ -1333,10 +1342,13 @@ arch floor_black1a
 x 7
 y 23
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 7
 y 23
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch magic_mouth
 msg
@@ -2136,9 +2148,12 @@ arch floor_black1d
 x 13
 y 23
 end
-arch door1_locked
+arch celestial_door1_locked
 x 13
 y 23
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch magic_mouth
 msg
@@ -2167,21 +2182,27 @@ arch floor_black1a
 x 14
 y 2
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 3
 connected 101
 x 14
 y 2
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_black1b
 x 14
 y 3
 end
-arch grate_closed
+arch celestial_grate_closed
 direction 3
 connected 101
 x 14
 y 3
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_black1b
 x 14
@@ -2291,10 +2312,13 @@ arch floor_black1b
 x 14
 y 23
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 x 14
 y 23
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch magic_mouth
 msg

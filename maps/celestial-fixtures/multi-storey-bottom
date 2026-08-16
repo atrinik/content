@@ -1,0 +1,14 @@
+arch map
+celestial_schema 1
+sky_above linked
+name Celestial-v1 bottom storey fixture
+width 5
+height 5
+tile_path_9 /celestial-fixtures/multi-storey-middle
+celestial_boundary_9 continuous
+region celestial_fixtures_fixed
+end
+arch floor_wood3a
+x 2
+y 2
+end

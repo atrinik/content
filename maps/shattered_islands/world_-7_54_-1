@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Muddy Pit
 msg
 Created: 2005-03-21 Daniel Liptrot
@@ -7,8 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 39
-darkness 2
 bg_music sewers.ogg
+tile_path_9 /shattered_islands/world_-7_54
+celestial_boundary_9 discontinuous
 region muddy_pit
 end
 arch blocked

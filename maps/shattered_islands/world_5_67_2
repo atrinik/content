@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Fort Ghzal
 msg
 Created:  2015-04-25 Zoey Rose
@@ -7,9 +9,9 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness -1
-outdoor 1
 bg_music enfero.xm
+tile_path_10 /shattered_islands/world_5_67_1
+celestial_boundary_10 continuous
 region fort_ghzal
 end
 arch roof_wood

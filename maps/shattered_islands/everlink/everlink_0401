@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Everlink
 msg
 Created:  2010-07-21 Zoey Rose
@@ -7,12 +9,13 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness -1
-outdoor 1
 no_harm 1
-tile_path_1 everlink_0402
-tile_path_4 everlink_0301
-tile_path_8 everlink_0302
+tile_path_1 /shattered_islands/everlink/everlink_0402
+celestial_boundary_1 continuous
+tile_path_4 /shattered_islands/everlink/everlink_0301
+celestial_boundary_4 continuous
+tile_path_8 /shattered_islands/everlink/everlink_0302
+celestial_boundary_8 continuous
 bg_music harmony2.mid
 region everlink
 end
@@ -1179,21 +1182,27 @@ arch grassd_3
 x 9
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 slaying locked
 x 9
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch grassd_4
 x 9
 y 6
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 slaying locked
 x 9
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch grassd_2
 x 9

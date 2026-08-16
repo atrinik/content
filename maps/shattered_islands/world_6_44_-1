@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 20
 name Asteria Palace Dungeon
 msg
 Created:  2009-08-09 emperorbma
@@ -7,9 +10,12 @@ endmsg
 width 24
 height 24
 difficulty 25
-darkness 1
 no_harm 1
 bg_music th_08.mid
+tile_path_9 /shattered_islands/world_6_44
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/world_6_44_-2
+celestial_boundary_10 continuous
 region asteria_palace_dungeon
 end
 arch floor_fs_grey1b
@@ -237,10 +243,13 @@ z 50
 x 1
 y 15
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 1
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_fs_grey1b
 z 50
@@ -1576,10 +1585,13 @@ z 50
 x 10
 y 21
 end
-arch gate_open
+arch celestial_gate_open
 connected 101
 x 10
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_stone_b1
 z 50
@@ -1713,9 +1725,12 @@ z 50
 x 11
 y 19
 end
-arch door1_locked
+arch celestial_door1_locked
 x 11
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_stone_b1
 z 50
@@ -1727,10 +1742,13 @@ z 50
 x 11
 y 21
 end
-arch gate_open
+arch celestial_gate_open
 connected 101
 x 11
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_stone_b1
 z 50
@@ -1870,10 +1888,13 @@ z 50
 x 12
 y 21
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 12
 y 21
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch water_lt2
 z 50
@@ -2058,10 +2079,13 @@ z 50
 x 13
 y 21
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 13
 y 21
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch water_lt4
 z 50
@@ -2085,7 +2109,7 @@ z 50
 x 14
 y 1
 end
-arch door1_locked
+arch celestial_door1_locked
 msg
 You need Asteria Dungeon Key 1 to enter here.
 endmsg
@@ -2093,6 +2117,9 @@ slaying asteria_dungeon_key1
 direction 3
 x 14
 y 1
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch check_inv
 slaying asteria_dungeon_key1
@@ -2877,9 +2904,12 @@ z 50
 x 19
 y 2
 end
-arch door_wood1
+arch celestial_door_wood1
 x 19
 y 2
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_fs_grey1b
 z 50
@@ -3521,10 +3551,13 @@ z 50
 x 23
 y 6
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 23
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_fs_grey1b
 z 50

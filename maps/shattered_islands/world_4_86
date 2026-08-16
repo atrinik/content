@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Incuna
 msg
 Created:  2011-09-03 Zoey Rose
@@ -7,8 +9,25 @@ endmsg
 width 24
 height 24
 difficulty 1
-outdoor 1
 bg_music tutorialisland.mid
+tile_path_1 /shattered_islands/world_4_85
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_5_86
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_4_87
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_3_86
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_5_85
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_5_87
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_3_87
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_3_85
+celestial_boundary_8 continuous
+tile_path_10 /shattered_islands/world_4_86_-1
+celestial_boundary_10 discontinuous
 region incuna
 end
 arch water_md

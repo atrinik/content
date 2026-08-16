@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria Auction House
 msg
 Created:  2011-01-09 Zoey Rose
@@ -7,10 +9,12 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness -1
-outdoor 1
 no_harm 1
 bg_music joyful_life.mid
+tile_path_9 /shattered_islands/world_9_44_5
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_9_44_3
+celestial_boundary_10 continuous
 region asteria
 end
 arch trans
@@ -586,10 +590,13 @@ arch floor_ostone4
 x 4
 y 3
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 4
 y 3
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_ostone4
 x 4
@@ -930,10 +937,13 @@ arch floor_ostone4
 x 6
 y 11
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 x 6
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_ostone4
 x 6
@@ -987,10 +997,13 @@ arch floor_ostone4
 x 6
 y 18
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 x 6
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_ostone4
 x 6
@@ -1086,9 +1099,12 @@ arch carpet2.151
 x 7
 y 7
 end
-arch gate1_locked
+arch celestial_gate1_locked
 x 7
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_ostone4
 x 7
@@ -1327,10 +1343,13 @@ arch floor_ostone4
 x 8
 y 11
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 x 8
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_ostone4
 x 8
@@ -1384,10 +1403,13 @@ arch floor_ostone4
 x 8
 y 18
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 x 8
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_ostone4
 x 8

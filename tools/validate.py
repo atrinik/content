@@ -69,12 +69,18 @@ def main() -> int:
             "tools.tests.test_release_line_parity",
             "tools.tests.test_pr_metadata",
             "tools.tests.test_python_commands",
+            "tools.tests.test_temple_services",
         ],
         cwd=ROOT,
         check=True,
     )
     plural_report = audit_archetype_plurals(
         ROOT, load_manifest(ROOT / MANIFEST_PATH)
+    )
+    subprocess.run(
+        [sys.executable, str(ROOT / "tools" / "temple_services.py")],
+        cwd=ROOT,
+        check=True,
     )
     print(
         "Archetype plurals: {} canonical definitions complete; {} multipart or "

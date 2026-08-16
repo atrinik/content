@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Glacial Hollow
 msg
 Created:  2009-03-01 Daniel Liptrot
@@ -7,7 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 2
 bg_music ice_frontier.s3m
+tile_path_9 /shattered_islands/world_-4_55
+celestial_boundary_9 discontinuous
 region glacial_hollow
 end

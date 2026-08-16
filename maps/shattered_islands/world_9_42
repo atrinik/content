@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Asteria Docks
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music chether.mid
+tile_path_1 /shattered_islands/world_9_41
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_10_42
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_9_43
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_8_42
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_10_41
+celestial_boundary_5 discontinuous
+tile_path_6 /shattered_islands/world_10_43
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_8_43
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_8_41
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_9_42_1
+celestial_boundary_9 continuous
 region asteria
 end
 arch water_lt4
@@ -3459,10 +3478,13 @@ z 50
 x 22
 y 21
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 22
 y 21
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_wood3f
 z 50

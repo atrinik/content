@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Cave of Morlarg
 msg
 Created:  2009-11-16 Zoey Rose
@@ -7,7 +10,6 @@ endmsg
 width 24
 height 24
 difficulty 9
-darkness 2
 bg_music desert_town.mid
 region eld_woods_island
 end

@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name The Underground City II
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,8 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 48
-darkness 2
 bg_music thonkdonk.ogg
+tile_path_9 /shattered_islands/strakewood_island/underground_city/underground_city_4_4
+celestial_boundary_9 discontinuous
 region underground_city_a
 end
 arch floor_cave1
@@ -1293,11 +1297,14 @@ arch floor_stone_b3
 x 11
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying underground_city_key1
 cursed 1
 x 11
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying underground_city_key1
@@ -1346,10 +1353,13 @@ arch floor_stone_b1
 x 11
 y 15
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 x 11
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_stone_b4
 x 11
@@ -1398,12 +1408,15 @@ arch floor_stone_b3
 x 12
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 7
 slaying underground_city_key1
 cursed 1
 x 12
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch check_inv
 slaying underground_city_key1
@@ -1460,11 +1473,14 @@ arch floor_stone_b3
 x 12
 y 15
 end
-arch door1_locked
+arch celestial_door1_locked
 cursed 1
 direction 7
 x 12
 y 15
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_stone_b2
 x 12

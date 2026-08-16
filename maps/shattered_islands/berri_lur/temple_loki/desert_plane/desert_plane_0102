@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 1280
 name Desert Plane
 msg
 Created:  2010-05-22 Asa
@@ -7,10 +10,12 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 7
-tile_path_2 desert_plane_0202
-tile_path_3 desert_plane_0101
-tile_path_6 desert_plane_0201
+tile_path_2 /shattered_islands/berri_lur/temple_loki/desert_plane/desert_plane_0202
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/berri_lur/temple_loki/desert_plane/desert_plane_0101
+celestial_boundary_3 continuous
+tile_path_6 /shattered_islands/berri_lur/temple_loki/desert_plane/desert_plane_0201
+celestial_boundary_6 continuous
 bg_music desert_town.mid
 region berri_lur
 end

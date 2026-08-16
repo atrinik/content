@@ -1,0 +1,18 @@
+arch map
+celestial_schema 1
+sky_above open
+name Celestial-v1 mixed house upper storey
+width 7
+height 7
+tile_path_10 /celestial-fixtures/mixed-house-lower
+celestial_boundary_10 continuous
+region celestial_fixtures_scaled
+end
+arch floor_wood3a
+x 2
+y 2
+end
+arch roof_wood
+x 2
+y 2
+end

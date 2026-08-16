@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 40
 name Incuna - Water Well
 msg
 Created:  2011-05-09 Edwin Miltenburg
@@ -7,7 +10,8 @@ endmsg
 width 24
 height 24
 difficulty 1
-darkness 2
+tile_path_9 /shattered_islands/world_4_83_-1
+celestial_boundary_9 discontinuous
 region incuna_-2
 end
 arch floor_sand_d4
@@ -760,12 +764,15 @@ arch floor_black1a
 x 12
 y 4
 end
-arch grate_open
+arch celestial_grate_open
 direction 3
 connected 100
 layer 4
 x 12
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch boulder
 can_roll 1
@@ -1023,12 +1030,15 @@ arch floor_black1a
 x 13
 y 4
 end
-arch grate_closed
+arch celestial_grate_closed
 connected 100
 layer 4
 direction 3
 x 13
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch button
 connected 101

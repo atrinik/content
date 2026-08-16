@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Expensive Apartment
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 9
 height 9
 difficulty 1
-darkness -1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid
@@ -244,10 +245,13 @@ arch floor_grey1a1
 x 3
 y 1
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 3
 x 3
 y 1
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_grey1a1
 x 3
@@ -366,10 +370,13 @@ arch floor_grey1a1
 x 4
 y 7
 end
-arch curtain1
+arch celestial_curtain1
 direction 3
 x 4
 y 7
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_grey1a1
 x 4

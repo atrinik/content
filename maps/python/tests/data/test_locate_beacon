@@ -1,9 +1,10 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Test Map
 width 5
 height 5
 difficulty 1
-darkness -1
 no_save 1
 region world
 end

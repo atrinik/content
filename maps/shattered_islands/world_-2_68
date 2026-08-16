@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Brynknot
 msg
 Created:  2009-09-10 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 5
-outdoor 1
 no_harm 1
 bg_music town_folk.ogg
+tile_path_1 /shattered_islands/world_-2_67
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_-1_68
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_-2_69
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_-3_68
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_-1_67
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_-1_69
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_-3_69
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_-3_67
+celestial_boundary_8 continuous
+tile_path_9 /shattered_islands/world_-2_68_1
+celestial_boundary_9 continuous
 region brynknot
 end
 arch floor_sand_d3
@@ -2343,9 +2362,12 @@ arch floor_parquet2f
 x 14
 y 16
 end
-arch curtain1
+arch celestial_curtain1
 x 14
 y 16
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_parquet2b
 x 14
@@ -3656,10 +3678,13 @@ arch floor_parquet2a
 x 22
 y 14
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 22
 y 14
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_parquet2c
 x 22
@@ -3693,10 +3718,13 @@ arch carpet1.171
 x 22
 y 17
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 22
 y 17
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_parquet2a
 x 22

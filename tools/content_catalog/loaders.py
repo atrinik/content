@@ -18,6 +18,9 @@ from .model import ContentCatalog, ContentId, SourceLocation
 QUEST_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 QUEST_PART_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 OBJECT_DOMAINS = ("archetype", "artifact")
+# These names are consumed as reserved map metadata by the Classic loader and
+# must never resolve through the authored archetype catalog.
+CELESTIAL_METADATA_ARCHES = frozenset(("sky_exposure", "ambient_light_zone"))
 
 
 def _load_content_identities(catalog: ContentCatalog, maps_root: Path) -> None:
@@ -584,6 +587,8 @@ def _load_maps(catalog: ContentCatalog, maps_root: Path) -> None:
                     in_header = False
             elif field == "arch" and value:
                 target = value.split()[0]
+                if target in CELESTIAL_METADATA_ARCHES:
+                    continue
                 if target in seen_archetypes:
                     continue
                 seen_archetypes.add(target)

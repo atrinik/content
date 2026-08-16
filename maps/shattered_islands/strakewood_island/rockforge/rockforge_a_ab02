@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: City
 msg
 Created:  2011-06-03 Zoey Rose
@@ -7,12 +10,16 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness 3
-tile_path_1 rockforge_a_ab03
-tile_path_2 rockforge_a_aa02
-tile_path_3 rockforge_a_ab01
-tile_path_5 rockforge_a_aa03
-tile_path_6 rockforge_a_aa01
+tile_path_1 /shattered_islands/strakewood_island/rockforge/rockforge_a_ab03
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa02
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/strakewood_island/rockforge/rockforge_a_ab01
+celestial_boundary_3 continuous
+tile_path_5 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa03
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/strakewood_island/rockforge/rockforge_a_aa01
+celestial_boundary_6 continuous
 region rockforge
 end
 arch blocked
@@ -1023,10 +1030,13 @@ arch floor_marble2c
 x 9
 y 1
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 9
 y 1
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_marble2c
 x 9
@@ -1106,10 +1116,13 @@ arch floor_marble2c
 x 9
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 9
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_marble2c
 x 9
@@ -1189,10 +1202,13 @@ arch floor_marble2a
 x 9
 y 19
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 9
 y 19
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_marble2c
 x 9
@@ -1716,19 +1732,25 @@ arch floor_marble2b
 x 14
 y 5
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 14
 y 5
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_marble2b
 x 14
 y 6
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 14
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_marble2b
 x 14
@@ -1814,19 +1836,25 @@ arch floor_marble2b
 x 14
 y 17
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 x 14
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_marble2b
 x 14
 y 18
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 x 14
 y 18
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_marble2a
 x 14

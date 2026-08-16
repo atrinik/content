@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Portu Baserrian
 msg
 Created:  2010-05-27 Asa
@@ -7,9 +9,24 @@ endmsg
 width 24
 height 24
 difficulty 75
-outdoor 1
 no_harm 1
 bg_music harmony2.mid
+tile_path_1 /shattered_islands/world_13_63
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_14_64
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_13_65
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_12_64
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_14_63
+celestial_boundary_5 discontinuous
+tile_path_6 /shattered_islands/world_14_65
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_12_65
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_12_63
+celestial_boundary_8 continuous
 region berri_lur
 end
 arch floor_flagm1
@@ -151,10 +168,13 @@ arch floor_marble2b
 x 1
 y 6
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 3
 x 1
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_marble2b
 x 1
@@ -238,10 +258,13 @@ arch floor_marble1d
 x 1
 y 17
 end
-arch door_wood2
+arch celestial_door_wood2
 direction 7
 x 1
 y 17
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_marble1c
 x 1
@@ -957,9 +980,12 @@ arch floor_marble2b
 x 7
 y 1
 end
-arch grate_closed
+arch celestial_grate_closed
 x 7
 y 1
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_marble2b
 x 7
@@ -973,9 +999,12 @@ arch floor_marble2b
 x 7
 y 4
 end
-arch grate_closed
+arch celestial_grate_closed
 x 7
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_marble2c
 x 7
@@ -1378,9 +1407,12 @@ arch floor_marble2c
 x 10
 y 1
 end
-arch grate_closed
+arch celestial_grate_closed
 x 10
 y 1
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_marble2c
 x 10
@@ -1394,9 +1426,12 @@ arch floor_marble2b
 x 10
 y 4
 end
-arch grate_closed
+arch celestial_grate_closed
 x 10
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_marble2c
 x 10
@@ -1524,12 +1559,15 @@ arch floor_marble2b
 x 11
 y 3
 end
-arch gate1_locked
+arch celestial_gate1_locked
 direction 3
 pass_thru 0
 slaying portu_baserrian_jail_key
 x 11
 y 3
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch check_inv
 slaying portu_baserrian_jail_key
@@ -1598,23 +1636,29 @@ arch floor_fstone2b
 x 11
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 3
 slaying warehouse
 cursed 1
 x 11
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000008
 end
 arch floor_fstone2b
 x 11
 y 14
 end
-arch door1_locked
+arch celestial_door1_locked
 direction 5
 slaying warehouse
 cursed 1
 x 11
 y 14
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000009
 end
 arch floor_fstone2h
 x 11
@@ -2562,9 +2606,12 @@ arch floor_marble1h
 x 18
 y 6
 end
-arch door_wood2
+arch celestial_door_wood2
 x 18
 y 6
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 000000000000000a
 end
 arch floor_flagm4
 x 18

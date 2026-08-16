@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Giant Mountains
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,8 +9,23 @@ endmsg
 width 24
 height 24
 difficulty 8
-outdoor 1
 bg_music ruins.mid
+tile_path_1 /shattered_islands/world_1_56
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_2_57
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_1_58
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_0_57
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_2_56
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_2_58
+celestial_boundary_6 discontinuous
+tile_path_7 /shattered_islands/world_0_58
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_0_56
+celestial_boundary_8 discontinuous
 region strakewood_island_gm
 end
 arch floor_sand_d2

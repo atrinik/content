@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name World
 msg
 Created:  2011-09-03 Zoey Rose
@@ -6,7 +8,17 @@ endmsg
 width 24
 height 24
 difficulty 1
-outdoor 1
+tile_path_1 /shattered_islands/world_19_86
+celestial_boundary_1 continuous
+tile_path_3 /shattered_islands/world_19_88
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/world_18_87
+celestial_boundary_4 continuous
+tile_path_7 /shattered_islands/world_18_88
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/world_18_86
+celestial_boundary_8 continuous
+region world
 end
 arch water_dk
 end

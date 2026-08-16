@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 80
 name Rockforge: City
 msg
 Created:  2011-06-12 Zoey Rose
@@ -7,15 +10,22 @@ endmsg
 width 24
 height 24
 difficulty 40
-darkness 3
-tile_path_1 rockforge_b_aa05
-tile_path_2 rockforge_b_0104
-tile_path_3 rockforge_b_aa03
-tile_path_4 rockforge_b_ab04
-tile_path_5 rockforge_b_0105
-tile_path_6 rockforge_b_0103
-tile_path_7 rockforge_b_ab03
-tile_path_8 rockforge_b_ab05
+tile_path_1 /shattered_islands/strakewood_island/rockforge/rockforge_b_aa05
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/strakewood_island/rockforge/rockforge_b_0104
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/strakewood_island/rockforge/rockforge_b_aa03
+celestial_boundary_3 continuous
+tile_path_4 /shattered_islands/strakewood_island/rockforge/rockforge_b_ab04
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/strakewood_island/rockforge/rockforge_b_0105
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/strakewood_island/rockforge/rockforge_b_0103
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/strakewood_island/rockforge/rockforge_b_ab03
+celestial_boundary_7 continuous
+tile_path_8 /shattered_islands/strakewood_island/rockforge/rockforge_b_ab05
+celestial_boundary_8 continuous
 region rockforge2
 end
 arch blocked
@@ -1254,11 +1264,14 @@ arch floor_marble1
 x 7
 y 4
 end
-arch door_bar1
+arch celestial_door_bar1
 direction 3
 slaying rockforge_library
 x 7
 y 4
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying rockforge_library

@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 20
 name Clearhaven Mine
 msg
 Created:  2010-07-12 Kiana
@@ -7,7 +10,6 @@ endmsg
 width 48
 height 24
 difficulty 5
-darkness 1
 region clearhaven
 end
 arch floor_grit3a
@@ -1105,7 +1107,7 @@ last_grace 1
 x 9
 y 11
 end
-arch door1_locked
+arch celestial_door1_locked
 name locked service hatch
 direction 3
 slaying clearhaven_mine_exit
@@ -1113,6 +1115,9 @@ no_magic 1
 damned 1
 x 9
 y 11
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_grit3c
 x 9

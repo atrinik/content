@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 1280
 name An Unusual Garden
 msg
 Created:  2010-05-26 Asa
@@ -9,7 +12,6 @@ height 24
 reset_timeout 1
 swap_time 1
 difficulty 1
-darkness 7
 fixed_resettime 1
 bg_music joyful_life.mid
 region berri_lur

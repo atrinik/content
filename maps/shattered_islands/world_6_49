@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above open
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,9 +9,26 @@ endmsg
 width 24
 height 24
 difficulty 40
-outdoor 1
 no_harm 1
 bg_music jungle.ogg
+tile_path_1 /shattered_islands/world_6_48
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_7_49
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_6_50
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_5_49
+celestial_boundary_4 continuous
+tile_path_5 /shattered_islands/world_7_48
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_7_50
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_5_50
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_5_48
+celestial_boundary_8 continuous
+tile_path_10 /shattered_islands/world_6_49_-1
+celestial_boundary_10 continuous
 region asteria
 end
 arch grassd_4
@@ -727,13 +746,16 @@ arch floor_fstone2a
 x 5
 y 9
 end
-arch door1_locked
+arch celestial_door1_locked
 msg
 You need Asteria Dungeon Key 1 to enter here.
 endmsg
 slaying asteria_dungeon_key1
 x 5
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying asteria_dungeon_key1
@@ -1351,10 +1373,13 @@ arch floor_fs_grey1b
 x 9
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 9
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_fs_grey1b
 x 9
@@ -1520,10 +1545,13 @@ arch floor_fs_grey1b
 x 10
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 10
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_fs_grey1b
 x 10
@@ -1652,10 +1680,13 @@ arch floor_fs_grey1b
 x 11
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 11
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_fs_grey1b
 x 11
@@ -1791,10 +1822,13 @@ arch floor_fs_grey1b
 x 12
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 12
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_fs_grey1b
 x 12
@@ -1968,10 +2002,13 @@ arch floor_fs_grey1b
 x 13
 y 11
 end
-arch grate_open
+arch celestial_grate_open
 connected 101
 x 13
 y 11
+celestial_transmission_closed grate
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_fs_grey1b
 x 13
@@ -2514,13 +2551,16 @@ arch floor_fstone2a
 x 17
 y 9
 end
-arch door1_locked
+arch celestial_door1_locked
 msg
 You need Asteria Dungeon Key 1 to enter here.
 endmsg
 slaying asteria_dungeon_key1
 x 17
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch check_inv
 slaying asteria_dungeon_key1

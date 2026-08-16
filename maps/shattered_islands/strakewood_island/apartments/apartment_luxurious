@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above sealed
 name Luxurious Apartment
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,7 +9,6 @@ endmsg
 width 14
 height 14
 difficulty 1
-darkness -1
 no_summon 1
 no_harm 1
 bg_music harmony2.mid
@@ -326,9 +327,12 @@ arch carpet1.111
 x 2
 y 9
 end
-arch curtain1
+arch celestial_curtain1
 x 2
 y 9
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_ostone1
 x 2
@@ -546,9 +550,12 @@ arch carpet1.111
 x 4
 y 9
 end
-arch curtain1
+arch celestial_curtain1
 x 4
 y 9
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch floor_ostone1
 x 4
@@ -596,10 +603,13 @@ arch floor_ostone1
 x 5
 y 2
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 5
 y 2
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch floor_ostone1
 x 5
@@ -650,10 +660,13 @@ arch carpet1.171
 x 5
 y 6
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 5
 y 6
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch floor_ostone1
 x 5
@@ -956,10 +969,13 @@ arch floor_ostone1
 x 8
 y 3
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 8
 y 3
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch floor_ostone1
 x 8
@@ -1129,10 +1145,13 @@ arch floor_ostone1
 x 9
 y 11
 end
-arch curtain1
+arch celestial_curtain1
 direction 7
 x 9
 y 11
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch floor_ostone1
 x 9
@@ -1422,9 +1441,12 @@ arch floor_ostone1
 x 12
 y 5
 end
-arch curtain1
+arch celestial_curtain1
 x 12
 y 5
+celestial_transmission_closed glass
+celestial_transmission_open open
+celestial_aperture_id 0000000000000007
 end
 arch floor_ostone1
 x 12

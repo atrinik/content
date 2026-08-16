@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Strakewood Island
 msg
 Created:  2009-08-09 Zoey Rose
@@ -7,8 +9,27 @@ endmsg
 width 24
 height 24
 difficulty 28
-outdoor 1
 bg_music th_16.mid
+tile_path_1 /shattered_islands/world_0_50
+celestial_boundary_1 continuous
+tile_path_2 /shattered_islands/world_1_51
+celestial_boundary_2 continuous
+tile_path_3 /shattered_islands/world_0_52
+celestial_boundary_3 discontinuous
+tile_path_4 /shattered_islands/world_-1_51
+celestial_boundary_4 discontinuous
+tile_path_5 /shattered_islands/world_1_50
+celestial_boundary_5 continuous
+tile_path_6 /shattered_islands/world_1_52
+celestial_boundary_6 continuous
+tile_path_7 /shattered_islands/world_-1_52
+celestial_boundary_7 discontinuous
+tile_path_8 /shattered_islands/world_-1_50
+celestial_boundary_8 discontinuous
+tile_path_9 /shattered_islands/world_0_51_1
+celestial_boundary_9 discontinuous
+tile_path_10 /shattered_islands/world_0_51_-1
+celestial_boundary_10 discontinuous
 region strakewood_island
 end
 arch water_lt
@@ -1806,10 +1827,13 @@ arch floor_sand_d2
 x 13
 y 22
 end
-arch door_wood1
+arch celestial_door_wood1
 direction 3
 x 13
 y 22
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_sand_d2
 x 13

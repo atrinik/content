@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above linked
+light 80
 name Temple of Zechna
 msg
 Created:  2009-09-22 Zoey Rose
@@ -7,8 +10,9 @@ endmsg
 width 24
 height 24
 difficulty 105
-darkness 3
 bg_music evil_temple.ogg
+tile_path_9 /shattered_islands/strakewood_island/zechna_temple/zechna_temple_0_0_-2
+celestial_boundary_9 discontinuous
 region zechna_temple_d
 end
 arch floor_sblack1b
@@ -819,11 +823,14 @@ arch carpet2f
 x 6
 y 9
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying zechna_temple_key3
 direction 3
 x 6
 y 9
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch check_inv
 slaying zechna_temple_key3
@@ -840,11 +847,14 @@ arch carpet2d
 x 6
 y 10
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying zechna_temple_key3
 direction 5
 x 6
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000002
 end
 arch check_inv
 slaying zechna_temple_key3
@@ -869,11 +879,14 @@ arch carpet2f
 x 6
 y 12
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying zechna_temple_key3
 direction 3
 x 6
 y 12
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000003
 end
 arch check_inv
 slaying zechna_temple_key3
@@ -890,11 +903,14 @@ arch carpet2d
 x 6
 y 13
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying zechna_temple_key3
 direction 5
 x 6
 y 13
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000004
 end
 arch check_inv
 slaying zechna_temple_key3
@@ -1516,11 +1532,14 @@ arch carpet2f
 x 11
 y 7
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying zechna_temple_key4
 direction 3
 x 11
 y 7
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000005
 end
 arch check_inv
 slaying zechna_temple_key4
@@ -1537,11 +1556,14 @@ arch carpet2d
 x 11
 y 8
 end
-arch door1_locked
+arch celestial_door1_locked
 slaying zechna_temple_key4
 direction 5
 x 11
 y 8
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000006
 end
 arch check_inv
 slaying zechna_temple_key4

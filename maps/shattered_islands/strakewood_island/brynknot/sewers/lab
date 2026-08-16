@@ -1,4 +1,7 @@
 arch map
+celestial_schema 1
+sky_above sealed
+light 40
 name Nyhelobo's Lab
 msg
 Created:  2010-07-06 Edwin Miltenburg
@@ -7,7 +10,6 @@ endmsg
 width 24
 height 24
 difficulty 60
-darkness 2
 bg_music escape.mid
 region brynknot
 end
@@ -2062,10 +2064,13 @@ arch dirt_floor1
 x 11
 y 10
 end
-arch gate1_locked
+arch celestial_gate1_locked
 slaying locked
 x 11
 y 10
+celestial_transmission_closed opaque
+celestial_transmission_open open
+celestial_aperture_id 0000000000000001
 end
 arch floor_flagstone1b
 x 11

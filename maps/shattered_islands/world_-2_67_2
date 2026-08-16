@@ -1,4 +1,6 @@
 arch map
+celestial_schema 1
+sky_above linked
 name Brynknot
 msg
 Created:  2014-12-23 Zoey Rose
@@ -7,7 +9,10 @@ endmsg
 width 24
 height 24
 difficulty 1
-outdoor 1
 bg_music town_folk.ogg
+tile_path_9 /shattered_islands/world_-2_67_3
+celestial_boundary_9 continuous
+tile_path_10 /shattered_islands/world_-2_67_1
+celestial_boundary_10 continuous
 region brynknot
 end

@@ -55,6 +55,150 @@
     },
     {
       "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_1",
+      "group": "general",
+      "label": "Celestial Boundary 1",
+      "order": 4,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_10",
+      "group": "general",
+      "label": "Celestial Boundary 10",
+      "order": 5,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_2",
+      "group": "general",
+      "label": "Celestial Boundary 2",
+      "order": 6,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_3",
+      "group": "general",
+      "label": "Celestial Boundary 3",
+      "order": 7,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_4",
+      "group": "general",
+      "label": "Celestial Boundary 4",
+      "order": 8,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_5",
+      "group": "general",
+      "label": "Celestial Boundary 5",
+      "order": 9,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_6",
+      "group": "general",
+      "label": "Celestial Boundary 6",
+      "order": 10,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_7",
+      "group": "general",
+      "label": "Celestial Boundary 7",
+      "order": 11,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_8",
+      "group": "general",
+      "label": "Celestial Boundary 8",
+      "order": 12,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(continuous|discontinuous)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_boundary_9",
+      "group": "general",
+      "label": "Celestial Boundary 9",
+      "order": 13,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "maximum": 1,
+        "minimum": 1
+      },
+      "enum_values": [],
+      "field_id": "map-header.celestial_schema",
+      "group": "general",
+      "label": "Celestial Schema",
+      "order": 14,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "integer"
+    },
+    {
+      "constraints": {
         "maximum": 7,
         "minimum": -1
       },
@@ -62,7 +206,7 @@
       "field_id": "map-header.darkness",
       "group": "general",
       "label": "Darkness",
-      "order": 4,
+      "order": 15,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -76,7 +220,7 @@
       "field_id": "map-header.difficulty",
       "group": "general",
       "label": "Difficulty",
-      "order": 5,
+      "order": 16,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -90,7 +234,7 @@
       "field_id": "map-header.enter_x",
       "group": "placement",
       "label": "Enter X",
-      "order": 6,
+      "order": 17,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -104,7 +248,7 @@
       "field_id": "map-header.enter_y",
       "group": "placement",
       "label": "Enter Y",
-      "order": 7,
+      "order": 18,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -115,7 +259,7 @@
       "field_id": "map-header.fixed_login",
       "group": "flag",
       "label": "Fixed Login",
-      "order": 8,
+      "order": 19,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -126,7 +270,7 @@
       "field_id": "map-header.fixed_resettime",
       "group": "flag",
       "label": "Fixed Resettime",
-      "order": 9,
+      "order": 20,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -140,7 +284,7 @@
       "field_id": "map-header.height",
       "group": "placement",
       "label": "Height",
-      "order": 10,
+      "order": 21,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -151,7 +295,7 @@
       "field_id": "map-header.height_diff",
       "group": "flag",
       "label": "Height Diff",
-      "order": 11,
+      "order": 22,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -165,7 +309,7 @@
       "field_id": "map-header.light",
       "group": "general",
       "label": "Light",
-      "order": 12,
+      "order": 23,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -176,7 +320,7 @@
       "field_id": "map-header.name",
       "group": "presentation",
       "label": "Name",
-      "order": 13,
+      "order": 24,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -187,7 +331,7 @@
       "field_id": "map-header.no_harm",
       "group": "flag",
       "label": "No Harm",
-      "order": 14,
+      "order": 25,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -198,7 +342,7 @@
       "field_id": "map-header.no_magic",
       "group": "flag",
       "label": "No Magic",
-      "order": 15,
+      "order": 26,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -209,7 +353,7 @@
       "field_id": "map-header.no_save",
       "group": "flag",
       "label": "No Save",
-      "order": 16,
+      "order": 27,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -220,7 +364,7 @@
       "field_id": "map-header.no_summon",
       "group": "flag",
       "label": "No Summon",
-      "order": 17,
+      "order": 28,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -231,7 +375,7 @@
       "field_id": "map-header.outdoor",
       "group": "flag",
       "label": "Outdoor",
-      "order": 18,
+      "order": 29,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -242,7 +386,7 @@
       "field_id": "map-header.player_no_save",
       "group": "flag",
       "label": "Player No Save",
-      "order": 19,
+      "order": 30,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -253,7 +397,7 @@
       "field_id": "map-header.pvp",
       "group": "flag",
       "label": "Pvp",
-      "order": 20,
+      "order": 31,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -264,7 +408,7 @@
       "field_id": "map-header.region",
       "group": "reference",
       "label": "Region",
-      "order": 21,
+      "order": 32,
       "reference_domains": [
         "region"
       ],
@@ -280,10 +424,23 @@
       "field_id": "map-header.reset_timeout",
       "group": "general",
       "label": "Reset Timeout",
-      "order": 22,
+      "order": 33,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
+    },
+    {
+      "constraints": {
+        "pattern": "^(open|linked|sealed)$"
+      },
+      "enum_values": [],
+      "field_id": "map-header.sky_above",
+      "group": "general",
+      "label": "Sky Above",
+      "order": 34,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
     },
     {
       "constraints": {
@@ -294,7 +451,7 @@
       "field_id": "map-header.swap_time",
       "group": "general",
       "label": "Swap Time",
-      "order": 23,
+      "order": 35,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -305,7 +462,7 @@
       "field_id": "map-header.tile_path_1",
       "group": "reference",
       "label": "Tile Path 1",
-      "order": 24,
+      "order": 36,
       "reference_domains": [
         "map"
       ],
@@ -318,7 +475,7 @@
       "field_id": "map-header.tile_path_10",
       "group": "reference",
       "label": "Tile Path 10",
-      "order": 25,
+      "order": 37,
       "reference_domains": [
         "map"
       ],
@@ -331,7 +488,7 @@
       "field_id": "map-header.tile_path_2",
       "group": "reference",
       "label": "Tile Path 2",
-      "order": 26,
+      "order": 38,
       "reference_domains": [
         "map"
       ],
@@ -344,7 +501,7 @@
       "field_id": "map-header.tile_path_3",
       "group": "reference",
       "label": "Tile Path 3",
-      "order": 27,
+      "order": 39,
       "reference_domains": [
         "map"
       ],
@@ -357,7 +514,7 @@
       "field_id": "map-header.tile_path_4",
       "group": "reference",
       "label": "Tile Path 4",
-      "order": 28,
+      "order": 40,
       "reference_domains": [
         "map"
       ],
@@ -370,7 +527,7 @@
       "field_id": "map-header.tile_path_5",
       "group": "reference",
       "label": "Tile Path 5",
-      "order": 29,
+      "order": 41,
       "reference_domains": [
         "map"
       ],
@@ -383,7 +540,7 @@
       "field_id": "map-header.tile_path_6",
       "group": "reference",
       "label": "Tile Path 6",
-      "order": 30,
+      "order": 42,
       "reference_domains": [
         "map"
       ],
@@ -396,7 +553,7 @@
       "field_id": "map-header.tile_path_7",
       "group": "reference",
       "label": "Tile Path 7",
-      "order": 31,
+      "order": 43,
       "reference_domains": [
         "map"
       ],
@@ -409,7 +566,7 @@
       "field_id": "map-header.tile_path_8",
       "group": "reference",
       "label": "Tile Path 8",
-      "order": 32,
+      "order": 44,
       "reference_domains": [
         "map"
       ],
@@ -422,7 +579,7 @@
       "field_id": "map-header.tile_path_9",
       "group": "reference",
       "label": "Tile Path 9",
-      "order": 33,
+      "order": 45,
       "reference_domains": [
         "map"
       ],
@@ -435,7 +592,7 @@
       "field_id": "map-header.unique",
       "group": "flag",
       "label": "Unique",
-      "order": 34,
+      "order": 46,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -446,7 +603,7 @@
       "field_id": "map-header.weather",
       "group": "presentation",
       "label": "Weather",
-      "order": 35,
+      "order": 47,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -460,7 +617,7 @@
       "field_id": "map-header.width",
       "group": "placement",
       "label": "Width",
-      "order": 36,
+      "order": 48,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -474,7 +631,7 @@
       "field_id": "object.absorb",
       "group": "general",
       "label": "Absorb",
-      "order": 37,
+      "order": 49,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -488,7 +645,7 @@
       "field_id": "object.absorb_add",
       "group": "general",
       "label": "Absorb Add",
-      "order": 38,
+      "order": 50,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -502,7 +659,7 @@
       "field_id": "object.ac",
       "group": "general",
       "label": "Ac",
-      "order": 39,
+      "order": 51,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -516,7 +673,7 @@
       "field_id": "object.ac_add",
       "group": "general",
       "label": "Ac Add",
-      "order": 40,
+      "order": 52,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -530,7 +687,7 @@
       "field_id": "object.align",
       "group": "general",
       "label": "Align",
-      "order": 41,
+      "order": 53,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -541,7 +698,7 @@
       "field_id": "object.alive",
       "group": "legacy",
       "label": "Alive",
-      "order": 42,
+      "order": 54,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -555,7 +712,7 @@
       "field_id": "object.alpha",
       "group": "render",
       "label": "Alpha",
-      "order": 43,
+      "order": 55,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -566,12 +723,26 @@
       "field_id": "object.amask",
       "group": "reference",
       "label": "Amask",
-      "order": 44,
+      "order": 56,
       "reference_domains": [
         "artifact"
       ],
       "status": "active",
       "widget": "reference"
+    },
+    {
+      "constraints": {
+        "maximum": 40959,
+        "minimum": 0
+      },
+      "enum_values": [],
+      "field_id": "object.ambient_strength",
+      "group": "general",
+      "label": "Ambient Strength",
+      "order": 57,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "integer"
     },
     {
       "constraints": {
@@ -582,7 +753,7 @@
       "field_id": "object.anim_speed",
       "group": "render",
       "label": "Anim Speed",
-      "order": 45,
+      "order": 58,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -593,7 +764,7 @@
       "field_id": "object.animation",
       "group": "reference",
       "label": "Animation",
-      "order": 46,
+      "order": 59,
       "reference_domains": [
         "animation"
       ],
@@ -606,7 +777,7 @@
       "field_id": "object.applied",
       "group": "flag",
       "label": "Applied",
-      "order": 47,
+      "order": 60,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -617,7 +788,7 @@
       "field_id": "object.artifact",
       "group": "reference",
       "label": "Artifact",
-      "order": 48,
+      "order": 61,
       "reference_domains": [
         "artifact"
       ],
@@ -633,7 +804,7 @@
       "field_id": "object.attack_acid",
       "group": "attack",
       "label": "Attack Acid",
-      "order": 49,
+      "order": 62,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -647,7 +818,7 @@
       "field_id": "object.attack_blind",
       "group": "attack",
       "label": "Attack Blind",
-      "order": 50,
+      "order": 63,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -661,7 +832,7 @@
       "field_id": "object.attack_chaos",
       "group": "attack",
       "label": "Attack Chaos",
-      "order": 51,
+      "order": 64,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -675,7 +846,7 @@
       "field_id": "object.attack_cleave",
       "group": "attack",
       "label": "Attack Cleave",
-      "order": 52,
+      "order": 65,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -689,7 +860,7 @@
       "field_id": "object.attack_cold",
       "group": "attack",
       "label": "Attack Cold",
-      "order": 53,
+      "order": 66,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -703,7 +874,7 @@
       "field_id": "object.attack_confusion",
       "group": "attack",
       "label": "Attack Confusion",
-      "order": 54,
+      "order": 67,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -717,7 +888,7 @@
       "field_id": "object.attack_drain",
       "group": "attack",
       "label": "Attack Drain",
-      "order": 55,
+      "order": 68,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -731,7 +902,7 @@
       "field_id": "object.attack_electricity",
       "group": "attack",
       "label": "Attack Electricity",
-      "order": 56,
+      "order": 69,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -745,7 +916,7 @@
       "field_id": "object.attack_fire",
       "group": "attack",
       "label": "Attack Fire",
-      "order": 57,
+      "order": 70,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -759,7 +930,7 @@
       "field_id": "object.attack_force",
       "group": "attack",
       "label": "Attack Force",
-      "order": 58,
+      "order": 71,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -773,7 +944,7 @@
       "field_id": "object.attack_godpower",
       "group": "attack",
       "label": "Attack Godpower",
-      "order": 59,
+      "order": 72,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -787,7 +958,7 @@
       "field_id": "object.attack_impact",
       "group": "attack",
       "label": "Attack Impact",
-      "order": 60,
+      "order": 73,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -801,7 +972,7 @@
       "field_id": "object.attack_internal",
       "group": "attack",
       "label": "Attack Internal",
-      "order": 61,
+      "order": 74,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -815,7 +986,7 @@
       "field_id": "object.attack_lifesteal",
       "group": "attack",
       "label": "Attack Lifesteal",
-      "order": 62,
+      "order": 75,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -829,7 +1000,7 @@
       "field_id": "object.attack_magic",
       "group": "attack",
       "label": "Attack Magic",
-      "order": 63,
+      "order": 76,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -843,7 +1014,7 @@
       "field_id": "object.attack_move_type",
       "group": "general",
       "label": "Attack Move Type",
-      "order": 64,
+      "order": 77,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -857,7 +1028,7 @@
       "field_id": "object.attack_paralyze",
       "group": "attack",
       "label": "Attack Paralyze",
-      "order": 65,
+      "order": 78,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -871,7 +1042,7 @@
       "field_id": "object.attack_pierce",
       "group": "attack",
       "label": "Attack Pierce",
-      "order": 66,
+      "order": 79,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -885,7 +1056,7 @@
       "field_id": "object.attack_poison",
       "group": "attack",
       "label": "Attack Poison",
-      "order": 67,
+      "order": 80,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -899,7 +1070,7 @@
       "field_id": "object.attack_slash",
       "group": "attack",
       "label": "Attack Slash",
-      "order": 68,
+      "order": 81,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -913,7 +1084,7 @@
       "field_id": "object.attack_slow",
       "group": "attack",
       "label": "Attack Slow",
-      "order": 69,
+      "order": 82,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -927,7 +1098,7 @@
       "field_id": "object.attack_weaponmagic",
       "group": "attack",
       "label": "Attack Weaponmagic",
-      "order": 70,
+      "order": 83,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -938,7 +1109,7 @@
       "field_id": "object.attacktype",
       "group": "legacy",
       "label": "Attacktype",
-      "order": 71,
+      "order": 84,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -949,7 +1120,7 @@
       "field_id": "object.auto_apply",
       "group": "flag",
       "label": "Auto Apply",
-      "order": 72,
+      "order": 85,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -960,7 +1131,7 @@
       "field_id": "object.been_applied",
       "group": "flag",
       "label": "Been Applied",
-      "order": 73,
+      "order": 86,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -974,7 +1145,7 @@
       "field_id": "object.behavior",
       "group": "general",
       "label": "Behavior",
-      "order": 74,
+      "order": 87,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -985,7 +1156,7 @@
       "field_id": "object.berserk",
       "group": "flag",
       "label": "Berserk",
-      "order": 75,
+      "order": 88,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -999,7 +1170,7 @@
       "field_id": "object.block",
       "group": "general",
       "label": "Block",
-      "order": 76,
+      "order": 89,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1013,7 +1184,7 @@
       "field_id": "object.block_add",
       "group": "general",
       "label": "Block Add",
-      "order": 77,
+      "order": 90,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1024,7 +1195,7 @@
       "field_id": "object.blocksview",
       "group": "flag",
       "label": "Blocksview",
-      "order": 78,
+      "order": 91,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1035,7 +1206,7 @@
       "field_id": "object.can_cast_spell",
       "group": "flag",
       "label": "Can Cast Spell",
-      "order": 79,
+      "order": 92,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1046,7 +1217,7 @@
       "field_id": "object.can_pass_thru",
       "group": "flag",
       "label": "Can Pass Thru",
-      "order": 80,
+      "order": 93,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1057,7 +1228,7 @@
       "field_id": "object.can_reflect_missile",
       "group": "flag",
       "label": "Can Reflect Missile",
-      "order": 81,
+      "order": 94,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1068,7 +1239,7 @@
       "field_id": "object.can_reflect_spell",
       "group": "flag",
       "label": "Can Reflect Spell",
-      "order": 82,
+      "order": 95,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1079,7 +1250,7 @@
       "field_id": "object.can_roll",
       "group": "flag",
       "label": "Can Roll",
-      "order": 83,
+      "order": 96,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1090,7 +1261,7 @@
       "field_id": "object.can_see_in_dark",
       "group": "flag",
       "label": "Can See In Dark",
-      "order": 84,
+      "order": 97,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1101,7 +1272,7 @@
       "field_id": "object.can_stack",
       "group": "flag",
       "label": "Can Stack",
-      "order": 85,
+      "order": 98,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1112,7 +1283,7 @@
       "field_id": "object.can_use_armour",
       "group": "flag",
       "label": "Can Use Armour",
-      "order": 86,
+      "order": 99,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1123,7 +1294,7 @@
       "field_id": "object.can_use_bow",
       "group": "flag",
       "label": "Can Use Bow",
-      "order": 87,
+      "order": 100,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1134,7 +1305,7 @@
       "field_id": "object.can_use_range",
       "group": "legacy",
       "label": "Can Use Range",
-      "order": 88,
+      "order": 101,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1145,7 +1316,7 @@
       "field_id": "object.can_use_ring",
       "group": "legacy",
       "label": "Can Use Ring",
-      "order": 89,
+      "order": 102,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1156,7 +1327,7 @@
       "field_id": "object.can_use_scroll",
       "group": "legacy",
       "label": "Can Use Scroll",
-      "order": 90,
+      "order": 103,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1167,7 +1338,7 @@
       "field_id": "object.can_use_skill",
       "group": "legacy",
       "label": "Can Use Skill",
-      "order": 91,
+      "order": 104,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1178,7 +1349,7 @@
       "field_id": "object.can_use_weapon",
       "group": "flag",
       "label": "Can Use Weapon",
-      "order": 92,
+      "order": 105,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1192,10 +1363,62 @@
       "field_id": "object.carrying",
       "group": "general",
       "label": "Carrying",
-      "order": 93,
+      "order": 106,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
+    },
+    {
+      "constraints": {
+        "pattern": "^(?!0{16}$)[0-9a-f]{16}$"
+      },
+      "enum_values": [],
+      "field_id": "object.celestial_aperture_id",
+      "group": "general",
+      "label": "Celestial Aperture Id",
+      "order": 107,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(opaque|glass|grate|open)$"
+      },
+      "enum_values": [],
+      "field_id": "object.celestial_transmission",
+      "group": "general",
+      "label": "Celestial Transmission",
+      "order": 108,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(opaque|glass|grate|open)$"
+      },
+      "enum_values": [],
+      "field_id": "object.celestial_transmission_closed",
+      "group": "general",
+      "label": "Celestial Transmission Closed",
+      "order": 109,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
+      "constraints": {
+        "pattern": "^(opaque|glass|grate|open)$"
+      },
+      "enum_values": [],
+      "field_id": "object.celestial_transmission_open",
+      "group": "general",
+      "label": "Celestial Transmission Open",
+      "order": 110,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
     },
     {
       "constraints": {},
@@ -1203,7 +1426,7 @@
       "field_id": "object.changing",
       "group": "flag",
       "label": "Changing",
-      "order": 94,
+      "order": 111,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1217,7 +1440,7 @@
       "field_id": "object.con",
       "group": "general",
       "label": "Con",
-      "order": 95,
+      "order": 112,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1228,7 +1451,7 @@
       "field_id": "object.confused",
       "group": "flag",
       "label": "Confused",
-      "order": 96,
+      "order": 113,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1239,7 +1462,7 @@
       "field_id": "object.connect_no_push",
       "group": "flag",
       "label": "Connect No Push",
-      "order": 97,
+      "order": 114,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1250,7 +1473,7 @@
       "field_id": "object.connect_no_release",
       "group": "flag",
       "label": "Connect No Release",
-      "order": 98,
+      "order": 115,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1261,7 +1484,7 @@
       "field_id": "object.connect_reset",
       "group": "flag",
       "label": "Connect Reset",
-      "order": 99,
+      "order": 116,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1275,7 +1498,7 @@
       "field_id": "object.connected",
       "group": "placement",
       "label": "Connected",
-      "order": 100,
+      "order": 117,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1289,7 +1512,7 @@
       "field_id": "object.container",
       "group": "general",
       "label": "Container",
-      "order": 101,
+      "order": 118,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1307,7 +1530,7 @@
       "field_id": "object.container_size",
       "group": "presentation",
       "label": "Container Size",
-      "order": 102,
+      "order": 119,
       "reference_domains": [],
       "status": "reserved",
       "widget": "select"
@@ -1318,7 +1541,7 @@
       "field_id": "object.corpse",
       "group": "flag",
       "label": "Corpse",
-      "order": 103,
+      "order": 120,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1329,7 +1552,7 @@
       "field_id": "object.corpse_forced",
       "group": "flag",
       "label": "Corpse Forced",
-      "order": 104,
+      "order": 121,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1340,7 +1563,7 @@
       "field_id": "object.cursed",
       "group": "flag",
       "label": "Cursed",
-      "order": 105,
+      "order": 122,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1351,7 +1574,7 @@
       "field_id": "object.cursed_perm",
       "group": "flag",
       "label": "Cursed Perm",
-      "order": 106,
+      "order": 123,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1362,7 +1585,7 @@
       "field_id": "object.custom_name",
       "group": "general",
       "label": "Custom Name",
-      "order": 107,
+      "order": 124,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -1376,7 +1599,7 @@
       "field_id": "object.dam",
       "group": "general",
       "label": "Dam",
-      "order": 108,
+      "order": 125,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1390,7 +1613,7 @@
       "field_id": "object.dam_add",
       "group": "general",
       "label": "Dam Add",
-      "order": 109,
+      "order": 126,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1401,7 +1624,7 @@
       "field_id": "object.damned",
       "group": "flag",
       "label": "Damned",
-      "order": 110,
+      "order": 127,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1412,7 +1635,7 @@
       "field_id": "object.damned_perm",
       "group": "flag",
       "label": "Damned Perm",
-      "order": 111,
+      "order": 128,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1426,7 +1649,7 @@
       "field_id": "object.dex",
       "group": "general",
       "label": "Dex",
-      "order": 112,
+      "order": 129,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1440,7 +1663,7 @@
       "field_id": "object.direction",
       "group": "placement",
       "label": "Direction",
-      "order": 113,
+      "order": 130,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1451,7 +1674,7 @@
       "field_id": "object.door_closed",
       "group": "flag",
       "label": "Door Closed",
-      "order": 114,
+      "order": 131,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1462,7 +1685,7 @@
       "field_id": "object.draw_direction",
       "group": "flag",
       "label": "Draw Direction",
-      "order": 115,
+      "order": 132,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1473,7 +1696,7 @@
       "field_id": "object.draw_double",
       "group": "flag",
       "label": "Draw Double",
-      "order": 116,
+      "order": 133,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1484,7 +1707,7 @@
       "field_id": "object.draw_double_always",
       "group": "flag",
       "label": "Draw Double Always",
-      "order": 117,
+      "order": 134,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1495,7 +1718,7 @@
       "field_id": "object.editor_folder",
       "group": "legacy",
       "label": "Editor Folder",
-      "order": 118,
+      "order": 135,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1509,7 +1732,7 @@
       "field_id": "object.exp",
       "group": "general",
       "label": "Exp",
-      "order": 119,
+      "order": 136,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1520,7 +1743,7 @@
       "field_id": "object.face",
       "group": "reference",
       "label": "Face",
-      "order": 120,
+      "order": 137,
       "reference_domains": [
         "face"
       ],
@@ -1533,7 +1756,7 @@
       "field_id": "object.fly_off",
       "group": "flag",
       "label": "Fly Off",
-      "order": 121,
+      "order": 138,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1544,7 +1767,7 @@
       "field_id": "object.fly_on",
       "group": "flag",
       "label": "Fly On",
-      "order": 122,
+      "order": 139,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1555,7 +1778,7 @@
       "field_id": "object.flying",
       "group": "flag",
       "label": "Flying",
-      "order": 123,
+      "order": 140,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1569,7 +1792,7 @@
       "field_id": "object.food",
       "group": "general",
       "label": "Food",
-      "order": 124,
+      "order": 141,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1580,7 +1803,7 @@
       "field_id": "object.friendly",
       "group": "flag",
       "label": "Friendly",
-      "order": 125,
+      "order": 142,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1591,7 +1814,7 @@
       "field_id": "object.generator",
       "group": "legacy",
       "label": "Generator",
-      "order": 126,
+      "order": 143,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1606,7 +1829,7 @@
       "field_id": "object.glow",
       "group": "render",
       "label": "Glow",
-      "order": 127,
+      "order": 144,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -1620,7 +1843,7 @@
       "field_id": "object.glow_radius",
       "group": "render",
       "label": "Glow Radius",
-      "order": 128,
+      "order": 145,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1634,7 +1857,7 @@
       "field_id": "object.glow_speed",
       "group": "render",
       "label": "Glow Speed",
-      "order": 129,
+      "order": 146,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1645,7 +1868,7 @@
       "field_id": "object.has_ready_bow",
       "group": "flag",
       "label": "Has Ready Bow",
-      "order": 130,
+      "order": 147,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1656,7 +1879,7 @@
       "field_id": "object.has_ready_range",
       "group": "legacy",
       "label": "Has Ready Range",
-      "order": 131,
+      "order": 148,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1667,7 +1890,7 @@
       "field_id": "object.has_ready_skill",
       "group": "legacy",
       "label": "Has Ready Skill",
-      "order": 132,
+      "order": 149,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1678,7 +1901,7 @@
       "field_id": "object.has_ready_weapon",
       "group": "flag",
       "label": "Has Ready Weapon",
-      "order": 133,
+      "order": 150,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1689,7 +1912,7 @@
       "field_id": "object.hidden",
       "group": "flag",
       "label": "Hidden",
-      "order": 134,
+      "order": 151,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1700,7 +1923,7 @@
       "field_id": "object.hitback",
       "group": "flag",
       "label": "Hitback",
-      "order": 135,
+      "order": 152,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1714,7 +1937,7 @@
       "field_id": "object.hp",
       "group": "general",
       "label": "Hp",
-      "order": 136,
+      "order": 153,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1725,7 +1948,7 @@
       "field_id": "object.identified",
       "group": "flag",
       "label": "Identified",
-      "order": 137,
+      "order": 154,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1739,7 +1962,7 @@
       "field_id": "object.int",
       "group": "general",
       "label": "Int",
-      "order": 138,
+      "order": 155,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -1750,7 +1973,7 @@
       "field_id": "object.inv_animation",
       "group": "reference",
       "label": "Inv Animation",
-      "order": 139,
+      "order": 156,
       "reference_domains": [
         "animation"
       ],
@@ -1763,7 +1986,7 @@
       "field_id": "object.inv_face",
       "group": "reference",
       "label": "Inv Face",
-      "order": 140,
+      "order": 157,
       "reference_domains": [
         "face"
       ],
@@ -1776,7 +1999,7 @@
       "field_id": "object.inv_locked",
       "group": "flag",
       "label": "Inv Locked",
-      "order": 141,
+      "order": 158,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1787,7 +2010,7 @@
       "field_id": "object.invulnerable",
       "group": "flag",
       "label": "Invulnerable",
-      "order": 142,
+      "order": 159,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1798,7 +2021,7 @@
       "field_id": "object.is_animated",
       "group": "flag",
       "label": "Is Animated",
-      "order": 143,
+      "order": 160,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1809,7 +2032,7 @@
       "field_id": "object.is_assassin",
       "group": "flag",
       "label": "Is Assassin",
-      "order": 144,
+      "order": 161,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1820,7 +2043,7 @@
       "field_id": "object.is_blind",
       "group": "flag",
       "label": "Is Blind",
-      "order": 145,
+      "order": 162,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1831,7 +2054,7 @@
       "field_id": "object.is_buildable",
       "group": "flag",
       "label": "Is Buildable",
-      "order": 146,
+      "order": 163,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1842,7 +2065,7 @@
       "field_id": "object.is_cauldron",
       "group": "flag",
       "label": "Is Cauldron",
-      "order": 147,
+      "order": 164,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1853,7 +2076,7 @@
       "field_id": "object.is_dust",
       "group": "flag",
       "label": "Is Dust",
-      "order": 148,
+      "order": 165,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1864,7 +2087,7 @@
       "field_id": "object.is_ethereal",
       "group": "flag",
       "label": "Is Ethereal",
-      "order": 149,
+      "order": 166,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1875,7 +2098,7 @@
       "field_id": "object.is_evil",
       "group": "flag",
       "label": "Is Evil",
-      "order": 150,
+      "order": 167,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1886,7 +2109,7 @@
       "field_id": "object.is_female",
       "group": "flag",
       "label": "Is Female",
-      "order": 151,
+      "order": 168,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1897,7 +2120,7 @@
       "field_id": "object.is_floor",
       "group": "flag",
       "label": "Is Floor",
-      "order": 152,
+      "order": 169,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1908,7 +2131,7 @@
       "field_id": "object.is_good",
       "group": "flag",
       "label": "Is Good",
-      "order": 153,
+      "order": 170,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1919,7 +2142,7 @@
       "field_id": "object.is_hilly",
       "group": "legacy",
       "label": "Is Hilly",
-      "order": 154,
+      "order": 171,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -1930,7 +2153,7 @@
       "field_id": "object.is_indestructible",
       "group": "flag",
       "label": "Is Indestructible",
-      "order": 155,
+      "order": 172,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1941,7 +2164,7 @@
       "field_id": "object.is_invisible",
       "group": "flag",
       "label": "Is Invisible",
-      "order": 156,
+      "order": 173,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1952,7 +2175,7 @@
       "field_id": "object.is_magical",
       "group": "flag",
       "label": "Is Magical",
-      "order": 157,
+      "order": 174,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1963,7 +2186,7 @@
       "field_id": "object.is_male",
       "group": "flag",
       "label": "Is Male",
-      "order": 158,
+      "order": 175,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1974,7 +2197,7 @@
       "field_id": "object.is_missile",
       "group": "flag",
       "label": "Is Missile",
-      "order": 159,
+      "order": 176,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1985,7 +2208,7 @@
       "field_id": "object.is_named",
       "group": "flag",
       "label": "Is Named",
-      "order": 160,
+      "order": 177,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -1996,7 +2219,7 @@
       "field_id": "object.is_neutral",
       "group": "flag",
       "label": "Is Neutral",
-      "order": 161,
+      "order": 178,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2007,7 +2230,7 @@
       "field_id": "object.is_player",
       "group": "flag",
       "label": "Is Player",
-      "order": 162,
+      "order": 179,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2018,7 +2241,7 @@
       "field_id": "object.is_proof_elemental",
       "group": "legacy",
       "label": "Is Proof Elemental",
-      "order": 163,
+      "order": 180,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2029,7 +2252,7 @@
       "field_id": "object.is_proof_magic",
       "group": "legacy",
       "label": "Is Proof Magic",
-      "order": 164,
+      "order": 181,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2040,7 +2263,7 @@
       "field_id": "object.is_proof_physical",
       "group": "legacy",
       "label": "Is Proof Physical",
-      "order": 165,
+      "order": 182,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2051,7 +2274,7 @@
       "field_id": "object.is_proof_sphere",
       "group": "legacy",
       "label": "Is Proof Sphere",
-      "order": 166,
+      "order": 183,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2062,7 +2285,7 @@
       "field_id": "object.is_spell",
       "group": "flag",
       "label": "Is Spell",
-      "order": 167,
+      "order": 184,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2073,7 +2296,7 @@
       "field_id": "object.is_thrown",
       "group": "flag",
       "label": "Is Thrown",
-      "order": 168,
+      "order": 185,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2084,7 +2307,7 @@
       "field_id": "object.is_trapped",
       "group": "flag",
       "label": "Is Trapped",
-      "order": 169,
+      "order": 186,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2095,7 +2318,7 @@
       "field_id": "object.is_turnable",
       "group": "flag",
       "label": "Is Turnable",
-      "order": 170,
+      "order": 187,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2106,7 +2329,7 @@
       "field_id": "object.is_used_up",
       "group": "flag",
       "label": "Is Used Up",
-      "order": 171,
+      "order": 188,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2117,7 +2340,7 @@
       "field_id": "object.is_vul_elemental",
       "group": "legacy",
       "label": "Is Vul Elemental",
-      "order": 172,
+      "order": 189,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2128,7 +2351,7 @@
       "field_id": "object.is_vul_magic",
       "group": "legacy",
       "label": "Is Vul Magic",
-      "order": 173,
+      "order": 190,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2139,7 +2362,7 @@
       "field_id": "object.is_vul_physical",
       "group": "legacy",
       "label": "Is Vul Physical",
-      "order": 174,
+      "order": 191,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2150,7 +2373,7 @@
       "field_id": "object.is_vul_sphere",
       "group": "legacy",
       "label": "Is Vul Sphere",
-      "order": 175,
+      "order": 192,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2161,7 +2384,7 @@
       "field_id": "object.is_wooded",
       "group": "legacy",
       "label": "Is Wooded",
-      "order": 176,
+      "order": 193,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2175,7 +2398,7 @@
       "field_id": "object.item_condition",
       "group": "general",
       "label": "Item Condition",
-      "order": 177,
+      "order": 194,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2189,7 +2412,7 @@
       "field_id": "object.item_level",
       "group": "general",
       "label": "Item Level",
-      "order": 178,
+      "order": 195,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2203,7 +2426,7 @@
       "field_id": "object.item_level_art",
       "group": "general",
       "label": "Item Level Art",
-      "order": 179,
+      "order": 196,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2217,7 +2440,7 @@
       "field_id": "object.item_power",
       "group": "general",
       "label": "Item Power",
-      "order": 180,
+      "order": 197,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2231,7 +2454,7 @@
       "field_id": "object.item_quality",
       "group": "general",
       "label": "Item Quality",
-      "order": 181,
+      "order": 198,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2245,7 +2468,7 @@
       "field_id": "object.item_race",
       "group": "general",
       "label": "Item Race",
-      "order": 182,
+      "order": 199,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2266,7 +2489,7 @@
       "field_id": "object.item_rarity",
       "group": "presentation",
       "label": "Item Rarity",
-      "order": 183,
+      "order": 200,
       "reference_domains": [],
       "status": "reserved",
       "widget": "select"
@@ -2280,7 +2503,7 @@
       "field_id": "object.item_skill",
       "group": "general",
       "label": "Item Skill",
-      "order": 184,
+      "order": 201,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2291,7 +2514,7 @@
       "field_id": "object.known_cursed",
       "group": "legacy",
       "label": "Known Cursed",
-      "order": 185,
+      "order": 202,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2302,7 +2525,7 @@
       "field_id": "object.known_magical",
       "group": "legacy",
       "label": "Known Magical",
-      "order": 186,
+      "order": 203,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2316,7 +2539,7 @@
       "field_id": "object.last_eat",
       "group": "general",
       "label": "Last Eat",
-      "order": 187,
+      "order": 204,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2330,7 +2553,7 @@
       "field_id": "object.last_grace",
       "group": "general",
       "label": "Last Grace",
-      "order": 188,
+      "order": 205,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2344,7 +2567,7 @@
       "field_id": "object.last_grace_add",
       "group": "general",
       "label": "Last Grace Add",
-      "order": 189,
+      "order": 206,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2358,7 +2581,7 @@
       "field_id": "object.last_heal",
       "group": "general",
       "label": "Last Heal",
-      "order": 190,
+      "order": 207,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2372,7 +2595,7 @@
       "field_id": "object.last_sp",
       "group": "general",
       "label": "Last Sp",
-      "order": 191,
+      "order": 208,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2386,7 +2609,7 @@
       "field_id": "object.layer",
       "group": "render",
       "label": "Layer",
-      "order": 192,
+      "order": 209,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2400,7 +2623,7 @@
       "field_id": "object.level",
       "group": "general",
       "label": "Level",
-      "order": 193,
+      "order": 210,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2411,7 +2634,7 @@
       "field_id": "object.lifesave",
       "group": "flag",
       "label": "Lifesave",
-      "order": 194,
+      "order": 211,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2426,7 +2649,7 @@
       "field_id": "object.light_color",
       "group": "render",
       "label": "Light Color",
-      "order": 195,
+      "order": 212,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -2437,7 +2660,7 @@
       "field_id": "object.luck",
       "group": "legacy",
       "label": "Luck",
-      "order": 196,
+      "order": 213,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2451,7 +2674,7 @@
       "field_id": "object.magic",
       "group": "general",
       "label": "Magic",
-      "order": 197,
+      "order": 214,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2462,7 +2685,7 @@
       "field_id": "object.make_ethereal",
       "group": "flag",
       "label": "Make Ethereal",
-      "order": 198,
+      "order": 215,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2473,7 +2696,7 @@
       "field_id": "object.make_invisible",
       "group": "flag",
       "label": "Make Invisible",
-      "order": 199,
+      "order": 216,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2484,7 +2707,7 @@
       "field_id": "object.match",
       "group": "general",
       "label": "Match",
-      "order": 200,
+      "order": 217,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -2498,7 +2721,7 @@
       "field_id": "object.material",
       "group": "general",
       "label": "Material",
-      "order": 201,
+      "order": 218,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2512,7 +2735,7 @@
       "field_id": "object.material_real",
       "group": "general",
       "label": "Material Real",
-      "order": 202,
+      "order": 219,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2526,7 +2749,7 @@
       "field_id": "object.maxhp",
       "group": "general",
       "label": "Maxhp",
-      "order": 203,
+      "order": 220,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2540,7 +2763,7 @@
       "field_id": "object.maxsp",
       "group": "general",
       "label": "Maxsp",
-      "order": 204,
+      "order": 221,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2551,7 +2774,7 @@
       "field_id": "object.monster",
       "group": "flag",
       "label": "Monster",
-      "order": 205,
+      "order": 222,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2565,7 +2788,7 @@
       "field_id": "object.move_state",
       "group": "general",
       "label": "Move State",
-      "order": 206,
+      "order": 223,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2579,7 +2802,7 @@
       "field_id": "object.movement_type",
       "group": "surface",
       "label": "Movement Type",
-      "order": 207,
+      "order": 224,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2593,7 +2816,7 @@
       "field_id": "object.mpart_id",
       "group": "placement",
       "label": "Mpart Id",
-      "order": 208,
+      "order": 225,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2607,7 +2830,7 @@
       "field_id": "object.mpart_nr",
       "group": "placement",
       "label": "Mpart Nr",
-      "order": 209,
+      "order": 226,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2618,7 +2841,7 @@
       "field_id": "object.name",
       "group": "general",
       "label": "Name",
-      "order": 210,
+      "order": 227,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -2629,7 +2852,7 @@
       "field_id": "object.name_pl",
       "group": "general",
       "label": "Name Pl",
-      "order": 211,
+      "order": 228,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -2640,7 +2863,7 @@
       "field_id": "object.no_attack",
       "group": "flag",
       "label": "No Attack",
-      "order": 212,
+      "order": 229,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2651,7 +2874,7 @@
       "field_id": "object.no_drop",
       "group": "flag",
       "label": "No Drop",
-      "order": 213,
+      "order": 230,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2662,7 +2885,7 @@
       "field_id": "object.no_fix_player",
       "group": "flag",
       "label": "No Fix Player",
-      "order": 214,
+      "order": 231,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2673,7 +2896,7 @@
       "field_id": "object.no_magic",
       "group": "flag",
       "label": "No Magic",
-      "order": 215,
+      "order": 232,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2684,7 +2907,7 @@
       "field_id": "object.no_pass",
       "group": "flag",
       "label": "No Pass",
-      "order": 216,
+      "order": 233,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2695,7 +2918,7 @@
       "field_id": "object.no_pick",
       "group": "flag",
       "label": "No Pick",
-      "order": 217,
+      "order": 234,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2706,7 +2929,7 @@
       "field_id": "object.no_pvp",
       "group": "flag",
       "label": "No Pvp",
-      "order": 218,
+      "order": 235,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2717,7 +2940,7 @@
       "field_id": "object.no_save",
       "group": "flag",
       "label": "No Save",
-      "order": 219,
+      "order": 236,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2728,7 +2951,7 @@
       "field_id": "object.no_skill_ident",
       "group": "flag",
       "label": "No Skill Ident",
-      "order": 220,
+      "order": 237,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2739,7 +2962,7 @@
       "field_id": "object.no_steal",
       "group": "legacy",
       "label": "No Steal",
-      "order": 221,
+      "order": 238,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -2750,7 +2973,7 @@
       "field_id": "object.no_teleport",
       "group": "flag",
       "label": "No Teleport",
-      "order": 222,
+      "order": 239,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2761,7 +2984,7 @@
       "field_id": "object.npc_id",
       "group": "reference",
       "label": "Npc Id",
-      "order": 223,
+      "order": 240,
       "reference_domains": [
         "npc"
       ],
@@ -2777,7 +3000,7 @@
       "field_id": "object.nrof",
       "group": "general",
       "label": "Nrof",
-      "order": 224,
+      "order": 241,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2791,7 +3014,7 @@
       "field_id": "object.object_int1",
       "group": "general",
       "label": "Object Int1",
-      "order": 225,
+      "order": 242,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2805,7 +3028,7 @@
       "field_id": "object.object_int2",
       "group": "general",
       "label": "Object Int2",
-      "order": 226,
+      "order": 243,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2819,7 +3042,7 @@
       "field_id": "object.object_int3",
       "group": "general",
       "label": "Object Int3",
-      "order": 227,
+      "order": 244,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2830,7 +3053,7 @@
       "field_id": "object.one_drop",
       "group": "flag",
       "label": "One Drop",
-      "order": 228,
+      "order": 245,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2841,7 +3064,7 @@
       "field_id": "object.one_hit",
       "group": "flag",
       "label": "One Hit",
-      "order": 229,
+      "order": 246,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2852,7 +3075,7 @@
       "field_id": "object.only_attack",
       "group": "flag",
       "label": "Only Attack",
-      "order": 230,
+      "order": 247,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2863,7 +3086,7 @@
       "field_id": "object.other_arch",
       "group": "reference",
       "label": "Other Arch",
-      "order": 231,
+      "order": 248,
       "reference_domains": [
         "archetype"
       ],
@@ -2876,7 +3099,7 @@
       "field_id": "object.outdoor",
       "group": "flag",
       "label": "Outdoor",
-      "order": 232,
+      "order": 249,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2887,7 +3110,7 @@
       "field_id": "object.pass_thru",
       "group": "flag",
       "label": "Pass Thru",
-      "order": 233,
+      "order": 250,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2901,7 +3124,7 @@
       "field_id": "object.path_attuned",
       "group": "general",
       "label": "Path Attuned",
-      "order": 234,
+      "order": 251,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2915,7 +3138,7 @@
       "field_id": "object.path_denied",
       "group": "general",
       "label": "Path Denied",
-      "order": 235,
+      "order": 252,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2929,7 +3152,7 @@
       "field_id": "object.path_repelled",
       "group": "general",
       "label": "Path Repelled",
-      "order": 236,
+      "order": 253,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2940,7 +3163,7 @@
       "field_id": "object.player_only",
       "group": "flag",
       "label": "Player Only",
-      "order": 237,
+      "order": 254,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -2954,7 +3177,7 @@
       "field_id": "object.pow",
       "group": "general",
       "label": "Pow",
-      "order": 238,
+      "order": 255,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2965,7 +3188,7 @@
       "field_id": "object.property_id",
       "group": "reference",
       "label": "Property Id",
-      "order": 239,
+      "order": 256,
       "reference_domains": [
         "property"
       ],
@@ -2981,7 +3204,7 @@
       "field_id": "object.protect_acid",
       "group": "protection",
       "label": "Protect Acid",
-      "order": 240,
+      "order": 257,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -2995,7 +3218,7 @@
       "field_id": "object.protect_blind",
       "group": "protection",
       "label": "Protect Blind",
-      "order": 241,
+      "order": 258,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3009,7 +3232,7 @@
       "field_id": "object.protect_body",
       "group": "protection",
       "label": "Protect Body",
-      "order": 242,
+      "order": 259,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3023,7 +3246,7 @@
       "field_id": "object.protect_chaos",
       "group": "protection",
       "label": "Protect Chaos",
-      "order": 243,
+      "order": 260,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3037,7 +3260,7 @@
       "field_id": "object.protect_cleave",
       "group": "protection",
       "label": "Protect Cleave",
-      "order": 244,
+      "order": 261,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3051,7 +3274,7 @@
       "field_id": "object.protect_cold",
       "group": "protection",
       "label": "Protect Cold",
-      "order": 245,
+      "order": 262,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3065,7 +3288,7 @@
       "field_id": "object.protect_confusion",
       "group": "protection",
       "label": "Protect Confusion",
-      "order": 246,
+      "order": 263,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3079,7 +3302,7 @@
       "field_id": "object.protect_corruption",
       "group": "protection",
       "label": "Protect Corruption",
-      "order": 247,
+      "order": 264,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3093,7 +3316,7 @@
       "field_id": "object.protect_death",
       "group": "protection",
       "label": "Protect Death",
-      "order": 248,
+      "order": 265,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3107,7 +3330,7 @@
       "field_id": "object.protect_drain",
       "group": "protection",
       "label": "Protect Drain",
-      "order": 249,
+      "order": 266,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3121,7 +3344,7 @@
       "field_id": "object.protect_electricity",
       "group": "protection",
       "label": "Protect Electricity",
-      "order": 250,
+      "order": 267,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3135,7 +3358,7 @@
       "field_id": "object.protect_fire",
       "group": "protection",
       "label": "Protect Fire",
-      "order": 251,
+      "order": 268,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3149,7 +3372,7 @@
       "field_id": "object.protect_force",
       "group": "protection",
       "label": "Protect Force",
-      "order": 252,
+      "order": 269,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3163,7 +3386,7 @@
       "field_id": "object.protect_godpower",
       "group": "protection",
       "label": "Protect Godpower",
-      "order": 253,
+      "order": 270,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3177,7 +3400,7 @@
       "field_id": "object.protect_impact",
       "group": "protection",
       "label": "Protect Impact",
-      "order": 254,
+      "order": 271,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3191,7 +3414,7 @@
       "field_id": "object.protect_internal",
       "group": "protection",
       "label": "Protect Internal",
-      "order": 255,
+      "order": 272,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3205,7 +3428,7 @@
       "field_id": "object.protect_lifesteal",
       "group": "protection",
       "label": "Protect Lifesteal",
-      "order": 256,
+      "order": 273,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3219,7 +3442,7 @@
       "field_id": "object.protect_magic",
       "group": "protection",
       "label": "Protect Magic",
-      "order": 257,
+      "order": 274,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3233,7 +3456,7 @@
       "field_id": "object.protect_paralyze",
       "group": "protection",
       "label": "Protect Paralyze",
-      "order": 258,
+      "order": 275,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3247,7 +3470,7 @@
       "field_id": "object.protect_pierce",
       "group": "protection",
       "label": "Protect Pierce",
-      "order": 259,
+      "order": 276,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3261,7 +3484,7 @@
       "field_id": "object.protect_poison",
       "group": "protection",
       "label": "Protect Poison",
-      "order": 260,
+      "order": 277,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3275,7 +3498,7 @@
       "field_id": "object.protect_psionic",
       "group": "protection",
       "label": "Protect Psionic",
-      "order": 261,
+      "order": 278,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3289,7 +3512,7 @@
       "field_id": "object.protect_slash",
       "group": "protection",
       "label": "Protect Slash",
-      "order": 262,
+      "order": 279,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3303,7 +3526,7 @@
       "field_id": "object.protect_slow",
       "group": "protection",
       "label": "Protect Slow",
-      "order": 263,
+      "order": 280,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3317,7 +3540,7 @@
       "field_id": "object.protect_spiritual",
       "group": "protection",
       "label": "Protect Spiritual",
-      "order": 264,
+      "order": 281,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3331,7 +3554,7 @@
       "field_id": "object.protect_weaponmagic",
       "group": "protection",
       "label": "Protect Weaponmagic",
-      "order": 265,
+      "order": 282,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3342,7 +3565,7 @@
       "field_id": "object.quest_item",
       "group": "flag",
       "label": "Quest Item",
-      "order": 266,
+      "order": 283,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3356,7 +3579,7 @@
       "field_id": "object.quickslot",
       "group": "general",
       "label": "Quickslot",
-      "order": 267,
+      "order": 284,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3367,7 +3590,7 @@
       "field_id": "object.race",
       "group": "general",
       "label": "Race",
-      "order": 268,
+      "order": 285,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -3378,7 +3601,7 @@
       "field_id": "object.random_move",
       "group": "flag",
       "label": "Random Move",
-      "order": 269,
+      "order": 286,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3389,7 +3612,7 @@
       "field_id": "object.randomitems",
       "group": "reference",
       "label": "Randomitems",
-      "order": 270,
+      "order": 287,
       "reference_domains": [
         "treasure"
       ],
@@ -3402,7 +3625,7 @@
       "field_id": "object.reflect_missile",
       "group": "flag",
       "label": "Reflect Missile",
-      "order": 271,
+      "order": 288,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3413,7 +3636,7 @@
       "field_id": "object.reflect_spell",
       "group": "flag",
       "label": "Reflect Spell",
-      "order": 272,
+      "order": 289,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3424,7 +3647,7 @@
       "field_id": "object.reflecting",
       "group": "flag",
       "label": "Reflecting",
-      "order": 273,
+      "order": 290,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3438,7 +3661,7 @@
       "field_id": "object.rotate",
       "group": "render",
       "label": "Rotate",
-      "order": 274,
+      "order": 291,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3452,7 +3675,7 @@
       "field_id": "object.run_away",
       "group": "general",
       "label": "Run Away",
-      "order": 275,
+      "order": 292,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3463,7 +3686,7 @@
       "field_id": "object.scared",
       "group": "flag",
       "label": "Scared",
-      "order": 276,
+      "order": 293,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3474,7 +3697,7 @@
       "field_id": "object.see_invisible",
       "group": "flag",
       "label": "See Invisible",
-      "order": 277,
+      "order": 294,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3485,7 +3708,7 @@
       "field_id": "object.skill_id",
       "group": "reference",
       "label": "Skill Id",
-      "order": 278,
+      "order": 295,
       "reference_domains": [
         "skill"
       ],
@@ -3493,12 +3716,25 @@
       "widget": "reference"
     },
     {
+      "constraints": {
+        "pattern": "^(open|covered)$"
+      },
+      "enum_values": [],
+      "field_id": "object.sky_state",
+      "group": "general",
+      "label": "Sky State",
+      "order": 296,
+      "reference_domains": [],
+      "status": "active",
+      "widget": "text"
+    },
+    {
       "constraints": {},
       "enum_values": [],
       "field_id": "object.slaying",
       "group": "general",
       "label": "Slaying",
-      "order": 279,
+      "order": 297,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -3509,7 +3745,7 @@
       "field_id": "object.sleep",
       "group": "flag",
       "label": "Sleep",
-      "order": 280,
+      "order": 298,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3520,7 +3756,7 @@
       "field_id": "object.slow_move",
       "group": "flag",
       "label": "Slow Move",
-      "order": 281,
+      "order": 299,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3531,7 +3767,7 @@
       "field_id": "object.soulbound",
       "group": "flag",
       "label": "Soulbound",
-      "order": 282,
+      "order": 300,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3545,7 +3781,7 @@
       "field_id": "object.sp",
       "group": "general",
       "label": "Sp",
-      "order": 283,
+      "order": 301,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3559,7 +3795,7 @@
       "field_id": "object.speed",
       "group": "general",
       "label": "Speed",
-      "order": 284,
+      "order": 302,
       "reference_domains": [],
       "status": "active",
       "widget": "number"
@@ -3573,7 +3809,7 @@
       "field_id": "object.speed_left",
       "group": "general",
       "label": "Speed Left",
-      "order": 285,
+      "order": 303,
       "reference_domains": [],
       "status": "active",
       "widget": "number"
@@ -3587,7 +3823,7 @@
       "field_id": "object.spell_encumbrance",
       "group": "combat",
       "label": "Spell Encumbrance",
-      "order": 286,
+      "order": 304,
       "reference_domains": [],
       "status": "reserved",
       "widget": "integer"
@@ -3598,7 +3834,7 @@
       "field_id": "object.spell_id",
       "group": "reference",
       "label": "Spell Id",
-      "order": 287,
+      "order": 305,
       "reference_domains": [
         "spell"
       ],
@@ -3611,7 +3847,7 @@
       "field_id": "object.splitting",
       "group": "flag",
       "label": "Splitting",
-      "order": 288,
+      "order": 306,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3622,7 +3858,7 @@
       "field_id": "object.stand_still",
       "group": "flag",
       "label": "Stand Still",
-      "order": 289,
+      "order": 307,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3633,7 +3869,7 @@
       "field_id": "object.startequip",
       "group": "flag",
       "label": "Startequip",
-      "order": 290,
+      "order": 308,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3647,7 +3883,7 @@
       "field_id": "object.state",
       "group": "general",
       "label": "State",
-      "order": 291,
+      "order": 309,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3658,7 +3894,7 @@
       "field_id": "object.stealth",
       "group": "flag",
       "label": "Stealth",
-      "order": 292,
+      "order": 310,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3672,7 +3908,7 @@
       "field_id": "object.str",
       "group": "general",
       "label": "Str",
-      "order": 293,
+      "order": 311,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3686,7 +3922,7 @@
       "field_id": "object.sub_layer",
       "group": "render",
       "label": "Sub Layer",
-      "order": 294,
+      "order": 312,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3700,7 +3936,7 @@
       "field_id": "object.sub_type",
       "group": "general",
       "label": "Sub Type",
-      "order": 295,
+      "order": 313,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3711,7 +3947,7 @@
       "field_id": "object.sys_object",
       "group": "flag",
       "label": "Sys Object",
-      "order": 296,
+      "order": 314,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3722,7 +3958,7 @@
       "field_id": "object.tear_down",
       "group": "legacy",
       "label": "Tear Down",
-      "order": 297,
+      "order": 315,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -3736,7 +3972,7 @@
       "field_id": "object.terrain_flag",
       "group": "surface",
       "label": "Terrain Flag",
-      "order": 298,
+      "order": 316,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3750,7 +3986,7 @@
       "field_id": "object.terrain_type",
       "group": "surface",
       "label": "Terrain Type",
-      "order": 299,
+      "order": 317,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3761,7 +3997,7 @@
       "field_id": "object.title",
       "group": "general",
       "label": "Title",
-      "order": 300,
+      "order": 318,
       "reference_domains": [],
       "status": "active",
       "widget": "text"
@@ -3772,7 +4008,7 @@
       "field_id": "object.treasure",
       "group": "legacy",
       "label": "Treasure",
-      "order": 301,
+      "order": 319,
       "reference_domains": [],
       "status": "legacy-ignored",
       "widget": "text"
@@ -3783,7 +4019,7 @@
       "field_id": "object.two_handed",
       "group": "flag",
       "label": "Two Handed",
-      "order": 302,
+      "order": 320,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3797,7 +4033,7 @@
       "field_id": "object.type",
       "group": "general",
       "label": "Type",
-      "order": 303,
+      "order": 321,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3808,7 +4044,7 @@
       "field_id": "object.unaggressive",
       "group": "flag",
       "label": "Unaggressive",
-      "order": 304,
+      "order": 322,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3819,7 +4055,7 @@
       "field_id": "object.undead",
       "group": "flag",
       "label": "Undead",
-      "order": 305,
+      "order": 323,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3830,7 +4066,7 @@
       "field_id": "object.unique",
       "group": "flag",
       "label": "Unique",
-      "order": 306,
+      "order": 324,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3841,7 +4077,7 @@
       "field_id": "object.unpaid",
       "group": "flag",
       "label": "Unpaid",
-      "order": 307,
+      "order": 325,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3852,7 +4088,7 @@
       "field_id": "object.use_fix_pos",
       "group": "flag",
       "label": "Use Fix Pos",
-      "order": 308,
+      "order": 326,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3866,7 +4102,7 @@
       "field_id": "object.value",
       "group": "general",
       "label": "Value",
-      "order": 309,
+      "order": 327,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3877,7 +4113,7 @@
       "field_id": "object.walk_off",
       "group": "flag",
       "label": "Walk Off",
-      "order": 310,
+      "order": 328,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3888,7 +4124,7 @@
       "field_id": "object.walk_on",
       "group": "flag",
       "label": "Walk On",
-      "order": 311,
+      "order": 329,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -3902,7 +4138,7 @@
       "field_id": "object.wc",
       "group": "general",
       "label": "Wc",
-      "order": 312,
+      "order": 330,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3916,7 +4152,7 @@
       "field_id": "object.wc_add",
       "group": "general",
       "label": "Wc Add",
-      "order": 313,
+      "order": 331,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3930,7 +4166,7 @@
       "field_id": "object.wc_range",
       "group": "general",
       "label": "Wc Range",
-      "order": 314,
+      "order": 332,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3944,7 +4180,7 @@
       "field_id": "object.wc_range_add",
       "group": "general",
       "label": "Wc Range Add",
-      "order": 315,
+      "order": 333,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3958,7 +4194,7 @@
       "field_id": "object.weapon_speed",
       "group": "general",
       "label": "Weapon Speed",
-      "order": 316,
+      "order": 334,
       "reference_domains": [],
       "status": "active",
       "widget": "number"
@@ -3972,7 +4208,7 @@
       "field_id": "object.weight",
       "group": "general",
       "label": "Weight",
-      "order": 317,
+      "order": 335,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3986,7 +4222,7 @@
       "field_id": "object.x",
       "group": "placement",
       "label": "X",
-      "order": 318,
+      "order": 336,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -3997,7 +4233,7 @@
       "field_id": "object.xrays",
       "group": "flag",
       "label": "Xrays",
-      "order": 319,
+      "order": 337,
       "reference_domains": [],
       "status": "active",
       "widget": "checkbox"
@@ -4011,7 +4247,7 @@
       "field_id": "object.y",
       "group": "placement",
       "label": "Y",
-      "order": 320,
+      "order": 338,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -4025,7 +4261,7 @@
       "field_id": "object.z",
       "group": "placement",
       "label": "Z",
-      "order": 321,
+      "order": 339,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -4039,7 +4275,7 @@
       "field_id": "object.zoom",
       "group": "render",
       "label": "Zoom",
-      "order": 322,
+      "order": 340,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -4053,7 +4289,7 @@
       "field_id": "object.zoom_x",
       "group": "render",
       "label": "Zoom X",
-      "order": 323,
+      "order": 341,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -4067,7 +4303,7 @@
       "field_id": "object.zoom_y",
       "group": "render",
       "label": "Zoom Y",
-      "order": 324,
+      "order": 342,
       "reference_domains": [],
       "status": "active",
       "widget": "integer"
@@ -4078,7 +4314,7 @@
       "field_id": "recipe.inputs",
       "group": "recipe",
       "label": "Inputs",
-      "order": 325,
+      "order": 343,
       "reference_domains": [
         "archetype",
         "artifact"
@@ -4092,7 +4328,7 @@
       "field_id": "recipe.outputs",
       "group": "recipe",
       "label": "Outputs",
-      "order": 326,
+      "order": 344,
       "reference_domains": [
         "archetype",
         "artifact",
@@ -4107,7 +4343,7 @@
       "field_id": "resource-node.yield_table",
       "group": "reward",
       "label": "Yield Table",
-      "order": 327,
+      "order": 345,
       "reference_domains": [
         "reward"
       ],
@@ -4123,7 +4359,7 @@
       "field_id": "specialization-node.cost",
       "group": "progression",
       "label": "Cost",
-      "order": 328,
+      "order": 346,
       "reference_domains": [],
       "status": "reserved",
       "widget": "integer"
@@ -4134,7 +4370,7 @@
       "field_id": "specialization-node.discipline_requirements",
       "group": "requirement",
       "label": "Discipline Requirements",
-      "order": 329,
+      "order": 347,
       "reference_domains": [
         "skill"
       ],
@@ -4147,7 +4383,7 @@
       "field_id": "specialization-node.effect_ids",
       "group": "progression",
       "label": "Effect Ids",
-      "order": 330,
+      "order": 348,
       "reference_domains": [
         "effect",
         "mastery",
@@ -4162,7 +4398,7 @@
       "field_id": "specialization-node.exclusion_tags",
       "group": "progression",
       "label": "Exclusion Tags",
-      "order": 331,
+      "order": 349,
       "reference_domains": [],
       "status": "reserved",
       "widget": "tag-list"
@@ -4173,7 +4409,7 @@
       "field_id": "specialization-node.layout",
       "group": "presentation",
       "label": "Layout",
-      "order": 332,
+      "order": 350,
       "reference_domains": [],
       "status": "reserved",
       "widget": "structured"
@@ -4184,7 +4420,7 @@
       "field_id": "specialization-node.prerequisites",
       "group": "progression",
       "label": "Prerequisites",
-      "order": 333,
+      "order": 351,
       "reference_domains": [
         "specialization-node"
       ],
@@ -4197,7 +4433,7 @@
       "field_id": "specialization-node.proficiency_tags",
       "group": "requirement",
       "label": "Proficiency Tags",
-      "order": 334,
+      "order": 352,
       "reference_domains": [],
       "status": "reserved",
       "widget": "tag-list"
@@ -4208,7 +4444,7 @@
       "field_id": "tool.action_ids",
       "group": "activity",
       "label": "Action Ids",
-      "order": 335,
+      "order": 353,
       "reference_domains": [
         "activity"
       ],
@@ -4221,7 +4457,7 @@
       "field_id": "tool.target_tags",
       "group": "activity",
       "label": "Target Tags",
-      "order": 336,
+      "order": 354,
       "reference_domains": [],
       "status": "reserved",
       "widget": "tag-list"
@@ -4232,7 +4468,7 @@
       "field_id": "treasure.item_rarity",
       "group": "reward",
       "label": "Item Rarity",
-      "order": 337,
+      "order": 355,
       "reference_domains": [
         "item-rarity"
       ],
@@ -4242,5 +4478,5 @@
   ],
   "schema_id": "atrinik-authored-content-editor-v1",
   "schema_version": 1,
-  "source_sha256": "21bdff6753dfdd1b007b3af60ce6a9919d290df83e34f4718bb4070f3df02fa4"
+  "source_sha256": "5e4d5c591a711aab13c08685c29ffcfa2725e349ddb783d034ff53330b70fc12"
 }

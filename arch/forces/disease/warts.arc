@@ -2,7 +2,7 @@ Object warts
 name warts
 type 158
 sys_object 1
-face force.101
+face warts.101
 attack_internal 100
 dam 1
 wc 1

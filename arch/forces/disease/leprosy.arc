@@ -2,7 +2,7 @@ Object leprosy
 name leprosy
 type 158
 sys_object 1
-face force.101
+face leprosy.101
 attack_internal 100
 other_arch leprous_skin
 wc 10

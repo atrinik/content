@@ -70,7 +70,7 @@ class Jail:
             force.PublishStatus(
                 "condition:jail",
                 "jail sentence",
-                "force.101",
+                "jail.101",
                 (
                     "You are serving an indefinite jail sentence."
                     if time == 0

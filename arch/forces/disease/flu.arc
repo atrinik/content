@@ -2,7 +2,7 @@ Object flu
 name flu
 type 158
 sys_object 1
-face force.101
+face flu.101
 attack_internal 100
 wc 20
 last_grace 1

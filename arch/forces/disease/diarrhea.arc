@@ -2,7 +2,7 @@ Object diarrhea
 name the runs
 type 158
 sys_object 1
-face force.101
+face diarrhea.101
 other_arch disgusting_puddle
 wc 0
 wc_range 20

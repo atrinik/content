@@ -20,6 +20,7 @@ from tools.archetype_plurals import (
 )
 from tools.m1_foundations import validate as validate_m1_foundations
 from tools.release_line_parity import load_and_validate as validate_release_line_parity
+from tools.validate_status_icons import validate as validate_status_icons
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -69,12 +70,20 @@ def main() -> int:
             "tools.tests.test_release_line_parity",
             "tools.tests.test_pr_metadata",
             "tools.tests.test_python_commands",
+            "tools.tests.test_status_icons",
         ],
         cwd=ROOT,
         check=True,
     )
     plural_report = audit_archetype_plurals(
         ROOT, load_manifest(ROOT / MANIFEST_PATH)
+    )
+    status_icon_report = validate_status_icons(ROOT)
+    print(
+        "Status icons: {} canonical imports and {} fixed statuses validated.".format(
+            status_icon_report["canonical"], status_icon_report["statuses"]
+        ),
+        flush=True,
     )
     print(
         "Archetype plurals: {} canonical definitions complete; {} multipart or "

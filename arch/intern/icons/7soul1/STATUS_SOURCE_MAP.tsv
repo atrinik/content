@@ -1,0 +1,24 @@
+status	output_face	imported_source_face	modification
+blindness	blindness.101	icon_7soul1_i_eye.101	crop/retouch injured eye with dark occlusion slash
+confusion	confusion.101	icon_7soul1_s_shadow02.101	center crop with shared neutral status keyline
+depletion	depletion.101	icon_7soul1_s_buff12.101	center crop with shared neutral status keyline
+soul depletion	soul_depletion.101	icon_7soul1_s_shadow16.101	center crop with shared neutral status keyline
+poisoning	poisoning.101	icon_7soul1_s_poison06.101	center crop with shared neutral status keyline
+slowness	slowness.101	icon_7soul1_a_shoes06.101	center crop with shared neutral status keyline
+strength self	icon_strength_self.101	icon_7soul1_s_buff01.101	center crop with helpful-status keyline
+protection from cold	icon_prot_cold.101	icon_7soul1_s_ice01.101	center crop with shared protective shield rim
+protection from fire	icon_prot_fire.101	icon_7soul1_s_fire03.101	center crop with shared protective shield rim
+protection from electricity	icon_prot_elec.101	icon_7soul1_s_thunder05.101	center crop with shared protective shield rim
+protection from poison	icon_prot_poison.101	icon_7soul1_s_poison03.101	center crop with shared protective shield rim
+word of recall	icon_word_of_recall.101	icon_7soul1_s_magic05.101	center crop with shared neutral status keyline
+athlete's foot	atheletes_foot.101	icon_7soul1_a_shoes02.101	center crop with harmful-status keyline
+the runs	diarrhea.101	icon_7soul1_s_poison05.101	center crop with harmful-status keyline
+cold	disease_cold.101	icon_7soul1_s_ice06.101	center crop with harmful-status keyline
+flu	flu.101	icon_7soul1_s_poison09.101	center crop with harmful-status keyline
+leprosy	leprosy.101	icon_7soul1_i_bone.101	center crop with harmful-status keyline
+pneumonic plague	pneumonic_plague.101	icon_7soul1_s_poison04.101	center crop with harmful-status keyline
+smallpox	smallpox.101	icon_7soul1_s_poison07.101	center crop with harmful-status keyline
+tapeworms	tapeworms.101	icon_7soul1_i_tentacle.101	center crop with harmful-status keyline
+warts	warts.101	icon_7soul1_s_poison01.101	center crop with harmful-status keyline
+paralysis	paralysis.101	icon_7soul1_s_ice08.101	center crop with harmful-status keyline
+jail sentence	jail.101	icon_7soul1_i_ironball.101	center crop with harmful-status keyline

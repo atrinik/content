@@ -2,7 +2,7 @@ Object pneumonic_plague
 name pneumonic plague
 type 158
 sys_object 1
-face force.101
+face pneumonic_plague.101
 attack_internal 100
 wc 20
 last_grace 1

@@ -2,7 +2,7 @@ Object spell_word_of_recall
 type 29
 name word of recall
 layer 3
-face info.101
+face icon_word_of_recall.101
 no_drop 1
 level 12
 value 0

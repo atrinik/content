@@ -864,7 +864,6 @@ x 6
 y 4
 end
 arch fwall_flagstone1a
-blocksview 0
 draw_double 0
 x 6
 y 4

@@ -33,7 +33,6 @@ end
 arch floor_volcano_4
 end
 arch wall_cave1.101
-blocksview 0
 end
 arch client_map_info
 msg
@@ -49,7 +48,6 @@ arch floor_volcano_2
 y 1
 end
 arch wall_cave1.131
-blocksview 0
 y 1
 end
 arch floor_volcano_1
@@ -62,7 +60,6 @@ arch floor_volcano_4
 y 2
 end
 arch wall_cave1.131
-blocksview 0
 y 2
 end
 arch floor_volcano_2
@@ -75,7 +72,6 @@ arch floor_volcano_1
 y 3
 end
 arch wall_cave1.131
-blocksview 0
 y 3
 end
 arch floor_volcano_2
@@ -88,7 +84,6 @@ arch floor_volcano_2
 y 4
 end
 arch wall_cave1.131
-blocksview 0
 y 4
 end
 arch floor_volcano_1
@@ -101,7 +96,6 @@ arch floor_volcano_2
 y 5
 end
 arch wall_cave1.131
-blocksview 0
 y 5
 end
 arch floor_volcano_1
@@ -114,7 +108,6 @@ arch floor_volcano_2
 y 6
 end
 arch wall_cave1.131
-blocksview 0
 y 6
 end
 arch floor_volcano_1
@@ -127,7 +120,6 @@ arch floor_volcano_4
 y 7
 end
 arch wall_cave1.131
-blocksview 0
 y 7
 end
 arch floor_volcano_1
@@ -140,7 +132,6 @@ arch floor_volcano_1
 y 8
 end
 arch wall_cave1.131
-blocksview 0
 y 8
 end
 arch floor_volcano_4
@@ -153,7 +144,6 @@ arch floor_volcano_1
 y 9
 end
 arch wall_cave1.131
-blocksview 0
 y 9
 end
 arch floor_volcano_4
@@ -166,7 +156,6 @@ arch floor_volcano_1
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 y 10
 end
 arch floor_volcano_2
@@ -179,7 +168,6 @@ arch floor_volcano_1
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 y 11
 end
 arch floor_volcano_4
@@ -192,7 +180,6 @@ arch floor_volcano_1
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 y 12
 end
 arch floor_volcano_2
@@ -205,7 +192,6 @@ arch floor_volcano_1
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 y 13
 end
 arch floor_volcano_2
@@ -218,7 +204,6 @@ arch floor_volcano_1
 y 14
 end
 arch wall_cave1.131
-blocksview 0
 y 14
 end
 arch floor_volcano_4
@@ -231,7 +216,6 @@ arch floor_volcano_1
 y 15
 end
 arch wall_cave1.131
-blocksview 0
 y 15
 end
 arch floor_volcano_2
@@ -244,7 +228,6 @@ arch floor_volcano_1
 y 16
 end
 arch wall_cave1.131
-blocksview 0
 y 16
 end
 arch floor_volcano_4
@@ -257,7 +240,6 @@ arch floor_volcano_2
 y 17
 end
 arch wall_cave1.131
-blocksview 0
 y 17
 end
 arch floor_volcano_2
@@ -270,7 +252,6 @@ arch floor_volcano_2
 y 18
 end
 arch wall_cave1.131
-blocksview 0
 y 18
 end
 arch floor_volcano_1
@@ -283,7 +264,6 @@ arch floor_volcano_2
 y 19
 end
 arch wall_cave1.131
-blocksview 0
 y 19
 end
 arch floor_volcano_4
@@ -296,7 +276,6 @@ arch floor_volcano_1
 y 20
 end
 arch wall_cave1.131
-blocksview 0
 y 20
 end
 arch floor_volcano_2
@@ -309,7 +288,6 @@ arch floor_volcano_4
 y 21
 end
 arch wall_cave1.131
-blocksview 0
 y 21
 end
 arch floor_volcano_2
@@ -322,7 +300,6 @@ arch floor_volcano_2
 y 22
 end
 arch wall_cave1.131
-blocksview 0
 y 22
 end
 arch floor_volcano_1
@@ -335,7 +312,6 @@ arch floor_volcano_1
 y 23
 end
 arch wall_cave1.161
-blocksview 0
 y 23
 end
 arch client_map_info
@@ -347,7 +323,6 @@ arch floor_volcano_4
 x 1
 end
 arch wall_cave1.151
-blocksview 0
 x 1
 end
 arch floor_volcano_1
@@ -483,7 +458,6 @@ x 1
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 1
 y 23
 end
@@ -491,7 +465,6 @@ arch floor_volcano_1
 x 2
 end
 arch wall_cave1.151
-blocksview 0
 x 2
 end
 arch floor_volcano_2
@@ -515,7 +488,6 @@ x 2
 y 2
 end
 arch wall_cave1.101
-blocksview 0
 x 2
 y 2
 end
@@ -525,7 +497,6 @@ x 2
 y 3
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 3
 end
@@ -542,7 +513,6 @@ x 2
 y 4
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 4
 end
@@ -559,7 +529,6 @@ x 2
 y 5
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 5
 end
@@ -576,7 +545,6 @@ x 2
 y 6
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 6
 end
@@ -593,7 +561,6 @@ x 2
 y 7
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 7
 end
@@ -610,7 +577,6 @@ x 2
 y 8
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 8
 end
@@ -627,7 +593,6 @@ x 2
 y 9
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 9
 end
@@ -644,7 +609,6 @@ x 2
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 10
 end
@@ -661,7 +625,6 @@ x 2
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 11
 end
@@ -678,7 +641,6 @@ x 2
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 12
 end
@@ -695,7 +657,6 @@ x 2
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 13
 end
@@ -712,7 +673,6 @@ x 2
 y 14
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 14
 end
@@ -729,7 +689,6 @@ x 2
 y 15
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 15
 end
@@ -746,7 +705,6 @@ x 2
 y 16
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 16
 end
@@ -763,7 +721,6 @@ x 2
 y 17
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 17
 end
@@ -780,7 +737,6 @@ x 2
 y 18
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 18
 end
@@ -797,7 +753,6 @@ x 2
 y 19
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 19
 end
@@ -814,7 +769,6 @@ x 2
 y 20
 end
 arch wall_cave1.131
-blocksview 0
 x 2
 y 20
 end
@@ -831,7 +785,6 @@ x 2
 y 21
 end
 arch wall_cave1.161
-blocksview 0
 x 2
 y 21
 end
@@ -845,7 +798,6 @@ x 2
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 2
 y 23
 end
@@ -853,7 +805,6 @@ arch floor_volcano_4
 x 3
 end
 arch wall_cave1.151
-blocksview 0
 x 3
 end
 arch floor_volcano_1
@@ -873,7 +824,6 @@ x 3
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 3
 y 2
 end
@@ -992,7 +942,6 @@ x 3
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 3
 y 21
 end
@@ -1006,7 +955,6 @@ x 3
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 3
 y 23
 end
@@ -1014,7 +962,6 @@ arch floor_volcano_4
 x 4
 end
 arch wall_cave1.151
-blocksview 0
 x 4
 end
 arch floor_volcano_1
@@ -1034,7 +981,6 @@ x 4
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 4
 y 2
 end
@@ -1056,7 +1002,6 @@ x 4
 y 4
 end
 arch wall_cave1.101
-blocksview 0
 x 4
 y 4
 end
@@ -1066,7 +1011,6 @@ x 4
 y 5
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 5
 end
@@ -1083,7 +1027,6 @@ x 4
 y 6
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 6
 end
@@ -1100,7 +1043,6 @@ x 4
 y 7
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 7
 end
@@ -1117,7 +1059,6 @@ x 4
 y 8
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 8
 end
@@ -1134,7 +1075,6 @@ x 4
 y 9
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 9
 end
@@ -1151,7 +1091,6 @@ x 4
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 10
 end
@@ -1168,7 +1107,6 @@ x 4
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 11
 end
@@ -1185,7 +1123,6 @@ x 4
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 12
 end
@@ -1202,7 +1139,6 @@ x 4
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 13
 end
@@ -1219,7 +1155,6 @@ x 4
 y 14
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 14
 end
@@ -1236,7 +1171,6 @@ x 4
 y 15
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 15
 end
@@ -1253,7 +1187,6 @@ x 4
 y 16
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 16
 end
@@ -1270,7 +1203,6 @@ x 4
 y 17
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 17
 end
@@ -1287,7 +1219,6 @@ x 4
 y 18
 end
 arch wall_cave1.131
-blocksview 0
 x 4
 y 18
 end
@@ -1304,7 +1235,6 @@ x 4
 y 19
 end
 arch wall_cave1.161
-blocksview 0
 x 4
 y 19
 end
@@ -1319,7 +1249,6 @@ x 4
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 4
 y 21
 end
@@ -1333,7 +1262,6 @@ x 4
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 4
 y 23
 end
@@ -1341,7 +1269,6 @@ arch floor_volcano_4
 x 5
 end
 arch wall_cave1.151
-blocksview 0
 x 5
 end
 arch floor_volcano_2
@@ -1361,7 +1288,6 @@ x 5
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 5
 y 2
 end
@@ -1383,7 +1309,6 @@ x 5
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 5
 y 4
 end
@@ -1479,14 +1404,12 @@ y 19
 end
 arch wall_cave1.111
 layer 2
-blocksview 0
 no_pass 0
 x 5
 y 19
 end
 arch wall_cave1.111
 face stairs_stone_up.151
-blocksview 0
 no_pass 0
 name stairs going up
 x 5
@@ -1503,7 +1426,6 @@ x 5
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 5
 y 21
 end
@@ -1517,7 +1439,6 @@ x 5
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 5
 y 23
 end
@@ -1525,7 +1446,6 @@ arch floor_volcano_4
 x 6
 end
 arch wall_cave1.151
-blocksview 0
 x 6
 end
 arch floor_volcano_2
@@ -1545,7 +1465,6 @@ x 6
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 6
 y 2
 end
@@ -1567,7 +1486,6 @@ x 6
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 6
 y 4
 end
@@ -1589,7 +1507,6 @@ x 6
 y 6
 end
 arch wall_cave1.101
-blocksview 0
 x 6
 y 6
 end
@@ -1599,7 +1516,6 @@ x 6
 y 7
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 7
 end
@@ -1609,7 +1525,6 @@ x 6
 y 8
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 8
 end
@@ -1619,7 +1534,6 @@ x 6
 y 9
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 9
 end
@@ -1629,7 +1543,6 @@ x 6
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 10
 end
@@ -1639,7 +1552,6 @@ x 6
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 11
 end
@@ -1649,7 +1561,6 @@ x 6
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 12
 end
@@ -1659,7 +1570,6 @@ x 6
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 13
 end
@@ -1669,7 +1579,6 @@ x 6
 y 14
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 14
 end
@@ -1679,7 +1588,6 @@ x 6
 y 15
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 15
 end
@@ -1689,7 +1597,6 @@ x 6
 y 16
 end
 arch wall_cave1.131
-blocksview 0
 x 6
 y 16
 end
@@ -1699,7 +1606,6 @@ x 6
 y 17
 end
 arch wall_cave1.161
-blocksview 0
 x 6
 y 17
 end
@@ -1714,7 +1620,6 @@ x 6
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 6
 y 19
 end
@@ -1729,7 +1634,6 @@ x 6
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 6
 y 21
 end
@@ -1747,7 +1651,6 @@ x 6
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 6
 y 23
 end
@@ -1755,7 +1658,6 @@ arch floor_volcano_4
 x 7
 end
 arch wall_cave1.151
-blocksview 0
 x 7
 end
 arch floor_volcano_2
@@ -1779,7 +1681,6 @@ x 7
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 7
 y 2
 end
@@ -1801,7 +1702,6 @@ x 7
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 7
 y 4
 end
@@ -1823,7 +1723,6 @@ x 7
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 7
 y 6
 end
@@ -1833,7 +1732,6 @@ x 7
 y 7
 end
 arch wall_cave1.181
-blocksview 0
 x 7
 y 7
 end
@@ -1843,7 +1741,6 @@ x 7
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 8
 end
@@ -1853,7 +1750,6 @@ x 7
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 9
 end
@@ -1863,7 +1759,6 @@ x 7
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 10
 end
@@ -1873,7 +1768,6 @@ x 7
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 11
 end
@@ -1883,7 +1777,6 @@ x 7
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 12
 end
@@ -1893,7 +1786,6 @@ x 7
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 13
 end
@@ -1903,7 +1795,6 @@ x 7
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 14
 end
@@ -1913,7 +1804,6 @@ x 7
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 7
 y 15
 end
@@ -1923,7 +1813,6 @@ x 7
 y 16
 end
 arch wall_cave1b.161
-blocksview 0
 x 7
 y 16
 end
@@ -1933,7 +1822,6 @@ x 7
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 7
 y 17
 end
@@ -1948,7 +1836,6 @@ x 7
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 7
 y 19
 end
@@ -1963,7 +1850,6 @@ x 7
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 7
 y 21
 end
@@ -1977,7 +1863,6 @@ x 7
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 7
 y 23
 end
@@ -1985,7 +1870,6 @@ arch floor_volcano_2
 x 8
 end
 arch wall_cave1.151
-blocksview 0
 x 8
 end
 arch floor_volcano_4
@@ -2005,7 +1889,6 @@ x 8
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 8
 y 2
 end
@@ -2027,7 +1910,6 @@ x 8
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 8
 y 4
 end
@@ -2049,7 +1931,6 @@ x 8
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 8
 y 6
 end
@@ -2059,7 +1940,6 @@ x 8
 y 7
 end
 arch wall_cave1.111
-blocksview 0
 x 8
 y 7
 end
@@ -2069,7 +1949,6 @@ x 8
 y 8
 end
 arch wall_cave1.181
-blocksview 0
 x 8
 y 8
 end
@@ -2079,7 +1958,6 @@ x 8
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 8
 y 9
 end
@@ -2089,7 +1967,6 @@ x 8
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 8
 y 10
 end
@@ -2099,7 +1976,6 @@ x 8
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 8
 y 11
 end
@@ -2109,7 +1985,6 @@ x 8
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 8
 y 12
 end
@@ -2119,7 +1994,6 @@ x 8
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 8
 y 13
 end
@@ -2129,7 +2003,6 @@ x 8
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 8
 y 14
 end
@@ -2139,7 +2012,6 @@ x 8
 y 15
 end
 arch wall_cave1b.161
-blocksview 0
 x 8
 y 15
 end
@@ -2149,7 +2021,6 @@ x 8
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 8
 y 16
 end
@@ -2159,7 +2030,6 @@ x 8
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 8
 y 17
 end
@@ -2174,7 +2044,6 @@ x 8
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 8
 y 19
 end
@@ -2189,7 +2058,6 @@ x 8
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 8
 y 21
 end
@@ -2203,7 +2071,6 @@ x 8
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 8
 y 23
 end
@@ -2211,7 +2078,6 @@ arch floor_volcano_2
 x 9
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 end
 arch floor_volcano_4
@@ -2231,7 +2097,6 @@ x 9
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 y 2
 end
@@ -2253,7 +2118,6 @@ x 9
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 y 4
 end
@@ -2275,7 +2139,6 @@ x 9
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 y 6
 end
@@ -2285,14 +2148,12 @@ x 9
 y 7
 end
 arch wall_cave1.111
-blocksview 0
 z -24
 layer 4
 x 9
 y 7
 end
 arch wall_cave1.111
-blocksview 0
 x 9
 y 7
 end
@@ -2302,13 +2163,11 @@ x 9
 y 8
 end
 arch wall_cave1.111
-blocksview 0
 layer 4
 x 9
 y 8
 end
 arch wall_cave1.141
-blocksview 0
 x 9
 y 8
 end
@@ -2318,7 +2177,6 @@ x 9
 y 9
 end
 arch wall_cave1.181
-blocksview 0
 x 9
 y 9
 end
@@ -2328,7 +2186,6 @@ x 9
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 9
 y 10
 end
@@ -2338,7 +2195,6 @@ x 9
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 9
 y 11
 end
@@ -2348,7 +2204,6 @@ x 9
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 9
 y 12
 end
@@ -2358,7 +2213,6 @@ x 9
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 9
 y 13
 end
@@ -2368,7 +2222,6 @@ x 9
 y 14
 end
 arch wall_cave1b.161
-blocksview 0
 x 9
 y 14
 end
@@ -2378,7 +2231,6 @@ x 9
 y 15
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 y 15
 end
@@ -2388,7 +2240,6 @@ x 9
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 9
 y 16
 end
@@ -2398,7 +2249,6 @@ x 9
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 9
 y 17
 end
@@ -2417,7 +2267,6 @@ x 9
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 9
 y 19
 end
@@ -2432,7 +2281,6 @@ x 9
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 9
 y 21
 end
@@ -2446,7 +2294,6 @@ x 9
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 9
 y 23
 end
@@ -2454,7 +2301,6 @@ arch floor_volcano_4
 x 10
 end
 arch wall_cave1.151
-blocksview 0
 x 10
 end
 arch floor_volcano_4
@@ -2474,7 +2320,6 @@ x 10
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 10
 y 2
 end
@@ -2500,7 +2345,6 @@ x 10
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 10
 y 4
 end
@@ -2522,7 +2366,6 @@ x 10
 y 6
 end
 arch wall_cave1.121
-blocksview 0
 x 10
 y 6
 end
@@ -2532,7 +2375,6 @@ x 10
 y 7
 end
 arch wall_cave1.141
-blocksview 0
 z -24
 layer 3
 x 10
@@ -2547,7 +2389,6 @@ x 10
 y 7
 end
 arch wall_cave1.141
-blocksview 0
 x 10
 y 7
 end
@@ -2590,7 +2431,6 @@ x 10
 y 9
 end
 arch wall_cave1.111
-blocksview 0
 x 10
 y 9
 end
@@ -2624,7 +2464,6 @@ x 10
 y 14
 end
 arch wall_cave1.151
-blocksview 0
 x 10
 y 14
 end
@@ -2634,7 +2473,6 @@ x 10
 y 15
 end
 arch wall_cave1.151
-blocksview 0
 x 10
 y 15
 end
@@ -2644,7 +2482,6 @@ x 10
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 10
 y 16
 end
@@ -2654,7 +2491,6 @@ x 10
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 10
 y 17
 end
@@ -2669,7 +2505,6 @@ x 10
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 10
 y 19
 end
@@ -2684,7 +2519,6 @@ x 10
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 10
 y 21
 end
@@ -2698,7 +2532,6 @@ x 10
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 10
 y 23
 end
@@ -2706,7 +2539,6 @@ arch floor_volcano_4
 x 11
 end
 arch wall_cave1.151
-blocksview 0
 x 11
 end
 arch floor_volcano_1
@@ -2726,7 +2558,6 @@ x 11
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 11
 y 2
 end
@@ -2748,7 +2579,6 @@ x 11
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 11
 y 4
 end
@@ -2785,7 +2615,6 @@ x 11
 y 9
 end
 arch wall_cave1.111
-blocksview 0
 x 11
 y 9
 end
@@ -2820,7 +2649,6 @@ x 11
 y 14
 end
 arch wall_cave1.151
-blocksview 0
 x 11
 y 14
 end
@@ -2830,7 +2658,6 @@ x 11
 y 15
 end
 arch wall_cave1.151
-blocksview 0
 x 11
 y 15
 end
@@ -2840,7 +2667,6 @@ x 11
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 11
 y 16
 end
@@ -2850,7 +2676,6 @@ x 11
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 11
 y 17
 end
@@ -2865,7 +2690,6 @@ x 11
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 11
 y 19
 end
@@ -2880,7 +2704,6 @@ x 11
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 11
 y 21
 end
@@ -2894,7 +2717,6 @@ x 11
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 11
 y 23
 end
@@ -2902,7 +2724,6 @@ arch floor_volcano_2
 x 12
 end
 arch wall_cave1.151
-blocksview 0
 x 12
 end
 arch floor_volcano_4
@@ -2922,7 +2743,6 @@ x 12
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 12
 y 2
 end
@@ -2944,7 +2764,6 @@ x 12
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 12
 y 4
 end
@@ -2966,7 +2785,6 @@ x 12
 y 6
 end
 arch wall_cave1.101
-blocksview 0
 x 12
 y 6
 end
@@ -2976,7 +2794,6 @@ x 12
 y 7
 end
 arch wall_cave1.161
-blocksview 0
 x 12
 y 7
 end
@@ -2986,7 +2803,6 @@ x 12
 y 8
 end
 arch wall_cave1.111
-blocksview 0
 x 12
 y 8
 end
@@ -2996,7 +2812,6 @@ x 12
 y 9
 end
 arch wall_cave1.111
-blocksview 0
 x 12
 y 9
 end
@@ -3026,7 +2841,6 @@ x 12
 y 14
 end
 arch wall_cave1.151
-blocksview 0
 x 12
 y 14
 end
@@ -3036,7 +2850,6 @@ x 12
 y 15
 end
 arch wall_cave1.151
-blocksview 0
 x 12
 y 15
 end
@@ -3046,7 +2859,6 @@ x 12
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 12
 y 16
 end
@@ -3056,7 +2868,6 @@ x 12
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 12
 y 17
 end
@@ -3071,7 +2882,6 @@ x 12
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 12
 y 19
 end
@@ -3086,7 +2896,6 @@ x 12
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 12
 y 21
 end
@@ -3100,7 +2909,6 @@ x 12
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 12
 y 23
 end
@@ -3108,7 +2916,6 @@ arch floor_volcano_2
 x 13
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 end
 arch floor_volcano_4
@@ -3128,7 +2935,6 @@ x 13
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 y 2
 end
@@ -3150,7 +2956,6 @@ x 13
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 y 4
 end
@@ -3172,7 +2977,6 @@ x 13
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 y 6
 end
@@ -3182,7 +2986,6 @@ x 13
 y 7
 end
 arch wall_cave1.111
-blocksview 0
 x 13
 y 7
 end
@@ -3192,7 +2995,6 @@ x 13
 y 8
 end
 arch wall_cave1.111
-blocksview 0
 x 13
 y 8
 end
@@ -3202,7 +3004,6 @@ x 13
 y 9
 end
 arch wall_cave1.111
-blocksview 0
 x 13
 y 9
 end
@@ -3237,7 +3038,6 @@ x 13
 y 14
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 y 14
 end
@@ -3247,7 +3047,6 @@ x 13
 y 15
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 y 15
 end
@@ -3257,7 +3056,6 @@ x 13
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 13
 y 16
 end
@@ -3267,7 +3065,6 @@ x 13
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 13
 y 17
 end
@@ -3282,7 +3079,6 @@ x 13
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 13
 y 19
 end
@@ -3297,7 +3093,6 @@ x 13
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 13
 y 21
 end
@@ -3312,14 +3107,12 @@ y 23
 end
 arch wall_cave1.111
 layer 2
-blocksview 0
 no_pass 0
 x 13
 y 23
 end
 arch wall_cave1.111
 face stairs_stone_up.151
-blocksview 0
 no_pass 0
 name stairs going up
 x 13
@@ -3329,7 +3122,6 @@ arch floor_volcano_2
 x 14
 end
 arch wall_cave1.151
-blocksview 0
 x 14
 end
 arch floor_volcano_2
@@ -3349,7 +3141,6 @@ x 14
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 14
 y 2
 end
@@ -3371,7 +3162,6 @@ x 14
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 14
 y 4
 end
@@ -3393,7 +3183,6 @@ x 14
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 14
 y 6
 end
@@ -3403,7 +3192,6 @@ x 14
 y 7
 end
 arch wall_cave1.111
-blocksview 0
 x 14
 y 7
 end
@@ -3413,7 +3201,6 @@ x 14
 y 8
 end
 arch wall_cave1.111
-blocksview 0
 x 14
 y 8
 end
@@ -3423,7 +3210,6 @@ x 14
 y 9
 end
 arch wall_cave1b.121
-blocksview 0
 x 14
 y 9
 end
@@ -3433,7 +3219,6 @@ x 14
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 x 14
 y 10
 end
@@ -3443,7 +3228,6 @@ x 14
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 x 14
 y 11
 end
@@ -3453,7 +3237,6 @@ x 14
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 x 14
 y 12
 end
@@ -3463,7 +3246,6 @@ x 14
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 x 14
 y 13
 end
@@ -3473,7 +3255,6 @@ x 14
 y 14
 end
 arch wall_cave1b.141
-blocksview 0
 x 14
 y 14
 end
@@ -3483,7 +3264,6 @@ x 14
 y 15
 end
 arch wall_cave1.151
-blocksview 0
 x 14
 y 15
 end
@@ -3493,7 +3273,6 @@ x 14
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 14
 y 16
 end
@@ -3503,7 +3282,6 @@ x 14
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 14
 y 17
 end
@@ -3518,7 +3296,6 @@ x 14
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 14
 y 19
 end
@@ -3533,7 +3310,6 @@ x 14
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 14
 y 21
 end
@@ -3547,7 +3323,6 @@ x 14
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 14
 y 23
 end
@@ -3555,7 +3330,6 @@ arch floor_volcano_1
 x 15
 end
 arch wall_cave1.151
-blocksview 0
 x 15
 end
 arch floor_volcano_2
@@ -3575,7 +3349,6 @@ x 15
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 15
 y 2
 end
@@ -3597,7 +3370,6 @@ x 15
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 15
 y 4
 end
@@ -3623,7 +3395,6 @@ x 15
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 15
 y 6
 end
@@ -3633,7 +3404,6 @@ x 15
 y 7
 end
 arch wall_cave1.111
-blocksview 0
 x 15
 y 7
 end
@@ -3643,7 +3413,6 @@ x 15
 y 8
 end
 arch wall_cave1b.121
-blocksview 0
 x 15
 y 8
 end
@@ -3653,7 +3422,6 @@ x 15
 y 9
 end
 arch wall_cave1.131
-blocksview 0
 x 15
 y 9
 end
@@ -3663,7 +3431,6 @@ x 15
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 x 15
 y 10
 end
@@ -3673,7 +3440,6 @@ x 15
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 x 15
 y 11
 end
@@ -3683,7 +3449,6 @@ x 15
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 x 15
 y 12
 end
@@ -3693,7 +3458,6 @@ x 15
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 x 15
 y 13
 end
@@ -3703,7 +3467,6 @@ x 15
 y 14
 end
 arch wall_cave1.131
-blocksview 0
 x 15
 y 14
 end
@@ -3713,7 +3476,6 @@ x 15
 y 15
 end
 arch wall_cave1b.141
-blocksview 0
 x 15
 y 15
 end
@@ -3723,7 +3485,6 @@ x 15
 y 16
 end
 arch wall_cave1.151
-blocksview 0
 x 15
 y 16
 end
@@ -3733,7 +3494,6 @@ x 15
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 15
 y 17
 end
@@ -3748,7 +3508,6 @@ x 15
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 15
 y 19
 end
@@ -3767,7 +3526,6 @@ x 15
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 15
 y 21
 end
@@ -3781,7 +3539,6 @@ x 15
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 15
 y 23
 end
@@ -3789,7 +3546,6 @@ arch floor_volcano_4
 x 16
 end
 arch wall_cave1.151
-blocksview 0
 x 16
 end
 arch floor_volcano_1
@@ -3809,7 +3565,6 @@ x 16
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 16
 y 2
 end
@@ -3831,7 +3586,6 @@ x 16
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 16
 y 4
 end
@@ -3853,7 +3607,6 @@ x 16
 y 6
 end
 arch wall_cave1.151
-blocksview 0
 x 16
 y 6
 end
@@ -3863,7 +3616,6 @@ x 16
 y 7
 end
 arch wall_cave1b.121
-blocksview 0
 x 16
 y 7
 end
@@ -3873,7 +3625,6 @@ x 16
 y 8
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 8
 end
@@ -3883,7 +3634,6 @@ x 16
 y 9
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 9
 end
@@ -3893,7 +3643,6 @@ x 16
 y 10
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 10
 end
@@ -3903,7 +3652,6 @@ x 16
 y 11
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 11
 end
@@ -3913,7 +3661,6 @@ x 16
 y 12
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 12
 end
@@ -3923,7 +3670,6 @@ x 16
 y 13
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 13
 end
@@ -3933,7 +3679,6 @@ x 16
 y 14
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 14
 end
@@ -3943,7 +3688,6 @@ x 16
 y 15
 end
 arch wall_cave1.131
-blocksview 0
 x 16
 y 15
 end
@@ -3953,7 +3697,6 @@ x 16
 y 16
 end
 arch wall_cave1b.141
-blocksview 0
 x 16
 y 16
 end
@@ -3963,7 +3706,6 @@ x 16
 y 17
 end
 arch wall_cave1.111
-blocksview 0
 x 16
 y 17
 end
@@ -3978,7 +3720,6 @@ x 16
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 16
 y 19
 end
@@ -3993,7 +3734,6 @@ x 16
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 16
 y 21
 end
@@ -4007,7 +3747,6 @@ x 16
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 16
 y 23
 end
@@ -4015,7 +3754,6 @@ arch floor_volcano_4
 x 17
 end
 arch wall_cave1.151
-blocksview 0
 x 17
 end
 arch floor_volcano_4
@@ -4039,7 +3777,6 @@ x 17
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 17
 y 2
 end
@@ -4061,7 +3798,6 @@ x 17
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 17
 y 4
 end
@@ -4083,7 +3819,6 @@ x 17
 y 6
 end
 arch wall_cave1.121
-blocksview 0
 x 17
 y 6
 end
@@ -4093,7 +3828,6 @@ x 17
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 7
 end
@@ -4103,7 +3837,6 @@ x 17
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 8
 end
@@ -4113,7 +3846,6 @@ x 17
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 9
 end
@@ -4123,7 +3855,6 @@ x 17
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 10
 end
@@ -4133,7 +3864,6 @@ x 17
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 11
 end
@@ -4143,7 +3873,6 @@ x 17
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 12
 end
@@ -4153,7 +3882,6 @@ x 17
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 13
 end
@@ -4163,7 +3891,6 @@ x 17
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 14
 end
@@ -4173,7 +3900,6 @@ x 17
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 15
 end
@@ -4183,7 +3909,6 @@ x 17
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 17
 y 16
 end
@@ -4193,7 +3918,6 @@ x 17
 y 17
 end
 arch wall_cave1.141
-blocksview 0
 x 17
 y 17
 end
@@ -4208,7 +3932,6 @@ x 17
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 17
 y 19
 end
@@ -4223,7 +3946,6 @@ x 17
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 17
 y 21
 end
@@ -4237,7 +3959,6 @@ x 17
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 17
 y 23
 end
@@ -4245,7 +3966,6 @@ arch floor_volcano_2
 x 18
 end
 arch wall_cave1.151
-blocksview 0
 x 18
 end
 arch floor_volcano_2
@@ -4265,7 +3985,6 @@ x 18
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 18
 y 2
 end
@@ -4287,7 +4006,6 @@ x 18
 y 4
 end
 arch wall_cave1.151
-blocksview 0
 x 18
 y 4
 end
@@ -4378,7 +4096,6 @@ x 18
 y 19
 end
 arch wall_cave1.111
-blocksview 0
 x 18
 y 19
 end
@@ -4394,14 +4111,12 @@ y 21
 end
 arch wall_cave1.111
 layer 2
-blocksview 0
 no_pass 0
 x 18
 y 21
 end
 arch wall_cave1.111
 face stairs_stone_up.151
-blocksview 0
 no_pass 0
 name stairs going up
 x 18
@@ -4417,7 +4132,6 @@ x 18
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 18
 y 23
 end
@@ -4425,7 +4139,6 @@ arch floor_volcano_2
 x 19
 end
 arch wall_cave1.151
-blocksview 0
 x 19
 end
 arch floor_volcano_2
@@ -4449,7 +4162,6 @@ x 19
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 19
 y 2
 end
@@ -4471,7 +4183,6 @@ x 19
 y 4
 end
 arch wall_cave1.121
-blocksview 0
 x 19
 y 4
 end
@@ -4481,7 +4192,6 @@ x 19
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 5
 end
@@ -4491,7 +4201,6 @@ x 19
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 6
 end
@@ -4501,7 +4210,6 @@ x 19
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 7
 end
@@ -4511,7 +4219,6 @@ x 19
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 8
 end
@@ -4521,7 +4228,6 @@ x 19
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 9
 end
@@ -4532,14 +4238,12 @@ y 10
 end
 arch wall_cave1.171
 layer 2
-blocksview 0
 no_pass 0
 x 19
 y 10
 end
 arch wall_cave1.171
 face stairs_stone_up.131
-blocksview 0
 no_pass 0
 name stairs going up
 x 19
@@ -4551,7 +4255,6 @@ x 19
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 11
 end
@@ -4561,7 +4264,6 @@ x 19
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 12
 end
@@ -4571,7 +4273,6 @@ x 19
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 13
 end
@@ -4581,7 +4282,6 @@ x 19
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 14
 end
@@ -4591,7 +4291,6 @@ x 19
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 15
 end
@@ -4601,7 +4300,6 @@ x 19
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 16
 end
@@ -4611,7 +4309,6 @@ x 19
 y 17
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 17
 end
@@ -4621,7 +4318,6 @@ x 19
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 19
 y 18
 end
@@ -4631,7 +4327,6 @@ x 19
 y 19
 end
 arch wall_cave1.141
-blocksview 0
 x 19
 y 19
 end
@@ -4646,7 +4341,6 @@ x 19
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 19
 y 21
 end
@@ -4660,7 +4354,6 @@ x 19
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 19
 y 23
 end
@@ -4668,7 +4361,6 @@ arch floor_volcano_1
 x 20
 end
 arch wall_cave1.151
-blocksview 0
 x 20
 end
 arch floor_volcano_4
@@ -4688,7 +4380,6 @@ x 20
 y 2
 end
 arch wall_cave1.151
-blocksview 0
 x 20
 y 2
 end
@@ -4803,7 +4494,6 @@ x 20
 y 21
 end
 arch wall_cave1.111
-blocksview 0
 x 20
 y 21
 end
@@ -4821,7 +4511,6 @@ x 20
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 20
 y 23
 end
@@ -4829,7 +4518,6 @@ arch floor_volcano_4
 x 21
 end
 arch wall_cave1.151
-blocksview 0
 x 21
 end
 arch floor_volcano_1
@@ -4849,7 +4537,6 @@ x 21
 y 2
 end
 arch wall_cave1.121
-blocksview 0
 x 21
 y 2
 end
@@ -4859,7 +4546,6 @@ x 21
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 3
 end
@@ -4869,7 +4555,6 @@ x 21
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 4
 end
@@ -4879,7 +4564,6 @@ x 21
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 5
 end
@@ -4889,7 +4573,6 @@ x 21
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 6
 end
@@ -4899,7 +4582,6 @@ x 21
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 7
 end
@@ -4910,14 +4592,12 @@ y 8
 end
 arch wall_cave1.171
 layer 2
-blocksview 0
 no_pass 0
 x 21
 y 8
 end
 arch wall_cave1.171
 face stairs_stone_up.131
-blocksview 0
 no_pass 0
 name stairs going up
 x 21
@@ -4929,7 +4609,6 @@ x 21
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 9
 end
@@ -4939,7 +4618,6 @@ x 21
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 10
 end
@@ -4949,7 +4627,6 @@ x 21
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 11
 end
@@ -4961,12 +4638,10 @@ end
 arch wall_cave1.181
 layer 4
 z -24
-blocksview 0
 x 21
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 12
 end
@@ -4978,12 +4653,10 @@ end
 arch wall_cave1.171
 layer 4
 z -24
-blocksview 0
 x 21
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 13
 end
@@ -4995,12 +4668,10 @@ end
 arch wall_cave1b.161
 layer 4
 z -24
-blocksview 0
 x 21
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 14
 end
@@ -5010,7 +4681,6 @@ x 21
 y 15
 end
 arch wall_cave1b.161
-blocksview 0
 x 21
 y 15
 end
@@ -5020,7 +4690,6 @@ x 21
 y 16
 end
 arch wall_cave1.181
-blocksview 0
 x 21
 y 16
 end
@@ -5031,14 +4700,12 @@ y 17
 end
 arch wall_cave1.171
 layer 2
-blocksview 0
 no_pass 0
 x 21
 y 17
 end
 arch wall_cave1.171
 face stairs_stone_up.131
-blocksview 0
 no_pass 0
 name stairs going up
 x 21
@@ -5050,7 +4717,6 @@ x 21
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 18
 end
@@ -5060,7 +4726,6 @@ x 21
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 19
 end
@@ -5070,7 +4735,6 @@ x 21
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 20
 end
@@ -5080,7 +4744,6 @@ x 21
 y 21
 end
 arch wall_cave1.141
-blocksview 0
 x 21
 y 21
 end
@@ -5094,7 +4757,6 @@ x 21
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 21
 y 23
 end
@@ -5102,7 +4764,6 @@ arch floor_volcano_2
 x 22
 end
 arch wall_cave1.151
-blocksview 0
 x 22
 end
 arch floor_volcano_1
@@ -5175,7 +4836,6 @@ x 22
 y 12
 end
 arch wall_cave1.111
-blocksview 0
 x 22
 y 12
 end
@@ -5193,7 +4853,6 @@ x 22
 y 14
 end
 arch wall_cave1.151
-blocksview 0
 x 22
 y 14
 end
@@ -5203,7 +4862,6 @@ x 22
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 22
 y 15
 end
@@ -5213,7 +4871,6 @@ x 22
 y 16
 end
 arch wall_cave1.141
-blocksview 0
 layer 4
 x 22
 y 16
@@ -5253,7 +4910,6 @@ x 22
 y 23
 end
 arch wall_cave1.111
-blocksview 0
 x 22
 y 23
 end
@@ -5261,7 +4917,6 @@ arch floor_volcano_1
 x 23
 end
 arch wall_cave1.121
-blocksview 0
 x 23
 end
 arch client_map_info
@@ -5274,7 +4929,6 @@ x 23
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 1
 end
@@ -5283,7 +4937,6 @@ x 23
 y 2
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 2
 end
@@ -5292,7 +4945,6 @@ x 23
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 3
 end
@@ -5301,7 +4953,6 @@ x 23
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 4
 end
@@ -5310,7 +4961,6 @@ x 23
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 5
 end
@@ -5320,14 +4970,12 @@ y 6
 end
 arch wall_cave1.171
 layer 2
-blocksview 0
 no_pass 0
 x 23
 y 6
 end
 arch wall_cave1.171
 face stairs_stone_up.131
-blocksview 0
 no_pass 0
 name stairs going up
 x 23
@@ -5338,7 +4986,6 @@ x 23
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 7
 end
@@ -5347,7 +4994,6 @@ x 23
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 8
 end
@@ -5356,7 +5002,6 @@ x 23
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 9
 end
@@ -5365,7 +5010,6 @@ x 23
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 10
 end
@@ -5374,7 +5018,6 @@ x 23
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 11
 end
@@ -5383,7 +5026,6 @@ x 23
 y 12
 end
 arch wall_cave1.141
-blocksview 0
 x 23
 y 12
 end
@@ -5400,7 +5042,6 @@ x 23
 y 14
 end
 arch wall_cave1.121
-blocksview 0
 x 23
 y 14
 end
@@ -5409,7 +5050,6 @@ x 23
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 15
 end
@@ -5418,7 +5058,6 @@ x 23
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 16
 end
@@ -5427,7 +5066,6 @@ x 23
 y 17
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 17
 end
@@ -5436,7 +5074,6 @@ x 23
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 18
 end
@@ -5445,7 +5082,6 @@ x 23
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 19
 end
@@ -5454,7 +5090,6 @@ x 23
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 20
 end
@@ -5464,14 +5099,12 @@ y 21
 end
 arch wall_cave1.171
 layer 2
-blocksview 0
 no_pass 0
 x 23
 y 21
 end
 arch wall_cave1.171
 face stairs_stone_up.131
-blocksview 0
 no_pass 0
 name stairs going up
 x 23
@@ -5482,7 +5115,6 @@ x 23
 y 22
 end
 arch wall_cave1.171
-blocksview 0
 x 23
 y 22
 end
@@ -5491,7 +5123,6 @@ x 23
 y 23
 end
 arch wall_cave1.141
-blocksview 0
 x 23
 y 23
 end

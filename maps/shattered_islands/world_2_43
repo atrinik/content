@@ -2227,7 +2227,6 @@ x 21
 y 19
 end
 arch wall_fortified_high.181
-blocksview 0
 x 21
 y 19
 end
@@ -2240,7 +2239,6 @@ x 21
 y 20
 end
 arch wall_fortified_high.111
-blocksview 0
 x 21
 y 20
 end
@@ -2249,7 +2247,6 @@ x 21
 y 21
 end
 arch wall_fortified_high.111
-blocksview 0
 x 21
 y 21
 end
@@ -2258,7 +2255,6 @@ x 21
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 x 21
 y 22
 end
@@ -2267,7 +2263,6 @@ x 21
 y 23
 end
 arch wall_fortified_high.111
-blocksview 0
 x 21
 y 23
 end
@@ -2423,7 +2418,6 @@ x 22
 y 19
 end
 arch wall_fortified_high.131
-blocksview 0
 x 22
 y 19
 end
@@ -2623,7 +2617,6 @@ x 23
 y 19
 end
 arch wall_fortified_high.131
-blocksview 0
 x 23
 y 19
 end

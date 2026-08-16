@@ -486,7 +486,6 @@ You need Asteria Dungeon Key 1
 endmsg
 slaying asteria_dungeon_key1
 direction 3
-blocksview 1
 x 20
 y 9
 celestial_transmission_closed opaque
@@ -800,7 +799,6 @@ You need Asteria Dungeon Key 1
 endmsg
 slaying asteria_dungeon_key1
 direction 3
-blocksview 1
 x 22
 y 9
 celestial_transmission_closed opaque

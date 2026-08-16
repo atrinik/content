@@ -2398,7 +2398,6 @@ y 2
 end
 arch rock2
 layer 2
-blocksview 1
 x 14
 y 2
 end
@@ -2965,7 +2964,6 @@ x 17
 y 8
 end
 arch floor_sblack3b
-blocksview 1
 x 17
 y 9
 end
@@ -3263,7 +3261,6 @@ y 2
 end
 arch rock2
 layer 2
-blocksview 1
 x 19
 y 2
 end

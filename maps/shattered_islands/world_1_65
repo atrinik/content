@@ -1190,7 +1190,6 @@ x 9
 y 12
 end
 arch wall_ruin_c1a
-blocksview 0
 x 9
 y 12
 end
@@ -1582,7 +1581,6 @@ x 12
 y 14
 end
 arch wall_ruin_c3a
-blocksview 0
 x 12
 y 14
 end
@@ -1705,7 +1703,6 @@ x 13
 y 14
 end
 arch wall_ruin1a_141
-blocksview 0
 x 13
 y 14
 end

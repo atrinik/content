@@ -67,13 +67,11 @@ arch floor_marble1
 y 15
 end
 arch wall_marble1.131
-blocksview 0
 draw_double_always 1
 layer 4
 y 15
 end
 arch wall_marble1.131
-blocksview 0
 draw_double 0
 z 44
 y 15
@@ -87,7 +85,6 @@ y 16
 end
 arch fwall_marble2b
 layer 3
-blocksview 0
 draw_double 0
 y 16
 end
@@ -174,14 +171,12 @@ x 1
 y 15
 end
 arch wall_marble1.131
-blocksview 0
 draw_double_always 1
 layer 4
 x 1
 y 15
 end
 arch wall_marble1.131
-blocksview 0
 draw_double 0
 z 44
 x 1
@@ -198,7 +193,6 @@ y 16
 end
 arch fwall_marble2c
 layer 3
-blocksview 0
 draw_double 0
 x 1
 y 16

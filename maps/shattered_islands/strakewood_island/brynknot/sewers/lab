@@ -1865,7 +1865,6 @@ x 10
 y 10
 end
 arch wall_black1_d1.111
-blocksview 0
 no_pass 0
 x 10
 y 10

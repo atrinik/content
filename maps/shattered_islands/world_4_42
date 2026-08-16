@@ -103,7 +103,6 @@ z 46
 y 11
 end
 arch wall_fortified_high.131
-blocksview 0
 z -46
 y 11
 end
@@ -133,7 +132,6 @@ y 15
 end
 arch wall_fortified_high.181
 sub_layer 2
-blocksview 0
 y 15
 end
 arch floor_fs_grey1b
@@ -285,7 +283,6 @@ x 1
 y 11
 end
 arch wall_fortified_high.131
-blocksview 0
 z -50
 x 1
 y 11
@@ -486,7 +483,6 @@ x 2
 y 11
 end
 arch wall_fortified_high.131
-blocksview 0
 z -50
 x 2
 y 11

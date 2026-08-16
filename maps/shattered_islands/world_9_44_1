@@ -1551,7 +1551,6 @@ x 10
 y 5
 end
 arch wall_stone_3
-blocksview 0
 draw_double 0
 x 10
 y 5

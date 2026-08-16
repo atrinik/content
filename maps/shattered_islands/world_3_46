@@ -1530,7 +1530,6 @@ x 13
 y 13
 end
 arch wall_fortified_high.181
-blocksview 0
 x 13
 y 13
 end
@@ -1543,7 +1542,6 @@ x 13
 y 14
 end
 arch wall_fortified_high.111
-blocksview 0
 x 13
 y 14
 end
@@ -1556,7 +1554,6 @@ x 13
 y 15
 end
 arch wall_fortified_high.111
-blocksview 0
 x 13
 y 15
 end
@@ -1569,7 +1566,6 @@ x 13
 y 16
 end
 arch wall_fortified_high.111
-blocksview 0
 x 13
 y 16
 end
@@ -1582,7 +1578,6 @@ x 13
 y 17
 end
 arch wall_fortified_high.111
-blocksview 0
 x 13
 y 17
 end
@@ -1630,7 +1625,6 @@ arch grassd_3
 x 14
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 end
 arch wall_stone4_3
@@ -1650,7 +1644,6 @@ x 14
 y 1
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 1
 end
@@ -1665,7 +1658,6 @@ x 14
 y 2
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 2
 end
@@ -1680,7 +1672,6 @@ x 14
 y 3
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 3
 end
@@ -1695,7 +1686,6 @@ x 14
 y 4
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 4
 end
@@ -1710,7 +1700,6 @@ x 14
 y 5
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 5
 end
@@ -1725,7 +1714,6 @@ x 14
 y 6
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 6
 end
@@ -1740,7 +1728,6 @@ x 14
 y 7
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 7
 end
@@ -1755,7 +1742,6 @@ x 14
 y 8
 end
 arch wall_fortified_high.111
-blocksview 0
 x 14
 y 8
 end
@@ -1789,7 +1775,6 @@ x 14
 y 13
 end
 arch wall_fortified_high.131
-blocksview 0
 x 14
 y 13
 end
@@ -1833,7 +1818,6 @@ x 14
 y 17
 end
 arch wall_fortified_high.131
-blocksview 0
 x 14
 y 17
 end
@@ -1984,7 +1968,6 @@ x 15
 y 8
 end
 arch wall_fortified_high.131
-blocksview 0
 layer 3
 x 15
 y 8
@@ -2026,7 +2009,6 @@ x 15
 y 13
 end
 arch wall_fortified_high.131
-blocksview 0
 x 15
 y 13
 end
@@ -2055,7 +2037,6 @@ x 15
 y 17
 end
 arch wall_fortified_high.131
-blocksview 0
 x 15
 y 17
 end
@@ -2191,7 +2172,6 @@ x 16
 y 8
 end
 arch wall_fortified_high.131
-blocksview 0
 x 16
 y 8
 end
@@ -2231,7 +2211,6 @@ x 16
 y 13
 end
 arch wall_fortified_high.131
-blocksview 0
 z -2
 x 16
 y 13
@@ -2277,7 +2256,6 @@ x 16
 y 17
 end
 arch wall_fortified_high.131
-blocksview 0
 x 16
 y 17
 end
@@ -2435,7 +2413,6 @@ x 17
 y 8
 end
 arch wall_fortified_high.131
-blocksview 0
 x 17
 y 8
 end
@@ -2475,7 +2452,6 @@ x 17
 y 13
 end
 arch wall_fortified_high.131
-blocksview 0
 z -6
 x 17
 y 13
@@ -2487,7 +2463,6 @@ x 17
 y 14
 end
 arch wall_fortified_high.111
-blocksview 0
 x 17
 y 14
 end
@@ -2498,7 +2473,6 @@ x 17
 y 15
 end
 arch wall_fortified_high.111
-blocksview 0
 x 17
 y 15
 end
@@ -2509,7 +2483,6 @@ x 17
 y 16
 end
 arch wall_fortified_high.111
-blocksview 0
 x 17
 y 16
 end
@@ -2520,7 +2493,6 @@ x 17
 y 17
 end
 arch wall_fortified_high.141
-blocksview 0
 x 17
 y 17
 end
@@ -2633,7 +2605,6 @@ x 18
 y 8
 end
 arch wall_fortified_high.131
-blocksview 0
 x 18
 y 8
 end
@@ -2790,7 +2761,6 @@ x 19
 y 8
 end
 arch wall_fortified_high.131
-blocksview 0
 x 19
 y 8
 end
@@ -2973,7 +2943,6 @@ x 20
 y 8
 end
 arch wall_fortified_high.131
-blocksview 0
 x 20
 y 8
 end
@@ -2988,7 +2957,6 @@ x 20
 y 9
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 9
@@ -2999,7 +2967,6 @@ x 20
 y 10
 end
 arch wall_fortified_high.111
-blocksview 0
 z -24
 x 20
 y 10
@@ -3010,7 +2977,6 @@ x 20
 y 11
 end
 arch wall_fortified_high.111
-blocksview 0
 z -26
 x 20
 y 11
@@ -3021,7 +2987,6 @@ x 20
 y 12
 end
 arch wall_fortified_high.111
-blocksview 0
 z -22
 x 20
 y 12
@@ -3031,7 +2996,6 @@ x 20
 y 13
 end
 arch wall_fortified_high.111
-blocksview 0
 x 20
 y 13
 end
@@ -3040,7 +3004,6 @@ x 20
 y 14
 end
 arch wall_fortified_high.111
-blocksview 0
 x 20
 y 14
 end
@@ -3049,7 +3012,6 @@ x 20
 y 15
 end
 arch wall_fortified_high.111
-blocksview 0
 x 20
 y 15
 end
@@ -3058,7 +3020,6 @@ x 20
 y 16
 end
 arch wall_fortified_high_4.151
-blocksview 0
 x 20
 y 16
 end
@@ -3067,7 +3028,6 @@ x 20
 y 17
 end
 arch wall_fortified_high_3.151
-blocksview 0
 x 20
 y 17
 end
@@ -3076,7 +3036,6 @@ x 20
 y 18
 end
 arch wall_fortified_high_2.151
-blocksview 0
 x 20
 y 18
 end

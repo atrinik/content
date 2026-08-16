@@ -30,7 +30,6 @@ y 21
 end
 arch wall_fstone_half.101
 draw_double 0
-blocksview 0
 z -3
 x 11
 y 21

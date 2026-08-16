@@ -223,6 +223,35 @@ def update_static_variants(paths: list[Path]) -> None:
         path.write_text("".join(output), encoding="utf-8", newline="")
 
 
+def repair_structural_overrides(paths: list[Path]) -> None:
+    """Remove legacy map-level view overrides from v1 map objects.
+
+    Celestial-v1 derives structural roles from archetypes.  A map-local
+    ``blocksview`` field is therefore neither a portable exposure exception
+    nor a safe way to repair an archetype; retaining it would make the
+    Classic parser reject otherwise valid maps.  The authoritative archetype
+    definitions remain unchanged and carry their own structural roles.
+    """
+    for path in paths:
+        lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+        output: list[str] = []
+        i = 0
+        while i < len(lines):
+            if lines[i].startswith("arch "):
+                j = i + 1
+                while j < len(lines) and lines[j].rstrip("\r\n") != "end":
+                    j += 1
+                block = lines[i:j + 1]
+                if any(line.startswith("blocksview ") for line in block):
+                    block = [line for line in block if not line.startswith("blocksview ")]
+                output.extend(block)
+                i = j + 1
+            else:
+                output.append(lines[i])
+                i += 1
+        path.write_text("".join(output), encoding="utf-8", newline="")
+
+
 def insert_before_end(block: list[str], additions: list[str]) -> list[str]:
     end = next(i for i, line in enumerate(block) if line.rstrip("\r\n") == "end")
     return block[:end] + additions + block[end:]
@@ -416,6 +445,7 @@ def main() -> None:
     index = map_index(paths)
     dynamic = dynamic_archetypes()
     update_dynamic_archetypes(dynamic)
+    repair_structural_overrides(paths)
     inventory_path = MAPS / "celestial-migration-index.json"
     previous_data = json.loads(inventory_path.read_text(encoding="utf-8")) if inventory_path.exists() else {}
     previous = {row["path"]: row for row in previous_data.get("maps", [])}

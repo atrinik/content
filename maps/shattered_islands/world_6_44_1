@@ -693,7 +693,6 @@ x 5
 y 19
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 5
 y 19
@@ -702,7 +701,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 5
 y 19
 end
@@ -761,7 +759,6 @@ y 19
 end
 arch wall_dungeon_1
 draw_double 0
-blocksview 0
 x 6
 y 19
 end
@@ -769,7 +766,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 6
 y 19
 end
@@ -1108,7 +1104,6 @@ x 10
 y 16
 end
 arch cardinal_giant_b
-blocksview 0
 x 10
 y 16
 end
@@ -1481,7 +1476,6 @@ x 13
 y 16
 end
 arch cardinal_giant_b
-blocksview 0
 x 13
 y 16
 end
@@ -2052,7 +2046,6 @@ x 17
 y 19
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 17
 y 19
@@ -2061,7 +2054,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 17
 y 19
 end
@@ -2236,7 +2228,6 @@ x 18
 y 19
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 18
 y 19
@@ -2245,7 +2236,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 18
 y 19
 end

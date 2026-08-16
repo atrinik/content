@@ -209,7 +209,6 @@ x 5
 end
 arch celestial_ship_rail_ne_high
 no_pass 1
-blocksview 1
 x 5
 end
 arch ship_floor_we_1
@@ -230,7 +229,6 @@ y 2
 end
 arch celestial_ship_rail_e_high
 no_pass 1
-blocksview 1
 x 5
 y 2
 end
@@ -240,7 +238,6 @@ y 3
 end
 arch celestial_ship_rail_e_high
 no_pass 1
-blocksview 1
 x 5
 y 3
 end
@@ -250,7 +247,6 @@ y 4
 end
 arch ship_rail_se_high
 no_pass 1
-blocksview 1
 x 5
 y 4
 end
@@ -299,7 +295,6 @@ y 4
 end
 arch ship_rail_se_high
 no_pass 1
-blocksview 1
 x 6
 y 4
 end
@@ -378,7 +373,6 @@ arch ship_hull_prow_e_front_strokeside_1
 x 9
 end
 arch ship_prow_e_strokeside_a
-blocksview 1
 x 9
 end
 arch ship_prow_e_strokeside_a
@@ -426,7 +420,6 @@ x 9
 y 4
 end
 arch ship_prow_e_starboard_a
-blocksview 1
 x 9
 y 4
 end
@@ -443,7 +436,6 @@ arch ship_hull_prow_e_front_strokeside_2
 x 10
 end
 arch ship_prow_e_strokeside_b
-blocksview 1
 x 10
 end
 arch ship_prow_e_strokeside_b
@@ -495,7 +487,6 @@ x 10
 y 4
 end
 arch ship_prow_e_starboard_b
-blocksview 1
 x 10
 y 4
 end
@@ -517,7 +508,6 @@ x 11
 y 1
 end
 arch ship_prow_e_strokeside_a
-blocksview 1
 x 11
 y 1
 end
@@ -548,7 +538,6 @@ x 11
 y 3
 end
 arch ship_prow_e_starboard_a
-blocksview 1
 x 11
 y 3
 end
@@ -574,7 +563,6 @@ x 12
 y 1
 end
 arch ship_prow_e_strokeside_b
-blocksview 1
 x 12
 y 1
 end
@@ -604,7 +592,6 @@ x 12
 y 3
 end
 arch ship_prow_e_starboard_b
-blocksview 1
 x 12
 y 3
 end
@@ -630,7 +617,6 @@ x 13
 y 2
 end
 arch ship_prow_e
-blocksview 1
 x 13
 y 2
 end

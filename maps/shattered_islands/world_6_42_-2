@@ -156,7 +156,6 @@ x 18
 y 10
 end
 arch rock6
-blocksview 1
 x 18
 y 10
 end
@@ -545,7 +544,6 @@ x 22
 y 8
 end
 arch rock5
-blocksview 1
 x 22
 y 8
 end

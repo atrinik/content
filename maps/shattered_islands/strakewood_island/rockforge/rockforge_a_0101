@@ -423,7 +423,6 @@ x 6
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 6
 y 19
 end
@@ -433,7 +432,6 @@ y 20
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 20
@@ -450,7 +448,6 @@ y 21
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 21
@@ -467,7 +464,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 22
@@ -484,7 +480,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 6
 y 23
@@ -642,7 +637,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 7
 y 23
@@ -801,7 +795,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 8
 y 23
@@ -885,7 +878,6 @@ x 9
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 9
 y 19
 end
@@ -894,7 +886,6 @@ x 9
 y 20
 end
 arch fwall_marble2a
-blocksview 0
 x 9
 y 20
 end
@@ -903,7 +894,6 @@ x 9
 y 21
 end
 arch fwall_marble2a
-blocksview 0
 x 9
 y 21
 end
@@ -913,7 +903,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 9
 y 22
@@ -924,7 +913,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 9
 y 23
@@ -1277,7 +1265,6 @@ x 14
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 14
 y 19
 end
@@ -1287,7 +1274,6 @@ y 20
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 20
@@ -1304,7 +1290,6 @@ y 21
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 21
@@ -1321,7 +1306,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 22
@@ -1338,7 +1322,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 14
 y 23
@@ -1495,7 +1478,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 15
 y 23
@@ -1667,7 +1649,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 16
 y 23
@@ -1764,7 +1745,6 @@ x 17
 y 19
 end
 arch wall_marble1.131a
-blocksview 0
 x 17
 y 19
 end
@@ -1773,7 +1753,6 @@ x 17
 y 20
 end
 arch fwall_marble2a
-blocksview 0
 x 17
 y 20
 end
@@ -1782,7 +1761,6 @@ x 17
 y 21
 end
 arch fwall_marble2a
-blocksview 0
 x 17
 y 21
 end
@@ -1792,7 +1770,6 @@ y 22
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 17
 y 22
@@ -1803,7 +1780,6 @@ y 23
 end
 arch fwall_marble2b
 draw_double_always 1
-blocksview 0
 layer 4
 x 17
 y 23

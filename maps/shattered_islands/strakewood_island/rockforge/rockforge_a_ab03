@@ -1882,14 +1882,12 @@ x 15
 y 9
 end
 arch wall_marble1.131
-blocksview 0
 draw_double_always 1
 layer 4
 x 15
 y 9
 end
 arch wall_marble1.131
-blocksview 0
 draw_double 0
 z 44
 x 15
@@ -1906,7 +1904,6 @@ y 10
 end
 arch fwall_marble2a
 layer 4
-blocksview 0
 draw_double 0
 x 15
 y 10
@@ -2063,14 +2060,12 @@ x 16
 y 9
 end
 arch wall_marble1.131
-blocksview 0
 draw_double_always 1
 layer 4
 x 16
 y 9
 end
 arch wall_marble1.131
-blocksview 0
 draw_double 0
 z 44
 x 16
@@ -2089,7 +2084,6 @@ y 10
 end
 arch fwall_marble2a
 layer 4
-blocksview 0
 draw_double 0
 x 16
 y 10
@@ -2212,7 +2206,6 @@ x 17
 y 9
 end
 arch wall_marble1.131
-blocksview 0
 draw_double_always 1
 layer 4
 x 17
@@ -2224,7 +2217,6 @@ y 10
 end
 arch fwall_marble2a
 layer 4
-blocksview 0
 draw_double 0
 x 17
 y 10

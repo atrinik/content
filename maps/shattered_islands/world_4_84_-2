@@ -1418,7 +1418,6 @@ x 21
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 3
 end
@@ -1428,7 +1427,6 @@ x 21
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 4
 end
@@ -1438,7 +1436,6 @@ x 21
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 21
 y 5
 end
@@ -1708,7 +1705,6 @@ x 23
 y 4
 end
 arch wall_cave1.101
-blocksview 0
 no_pass 0
 x 23
 y 4
@@ -1724,7 +1720,6 @@ x 23
 y 5
 end
 arch wall_cave1.131
-blocksview 0
 no_pass 0
 x 23
 y 5

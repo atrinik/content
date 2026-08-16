@@ -526,7 +526,6 @@ x 14
 y 2
 end
 arch rock2
-blocksview 1
 x 14
 y 2
 end
@@ -1478,7 +1477,6 @@ x 19
 y 2
 end
 arch rock2
-blocksview 1
 x 19
 y 2
 end

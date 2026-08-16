@@ -110,7 +110,6 @@ arch grassd_6
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 y 23
 end
 arch water_lt2
@@ -230,7 +229,6 @@ x 1
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 x 1
 y 23
 end
@@ -346,7 +344,6 @@ x 2
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 x 2
 y 23
 end

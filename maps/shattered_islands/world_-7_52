@@ -197,7 +197,6 @@ y 8
 end
 arch fog
 is_used_up 0
-blocksview 0
 changing 0
 x 1
 y 8
@@ -212,7 +211,6 @@ y 9
 end
 arch fog
 is_used_up 0
-blocksview 0
 changing 0
 x 1
 y 9
@@ -232,7 +230,6 @@ y 10
 end
 arch fog
 is_used_up 0
-blocksview 0
 changing 0
 x 1
 y 10

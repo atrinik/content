@@ -709,7 +709,6 @@ x 5
 y 20
 end
 arch wall_wood_1
-blocksview 0
 draw_double 0
 x 5
 y 20

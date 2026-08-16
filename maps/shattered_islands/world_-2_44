@@ -2517,7 +2517,6 @@ arch grassd_8
 x 23
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 end
 arch grassd_8
@@ -2525,7 +2524,6 @@ x 23
 y 1
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 1
 end
@@ -2534,7 +2532,6 @@ x 23
 y 2
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 2
 end
@@ -2543,7 +2540,6 @@ x 23
 y 3
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 3
 end
@@ -2552,7 +2548,6 @@ x 23
 y 4
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 4
 end
@@ -2561,7 +2556,6 @@ x 23
 y 5
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 5
 end
@@ -2570,7 +2564,6 @@ x 23
 y 6
 end
 arch wall_fortified_high.111
-blocksview 0
 x 23
 y 6
 end

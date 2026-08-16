@@ -178,7 +178,6 @@ x 7
 y 2
 end
 arch fwall_marble2c
-blocksview 0
 draw_double 0
 layer 3
 x 7
@@ -203,7 +202,6 @@ end
 arch statue_fire
 z 24
 layer 7
-blocksview 0
 x 7
 y 2
 glow_radius 9
@@ -747,7 +745,6 @@ x 10
 y 21
 end
 arch wall_marble1.131a
-blocksview 0
 x 10
 y 21
 end
@@ -756,7 +753,6 @@ x 10
 y 22
 end
 arch fwall_marble2b
-blocksview 0
 x 10
 y 22
 end
@@ -1386,7 +1382,6 @@ x 13
 y 21
 end
 arch wall_marble1.131a
-blocksview 0
 x 13
 y 21
 end
@@ -1395,7 +1390,6 @@ x 13
 y 22
 end
 arch fwall_marble2a
-blocksview 0
 x 13
 y 22
 end
@@ -1682,7 +1676,6 @@ x 16
 y 2
 end
 arch fwall_marble2c
-blocksview 0
 draw_double 0
 layer 3
 x 16
@@ -1707,7 +1700,6 @@ end
 arch statue_fire
 z 24
 layer 7
-blocksview 0
 x 16
 y 2
 glow_radius 9

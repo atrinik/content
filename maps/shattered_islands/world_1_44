@@ -85,21 +85,18 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 y 11
 end
 arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 y 11
 end
 arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 y 11
 end
 arch wall_fortified_high_c.131
@@ -214,7 +211,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 1
 y 11
 end
@@ -222,7 +218,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 1
 y 11
 end
@@ -230,7 +225,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 1
 y 11
 end
@@ -314,7 +308,6 @@ z 50
 x 2
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 end
 arch blocked
@@ -329,7 +322,6 @@ x 2
 y 1
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 1
 end
@@ -345,7 +337,6 @@ x 2
 y 2
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 2
 end
@@ -361,7 +352,6 @@ x 2
 y 3
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 3
 end
@@ -377,7 +367,6 @@ x 2
 y 4
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 4
 end
@@ -393,7 +382,6 @@ x 2
 y 5
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 5
 end
@@ -409,7 +397,6 @@ x 2
 y 6
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 6
 end
@@ -425,7 +412,6 @@ x 2
 y 7
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 7
 end
@@ -452,7 +438,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 2
 y 11
 end
@@ -460,7 +445,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 2
 y 11
 end
@@ -468,7 +452,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 2
 y 11
 end
@@ -547,7 +530,6 @@ z 36
 x 3
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 end
 arch blocked
@@ -556,7 +538,6 @@ x 3
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 1
 end
@@ -566,7 +547,6 @@ x 3
 y 2
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 2
 end
@@ -576,7 +556,6 @@ x 3
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 3
 end
@@ -586,7 +565,6 @@ x 3
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 4
 end
@@ -596,7 +574,6 @@ x 3
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 5
 end
@@ -606,7 +583,6 @@ x 3
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 6
 end
@@ -616,13 +592,11 @@ x 3
 y 7
 end
 arch wall_cave1.141
-blocksview 0
 x 3
 y 7
 end
 arch wall_fortified_high.131
 sub_layer 1
-blocksview 0
 x 3
 y 7
 end
@@ -651,7 +625,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 3
 y 11
 end
@@ -659,7 +632,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 3
 y 11
 end
@@ -667,7 +639,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 3
 y 11
 end
@@ -746,7 +717,6 @@ z 26
 x 4
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 end
 arch blocked
@@ -755,7 +725,6 @@ x 4
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 1
 end
@@ -765,7 +734,6 @@ x 4
 y 2
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 2
 end
@@ -775,7 +743,6 @@ x 4
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 3
 end
@@ -785,7 +752,6 @@ x 4
 y 4
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 4
 end
@@ -795,7 +761,6 @@ x 4
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 5
 end
@@ -805,7 +770,6 @@ x 4
 y 6
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 6
 end
@@ -815,13 +779,11 @@ x 4
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 7
 end
 arch wall_fortified_high.131
 sub_layer 1
-blocksview 0
 x 4
 y 7
 end
@@ -850,7 +812,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 4
 y 11
 end
@@ -858,7 +819,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 4
 y 11
 end
@@ -866,7 +826,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 4
 y 11
 end
@@ -941,7 +900,6 @@ z 26
 x 5
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 end
 arch blocked
@@ -950,7 +908,6 @@ x 5
 y 1
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 1
 end
@@ -960,7 +917,6 @@ x 5
 y 2
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 2
 end
@@ -970,7 +926,6 @@ x 5
 y 3
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 3
 end
@@ -980,7 +935,6 @@ x 5
 y 4
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 4
 end
@@ -990,7 +944,6 @@ x 5
 y 5
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 5
 end
@@ -1000,7 +953,6 @@ x 5
 y 6
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 6
 end
@@ -1010,13 +962,11 @@ x 5
 y 7
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 7
 end
 arch wall_fortified_high.131
 sub_layer 1
-blocksview 0
 x 5
 y 7
 end
@@ -1046,7 +996,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 5
 y 11
 end
@@ -1054,7 +1003,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 5
 y 11
 end
@@ -1062,7 +1010,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 5
 y 11
 end
@@ -1141,7 +1088,6 @@ z 2
 x 6
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 end
 arch blocked
@@ -1150,7 +1096,6 @@ x 6
 y 1
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 1
 end
@@ -1160,7 +1105,6 @@ x 6
 y 2
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 2
 end
@@ -1170,7 +1114,6 @@ x 6
 y 3
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 3
 end
@@ -1180,7 +1123,6 @@ x 6
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 4
 end
@@ -1190,7 +1132,6 @@ x 6
 y 5
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 5
 end
@@ -1200,7 +1141,6 @@ x 6
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 6
 end
@@ -1210,13 +1150,11 @@ x 6
 y 7
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 7
 end
 arch wall_fortified_high.131
 sub_layer 1
-blocksview 0
 x 6
 y 7
 end
@@ -1246,7 +1184,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 6
 y 11
 end
@@ -1254,7 +1191,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 6
 y 11
 end
@@ -1262,7 +1198,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 6
 y 11
 end
@@ -1368,7 +1303,6 @@ x 7
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 7
 y 7
 end
@@ -1398,7 +1332,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 7
 y 11
 end
@@ -1406,7 +1339,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 7
 y 11
 end
@@ -1414,7 +1346,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 7
 y 11
 end
@@ -1520,7 +1451,6 @@ x 8
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 8
 y 7
 end
@@ -1550,7 +1480,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 8
 y 11
 end
@@ -1558,7 +1487,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 8
 y 11
 end
@@ -1566,7 +1494,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 8
 y 11
 end
@@ -1668,7 +1595,6 @@ x 9
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 9
 y 7
 end
@@ -1698,7 +1624,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 9
 y 11
 end
@@ -1706,7 +1631,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 9
 y 11
 end
@@ -1714,7 +1638,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 9
 y 11
 end
@@ -1820,7 +1743,6 @@ x 10
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 10
 y 7
 end
@@ -1850,7 +1772,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 10
 y 11
 end
@@ -1858,7 +1779,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 10
 y 11
 end
@@ -1866,7 +1786,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 10
 y 11
 end
@@ -1976,7 +1895,6 @@ x 11
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 11
 y 7
 end
@@ -2006,7 +1924,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 11
 y 11
 end
@@ -2014,7 +1931,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 11
 y 11
 end
@@ -2022,7 +1938,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 11
 y 11
 end
@@ -2132,7 +2047,6 @@ x 12
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 12
 y 7
 end
@@ -2162,7 +2076,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 12
 y 11
 end
@@ -2170,7 +2083,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 12
 y 11
 end
@@ -2178,7 +2090,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 12
 y 11
 end
@@ -2288,7 +2199,6 @@ x 13
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 13
 y 7
 end
@@ -2318,7 +2228,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 13
 y 11
 end
@@ -2326,7 +2235,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 13
 y 11
 end
@@ -2334,7 +2242,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 13
 y 11
 end
@@ -2440,7 +2347,6 @@ x 14
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 14
 y 7
 end
@@ -2470,7 +2376,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 14
 y 11
 end
@@ -2478,7 +2383,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 14
 y 11
 end
@@ -2486,7 +2390,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 14
 y 11
 end
@@ -2616,7 +2519,6 @@ x 15
 y 7
 end
 arch wall_fortified_high.131
-blocksview 0
 x 15
 y 7
 end
@@ -2646,7 +2548,6 @@ y 11
 end
 arch wall_flagstone1.111
 draw_double 0
-blocksview 0
 x 15
 y 11
 end
@@ -2654,7 +2555,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
-blocksview 0
 x 15
 y 11
 end
@@ -2662,7 +2562,6 @@ arch wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
-blocksview 0
 x 15
 y 11
 end

@@ -156,7 +156,6 @@ arch floor_fs_grey1b
 y 19
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 y 19
 end
@@ -164,7 +163,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 y 19
 end
 arch floor_fs_grey1b
@@ -251,7 +249,6 @@ x 1
 y 19
 end
 arch wall_dungeon_1
-blocksview 0
 draw_double 0
 x 1
 y 19
@@ -260,7 +257,6 @@ arch wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
-blocksview 0
 x 1
 y 19
 end
@@ -295,7 +291,6 @@ x 2
 y 3
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 2
 y 3
@@ -304,7 +299,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 2
 y 3
 end
@@ -313,7 +307,6 @@ x 2
 y 4
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 2
 y 4
@@ -322,7 +315,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 2
 y 4
 end
@@ -359,7 +351,6 @@ x 2
 y 8
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 2
 y 8
@@ -368,7 +359,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 2
 y 8
 end
@@ -377,7 +367,6 @@ x 2
 y 9
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 2
 y 9
@@ -386,7 +375,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 2
 y 9
 end
@@ -423,7 +411,6 @@ x 2
 y 13
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 2
 y 13
@@ -432,7 +419,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 2
 y 13
 end
@@ -441,7 +427,6 @@ x 2
 y 14
 end
 arch wall_dungeon_3
-blocksview 0
 draw_double 0
 x 2
 y 14
@@ -450,7 +435,6 @@ arch wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
-blocksview 0
 x 2
 y 14
 end

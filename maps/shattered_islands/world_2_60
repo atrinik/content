@@ -677,7 +677,6 @@ x 5
 y 21
 end
 arch wall_fortified_high.181
-blocksview 0
 no_pass 0
 x 5
 y 21
@@ -688,7 +687,6 @@ x 5
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 no_pass 0
 x 5
 y 22
@@ -699,7 +697,6 @@ x 5
 y 23
 end
 arch wall_fortified_high.111
-blocksview 0
 no_pass 0
 x 5
 y 23
@@ -817,7 +814,6 @@ x 6
 y 21
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 x 6
 y 21
@@ -859,7 +855,6 @@ x 6
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -963,7 +958,6 @@ x 7
 y 21
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 x 7
 y 21
@@ -988,7 +982,6 @@ x 7
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -1125,7 +1118,6 @@ x 8
 y 21
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 x 8
 y 21
@@ -1138,7 +1130,6 @@ x 8
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -1153,7 +1144,6 @@ x 8
 y 23
 end
 arch wall_fortified_high.141
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -2203,7 +2193,6 @@ x 16
 y 21
 end
 arch wall_fortified_high.181
-blocksview 0
 no_pass 0
 x 16
 y 21
@@ -2214,7 +2203,6 @@ x 16
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 no_pass 0
 x 16
 y 22
@@ -2225,7 +2213,6 @@ x 16
 y 23
 end
 arch wall_fortified_high.111
-blocksview 0
 no_pass 0
 x 16
 y 23
@@ -2350,7 +2337,6 @@ x 17
 y 21
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 x 17
 y 21
@@ -2375,7 +2361,6 @@ x 17
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -2479,7 +2464,6 @@ x 18
 y 21
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 x 18
 y 21
@@ -2521,7 +2505,6 @@ x 18
 y 23
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -2649,7 +2632,6 @@ x 19
 y 21
 end
 arch wall_fortified_high.131
-blocksview 0
 no_pass 0
 x 19
 y 21
@@ -2662,7 +2644,6 @@ x 19
 y 22
 end
 arch wall_fortified_high.111
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50
@@ -2677,7 +2658,6 @@ x 19
 y 23
 end
 arch wall_fortified_high.141
-blocksview 0
 no_pass 0
 sub_layer 1
 z -50

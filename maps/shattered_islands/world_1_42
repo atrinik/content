@@ -429,7 +429,6 @@ sub_layer 1
 x 2
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 end
 arch blocked
@@ -444,7 +443,6 @@ x 2
 y 1
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 1
 end
@@ -460,7 +458,6 @@ x 2
 y 2
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 2
 end
@@ -476,7 +473,6 @@ x 2
 y 3
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 3
 end
@@ -492,7 +488,6 @@ x 2
 y 4
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 4
 end
@@ -508,7 +503,6 @@ x 2
 y 5
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 5
 end
@@ -524,7 +518,6 @@ x 2
 y 6
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 6
 end
@@ -540,7 +533,6 @@ x 2
 y 7
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 7
 end
@@ -556,7 +548,6 @@ x 2
 y 8
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 8
 end
@@ -572,7 +563,6 @@ x 2
 y 9
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 9
 end
@@ -588,7 +578,6 @@ x 2
 y 10
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 10
 end
@@ -604,7 +593,6 @@ x 2
 y 11
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 11
 end
@@ -620,7 +608,6 @@ x 2
 y 12
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 12
 end
@@ -636,7 +623,6 @@ x 2
 y 13
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 13
 end
@@ -652,7 +638,6 @@ x 2
 y 14
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 14
 end
@@ -668,7 +653,6 @@ x 2
 y 15
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 15
 end
@@ -684,7 +668,6 @@ x 2
 y 16
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 16
 end
@@ -700,7 +683,6 @@ x 2
 y 17
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 17
 end
@@ -716,7 +698,6 @@ x 2
 y 18
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 18
 end
@@ -732,7 +713,6 @@ x 2
 y 19
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 19
 end
@@ -748,7 +728,6 @@ x 2
 y 20
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 20
 end
@@ -764,7 +743,6 @@ x 2
 y 21
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 21
 end
@@ -780,7 +758,6 @@ x 2
 y 22
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 22
 end
@@ -796,7 +773,6 @@ x 2
 y 23
 end
 arch wall_fortified_high_4.111
-blocksview 0
 x 2
 y 23
 end
@@ -805,7 +781,6 @@ z 36
 x 3
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 end
 arch blocked
@@ -814,7 +789,6 @@ x 3
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 1
 end
@@ -824,7 +798,6 @@ x 3
 y 2
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 2
 end
@@ -834,7 +807,6 @@ x 3
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 3
 end
@@ -844,7 +816,6 @@ x 3
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 4
 end
@@ -854,7 +825,6 @@ x 3
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 5
 end
@@ -864,7 +834,6 @@ x 3
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 6
 end
@@ -874,7 +843,6 @@ x 3
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 7
 end
@@ -884,7 +852,6 @@ x 3
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 8
 end
@@ -894,7 +861,6 @@ x 3
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 9
 end
@@ -904,7 +870,6 @@ x 3
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 10
 end
@@ -914,7 +879,6 @@ x 3
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 11
 end
@@ -924,7 +888,6 @@ x 3
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 12
 end
@@ -934,7 +897,6 @@ x 3
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 13
 end
@@ -944,7 +906,6 @@ x 3
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 14
 end
@@ -954,7 +915,6 @@ x 3
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 15
 end
@@ -964,7 +924,6 @@ x 3
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 16
 end
@@ -974,7 +933,6 @@ x 3
 y 17
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 17
 end
@@ -984,7 +942,6 @@ x 3
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 18
 end
@@ -994,7 +951,6 @@ x 3
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 19
 end
@@ -1004,7 +960,6 @@ x 3
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 20
 end
@@ -1014,7 +969,6 @@ x 3
 y 21
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 21
 end
@@ -1024,7 +978,6 @@ x 3
 y 22
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 22
 end
@@ -1034,7 +987,6 @@ x 3
 y 23
 end
 arch wall_cave1.171
-blocksview 0
 x 3
 y 23
 end
@@ -1043,7 +995,6 @@ z 26
 x 4
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 end
 arch blocked
@@ -1052,7 +1003,6 @@ x 4
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 1
 end
@@ -1062,7 +1012,6 @@ x 4
 y 2
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 2
 end
@@ -1072,7 +1021,6 @@ x 4
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 3
 end
@@ -1082,7 +1030,6 @@ x 4
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 4
 end
@@ -1092,7 +1039,6 @@ x 4
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 5
 end
@@ -1102,7 +1048,6 @@ x 4
 y 6
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 6
 end
@@ -1112,7 +1057,6 @@ x 4
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 7
 end
@@ -1122,7 +1066,6 @@ x 4
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 8
 end
@@ -1132,7 +1075,6 @@ x 4
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 9
 end
@@ -1142,7 +1084,6 @@ x 4
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 10
 end
@@ -1152,7 +1093,6 @@ x 4
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 11
 end
@@ -1162,7 +1102,6 @@ x 4
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 12
 end
@@ -1172,7 +1111,6 @@ x 4
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 13
 end
@@ -1182,7 +1120,6 @@ x 4
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 14
 end
@@ -1192,7 +1129,6 @@ x 4
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 15
 end
@@ -1202,7 +1138,6 @@ x 4
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 16
 end
@@ -1212,7 +1147,6 @@ x 4
 y 17
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 17
 end
@@ -1222,7 +1156,6 @@ x 4
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 18
 end
@@ -1232,7 +1165,6 @@ x 4
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 19
 end
@@ -1242,7 +1174,6 @@ x 4
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 20
 end
@@ -1252,7 +1183,6 @@ x 4
 y 21
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 21
 end
@@ -1262,7 +1192,6 @@ x 4
 y 22
 end
 arch wall_cave1.181
-blocksview 0
 x 4
 y 22
 end
@@ -1272,7 +1201,6 @@ x 4
 y 23
 end
 arch wall_cave1.171
-blocksview 0
 x 4
 y 23
 end
@@ -1281,7 +1209,6 @@ z 26
 x 5
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 end
 arch blocked
@@ -1290,7 +1217,6 @@ x 5
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 1
 end
@@ -1300,7 +1226,6 @@ x 5
 y 2
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 2
 end
@@ -1310,7 +1235,6 @@ x 5
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 3
 end
@@ -1320,7 +1244,6 @@ x 5
 y 4
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 4
 end
@@ -1330,7 +1253,6 @@ x 5
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 5
 end
@@ -1340,7 +1262,6 @@ x 5
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 6
 end
@@ -1350,7 +1271,6 @@ x 5
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 7
 end
@@ -1360,7 +1280,6 @@ x 5
 y 8
 end
 arch wall_cave1.141
-blocksview 0
 x 5
 y 8
 end
@@ -1370,7 +1289,6 @@ x 5
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 9
 end
@@ -1380,7 +1298,6 @@ x 5
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 10
 end
@@ -1390,7 +1307,6 @@ x 5
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 11
 end
@@ -1400,7 +1316,6 @@ x 5
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 12
 end
@@ -1410,7 +1325,6 @@ x 5
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 13
 end
@@ -1420,7 +1334,6 @@ x 5
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 14
 end
@@ -1430,7 +1343,6 @@ x 5
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 15
 end
@@ -1440,7 +1352,6 @@ x 5
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 16
 end
@@ -1450,7 +1361,6 @@ x 5
 y 17
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 17
 end
@@ -1460,7 +1370,6 @@ x 5
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 18
 end
@@ -1470,7 +1379,6 @@ x 5
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 19
 end
@@ -1480,7 +1388,6 @@ x 5
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 20
 end
@@ -1490,7 +1397,6 @@ x 5
 y 21
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 21
 end
@@ -1500,7 +1406,6 @@ x 5
 y 22
 end
 arch wall_cave1.171
-blocksview 0
 x 5
 y 22
 end
@@ -1510,7 +1415,6 @@ x 5
 y 23
 end
 arch wall_cave1.181
-blocksview 0
 x 5
 y 23
 end
@@ -1519,7 +1423,6 @@ z 2
 x 6
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 end
 arch blocked
@@ -1528,7 +1431,6 @@ x 6
 y 1
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 1
 end
@@ -1538,7 +1440,6 @@ x 6
 y 2
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 2
 end
@@ -1548,7 +1449,6 @@ x 6
 y 3
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 3
 end
@@ -1558,7 +1458,6 @@ x 6
 y 4
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 4
 end
@@ -1568,7 +1467,6 @@ x 6
 y 5
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 5
 end
@@ -1578,7 +1476,6 @@ x 6
 y 6
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 6
 end
@@ -1588,7 +1485,6 @@ x 6
 y 7
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 7
 end
@@ -1598,7 +1494,6 @@ x 6
 y 8
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 8
 end
@@ -1608,7 +1503,6 @@ x 6
 y 9
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 9
 end
@@ -1618,7 +1512,6 @@ x 6
 y 10
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 10
 end
@@ -1628,7 +1521,6 @@ x 6
 y 11
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 11
 end
@@ -1638,7 +1530,6 @@ x 6
 y 12
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 12
 end
@@ -1648,7 +1539,6 @@ x 6
 y 13
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 13
 end
@@ -1658,7 +1548,6 @@ x 6
 y 14
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 14
 end
@@ -1668,7 +1557,6 @@ x 6
 y 15
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 15
 end
@@ -1678,7 +1566,6 @@ x 6
 y 16
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 16
 end
@@ -1688,7 +1575,6 @@ x 6
 y 17
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 17
 end
@@ -1698,7 +1584,6 @@ x 6
 y 18
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 18
 end
@@ -1708,7 +1593,6 @@ x 6
 y 19
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 19
 end
@@ -1718,7 +1602,6 @@ x 6
 y 20
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 20
 end
@@ -1728,7 +1611,6 @@ x 6
 y 21
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 21
 end
@@ -1738,7 +1620,6 @@ x 6
 y 22
 end
 arch wall_cave1.171
-blocksview 0
 x 6
 y 22
 end
@@ -1748,7 +1629,6 @@ x 6
 y 23
 end
 arch wall_cave1.141
-blocksview 0
 x 6
 y 23
 end

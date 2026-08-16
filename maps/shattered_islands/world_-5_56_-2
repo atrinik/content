@@ -24,7 +24,6 @@ x 8
 y 10
 end
 arch pillar_blue7
-blocksview 1
 x 8
 y 10
 end
@@ -89,7 +88,6 @@ x 8
 y 14
 end
 arch pillar_blue2
-blocksview 1
 x 8
 y 14
 end
@@ -186,7 +184,6 @@ x 10
 y 13
 end
 arch pillar_blue7
-blocksview 1
 x 10
 y 13
 end
@@ -199,7 +196,6 @@ x 10
 y 15
 end
 arch pillar_blue2
-blocksview 1
 x 10
 y 15
 end
@@ -328,7 +324,6 @@ x 12
 y 16
 end
 arch pillar_blue7
-blocksview 1
 x 12
 y 16
 end
@@ -341,7 +336,6 @@ x 13
 y 8
 end
 arch pillar_blue4
-blocksview 1
 x 13
 y 8
 end
@@ -519,7 +513,6 @@ x 15
 y 9
 end
 arch pillar_blue7
-blocksview 1
 x 15
 y 9
 end
@@ -584,7 +577,6 @@ x 16
 y 8
 end
 arch pillar_blue2
-blocksview 1
 x 16
 y 8
 end
@@ -661,7 +653,6 @@ x 16
 y 17
 end
 arch pillar_blue7
-blocksview 1
 x 16
 y 17
 end
@@ -771,7 +762,6 @@ x 18
 y 10
 end
 arch pillar_blue7
-blocksview 1
 x 18
 y 10
 end
@@ -848,7 +838,6 @@ x 19
 y 9
 end
 arch pillar_blue2
-blocksview 1
 x 19
 y 9
 end
@@ -973,7 +962,6 @@ x 20
 y 13
 end
 arch pillar_blue7
-blocksview 1
 x 20
 y 13
 end
@@ -1010,7 +998,6 @@ x 20
 y 17
 end
 arch pillar_blue7
-blocksview 1
 x 20
 y 17
 end
@@ -1023,7 +1010,6 @@ x 21
 y 8
 end
 arch pillar_blue2
-blocksview 1
 x 21
 y 8
 end

@@ -408,7 +408,8 @@ class MapFlagsSuite(TestSuite):
         self.map = self.obj = create_test_map(24, 24, self.id())
 
     def test_f_outdoor(self):
-        self.flag_test("f_outdoor")
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.f_outdoor = True
 
     def test_f_unique(self):
         self.flag_test("f_unique")

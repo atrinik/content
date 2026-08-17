@@ -4,7 +4,7 @@ import struct
 import unittest
 
 import Atrinik
-from tests import simulate_server, TestSuite
+from tests import create_test_map, simulate_server, TestSuite
 
 
 class PlayerCommonSuite(TestSuite):
@@ -501,7 +501,7 @@ class PlayerFieldsSuite(PlayerCommonSuite):
         self.assertEqual(self.pl.quest_container, ob)
 
     def test_target_object(self):
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-player-target-object")
+        m = create_test_map(5, 5, "test-atrinik-player-target-object")
         m.Insert(self.pl.ob, 0, 0)
         raas = m.CreateObject("raas", 1, 1)
         raas.ac = 0

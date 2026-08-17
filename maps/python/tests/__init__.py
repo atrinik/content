@@ -6,6 +6,19 @@ import time
 
 import Atrinik
 
+# Test maps must exercise the production six-argument celestial-v1 factory.
+_native_create_map = Atrinik.CreateMap
+
+
+def create_test_map(width, height, path, sky_above="sealed", light=0):
+    """Create a validated v1 fixture map from the resident activator map."""
+
+    origin = Atrinik.WhoIsActivator().map
+    return _native_create_map(width, height, path, origin, sky_above, light)
+
+
+Atrinik.CreateMap = _test_create_map
+
 called_ib_fnc = None
 
 

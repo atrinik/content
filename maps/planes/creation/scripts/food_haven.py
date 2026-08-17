@@ -7,11 +7,14 @@ from Atrinik import *
 
 
 # Create 17x17 map with unique name
-m = CreateMap(17, 17, activator.name + "-food-" + str(time.time()))
+m = CreateMap(17,
+              17,
+              activator.name + "-food-" + str(time.time()),
+              activator.map,
+              "sealed",
+              1280)
 # Change its name.
 m.name = "Food Haven"
-# Full light.
-m.darkness = 7
 # Temporary object we need for object.CreateTreasure()
 cont = CreateObject("sack")
 

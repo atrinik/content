@@ -2,13 +2,13 @@ import os
 import unittest
 
 import Atrinik
-from tests import TestSuite
+from tests import TestSuite, create_test_map
 
 
 class MapMethodsSuite(TestSuite):
     def setUp(self):
         super().setUp()
-        self.map = Atrinik.CreateMap(24, 24, self.id())
+        self.map = create_test_map(24, 24, self.id())
 
     def test_Objects(self):
         self.assertRaises(TypeError, self.map.Objects)
@@ -142,7 +142,7 @@ class MapMethodsSuite(TestSuite):
         self.map.Insert(me, 0, 0)
         self.assertEqual(self.map.CountPlayers(), 2)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-map-count-players")
+        m = create_test_map(5, 5, "test-atrinik-map-get-players")
         m.Insert(me, 0, 0)
         self.assertEqual(self.map.CountPlayers(), 1)
         self.assertEqual(m.CountPlayers(), 1)
@@ -157,7 +157,7 @@ class MapMethodsSuite(TestSuite):
         self.map.Insert(me, 0, 0)
         self.assertEqual(self.map.GetPlayers(), [me, activator])
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-map-count-players")
+        m = create_test_map(5, 5, "test-atrinik-map-count-players")
         m.Insert(me, 0, 0)
         self.assertEqual(self.map.GetPlayers(), [activator])
         self.assertEqual(m.GetPlayers(), [me])
@@ -227,8 +227,8 @@ class MapMethodsSuite(TestSuite):
         self.assertRaises(Atrinik.AtrinikError, self.map.GetDarkness, 100, 0)
 
         self.assertEqual(self.map.GetDarkness(0, 0), 0)
-        self.map.darkness = 3
-        self.assertEqual(self.map.GetDarkness(0, 0), 80)
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.darkness = 3
 
     def test_GetPath(self):
         self.assertRaises(TypeError, self.map.GetPath, 1, 2)
@@ -291,7 +291,7 @@ class MapMethodsSuite(TestSuite):
 class MapFieldsSuite(TestSuite):
     def setUp(self):
         super().setUp()
-        self.map = self.obj = Atrinik.CreateMap(24, 24, self.id())
+        self.map = self.obj = create_test_map(24, 24, self.id())
 
     def field_compare(self, field, val):
         if field == "darkness":
@@ -304,7 +304,7 @@ class MapFieldsSuite(TestSuite):
             self.map.next = None
 
         self.assertIsNone(self.map.next)
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-map-next")
+        m = create_test_map(5, 5, "test-atrinik-map-next")
         self.assertEqual(self.map.next, m)
 
     def test_previous(self):
@@ -312,7 +312,7 @@ class MapFieldsSuite(TestSuite):
             self.map.previous = None
 
         self.assertIsNotNone(Atrinik.GetFirst("map").previous)
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-map-previous")
+        m = create_test_map(5, 5, "test-atrinik-map-previous")
         self.assertEqual(m.previous, self.map)
 
     def test_name(self):
@@ -358,7 +358,8 @@ class MapFieldsSuite(TestSuite):
         self.assertEqual(self.map.width, 24)
 
     def test_darkness(self):
-        self.field_test_int("darkness", 8, True)
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.darkness = 3
 
     def test_path(self):
         with self.assertRaises(TypeError):
@@ -382,7 +383,7 @@ class MapFieldsSuite(TestSuite):
         with self.assertRaises(TypeError):
             self.map.region = Atrinik.GetFirst("region")
 
-        self.assertIsNone(self.map.region)
+        self.assertEqual(self.map.region, Atrinik.WhoIsActivator().map.region)
         m = Atrinik.ReadyMap("/shattered_islands/world_1_67")
         self.assertEqual(m.region.name, "brynknot")
 
@@ -404,10 +405,11 @@ class MapFieldsSuite(TestSuite):
 class MapFlagsSuite(TestSuite):
     def setUp(self):
         super().setUp()
-        self.map = self.obj = Atrinik.CreateMap(24, 24, self.id())
+        self.map = self.obj = create_test_map(24, 24, self.id())
 
     def test_f_outdoor(self):
-        self.flag_test("f_outdoor")
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.f_outdoor = True
 
     def test_f_unique(self):
         self.flag_test("f_unique")

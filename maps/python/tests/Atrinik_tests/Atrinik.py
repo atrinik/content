@@ -2,7 +2,7 @@ import unittest
 import time
 
 import Atrinik
-from tests import simulate_server
+from tests import create_test_map, simulate_server
 
 
 class AtrinikMethodsSuite(unittest.TestCase):
@@ -263,7 +263,7 @@ class AtrinikMethodsSuite(unittest.TestCase):
         self.assertIsInstance(t, tuple)
         self.assertEqual(t, (5, 0, 0, 0))
 
-        m = Atrinik.CreateMap(50, 50, "test")
+        m = create_test_map(50, 50, "test")
         t = Atrinik.GetRangeVectorFromMapCoords(m, 0, 0, m, 0, 0)
         self.assertIsInstance(t, tuple)
         self.assertEqual(t, (5, 0, 0, 0))
@@ -365,7 +365,7 @@ class AtrinikMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, Atrinik.CreateMap, 1, 2)
         self.assertRaises(TypeError, Atrinik.CreateMap, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test")
+        m = create_test_map(5, 5, "test")
         self.assertEqual(m.width, 5)
         self.assertEqual(m.height, 5)
         self.assertEqual(m.path, "/python-maps/test")

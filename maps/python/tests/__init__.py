@@ -17,7 +17,7 @@ def create_test_map(width, height, path, sky_above="sealed", light=0):
     return _native_create_map(width, height, path, origin, sky_above, light)
 
 
-Atrinik.CreateMap = _test_create_map
+Atrinik.CreateMap = create_test_map
 
 called_ib_fnc = None
 

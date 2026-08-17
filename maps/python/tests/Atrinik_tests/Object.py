@@ -2,7 +2,7 @@ import random
 import unittest
 
 import Atrinik
-from tests import simulate_server, TestSuite
+from tests import create_test_map, simulate_server, TestSuite
 
 
 class ObjectMethodsSuite(unittest.TestCase):
@@ -28,7 +28,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         rune.Destroy()
         self.assertLessEqual(activator.hp, hp)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-activate-rune")
+        m = create_test_map(5, 5, "test-atrinik-object-activate-rune")
         rune = m.CreateObject("rune_fire", 0, 0)
         hp = activator.hp
         rune.ActivateRune(activator)
@@ -48,7 +48,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.obj.TeleportTo("/emergency")
         self.assertEqual(self.obj.map.path, "/emergency")
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-teleport-to")
+        m = create_test_map(5, 5, "test-atrinik-object-teleport-to")
         self.obj.TeleportTo(m.path)
         self.assertEqual(self.obj.map.path, m.path)
         self.assertEqual(self.obj.x, 0)
@@ -101,7 +101,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.Take, 1, 2)
         self.assertRaises(TypeError, self.obj.Take, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-take")
+        m = create_test_map(5, 5, "test-atrinik-object-take")
         m.Insert(self.obj, 0, 0)
         m.Insert(activator, 0, 0)
         activator.Take(self.obj)
@@ -118,7 +118,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.Drop, 1, 2)
         self.assertRaises(TypeError, self.obj.Drop, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-drop")
+        m = create_test_map(5, 5, "test-atrinik-object-drop")
         m.Insert(activator, 0, 0)
         self.obj.InsertInto(activator)
         self.assertEqual(self.obj.env, activator)
@@ -137,7 +137,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.Say, 1, 2)
         self.assertRaises(TypeError, self.obj.Say, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-drop")
+        m = create_test_map(5, 5, "test-atrinik-object-drop")
         m.Insert(activator, 0, 0)
         m.Insert(me, 4, 4)
         m.Insert(self.obj, 1, 1)
@@ -208,7 +208,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.Hit, 1, 2)
         self.assertRaises(TypeError, self.obj.Hit, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-hit")
+        m = create_test_map(5, 5, "test-atrinik-object-hit")
         m.Insert(activator, 3, 3)
 
         activator.hp = activator.maxhp
@@ -238,7 +238,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.Cast, 1, 2)
         self.assertRaises(TypeError, self.obj.Cast, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-cast")
+        m = create_test_map(5, 5, "test-atrinik-object-cast")
         m.Insert(activator, 0, 0)
 
         raas = m.CreateObject("raas", 1, 1)
@@ -635,7 +635,7 @@ class ObjectMethodsSuite(unittest.TestCase):
 
         self.assertRaises(Atrinik.AtrinikError, self.obj.Remove)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-remove")
+        m = create_test_map(5, 5, "test-atrinik-object-remove")
         m.Insert(self.obj, 0, 0)
         self.obj.Remove()
         self.assertFalse(m.Objects(0, 0))
@@ -654,7 +654,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         obj.Destroy()
         self.assertRaises(ReferenceError, obj.Destroy)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-remove")
+        m = create_test_map(5, 5, "test-atrinik-object-remove")
         obj = m.CreateObject("sword", 0, 0)
         obj.Destroy()
         self.assertRaises(ReferenceError, obj.Destroy)
@@ -672,7 +672,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.SetPosition, 1, "2")
         self.assertRaises(TypeError, self.obj.SetPosition, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-set-position")
+        m = create_test_map(5, 5, "test-atrinik-object-set-position")
         m.Insert(self.obj, 0, 0)
         self.assertTrue(m.Objects(0, 0))
         self.assertEqual(len(m.Objects(0, 0)), 1)
@@ -702,7 +702,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.CastIdentify, 1, 2)
         self.assertRaises(TypeError, self.obj.CastIdentify, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-cast-identify")
+        m = create_test_map(5, 5, "test-atrinik-object-cast-identify")
         m.Insert(activator, 0, 0)
         npc = m.CreateObject("smith", 1, 1)
         npc.Update()
@@ -1079,7 +1079,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(ValueError, self.obj.SquaresAround, 0)
         self.assertRaises(TypeError, self.obj.SquaresAround, 1, callable=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-squares-around")
+        m = create_test_map(5, 5, "test-atrinik-object-squares-around")
         m.Insert(activator, 2, 2)
 
         l = []
@@ -1116,7 +1116,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.GetRangeVector, 1, 2)
         self.assertRaises(TypeError, self.obj.GetRangeVector, x=1)
 
-        m = Atrinik.CreateMap(50, 50, "test-atrinik-object-get-range-vector")
+        m = create_test_map(50, 50, "test-atrinik-object-get-range-vector")
         m.Insert(self.obj, 0, 0)
         m.Insert(activator, 0, 0)
         t = self.obj.GetRangeVector(activator)
@@ -1157,7 +1157,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.Move, 1, 2)
         self.assertRaises(TypeError, self.obj.Move, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-move")
+        m = create_test_map(5, 5, "test-atrinik-object-move")
         m.Insert(activator, 0, 0)
         self.assertEqual(activator.Move(Atrinik.EAST), Atrinik.EAST)
         self.assertEqual(activator.x, 1)
@@ -1177,7 +1177,7 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertRaises(TypeError, self.obj.ConnectionTrigger, 1, "2")
         self.assertRaises(TypeError, self.obj.ConnectionTrigger, x=1)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-move")
+        m = create_test_map(5, 5, "test-atrinik-object-move")
         gate = m.CreateObject("gate_closed", 0, 0)
         gate.connected = 101
         switch = m.CreateObject("switch_wall", 2, 2)
@@ -1371,7 +1371,7 @@ class ObjectFieldsSuite(TestSuite):
         self.assertIsNone(self.obj.above)
 
     def test_below_above(self):
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-below")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-below")
         gate1 = m.CreateObject("gate_closed", 0, 0)
         gate2 = m.CreateObject("gate_closed", 0, 0)
         gate3 = m.CreateObject("gate_closed", 0, 0)
@@ -1406,7 +1406,7 @@ class ObjectFieldsSuite(TestSuite):
 
         self.assertEqual(self.obj.head, self.obj)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-head")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-head")
         ballista = m.CreateObject("ballista", 0, 0)
         self.assertEqual(ballista.head, ballista)
         self.assertEqual(ballista.more.head, ballista)
@@ -1417,7 +1417,7 @@ class ObjectFieldsSuite(TestSuite):
 
         self.assertIsNone(self.obj.more)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-more")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-more")
         gazer = m.CreateObject("gazer_dread", 0, 0)
         gazer.Update()
 
@@ -1434,7 +1434,7 @@ class ObjectFieldsSuite(TestSuite):
 
         self.assertIsNone(self.obj.map)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-map")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-map")
         m.Insert(self.obj, 0, 0)
         self.assertEqual(self.obj.map, m)
 
@@ -1556,7 +1556,7 @@ class ObjectFieldsSuite(TestSuite):
 
         self.assertIsNone(self.obj.attacked_by)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-attacked_by")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-attacked_by")
         sack = m.CreateObject("sack", 0, 0)
         m.Insert(activator, 0, 0)
         activator.Apply(sack)
@@ -1580,7 +1580,7 @@ class ObjectFieldsSuite(TestSuite):
         with self.assertRaises(TypeError):
             self.obj.owner = activator
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-owner")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-owner")
         raas = m.CreateObject("raas", 0, 0)
         raas.Update()
         raas.Cast(Atrinik.GetArchetype("spell_firestorm").clone.sp,
@@ -1601,7 +1601,7 @@ class ObjectFieldsSuite(TestSuite):
         with self.assertRaises(TypeError):
             self.obj.x = 10
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-x")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-x")
         m.Insert(self.obj, 2, 1)
         self.assertEqual(self.obj.x, 2)
         m.Insert(self.obj, 3, 1)
@@ -1611,7 +1611,7 @@ class ObjectFieldsSuite(TestSuite):
         with self.assertRaises(TypeError):
             self.obj.y = 10
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-y")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-y")
         m.Insert(self.obj, 1, 2)
         self.assertEqual(self.obj.y, 2)
         m.Insert(self.obj, 1, 3)
@@ -1620,7 +1620,7 @@ class ObjectFieldsSuite(TestSuite):
     def test_attacked_by_distance(self):
         self.field_test_int("attacked_by_distance", 16)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-"
+        m = create_test_map(5, 5, "test-atrinik-object-fields-"
                                     "attacked_by_distance")
         m.Insert(activator, 0, 0)
         activator.hp = activator.maxhp
@@ -1634,7 +1634,7 @@ class ObjectFieldsSuite(TestSuite):
     def test_last_damage(self):
         self.field_test_int("last_damage", 16, True)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-last_damage")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-last_damage")
         m.Insert(activator, 0, 0)
         sword = activator.CreateObject("sword")
         sword.item_level = 1
@@ -1745,7 +1745,7 @@ class ObjectFieldsSuite(TestSuite):
         self.assertEqual(self.obj.Save(), "arch sword\nend\n")
 
         self.obj.glow_radius = 8
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-light-color")
+        m = create_test_map(5, 5, "test-atrinik-object-light-color")
         m.Insert(self.obj, 2, 2)
         for color in (0xff0000, 0x0000ff, 0xff0000):
             self.obj.light_color = color
@@ -1938,7 +1938,7 @@ class ObjectFieldsSuite(TestSuite):
     def test_connected(self):
         self.assertEqual(self.obj.connected, 0)
 
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-fields-connected")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-connected")
         gate = m.CreateObject("gate_closed", 0, 0)
         gate.connected = 101
         self.assertEqual(gate.Save(), "arch gate_closed\npath_attuned 101\n"
@@ -2321,7 +2321,7 @@ class ObjectIteratorSuite(unittest.TestCase):
         self.assertEqual(self.obj.inv[99], objs[99])
 
     def test_02(self):
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-iterator-test-02")
+        m = create_test_map(5, 5, "test-atrinik-object-iterator-test-02")
         objs = []
         for i in range(100):
             obj = Atrinik.CreateObject("sword")
@@ -2340,7 +2340,7 @@ class ObjectIteratorSuite(unittest.TestCase):
         self.assertEqual(m.Objects(0, 0)[99], objs[99])
 
     def test_03(self):
-        m = Atrinik.CreateMap(5, 5, "test-atrinik-object-iterator-test-02")
+        m = create_test_map(5, 5, "test-atrinik-object-iterator-test-02")
         objs = []
         for i in range(100):
             obj = Atrinik.CreateObject("sword")

@@ -135,6 +135,30 @@ def create_manifest(
             "files": files,
         }
     else:
+        migration_index = next(
+            (
+                entry
+                for entry in files
+                if entry["path"] == "maps/celestial-migration-index.json"
+            ),
+            None,
+        )
+        celestial_fields = {}
+        if migration_index is not None:
+            manifest_files_digest = hashlib.sha256()
+            for entry in files:
+                manifest_files_digest.update(
+                    "{}\0{}\0{}\n".format(
+                        entry["path"], entry["sha256"], entry["size"]
+                    ).encode("utf-8")
+                )
+            celestial_fields = {
+                "celestial_schema_version": 1,
+                "celestial_runtime_factory_version": 1,
+                "celestial_migration_index": "maps/celestial-migration-index.json",
+                "celestial_migration_index_sha256": migration_index["sha256"],
+                "celestial_manifest_files_sha256": manifest_files_digest.hexdigest(),
+            }
         manifest = {
             "schema_version": 2,
             "target": target_contract["target"],
@@ -158,6 +182,7 @@ def create_manifest(
             ],
             "files": files,
         }
+        manifest.update(celestial_fields)
     (output / "manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
@@ -189,6 +214,10 @@ def build(
     target_contract = (
         load_target_contract(source, target) if target is not None else None
     )
+    if target_contract is not None and not (
+        source / "maps" / "celestial-migration-index.json"
+    ).is_file():
+        raise ValueError("Classic runtime is missing the celestial migration index")
     if (
         target_contract is not None
         and release_version != "unreleased"

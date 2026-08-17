@@ -142,7 +142,7 @@ class MapMethodsSuite(TestSuite):
         self.map.Insert(me, 0, 0)
         self.assertEqual(self.map.CountPlayers(), 2)
 
-        m = create_test_map(5, 5, "test-atrinik-map-count-players")
+        m = create_test_map(5, 5, "test-atrinik-map-get-players")
         m.Insert(me, 0, 0)
         self.assertEqual(self.map.CountPlayers(), 1)
         self.assertEqual(m.CountPlayers(), 1)
@@ -227,8 +227,8 @@ class MapMethodsSuite(TestSuite):
         self.assertRaises(Atrinik.AtrinikError, self.map.GetDarkness, 100, 0)
 
         self.assertEqual(self.map.GetDarkness(0, 0), 0)
-        self.map.darkness = 3
-        self.assertEqual(self.map.GetDarkness(0, 0), 80)
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.darkness = 3
 
     def test_GetPath(self):
         self.assertRaises(TypeError, self.map.GetPath, 1, 2)
@@ -358,7 +358,8 @@ class MapFieldsSuite(TestSuite):
         self.assertEqual(self.map.width, 24)
 
     def test_darkness(self):
-        self.field_test_int("darkness", 8, True)
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.darkness = 3
 
     def test_path(self):
         with self.assertRaises(TypeError):
@@ -382,7 +383,7 @@ class MapFieldsSuite(TestSuite):
         with self.assertRaises(TypeError):
             self.map.region = Atrinik.GetFirst("region")
 
-        self.assertIsNone(self.map.region)
+        self.assertEqual(self.map.region, Atrinik.WhoIsActivator().map.region)
         m = Atrinik.ReadyMap("/shattered_islands/world_1_67")
         self.assertEqual(m.region.name, "brynknot")
 

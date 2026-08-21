@@ -9,7 +9,7 @@
       "property_id": "incuna_apartment",
       "npc_binding": {
         "map": "/shattered_islands/world_4_85",
-        "x": 9,
+        "x": 11,
         "y": 2,
         "archetype": "female2",
         "npc_id": "incuna_apartment_steward"

@@ -371,7 +371,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         for obj in activator.map.Objects(6, 3):
             if obj.name == "NEW ARRIVALS":
                 notice = obj
-        for obj in activator.map.Objects(9, 2):
+        for obj in activator.map.Objects(11, 2):
             if obj.name == "Elara Harth":
                 steward = obj
         for obj in activator.map.Objects(10, 2):

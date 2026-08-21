@@ -62,7 +62,7 @@ class M1FoundationTests(unittest.TestCase):
         )
         self.assertEqual(history[0]["changes"][0]["status"], "A")
 
-    def test_classic_release_line_is_bounded_and_excluded(self) -> None:
+    def test_classic_release_line_is_bounded_and_configured(self) -> None:
         contract = json.loads(
             (ROOT / "contracts/release-lines/classic-1x.json").read_text(
                 encoding="utf-8"
@@ -90,7 +90,10 @@ class M1FoundationTests(unittest.TestCase):
             contract,
         )
         release = json.loads((ROOT / ".releaserc.json").read_text(encoding="utf-8"))
-        self.assertEqual(["main"], release["branches"])
+        self.assertEqual(
+            ["+([0-9]).+([0-9]).x", "main"],
+            release["branches"],
+        )
 
     def test_main_establishes_the_replacement_major_boundary(self) -> None:
         self.assertEqual(

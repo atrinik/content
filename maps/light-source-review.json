@@ -5048,7 +5048,7 @@
       "art_overrides": {
         "1101": "Map-local art override preserves the authored visual state for this reviewed light source."
       },
-      "semantic_sha256": "7c7a419a18db34e918956b44d7ea3a9fcb2529263e10ea94591b5bfbcd269ccb"
+      "semantic_sha256": "68914046a15dc30cec9d94061712980ba2b81c29412a3ae83e2c6d2bf43d68d4"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",

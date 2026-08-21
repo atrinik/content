@@ -381,7 +381,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIsNotNone(notice)
         self.assertIsNotNone(steward)
         self.assertIsNotNone(portal)
-        self.assertEqual((11, 2), (steward.x, steward.y))
+        self.assertEqual((11, 1), (steward.x, steward.y))
         self.assertIn("Elara Harth", notice.msg)
         self.assertIn("apartment", notice.msg)
         steward_event = steward.FindObject(archname="event_obj")

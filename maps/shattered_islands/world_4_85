@@ -932,9 +932,18 @@ arch bridge_wood_EW.101
 x 6
 y 3
 end
+arch sign
+msg
+NEW ARRIVALS
+Speak with Elara Harth at the Incuna pier before exploring town. Claim your apartment, then use the portal beside her and the hammock inside.
+endmsg
+name NEW ARRIVALS
+x 6
+y 3
+end
 arch spawn_point
 x 9
-y 4
+y 2
 arch female2
 name Elara Harth
 npc_id incuna_apartment_steward
@@ -1093,7 +1102,7 @@ arch exit
 name Incuna beach nook portal
 property_id incuna_apartment
 msg
-The portal to the tiny private beach stewarded by Elara Harth. It opens only for the owner of an Incuna apartment.
+This portal is dormant until Elara Harth activates your Incuna apartment. Once you claim it, the portal opens only for you.
 endmsg
 animation portal_azure
 glow_radius 1
@@ -1101,7 +1110,7 @@ light_color 60d0ff
 hp 10
 sp 5
 x 10
-y 4
+y 2
 arch event_obj
 sub_type 10
 race /python/generic/apartment_teleport.py

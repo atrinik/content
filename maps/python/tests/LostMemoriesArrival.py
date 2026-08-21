@@ -31,6 +31,10 @@ STEWARD_INTERFACE = os.path.join(
     MAPS_ROOT,
     "interfaces/quests/lost_memories/incuna_apartment_steward.py",
 )
+BRELEND_INTERFACE = os.path.join(
+    MAPS_ROOT,
+    "interfaces/quests/lost_memories/brelend_lee.py",
+)
 
 
 class LostMemoriesArrivalSuite(TestSuite):
@@ -101,6 +105,13 @@ class LostMemoriesArrivalSuite(TestSuite):
         runpy.run_path(STEWARD_INTERFACE, init_globals={
             "activator": activator,
             "me": steward,
+            "msg": msg,
+        })
+
+    def run_brelend_interface(self, brelend, msg):
+        runpy.run_path(BRELEND_INTERFACE, init_globals={
+            "activator": activator,
+            "me": brelend,
             "msg": msg,
         })
 
@@ -356,15 +367,22 @@ class LostMemoriesArrivalSuite(TestSuite):
         activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
         steward = None
         portal = None
-        for obj in activator.map.Objects(9, 4):
+        notice = None
+        for obj in activator.map.Objects(6, 3):
+            if obj.name == "NEW ARRIVALS":
+                notice = obj
+        for obj in activator.map.Objects(9, 2):
             if obj.name == "Elara Harth":
                 steward = obj
-        for obj in activator.map.Objects(10, 4):
+        for obj in activator.map.Objects(10, 2):
             if obj.name == "Incuna beach nook portal":
                 portal = obj
 
+        self.assertIsNotNone(notice)
         self.assertIsNotNone(steward)
         self.assertIsNotNone(portal)
+        self.assertIn("Elara Harth", notice.msg)
+        self.assertIn("apartment", notice.msg)
         steward_event = steward.FindObject(archname="event_obj")
         portal_event = portal.FindObject(archname="event_obj")
         self.assertEqual(
@@ -375,17 +393,41 @@ class LostMemoriesArrivalSuite(TestSuite):
             "/python/generic/apartment_teleport.py", portal_event.race
         )
         self.assertEqual("incuna", portal_event.slaying)
+        self.assertIn("dormant", portal.msg)
+        self.assertIn("Elara Harth", portal.msg)
 
         packets = activator.Controller().s_packets
         packets.clear()
         origin_map = activator.map.path
         self.walk_into_portal(portal)
         self.assertEqual(origin_map, activator.map.path)
-        self.assertEqual((10, 5), (activator.x, activator.y))
+        self.assertEqual((10, 3), (activator.x, activator.y))
         self.assertTrue(any(
             b"You don't own an apartment here!" in packet
             for packet in packets
         ))
+
+    def test_brelend_redirects_until_apartment_tutorial_is_complete(self):
+        memories = QuestManager(activator, lost_memories)
+        memories.start("apartment_tutorial")
+        activator.TeleportTo("/shattered_islands/world_4_84", 7, 7)
+        brelend = self.find_map_object(
+            lambda obj: obj.name == "Brelend Lee"
+        )
+        if brelend is None:
+            for obj in activator.map.Objects(7, 7):
+                brelend = obj.FindObject(name="Brelend Lee")
+                if brelend:
+                    break
+        self.assertIsNotNone(brelend)
+
+        packets = activator.Controller().s_packets
+        packets.clear()
+        self.run_brelend_interface(brelend, "hello")
+        conversation = b"".join(packets)
+        self.assertIn(b"Brelend pauses before beginning the service", conversation)
+        self.assertIn(b"Elara Harth", conversation)
+        self.assertNotIn(b"I need help recovering my memories", conversation)
 
     def test_incuna_beach_nook_persists_and_completes_at_hammock(self):
         region = apartments_info["incuna"]
@@ -470,7 +512,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         activator.SetPosition(apartment_exit.x, apartment_exit.y)
         activator.Apply(apartment_exit)
         self.assertEqual("/shattered_islands/world_4_85", activator.map.path)
-        self.assertEqual((10, 5), (activator.x, activator.y))
+        self.assertEqual((10, 3), (activator.x, activator.y))
 
         # Rebuild the apartment entitlement from its saved inventory
         # representation, as player loading does during a relog.
@@ -486,7 +528,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             reconstructed_apartment.race,
         )
         self.assertEqual(
-            (10, 5),
+            (10, 3),
             (
                 reconstructed_apartment.last_sp,
                 reconstructed_apartment.last_grace,

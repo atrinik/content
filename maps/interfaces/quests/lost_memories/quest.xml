@@ -29,8 +29,8 @@
                 <response destination="remember" message="Not really..."/>
             </dialog>
             <dialog name="remember">
-                <message>Before you visit the local church priest, I want you to learn about apartments. Speak with Elara Harth, the apartment steward in the dock house beside Gulliver. She has arranged a tiny place of your own here in Incuna.</message>
-                <message>Once Elara has registered it, use the glowing portal beside her, enter your apartment, and use its hammock. Then you can seek out Brelend Lee, the local priest, to continue recovering your memories.</message>
+                <message>Before you visit the local church priest, I want you to learn about apartments. Speak with Elara Harth at the Incuna pier, in the small shelter beside the landing. She has arranged a tiny place of your own here in Incuna.</message>
+                <message>The NEW ARRIVALS notice by the dock points to Elara. Once she has activated your apartment, use the portal beside her, enter your apartment, and use its hammock. Then you can seek out Brelend Lee to continue recovering your memories.</message>
                 <message>Ah, one last thing! Here, take the rest of our mushroom supplies - I'll get us something better. No offense, but I feel I wouldn't be able to stomach any more of those things...</message>
                 <object arch="sack" message="sack with mushroom supplies"/>
                 <notification action="/help basics_containers" delay="90000" message="Tutorial Available: Containers" shortcut="?HELP"/>
@@ -39,7 +39,17 @@
                 <response action="close" message="I'll do that."/>
             </dialog>
         </interface>
-        <interface inherit="Temple.TempleElathiel" npc="Brelend Lee"/>
+        <interface inherit="Temple.TempleElathiel" npc="Brelend Lee">
+            <code>
+def dialog_hello(self):
+    if (self.qm.started("apartment_tutorial") and
+            not self.qm.completed("apartment_tutorial")):
+        self.add_msg("Brelend pauses before beginning the service. Sam sent you to learn about apartments first. Speak with Elara Harth at the Incuna pier, claim your apartment, enter through her portal, and use the hammock. Then return here and I will help with your memories.")
+        return
+
+    super().dialog_hello()
+            </code>
+        </interface>
         <interface inherit="Tavern.Bartender" npc="Arvend Blessed"/>
         <interface npc="Arvend Blessed" state="calmed">
             <dialog name="hello">
@@ -947,12 +957,12 @@ def dialog_hello(self):
             <interface inherit="arrival" npc="Sam Goodberry" state="need_complete"/>
         </part>
         <part name="Your First Apartment" uid="apartment_tutorial">
-            <info>Visit apartment steward Elara Harth in Incuna's dock house beside Gulliver. Claim your tiny beach nook, enter through the glowing portal beside her, and use the hammock inside.</info>
+            <info>Speak with Elara Harth at the Incuna pier and claim your apartment. Then enter through the portal beside her and use the hammock inside.</info>
             <interface npc="Elara Harth" npc_id="incuna_apartment_steward" property_id="incuna_apartment" state="need_complete">
                 <dialog name="hello">
-                    <message>Welcome. Sam asked me to teach you how apartments work before you leave Incuna.</message>
+                    <message>Welcome. Sam asked me to teach you how apartments work before you leave Incuna. This small shelter beside the landing is easy to miss, so the NEW ARRIVALS notice points newcomers here.</message>
                     <message>An apartment is a private, persistent space. Only its owner can enter, and anything stored inside remains there between visits. Your Incuna apartment is a very small beach nook with one chest, but the sea view is difficult to beat.</message>
-                    <message>Apartment ownership is regional, so this is separate from any home you may later buy in Strakewood or Eld Woods. The exit returns you to this portal. Use the hammock inside to set your recall point and prove you can return safely.</message>
+                    <message>Apartment ownership is regional, so this is separate from any home you may later buy in Strakewood or Eld Woods. The exit returns you to this side berth. Use the hammock inside to set your recall point and prove you can return safely.</message>
                     <response destination="claim" property_action_id="lost_memories_incuna_apartment_grant" message="Please register my apartment."/>
                     <response action="close" message="I need a moment."/>
                 </dialog>

@@ -4742,7 +4742,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "56098c4e87fe0947fece2d6cab28b90a4ad778aa66508190f773fe49b56a028f"
+      "semantic_sha256": "737095e9feba216c4b27423fa94627698ccd1568478623b8caee78c23af3d306"
     },
     "maps/shattered_islands/world_3_85_-1": {
       "uncolored_disposition": "neutral",
@@ -5046,9 +5046,9 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The owner-gated private-beach portal adds a compact cyan navigation cue without replacing the map\u2019s outdoor ambient hierarchy.",
       "visible_neutral": {},
       "art_overrides": {
-        "1092": "Map-local art override preserves the authored visual state for this reviewed light source."
+        "1101": "Map-local art override preserves the authored visual state for this reviewed light source."
       },
-      "semantic_sha256": "b52ed5ac1ffcbf7d06cedc45986aeb930b2f672763c6edd0b864b22c7a805f01"
+      "semantic_sha256": "6a43fffa09a66e0176506e299a5437d25e20b6addd202ccb07e38ac378aa5c10"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",

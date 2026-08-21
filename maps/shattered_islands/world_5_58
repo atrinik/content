@@ -579,7 +579,7 @@ y 20
 end
 arch shop_mat
 x 3
-y 20
+y 17
 end
 arch floor_green1
 x 3
@@ -878,7 +878,7 @@ y 20
 end
 arch shop_mat
 x 5
-y 20
+y 17
 end
 arch shop_floor
 x 5

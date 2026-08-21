@@ -30,9 +30,12 @@ class ReleaseGuidanceTests(unittest.TestCase):
                 for policy in REQUIRED_POLICY:
                     self.assertIn(policy, guidance)
 
-    def test_only_main_is_an_active_workflow_and_release_source(self) -> None:
+    def test_main_and_maintenance_are_active_release_sources(self) -> None:
         release = (ROOT / ".releaserc.json").read_text(encoding="utf-8")
-        self.assertIn('"branches": ["main"]', release)
+        self.assertIn(
+            '"branches": ["+([0-9]).+([0-9]).x", "main"]',
+            release,
+        )
         for relative_path in (
             Path(".github/workflows/check.yml"),
             Path(".github/workflows/pr-title.yml"),

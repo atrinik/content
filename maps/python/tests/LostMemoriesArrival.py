@@ -371,9 +371,9 @@ class LostMemoriesArrivalSuite(TestSuite):
         for obj in activator.map.Objects(6, 3):
             if obj.name == "NEW ARRIVALS":
                 notice = obj
-        for obj in activator.map.Objects(11, 2):
-            if obj.name == "Elara Harth":
-                steward = obj
+        steward = self.find_map_object(
+            lambda obj: obj.name == "Elara Harth"
+        )
         for obj in activator.map.Objects(10, 2):
             if obj.name == "Incuna beach nook portal":
                 portal = obj
@@ -381,6 +381,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIsNotNone(notice)
         self.assertIsNotNone(steward)
         self.assertIsNotNone(portal)
+        self.assertEqual((11, 2), (steward.x, steward.y))
         self.assertIn("Elara Harth", notice.msg)
         self.assertIn("apartment", notice.msg)
         steward_event = steward.FindObject(archname="event_obj")

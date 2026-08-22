@@ -5266,7 +5266,7 @@
       "rationale": "Rendered Aris in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e0594c2b8be13a446669b0140a5176beb57545f23a2b0334bfef9ab21842c3a2"
+      "semantic_sha256": "bf05f90ae8bd2cbb7d844fd8e14731a9a6718ca1350d76dd947ed24fa230db94"
     },
     "maps/shattered_islands/world_5_60": {
       "uncolored_disposition": "neutral",

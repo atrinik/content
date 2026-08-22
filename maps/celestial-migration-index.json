@@ -49119,7 +49119,7 @@
     {
       "path": "/shattered_islands/world_5_58",
       "predecessor_sha256": "157527998133c4c9fd5a05f9865188372fa669b8d70806fc1d2fb1d9152e1a9e",
-      "migrated_sha256": "157527998133c4c9fd5a05f9865188372fa669b8d70806fc1d2fb1d9152e1a9e",
+      "migrated_sha256": "804400130fd44fa00ff30b82650e66d6260a6468d61d5820e6f07c24d07366cd",
       "region": "strakewood_island",
       "sky_above": "linked",
       "legacy_outdoor": true,

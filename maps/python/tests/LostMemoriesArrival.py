@@ -316,7 +316,7 @@ class LostMemoriesArrivalSuite(TestSuite):
     def test_actual_steward_failure_does_not_advance_and_retry_grants_once(self):
         memories = QuestManager(activator, lost_memories)
         memories.start("apartment_tutorial")
-        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
+        activator.TeleportTo("/shattered_islands/world_4_84", 16, 18)
         steward = self.find_map_object(lambda obj: obj.name == "Elara Harth")
         self.assertIsNotNone(steward)
 
@@ -364,24 +364,25 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertEqual(state, self.quest_parts(memories))
 
     def test_incuna_steward_and_owner_gated_portal_are_signposted(self):
-        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
+        activator.TeleportTo("/shattered_islands/world_4_85", 9, 4)
         steward = None
         portal = None
         notice = None
-        for obj in activator.map.Objects(6, 3):
+        for obj in activator.map.Objects(9, 4):
             if obj.name == "NEW ARRIVALS":
                 notice = obj
+        activator.TeleportTo("/shattered_islands/world_4_84", 16, 18)
         steward = self.find_map_object(
             lambda obj: obj.name == "Elara Harth"
         )
-        for obj in activator.map.Objects(10, 2):
+        for obj in activator.map.Objects(17, 18):
             if obj.name == "Incuna beach nook portal":
                 portal = obj
 
         self.assertIsNotNone(notice)
         self.assertIsNotNone(steward)
         self.assertIsNotNone(portal)
-        self.assertEqual((11, 1), (steward.x, steward.y))
+        self.assertEqual((16, 19), (steward.x, steward.y))
         self.assertIn("Elara Harth", notice.msg)
         self.assertIn("apartment", notice.msg)
         steward_event = steward.FindObject(archname="event_obj")
@@ -442,14 +443,14 @@ class LostMemoriesArrivalSuite(TestSuite):
         memories = QuestManager(activator, lost_memories)
         memories.start("apartment_tutorial")
 
-        activator.TeleportTo("/shattered_islands/world_4_85", 7, 4)
+        activator.TeleportTo("/shattered_islands/world_4_84", 16, 18)
         portal = self.find_map_object(
             lambda obj: obj.name == "Incuna beach nook portal"
         )
         self.assertIsNotNone(portal)
         self.walk_into_portal(portal)
         self.assertEqual(expected_path, activator.map.path)
-        self.assertEqual((11, 12), (activator.x, activator.y))
+        self.assertEqual((11, 11), (activator.x, activator.y))
 
         sand_tiles = self.find_map_objects(
             lambda obj: obj.arch.name.startswith("floor_sand_d")
@@ -512,7 +513,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIsNotNone(apartment_exit)
         activator.SetPosition(apartment_exit.x, apartment_exit.y)
         activator.Apply(apartment_exit)
-        self.assertEqual("/shattered_islands/world_4_85", activator.map.path)
+        self.assertEqual("/shattered_islands/world_4_84", activator.map.path)
         self.assertEqual((10, 3), (activator.x, activator.y))
 
         # Rebuild the apartment entitlement from its saved inventory
@@ -525,7 +526,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIsNotNone(reconstructed_apartment)
         self.assertEqual("cheap", reconstructed_apartment.slaying)
         self.assertEqual(
-            "/shattered_islands/world_4_85",
+            "/shattered_islands/world_4_84",
             reconstructed_apartment.race,
         )
         self.assertEqual(

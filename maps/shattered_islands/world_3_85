@@ -2467,11 +2467,6 @@ arch bridge_wood_04
 x 18
 y 6
 end
-arch chest_4.111
-slaying incuna_docks_priest
-x 18
-y 6
-end
 arch bridge_wood_corner.181
 x 18
 y 7
@@ -2487,19 +2482,6 @@ end
 arch bridge_wood_EW.101
 x 18
 y 9
-end
-arch spawn_point
-x 18
-y 9
-arch priest_green
-direction 3
-speed -0.015
-random_move 1
-item_race 1
-item_level 1
-type 83
-faction incuna_citizens
-end
 end
 arch bridge_wood_EW.101
 x 18
@@ -2907,10 +2889,6 @@ startequip 1
 end
 arch key2
 slaying incuna_docks_ranger
-startequip 1
-end
-arch key2
-slaying incuna_docks_priest
 startequip 1
 end
 arch key2

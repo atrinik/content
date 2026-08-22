@@ -4,13 +4,12 @@ sky_above linked
 name Incuna
 msg
 Created:  2010-08-22 Edwin Miltenburg
-Modified: 2015-12-12 Zoey Rose
+Modified: 2026-08-21 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 3
 no_harm 1
-bg_music tutorialisland.mid
 tile_path_1 /shattered_islands/world_4_83
 celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_5_84
@@ -31,6 +30,7 @@ tile_path_9 /shattered_islands/world_4_84_1
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_4_84_-1
 celestial_boundary_10 discontinuous
+bg_music tutorialisland.mid
 region incuna
 end
 arch grassd_3
@@ -162,10 +162,10 @@ arch celestial_door_wood1
 direction 3
 slaying incuna_tavern_barn
 sp 2
-y 16
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+y 16
 end
 arch check_inv
 slaying incuna_tavern_barn
@@ -208,10 +208,10 @@ y 21
 end
 arch celestial_door_wood1
 direction 5
-y 21
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000002
+y 21
 end
 arch floor_wood3a
 y 22
@@ -1332,10 +1332,10 @@ x 7
 end
 arch celestial_door1_locked
 cursed 1
-x 7
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000003
+x 7
 end
 arch floor_marble1g
 x 7
@@ -1553,10 +1553,10 @@ end
 arch celestial_door1_locked
 direction 7
 cursed 1
-x 8
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000004
+x 8
 end
 arch floor_marble1f
 x 8
@@ -3059,6 +3059,13 @@ arch grassd_4
 x 15
 y 19
 end
+arch table_lab3.111
+direction 5
+glow_radius 5
+light_color ffd080
+x 15
+y 19
+end
 arch floor_ruin4
 x 15
 y 20
@@ -3202,6 +3209,23 @@ end
 arch grassd_m4
 x 16
 y 19
+end
+arch spawn_point
+x 16
+y 19
+arch female2
+name Elara Harth
+npc_id incuna_apartment_steward
+type 83
+direction 7
+stand_still 1
+faction incuna_citizens
+invulnerable 1
+arch event_obj
+sub_type 6
+race /interfaces/quests/lost_memories/incuna_apartment_steward.py
+end
+end
 end
 arch floor_ruin3
 x 16
@@ -3371,6 +3395,25 @@ arch grass_thick2
 x 17
 y 18
 end
+arch exit
+msg
+This portal is dormant until Elara Harth activates your Incuna apartment. Once you claim it, the portal opens only for you.
+endmsg
+property_id incuna_apartment
+name Incuna beach nook portal
+glow_radius 1
+light_color 60d0ff
+hp 10
+sp 3
+animation exit_green
+x 17
+y 18
+arch event_obj
+sub_type 10
+race /python/generic/apartment_teleport.py
+slaying incuna
+end
+end
 arch water_lt2
 x 17
 y 19
@@ -3484,11 +3527,11 @@ y 10
 end
 arch celestial_door1_locked
 direction 3
-x 18
-y 10
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000005
+x 18
+y 10
 end
 arch floor_sand_d1
 x 18
@@ -3496,11 +3539,11 @@ y 11
 end
 arch celestial_door1_locked
 direction 5
-x 18
-y 11
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000006
+x 18
+y 11
 end
 arch grassd_8
 x 18
@@ -4431,11 +4474,11 @@ x 23
 y 7
 end
 arch celestial_curtain1
-x 23
-y 7
 celestial_transmission_closed glass
 celestial_transmission_open open
 celestial_aperture_id 0000000000000007
+x 23
+y 7
 end
 arch floor_green1
 x 23

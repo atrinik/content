@@ -4,13 +4,12 @@ sky_above linked
 name Incuna
 msg
 Created:  2010-08-22 Edwin Miltenburg
-Modified: 2015-12-12 Zoey Rose
+Modified: 2026-08-21 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 3
 no_harm 1
-bg_music tutorialisland.mid
 tile_path_1 /shattered_islands/world_4_84
 celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_5_85
@@ -31,6 +30,7 @@ tile_path_9 /shattered_islands/world_4_85_1
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_4_85_-1
 celestial_boundary_10 discontinuous
+bg_music tutorialisland.mid
 region incuna
 end
 arch grassd_4
@@ -173,11 +173,11 @@ x 1
 y 5
 end
 arch celestial_door_wood1
-x 1
-y 5
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+x 1
+y 5
 end
 arch bridge_wood_corner.121
 x 1
@@ -453,11 +453,11 @@ y 5
 end
 arch celestial_door_wood1
 cursed 1
-x 3
-y 5
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000002
+x 3
+y 5
 end
 arch bridge_wood_EW.101
 x 3
@@ -595,11 +595,11 @@ end
 arch celestial_door_wood1
 direction 7
 cursed 1
-x 4
-y 5
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000003
+x 4
+y 5
 end
 arch bridge_wood_EW.101
 x 4
@@ -932,23 +932,6 @@ arch bridge_wood_EW.101
 x 6
 y 3
 end
-arch spawn_point
-x 9
-y 4
-arch female2
-name Elara Harth
-npc_id incuna_apartment_steward
-type 83
-direction 3
-stand_still 1
-faction incuna_citizens
-invulnerable 1
-arch event_obj
-sub_type 6
-race /interfaces/quests/lost_memories/incuna_apartment_steward.py
-end
-end
-end
 arch bridge_wood_EW.101
 x 6
 y 4
@@ -1089,36 +1072,17 @@ arch bridge_wood_EW.101
 x 7
 y 3
 end
-arch exit
-name Incuna beach nook portal
-property_id incuna_apartment
-msg
-The portal to the tiny private beach stewarded by Elara Harth. It opens only for the owner of an Incuna apartment.
-endmsg
-animation portal_azure
-glow_radius 1
-light_color 60d0ff
-hp 10
-sp 5
-x 10
-y 4
-arch event_obj
-sub_type 10
-race /python/generic/apartment_teleport.py
-slaying incuna
-end
-end
 arch bridge_wood_EW.101
 x 7
 y 4
 end
 arch celestial_door_wood1
 slaying incuna_docks
-x 7
-y 4
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000004
+x 7
+y 4
 end
 arch check_inv
 slaying incuna_docks
@@ -1441,6 +1405,16 @@ x 9
 y 3
 end
 arch bridge_wood_NS.101
+x 9
+y 4
+end
+arch sign
+msg
+NEW ARRIVALS
+
+New to Incuna? Speak with Elara Harth at the small waterside shelter. Claim your apartment with her, then use the nearby portal.
+endmsg
+name NEW ARRIVALS
 x 9
 y 4
 end

@@ -14,7 +14,7 @@ apartments_info = {
                 "price": 0,
                 "path": "/shattered_islands/incuna/apartments/beach_nook",
                 "x": 11,
-                "y": 12,
+                "y": 11,
             },
         },
         "tag": "incuna_apartment",

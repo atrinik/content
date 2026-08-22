@@ -8,27 +8,27 @@
       "npc_id": "incuna_apartment_steward",
       "property_id": "incuna_apartment",
       "npc_binding": {
-        "map": "/shattered_islands/world_4_85",
-        "x": 9,
-        "y": 4,
+        "map": "/shattered_islands/world_4_84",
+        "x": 16,
+        "y": 19,
         "archetype": "female2",
         "npc_id": "incuna_apartment_steward"
       },
       "portal_binding": {
-        "map": "/shattered_islands/world_4_85",
-        "x": 10,
-        "y": 4,
+        "map": "/shattered_islands/world_4_84",
+        "x": 17,
+        "y": 18,
         "archetype": "exit",
         "property_id": "incuna_apartment",
         "return_x": 10,
-        "return_y": 5
+        "return_y": 3
       },
       "layout_binding": {
         "map": "/shattered_islands/incuna/apartments/beach_nook",
         "entry": {
           "x": 11,
-          "y": 12,
-          "floor_archetype": "floor_sand_d4"
+          "y": 11,
+          "floor_archetype": "floor_ruin3"
         },
         "exit": {
           "x": 10,
@@ -46,7 +46,7 @@
           },
           {
             "x": 11,
-            "y": 11,
+            "y": 10,
             "archetype": "hammock_b",
             "name": "hammock to reality",
             "property_id": "incuna_apartment"

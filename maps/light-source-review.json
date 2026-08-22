@@ -2107,6 +2107,17 @@
       "art_overrides": {},
       "semantic_sha256": "808f18090b2bac701b30c24579c287e7a804f85fe7c3e1ff3e20cd58be63f0bc"
     },
+    "maps/shattered_islands/incuna/apartments/beach_nook": {
+      "uncolored_disposition": "neutral",
+      "rationale": "Reviewed the private beach nook's three firefly fixtures; their compact green pools remain localized to the outdoor water-and-ruin setting while the authored animated art stays intact.",
+      "visible_neutral": {},
+      "art_overrides": {
+        "849": "The firefly animation is an authored map-local art override retained for the visible fixture.",
+        "1405": "The firefly animation is an authored map-local art override retained for the visible fixture.",
+        "1756": "The firefly animation is an authored map-local art override retained for the visible fixture."
+      },
+      "semantic_sha256": "56529fc96d93633c8cc375a328e2785680bd63ee1d24aa7ea73cefc4094691cd"
+    },
     "maps/shattered_islands/incuna/ellamin": {
       "uncolored_disposition": "neutral",
       "rationale": "Rendered Incuna - Below Ellamin's House in the issue65_0021 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
@@ -3277,7 +3288,7 @@
       "rationale": "Rendered Deserted Island in the issue65_0058 batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "a55f203816fef34a1f7059270c5b096e1d62ce88121fc818fead30c091da4796"
+      "semantic_sha256": "9bf4203c3a29cda6020a0be0536cca195edf3450caa381650c436c4b5aaccbe4"
     },
     "maps/shattered_islands/world_0_41": {
       "uncolored_disposition": "neutral",
@@ -4742,7 +4753,7 @@
       "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "56098c4e87fe0947fece2d6cab28b90a4ad778aa66508190f773fe49b56a028f"
+      "semantic_sha256": "737095e9feba216c4b27423fa94627698ccd1568478623b8caee78c23af3d306"
     },
     "maps/shattered_islands/world_3_85_-1": {
       "uncolored_disposition": "neutral",
@@ -5022,10 +5033,12 @@
     },
     "maps/shattered_islands/world_4_84": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source. The duplicate pair of radius-5 helpers at (14,5) is deliberately replaced by one radius-5 visible-fixture source.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Issue #88 transfers each co-located neutral street-lantern helper in this map to the visible fixture's inherited ffd080 source, preserving the scalar radius without an accidental double source. The duplicate pair of radius-5 helpers at (14,5) is deliberately replaced by one radius-5 visible-fixture source. The owner-gated beach-nook portal adds a compact cyan navigation cue at the new waterside shelter.",
       "visible_neutral": {},
-      "art_overrides": {},
-      "semantic_sha256": "f08136386e5e76eddc644b035cbddf69f54d0863bd3acd477587113ea316d7f0"
+      "art_overrides": {
+        "3398": "The portal's authored animation is retained as a compact map-local navigation cue for the reviewed light source."
+      },
+      "semantic_sha256": "0feedbb31050323f74863bbfdd34761dc00ee1fa02c45cfa7207c9f018e3011e"
     },
     "maps/shattered_islands/world_4_84_-1": {
       "uncolored_disposition": "neutral",
@@ -5043,12 +5056,10 @@
     },
     "maps/shattered_islands/world_4_85": {
       "uncolored_disposition": "neutral",
-      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. The owner-gated private-beach portal adds a compact cyan navigation cue without replacing the map\u2019s outdoor ambient hierarchy.",
+      "rationale": "Rendered Incuna in the incuna batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
-      "art_overrides": {
-        "1092": "Map-local art override preserves the authored visual state for this reviewed light source."
-      },
-      "semantic_sha256": "b52ed5ac1ffcbf7d06cedc45986aeb930b2f672763c6edd0b864b22c7a805f01"
+      "art_overrides": {},
+      "semantic_sha256": "35cdd9805533f471561eabd52a6c7b9972dd48a133ef46f3e3c7293af38e588e"
     },
     "maps/shattered_islands/world_4_85_-1": {
       "uncolored_disposition": "neutral",
@@ -6729,7 +6740,7 @@
       "expected_emitting_overlaps": 0,
       "intentional_non_emitters": {},
       "rationale": "Visible street lanterns own one golden-amber source each: black uses the established radius 7 and blue/red use radius 5; former helper objects and redundant local radii are absent.",
-      "semantic_sha256": "c9e81c2b3676cb7337204825e34f15078f7af422e7cea042d0cbc9a1bafabf6d"
+      "semantic_sha256": "4bb50c1173dabb577af1c7e8235beffa0cb8c897de54a7d80209ee4840b865b8"
     },
     "warm-candle-fixtures": {
       "archetypes": [
@@ -6786,7 +6797,7 @@
         "maps/shattered_islands/strakewood_island/apartments/apartment_luxurious:5:9:candlelight1.101:1": "The co-located visible wall fireplace owns the reviewed compact source; this candle is locally dark to prevent mixed-color additive over-lighting."
       },
       "rationale": "All visibly lit candle fixtures use the warm-gold palette and reviewed small defaults while local radii preserve existing room footprints; the four-part composite retains one candle source, and the mixed candle/fireplace tile retains only its visible fireplace source.",
-      "semantic_sha256": "4e7ef5e5f09d35be694e645d84b190ae5504ddbf1bb4555a59d031855a31e5b7"
+      "semantic_sha256": "1f3122cc151b72b0841e7c2d2c39ba8f7a713bbd7f7e258e40929d4803d659e9"
     }
   },
   "source_review": {

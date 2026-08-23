@@ -527,8 +527,9 @@ class LostMemoriesArrivalSuite(TestSuite):
             )
         )
         self.assertIsNotNone(apartment_exit)
-        activator.SetPosition(apartment_exit.x, apartment_exit.y)
-        activator.Apply(apartment_exit)
+        # Apartment exits are trigger events; use the same movement path as
+        # a player entering the exit instead of bypassing the event with Apply.
+        self.walk_into_portal(apartment_exit)
         self.assertEqual("/shattered_islands/world_4_84", activator.map.path)
         self.assertEqual((10, 2), (activator.x, activator.y))
 

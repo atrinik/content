@@ -145,7 +145,9 @@ class LostMemoriesArrivalSuite(TestSuite):
             )
             if (
                 steward is not None
-                and steward.FindObject(archname="spawn_point_info") is not None
+                and steward.FindObject(
+                    type=Atrinik.Type.SPAWN_POINT_INFO
+                ) is not None
             ):
                 return steward
             simulate_server(count=1, wait=False)
@@ -419,7 +421,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         origin_map = activator.map.path
         self.walk_into_portal(portal)
         self.assertEqual(origin_map, activator.map.path)
-        self.assertEqual((10, 2), (activator.x, activator.y))
+        self.assertEqual((10, 1), (activator.x, activator.y))
         self.assertTrue(any(
             b"You don't own an apartment here!" in packet
             for packet in packets
@@ -531,7 +533,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         # a player entering the exit instead of bypassing the event with Apply.
         self.walk_into_portal(apartment_exit)
         self.assertEqual("/shattered_islands/world_4_84", activator.map.path)
-        self.assertEqual((10, 2), (activator.x, activator.y))
+        self.assertEqual((10, 1), (activator.x, activator.y))
 
         # Rebuild the apartment entitlement from its saved inventory
         # representation, as player loading does during a relog.
@@ -547,7 +549,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             reconstructed_apartment.race,
         )
         self.assertEqual(
-            (10, 2),
+            (10, 1),
             (
                 reconstructed_apartment.last_sp,
                 reconstructed_apartment.last_grace,

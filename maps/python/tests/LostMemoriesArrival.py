@@ -136,7 +136,10 @@ class LostMemoriesArrivalSuite(TestSuite):
     def find_incuna_steward(self):
         """Allow the authored spawn point to generate Elara before inspection."""
 
-        for _ in range(3):
+        # Spawn points use a fractional negative speed and may begin with a
+        # negative speed credit.  Advance far enough for that normal credit
+        # cycle to elapse instead of relying on the initial random offset.
+        for _ in range(400):
             steward = self.find_map_object(
                 lambda obj: obj.name == "Elara Harth"
             )
@@ -466,10 +469,10 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertEqual((11, 10), (activator.x, activator.y))
 
         sand_tiles = self.find_map_objects(
-            lambda obj: obj.arch.name.startswith("floor_sand_d")
+            lambda obj: obj.arch.name.startswith("floor_ruin")
         )
-        blocked_tiles = self.find_map_objects(
-            lambda obj: obj.arch.name == "blocked"
+        grass_tiles = self.find_map_objects(
+            lambda obj: obj.arch.name.startswith("grassd_")
         )
         chests = self.find_map_objects(
             lambda obj: obj.arch.name == "chest_sw_1"
@@ -477,8 +480,8 @@ class LostMemoriesArrivalSuite(TestSuite):
         hammocks = self.find_map_objects(
             lambda obj: obj.name == "hammock to reality"
         )
-        self.assertEqual(12, len(sand_tiles))
-        self.assertEqual(18, len(blocked_tiles))
+        self.assertEqual(9, len(sand_tiles))
+        self.assertEqual(12, len(grass_tiles))
         self.assertEqual(1, len(chests))
         self.assertEqual(2, len(hammocks))
         self.assertEqual(
@@ -554,7 +557,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         # Force the vacated private map through the normal server swap path.
         # Re-entry must load the marker from disk, not the resident map object.
         del (
-            marker, sand_tiles, blocked_tiles, chests, hammocks, hammock,
+            marker, sand_tiles, grass_tiles, chests, hammocks, hammock,
             apartment_exit,
         )
         apartment_map = Atrinik.ReadyMap(expected_path)

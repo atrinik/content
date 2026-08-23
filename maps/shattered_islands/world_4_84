@@ -3404,7 +3404,7 @@ name Incuna beach nook portal
 glow_radius 1
 light_color 60d0ff
 hp 10
-sp 3
+sp 2
 animation exit_green
 x 17
 y 18

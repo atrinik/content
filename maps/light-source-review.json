@@ -5038,7 +5038,7 @@
       "art_overrides": {
         "3398": "The portal's authored animation is retained as a compact map-local navigation cue for the reviewed light source."
       },
-      "semantic_sha256": "0feedbb31050323f74863bbfdd34761dc00ee1fa02c45cfa7207c9f018e3011e"
+      "semantic_sha256": "f8ea20cd71275c26c717205aed371adbdc6335682313d59033e1776fb9646be4"
     },
     "maps/shattered_islands/world_4_84_-1": {
       "uncolored_disposition": "neutral",

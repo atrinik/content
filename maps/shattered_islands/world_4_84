@@ -3210,11 +3210,13 @@ arch grassd_m4
 x 16
 y 19
 end
-arch female2
+arch spawn_point
 x 16
 y 19
+arch female2
 name Elara Harth
 npc_id incuna_apartment_steward
+type 83
 direction 7
 stand_still 1
 faction incuna_citizens
@@ -3222,6 +3224,7 @@ invulnerable 1
 arch event_obj
 sub_type 6
 race /interfaces/quests/lost_memories/incuna_apartment_steward.py
+end
 end
 end
 arch floor_ruin3

@@ -133,6 +133,21 @@ class LostMemoriesArrivalSuite(TestSuite):
                 )
         return matches
 
+    def find_incuna_steward(self):
+        """Allow the authored spawn point to generate Elara before inspection."""
+
+        for _ in range(3):
+            steward = self.find_map_object(
+                lambda obj: obj.name == "Elara Harth"
+            )
+            if (
+                steward is not None
+                and steward.FindObject(archname="spawn_point_info") is not None
+            ):
+                return steward
+            simulate_server(count=1, wait=False)
+        return None
+
     @staticmethod
     def event_with_race(obj, race):
         event = obj.FindObject(archname="event_obj")
@@ -317,7 +332,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         memories = QuestManager(activator, lost_memories)
         memories.start("apartment_tutorial")
         activator.TeleportTo("/shattered_islands/world_4_84", 16, 18)
-        steward = self.find_map_object(lambda obj: obj.name == "Elara Harth")
+        steward = self.find_incuna_steward()
         self.assertIsNotNone(steward)
 
         original_ensure = LostMemoriesApartment.ensure_incuna_apartment
@@ -372,9 +387,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             if obj.name == "NEW ARRIVALS":
                 notice = obj
         activator.TeleportTo("/shattered_islands/world_4_84", 16, 18)
-        steward = self.find_map_object(
-            lambda obj: obj.name == "Elara Harth"
-        )
+        steward = self.find_incuna_steward()
         for obj in activator.map.Objects(17, 18):
             if obj.name == "Incuna beach nook portal":
                 portal = obj

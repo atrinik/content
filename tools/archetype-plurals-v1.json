@@ -4,11 +4,11 @@
   "issue": "atrinik/content#62",
   "lines": {
     "1.x": {
-      "baseline_sha": "ead72ef831444c874f65da841498924bab625e99",
+      "baseline_sha": "b8cbdbf42eab4321ee63069b8702c2b83de10c6c",
       "delivery_branch": "fix/62-explicit-plurals-1x"
     },
     "main": {
-      "baseline_sha": "440b45a85603642f6edd37bb5bf45c2034ed0410",
+      "baseline_sha": "8eb67574d7dff15824438a9490cc67530c977588",
       "delivery_branch": "fix/62-explicit-plurals-main"
     }
   },

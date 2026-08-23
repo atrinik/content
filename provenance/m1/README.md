@@ -2,7 +2,7 @@
 
 This directory is the branch-aware, fail-closed evidence boundary for the
 clean-room replacement. It is pinned to `atrinik/content@v1.8.1` commit
-`01b1fdb65c2243df4bafe9c8109fc93229df0121`, which is both the `main`
+`5a06b026a44ce1437a14eec60faa0ea2f15d44b1`, which is both the `main`
 baseline and the immutable fork point of maintained branch `1.x`.
 
 `python-behaviors.jsonl` inventories all 177 Python files at that revision.

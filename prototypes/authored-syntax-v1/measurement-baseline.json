@@ -107,7 +107,7 @@
     "system": "Linux"
   },
   "inputs": {
-    "content_commit": "354c41e56846e95c0a6d1e39750e15f67dd33c16",
+    "content_commit": "ae05a4498cea1ec15e403d24d64d1f018fc1c030",
     "content_v1_baseline_sha256": "126102873f5356eae0114d6876df25b54cb616719387f0bb466279bb6ecd460d",
     "profile": "issue-90-syntax-benchmark",
     "state": "syntax-benchmark",
@@ -120,7 +120,7 @@
         "path": "/workspaces/atrinik/workspace/worktrees/classic/issue-65-renderer/client"
       },
       "content": {
-        "commit": "354c41e56846e95c0a6d1e39750e15f67dd33c16",
+        "commit": "ae05a4498cea1ec15e403d24d64d1f018fc1c030",
         "dirty": false,
         "path": "/workspaces/atrinik/workspace/worktrees/content-1x/issue-90-candles-1x"
       },

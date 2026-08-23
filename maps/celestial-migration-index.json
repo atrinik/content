@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "migration": "celestial-v1",
-  "source_commit": "2a033cced813bdb191b8aad8a52effe010eb5f98",
+  "source_commit": "c9cc206f220316603115b15394926095de8ad324",
   "classic_compatible_sha": "12b1211dd44690476c3f060d7395ccc1250c85b4",
   "legacy_light_table": {
     "-1": 0,

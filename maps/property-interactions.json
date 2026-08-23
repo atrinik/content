@@ -21,7 +21,7 @@
         "archetype": "exit",
         "property_id": "incuna_apartment",
         "return_x": 10,
-        "return_y": 2
+        "return_y": 1
       },
       "layout_binding": {
         "map": "/shattered_islands/incuna/apartments/beach_nook",

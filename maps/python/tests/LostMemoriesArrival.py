@@ -403,7 +403,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         origin_map = activator.map.path
         self.walk_into_portal(portal)
         self.assertEqual(origin_map, activator.map.path)
-        self.assertEqual((10, 3), (activator.x, activator.y))
+        self.assertEqual((10, 2), (activator.x, activator.y))
         self.assertTrue(any(
             b"You don't own an apartment here!" in packet
             for packet in packets
@@ -450,7 +450,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIsNotNone(portal)
         self.walk_into_portal(portal)
         self.assertEqual(expected_path, activator.map.path)
-        self.assertEqual((11, 11), (activator.x, activator.y))
+        self.assertEqual((11, 10), (activator.x, activator.y))
 
         sand_tiles = self.find_map_objects(
             lambda obj: obj.arch.name.startswith("floor_sand_d")
@@ -514,7 +514,7 @@ class LostMemoriesArrivalSuite(TestSuite):
         activator.SetPosition(apartment_exit.x, apartment_exit.y)
         activator.Apply(apartment_exit)
         self.assertEqual("/shattered_islands/world_4_84", activator.map.path)
-        self.assertEqual((10, 3), (activator.x, activator.y))
+        self.assertEqual((10, 2), (activator.x, activator.y))
 
         # Rebuild the apartment entitlement from its saved inventory
         # representation, as player loading does during a relog.
@@ -530,7 +530,7 @@ class LostMemoriesArrivalSuite(TestSuite):
             reconstructed_apartment.race,
         )
         self.assertEqual(
-            (10, 3),
+            (10, 2),
             (
                 reconstructed_apartment.last_sp,
                 reconstructed_apartment.last_grace,

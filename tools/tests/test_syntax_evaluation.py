@@ -37,7 +37,7 @@ def assert_historical_measurement_report(test: unittest.TestCase, report: dict) 
         report["inputs"]["content_v1_baseline_sha256"],
     )
     test.assertEqual(
-        "354c41e56846e95c0a6d1e39750e15f67dd33c16",
+        "ae05a4498cea1ec15e403d24d64d1f018fc1c030",
         report["inputs"]["content_commit"],
     )
     test.assertEqual(

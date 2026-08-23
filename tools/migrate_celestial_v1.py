@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MAPS = ROOT / "maps"
 ARCH = ROOT / "arch"
-SOURCE_COMMIT = "2a033cced813bdb191b8aad8a52effe010eb5f98"
+SOURCE_COMMIT = "c9cc206f220316603115b15394926095de8ad324"
 CLASSIC_SHA = "12b1211dd44690476c3f060d7395ccc1250c85b4"
 GREYTON_LOWER = "/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0"
 GREYTON_UPPER = "/shattered_islands/strakewood_island/greyton/house/luxury_house_0_0_1"

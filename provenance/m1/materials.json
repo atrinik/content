@@ -1,7 +1,7 @@
 {
   "baseline": {
     "repository": "atrinik/content",
-    "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+    "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
     "tag": "v1.8.1"
   },
   "grant_registry": {
@@ -20,17 +20,17 @@
       ],
       "attribution": "Copyright Zoey Rose; used under the recorded historical MIT provenance grant",
       "author_identity_evidence": {
-        "api_evidence": "https://api.github.com/repos/atrinik/content/commits/4aa4aebc5c88dffdf57657a34ae20306a57fbebd",
+        "api_evidence": "https://api.github.com/repos/atrinik/content/commits/60a60c2bd17846f5cb9269c069eec46e08ea5d59",
         "github_login": "zoeyrose",
         "github_user_id": 3865595,
         "signature_verified": true,
-        "verified_commit": "4aa4aebc5c88dffdf57657a34ae20306a57fbebd"
+        "verified_commit": "60a60c2bd17846f5cb9269c069eec46e08ea5d59"
       },
       "author_identity_review": "all commits are solely Zoey Rose using the verified GitHub noreply identity",
       "classic_copy": {
         "branch": "1.x",
         "path": "prototypes/authored-syntax-v1/limits.json",
-        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
         "terms_changed": false
       },
       "classification": "approved_grantor_original_sole_work",
@@ -46,7 +46,7 @@
           ],
           "email": "3865595+zoeyrose@users.noreply.github.com",
           "name": "Zoey Rose",
-          "revision": "4aa4aebc5c88dffdf57657a34ae20306a57fbebd"
+          "revision": "60a60c2bd17846f5cb9269c069eec46e08ea5d59"
         }
       ],
       "decision": "admitted_mit_grant",
@@ -72,7 +72,7 @@
         "branch": "main",
         "path": "prototypes/authored-syntax-v1/limits.json",
         "repository": "atrinik/content",
-        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
         "sha256": "d87ef7a7c3b9c0462fa86a3b4d2be93bd4a63df47be5c8f01f2026d1fc58896c",
         "tag": "v1.8.1"
       },
@@ -84,17 +84,17 @@
       ],
       "attribution": "Copyright Zoey Rose; used under the recorded historical MIT provenance grant",
       "author_identity_evidence": {
-        "api_evidence": "https://api.github.com/repos/atrinik/content/commits/66c73ba9d8bfc7c42aa58593372acf977adf7541",
+        "api_evidence": "https://api.github.com/repos/atrinik/content/commits/631c2f5ca2a0f402758e0c20cc982153243e2c3c",
         "github_login": "zoeyrose",
         "github_user_id": 3865595,
         "signature_verified": true,
-        "verified_commit": "66c73ba9d8bfc7c42aa58593372acf977adf7541"
+        "verified_commit": "631c2f5ca2a0f402758e0c20cc982153243e2c3c"
       },
       "author_identity_review": "all commits are solely Zoey Rose using the verified GitHub noreply identity",
       "classic_copy": {
         "branch": "1.x",
         "path": "contracts/content-v1/schemas/diagnostic.schema.json",
-        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
         "terms_changed": false
       },
       "classification": "approved_grantor_original_sole_work",
@@ -110,7 +110,7 @@
           ],
           "email": "3865595+zoeyrose@users.noreply.github.com",
           "name": "Zoey Rose",
-          "revision": "66c73ba9d8bfc7c42aa58593372acf977adf7541"
+          "revision": "631c2f5ca2a0f402758e0c20cc982153243e2c3c"
         }
       ],
       "decision": "admitted_mit_grant",
@@ -136,7 +136,7 @@
         "branch": "main",
         "path": "contracts/content-v1/schemas/diagnostic.schema.json",
         "repository": "atrinik/content",
-        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
         "sha256": "161c35caed2f143c3ceeb9b155eb9cb530b0450432255bf44bf6af319534e758",
         "tag": "v1.8.1"
       },
@@ -254,7 +254,7 @@
         "branch": "main",
         "path": "arch/connect/exits/ladder/ladder_down.111.png",
         "repository": "atrinik/content",
-        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
         "sha256": "deb967165aa86bb443e651f1c767de38207bf72bbc41c598a62e3d782d5e5577"
       }
     },
@@ -271,7 +271,7 @@
         "branch": "main",
         "path": "contracts/content-v1/corpus/fixtures/stable-identities.arc",
         "repository": "atrinik/content",
-        "revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+        "revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
         "sha256": "a850a4a54cc9f4816f72502bcf301102419f7d6fe90474516a3a397a76d6d3af"
       }
     }

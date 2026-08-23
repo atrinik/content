@@ -162,7 +162,7 @@ end
             "review_method": "Port the pinned Classic semantic review without claiming replacement rendering.",
             "source_review": {
                 "branch": "1.x",
-                "commit": "958b557650252518b9ea2850200920d07c879bd2",
+                "commit": "cdc6c57b0ef3d4739c99e846eb2054e4eafdce26",
                 "pull_request": "https://github.com/atrinik/content/pull/67",
             },
             "runtime_verification": {

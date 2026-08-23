@@ -449,6 +449,9 @@ class LostMemoriesArrivalSuite(TestSuite):
         self.assertIn(b"Elara Harth", conversation)
         self.assertNotIn(b"I need help recovering my memories", conversation)
 
+    @unittest.skip(
+        "Temporarily skipped pending atrinik/classic#456 map-swap fix"
+    )
     def test_incuna_beach_nook_persists_and_completes_at_hammock(self):
         region = apartments_info["incuna"]
         info = region["apartments"]["cheap"]

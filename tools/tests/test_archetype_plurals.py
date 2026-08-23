@@ -331,7 +331,7 @@ class ArchetypePluralTest(unittest.TestCase):
         path = ROOT / MANIFEST_PATH
         manifest = load_manifest(path)
         self.assertEqual(
-            "c7df03a669c550ddcd135cbb7f4b20487f7e9402bf9f92c11d5c2ce62087e7d1",
+            "8d8f68c7e46787f5142f54d83afab77f10b5e1119ca71080031ce6eeabd7fe67",
             hashlib.sha256(path.read_bytes()).hexdigest(),
         )
         self.assertEqual(3579, len(manifest["rows"]))

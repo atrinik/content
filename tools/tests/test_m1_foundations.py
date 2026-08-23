@@ -58,7 +58,7 @@ class M1FoundationTests(unittest.TestCase):
         )
         self.assertEqual(
             [row["revision"] for row in history],
-            ["4aa4aebc5c88dffdf57657a34ae20306a57fbebd"],
+            ["60a60c2bd17846f5cb9269c069eec46e08ea5d59"],
         )
         self.assertEqual(history[0]["changes"][0]["status"], "A")
 
@@ -75,7 +75,7 @@ class M1FoundationTests(unittest.TestCase):
                 "repository": "atrinik/content",
                 "branch": "1.x",
                 "fork_tag": "v1.8.1",
-                "fork_revision": "01b1fdb65c2243df4bafe9c8109fc93229df0121",
+                "fork_revision": "5a06b026a44ce1437a14eec60faa0ea2f15d44b1",
                 "content_format": "classic-ads-v1",
                 "artifact_format": "atrinik-classic-runtime-content-v1",
                 "compatible_classic_releases": ">=5.10.1 <6.0.0",

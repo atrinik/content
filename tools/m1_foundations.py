@@ -17,7 +17,7 @@ from typing import Any
 
 
 REPOSITORY = "atrinik/content"
-BASE_REVISION = "01b1fdb65c2243df4bafe9c8109fc93229df0121"
+BASE_REVISION = "5a06b026a44ce1437a14eec60faa0ea2f15d44b1"
 BASE_TAG = "v1.8.1"
 REGISTRY_REPOSITORY = "atrinik/atrinik"
 REGISTRY_REVISION = "d64a8e958ca2adad783ad8912493d468a805f3fd"
@@ -340,13 +340,13 @@ def selected_materials(root: Path) -> dict[str, Any]:
             "material:authored-jsonc-limits-v1",
             "prototypes/authored-syntax-v1/limits.json",
             "policy/classic-authored-limits.json",
-            "4aa4aebc5c88dffdf57657a34ae20306a57fbebd",
+            "60a60c2bd17846f5cb9269c069eec46e08ea5d59",
         ),
         (
             "material:legacy-diagnostic-schema-v1",
             "contracts/content-v1/schemas/diagnostic.schema.json",
             "schemas/classic-diagnostic.schema.json",
-            "66c73ba9d8bfc7c42aa58593372acf977adf7541",
+            "631c2f5ca2a0f402758e0c20cc982153243e2c3c",
         ),
     ):
         data = git_bytes(root, BASE_REVISION, path)

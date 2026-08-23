@@ -59,7 +59,7 @@ packages.
 
 The baseline palette and historical source contexts were reviewed on Classic
 `1.x` in [PR #67](https://github.com/atrinik/content/pull/67) at commit
-`958b557650252518b9ea2850200920d07c879bd2`. The main-line ledger preserves the
+`cdc6c57b0ef3d4739c99e846eb2054e4eafdce26`. The main-line ledger preserves the
 identifiers of those Classic views as historical provenance but does not
 attribute later fixture-ownership or contextual decisions to that review, nor
 copy its screenshots, capture manifest, proof scene, or Classic-only tooling.

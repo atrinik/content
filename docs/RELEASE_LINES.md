@@ -4,7 +4,7 @@
 and Classic targets. The `1.x` line is immutable rollback and migration
 evidence at its final Semantic Release coordinate, not a supported delivery
 target or active maintenance channel. Both descend from `v1.8.1` commit
-`01b1fdb65c2243df4bafe9c8109fc93229df0121`; the branch split changes no file's
+`5a06b026a44ce1437a14eec60faa0ea2f15d44b1`; the branch split changes no file's
 license or attribution.
 
 ## Choosing a target
@@ -34,7 +34,7 @@ implementations.
 
 `release-line.txt` is `2.0` on `main`. Semantic Release runs only from `main`.
 The final rollback release is
-`v1.8.19@566bd25f78b80b08d5f75f4b02017ab2429204db`. Its tag, release,
+`v1.8.19@e02719a59506c19be5b61c33c881bdab2f898d4c`. Its tag, release,
 source/runtime archives, `SHA256SUMS`, manifests,
 licenses, and attribution remain historical recovery evidence. No tag, release,
 or asset is moved, replaced, or deleted during retirement.

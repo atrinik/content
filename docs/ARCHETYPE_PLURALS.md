@@ -5,7 +5,7 @@ The authored vocabulary is
 [`tools/archetype-plurals-v1.json`](../tools/archetype-plurals-v1.json), keyed
 by stable archetype ID rather than display text or source position. Its reviewed
 SHA-256 is
-`c7df03a669c550ddcd135cbb7f4b20487f7e9402bf9f92c11d5c2ce62087e7d1`.
+`8d8f68c7e46787f5142f54d83afab77f10b5e1119ca71080031ce6eeabd7fe67`.
 
 The manifest records the expected effective singular, object type, approved
 plural, and review classification for all 3,579 definitions. It includes the

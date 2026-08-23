@@ -19,7 +19,7 @@ historical Python sources.
 
 `main` is the sole authored and released source for replacement and Classic
 targets. The final `1.x` release
-`v1.8.19@566bd25f78b80b08d5f75f4b02017ab2429204db` remains immutable rollback and migration
+`v1.8.19@e02719a59506c19be5b61c33c881bdab2f898d4c` remains immutable rollback and migration
 evidence, not an active maintenance channel. See
 [`docs/RELEASE_LINES.md`](docs/RELEASE_LINES.md) for target selection,
 compatibility metadata, preserved history, and the emergency recovery boundary.

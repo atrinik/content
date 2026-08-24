@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import unittest
 
@@ -43,6 +44,23 @@ class ReleaseGuidanceTests(unittest.TestCase):
         ):
             workflow = (ROOT / relative_path).read_text(encoding="utf-8")
             self.assertNotIn("1.x", workflow)
+
+    def test_release_success_does_not_resolve_historical_local_issues(self) -> None:
+        release = json.loads((ROOT / ".releaserc.json").read_text(encoding="utf-8"))
+        plugins = {plugin[0]: plugin[1] for plugin in release["plugins"]}
+        self.assertIs(
+            plugins["@semantic-release/github"]["successCommentCondition"], False
+        )
+        self.assertEqual(
+            plugins["@semantic-release/exec"]["successCmd"],
+            "node scripts/release/verify-release.cjs ${nextRelease.version} ${nextRelease.gitHead}",
+        )
+        fixture = (
+            ROOT / "scripts" / "release" / "fixtures" / "unavailable-local-issues.md"
+        ).read_text(encoding="utf-8")
+        for reference in ("#308", "#287", "atrinik/atrinik#266"):
+            self.assertIn(reference, fixture)
+        self.assertIn("https://github.com/atrinik/atrinik/issues/266", fixture)
 
 
 if __name__ == "__main__":

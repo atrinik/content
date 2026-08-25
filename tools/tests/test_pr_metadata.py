@@ -54,6 +54,8 @@ class PullRequestMetadataTests(unittest.TestCase):
         aggregate = (ROOT / "tools" / "validate.py").read_text(encoding="utf-8")
         self.assertIn("github.event.repository.default_branch", policy_workflow)
         self.assertIn("persist-credentials: false", policy_workflow)
+        self.assertIn("lfs: false", policy_workflow)
+        self.assertNotIn("lfs: true", policy_workflow)
         self.assertIn("PR_BODY", policy_workflow)
         self.assertIn(".github/scripts/check_pr_metadata.py", policy_workflow)
         self.assertIn("python3 tools/validate.py", check_workflow)

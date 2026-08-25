@@ -5,7 +5,9 @@ Atrinik is a Multiplayer Online Role-Playing Game started by Zoey Rose in 2009. 
 
 Quick help:
 
-Move with numpad keys. Press C to toggle combat mode on/off. Press X to target nearest enemy. Press S to target nearest friend. Press A to apply things on ground or in your inventory. Press ENTER to show the console box. Press SHIFT to show your inventory. Use ARROW keys to move around in your inventory. Hold ALT + direction to run. Hold CTRL + direction to cast/shoot.
+Move with the W, A, S, and D keys. On the screen-aligned map, W moves northwest, A moves southwest, S moves southeast, and D moves northeast. Hold W+D to move north, S+D to move east, S+A to move south, or W+A to move west; either key can be pressed first. The numpad movement keys remain available as compatibility aliases.
+
+Press C to toggle combat mode on/off. Press X to target the nearest enemy, or Y to target the nearest friend. Press F to apply things on the ground or in your inventory, E to examine the selected object, B to mark an inventory item, Z to drop an item, G to get an item, and M to open the region map. Press ENTER to show the console box. Press SHIFT to show your inventory. Use ARROW keys to move around in your inventory. Hold ALT + direction to run. Hold CTRL + direction to cast/shoot.
 
 [title]See Also:[/title]
 List of [a=help]contributors[/a]
@@ -87,7 +89,7 @@ help pray
 autocomplete 1
 title Pray Command
 msg
-The pray command is used to start praying to your god, to regenerate your grace. By default, it is bound to the P key. If you are praying and you move, attack an enemy or you get attacked, you will automatically stop praying.
+The pray command is used to start praying to your god, to regenerate your grace. The bundled keyboard defaults do not assign a dedicated key to this command; type `/pray` in the console or add a custom keybinding. If you are praying and you move, attack an enemy or you get attacked, you will automatically stop praying.
 endmsg
 end
 
@@ -274,7 +276,7 @@ end
 help mark
 title Mark Command
 msg
-The mark command marks a specified item in your inventory. It is, by default, bound to the M key. Some common examples of usage:
+The mark command marks a specified item in your inventory. It is, by default, bound to the B key. Some common examples of usage:
 
 Smith will identify your current marked item.
 
@@ -366,7 +368,7 @@ end
 help drop_key
 title Drop
 msg
-The drop key is by default bound to the D key. It is used to drop items from your inventory by selecting them with the ARROW keys.
+The drop key is by default bound to the Z key. It is used to drop items from your inventory by selecting them with the ARROW keys.
 [p]
 [title]See Also:[/title]
 [a=help]apply[/a]
@@ -1276,7 +1278,7 @@ If you hover the mouse over buildings and some other locations, you will see a t
 
 [title]Controls[/title]
 
-The [b]R[/b] key (default) may be used to bring up the region map - alternatively you can click its icon (a map piece) in the buttons panel at top right.
+The [b]M[/b] key (default) may be used to bring up the region map - alternatively you can click its icon (a map piece) in the buttons panel at top right. The shipped defaults no longer assign [b]R[/b] to the region map; players who want that shortcut can add it in Key Settings.
 
 In order to scroll the map, hold down the left mouse button over the visible map - the closer you are to the center of the visible map, the slower it will scroll. You can also use the arrow keys to scroll the map, and hold down shift in order to scroll faster with the arrow keys.
 
@@ -1453,7 +1455,7 @@ There are two choices for movement in Atrinik: keyboard and mouse. Mouse-based m
 Move the mouse over the map area, and you'll see the square below your mouse highlighted with green borders. If you click that area, your character will try to move there.
 
 [b]Keyboard:[/b]
-You can use the keyboard numpad to move around, for example, [b]3[/b] on the numpad would move your character one step east. You can hold down the numpad key to run in this manner in the direction specified by the numpad key you are holding down. If you want to stop running, simply release the key.
+The default keyboard movement uses the screen-aligned W, A, S, and D keys: [b]W[/b] moves northwest, [b]A[/b] moves southwest, [b]S[/b] moves southeast, and [b]D[/b] moves northeast. Holding two adjacent keys resolves through the held-direction movement compositor: [b]W+D[/b] moves north, [b]S+D[/b] moves east, [b]S+A[/b] moves south, and [b]W+A[/b] moves west. Both press orders work, whether the second key arrives in the same or a later input cycle. Hold a movement key to repeat it and release the key to stop. The numpad keys, including [b]5[/b] for staying in place, remain available as compatibility aliases.
 
 [title]Obstacles[/title]
 There are many obstacles to walk around in the world, ranging from trees to rocks, walls, deep water, doors, gates and the like.
@@ -1469,7 +1471,7 @@ title Basics: Object Interaction
 msg
 [title]Interacting With Objects[/title]
 
-Interacting with objects is an often-used part of the game. The objects right below your feet appear in a screen near the middle bottom. You can select them using the mouse, or with the arrow keys. In order to interact with them, you apply them, either by middle-clicking them, or pressing [b]A[/b] key to interact with the selected object.
+Interacting with objects is an often-used part of the game. The objects right below your feet appear in a screen near the middle bottom. You can select them using the mouse, or with the arrow keys. In order to interact with them, you apply them, either by middle-clicking them, or pressing [b]F[/b] key to interact with the selected object.
 
 The outcome of your interaction depends on the object you applied - stairs, ropes, ladders, etc will allow you to move across areas. Levers may be used to open gates or secret passages, light sources such as torches or lamps can be lit, etc.
 
@@ -1508,9 +1510,9 @@ In order to open your inventory, hold the [b]SHIFT[/b], or click the bag icon on
 Various items can be interacted with, such as compasses, which will tell you the direction you are currently facing, or light sources such as torches, which can be lit inside your inventory, and then wielded with a second interaction. Armor can be worn, weapons can be wielded, magic devices such as wands can be readied for firing, etc.
 
 [b]Keyboard:[/b]
-Select an item in your inventory using the arrow keys. Now, if you press the [b]A[/b] key, you will apply the selected item, thus interacting with it. If the item is, for example, a piece of armor, you will put it on your character - or if you're already wearing it, you'll unwear it.
+Select an item in your inventory using the arrow keys. Now, if you press the [b]F[/b] key, you will apply the selected item, thus interacting with it. If the item is, for example, a piece of armor, you will put it on your character - or if you're already wearing it, you'll unwear it.
 
-You can use the [b]E[/b] key to learn more about the selected item, if it's identified. The [b]M[/b] key will mark the selected item, which is used in some NPC dialogues, such as when you want to send an item using the post office. Ammunition can be readied for firing using the [b]F[/b] key.
+You can use the [b]E[/b] key to learn more about the selected item, if it's identified. The [b]B[/b] key will mark the selected item, which is used in some NPC dialogues, such as when you want to send an item using the post office. The bundled defaults do not assign a dedicated ammunition key; use the keybinding editor to add one if needed.
 
 [b]Mouse:[/b]
 In order to interact with an item using the mouse, you can drag-and-drop the item from your inventory into the player doll. If the item is, for example, a piece of armor, you will put it on your character. In order to unwear/unwield an item, drag it from your player doll back into the inventory.
@@ -1569,7 +1571,7 @@ msg
 [b]Keyboard:[/b]
 In order to take an item from the ground, select it in the screen that shows items [a=help:basics_object_interaction]below your feet[/a], and press [b]G[/b] key. The object will be picked up straight into your inventory.
 
-If you want to drop an item from your inventory, [a=help:basics_inventory_interaction]open the inventory[/a] and select the item that you want to drop, then press the [b]D[/b] key.
+If you want to drop an item from your inventory, [a=help:basics_inventory_interaction]open the inventory[/a] and select the item that you want to drop, then press the [b]Z[/b] key.
 
 [b]Mouse:[/b]
 In order to take an item from the ground, drag it from the screen that shows items [a=help:basics_object_interaction]below your feet[/a], and drop it into your inventory screen.
@@ -1604,7 +1606,7 @@ msg
 
 The region map allows you to see the whole map of the region you're located in, for example, Incuna or Strakewood Island. In order to see the map of the region, you must have found the map first - either by talking to NPCs who sell or just give out maps, finding it in dungeon or a chest, or completing quests.
 
-In order to bring up the map of the current region, either press the [b]R[/b] key, or click the button with map icon near the top right.
+In order to bring up the map of the current region, either press the [b]M[/b] key, or click the button with map icon near the top right. The shipped defaults no longer assign [b]R[/b] to the region map; players who want that shortcut can add it in Key Settings.
 endmsg
 end
 

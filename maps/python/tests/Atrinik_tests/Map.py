@@ -186,12 +186,11 @@ class MapMethodsSuite(TestSuite):
         self.assertRaises(TypeError, self.map.InsertMonster, 1, 2)
         self.assertRaises(TypeError, self.map.InsertMonster, x=1)
 
-        linked = Atrinik.CreateObject("raas")
-        linked.enemy = activator
+        stateful = Atrinik.CreateObject("raas")
+        stateful.WriteKey("detached_runtime_state", "1")
         with self.assertRaises(Atrinik.AtrinikError):
-            self.map.InsertMonster(linked, 0, 0)
-        linked.enemy = None
-        linked.Destroy()
+            self.map.InsertMonster(stateful, 0, 0)
+        stateful.Destroy()
 
         sword = Atrinik.CreateObject("sword")
         with self.assertRaises(Atrinik.AtrinikError):

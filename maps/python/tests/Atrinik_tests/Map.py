@@ -181,6 +181,40 @@ class MapMethodsSuite(TestSuite):
         self.assertFalse(self.map.Objects(0, 1))
         self.assertEqual(self.map.Objects(1, 2)[0], sword)
 
+    def test_InsertMonster(self):
+        self.assertRaises(TypeError, self.map.InsertMonster)
+        self.assertRaises(TypeError, self.map.InsertMonster, 1, 2)
+        self.assertRaises(TypeError, self.map.InsertMonster, x=1)
+
+        sword = Atrinik.CreateObject("sword")
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.InsertMonster(sword, 0, 0)
+        sword.Destroy()
+
+        monster = Atrinik.CreateObject("raas")
+        monster.randomitems = "random_coin"
+        inserted = self.map.InsertMonster(monster, 0, 1)
+        self.assertEqual(inserted, monster)
+        self.assertEqual(monster.map, self.map)
+        self.assertEqual(monster.x, 0)
+        self.assertEqual(monster.y, 1)
+        self.assertTrue(monster.inv)
+        self.assertTrue(any(item.type == Atrinik.Type.MONEY for item in monster.inv))
+        monster.Destroy()
+
+        invalid = Atrinik.CreateObject("raas")
+        invalid.randomitems = "random_coin"
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.InsertMonster(invalid, self.map.width, 0)
+        self.assertIsNone(invalid.map)
+        self.assertFalse(invalid.inv)
+        invalid.Destroy()
+
+        inserted = self.map.CreateObject("raas", 0, 2)
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.InsertMonster(inserted, 0, 2)
+        inserted.Destroy()
+
     def test_Wall(self):
         self.assertRaises(TypeError, self.map.Wall)
         self.assertRaises(TypeError, self.map.Wall, 1, "2")

@@ -1152,6 +1152,12 @@ class ObjectMethodsSuite(unittest.TestCase):
         while self.obj.inv:
             self.obj.inv[0].Destroy()
 
+        m = create_test_map(5, 5, "test-atrinik-object-create-treasure-guard")
+        monster = m.CreateObject("raas", 0, 0)
+        with self.assertRaises(RuntimeError):
+            monster.CreateTreasure("random_coin")
+        monster.Destroy()
+
     def test_Move(self):
         self.assertRaises(TypeError, self.obj.Move)
         self.assertRaises(TypeError, self.obj.Move, 1, 2)

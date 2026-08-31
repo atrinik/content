@@ -187,7 +187,8 @@ class MapMethodsSuite(TestSuite):
         self.assertRaises(TypeError, self.map.InsertMonster, x=1)
 
         stateful = Atrinik.CreateObject("raas")
-        stateful.WriteKey("detached_runtime_state", "1")
+        inventory = Atrinik.CreateObject("sword")
+        inventory.InsertInto(stateful)
         with self.assertRaises(Atrinik.AtrinikError):
             self.map.InsertMonster(stateful, 0, 0)
         stateful.Destroy()

@@ -7,7 +7,7 @@ from tests import TestSuite, create_test_map
 class CreateCommandSuite(TestSuite):
     def setUp(self):
         super().setUp()
-        self.map = create_test_map(24, 24, self.id())
+        self.map = create_test_map(24, 24, "test-atrinik-create-command")
         self.pl = activator.Controller()
         self.map.Insert(activator, 0, 0)
         self.added_permissions = []
@@ -17,10 +17,6 @@ class CreateCommandSuite(TestSuite):
                 self.added_permissions.append(permission)
 
     def tearDown(self):
-        for obj in list(self.map.Objects(0, 0)):
-            if obj != activator and obj.arch.name == "raas":
-                obj.Destroy()
-
         for permission in self.added_permissions:
             self.pl.cmd_permissions.remove(permission)
         super().tearDown()

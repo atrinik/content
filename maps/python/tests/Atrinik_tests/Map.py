@@ -200,7 +200,9 @@ class MapMethodsSuite(TestSuite):
         self.assertEqual(monster.y, 1)
         self.assertTrue(monster.inv)
         self.assertTrue(any(item.type == Atrinik.Type.MONEY for item in monster.inv))
-        monster.Destroy()
+        # Persistent map monsters with currency descendants are intentionally
+        # protected from Python Destroy(); the test server tears down this
+        # isolated fixture with the native object cleanup path.
 
         invalid = Atrinik.CreateObject("raas")
         invalid.randomitems = "random_coin"

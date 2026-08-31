@@ -31,6 +31,7 @@ def run():
     import tests.Atrinik_tests.Archetype
     import tests.Atrinik_tests.Atrinik
     import tests.Atrinik_tests.AttrList
+    import tests.Atrinik_tests.Create
     import tests.Atrinik_tests.Map
     import tests.Atrinik_tests.Object
     import tests.Atrinik_tests.Party
@@ -44,6 +45,7 @@ def run():
     all_suites += tests.Atrinik_tests.Archetype.suites
     all_suites += tests.Atrinik_tests.Atrinik.suites
     all_suites += tests.Atrinik_tests.AttrList.suites
+    all_suites += tests.Atrinik_tests.Create.suites
     all_suites += tests.Atrinik_tests.Map.suites
     all_suites += tests.Atrinik_tests.Object.suites
     all_suites += tests.Atrinik_tests.Party.suites

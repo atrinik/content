@@ -54,11 +54,15 @@ def main():
             break
 
         if obj.f_monster:
-            activator.map.Insert(obj, activator.x, activator.y)
-            obj.Update()
+            try:
+                obj = activator.map.InsertMonster(obj, activator.x, activator.y)
+            except AtrinikError as err:
+                obj.Destroy()
+                pl.DrawInfo(str(err), COLOR_RED)
+                break
 
-            if obj.randomitems:
-                obj.CreateTreasure(obj.randomitems, obj.level)
+            if obj is not None:
+                obj.Update()
         else:
             obj.InsertInto(activator)
 

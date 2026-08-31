@@ -186,6 +186,13 @@ class MapMethodsSuite(TestSuite):
         self.assertRaises(TypeError, self.map.InsertMonster, 1, 2)
         self.assertRaises(TypeError, self.map.InsertMonster, x=1)
 
+        linked = Atrinik.CreateObject("raas")
+        linked.enemy = activator
+        with self.assertRaises(Atrinik.AtrinikError):
+            self.map.InsertMonster(linked, 0, 0)
+        linked.enemy = None
+        linked.Destroy()
+
         sword = Atrinik.CreateObject("sword")
         with self.assertRaises(Atrinik.AtrinikError):
             self.map.InsertMonster(sword, 0, 0)

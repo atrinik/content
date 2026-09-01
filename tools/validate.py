@@ -21,6 +21,7 @@ from tools.archetype_plurals import (
 from tools.m1_foundations import validate as validate_m1_foundations
 from tools.release_line_parity import load_and_validate as validate_release_line_parity
 from tools.validate_status_icons import validate as validate_status_icons
+from tools.validate_exits import BASELINE_PATH, validate as validate_exits
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -71,6 +72,7 @@ def main() -> int:
             "tools.tests.test_pr_metadata",
             "tools.tests.test_python_commands",
             "tools.tests.test_status_icons",
+            "tools.tests.test_validate_exits",
         ],
         cwd=ROOT,
         check=True,
@@ -105,6 +107,27 @@ def main() -> int:
             core_audit["archetypes"],
             core_audit["maps"],
             json.dumps(core_audit["diagnostics"], sort_keys=True),
+        ),
+        flush=True,
+    )
+    exit_report = validate_exits(ROOT, BASELINE_PATH)
+    if not exit_report["ok"]:
+        raise ValueError(
+            "authored exit validation rejected the corpus: {}".format(
+                json.dumps(
+                    {
+                        "unapproved": exit_report["unapproved_diagnostics"],
+                        "stale_baseline": exit_report["baseline"]["stale_ids"],
+                    },
+                    sort_keys=True,
+                )
+            )
+        )
+    print(
+        "Authored exits: {} statically resolvable findings retained by the "
+        "migration baseline; {} parsed maps checked.".format(
+            len(exit_report["diagnostics"]),
+            exit_report["scan"]["parsed_maps"],
         ),
         flush=True,
     )

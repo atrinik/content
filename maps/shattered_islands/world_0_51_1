@@ -4,11 +4,12 @@ sky_above linked
 name Centennial
 msg
 Created:  2009-08-09 Zoey Rose
-Modified: 2026-09-01 Zoey Rose
+Modified: 2015-05-31 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 28
+bg_music th_25.mid
 tile_path_3 /shattered_islands/world_0_52_1
 celestial_boundary_3 continuous
 tile_path_4 /shattered_islands/world_-1_51_1
@@ -19,7 +20,6 @@ tile_path_9 /shattered_islands/world_0_51_2
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_0_51
 celestial_boundary_10 discontinuous
-bg_music th_25.mid
 region centennial
 end
 arch trans

@@ -4,14 +4,12 @@ sky_above linked
 name Morliana
 msg
 Created:  2009-08-09 Zoey Rose
-Modified: 2015-06-06 Zoey Rose
+Modified: 2026-09-01 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 20
 no_harm 1
-bg_music campfire_tales.mid
-weather snow_light
 tile_path_1 /shattered_islands/world_13_5
 celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_14_6
@@ -30,7 +28,9 @@ tile_path_8 /shattered_islands/world_12_5
 celestial_boundary_8 continuous
 tile_path_9 /shattered_islands/world_13_6_1
 celestial_boundary_9 continuous
+bg_music campfire_tales.mid
 region morliana
+weather snow_light
 end
 arch floor_ostone12
 end
@@ -448,9 +448,9 @@ x 2
 y 7
 end
 arch candlelight4.101
+glow_radius 5
 x 2
 y 7
-glow_radius 5
 end
 arch floor_ostone12
 x 2
@@ -787,23 +787,21 @@ y 6
 end
 arch celestial_door1_locked
 direction 3
-x 4
-y 6
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+x 4
+y 6
 end
 arch floor_ostone12
 x 4
 y 7
 end
 arch celestial_door1_locked
+celestial_aperture_id 0000000000000002
 direction 5
 x 4
 y 7
-celestial_transmission_closed opaque
-celestial_transmission_open open
-celestial_aperture_id 0000000000000002
 end
 arch floor_ostone12
 x 4
@@ -918,6 +916,7 @@ arch floor_ostone12
 x 5
 end
 arch stairs_wood_up
+last_heal 0
 x 5
 end
 arch floor_ostone12
@@ -925,6 +924,7 @@ x 5
 y 1
 end
 arch stairs_wood_up
+last_heal 0
 x 5
 y 1
 end
@@ -948,12 +948,10 @@ arch celestial_gate1_locked
 msg
 Authorized personnel only.
 endmsg
+celestial_aperture_id 0000000000000003
 slaying morliana_research_center
 x 5
 y 4
-celestial_transmission_closed opaque
-celestial_transmission_open open
-celestial_aperture_id 0000000000000003
 end
 arch floor_ostone12
 x 5
@@ -1131,13 +1129,11 @@ arch celestial_gate1_locked
 msg
 Authorized personnel only.
 endmsg
+celestial_aperture_id 0000000000000004
 direction 7
 slaying morliana_research_center
 x 6
 y 4
-celestial_transmission_closed opaque
-celestial_transmission_open open
-celestial_aperture_id 0000000000000004
 end
 arch floor_ostone12
 x 6
@@ -1356,9 +1352,9 @@ x 7
 y 10
 end
 arch lantern2_magic.131
+glow_radius 6
 x 7
 y 10
-glow_radius 6
 end
 arch floor_sand_d3
 x 7
@@ -1457,10 +1453,10 @@ x 8
 end
 arch celestial_door_bar1
 direction 7
-x 8
 celestial_transmission_closed grate
 celestial_transmission_open open
 celestial_aperture_id 0000000000000005
+x 8
 end
 arch floor_ostone12
 x 8
@@ -1543,11 +1539,9 @@ x 8
 y 9
 end
 arch celestial_door_wood1
+celestial_aperture_id 0000000000000006
 x 8
 y 9
-celestial_transmission_closed opaque
-celestial_transmission_open open
-celestial_aperture_id 0000000000000006
 end
 arch floor_sand_d2
 x 8
@@ -1727,12 +1721,10 @@ x 9
 y 9
 end
 arch celestial_door_wood1
+celestial_aperture_id 0000000000000007
 direction 7
 x 9
 y 9
-celestial_transmission_closed opaque
-celestial_transmission_open open
-celestial_aperture_id 0000000000000007
 end
 arch floor_sand_d4
 x 9
@@ -1921,9 +1913,9 @@ x 10
 y 10
 end
 arch lantern2_magic.131
+glow_radius 6
 x 10
 y 10
-glow_radius 6
 end
 arch floor_sand_d4
 x 10
@@ -2260,9 +2252,9 @@ x 12
 y 10
 end
 arch lantern2_magic.131
+glow_radius 6
 x 12
 y 10
-glow_radius 6
 end
 arch floor_sand_d1
 x 12
@@ -2442,11 +2434,11 @@ x 13
 y 9
 end
 arch celestial_door_wood1
-x 13
-y 9
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000008
+x 13
+y 9
 end
 arch floor_sand_d1
 x 13
@@ -2620,11 +2612,11 @@ y 9
 end
 arch celestial_door_wood1
 direction 7
-x 14
-y 9
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000009
+x 14
+y 9
 end
 arch floor_sand_d4
 x 14
@@ -2806,9 +2798,9 @@ x 15
 y 10
 end
 arch lantern2_magic.131
+glow_radius 6
 x 15
 y 10
-glow_radius 6
 end
 arch floor_sand_d4
 x 15
@@ -2969,11 +2961,11 @@ y 6
 end
 arch celestial_door1_locked
 direction 3
-x 16
-y 6
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 000000000000000a
+x 16
+y 6
 end
 arch floor_ostone12
 x 16
@@ -2981,11 +2973,11 @@ y 7
 end
 arch celestial_door1_locked
 direction 5
-x 16
-y 7
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 000000000000000b
+x 16
+y 7
 end
 arch floor_ostone12
 x 16

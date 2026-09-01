@@ -4,13 +4,12 @@ sky_above linked
 name Brynknot
 msg
 Created:  2011-10-02 Zoey Rose
-Modified: 2015-06-03 Zoey Rose
+Modified: 2026-09-01 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 5
 no_harm 1
-bg_music town_folk.ogg
 tile_path_1 /shattered_islands/world_0_67_1
 celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_1_68_1
@@ -29,6 +28,7 @@ tile_path_9 /shattered_islands/world_0_68_2
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_0_68
 celestial_boundary_10 continuous
+bg_music town_folk.ogg
 region brynknot
 end
 arch roof_brick
@@ -388,6 +388,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 15
 y 13
 end
@@ -453,6 +454,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 15
 y 16
 end
@@ -650,6 +652,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 17
 y 13
 end
@@ -710,6 +713,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 17
 y 16
 end
@@ -743,11 +747,11 @@ y 8
 end
 arch celestial_door1_locked
 direction 3
-x 18
-y 8
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+x 18
+y 8
 end
 arch floor_grey1a1
 x 18
@@ -827,9 +831,9 @@ x 19
 y 7
 end
 arch fireplace_right
+glow_radius 5
 x 19
 y 7
-glow_radius 5
 end
 arch floor_grey1a1
 x 19
@@ -848,11 +852,11 @@ x 19
 y 11
 end
 arch celestial_door1_locked
-x 19
-y 11
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000002
+x 19
+y 11
 end
 arch floor_grey1a1
 x 19
@@ -919,6 +923,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 19
 y 16
 end
@@ -964,11 +969,11 @@ y 11
 end
 arch celestial_door1_locked
 direction 7
-x 20
-y 11
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000003
+x 20
+y 11
 end
 arch floor_grey1a1
 x 20
@@ -1020,11 +1025,11 @@ y 8
 end
 arch celestial_door1_locked
 direction 3
-x 21
-y 8
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000004
+x 21
+y 8
 end
 arch floor_grey1a1
 x 21
@@ -1119,6 +1124,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 21
 y 16
 end
@@ -1331,6 +1337,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 23
 y 13
 end
@@ -1391,6 +1398,7 @@ sub_layer 3
 z -6
 align 8
 direction 7
+last_heal 0
 x 23
 y 16
 end

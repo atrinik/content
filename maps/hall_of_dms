@@ -4,7 +4,7 @@ sky_above sealed
 name Hall of DMs
 msg
 Created:  2009-12-19 Zoey Rose
-Modified: 2015-04-19 Zoey Rose
+Modified: 2026-09-01 Zoey Rose
 endmsg
 width 24
 height 24
@@ -576,11 +576,11 @@ y 19
 end
 arch celestial_door1_locked
 direction 3
-x 9
-y 19
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+x 9
+y 19
 end
 arch floor_stone_b4
 x 9
@@ -1230,22 +1230,7 @@ arch floor_stone_b4
 x 20
 y 16
 end
-arch exit
-slaying /shattered_islands/world_2_77
-hp 12
-sp 3
-x 20
-y 16
-end
 arch floor_stone_b3
-x 20
-y 17
-end
-arch sign
-msg
-The Tutorial Island
-endmsg
-name The Tutorial Island
 x 20
 y 17
 end

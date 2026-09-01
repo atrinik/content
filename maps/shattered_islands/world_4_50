@@ -4,12 +4,11 @@ sky_above linked
 name Strakewood Island
 msg
 Created:  2009-08-09 Zoey Rose
-Modified: 2016-01-24 Zoey Rose
+Modified: 2026-09-01 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 14
-bg_music jungle.ogg
 tile_path_1 /shattered_islands/world_4_49
 celestial_boundary_1 discontinuous
 tile_path_2 /shattered_islands/world_5_50
@@ -28,6 +27,7 @@ tile_path_8 /shattered_islands/world_3_49
 celestial_boundary_8 discontinuous
 tile_path_9 /shattered_islands/world_4_50_1
 celestial_boundary_9 continuous
+bg_music jungle.ogg
 region strakewood_island
 end
 arch grassd_4
@@ -812,6 +812,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 5
 y 4
 end
@@ -848,6 +849,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 5
 y 6
 end
@@ -1328,6 +1330,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 8
 y 4
 end
@@ -1364,6 +1367,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 8
 y 6
 end
@@ -1776,11 +1780,11 @@ y 4
 end
 arch celestial_door_wood2
 direction 3
-x 11
-y 4
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+x 11
+y 4
 end
 arch floor_wood2_l1
 x 11

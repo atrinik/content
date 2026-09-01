@@ -4,13 +4,12 @@ sky_above linked
 name Asteria
 msg
 Created:  2009-08-09 Zoey Rose
-Modified: 2016-01-25 Zoey Rose
+Modified: 2026-09-01 Zoey Rose
 endmsg
 width 24
 height 24
 difficulty 40
 no_harm 1
-bg_music chether.mid
 tile_path_1 /shattered_islands/world_7_45
 celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_8_46
@@ -31,6 +30,7 @@ tile_path_9 /shattered_islands/world_7_46_1
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_7_46_-1
 celestial_boundary_10 discontinuous
+bg_music chether.mid
 region asteria
 end
 arch grassd_2
@@ -1409,11 +1409,11 @@ x 6
 y 12
 end
 arch celestial_gate1_locked
-x 6
-y 12
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000001
+x 6
+y 12
 end
 arch floor_ostone10
 z 50
@@ -1864,11 +1864,11 @@ y 3
 end
 arch celestial_door_wood2
 direction 7
-x 9
-y 3
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000002
+x 9
+y 3
 end
 arch floor_orange1
 z 50
@@ -1942,11 +1942,11 @@ y 13
 end
 arch celestial_door_wood2
 direction 3
-x 9
-y 13
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000003
+x 9
+y 13
 end
 arch floor_ostone10
 z 50
@@ -2756,11 +2756,11 @@ x 14
 y 2
 end
 arch celestial_door_wood2
-x 14
-y 2
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000004
+x 14
+y 2
 end
 arch floor_orange1
 z 50
@@ -2778,6 +2778,7 @@ x 14
 y 5
 end
 arch stairs_wood_up
+last_heal 0
 x 14
 y 5
 end
@@ -3107,11 +3108,11 @@ y 3
 end
 arch celestial_door_wood2
 direction 3
-x 16
-y 3
 celestial_transmission_closed opaque
 celestial_transmission_open open
 celestial_aperture_id 0000000000000005
+x 16
+y 3
 end
 arch floor_orange1
 z 50

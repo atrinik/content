@@ -138,6 +138,40 @@ end
         self.assertTrue(report["ok"])
         self.assertEqual(1, report["scan"]["forms"]["explicit"])
 
+    def test_automatic_link_matches_any_exit_type_peer(self):
+        self.write(
+            "arch/explicit_peer.arc",
+            """Object explicit_peer
+type 66
+sub_type 42
+slaying /target
+hp 0
+sp 0
+end
+""",
+        )
+        target_objects = "".join(
+            self.object_source("floor", x, y)
+            for x in range(2)
+            for y in range(2)
+        )
+        self.write(
+            "maps/source",
+            self.map_source(
+                2,
+                2,
+                self.object_source("auto_exit", 0, 0, "sub_type 42\n")
+                + self.object_source("explicit_peer", 1, 0)
+                + target_objects,
+            ),
+        )
+        self.write("maps/target", self.map_source(2, 2, target_objects))
+
+        report = validate(self.root)
+
+        self.assertTrue(report["ok"])
+        self.assertEqual(0, report["excluded"]["automatic-without-peer"])
+
     def test_invalid_forms_report_reason_and_source(self):
         self.write(
             "maps/source",

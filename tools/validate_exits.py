@@ -650,22 +650,24 @@ def _sort_diagnostic(item: dict) -> tuple:
     )
 
 
-def _candidate_key(candidate: ExitCandidate) -> tuple:
-    return candidate.source.map_path, candidate.source.node.handle
-
-
 def _automatic_candidates(
     records: dict[str, MapRecord], candidates: list[ExitCandidate]
 ) -> tuple[list[dict], dict[str, int]]:
     by_key = {
-        _candidate_key(candidate): candidate
-        for candidate in candidates
-        if candidate.form in {"automatic-link", "shop-mat"}
+        (map_path, map_object.node.handle): map_object
+        for map_path, record in records.items()
+        for map_object in record.objects
+        if map_object.attributes.get("type") == EXIT_TYPE
     }
     diagnostics: list[dict] = []
     without_peer = 0
     for candidate in sorted(
-        by_key.values(), key=lambda item: (item.source.source_path, item.source.node.opener_span.line)
+        (
+            candidate
+            for candidate in candidates
+            if candidate.form in {"automatic-link", "shop-mat"}
+        ),
+        key=lambda item: (item.source.source_path, item.source.node.opener_span.line),
     ):
         source_x = _integer(candidate.source.attributes.get("x"), 0)
         source_y = _integer(candidate.source.attributes.get("y"), 0)
@@ -673,7 +675,7 @@ def _automatic_candidates(
         if source_x is None or source_y is None or subtype is None:
             without_peer += 1
             continue
-        peers: dict[tuple[str, str], ExitCandidate] = {}
+        peers: dict[tuple[str, str], MapObject] = {}
         for dx in range(-5, 6):
             for dy in range(-5, 6):
                 if dx == 0 and dy == 0:
@@ -689,26 +691,26 @@ def _automatic_candidates(
                 map_path, x, y = location
                 for map_object in records[map_path].cells.get((x, y), ()):
                     peer = by_key.get((map_path, map_object.node.handle))
-                    if peer is None or peer is candidate:
+                    if peer is None or peer is candidate.source:
                         continue
-                    if _integer(peer.source.attributes.get("sub_type"), 0) != subtype:
+                    if _integer(peer.attributes.get("sub_type"), 0) != subtype:
                         continue
                     peers[(map_path, map_object.node.handle)] = peer
         if not peers:
             without_peer += 1
             continue
         for peer in peers.values():
-            peer_x = _integer(peer.source.attributes.get("x"), 0)
-            peer_y = _integer(peer.source.attributes.get("y"), 0)
+            peer_x = _integer(peer.attributes.get("x"), 0)
+            peer_y = _integer(peer.attributes.get("y"), 0)
             result = _automatic_landing(
-                records, peer.source.map_path, peer_x, peer_y
+                records, peer.map_path, peer_x, peer_y
             )
             if result["reason_code"]:
                 diagnostics.append(
                     _diagnostic(
                         candidate,
                         result,
-                        peer.source.map_path,
+                        peer.map_path,
                         peer_x,
                         peer_y,
                     )

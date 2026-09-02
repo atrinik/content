@@ -138,23 +138,25 @@ end
         self.assertTrue(report["ok"])
         self.assertEqual(1, report["scan"]["forms"]["explicit"])
 
-    def test_v1_filename_links_match_classic_and_resolve_edge_stairs(self):
-        v1 = "celestial_schema 1\n"
-
+    def test_filename_links_match_classic_and_resolve_edge_stairs(self):
         self.write(
             "maps/world_5_5",
             self.map_source(
                 3,
                 3,
                 self.object_source("exit", 1, 2, "last_heal 3\n"),
-                header=v1,
             ),
         )
         self.write(
             "maps/world_5_6",
-            self.map_source(3, 3, self.object_source("floor", 1, 2), header=v1),
+            self.map_source(
+                3,
+                3,
+                self.object_source("floor", 1, 2),
+                header="celestial_schema 1\n",
+            ),
         )
-        self.write("maps/world_5_5_1", self.map_source(3, 3, header=v1))
+        self.write("maps/world_5_5_1", self.map_source(3, 3))
 
         self.write(
             "maps/world_4_4",
@@ -162,7 +164,6 @@ end
                 3,
                 3,
                 self.object_source("exit", 1, 2, "last_heal 3\n"),
-                header=v1,
             ),
         )
 
@@ -172,16 +173,16 @@ end
                 3,
                 3,
                 self.object_source("exit", 1, 2, "last_heal 3\n"),
-                header=v1 + "tile_path_3 /override\n",
+                header="tile_path_3 /override\n",
             ),
         )
         self.write(
             "maps/override",
-            self.map_source(3, 3, self.object_source("floor", 1, 2), header=v1),
+            self.map_source(3, 3, self.object_source("floor", 1, 2)),
         )
         self.write(
             "maps/world_3_4",
-            self.map_source(3, 3, self.object_source("wall", 1, 2), header=v1),
+            self.map_source(3, 3, self.object_source("wall", 1, 2)),
         )
 
         self.write(
@@ -195,13 +196,13 @@ end
                     23,
                     "last_heal 10\nxrays 1\ndirection 5\n",
                 ),
-                header=v1 + "tile_path_10 /world_1_50_-1\n",
+                header="tile_path_10 /world_1_50_-1\n",
             ),
         )
-        self.write("maps/world_1_50_-1", self.map_source(24, 24, header=v1))
+        self.write("maps/world_1_50_-1", self.map_source(24, 24))
         self.write(
             "maps/world_1_51_-1",
-            self.map_source(24, 24, self.object_source("floor", 19, 0), header=v1),
+            self.map_source(24, 24, self.object_source("floor", 19, 0)),
         )
 
         self.write(
@@ -215,13 +216,13 @@ end
                     15,
                     "last_heal 10\nxrays 1\ndirection 7\n",
                 ),
-                header=v1 + "tile_path_10 /world_2_47_-1\n",
+                header="tile_path_10 /world_2_47_-1\n",
             ),
         )
-        self.write("maps/world_2_47_-1", self.map_source(24, 24, header=v1))
+        self.write("maps/world_2_47_-1", self.map_source(24, 24))
         self.write(
             "maps/world_1_47_-1",
-            self.map_source(24, 24, self.object_source("floor", 23, 15), header=v1),
+            self.map_source(24, 24, self.object_source("floor", 23, 15)),
         )
 
         archetypes, _, _ = _load_archetypes(self.root)
@@ -229,7 +230,7 @@ end
             self.root, self.root / "maps/world_5_5", archetypes
         )
         self.assertEqual("/world_5_6", derived.links[3])
-        self.assertNotIn(9, derived.links)
+        self.assertEqual("/world_5_5_1", derived.links[9])
         missing = _map_record(
             self.root, self.root / "maps/world_4_4", archetypes
         )

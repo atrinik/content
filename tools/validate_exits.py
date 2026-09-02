@@ -33,6 +33,8 @@ FILENAME_TILE_OFFSETS = (
     (1, 1, 0),
     (-1, 1, 0),
     (-1, -1, 0),
+    (0, 0, 1),
+    (0, 0, -1),
 )
 SIGNED_INTEGER_RE = re.compile(r"^-?[0-9]+$")
 LANDING_OFFSETS = (
@@ -69,7 +71,6 @@ class MapRecord:
     source_path: str
     width: Optional[int]
     height: Optional[int]
-    celestial_schema: Optional[int]
     links: dict[int, str]
     objects: list[MapObject]
     cells: dict[tuple[int, int], list[MapObject]]
@@ -169,13 +170,10 @@ def _filename_coordinates(logical_path: str) -> Optional[tuple[str, tuple[int, i
 def _add_filename_links(
     root: Path,
     logical_path: str,
-    celestial_schema: Optional[int],
     links: dict[int, str],
 ) -> None:
-    """Mirror Classic's existing-file horizontal v1 tiling lookup."""
+    """Mirror Classic's existing-file coordinate tiling lookup."""
 
-    if celestial_schema != 1:
-        return
     parsed = _filename_coordinates(logical_path)
     if parsed is None:
         return
@@ -287,13 +285,12 @@ def _map_record(
     header_values = _field_values(header) if header is not None else {}
     width = _integer(header_values.get("width"))
     height = _integer(header_values.get("height"))
-    celestial_schema = _integer(header_values.get("celestial_schema"))
     links: dict[int, str] = {}
     for slot in TILED_SLOTS:
         value = header_values.get("tile_path_{}".format(slot))
         if value:
             links[slot] = _normalize_path(logical_path, value)
-    _add_filename_links(root, logical_path, celestial_schema, links)
+    _add_filename_links(root, logical_path, links)
 
     objects: list[MapObject] = []
     cells: dict[tuple[int, int], list[MapObject]] = {}
@@ -315,7 +312,6 @@ def _map_record(
         source_path,
         width,
         height,
-        celestial_schema,
         links,
         objects,
         cells,

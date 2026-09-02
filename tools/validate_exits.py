@@ -34,7 +34,6 @@ LANDING_OFFSETS = (
     (-1, -1),
 )
 FORMS = ("explicit", "same-map", "tiled", "automatic-link", "shop-mat")
-BASELINE_PATH = ROOT / "tools" / "exit-validation-baseline.json"
 
 
 @dataclass
@@ -718,30 +717,7 @@ def _automatic_candidates(
     return diagnostics, {"automatic-without-peer": without_peer}
 
 
-def _load_baseline(path: Optional[Path]) -> tuple[Optional[str], set[str]]:
-    if path is None:
-        return None, set()
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if data.get("schema_version") != 1 or data.get("kind") != "authored-exit-validation-baseline":
-        raise ValueError("invalid authored-exit-validation baseline schema")
-    finding_ids = data.get("finding_ids")
-    if not isinstance(finding_ids, list) or not all(
-        isinstance(item, str) for item in finding_ids
-    ):
-        raise ValueError("baseline finding_ids must be a list of strings")
-    if finding_ids != sorted(set(finding_ids)):
-        raise ValueError("baseline finding_ids must be unique and sorted")
-    return path.as_posix(), set(finding_ids)
-
-
-def _display_path(root: Path, path: Path) -> str:
-    try:
-        return path.resolve().relative_to(root.resolve()).as_posix()
-    except ValueError:
-        return path.as_posix()
-
-
-def validate(root: Path, baseline: Optional[Path] = None) -> dict:
+def validate(root: Path) -> dict:
     """Return a deterministic report for one authored-content root."""
 
     root = root.resolve()
@@ -798,10 +774,6 @@ def validate(root: Path, baseline: Optional[Path] = None) -> dict:
         {item["id"]: item for item in diagnostics}.values(), key=_sort_diagnostic
     )
 
-    baseline_path, baseline_ids = _load_baseline(baseline)
-    actual_ids = {item["id"] for item in diagnostics}
-    stale_ids = sorted(baseline_ids - actual_ids)
-    unapproved = [item for item in diagnostics if item["id"] not in baseline_ids]
     form_counts = {form: 0 for form in FORMS}
     for candidate in candidates:
         if candidate.form in form_counts:
@@ -809,8 +781,8 @@ def validate(root: Path, baseline: Optional[Path] = None) -> dict:
     return {
         "schema_version": 1,
         "kind": "authored-exit-validation",
-        "status": "pass" if not stale_ids and not unapproved else "fail",
-        "ok": not stale_ids and not unapproved,
+        "status": "pass" if not diagnostics else "fail",
+        "ok": not diagnostics,
         "scan": {
             "archetype_files": archetype_files,
             "archetypes": len(archetypes),
@@ -820,14 +792,8 @@ def validate(root: Path, baseline: Optional[Path] = None) -> dict:
             "parsed_maps": len(records),
             "forms": form_counts,
         },
-        "baseline": {
-            "path": _display_path(root, baseline) if baseline is not None else baseline_path,
-            "count": len(baseline_ids),
-            "stale_ids": stale_ids,
-        },
         "excluded": dict(sorted(exclusions.items())),
         "diagnostics": diagnostics,
-        "unapproved_diagnostics": unapproved,
         "unresolved_references": unresolved_references,
     }
 
@@ -835,11 +801,6 @@ def validate(root: Path, baseline: Optional[Path] = None) -> dict:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT)
-    parser.add_argument(
-        "--baseline",
-        type=Path,
-        help="reviewed finding baseline (defaults to the repository baseline)",
-    )
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--json", action="store_true", dest="as_json")
     return parser
@@ -848,13 +809,8 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: Optional[list[str]] = None) -> int:
     args = _parser().parse_args(argv)
     root = args.root.resolve()
-    baseline = (
-        args.baseline.resolve()
-        if args.baseline is not None
-        else BASELINE_PATH if root == ROOT else None
-    )
     try:
-        report = validate(root, baseline)
+        report = validate(root)
     except (OSError, ValueError, json.JSONDecodeError) as error:
         print("authored exit validation failed to run: {}".format(error), file=sys.stderr)
         return 2
@@ -868,16 +824,25 @@ def main(argv: Optional[list[str]] = None) -> int:
                 report["status"],
             )
         )
-        for item in report["unapproved_diagnostics"]:
+        for item in report["diagnostics"]:
+            source = item["source"]
+            source_coordinate = source["coordinate"]
+            target = item["resolved_target"] or item["target"]
+            target_path = target["path"] or source["map"]
+            target_coordinate = target["coordinate"]
             print(
-                "{}:{}: {}".format(
-                    item["source"]["path"],
-                    item["source"]["line"],
+                "{}:{}: {} ({}, {}) -> {} ({}, {}): {}".format(
+                    source["path"],
+                    source["line"],
+                    source["map"],
+                    source_coordinate["x"],
+                    source_coordinate["y"],
+                    target_path,
+                    target_coordinate["x"],
+                    target_coordinate["y"],
                     item["reason"],
                 )
             )
-        for finding_id in report["baseline"]["stale_ids"]:
-            print("stale baseline finding: {}".format(finding_id))
     return 1 if args.check and not report["ok"] else 0
 
 

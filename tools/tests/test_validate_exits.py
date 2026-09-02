@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-import json
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 import tempfile
 import unittest
 
-from tools.validate_exits import validate
+from tools.validate_exits import main, validate
 
 
 class ValidateExitsTest(unittest.TestCase):
@@ -220,7 +221,7 @@ end
             )
         )
 
-    def test_baseline_approves_exact_findings_and_rejects_new_findings(self):
+    def test_any_finding_keeps_the_report_failing(self):
         self.write(
             "maps/source",
             self.map_source(
@@ -231,38 +232,17 @@ end
                 ),
             ),
         )
-        initial = validate(self.root)
-        baseline_path = self.root / "baseline.json"
-        baseline_path.write_text(
-            json.dumps(
-                {
-                    "schema_version": 1,
-                    "kind": "authored-exit-validation-baseline",
-                    "finding_ids": [initial["diagnostics"][0]["id"]],
-                }
-            ),
-            encoding="utf-8",
-        )
-        approved = validate(self.root, baseline_path)
-        self.assertTrue(approved["ok"])
-        self.assertEqual([], approved["unapproved_diagnostics"])
+        report = validate(self.root)
+        self.assertFalse(report["ok"])
+        self.assertEqual("fail", report["status"])
+        self.assertEqual(1, len(report["diagnostics"]))
 
-        self.write(
-            "maps/source",
-            self.map_source(
-                2,
-                2,
-                self.object_source(
-                    "exit", 0, 0, "slaying /missing\nhp 0\nsp 0\n"
-                )
-                + self.object_source(
-                    "exit", 1, 1, "slaying /also-missing\nhp 0\nsp 0\n"
-                ),
-            ),
-        )
-        changed = validate(self.root, baseline_path)
-        self.assertFalse(changed["ok"])
-        self.assertEqual(1, len(changed["unapproved_diagnostics"]))
+        output = StringIO()
+        with redirect_stdout(output):
+            exit_code = main(["--root", str(self.root), "--check"])
+        self.assertEqual(1, exit_code)
+        self.assertIn("maps/source:", output.getvalue())
+        self.assertIn("-> /missing", output.getvalue())
 
     def test_dynamic_and_unresolved_forms_are_explicitly_excluded(self):
         self.write(

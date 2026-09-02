@@ -21,7 +21,7 @@ from tools.archetype_plurals import (
 from tools.m1_foundations import validate as validate_m1_foundations
 from tools.release_line_parity import load_and_validate as validate_release_line_parity
 from tools.validate_status_icons import validate as validate_status_icons
-from tools.validate_exits import BASELINE_PATH, validate as validate_exits
+from tools.validate_exits import validate as validate_exits
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -110,22 +110,15 @@ def main() -> int:
         ),
         flush=True,
     )
-    exit_report = validate_exits(ROOT, BASELINE_PATH)
+    exit_report = validate_exits(ROOT)
     if not exit_report["ok"]:
         raise ValueError(
             "authored exit validation rejected the corpus: {}".format(
-                json.dumps(
-                    {
-                        "unapproved": exit_report["unapproved_diagnostics"],
-                        "stale_baseline": exit_report["baseline"]["stale_ids"],
-                    },
-                    sort_keys=True,
-                )
+                json.dumps(exit_report["diagnostics"], sort_keys=True)
             )
         )
     print(
-        "Authored exits: {} statically resolvable findings retained by the "
-        "migration baseline; {} parsed maps checked.".format(
+        "Authored exits: {} findings across {} parsed maps.".format(
             len(exit_report["diagnostics"]),
             exit_report["scan"]["parsed_maps"],
         ),

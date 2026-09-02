@@ -812,6 +812,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 5
 y 4
 end
@@ -848,6 +849,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 5
 y 6
 end
@@ -1328,6 +1330,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 8
 y 4
 end
@@ -1364,6 +1367,7 @@ sub_layer 3
 z -4
 align -8
 direction 3
+last_heal 0
 x 8
 y 6
 end

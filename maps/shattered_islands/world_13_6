@@ -918,6 +918,7 @@ arch floor_ostone12
 x 5
 end
 arch stairs_wood_up
+last_heal 0
 x 5
 end
 arch floor_ostone12
@@ -925,6 +926,7 @@ x 5
 y 1
 end
 arch stairs_wood_up
+last_heal 0
 x 5
 y 1
 end

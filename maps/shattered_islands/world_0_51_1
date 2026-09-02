@@ -181,6 +181,7 @@ arch ladder_up
 sub_layer 3
 z -6
 align -8
+last_heal 0
 x 12
 y 20
 end
@@ -359,6 +360,7 @@ arch ladder_up
 sub_layer 3
 z -6
 align -8
+last_heal 0
 x 20
 y 22
 end

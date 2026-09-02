@@ -1230,22 +1230,7 @@ arch floor_stone_b4
 x 20
 y 16
 end
-arch exit
-slaying /shattered_islands/world_2_77
-hp 12
-sp 3
-x 20
-y 16
-end
 arch floor_stone_b3
-x 20
-y 17
-end
-arch sign
-msg
-The Tutorial Island
-endmsg
-name The Tutorial Island
 x 20
 y 17
 end

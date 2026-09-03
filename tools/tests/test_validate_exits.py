@@ -159,6 +159,23 @@ end
         self.write("maps/world_5_5_1", self.map_source(3, 3))
 
         self.write(
+            "maps/vertical_70_70_-1",
+            self.map_source(
+                3,
+                3,
+                header="celestial_schema 1\nsky_above linked\n",
+            ),
+        )
+        self.write(
+            "maps/vertical_70_70",
+            self.map_source(
+                3,
+                3,
+                header="celestial_schema 1\nsky_above open\n",
+            ),
+        )
+
+        self.write(
             "maps/world_4_4",
             self.map_source(
                 3,
@@ -231,6 +248,11 @@ end
         )
         self.assertEqual("/world_5_6", derived.links[3])
         self.assertEqual("/world_5_5_1", derived.links[9])
+
+        signed_vertical = _map_record(
+            self.root, self.root / "maps/vertical_70_70_-1", archetypes
+        )
+        self.assertEqual("/vertical_70_70", signed_vertical.links[9])
         missing = _map_record(
             self.root, self.root / "maps/world_4_4", archetypes
         )

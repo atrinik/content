@@ -11,16 +11,10 @@ height 24
 difficulty 1
 no_harm 1
 bg_music harmony2.mid
-tile_path_1 /shattered_islands/world_12_64
-celestial_boundary_1 continuous
-tile_path_2 /shattered_islands/world_13_65
-celestial_boundary_2 continuous
 tile_path_3 /shattered_islands/world_12_66
 celestial_boundary_3 discontinuous
 tile_path_4 /shattered_islands/world_11_65
 celestial_boundary_4 discontinuous
-tile_path_5 /shattered_islands/world_13_64
-celestial_boundary_5 continuous
 tile_path_6 /shattered_islands/world_13_66
 celestial_boundary_6 discontinuous
 tile_path_7 /shattered_islands/world_11_66

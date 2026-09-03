@@ -17,16 +17,10 @@ tile_path_2 /shattered_islands/world_15_64
 celestial_boundary_2 discontinuous
 tile_path_3 /shattered_islands/world_14_65
 celestial_boundary_3 discontinuous
-tile_path_4 /shattered_islands/world_13_64
-celestial_boundary_4 continuous
 tile_path_5 /shattered_islands/world_15_63
 celestial_boundary_5 discontinuous
 tile_path_6 /shattered_islands/world_15_65
 celestial_boundary_6 discontinuous
-tile_path_7 /shattered_islands/world_13_65
-celestial_boundary_7 continuous
-tile_path_8 /shattered_islands/world_13_63
-celestial_boundary_8 continuous
 region berri_lur
 end
 arch water_lt

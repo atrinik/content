@@ -11,16 +11,6 @@ height 24
 difficulty 40
 no_harm 1
 bg_music kaitindam.mid
-tile_path_1 /shattered_islands/world_6_43_3
-celestial_boundary_1 continuous
-tile_path_2 /shattered_islands/world_7_44_3
-celestial_boundary_2 continuous
-tile_path_4 /shattered_islands/world_5_44_3
-celestial_boundary_4 continuous
-tile_path_5 /shattered_islands/world_7_43_3
-celestial_boundary_5 continuous
-tile_path_8 /shattered_islands/world_5_43_3
-celestial_boundary_8 continuous
 tile_path_10 /shattered_islands/world_6_44_2
 celestial_boundary_10 continuous
 region asteria

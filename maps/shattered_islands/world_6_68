@@ -16,16 +16,12 @@ tile_path_2 /shattered_islands/world_7_68
 celestial_boundary_2 discontinuous
 tile_path_3 /shattered_islands/world_6_69
 celestial_boundary_3 discontinuous
-tile_path_4 /shattered_islands/world_5_68
-celestial_boundary_4 continuous
 tile_path_5 /shattered_islands/world_7_67
 celestial_boundary_5 discontinuous
 tile_path_6 /shattered_islands/world_7_69
 celestial_boundary_6 discontinuous
 tile_path_7 /shattered_islands/world_5_69
 celestial_boundary_7 discontinuous
-tile_path_8 /shattered_islands/world_5_67
-celestial_boundary_8 continuous
 tile_path_9 /shattered_islands/world_6_68_1
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_6_68_-1

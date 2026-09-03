@@ -10,8 +10,6 @@ width 24
 height 24
 difficulty 25
 bg_music jungle.ogg
-tile_path_4 /shattered_islands/world_4_65_1
-celestial_boundary_4 continuous
 tile_path_9 /shattered_islands/world_5_65_2
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_5_65

@@ -8,22 +8,6 @@ endmsg
 width 24
 height 24
 difficulty 1
-tile_path_1 /shattered_islands/world_-3_8
-celestial_boundary_1 continuous
-tile_path_2 /shattered_islands/world_-2_9
-celestial_boundary_2 continuous
-tile_path_3 /shattered_islands/world_-3_10
-celestial_boundary_3 continuous
-tile_path_4 /shattered_islands/world_-4_9
-celestial_boundary_4 continuous
-tile_path_5 /shattered_islands/world_-2_8
-celestial_boundary_5 continuous
-tile_path_6 /shattered_islands/world_-2_10
-celestial_boundary_6 continuous
-tile_path_7 /shattered_islands/world_-4_10
-celestial_boundary_7 continuous
-tile_path_8 /shattered_islands/world_-4_8
-celestial_boundary_8 continuous
 region world
 end
 arch water_lt2

@@ -12,10 +12,6 @@ difficulty 25
 no_harm 1
 fixed_resettime 1
 bg_music town_folk.ogg
-tile_path_4 /shattered_islands/world_1_68_2
-celestial_boundary_4 continuous
-tile_path_8 /shattered_islands/world_1_67_2
-celestial_boundary_8 continuous
 tile_path_9 /shattered_islands/world_2_68_3
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_2_68_1

@@ -11,14 +11,6 @@ height 24
 difficulty 40
 no_harm 1
 bg_music chether.mid
-tile_path_1 /shattered_islands/world_3_45_1
-celestial_boundary_1 continuous
-tile_path_2 /shattered_islands/world_4_46_1
-celestial_boundary_2 continuous
-tile_path_5 /shattered_islands/world_4_45_1
-celestial_boundary_5 continuous
-tile_path_7 /shattered_islands/world_2_47_1
-celestial_boundary_7 continuous
 tile_path_10 /shattered_islands/world_3_46
 celestial_boundary_10 continuous
 region asteria

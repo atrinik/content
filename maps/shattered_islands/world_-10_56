@@ -12,8 +12,6 @@ tile_path_1 /shattered_islands/world_-10_55
 celestial_boundary_1 discontinuous
 tile_path_2 /shattered_islands/world_-9_56
 celestial_boundary_2 discontinuous
-tile_path_3 /shattered_islands/world_-10_57
-celestial_boundary_3 continuous
 tile_path_5 /shattered_islands/world_-9_55
 celestial_boundary_5 discontinuous
 tile_path_6 /shattered_islands/world_-9_57

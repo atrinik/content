@@ -7,7 +7,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.validate_exits import validate
+from tools.validate_exits import _load_archetypes, _map_record, validate
 
 
 class ValidateExitsTest(unittest.TestCase):
@@ -137,6 +137,115 @@ end
 
         self.assertTrue(report["ok"])
         self.assertEqual(1, report["scan"]["forms"]["explicit"])
+
+    def test_filename_links_match_classic_and_resolve_edge_stairs(self):
+        self.write(
+            "maps/world_5_5",
+            self.map_source(
+                3,
+                3,
+                self.object_source("exit", 1, 2, "last_heal 3\n"),
+            ),
+        )
+        self.write(
+            "maps/world_5_6",
+            self.map_source(
+                3,
+                3,
+                self.object_source("floor", 1, 2),
+                header="celestial_schema 1\n",
+            ),
+        )
+        self.write("maps/world_5_5_1", self.map_source(3, 3))
+
+        self.write(
+            "maps/world_4_4",
+            self.map_source(
+                3,
+                3,
+                self.object_source("exit", 1, 2, "last_heal 3\n"),
+            ),
+        )
+
+        self.write(
+            "maps/world_3_3",
+            self.map_source(
+                3,
+                3,
+                self.object_source("exit", 1, 2, "last_heal 3\n"),
+                header="tile_path_3 /override\n",
+            ),
+        )
+        self.write(
+            "maps/override",
+            self.map_source(3, 3, self.object_source("floor", 1, 2)),
+        )
+        self.write(
+            "maps/world_3_4",
+            self.map_source(3, 3, self.object_source("wall", 1, 2)),
+        )
+
+        self.write(
+            "maps/world_1_50",
+            self.map_source(
+                24,
+                24,
+                self.object_source(
+                    "exit",
+                    19,
+                    23,
+                    "last_heal 10\nxrays 1\ndirection 5\n",
+                ),
+                header="tile_path_10 /world_1_50_-1\n",
+            ),
+        )
+        self.write("maps/world_1_50_-1", self.map_source(24, 24))
+        self.write(
+            "maps/world_1_51_-1",
+            self.map_source(24, 24, self.object_source("floor", 19, 0)),
+        )
+
+        self.write(
+            "maps/world_2_47",
+            self.map_source(
+                24,
+                24,
+                self.object_source(
+                    "exit",
+                    0,
+                    15,
+                    "last_heal 10\nxrays 1\ndirection 7\n",
+                ),
+                header="tile_path_10 /world_2_47_-1\n",
+            ),
+        )
+        self.write("maps/world_2_47_-1", self.map_source(24, 24))
+        self.write(
+            "maps/world_1_47_-1",
+            self.map_source(24, 24, self.object_source("floor", 23, 15)),
+        )
+
+        archetypes, _, _ = _load_archetypes(self.root)
+        derived = _map_record(
+            self.root, self.root / "maps/world_5_5", archetypes
+        )
+        self.assertEqual("/world_5_6", derived.links[3])
+        self.assertEqual("/world_5_5_1", derived.links[9])
+        missing = _map_record(
+            self.root, self.root / "maps/world_4_4", archetypes
+        )
+        self.assertNotIn(3, missing.links)
+        overridden = _map_record(
+            self.root, self.root / "maps/world_3_3", archetypes
+        )
+        self.assertEqual("/override", overridden.links[3])
+
+        report = validate(self.root)
+
+        self.assertTrue(report["ok"])
+        self.assertEqual([], report["diagnostics"])
+        self.assertEqual(4, report["scan"]["forms"]["tiled"])
+        self.assertGreaterEqual(report["excluded"]["unresolved"], 1)
 
     def test_automatic_link_matches_any_exit_type_peer(self):
         self.write(

@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 import posixpath
+import re
 import sys
 from typing import Optional
 
@@ -23,6 +24,19 @@ EXIT_TYPE = "66"
 PLAYER_TERRAIN = 65
 TILED_UP = 9
 TILED_SLOTS = tuple(range(1, 11))
+FILENAME_TILE_OFFSETS = (
+    (0, -1, 0),
+    (1, 0, 0),
+    (0, 1, 0),
+    (-1, 0, 0),
+    (1, -1, 0),
+    (1, 1, 0),
+    (-1, 1, 0),
+    (-1, -1, 0),
+    (0, 0, 1),
+    (0, 0, -1),
+)
+SIGNED_INTEGER_RE = re.compile(r"^-?[0-9]+$")
 LANDING_OFFSETS = (
     (0, -1),
     (1, -1),
@@ -133,6 +147,49 @@ def _path_for_logical(root: Path, logical_path: str) -> Optional[Path]:
     return resolved
 
 
+def _filename_coordinates(logical_path: str) -> Optional[tuple[str, tuple[int, int, int]]]:
+    """Parse the signed coordinate suffix using Classic's filename rules."""
+
+    basename = posixpath.basename(logical_path)
+    coordinates: list[int] = []
+    coordinates_length = 0
+    for token in basename.split("_"):
+        if len(token) > 3:
+            continue
+        if SIGNED_INTEGER_RE.fullmatch(token):
+            coordinates_length += len(token) + 1
+            coordinates.append(int(token))
+        if len(coordinates) >= 3:
+            break
+    if len(coordinates) < 2:
+        return None
+    z = coordinates[2] if len(coordinates) == 3 else 0
+    return logical_path[:-coordinates_length], (coordinates[0], coordinates[1], z)
+
+
+def _add_filename_links(
+    root: Path,
+    logical_path: str,
+    links: dict[int, str],
+) -> None:
+    """Mirror Classic's existing-file coordinate tiling lookup."""
+
+    parsed = _filename_coordinates(logical_path)
+    if parsed is None:
+        return
+    prefix, (x, y, z) = parsed
+    for slot, (dx, dy, dz) in enumerate(FILENAME_TILE_OFFSETS, start=1):
+        if slot in links:
+            continue
+        target = "{}_{}_{}".format(prefix, x + dx, y + dy)
+        target_z = z + dz
+        if target_z != 0:
+            target += "_{}".format(target_z)
+        target = "/" + posixpath.normpath(target).lstrip("/")
+        if _path_for_logical(root, target) is not None:
+            links[slot] = target
+
+
 def _load_archetypes(root: Path) -> tuple[dict[str, Archetype], set[str], int]:
     raw_archetypes: dict[str, Archetype] = {}
     files = 0
@@ -233,6 +290,7 @@ def _map_record(
         value = header_values.get("tile_path_{}".format(slot))
         if value:
             links[slot] = _normalize_path(logical_path, value)
+    _add_filename_links(root, logical_path, links)
 
     objects: list[MapObject] = []
     cells: dict[tuple[int, int], list[MapObject]] = {}
@@ -249,7 +307,15 @@ def _map_record(
         y = _integer(attributes.get("y"), 0)
         if x is not None and y is not None:
             cells.setdefault((x, y), []).append(map_object)
-    return MapRecord(logical_path, source_path, width, height, links, objects, cells)
+    return MapRecord(
+        logical_path,
+        source_path,
+        width,
+        height,
+        links,
+        objects,
+        cells,
+    )
 
 
 def _load_maps(

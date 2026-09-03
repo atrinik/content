@@ -10,14 +10,6 @@ height 24
 difficulty 1
 tile_path_1 /shattered_islands/world_17_2_2
 celestial_boundary_1 discontinuous
-tile_path_2 /shattered_islands/world_18_3_2
-celestial_boundary_2 continuous
-tile_path_4 /shattered_islands/world_16_3_2
-celestial_boundary_4 continuous
-tile_path_5 /shattered_islands/world_18_2_2
-celestial_boundary_5 continuous
-tile_path_8 /shattered_islands/world_16_2_2
-celestial_boundary_8 continuous
 tile_path_9 /shattered_islands/world_17_3_3
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_17_3_1

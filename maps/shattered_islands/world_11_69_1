@@ -11,10 +11,6 @@ height 24
 difficulty 1
 no_harm 1
 bg_music town_music.ogg
-tile_path_1 /shattered_islands/world_11_68_1
-celestial_boundary_1 continuous
-tile_path_4 /shattered_islands/world_10_69_1
-celestial_boundary_4 continuous
 tile_path_9 /shattered_islands/world_11_69_2
 celestial_boundary_9 continuous
 tile_path_10 /shattered_islands/world_11_69

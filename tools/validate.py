@@ -22,6 +22,7 @@ from tools.m1_foundations import validate as validate_m1_foundations
 from tools.release_line_parity import load_and_validate as validate_release_line_parity
 from tools.validate_status_icons import validate as validate_status_icons
 from tools.validate_exits import BASELINE_PATH, validate as validate_exits
+from tools.validate_tiling import validate as validate_tiling
 
 
 ROOT = Path(__file__).parents[1].resolve()
@@ -73,6 +74,7 @@ def main() -> int:
             "tools.tests.test_python_commands",
             "tools.tests.test_status_icons",
             "tools.tests.test_validate_exits",
+            "tools.tests.test_validate_tiling",
         ],
         cwd=ROOT,
         check=True,
@@ -128,6 +130,27 @@ def main() -> int:
         "migration baseline; {} parsed maps checked.".format(
             len(exit_report["diagnostics"]),
             exit_report["scan"]["parsed_maps"],
+        ),
+        flush=True,
+    )
+    tiling_report = validate_tiling(ROOT)
+    if not tiling_report["ok"]:
+        raise ValueError(
+            "authored tiling validation rejected the corpus: {}".format(
+                json.dumps(
+                    {
+                        "diagnostics": len(tiling_report["diagnostics"]),
+                        "scan": tiling_report["scan"],
+                    },
+                    sort_keys=True,
+                )
+            )
+        )
+    print(
+        "Authored tiling: {} filename-redundant horizontal records remain; "
+        "{} vertical matches remain deferred.".format(
+            tiling_report["scan"]["redundant_horizontal"],
+            tiling_report["scan"]["deferred_vertical_matches"],
         ),
         flush=True,
     )

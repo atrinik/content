@@ -11,22 +11,12 @@ height 24
 difficulty 9
 bg_music ruins.mid
 weather snow_light
-tile_path_1 /shattered_islands/world_5_56
-celestial_boundary_1 continuous
-tile_path_2 /shattered_islands/world_6_57
-celestial_boundary_2 continuous
 tile_path_3 /shattered_islands/world_5_58
 celestial_boundary_3 discontinuous
-tile_path_4 /shattered_islands/world_4_57
-celestial_boundary_4 continuous
-tile_path_5 /shattered_islands/world_6_56
-celestial_boundary_5 continuous
 tile_path_6 /shattered_islands/world_6_58
 celestial_boundary_6 discontinuous
 tile_path_7 /shattered_islands/world_4_58
 celestial_boundary_7 discontinuous
-tile_path_8 /shattered_islands/world_4_56
-celestial_boundary_8 continuous
 region strakewood_island_gm
 end
 arch floor_sand_d4

@@ -8,10 +8,6 @@ endmsg
 width 24
 height 24
 difficulty 1
-tile_path_1 /shattered_islands/world_16_2_1
-celestial_boundary_1 continuous
-tile_path_2 /shattered_islands/world_17_3_1
-celestial_boundary_2 continuous
 tile_path_5 /shattered_islands/world_17_2_1
 celestial_boundary_5 discontinuous
 tile_path_7 /shattered_islands/world_15_4_1

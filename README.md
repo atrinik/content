@@ -31,6 +31,11 @@ python3 tools/build_runtime.py --output build/runtime
 python3 tools/validate.py
 ```
 
+The repository validator also runs the deterministic filename-derived tiling
+guard: redundant horizontal links are rejected, intentional boundary policies
+are preserved, and vertical matches remain deferred until the Classic runtime
+contract is live.
+
 The result contains collected files under `lib/`, compiled map interfaces and
 authored maps under `maps/`, attribution files under `attribution/`, and
 `manifest.json` with the SHA-256 of every packaged file.

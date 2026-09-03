@@ -10,8 +10,6 @@ width 24
 height 24
 difficulty 8
 bg_music jungle.ogg
-tile_path_4 /shattered_islands/world_5_58_1
-celestial_boundary_4 continuous
 tile_path_10 /shattered_islands/world_6_58
 celestial_boundary_10 continuous
 region strakewood_island

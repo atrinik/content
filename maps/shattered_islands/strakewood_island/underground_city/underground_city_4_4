@@ -11,12 +11,6 @@ width 24
 height 24
 difficulty 35
 bg_music thonkdonk.ogg
-tile_path_1 /shattered_islands/strakewood_island/underground_city/underground_city_4_3
-celestial_boundary_1 continuous
-tile_path_4 /shattered_islands/strakewood_island/underground_city/underground_city_3_4
-celestial_boundary_4 continuous
-tile_path_8 /shattered_islands/strakewood_island/underground_city/underground_city_3_3
-celestial_boundary_8 continuous
 tile_path_10 /shattered_islands/strakewood_island/underground_city/underground_city_4_4_-1
 celestial_boundary_10 discontinuous
 region underground_city

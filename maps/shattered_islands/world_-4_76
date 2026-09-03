@@ -10,22 +10,12 @@ width 24
 height 24
 difficulty 1
 bg_music fireside.mid
-tile_path_1 /shattered_islands/world_-4_75
-celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_-3_76
 celestial_boundary_2 discontinuous
-tile_path_3 /shattered_islands/world_-4_77
-celestial_boundary_3 continuous
-tile_path_4 /shattered_islands/world_-5_76
-celestial_boundary_4 continuous
 tile_path_5 /shattered_islands/world_-3_75
 celestial_boundary_5 discontinuous
 tile_path_6 /shattered_islands/world_-3_77
 celestial_boundary_6 discontinuous
-tile_path_7 /shattered_islands/world_-5_77
-celestial_boundary_7 continuous
-tile_path_8 /shattered_islands/world_-5_75
-celestial_boundary_8 continuous
 region deserted_tutorial_island
 end
 arch water_md

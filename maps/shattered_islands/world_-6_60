@@ -10,22 +10,16 @@ width 24
 height 24
 difficulty 1
 bg_music jungle.ogg
-tile_path_1 /shattered_islands/world_-6_59
-celestial_boundary_1 continuous
 tile_path_2 /shattered_islands/world_-5_60
 celestial_boundary_2 discontinuous
 tile_path_3 /shattered_islands/world_-6_61
 celestial_boundary_3 discontinuous
-tile_path_4 /shattered_islands/world_-7_60
-celestial_boundary_4 continuous
 tile_path_5 /shattered_islands/world_-5_59
 celestial_boundary_5 discontinuous
 tile_path_6 /shattered_islands/world_-5_61
 celestial_boundary_6 discontinuous
 tile_path_7 /shattered_islands/world_-7_61
 celestial_boundary_7 discontinuous
-tile_path_8 /shattered_islands/world_-7_59
-celestial_boundary_8 continuous
 region neurok_valley
 end
 arch grassd_3

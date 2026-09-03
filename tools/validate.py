@@ -133,7 +133,7 @@ def main() -> int:
         ),
         flush=True,
     )
-    tiling_report = validate_tiling(ROOT)
+    tiling_report = validate_tiling(ROOT, fast=True)
     if not tiling_report["ok"]:
         raise ValueError(
             "authored tiling validation rejected the corpus: {}".format(

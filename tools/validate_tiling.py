@@ -53,24 +53,39 @@ class _Scan:
     removals: tuple[RemovalSpan, ...]
 
 
-def _map_files(root: Path) -> tuple[Path, ...]:
+def _map_files(
+    root: Path,
+) -> tuple[tuple[tuple[Path, bytes], ...], frozenset[str]]:
     maps_root = root / "maps"
     if not maps_root.is_dir() or maps_root.is_symlink():
-        return ()
-    found = []
+        return (), frozenset()
+
+    found: list[tuple[Path, bytes]] = []
+    available: set[str] = set()
     for path in sorted(maps_root.rglob("*")):
         if path.is_symlink() or not path.is_file():
             continue
         try:
-            if path.read_bytes().startswith(b"arch map\n"):
-                found.append(path)
+            source = path.read_bytes()
         except OSError:
             continue
-    return tuple(found)
+        logical = "/" + path.relative_to(maps_root).as_posix()
+        available.add(logical)
+        if source.startswith(b"arch map\n"):
+            found.append((path, source))
+    return tuple(found), frozenset(available)
+
+
+def _has_tiling_fields(source: bytes) -> bool:
+    folded = source.lower()
+    return b"tile_path_" in folded or b"celestial_boundary_" in folded
 
 
 def _derived_target(
-    root: Path, logical_path: str, slot: int
+    root: Path,
+    logical_path: str,
+    slot: int,
+    available_paths: Optional[frozenset[str]] = None,
 ) -> Optional[str]:
     parsed = _filename_coordinates(logical_path)
     if parsed is None:
@@ -82,7 +97,10 @@ def _derived_target(
     if target_z != 0:
         target += "_{}".format(target_z)
     target = "/" + posixpath.normpath(target).lstrip("/")
-    if _path_for_logical(root, target) is None:
+    if available_paths is None:
+        if _path_for_logical(root, target) is None:
+            return None
+    elif target not in available_paths:
         return None
     return target
 
@@ -130,7 +148,7 @@ def _sort_diagnostic(item: dict[str, Any]) -> tuple:
     )
 
 
-def _scan(root: Path) -> _Scan:
+def _scan(root: Path, *, fast: bool = False) -> _Scan:
     root = root.resolve(strict=True)
     maps_root = root / "maps"
     diagnostics: list[dict[str, Any]] = []
@@ -154,15 +172,19 @@ def _scan(root: Path) -> _Scan:
             )
         )
 
-    map_paths = _map_files(root)
-    counts["map_files"] = len(map_paths)
+    map_entries, available_paths = _map_files(root)
+    counts["map_files"] = len(map_entries)
     schema_root = _schema_root(root)
 
-    for path in map_paths:
+    for path, source in map_entries:
         relative = path.relative_to(root).as_posix()
+        has_tiling_fields = _has_tiling_fields(source)
+        if has_tiling_fields:
+            counts["candidate_maps"] += 1
+        elif fast:
+            continue
         logical = "/" + path.relative_to(maps_root).as_posix()
         try:
-            source = path.read_bytes()
             document = parse_bytes(
                 source,
                 path=relative,
@@ -276,7 +298,7 @@ def _scan(root: Path) -> _Scan:
                 continue
 
             record = records[0]
-            target = _derived_target(root, logical, slot)
+            target = _derived_target(root, logical, slot, available_paths)
             normalized = _normalize_path(logical, record.value)
             if target is None:
                 preserved["no-existing-filename-neighbor"] += 1
@@ -375,6 +397,7 @@ def _scan(root: Path) -> _Scan:
 
     scan_keys = (
         "boundary_records",
+        "candidate_maps",
         "deferred_vertical_matches",
         "filename_matches",
         "horizontal_matches",
@@ -427,10 +450,10 @@ def audit(root: Path) -> dict[str, Any]:
     return _scan(root).report
 
 
-def validate(root: Path) -> dict[str, Any]:
-    """Alias used by the repository-wide content validator."""
+def validate(root: Path, *, fast: bool = False) -> dict[str, Any]:
+    """Return the guard report, optionally relying on prior content validation."""
 
-    return audit(root)
+    return _scan(root, fast=fast).report
 
 
 def removable_spans(root: Path) -> tuple[RemovalSpan, ...]:

@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.validate_tiling import audit, removable_spans
+from tools.validate_tiling import audit, removable_spans, validate
 
 
 class ValidateTilingTest(unittest.TestCase):
@@ -66,6 +66,24 @@ class ValidateTilingTest(unittest.TestCase):
                 for item in removable_spans(self.root)
             ],
         )
+
+    def test_fast_validation_only_parses_tiling_candidates(self):
+        self.write("maps/world_0_0", self.map_source())
+        self.write(
+            "maps/world_1_0",
+            self.map_source(
+                "tile_path_2 /world_2_0\n"
+                "celestial_boundary_2 continuous\n"
+            ),
+        )
+        self.write("maps/world_2_0", self.map_source())
+
+        report = validate(self.root, fast=True)
+
+        self.assertFalse(report["ok"])
+        self.assertEqual(3, report["scan"]["map_files"])
+        self.assertEqual(1, report["scan"]["candidate_maps"])
+        self.assertEqual(1, report["scan"]["parsed_maps"])
 
     def test_signed_filename_coordinates_use_classic_offsets(self):
         self.write(

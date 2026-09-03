@@ -62,15 +62,20 @@ def _map_files(
 
     found: list[tuple[Path, bytes]] = []
     available: set[str] = set()
+    maps_root_resolved = maps_root.resolve(strict=True)
     for path in sorted(maps_root.rglob("*")):
         if path.is_symlink() or not path.is_file():
             continue
+        logical = "/" + path.relative_to(maps_root).as_posix()
+        try:
+            path.resolve(strict=False).relative_to(maps_root_resolved)
+        except (OSError, ValueError):
+            continue
+        available.add(logical)
         try:
             source = path.read_bytes()
         except OSError:
             continue
-        logical = "/" + path.relative_to(maps_root).as_posix()
-        available.add(logical)
         if source.startswith(b"arch map\n"):
             found.append((path, source))
     return tuple(found), frozenset(available)

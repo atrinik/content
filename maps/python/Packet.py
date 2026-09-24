@@ -4,6 +4,8 @@
 ##
 ## @author Zoey Rose
 
+import Atrinik
+
 ## Send a notification command to the player.
 ## @param pl The player.
 ## @param msg Message contents of the notification.
@@ -32,7 +34,7 @@ def Notification(pl, msg, action = None, shortcut = None, delay = 0):
         data += [3, delay]
 
     # Send it off...
-    pl.SendPacket(27, fmt, *data)
+    pl.SendPacket(Atrinik.CLIENT_CMD_NOTIFICATION, fmt, *data)
 
 ## Send a map stats command.
 ## @pl Player to send the command to.
@@ -59,4 +61,4 @@ def MapStats(pl, name = None, music = None, weather = None):
         data += [3, weather]
 
     # Send it off...
-    pl.SendPacket(13, fmt, *data)
+    pl.SendPacket(Atrinik.CLIENT_CMD_MAPSTATS, fmt, *data)

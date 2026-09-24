@@ -71,6 +71,7 @@ def main() -> int:
             "tools.tests.test_release_guidance",
             "tools.tests.test_release_line_parity",
             "tools.tests.test_pr_metadata",
+            "tools.tests.test_packet_commands",
             "tools.tests.test_python_commands",
             "tools.tests.test_status_icons",
             "tools.tests.test_validate_exits",

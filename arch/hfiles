@@ -59,6 +59,7 @@ List of [a=help]contributors[/a]
 [title]Miscellaneous[/title]
 [a=help]drop and take[/a]
 [a=help]writing pen[/a]
+[a=help]ink bottle[/a]
 endmsg
 end
 
@@ -281,6 +282,8 @@ The mark command marks a specified item in your inventory. It is, by default, bo
 Smith will identify your current marked item.
 
 A quest reward could require you to mark an item which will be improved.
+
+Mark a book or letter, then apply a [a=help]writing pen[/a] to edit it. Mark a writing pen, then apply an [a=help]ink bottle[/a] to refill it.
 endmsg
 end
 
@@ -1111,6 +1114,8 @@ title Use Skill Command
 msg
 The [b]/use_skill[/b] command can be used to use a skill, for example, the [b]construction[/b] skill. Note that many skills cannot be used in this way, for example, melee, archery, etc.
 
+For Inscription, mark an inventory book or letter and apply a [a=help]writing pen[/a]. The old inscription message command is retired.
+
 [title]Syntax:[/title]
 /use_skill <skill name>
 
@@ -1153,9 +1158,32 @@ end
 help writing pen
 title Writing Pen
 msg
-[book]Inscription Skill[/book]You can apply a writing pen to use the inscription skill in order to write messages into books and letters. You simply mark the object you want to write into and type:
+[book]Inscription Skill[/book]With Inscription and Literacy, mark a book or letter in your inventory (B by default), then apply a writing pen. The pen opens an editor with Title and Contents fields. You do not need to keep the pen equipped or type a skill command. You can edit an unsigned book even if someone else originally wrote it.
 
-/use_skill inscription <message to write>
+[title]Save and Cancel[/title]
+Split stacked books or letters into single items before editing or signing. Use a single pen rather than a stack of pens.
+
+Save commits your title and text. Opening the editor or choosing Cancel changes nothing and uses no ink. The editor shows remaining ink. Each added or changed UTF-8 text byte costs 1 ink unit; unchanged text and deletions are free. Renaming and signing are free. Copying uses the same text cost. If you lack ink or a save fails, your draft remains available.
+
+[title]Copy book[/title]
+Choose a source and destination from your inventory and confirm replacement of the destination's title and contents. The source is preserved. Signed books can be copy sources, but cannot be overwritten. A copy remains unsigned and editable and does not inherit the source's signature or dates.
+
+[title]Sign and date[/title]
+Confirm this action only when you have finished editing. It records your character's name and the in-game date and permanently locks both title and contents. A signed book remains readable and can still be used as a copy source.
+
+[title]Refill[/title]
+Mark a single pen, then apply an [a=help]ink bottle[/a], just as you mark a lamp and apply lamp oil. Split a stack of pens first. A full pen holds 1000 ink units. Pens and ink bottles are sold in Brynknot's shop.
+
+The old inscription message command is retired; use the pen editor instead.
+endmsg
+end
+
+help ink bottle
+title Ink Bottle
+msg
+An ink bottle contains 1000 ink units for a [a=help]writing pen[/a]. Mark a single pen in your inventory (B by default), then apply the bottle. Split a stack of pens first. Only the amount needed to fill the pen is used; any ink left in the bottle is kept. Applying a bottle to a full pen uses no ink.
+
+Pens and ink bottles are sold in Brynknot's shop. Each pen holds 1000 ink units. Saving or copying costs 1 ink unit per added or changed UTF-8 text byte. Unchanged text, deletions, renaming and signing are free.
 endmsg
 end
 

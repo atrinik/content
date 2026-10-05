@@ -7,7 +7,7 @@ no_drop 1
 stand_still 1
 level 1
 msg
-Allows you to write messages in books, parchments, etc.
+Mark a book or letter in your inventory and apply a writing pen to edit its title and contents. Requires Literacy. Refill the pen by marking it and applying an ink bottle. Signed books can be read and copied, but cannot be edited.
 endmsg
 name_pl inscription
 end

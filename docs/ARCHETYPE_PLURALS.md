@@ -41,8 +41,12 @@ python3 tools/archetype_plurals.py audit-source-delta --root .
 The source-delta audit proves that the archetype corpus differs from the
 reviewed branch baseline only by its 3,559 approved `name_pl` additions. The
 semantic audit permanently requires exactly one matching plural on every
-canonical definition and rejects plurals on the 234 excluded multipart or
-nested objects. `python3 tools/validate.py` runs the permanent semantic audit
+reviewed canonical definition. New canonical archetypes must have exactly one
+explicit, non-empty plural; their ordinary content review owns the vocabulary.
+The historical manifest and cross-line proof remain unchanged, and migration
+and recovery continue to reject additions to their reviewed catalog. The audit
+rejects plurals on excluded multipart or nested objects.
+`python3 tools/validate.py` runs the permanent semantic audit
 and verifies that runtime collection preserves every authored `name_pl` line
 byte-for-byte. The baseline-bound source-delta audit above is separate one-time
 delivery evidence so it does not reject legitimate future archetype edits.

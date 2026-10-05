@@ -482,20 +482,22 @@ def load_manifest(path: Path) -> Mapping[str, Any]:
 
 
 def _checked_rows(
-    root: Path, manifest: Mapping[str, Any]
+    root: Path, manifest: Mapping[str, Any], *, allow_new: bool = False
 ) -> tuple[dict[str, dict[str, Any]], list[Mapping[str, Any]]]:
     entries, _ = _canonical_nodes(root)
     rows = manifest["rows"]
     by_id = {row["archetype_id"]: row for row in rows}
     actual_ids = set(entries)
     expected_ids = set(by_id)
-    if actual_ids != expected_ids:
+    if expected_ids - actual_ids or (not allow_new and actual_ids - expected_ids):
         raise PluralMigrationError(
             "catalog ID drift: missing={}, unexpected={}".format(
                 sorted(expected_ids - actual_ids), sorted(actual_ids - expected_ids)
             )
         )
     for archetype_id, entry in entries.items():
+        if archetype_id not in by_id:
+            continue
         row = by_id[archetype_id]
         if entry["singular"] != row["singular"] or entry["object_type"] != row["object_type"]:
             raise PluralMigrationError(
@@ -951,7 +953,7 @@ def recover(
 
 
 def audit(root: Path, manifest: Mapping[str, Any]) -> Mapping[str, Any]:
-    entries, rows = _checked_rows(root, manifest)
+    entries, rows = _checked_rows(root, manifest, allow_new=True)
     expected = {row["archetype_id"]: row["name_pl"] for row in rows}
     failures = []
     canonical = {
@@ -962,7 +964,9 @@ def audit(root: Path, manifest: Mapping[str, Any]) -> Mapping[str, Any]:
     for archetype_id, entry in entries.items():
         if len(entry["plurals"]) != 1:
             failures.append("{} does not have exactly one name_pl".format(archetype_id))
-        elif entry["plurals"][0].typed_value != expected[archetype_id]:
+        elif not str(entry["plurals"][0].typed_value).strip():
+            failures.append("{} has an empty name_pl".format(archetype_id))
+        elif archetype_id in expected and entry["plurals"][0].typed_value != expected[archetype_id]:
             failures.append("{} does not match its reviewed name_pl".format(archetype_id))
     excluded = 0
     for relative, document in documents.items():

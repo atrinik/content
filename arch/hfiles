@@ -1163,7 +1163,9 @@ msg
 [title]Save and Cancel[/title]
 Split stacked books or letters into single items before editing or signing. Use a single pen rather than a stack of pens.
 
-Save commits your title and text. Opening the editor or choosing Cancel changes nothing and uses no ink. The editor shows remaining ink. Each added or changed UTF-8 text byte costs 1 ink unit; unchanged text and deletions are free. Renaming and signing are free. Copying uses the same text cost. If you lack ink or a save fails, your draft remains available.
+Save commits your title and text. Opening the editor changes nothing and uses no ink. Cancel, Escape or X closes without saving and keeps your draft while you remain connected. Disconnecting clears unsaved drafts. The editor shows remaining ink. Each added or changed UTF-8 text byte costs 1 ink unit; unchanged text and deletions are free. Renaming and signing are free. Copying uses the same text cost. If you lack ink or a save fails, your draft remains available.
+
+To refill while keeping your draft, close the editor, mark the pen and apply an ink bottle. Then mark the same book or letter again and apply the pen to resume your draft. If the book has changed since you started editing, review the draft against its current contents before saving again. Replacing a draft by choosing another destination or copying asks for confirmation.
 
 [title]Copy book[/title]
 Choose a source and destination from your inventory and confirm replacement of the destination's title and contents. The source is preserved. Signed books can be copy sources, but cannot be overwritten. A copy remains unsigned and editable and does not inherit the source's signature or dates.

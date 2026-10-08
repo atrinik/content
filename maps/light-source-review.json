@@ -1522,7 +1522,7 @@
     },
     "c72bb232af06c8b3fcae2b566674894d27bc71e4c470b36c7d89c898b4d4672e": {
       "rationale": "Applied runtime review covers torch at active radius 3 with ffc080 light and its Classic clone-derived torch art.",
-      "semantic_sha256": "e6d72aed5982d61073bdf00dae9d5788a8fef8a0f24027a21d3dfa8f0fb262a9"
+      "semantic_sha256": "d93d1d0d94fbcf0c15ae45071b1479778c0e9abcff4810f3fd4950df0221f3c1"
     },
     "d4a8b47cfd0bdfa350827fbf3ce1c6e7d7e0b73113da3b0c70443953e9ecedba": {
       "rationale": "Applied runtime review covers lamp at active radius 5 with ffd080 light and its Classic clone-derived lamp art.",
@@ -3435,7 +3435,7 @@
       "rationale": "Rendered Brynknot in the strakewood_island batch; neutral map-local fill preserves the outdoor ambient hierarchy while explicit emitters carry the scene's art cues. Reviewed all 2 wall-fireplace placements (direction 1, 7) at midnight with smooth lighting; paired discrete representatives cover both supported directions, wall/corner boundaries, narrow rooms, and dense overlaps. The radius-1 ff6030 default preserves silhouettes and navigation without flattening ambient darkness.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "279b1aaa868fa498f7ee58ae54e915cdf1af8f876b0c9939b0bff2b932f576f5"
+      "semantic_sha256": "2474127c8a3990bbd79076355959601d8febc6c4ea8f6fd078ad23a5959a5136"
     },
     "maps/shattered_islands/world_0_69_-1": {
       "uncolored_disposition": "neutral",
@@ -6666,7 +6666,7 @@
       "expected_emitting_overlaps": 0,
       "intentional_non_emitters": {},
       "rationale": "All 402 visible magic lanterns own warm-gold illumination: 239 neutral helper sources move onto their fixtures, five duplicate compositions collapse atomically, established heterogeneous radius-3/4/5/6/7/9 footprints remain exact, and the 101 previously dark fixtures inherit form-specific reviewed defaults.",
-      "semantic_sha256": "6a84ea7b4bf8e8e728e9cabb09111f70f23c04feee67da5d9cb346245813ef95"
+      "semantic_sha256": "b58b91ffec78d1234e848a1bc02552732c5e05b7099d4d4e65803be9e1a58b74"
     },
     "magic-wall-rune-fixtures": {
       "archetypes": [

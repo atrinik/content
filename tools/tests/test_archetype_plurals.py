@@ -91,6 +91,39 @@ class ArchetypePluralTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.temporary.cleanup()
 
+    def test_audit_allows_new_explicit_plurals_without_rewriting_migration(self) -> None:
+        migrate(self.root, self.manifest, apply=True, check_git=False)
+        (self.root / "arch" / "ink.arc").write_text(
+            "Object ink_bottle\nname ink bottle\ntype 82\nname_pl ink bottles\nend\n",
+            encoding="utf-8",
+        )
+        self.assertEqual(3, audit(self.root, self.manifest)["canonical_name_pl"])
+        with self.assertRaisesRegex(PluralMigrationError, "catalog ID drift"):
+            migrate(self.root, self.manifest, check_git=False)
+
+    def test_audit_rejects_new_missing_empty_or_duplicate_plurals(self) -> None:
+        migrate(self.root, self.manifest, apply=True, check_git=False)
+        for plural in ("", "name_pl \n", "name_pl inks\nname_pl inks\n"):
+            with self.subTest(plural=plural):
+                (self.root / "arch" / "ink.arc").write_text(
+                    "Object ink_bottle\nname ink bottle\ntype 82\n" + plural + "end\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaises((PluralMigrationError, ContentCoreError)):
+                    audit(self.root, self.manifest)
+
+    def test_audit_still_rejects_removed_reviewed_archetypes(self) -> None:
+        migrate(self.root, self.manifest, apply=True, check_git=False)
+        source = self.root / "arch" / "objects.arc"
+        source.write_text(
+            source.read_text(encoding="utf-8").replace(
+                "Object fallback\ntype 79\nname_pl fallbacks\nend\n", ""
+            ),
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(PluralMigrationError, "catalog ID drift"):
+            audit(self.root, self.manifest)
+
     def test_inventory_selects_canonical_definitions_only(self) -> None:
         report = inventory(self.root)
 

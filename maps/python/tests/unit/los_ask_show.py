@@ -2,12 +2,14 @@
 
 Attach this script to the actor's ASK_SHOW event with options ``blocker``,
 ``monster``, ``move``, ``invisible``, ``cover``, ``hide_other``, ``move_other``,
-or ``floor_on``/``floor_off``/``hidden_on``/``hidden_off``. Place the actor at x >= 2
+``viewstate``, or ``floor_on``/``floor_off``/``hidden_on``/``hidden_off``.
+Place the actor at x >= 2
 with free space at x - 1 and x + 1. For ``cover``, set the actor's
 ``los_ask_show_upper_path`` custom key to its loaded upper map's path.
 For other-actor modes, name the object at x + 1, y with the custom key
 ``los_ask_show_other_name``; relocation moves it by (+1, +1). Roof flag
 modes select the single roof at actor x, y on ``los_ask_show_upper_path``.
+The ``viewstate`` mode disables the observing activator controller's ``tli``.
 The ``los_ask_show_done`` key records completion and prevents later mutations.
 """
 
@@ -18,7 +20,7 @@ mode = Atrinik.GetOptions()
 if actor.ReadKey("los_ask_show_done") != "1":
     if mode not in ("blocker", "monster", "move", "invisible", "cover",
                     "hide_other", "move_other", "floor_on", "floor_off",
-                    "hidden_on", "hidden_off"):
+                    "hidden_on", "hidden_off", "viewstate"):
         raise ValueError("Unknown LOS ASK_SHOW fixture mode: {}".format(mode))
     # Fence a nested ASK_SHOW invocation before the mutation sends updates.
     actor.WriteKey("los_ask_show_done", "1")
@@ -30,6 +32,8 @@ if actor.ReadKey("los_ask_show_done") != "1":
         actor.map.Insert(actor, actor.x + 1, actor.y)
     elif mode == "invisible":
         actor.f_is_invisible = True
+    elif mode == "viewstate":
+        Atrinik.WhoIsActivator().Controller().tli = False
     elif mode == "cover":
         upper = Atrinik.ReadyMap(actor.ReadKey("los_ask_show_upper_path"))
         upper.CreateObject("roof_thatch", actor.x, actor.y)
@@ -44,7 +48,7 @@ if actor.ReadKey("los_ask_show_done") != "1":
             other.f_is_invisible = True
         else:
             other.map.Insert(other, other.x + 1, other.y + 1)
-    elif mode in ("floor_on", "floor_off", "hidden_on", "hidden_off"):
+    elif mode in ("floor_on", "floor_off", "hidden_on", "hidden_off", "viewstate"):
         upper = Atrinik.ReadyMap(actor.ReadKey("los_ask_show_upper_path"))
         roofs = [obj for obj in upper.Objects(actor.x, actor.y)
                  if obj.arch.name == "roof_thatch"]

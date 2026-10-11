@@ -2181,6 +2181,16 @@ class ObjectFlagsSuite(TestSuite):
     def test_f_is_floor(self):
         self.flag_test("f_is_floor")
 
+    def test_f_is_floor_updates_terrain_immediately(self):
+        m = create_test_map(5, 5, "test-atrinik-object-floor-terrain")
+        self.obj.terrain_type = Atrinik.TERRAIN_WATERBREATH
+        m.Insert(self.obj, 2, 2)
+
+        for is_floor in (False, True, False, True, False):
+            self.obj.f_is_floor = is_floor
+            blocked = m.Blocked(activator, 2, 2, Atrinik.TERRAIN_NOTHING)
+            self.assertEqual(bool(blocked & Atrinik.P_NO_TERRAIN), is_floor)
+
     def test_f_lifesave(self):
         self.flag_test("f_lifesave")
 

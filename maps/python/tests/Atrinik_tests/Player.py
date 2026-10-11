@@ -501,11 +501,13 @@ class PlayerFieldsSuite(PlayerCommonSuite):
         self.assertEqual(self.pl.quest_container, ob)
 
     def test_target_object(self):
-        m = create_test_map(5, 5, "test-atrinik-player-target-object")
+        m = create_test_map(5, 5, "test-atrinik-player-target-object", light=1280)
         m.Insert(self.pl.ob, 0, 0)
         raas = m.CreateObject("raas", 1, 1)
         raas.ac = 0
         raas.Update()
+        # Selection follows the normal visible MAP2 publication tick.
+        simulate_server(count=1, wait=False)
         self.pl.target_object = raas
         self.pl.combat = True
         hp = raas.hp

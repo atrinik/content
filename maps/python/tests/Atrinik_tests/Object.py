@@ -325,9 +325,12 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertTrue(force.f_is_used_up)
         self.assertEqual(self.obj.FindObject(type=Atrinik.Type.FORCE), force)
         verify = lambda obj: self.assertTrue(force)
-        simulate_server(seconds=1.0, before_cb=verify, after_cb=verify,
-                        obj=force)
-        simulate_server(seconds=1.0)
+        # Force lifetime advances with Process ticks, independently of how
+        # much wall-clock time each tick takes (for example under sanitizers).
+        iterations = int(1000000 / Atrinik.MAX_TIME)
+        simulate_server(count=iterations, wait=False, before_cb=verify,
+                        after_cb=verify, obj=force)
+        simulate_server(count=iterations, wait=False)
         self.assertFalse(force)
 
         force = self.obj.CreateForce("test-create-force", seconds=15.5)
@@ -338,10 +341,10 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertEqual(self.obj.FindObject(type=Atrinik.Type.FORCE), force)
         self.assertTrue(force)
         verify = lambda obj: self.assertTrue(force)
-        iterations = 15 * 1000000 / Atrinik.MAX_TIME
+        iterations = int(15 * 1000000 / Atrinik.MAX_TIME)
         simulate_server(count=iterations, wait=False, before_cb=verify,
                         after_cb=verify, obj=force)
-        simulate_server(seconds=1.0)
+        simulate_server(count=int(1000000 / Atrinik.MAX_TIME), wait=False)
         self.assertFalse(force)
 
         force = self.obj.CreateForce("test-create-force", seconds=28)
@@ -352,10 +355,10 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertEqual(self.obj.FindObject(type=Atrinik.Type.FORCE), force)
         self.assertTrue(force)
         verify = lambda obj: self.assertTrue(force)
-        iterations = 27 * 1000000 / Atrinik.MAX_TIME
+        iterations = int(27 * 1000000 / Atrinik.MAX_TIME)
         simulate_server(count=iterations, wait=False, before_cb=verify,
                         after_cb=verify, obj=force)
-        simulate_server(seconds=1.5)
+        simulate_server(count=int(1.5 * 1000000 / Atrinik.MAX_TIME), wait=False)
         self.assertFalse(force)
 
         self.assertTrue(ac_force)

@@ -2079,6 +2079,33 @@ class ObjectFlagsSuite(TestSuite):
     def test_f_blocksview(self):
         self.flag_test("f_blocksview")
 
+    def test_f_blocksview_updates_los_immediately(self):
+        m = create_test_map(7, 5, "test-atrinik-object-blocksview-los")
+        observer = m.CreateObject("sword", 1, 2)
+        m.Insert(self.obj, 2, 2)
+        target = (m, 3, 2)
+
+        try:
+            self.assertIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+            self.obj.f_blocksview = True
+            self.assertNotIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+            self.obj.f_blocksview = False
+            self.assertIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+
+            # A second toggle checks the already queried map, without a tick,
+            # explicit Update(), removal, or reinsertion to refresh its flags.
+            self.obj.f_blocksview = True
+            self.assertNotIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+            self.obj.f_blocksview = False
+            self.assertIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+        finally:
+            observer.Destroy()
+
     def test_f_undead(self):
         self.flag_test("f_undead")
 

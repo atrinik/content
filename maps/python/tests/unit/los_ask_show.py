@@ -8,7 +8,9 @@ Place the actor at x >= 2 with free space at x - 1 and x + 1. For ``cover``, set
 ``los_ask_show_upper_path`` custom key to its loaded upper map's path.
 For other-actor modes, name the object at x + 1, y with the custom key
 ``los_ask_show_other_name``; relocation moves it by (+1, +1). Roof flag
-modes select the single roof at actor x, y on ``los_ask_show_upper_path``.
+modes select the single roof on ``los_ask_show_upper_path`` at actor x, y
+by default. Supply both ``los_ask_show_roof_x`` and ``los_ask_show_roof_y``
+custom keys to select a different in-bounds upper-map cell.
 The ``viewstate`` mode disables the observing activator controller's ``tli``.
 Kick modes require an observing activator in playing state with ``kick``
 command permission. ``kick_observer`` targets its own name; ``kick_other``
@@ -63,7 +65,18 @@ if actor.ReadKey("los_ask_show_done") != "1":
             other.map.Insert(other, other.x + 1, other.y + 1)
     elif mode in ("floor_on", "floor_off", "hidden_on", "hidden_off"):
         upper = Atrinik.ReadyMap(actor.ReadKey("los_ask_show_upper_path"))
-        roofs = [obj for obj in upper.Objects(actor.x, actor.y)
+        roof_x = actor.ReadKey("los_ask_show_roof_x")
+        roof_y = actor.ReadKey("los_ask_show_roof_y")
+        if roof_x is None and roof_y is None:
+            x, y = actor.x, actor.y
+        else:
+            if (roof_x is None or roof_y is None or
+                    len(roof_x) > 10 or len(roof_y) > 10):
+                raise ValueError("Expected two bounded roof coordinate integers")
+            x, y = int(roof_x), int(roof_y)
+        if not (0 <= x < upper.width and 0 <= y < upper.height):
+            raise ValueError("Roof coordinates are outside the upper map")
+        roofs = [obj for obj in upper.Objects(x, y)
                  if obj.arch.name == "roof_thatch"]
         if len(roofs) != 1:
             raise ValueError("Expected one upper-map roof")

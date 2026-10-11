@@ -1562,7 +1562,7 @@ class ObjectFieldsSuite(TestSuite):
 
         self.assertIsNone(self.obj.attacked_by)
 
-        m = create_test_map(5, 5, "test-atrinik-object-fields-attacked_by")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-attacked_by", light=1280)
         sack = m.CreateObject("sack", 0, 0)
         m.Insert(activator, 0, 0)
         activator.Apply(sack)
@@ -1572,6 +1572,8 @@ class ObjectFieldsSuite(TestSuite):
         activator.hp = activator.maxhp
         raas = m.CreateObject("raas", 1, 1)
         raas.Update()
+        # Queue the visible actor through the normal MAP2 publication tick.
+        simulate_server(count=1, wait=False)
         activator.Controller().target_object = raas
         activator.Controller().combat = True
         simulate_server(count=10, wait=False)
@@ -1627,11 +1629,13 @@ class ObjectFieldsSuite(TestSuite):
         self.field_test_int("attacked_by_distance", 16)
 
         m = create_test_map(5, 5, "test-atrinik-object-fields-"
-                                    "attacked_by_distance")
+                                    "attacked_by_distance", light=1280)
         m.Insert(activator, 0, 0)
         activator.hp = activator.maxhp
         raas = m.CreateObject("raas", 1, 1)
         raas.Update()
+        # Queue the visible actor through the normal MAP2 publication tick.
+        simulate_server(count=1, wait=False)
         activator.Controller().target_object = raas
         activator.Controller().combat = True
         simulate_server(count=10, wait=False)

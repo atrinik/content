@@ -18,3 +18,10 @@ evidence.
 
 Run `python3 tools/validate.py` before submitting a change. Generated collection
 output is ignored and must not be committed.
+
+Release automation installs the development dependencies from `package-lock.json`
+with `npm ci` and invokes the local Semantic Release CLI with `npm run release`.
+Use the Node.js version in the release workflow when changing this tooling, and
+run `node scripts/release/test-release-policy.cjs` and
+`node scripts/release/test-release-safety.cjs` to check release behavior. Preserve
+the ordinary npm lockfile so dependency review and Dependabot can inspect updates.

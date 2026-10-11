@@ -8,4 +8,12 @@ updates:
       github-actions:
         patterns:
           - "*"
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      release-tooling:
+        patterns:
+          - "*"
 

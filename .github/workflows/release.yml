@@ -32,6 +32,8 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.13"
+      - name: Install locked release tooling
+        run: npm ci
       - name: Verify release policy and publication safety
         run: |
           node scripts/release/test-release-policy.cjs
@@ -39,9 +41,4 @@ jobs:
       - name: Analyze commits and publish
         env:
           GH_TOKEN: ${{ github.token }}
-        run: >-
-          npx --yes
-          --package=semantic-release@25.0.9
-          --package=@semantic-release/exec@7.1.0
-          --package=conventional-changelog-conventionalcommits@9.3.1
-          semantic-release
+        run: npm run release

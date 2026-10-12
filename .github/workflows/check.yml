@@ -43,6 +43,9 @@ jobs:
         with:
           node-version: 24.18.1
 
+      - name: Verify locked release tooling installs
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
       - name: Verify release policy and publication safety
         run: |
           node scripts/release/test-release-policy.cjs

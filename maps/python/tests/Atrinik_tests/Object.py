@@ -325,9 +325,12 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertTrue(force.f_is_used_up)
         self.assertEqual(self.obj.FindObject(type=Atrinik.Type.FORCE), force)
         verify = lambda obj: self.assertTrue(force)
-        simulate_server(seconds=1.0, before_cb=verify, after_cb=verify,
-                        obj=force)
-        simulate_server(seconds=1.0)
+        # Force lifetime advances with Process ticks, independently of how
+        # much wall-clock time each tick takes (for example under sanitizers).
+        iterations = int(1000000 / Atrinik.MAX_TIME)
+        simulate_server(count=iterations, wait=False, before_cb=verify,
+                        after_cb=verify, obj=force)
+        simulate_server(count=iterations, wait=False)
         self.assertFalse(force)
 
         force = self.obj.CreateForce("test-create-force", seconds=15.5)
@@ -338,10 +341,10 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertEqual(self.obj.FindObject(type=Atrinik.Type.FORCE), force)
         self.assertTrue(force)
         verify = lambda obj: self.assertTrue(force)
-        iterations = 15 * 1000000 / Atrinik.MAX_TIME
+        iterations = int(15 * 1000000 / Atrinik.MAX_TIME)
         simulate_server(count=iterations, wait=False, before_cb=verify,
                         after_cb=verify, obj=force)
-        simulate_server(seconds=1.0)
+        simulate_server(count=int(1000000 / Atrinik.MAX_TIME), wait=False)
         self.assertFalse(force)
 
         force = self.obj.CreateForce("test-create-force", seconds=28)
@@ -352,10 +355,10 @@ class ObjectMethodsSuite(unittest.TestCase):
         self.assertEqual(self.obj.FindObject(type=Atrinik.Type.FORCE), force)
         self.assertTrue(force)
         verify = lambda obj: self.assertTrue(force)
-        iterations = 27 * 1000000 / Atrinik.MAX_TIME
+        iterations = int(27 * 1000000 / Atrinik.MAX_TIME)
         simulate_server(count=iterations, wait=False, before_cb=verify,
                         after_cb=verify, obj=force)
-        simulate_server(seconds=1.5)
+        simulate_server(count=int(1.5 * 1000000 / Atrinik.MAX_TIME), wait=False)
         self.assertFalse(force)
 
         self.assertTrue(ac_force)
@@ -1562,7 +1565,7 @@ class ObjectFieldsSuite(TestSuite):
 
         self.assertIsNone(self.obj.attacked_by)
 
-        m = create_test_map(5, 5, "test-atrinik-object-fields-attacked_by")
+        m = create_test_map(5, 5, "test-atrinik-object-fields-attacked_by", light=1280)
         sack = m.CreateObject("sack", 0, 0)
         m.Insert(activator, 0, 0)
         activator.Apply(sack)
@@ -1572,6 +1575,8 @@ class ObjectFieldsSuite(TestSuite):
         activator.hp = activator.maxhp
         raas = m.CreateObject("raas", 1, 1)
         raas.Update()
+        # Queue the visible actor through the normal MAP2 publication tick.
+        simulate_server(count=1, wait=False)
         activator.Controller().target_object = raas
         activator.Controller().combat = True
         simulate_server(count=10, wait=False)
@@ -1627,11 +1632,13 @@ class ObjectFieldsSuite(TestSuite):
         self.field_test_int("attacked_by_distance", 16)
 
         m = create_test_map(5, 5, "test-atrinik-object-fields-"
-                                    "attacked_by_distance")
+                                    "attacked_by_distance", light=1280)
         m.Insert(activator, 0, 0)
         activator.hp = activator.maxhp
         raas = m.CreateObject("raas", 1, 1)
         raas.Update()
+        # Queue the visible actor through the normal MAP2 publication tick.
+        simulate_server(count=1, wait=False)
         activator.Controller().target_object = raas
         activator.Controller().combat = True
         simulate_server(count=10, wait=False)
@@ -2075,6 +2082,33 @@ class ObjectFlagsSuite(TestSuite):
     def test_f_blocksview(self):
         self.flag_test("f_blocksview")
 
+    def test_f_blocksview_updates_los_immediately(self):
+        m = create_test_map(7, 5, "test-atrinik-object-blocksview-los")
+        observer = m.CreateObject("sword", 1, 2)
+        m.Insert(self.obj, 2, 2)
+        target = (m, 3, 2)
+
+        try:
+            self.assertIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+            self.obj.f_blocksview = True
+            self.assertNotIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+            self.obj.f_blocksview = False
+            self.assertIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+
+            # A second toggle checks the already queried map, without a tick,
+            # explicit Update(), removal, or reinsertion to refresh its flags.
+            self.obj.f_blocksview = True
+            self.assertNotIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+            self.obj.f_blocksview = False
+            self.assertIn(target, observer.SquaresAround(
+                2, type=Atrinik.AROUND_BLOCKSVIEW, beyond=True))
+        finally:
+            observer.Destroy()
+
     def test_f_undead(self):
         self.flag_test("f_undead")
 
@@ -2149,6 +2183,16 @@ class ObjectFlagsSuite(TestSuite):
 
     def test_f_is_floor(self):
         self.flag_test("f_is_floor")
+
+    def test_f_is_floor_updates_terrain_immediately(self):
+        m = create_test_map(5, 5, "test-atrinik-object-floor-terrain")
+        self.obj.terrain_type = Atrinik.TERRAIN_WATERBREATH
+        m.Insert(self.obj, 2, 2)
+
+        for is_floor in (False, True, False, True, False):
+            self.obj.f_is_floor = is_floor
+            blocked = m.Blocked(activator, 2, 2, Atrinik.TERRAIN_NOTHING)
+            self.assertEqual(bool(blocked & Atrinik.P_NO_TERRAIN), is_floor)
 
     def test_f_lifesave(self):
         self.flag_test("f_lifesave")

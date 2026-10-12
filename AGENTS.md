@@ -67,6 +67,10 @@
   lossless-core tests/audit, provenance/license gates, and an isolated runtime
   build. Run focused commands or the read-only world audit only when relevant;
   use wrapper builds/topologies for gameplay verification.
+- Implementing agents must read the dependency review PR comment or job summary
+  and fix actionable introduced findings or record explicit maintainer acceptance
+  of existing risk before merging. Findings are advisory and require no additional
+  human approval.
 - Commits and pull-request titles use Conventional Commits. Every squash merge
   is released by semantic-release. Use full GitHub issue URLs for nonclosing
   cross-repository linkage in pull-request bodies; `owner/repository#number`

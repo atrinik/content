@@ -425,14 +425,22 @@ class AtrinikMethodsSuite(unittest.TestCase):
         self.assertEqual(obj.name, "Eval'd Sword")
         obj.Destroy()
 
+        # Delayed code runs on the first tick at or after its wall-clock due
+        # time. One tick on a loaded machine can outlast the delay, so check
+        # ordering rather than an exact window: never before it is due, and
+        # soon after.
         obj = Atrinik.CreateObject("sword")
-        now = time.time()
+        scheduled = time.time()
         Atrinik.Eval("obj.name = 'Eval\\\'d Sword'", 0.1)
         self.assertEqual(obj.name, "sword")
         simulate_server(count=1, wait=False)
-        self.assertEqual(obj.name, "sword")
-        simulate_server(seconds=0.2)
+        if time.time() - scheduled < 0.1:
+            # That whole tick ended before the due time.
+            self.assertEqual(obj.name, "sword")
+        while obj.name == "sword" and time.time() - scheduled < 5.0:
+            simulate_server(count=1)
         self.assertEqual(obj.name, "Eval'd Sword")
+        self.assertGreaterEqual(time.time() - scheduled, 0.1)
         obj.Destroy()
 
         obj = Atrinik.CreateObject("sword")

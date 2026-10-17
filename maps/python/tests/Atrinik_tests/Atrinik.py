@@ -427,20 +427,19 @@ class AtrinikMethodsSuite(unittest.TestCase):
 
         # Delayed code runs on the first tick at or after its wall-clock due
         # time. One tick on a loaded machine can outlast the delay, so check
-        # ordering rather than an exact window: never before it is due, and
-        # soon after.
+        # ordering rather than an exact window: the code records when it ran,
+        # which must not be before it was due, and it must run soon after.
         obj = Atrinik.CreateObject("sword")
+        ran_at = []
         scheduled = time.time()
-        Atrinik.Eval("obj.name = 'Eval\\\'d Sword'", 0.1)
+        Atrinik.Eval("obj.name = 'Eval\\\'d Sword'; ran_at.append(time.time())",
+                     0.1)
         self.assertEqual(obj.name, "sword")
-        simulate_server(count=1, wait=False)
-        if time.time() - scheduled < 0.1:
-            # That whole tick ended before the due time.
-            self.assertEqual(obj.name, "sword")
-        while obj.name == "sword" and time.time() - scheduled < 5.0:
+        while not ran_at and time.time() - scheduled < 5.0:
             simulate_server(count=1)
         self.assertEqual(obj.name, "Eval'd Sword")
-        self.assertGreaterEqual(time.time() - scheduled, 0.1)
+        self.assertEqual(len(ran_at), 1)
+        self.assertGreaterEqual(ran_at[0] - scheduled, 0.1)
         obj.Destroy()
 
         obj = Atrinik.CreateObject("sword")

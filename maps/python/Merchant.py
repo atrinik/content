@@ -55,8 +55,11 @@ class Seller(Merchant):
             for (treasure, num, a_chance) in json.loads(event.msg):
                 if treasure:
                     for i in range(num):
+                        # The event object is persistent NPC state: the server
+                        # accepts it only as currency-free merchant stock.
                         event.CreateTreasure(treasure, self._npc.level,
-                                             GT_ONLY_GOOD, a_chance)
+                                             GT_ONLY_GOOD, a_chance,
+                                             reason="merchant.stock")
                 else:
                     for obj in event.inv:
                         obj.nrof = num

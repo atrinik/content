@@ -16,4 +16,9 @@ updates:
       release-tooling:
         patterns:
           - "*"
+    ignore:
+      # 10.x needs conventional-changelog-writer 9, which the release notes
+      # generator bundled with semantic-release 25 does not load yet.
+      - dependency-name: conventional-changelog-conventionalcommits
+        versions: [">=10"]
 

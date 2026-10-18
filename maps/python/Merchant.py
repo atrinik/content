@@ -48,6 +48,9 @@ class Seller(Merchant):
             return self._goods
 
         event = WhatIsEvent()
+        # Stock counts set by the event message, by object count. The server
+        # refuses direct nrof changes on stacks inside the event object.
+        stock_counts = {}
 
         # Message in event, create treasure.
         if event.msg:
@@ -62,18 +65,24 @@ class Seller(Merchant):
                                              reason="merchant.stock")
                 else:
                     for obj in event.inv:
-                        obj.nrof = num
+                        stock_counts[obj.count] = num
 
                         if a_chance:
-                            obj.nrof += random.randint(1, a_chance)
+                            stock_counts[obj.count] += random.randint(
+                                1, a_chance)
 
             event.msg = None
 
         if event.ReadKey("stock") == "1":
             for obj in event.inv:
                 obj.f_identified = True
-                obj.WriteKey("stock_nrof", str(max(1, obj.nrof)))
-                obj.nrof = 1
+                count = stock_counts.get(obj.count, obj.nrof)
+                obj.WriteKey("stock_nrof", str(max(1, count)))
+
+                # Offer each good as a single unit; Decrease keeps the
+                # event's inventory chain consistent.
+                if obj.nrof > 1:
+                    obj.Decrease(obj.nrof - 1)
 
             event.WriteKey("stock", "0")
 

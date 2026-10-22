@@ -4886,7 +4886,7 @@
       "rationale": "Rendered Below Fort Sether in the issue65_0128 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "440b1d3c60249397740a263c4a3de04dacbe4a0f9f29943bd0f769c40ed08aff"
+      "semantic_sha256": "ad590047b1790f2b85ac608a7c8f5062999e16feded203d7dfda3d20a1c8404a"
     },
     "maps/shattered_islands/world_4_53_1": {
       "uncolored_disposition": "neutral",

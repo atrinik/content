@@ -3352,8 +3352,7 @@ end
 arch sign
 msg
 Welcome to the Glacial Hollow (the new name for the unoriginal Ice Cave).
-Walls of ice seal the ways down to the deeper caverns. Any mob in this cave may drop a fire crystal, but you can only hold one at a time. Take it to the lever beside an ice wall and apply it: a small blast of fire melts the wall, and the crystal disintegrates. The ice reforms in time, so use your crystals wisely.
-- Lippy
+Walls of ice seal the ways down to the deeper caverns. Any mob in this cave may drop a fire crystal, but you can only hold one at a time. Take it to the lever beside an ice wall and apply the lever: a small blast of fire melts the wall, and the crystal disintegrates. The ice reforms in time, so use your crystals wisely.
 endmsg
 name Glacial Hollow sign
 x 20

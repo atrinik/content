@@ -3210,7 +3210,7 @@
       "rationale": "Rendered Glacial Hollow in the issue65_0048 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "e255b3e9cc46a83786bf2a5c727b4bc6dbe45cb1108a5367d11b21d3731f466c"
+      "semantic_sha256": "10e59fc75892aee1fd3b227323199e931588766c58ef03837cce38393f779951"
     },
     "maps/shattered_islands/world_-5_56_-2": {
       "uncolored_disposition": "neutral",
@@ -3265,7 +3265,7 @@
       "rationale": "Rendered Glacial Hollow in the issue65_0055 batch; neutral map-local fill preserves the interior ambient hierarchy while explicit emitters carry the scene's art cues.",
       "visible_neutral": {},
       "art_overrides": {},
-      "semantic_sha256": "252a623c5f022afc03a88556b3ae264396493d8a562b51890c5ad083c3f69fd3"
+      "semantic_sha256": "b478e54630c9a9103ed259be0a4a93ac2ccabae3c494103bfe3f1211d2e46718"
     },
     "maps/shattered_islands/world_-6_79": {
       "uncolored_disposition": "neutral",

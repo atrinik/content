@@ -1469,7 +1469,7 @@ y 12
 arch event_obj
 sub_type 1
 race /shattered_islands/strakewood_island/nawerhals/scripts/glacial_hollow_melt.py
-slaying 9,11 9,12
+slaying 9,11 9,12 20,11 20,12
 end
 end
 arch snow4
@@ -3944,7 +3944,7 @@ y 11
 arch event_obj
 sub_type 1
 race /shattered_islands/strakewood_island/nawerhals/scripts/glacial_hollow_melt.py
-slaying 20,11 20,12
+slaying 20,11 20,12 9,11 9,12
 end
 end
 arch icefloor_cave4

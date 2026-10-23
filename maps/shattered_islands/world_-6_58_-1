@@ -407,6 +407,7 @@ arch rand_drop
 container 6
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -469,6 +470,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -1253,6 +1255,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -2220,6 +2223,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -2302,6 +2306,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -3213,6 +3218,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -3345,12 +3351,11 @@ y 19
 end
 arch sign
 msg
-Welcome to the Glacial Hollow (the new name for the unoriginal Ice Cave). It is currently under heavy development atm, but I have included mobs for testing. Scripts have been removed for now as they need to be rewritten.
-Some mobs in this cave will drop fire crystals. When you have a fire crystal, you can go to a switch near a wall and apply it. This will unleash a small blast of fire, which melts the wall in front, providing a path to go through. This will cause the fire crystal to disintergrate however, and the melted ice wall will reform again in time.
-You can only hold one fire crystal at a time, but they drop from any mob in this dungeon randomly, which means it can be possible to get trapped in here, with the only way out being to fight mobs for more fire crystals. With this in mind, it is a good idea to use them wisely.
+Welcome to the Glacial Hollow (the new name for the unoriginal Ice Cave).
+Walls of ice seal the ways down to the deeper caverns. Any mob in this cave may drop a fire crystal, but you can only hold one at a time. Take it to the lever beside an ice wall and apply it: a small blast of fire melts the wall, and the crystal disintegrates. The ice reforms in time, so use your crystals wisely.
 - Lippy
 endmsg
-name under construction sign
+name Glacial Hollow sign
 x 20
 y 19
 end

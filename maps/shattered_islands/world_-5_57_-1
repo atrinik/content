@@ -876,6 +876,7 @@ arch rand_drop
 container 6
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -926,6 +927,7 @@ arch rand_drop
 container 8
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -2113,6 +2115,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -2226,6 +2229,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -2971,6 +2975,7 @@ arch rand_drop
 container 6
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -3625,6 +3630,7 @@ arch rand_drop
 container 8
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end

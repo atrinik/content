@@ -1462,6 +1462,16 @@ arch snow1
 x 8
 y 12
 end
+arch handle_lever
+name fire crystal lever
+x 8
+y 12
+arch event_obj
+sub_type 1
+race /shattered_islands/strakewood_island/nawerhals/scripts/glacial_hollow_melt.py
+slaying 9,11 9,12
+end
+end
 arch snow4
 x 8
 y 13
@@ -1653,6 +1663,11 @@ sp 11
 x 9
 y 11
 end
+arch fwall_ice
+name wall of ice
+x 9
+y 11
+end
 arch blocked
 no_pass 0
 name not blocked
@@ -1668,6 +1683,11 @@ player_only 0
 slaying world_-5_56_-2
 hp 9
 sp 12
+x 9
+y 12
+end
+arch fwall_ice
+name wall of ice
 x 9
 y 12
 end
@@ -2511,6 +2531,7 @@ arch rand_drop
 container 6
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -3035,6 +3056,7 @@ arch rand_drop
 container 6
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -3717,6 +3739,11 @@ sp 11
 x 20
 y 11
 end
+arch fwall_ice
+name wall of ice
+x 20
+y 11
+end
 arch blocked
 no_pass 0
 name not blocked
@@ -3732,6 +3759,11 @@ player_only 0
 slaying world_-5_56_-2
 hp 20
 sp 12
+x 20
+y 12
+end
+arch fwall_ice
+name wall of ice
 x 20
 y 12
 end
@@ -3904,6 +3936,16 @@ end
 arch snow_fmask.104
 x 21
 y 11
+end
+arch handle_lever
+name fire crystal lever
+x 21
+y 11
+arch event_obj
+sub_type 1
+race /shattered_islands/strakewood_island/nawerhals/scripts/glacial_hollow_melt.py
+slaying 20,11 20,12
+end
 end
 arch icefloor_cave4
 x 21

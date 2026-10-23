@@ -336,6 +336,7 @@ arch rand_drop
 container 6
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -759,6 +760,7 @@ arch rand_drop
 container 8
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -1680,6 +1682,7 @@ arch rand_drop
 container 8
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end
@@ -2504,6 +2507,11 @@ arch snow_fmask.121
 x 14
 y 8
 end
+arch fwall_ice
+name wall of ice
+x 14
+y 8
+end
 arch floor_ice
 x 14
 y 9
@@ -2511,6 +2519,16 @@ end
 arch snow_fmask.105
 x 14
 y 9
+end
+arch handle_lever
+name fire crystal lever
+x 14
+y 9
+arch event_obj
+sub_type 1
+race /shattered_islands/strakewood_island/nawerhals/scripts/glacial_hollow_melt.py
+slaying 14,8
+end
 end
 arch floor_ice
 x 14
@@ -3213,6 +3231,7 @@ arch rand_drop
 container 7
 arch quest_container
 name Glacial Hollow Fire Crystal
+sub_type 3
 arch nawerhals_fire_crystal
 end
 end

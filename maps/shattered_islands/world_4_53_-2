@@ -2082,8 +2082,7 @@ protect_cleave 5
 protect_pierce 5
 type 83
 arch quest_container
-name Fort Sether Illness
-sub_type 4
+name fort_sether_illness
 arch quest_container
 name get_hearts
 sub_type 2

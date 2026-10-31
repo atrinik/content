@@ -74,6 +74,7 @@ def path_history(root: Path, path: str) -> list[dict[str, Any]]:
         root,
         "log",
         "--follow",
+        "--no-merges",
         "--format=@@%H%x1f%aN%x1f%aE",
         "--name-status",
         BASE_REVISION,

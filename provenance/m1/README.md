@@ -22,6 +22,11 @@ license-unmatched visuals explicitly blocked. The package allowlists are exact
 ID/digest projections; an inventory or historical license statement is never
 implicit permission.
 
+History records source-changing non-merge commits and follows renames. The
+explicit `--no-merges` traversal preserves the inventory across Git versions:
+Git 2.56's merge traversal otherwise truncates `Merchant.py` before the original
+`Seller.py` creation. The pinned history and provenance decisions stay intact.
+
 Regenerate and validate only from a complete, non-shallow checkout:
 
 ```sh

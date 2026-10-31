@@ -62,6 +62,31 @@ class M1FoundationTests(unittest.TestCase):
         )
         self.assertEqual(history[0]["changes"][0]["status"], "A")
 
+    def test_merchant_history_reaches_creation_before_rename(self) -> None:
+        history = m1_foundations.path_history(ROOT, "maps/python/Merchant.py")
+        self.assertEqual(
+            [row["revision"] for row in history],
+            [
+                "07911d6e0df0fb0d4765a6bd12bd5906b144fe0c",
+                "aba80985a0b57cda997c00a85a92a20fd3ee8390",
+                "1c23943175f0a86f1505746e2e0cbe2bb73f92e9",
+                "46d66c077a0d37998d59ff92974f353df6e32ae0",
+                "a14c122bca452ec7337699881f258505e4fa92a8",
+                "7fde178562662f1e0b697b1844aeec93b813e7ea",
+                "d441630c53e06527b67cdab6f2106d4d0e5801f2",
+                "085caacf90170ea413294a56ad21460684262463",
+                "7b3f46c8a9ce6426210a0647d69f89df5647d644",
+                "274380eb23291ffb61c91336fe294e746c4ef7fb",
+                "977126c7098e3fcdb95f5f9a4e8789209b935a48",
+                "5c26eb4d995eb455709444d4c8ce162787115c56",
+                "cc264feeca9bb4dcd74515601ed3649d8b4aadff",
+            ],
+        )
+        self.assertEqual(
+            history[-1]["changes"],
+            [{"status": "A", "paths": ["maps/python/Seller.py"]}],
+        )
+
     def test_classic_release_line_is_bounded_and_configured(self) -> None:
         contract = json.loads(
             (ROOT / "contracts/release-lines/classic-1x.json").read_text(

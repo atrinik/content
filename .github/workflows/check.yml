@@ -15,7 +15,8 @@ jobs:
   content-validation:
     name: Content validation
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    # Full-history/LFS checkout, corpus validation, and cleanup share this budget.
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

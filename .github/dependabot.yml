@@ -8,6 +8,8 @@ updates:
       github-actions:
         patterns:
           - "*"
+    assignees:
+      - zoeyrose
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -21,4 +23,6 @@ updates:
       # generator bundled with semantic-release 25 does not load yet.
       - dependency-name: conventional-changelog-conventionalcommits
         versions: [">=10"]
+    assignees:
+      - zoeyrose
 

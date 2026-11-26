@@ -67,6 +67,13 @@
   lossless-core tests/audit, provenance/license gates, and an isolated runtime
   build. Run focused commands or the read-only world audit only when relevant;
   use wrapper builds/topologies for gameplay verification.
+- The `Map checker` CI job builds the classic runtime and runs the Qt map
+  checker from the `atrinik/tools` revision pinned in `check.yml`. It fails on
+  any finding that `tools/map-checker-baseline.json` doesn't cover. Fix new
+  findings rather than baselining them. After fixing existing findings, or
+  after a deliberate checker upgrade, regenerate the baseline with the same
+  command and `--write-baseline tools/map-checker-baseline.json`, and review
+  the diff.
 - Implementing agents must read the latest dependency review job summary for the
   current PR head even when a bot comment exists; comments may be stale. Fix
   actionable introduced findings or record explicit maintainer acceptance of

@@ -33,6 +33,53 @@ jobs:
       - name: Ensure collection leaves sources clean
         run: test -z "$(git status --short)"
 
+  map-checker:
+    name: Map checker
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      # atrinik/tools revision that provides the Qt map checker (GPL-2.0-or-later,
+      # run as an external tool; nothing is copied into this repository).
+      MAP_CHECKER_REF: e36a878e6905be15d5c50d52368c20d2baf56591
+      RUNTIME: build/map-checker-runtime
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check out map checker
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: atrinik/tools
+          ref: ${{ env.MAP_CHECKER_REF }}
+          path: build/map-checker-tools
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+
+      - name: Build classic runtime
+        run: >-
+          python3 tools/build_runtime.py --target classic
+          --output "${RUNTIME}" --source-commit "${GITHUB_SHA}"
+
+      - name: Install checksum-pinned map checker catalog
+        run: |
+          python3 build/map-checker-tools/map-checker-qt/dependencies.py sync
+          python3 build/map-checker-tools/map-checker-qt/dependencies.py verify
+
+      - name: Fail on map checker findings missing from the baseline
+        run: >-
+          python3 build/map-checker-tools/map-checker-qt/map-checker.py
+          --content-root "${GITHUB_WORKSPACE}"
+          --arch "${RUNTIME}/lib"
+          --regions "${RUNTIME}/maps/regions.reg"
+          --directory "${RUNTIME}/maps"
+          --baseline-root "${RUNTIME}"
+          --baseline tools/map-checker-baseline.json
+
   release-safety:
     name: Release safety
     runs-on: ubuntu-24.04

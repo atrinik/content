@@ -20,7 +20,7 @@ name_pl fog
 end
 Object seethrough_fog
 face fog.111
-other_arch fog
+other_arch seethrough_fog
 terrain_flag 65535
 type 79
 layer 7

@@ -119,6 +119,17 @@ treasure default_loot
   end
 end
 
+# Fallback loot for monsters that would otherwise drop nothing. The
+# server generates this when a killed monster has no droppable items, so
+# every monster leaves at least some coins behind.
+treasure fallback_loot
+  arch wealth
+    chance 100
+  more
+  list default_loot
+    chance 50
+end
+
 treasure default_door_100
   list traps
 end

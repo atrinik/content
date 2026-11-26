@@ -40,7 +40,7 @@ jobs:
     env:
       # atrinik/tools revision that provides the Qt map checker (GPL-2.0-or-later,
       # run as an external tool; nothing is copied into this repository).
-      MAP_CHECKER_REF: d53a092296a42be57a484b6be495138ae08cec67
+      MAP_CHECKER_REF: e36a878e6905be15d5c50d52368c20d2baf56591
       RUNTIME: build/map-checker-runtime
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

@@ -19,6 +19,7 @@ blocksview 1
 name_pl fog
 end
 Object seethrough_fog
+name fog
 face fog.111
 other_arch seethrough_fog
 terrain_flag 65535

@@ -66,12 +66,12 @@ arch trans
 x 18
 y 18
 end
-arch wall_dungeon_3
+arch seethrough_wall_dungeon_3
 draw_double 0
 x 18
 y 18
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
@@ -82,12 +82,12 @@ arch trans
 x 18
 y 19
 end
-arch wall_dungeon_3
+arch seethrough_wall_dungeon_3
 draw_double 0
 x 18
 y 19
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
@@ -405,12 +405,12 @@ arch trans
 x 23
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 23
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0

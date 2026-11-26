@@ -1073,7 +1073,7 @@ arch grassd_5
 x 7
 y 7
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 7
 y 7
@@ -1082,7 +1082,7 @@ arch grassd_5
 x 7
 y 8
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 7
 y 8
@@ -1091,7 +1091,7 @@ arch grassd_3
 x 7
 y 9
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 7
 y 9
@@ -1100,7 +1100,7 @@ arch grassd_4
 x 7
 y 10
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 7
 y 10
@@ -1249,7 +1249,7 @@ arch grassd_4
 x 8
 y 10
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 8
 y 10
@@ -1258,7 +1258,7 @@ arch grassd_2
 x 8
 y 11
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 8
 y 11
@@ -1267,7 +1267,7 @@ arch grassd_4
 x 8
 y 12
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 8
 y 12
@@ -1430,7 +1430,7 @@ arch grassd_2
 x 9
 y 12
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 9
 y 12
@@ -1439,7 +1439,7 @@ arch grassd_2
 x 9
 y 13
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 9
 y 13
@@ -1528,7 +1528,7 @@ arch grassd_2
 x 10
 y 2
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 10
 y 2
@@ -1537,7 +1537,7 @@ arch grassd_8
 x 10
 y 3
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 10
 y 3
@@ -1615,7 +1615,7 @@ arch grassd_1
 x 10
 y 13
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 10
 y 13
@@ -1624,7 +1624,7 @@ arch grassd_6
 x 10
 y 14
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 10
 y 14
@@ -1707,7 +1707,7 @@ arch grassd_6
 x 11
 y 2
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 11
 y 2
@@ -1793,7 +1793,7 @@ arch grassd_3
 x 11
 y 14
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 11
 y 14
@@ -1879,7 +1879,7 @@ arch grassd_8
 x 12
 y 2
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 12
 y 2
@@ -1973,7 +1973,7 @@ arch grassd_6
 x 12
 y 14
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 12
 y 14
@@ -1982,7 +1982,7 @@ arch grassd_4
 x 12
 y 15
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 12
 y 15
@@ -2064,7 +2064,7 @@ arch grassd_5
 x 13
 y 2
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 13
 y 2
@@ -2163,7 +2163,7 @@ arch grassd_1
 x 13
 y 15
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 13
 y 15
@@ -2172,7 +2172,7 @@ arch grassd_4
 x 13
 y 16
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 13
 y 16
@@ -2249,7 +2249,7 @@ arch grassd_8
 x 14
 y 2
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 14
 y 2
@@ -2365,7 +2365,7 @@ arch grassd_4
 x 14
 y 16
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 14
 y 16
@@ -2438,7 +2438,7 @@ arch grassd_2
 x 15
 y 2
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 15
 y 2
@@ -2537,7 +2537,7 @@ arch grassd_3
 x 15
 y 16
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 15
 y 16
@@ -2609,7 +2609,7 @@ arch grassd_5
 x 16
 y 2
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 16
 y 2
@@ -2707,7 +2707,7 @@ arch grassd_2
 x 16
 y 16
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 16
 y 16
@@ -2768,7 +2768,7 @@ arch grassd_4
 x 17
 y 2
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 17
 y 2
@@ -2777,7 +2777,7 @@ arch grassd_1
 x 17
 y 3
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 17
 y 3
@@ -2862,7 +2862,7 @@ arch grassd_8
 x 17
 y 16
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 17
 y 16
@@ -2944,7 +2944,7 @@ arch grassd_8
 x 18
 y 3
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 18
 y 3
@@ -3053,7 +3053,7 @@ arch grassd_5
 x 18
 y 16
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 18
 y 16
@@ -3062,7 +3062,7 @@ arch grassd_3
 x 18
 y 17
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 18
 y 17
@@ -3134,7 +3134,7 @@ arch grassd_3
 x 19
 y 3
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 19
 y 3
@@ -3143,7 +3143,7 @@ arch grassd_7
 x 19
 y 4
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 19
 y 4
@@ -3240,7 +3240,7 @@ arch grassd_7
 x 19
 y 17
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 19
 y 17
@@ -3321,7 +3321,7 @@ arch grassd_5
 x 20
 y 4
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 20
 y 4
@@ -3330,7 +3330,7 @@ arch grassd_6
 x 20
 y 5
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 20
 y 5
@@ -3427,7 +3427,7 @@ arch grassd_4
 x 20
 y 17
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 20
 y 17
@@ -3507,7 +3507,7 @@ arch grassd_6
 x 21
 y 5
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 21
 y 5
@@ -3516,7 +3516,7 @@ arch grassd_1
 x 21
 y 6
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 21
 y 6
@@ -3525,7 +3525,7 @@ arch grassd_7
 x 21
 y 7
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 21
 y 7
@@ -3598,7 +3598,7 @@ arch grassd_7
 x 21
 y 16
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 21
 y 16
@@ -3607,7 +3607,7 @@ arch grassd_3
 x 21
 y 17
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 21
 y 17
@@ -3701,7 +3701,7 @@ arch grassd_3
 x 22
 y 7
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 22
 y 7
@@ -3710,7 +3710,7 @@ arch grassd_7
 x 22
 y 8
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 22
 y 8
@@ -3719,7 +3719,7 @@ arch grassd_4
 x 22
 y 9
 end
-arch fwall_grit1c
+arch seethrough_fwall_grit1c
 draw_double 0
 x 22
 y 9
@@ -3760,7 +3760,7 @@ arch grassd_1
 x 22
 y 14
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 22
 y 14
@@ -3769,7 +3769,7 @@ arch grassd_8
 x 22
 y 15
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 22
 y 15
@@ -3778,7 +3778,7 @@ arch grassd_7
 x 22
 y 16
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 22
 y 16
@@ -3895,7 +3895,7 @@ arch grassd_1
 x 23
 y 9
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 23
 y 9
@@ -3904,7 +3904,7 @@ arch grassd_1
 x 23
 y 10
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 23
 y 10
@@ -3913,7 +3913,7 @@ arch grassd_3
 x 23
 y 11
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 23
 y 11
@@ -3922,7 +3922,7 @@ arch grassd_2
 x 23
 y 12
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 23
 y 12
@@ -3931,7 +3931,7 @@ arch grassd_6
 x 23
 y 13
 end
-arch fwall_grit1b
+arch seethrough_fwall_grit1b
 draw_double 0
 x 23
 y 13
@@ -3940,7 +3940,7 @@ arch grassd_4
 x 23
 y 14
 end
-arch fwall_grit1a
+arch seethrough_fwall_grit1a
 draw_double 0
 x 23
 y 14

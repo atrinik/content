@@ -94,7 +94,7 @@ end
 arch grassd_8
 y 19
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 y 19
 end
 arch floor_fs_grey1b
@@ -227,7 +227,7 @@ arch grassd_4
 x 1
 y 19
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 1
 y 19
 end
@@ -361,7 +361,7 @@ arch grassd_4
 x 2
 y 19
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 2
 y 19
 end
@@ -503,7 +503,7 @@ arch grassd_6
 x 3
 y 19
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 3
 y 19
 end
@@ -513,7 +513,7 @@ z 50
 x 3
 y 20
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 3
 y 20
 end
@@ -523,7 +523,7 @@ z 50
 x 3
 y 21
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 3
 y 21
 end
@@ -533,7 +533,7 @@ z 50
 x 3
 y 22
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 3
 y 22
 end
@@ -543,7 +543,7 @@ z 50
 x 3
 y 23
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 3
 y 23
 end
@@ -2447,7 +2447,7 @@ arch grassd_6
 z 24
 x 20
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 end
@@ -2456,7 +2456,7 @@ z 24
 x 20
 y 1
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 1
@@ -2466,7 +2466,7 @@ z 24
 x 20
 y 2
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 2
@@ -2476,7 +2476,7 @@ z 24
 x 20
 y 3
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 3
@@ -2486,7 +2486,7 @@ z 24
 x 20
 y 4
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 4
@@ -2496,7 +2496,7 @@ z 24
 x 20
 y 5
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 5
@@ -2506,7 +2506,7 @@ z 24
 x 20
 y 6
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 6
@@ -2516,7 +2516,7 @@ z 24
 x 20
 y 7
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 7
@@ -2526,7 +2526,7 @@ z 24
 x 20
 y 8
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 8
@@ -2536,7 +2536,7 @@ z 24
 x 20
 y 9
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 9
@@ -2546,7 +2546,7 @@ z 24
 x 20
 y 10
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 10
@@ -2556,7 +2556,7 @@ z 24
 x 20
 y 11
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 11
@@ -2566,7 +2566,7 @@ z 24
 x 20
 y 12
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 12
@@ -2576,7 +2576,7 @@ z 24
 x 20
 y 13
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 13
@@ -2586,7 +2586,7 @@ z 24
 x 20
 y 14
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 14
@@ -2596,7 +2596,7 @@ z 24
 x 20
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 15
@@ -2606,7 +2606,7 @@ z 24
 x 20
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 16
@@ -2616,7 +2616,7 @@ z 24
 x 20
 y 17
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 17
@@ -2626,7 +2626,7 @@ z 24
 x 20
 y 18
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 18
@@ -2636,7 +2636,7 @@ z 24
 x 20
 y 19
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 19
@@ -2646,7 +2646,7 @@ z 24
 x 20
 y 20
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 20
@@ -2656,7 +2656,7 @@ z 24
 x 20
 y 21
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 21
@@ -2666,7 +2666,7 @@ z 24
 x 20
 y 22
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 22
@@ -2676,7 +2676,7 @@ z 24
 x 20
 y 23
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 23

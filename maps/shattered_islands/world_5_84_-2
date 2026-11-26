@@ -31,7 +31,7 @@ arch floor_sand_d4
 z 2
 y 4
 end
-arch wall_cave1.121
+arch seethrough_wall_cave1.121
 y 4
 end
 arch floor_sand_d3
@@ -228,7 +228,7 @@ arch floor_sand_d1
 x 1
 y 9
 end
-arch wall_cave1b.161
+arch seethrough_wall_cave1b.161
 x 1
 y 9
 end
@@ -248,7 +248,7 @@ arch floor_sand_d2
 x 1
 y 12
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 1
 y 12
 end
@@ -493,7 +493,7 @@ arch floor_sand_d1
 x 2
 y 9
 end
-arch wall_cave1.151
+arch seethrough_wall_cave1.151
 x 2
 y 9
 end
@@ -513,7 +513,7 @@ arch floor_sand_d4
 x 2
 y 12
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 2
 y 12
 end
@@ -820,7 +820,7 @@ arch floor_sand_d1
 x 3
 y 9
 end
-arch wall_cave1.151
+arch seethrough_wall_cave1.151
 x 3
 y 9
 end
@@ -840,7 +840,7 @@ arch floor_sand_d1
 x 3
 y 12
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 3
 y 12
 end
@@ -1065,7 +1065,7 @@ arch floor_sand_d1
 x 4
 y 9
 end
-arch wall_cave1b.141
+arch seethrough_wall_cave1b.141
 x 4
 y 9
 end
@@ -1085,7 +1085,7 @@ arch floor_sand_d4
 x 4
 y 12
 end
-arch wall_cave1b.121
+arch seethrough_wall_cave1b.121
 x 4
 y 12
 end
@@ -1430,13 +1430,13 @@ arch wall_cave1.151
 x 6
 y 9
 end
-arch water_lt4
+arch opaque_water_lt4
 z 18
 sub_layer 1
 x 6
 y 10
 end
-arch water_lt3
+arch opaque_water_lt3
 z 18
 sub_layer 1
 x 6
@@ -1636,7 +1636,7 @@ arch floor_sand_d1
 x 7
 y 12
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 7
 y 12
 end
@@ -1861,7 +1861,7 @@ arch floor_sand_d4
 x 8
 y 12
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 8
 y 12
 end
@@ -2106,7 +2106,7 @@ arch floor_sand_d3
 x 9
 y 9
 end
-arch wall_cave1.151
+arch seethrough_wall_cave1.151
 x 9
 y 9
 end
@@ -2131,7 +2131,7 @@ arch floor_sand_d1
 x 9
 y 12
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 9
 y 12
 end
@@ -2174,7 +2174,7 @@ arch floor_sand_d1
 x 9
 y 14
 end
-arch wall_cave1.101
+arch seethrough_wall_cave1.101
 x 9
 y 14
 end

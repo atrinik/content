@@ -103,7 +103,7 @@ end
 arch grassd_6
 y 23
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 y 23
 end
 arch water_lt2
@@ -222,7 +222,7 @@ arch grassd_6
 x 1
 y 23
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 1
 y 23
 end
@@ -337,7 +337,7 @@ arch grassd_6
 x 2
 y 23
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 2
 y 23
 end

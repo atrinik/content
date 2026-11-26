@@ -18,6 +18,25 @@ speed_left -1.0
 blocksview 1
 name_pl fog
 end
+Object seethrough_fog
+face fog.111
+other_arch fog
+terrain_flag 65535
+type 79
+layer 7
+animation fog
+is_animated 1
+anim_speed 4
+flying 1
+no_pick 1
+is_used_up 1
+invulnerable 1
+material 1
+changing 1
+speed -0.003
+speed_left -1.0
+name_pl fog
+end
 Object fog_glow1
 name strange glowing fog
 layer 7

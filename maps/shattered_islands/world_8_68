@@ -2191,7 +2191,7 @@ arch water_lt
 x 16
 y 5
 end
-arch wall_fortified_high.181
+arch seethrough_wall_fortified_high.181
 no_pass 0
 x 16
 y 5
@@ -2200,7 +2200,7 @@ arch water_lt
 x 16
 y 6
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 x 16
 y 6
@@ -2209,7 +2209,7 @@ arch water_lt
 x 16
 y 7
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 x 16
 y 7
@@ -2218,7 +2218,7 @@ arch water_lt
 x 16
 y 8
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 x 16
 y 8
@@ -2255,7 +2255,7 @@ arch water_lt
 x 16
 y 15
 end
-arch wall_fortified_high.181
+arch seethrough_wall_fortified_high.181
 no_pass 0
 x 16
 y 15
@@ -2264,7 +2264,7 @@ arch water_lt
 x 16
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 x 16
 y 16
@@ -2273,7 +2273,7 @@ arch water_lt
 x 16
 y 17
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 x 16
 y 17
@@ -2282,7 +2282,7 @@ arch water_lt
 x 16
 y 18
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 x 16
 y 18
@@ -2330,7 +2330,7 @@ arch water_lt2
 x 17
 y 5
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 x 17
 y 5
@@ -2398,7 +2398,7 @@ sub_layer 1
 x 17
 y 8
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 sub_layer 1
 z -50
@@ -2437,7 +2437,7 @@ arch water_lt2
 x 17
 y 15
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 x 17
 y 15
@@ -2506,7 +2506,7 @@ sub_layer 1
 x 17
 y 18
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 sub_layer 1
 z -50
@@ -2561,7 +2561,7 @@ arch water_lt2
 x 18
 y 5
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 x 18
 y 5
@@ -2619,7 +2619,7 @@ sub_layer 1
 x 18
 y 8
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 sub_layer 1
 z -50
@@ -2666,7 +2666,7 @@ arch water_lt2
 x 18
 y 15
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 x 18
 y 15
@@ -2725,7 +2725,7 @@ sub_layer 1
 x 18
 y 18
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 sub_layer 1
 z -50
@@ -2775,7 +2775,7 @@ arch water_lt2
 x 19
 y 5
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 x 19
 y 5
@@ -2786,7 +2786,7 @@ sub_layer 1
 x 19
 y 6
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 sub_layer 1
 z -50
@@ -2799,7 +2799,7 @@ sub_layer 1
 x 19
 y 7
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 sub_layer 1
 z -50
@@ -2812,7 +2812,7 @@ sub_layer 1
 x 19
 y 8
 end
-arch wall_fortified_high.141
+arch seethrough_wall_fortified_high.141
 no_pass 0
 sub_layer 1
 z -50
@@ -2851,7 +2851,7 @@ arch water_lt2
 x 19
 y 15
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 no_pass 0
 x 19
 y 15
@@ -2862,7 +2862,7 @@ sub_layer 1
 x 19
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 sub_layer 1
 z -50
@@ -2875,7 +2875,7 @@ sub_layer 1
 x 19
 y 17
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 no_pass 0
 sub_layer 1
 z -50
@@ -2888,7 +2888,7 @@ sub_layer 1
 x 19
 y 18
 end
-arch wall_fortified_high.141
+arch seethrough_wall_fortified_high.141
 no_pass 0
 sub_layer 1
 z -50

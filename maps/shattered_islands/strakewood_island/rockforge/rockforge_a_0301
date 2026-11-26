@@ -469,7 +469,7 @@ arch floor_marble1
 x 3
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 3
@@ -733,7 +733,7 @@ arch floor_marble1
 x 5
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 5
@@ -1010,7 +1010,7 @@ arch floor_marble1
 x 7
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 7
@@ -1296,7 +1296,7 @@ arch floor_marble1
 x 9
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 9
@@ -1521,7 +1521,7 @@ arch floor_marble1
 x 11
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 11
@@ -1581,7 +1581,7 @@ arch floor_marble1
 x 12
 y 5
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 12
@@ -1746,7 +1746,7 @@ arch floor_marble1a
 x 13
 y 10
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 13
@@ -1802,7 +1802,7 @@ arch floor_marble1
 x 13
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 13
@@ -1862,7 +1862,7 @@ arch floor_marble1
 x 14
 y 5
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 14
@@ -2022,7 +2022,7 @@ arch floor_marble1a
 x 15
 y 10
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 15
@@ -2078,7 +2078,7 @@ arch floor_marble1
 x 15
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 15
@@ -2140,7 +2140,7 @@ arch floor_marble1
 x 16
 y 5
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 16
@@ -2292,7 +2292,7 @@ arch floor_marble1b
 x 17
 y 9
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 17
@@ -2311,7 +2311,7 @@ arch floor_marble1
 x 17
 y 10
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 17
@@ -2361,7 +2361,7 @@ arch floor_marble1
 x 17
 y 18
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 17
@@ -2421,7 +2421,7 @@ arch floor_marble1
 x 18
 y 5
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 18
@@ -2461,7 +2461,7 @@ arch floor_marble1
 x 18
 y 9
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 18
@@ -2475,7 +2475,7 @@ arch floor_marble1
 x 18
 y 10
 end
-arch fwall_marble2a
+arch seethrough_fwall_marble2a
 layer 4
 draw_double 0
 x 18

@@ -713,6 +713,16 @@ no_pass 1
 draw_double 1
 name_pl stone walls
 end
+Object seethrough_wall_marble1.111a
+name stone wall
+face wall_marble1a.d.111
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl stone walls
+end
 Object wall_marble1.111a-01
 name stone wall
 face wall_marble1a.d.111-01
@@ -794,6 +804,16 @@ Object wall_marble1.131
 name stone wall
 face wall_marble1.d.131
 blocksview 1
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl stone walls
+end
+Object seethrough_wall_marble1.131
+name stone wall
+face wall_marble1.d.131
 layer 5
 type 77
 no_pick 1
@@ -1505,6 +1525,16 @@ no_pass 1
 draw_double 1
 name_pl stone walls
 end
+Object seethrough_wall_marble1.131a
+name stone wall
+face wall_marble1a.d.131
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl stone walls
+end
 Object wall_marble1.131a-01
 name stone wall
 face wall_marble1a.d.131-01
@@ -1674,6 +1704,16 @@ Object wall_marble1.181
 name stone wall
 face wall_marble1.d.181
 blocksview 1
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl stone walls
+end
+Object seethrough_wall_marble1.181
+name stone wall
+face wall_marble1.d.181
 layer 5
 type 77
 no_pick 1

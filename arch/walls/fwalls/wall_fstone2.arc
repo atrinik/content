@@ -9,6 +9,16 @@ no_pass 1
 draw_double 1
 name_pl walls
 end
+Object seethrough_fwall_fstone2
+name wall
+face fwall_fstone2.d.101
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
 Object fwall_fstone2a
 name wall
 face fwall_fstone2a.d.101

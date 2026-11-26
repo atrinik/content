@@ -2109,7 +2109,7 @@ z 26
 x 14
 y 7
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 14
 y 7
 end
@@ -2118,14 +2118,14 @@ z 26
 x 14
 y 8
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 z 12
 align -24
 layer 4
 x 14
 y 8
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 14
 y 8
 end
@@ -2267,7 +2267,7 @@ z 26
 x 15
 y 6
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 15
 y 6
 end
@@ -2276,7 +2276,7 @@ z 26
 x 15
 y 7
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 15
 y 7
 end
@@ -2285,11 +2285,11 @@ z 2
 x 15
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 8
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 align -22
 z 12
 layer 4
@@ -2417,7 +2417,7 @@ z 26
 x 16
 y 5
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 16
 y 5
 end
@@ -2426,7 +2426,7 @@ z 26
 x 16
 y 6
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 16
 y 6
 end
@@ -2435,7 +2435,7 @@ z 2
 x 16
 y 7
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 16
 y 7
 end
@@ -2444,7 +2444,7 @@ z 2
 x 16
 y 8
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 16
 y 8
 end
@@ -2564,7 +2564,7 @@ z 26
 x 17
 y 4
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 17
 y 4
 end
@@ -2573,7 +2573,7 @@ z 26
 x 17
 y 5
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 17
 y 5
 end
@@ -2582,7 +2582,7 @@ z 2
 x 17
 y 6
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 17
 y 6
 end
@@ -2591,7 +2591,7 @@ z 2
 x 17
 y 7
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 17
 y 7
 end
@@ -2691,13 +2691,13 @@ z 26
 x 18
 y 1
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 layer 4
 z -24
 x 18
 y 1
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 18
 y 1
 end
@@ -2706,13 +2706,13 @@ z 26
 x 18
 y 2
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 layer 4
 z -24
 x 18
 y 2
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 18
 y 2
 end
@@ -2721,7 +2721,7 @@ z 26
 x 18
 y 3
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 18
 y 3
 end
@@ -2730,7 +2730,7 @@ z 26
 x 18
 y 4
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 18
 y 4
 end
@@ -2739,7 +2739,7 @@ z 2
 x 18
 y 5
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 18
 y 5
 end
@@ -2748,7 +2748,7 @@ z 2
 x 18
 y 6
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 18
 y 6
 end
@@ -2851,7 +2851,7 @@ arch blocked
 z 26
 x 19
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 19
 end
 arch blocked
@@ -2859,13 +2859,13 @@ z 26
 x 19
 y 1
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 layer 4
 z -24
 x 19
 y 1
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 19
 y 1
 end
@@ -2887,7 +2887,7 @@ z 2
 x 19
 y 3
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 19
 y 3
 end
@@ -2896,7 +2896,7 @@ z 2
 x 19
 y 4
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 19
 y 4
 end
@@ -2905,7 +2905,7 @@ z 2
 x 19
 y 5
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 19
 y 5
 end
@@ -3003,7 +3003,7 @@ arch blocked
 z 2
 x 20
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 20
 end
 arch blocked
@@ -3011,7 +3011,7 @@ z 2
 x 20
 y 1
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 20
 y 1
 end
@@ -3034,7 +3034,7 @@ z 2
 x 20
 y 3
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 20
 y 3
 end

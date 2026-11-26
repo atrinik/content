@@ -17,14 +17,14 @@ region glacial_hollow
 end
 arch snow1
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 end
 arch light1
 end
 arch snow2
 y 1
 end
-arch pillar_blue4
+arch opaque_pillar_blue4
 y 1
 end
 arch light1
@@ -60,7 +60,7 @@ end
 arch snow4
 y 7
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 y 7
 end
 arch light1
@@ -84,7 +84,7 @@ end
 arch snow3
 y 19
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 y 19
 end
 arch light1
@@ -93,7 +93,7 @@ end
 arch blocked
 y 21
 end
-arch pillar_blue4
+arch opaque_pillar_blue4
 y 21
 end
 arch light1
@@ -178,7 +178,7 @@ arch snow3
 x 1
 y 9
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 1
 y 9
 end
@@ -202,7 +202,7 @@ arch snow1
 x 1
 y 15
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 1
 y 15
 end
@@ -262,7 +262,7 @@ arch snow1
 x 1
 y 23
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 1
 y 23
 end
@@ -344,7 +344,7 @@ arch snow4
 x 2
 y 12
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 2
 y 12
 end
@@ -412,7 +412,7 @@ arch snow2
 x 2
 y 21
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 2
 y 21
 end
@@ -503,7 +503,7 @@ arch snow2
 x 3
 y 10
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 3
 y 10
 end
@@ -746,7 +746,7 @@ arch snow1
 x 4
 y 14
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 4
 y 14
 end
@@ -865,7 +865,7 @@ arch snow3
 x 5
 y 9
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 5
 y 9
@@ -1126,7 +1126,7 @@ arch snow3
 x 7
 y 1
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 7
 y 1
@@ -1195,7 +1195,7 @@ arch snow2
 x 7
 y 9
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 7
 y 9
@@ -1280,7 +1280,7 @@ arch snow3
 x 7
 y 23
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 7
 y 23
 end
@@ -1525,7 +1525,7 @@ arch snow4
 x 9
 y 6
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 9
 y 6
 end
@@ -1621,7 +1621,7 @@ arch snow4
 x 9
 y 18
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 9
 y 18
 end
@@ -1633,7 +1633,7 @@ arch snow3
 x 9
 y 19
 end
-arch pillar_blue2
+arch opaque_pillar_blue2
 x 9
 y 19
 end
@@ -1653,7 +1653,7 @@ arch snow2
 x 9
 y 21
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 9
 y 21
 end
@@ -1728,7 +1728,7 @@ arch snow1
 x 10
 y 9
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 10
 y 9
 end
@@ -1776,7 +1776,7 @@ arch snow2
 x 10
 y 14
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 10
 y 14
 end
@@ -1788,7 +1788,7 @@ arch snow2
 x 10
 y 15
 end
-arch pillar_blue2
+arch opaque_pillar_blue2
 x 10
 y 15
 end
@@ -1836,7 +1836,7 @@ arch blocked
 x 10
 y 21
 end
-arch pillar_blue2
+arch opaque_pillar_blue2
 x 10
 y 21
 end
@@ -1920,7 +1920,7 @@ arch snow1
 x 11
 y 7
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 11
 y 7
 end
@@ -2028,7 +2028,7 @@ arch snow2
 x 11
 y 20
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 11
 y 20
 end
@@ -2056,7 +2056,7 @@ arch snow2
 x 11
 y 23
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 11
 y 23
 end
@@ -2123,7 +2123,7 @@ arch snow3
 x 12
 y 9
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 12
 y 9
@@ -2200,7 +2200,7 @@ arch snow3
 x 12
 y 17
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 12
 y 17
 end
@@ -2359,7 +2359,7 @@ arch snow2
 x 13
 y 15
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 13
 y 15
@@ -2503,7 +2503,7 @@ arch snow2
 x 14
 y 9
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 14
 y 9
@@ -2678,7 +2678,7 @@ arch snow_fmask.101
 x 15
 y 8
 end
-arch rock_wall1
+arch opaque_rock_wall1
 x 15
 y 9
 end
@@ -2690,7 +2690,7 @@ arch snow4
 x 15
 y 10
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 15
 y 10
@@ -2735,7 +2735,7 @@ arch snow2
 x 15
 y 15
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 15
 y 15
@@ -2847,7 +2847,7 @@ arch snow3
 x 16
 y 11
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 16
 y 11
@@ -3050,7 +3050,7 @@ arch snow3
 x 17
 y 16
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 17
 y 16
 end
@@ -3192,7 +3192,7 @@ arch snow1
 x 18
 y 11
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 18
 y 11
 end
@@ -3403,7 +3403,7 @@ arch snow2
 x 19
 y 13
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 19
 y 13
@@ -3420,7 +3420,7 @@ arch snow1
 x 19
 y 15
 end
-arch pillar_blue9
+arch opaque_pillar_blue9
 glow_radius 1
 x 19
 y 15
@@ -3441,7 +3441,7 @@ arch snow2
 x 19
 y 17
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 19
 y 17
 end
@@ -3563,7 +3563,7 @@ arch snow1
 x 20
 y 10
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 20
 y 10
 end
@@ -3725,7 +3725,7 @@ arch snow2
 x 21
 y 7
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 21
 y 7
 end
@@ -3866,7 +3866,7 @@ arch snow4
 x 22
 y 5
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 22
 y 5
 end
@@ -3878,7 +3878,7 @@ arch snow3
 x 22
 y 6
 end
-arch pillar_blue4
+arch opaque_pillar_blue4
 x 22
 y 6
 end
@@ -3898,7 +3898,7 @@ arch blocked
 x 22
 y 8
 end
-arch pillar_blue2
+arch opaque_pillar_blue2
 x 22
 y 8
 end
@@ -3966,7 +3966,7 @@ arch snow1
 x 22
 y 17
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 22
 y 17
 end
@@ -4024,7 +4024,7 @@ arch snow1
 x 23
 y 1
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 23
 y 1
 end
@@ -4068,7 +4068,7 @@ arch snow3
 x 23
 y 10
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 23
 y 10
 end
@@ -4136,7 +4136,7 @@ arch snow4
 x 23
 y 20
 end
-arch pillar_blue7
+arch opaque_pillar_blue7
 x 23
 y 20
 end

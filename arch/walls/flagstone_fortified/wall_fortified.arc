@@ -8,10 +8,28 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_fortified_high.111
+name stone wall
+face wall_fortified_high.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_fortified_high.131
 name stone wall
 face wall_fortified_high.131
 blocksview 1
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
+Object seethrough_wall_fortified_high.131
+name stone wall
+face wall_fortified_high.131
 type 77
 layer 5
 no_pick 1
@@ -28,10 +46,28 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_fortified_high.141
+name stone wall
+face wall_fortified_high.141
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_fortified_high.181
 name stone wall
 face wall_fortified_high.181
 blocksview 1
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
+Object seethrough_wall_fortified_high.181
+name stone wall
+face wall_fortified_high.181
 type 77
 layer 5
 no_pick 1
@@ -68,6 +104,15 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_fortified_high_2.111
+name stone wall
+face wall_fortified_high_2.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_fortified_high_3.111
 name stone wall
 face wall_fortified_high_3.111
@@ -78,10 +123,28 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_fortified_high_3.111
+name stone wall
+face wall_fortified_high_3.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_fortified_high_4.111
 name stone wall
 face wall_fortified_high_4.111
 blocksview 1
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
+Object seethrough_wall_fortified_high_4.111
+name stone wall
+face wall_fortified_high_4.111
 type 77
 layer 5
 no_pick 1
@@ -108,6 +171,15 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_fortified_high_2.151
+name stone wall
+face wall_fortified_high_2.151
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_fortified_high_3.151
 name stone wall
 face wall_fortified_high_3.151
@@ -118,10 +190,28 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_fortified_high_3.151
+name stone wall
+face wall_fortified_high_3.151
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_fortified_high_4.151
 name stone wall
 face wall_fortified_high_4.151
 blocksview 1
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
+Object seethrough_wall_fortified_high_4.151
+name stone wall
+face wall_fortified_high_4.151
 type 77
 layer 5
 no_pick 1

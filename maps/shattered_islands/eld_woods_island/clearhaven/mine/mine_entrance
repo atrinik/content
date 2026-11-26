@@ -19,38 +19,38 @@ arch floor_grit4a
 no_pass 1
 y 1
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 y 1
 end
 arch floor_grit4b
 no_pass 1
 y 2
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 y 2
 end
 arch floor_grit4b
 no_pass 1
 y 3
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 y 3
 end
 arch floor_grit4a
 no_pass 1
 y 4
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 y 4
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 y 5
 end
 arch floor_grit4a
 no_pass 1
 x 1
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 1
 end
 arch floor_grit3b
@@ -100,7 +100,7 @@ arch floor_grit4b
 no_pass 1
 x 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 2
 end
 arch floor_grit4a
@@ -118,7 +118,7 @@ no_pass 1
 x 2
 y 3
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 2
 y 3
 end
@@ -127,7 +127,7 @@ no_pass 1
 x 2
 y 4
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 2
 y 4
 end
@@ -136,7 +136,7 @@ no_pass 1
 x 2
 y 5
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 2
 y 5
 end
@@ -145,11 +145,11 @@ no_pass 1
 x 2
 y 6
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 2
 y 6
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 2
 y 7
 end
@@ -157,7 +157,7 @@ arch floor_grit4a
 no_pass 1
 x 3
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 3
 end
 arch floor_grit4a
@@ -170,7 +170,7 @@ no_pass 1
 x 3
 y 2
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 3
 y 2
 end
@@ -208,7 +208,7 @@ arch floor_grit4b
 no_pass 1
 x 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 4
 end
 arch floor_grit4a
@@ -221,7 +221,7 @@ no_pass 1
 x 4
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 4
 y 2
 end
@@ -244,7 +244,7 @@ no_pass 1
 x 4
 y 5
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 4
 y 5
 end
@@ -253,7 +253,7 @@ no_pass 1
 x 4
 y 6
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 4
 y 6
 end
@@ -262,7 +262,7 @@ no_pass 1
 x 4
 y 7
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 4
 y 7
 end
@@ -271,11 +271,11 @@ no_pass 1
 x 4
 y 8
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 4
 y 8
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 4
 y 9
 end
@@ -283,7 +283,7 @@ arch floor_grit4a
 no_pass 1
 x 5
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 5
 end
 arch floor_grit4b
@@ -296,7 +296,7 @@ no_pass 1
 x 5
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 5
 y 2
 end
@@ -314,7 +314,7 @@ no_pass 1
 x 5
 y 5
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 5
 y 5
 end
@@ -342,7 +342,7 @@ arch floor_grit4a
 no_pass 1
 x 6
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 6
 end
 arch floor_grit4a
@@ -355,7 +355,7 @@ no_pass 1
 x 6
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 6
 y 2
 end
@@ -373,7 +373,7 @@ no_pass 1
 x 6
 y 5
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 6
 y 5
 end
@@ -387,7 +387,7 @@ no_pass 1
 x 6
 y 7
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 6
 y 7
 end
@@ -396,7 +396,7 @@ no_pass 1
 x 6
 y 8
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 6
 y 8
 end
@@ -405,7 +405,7 @@ no_pass 1
 x 6
 y 9
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 6
 y 9
 end
@@ -414,11 +414,11 @@ no_pass 1
 x 6
 y 10
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 6
 y 10
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 6
 y 11
 end
@@ -426,7 +426,7 @@ arch floor_grit4a
 no_pass 1
 x 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 7
 end
 arch floor_grit4b
@@ -439,7 +439,7 @@ no_pass 1
 x 7
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 7
 y 2
 end
@@ -457,7 +457,7 @@ no_pass 1
 x 7
 y 5
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 7
 y 5
 end
@@ -471,7 +471,7 @@ no_pass 1
 x 7
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 7
 y 7
 end
@@ -509,7 +509,7 @@ arch floor_grit4b
 no_pass 1
 x 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 8
 end
 arch floor_grit4b
@@ -522,7 +522,7 @@ no_pass 1
 x 8
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 8
 y 2
 end
@@ -550,7 +550,7 @@ no_pass 1
 x 8
 y 5
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 8
 y 5
 end
@@ -564,7 +564,7 @@ no_pass 1
 x 8
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 8
 y 7
 end
@@ -593,11 +593,11 @@ no_pass 1
 x 8
 y 12
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 8
 y 12
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 8
 y 13
 end
@@ -605,7 +605,7 @@ arch floor_grit4b
 no_pass 1
 x 9
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 9
 end
 arch floor_grit4b
@@ -618,7 +618,7 @@ no_pass 1
 x 9
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 9
 y 2
 end
@@ -637,7 +637,7 @@ no_pass 1
 x 9
 y 5
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 9
 y 5
 end
@@ -651,7 +651,7 @@ no_pass 1
 x 9
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 9
 y 7
 end
@@ -694,7 +694,7 @@ arch floor_grit4b
 no_pass 1
 x 10
 end
-arch wall_cave1.121
+arch seethrough_wall_cave1.121
 x 10
 end
 arch floor_grit4b
@@ -707,7 +707,7 @@ no_pass 1
 x 10
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 10
 y 2
 end
@@ -721,7 +721,7 @@ no_pass 1
 x 10
 y 4
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 10
 y 4
 end
@@ -745,7 +745,7 @@ no_pass 1
 x 10
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 10
 y 7
 end
@@ -793,7 +793,7 @@ no_pass 1
 x 11
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 11
 y 2
 end
@@ -807,7 +807,7 @@ no_pass 1
 x 11
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 11
 y 4
 end
@@ -830,7 +830,7 @@ no_pass 1
 x 11
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 11
 y 7
 end
@@ -888,7 +888,7 @@ no_pass 1
 x 12
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 12
 y 2
 end
@@ -902,7 +902,7 @@ no_pass 1
 x 12
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 12
 y 4
 end
@@ -920,7 +920,7 @@ no_pass 1
 x 12
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 12
 y 7
 end
@@ -972,7 +972,7 @@ no_pass 1
 x 13
 y 2
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 13
 y 2
 end
@@ -986,7 +986,7 @@ no_pass 1
 x 13
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 13
 y 4
 end
@@ -1004,7 +1004,7 @@ no_pass 1
 x 13
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 13
 y 7
 end
@@ -1018,7 +1018,7 @@ no_pass 1
 x 13
 y 9
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 13
 y 9
 end
@@ -1032,7 +1032,7 @@ no_pass 1
 x 13
 y 11
 end
-arch wall_cave1.101
+arch seethrough_wall_cave1.101
 x 13
 y 11
 end
@@ -1041,7 +1041,7 @@ no_pass 1
 x 13
 y 12
 end
-arch wall_cave1.131
+arch seethrough_wall_cave1.131
 x 13
 y 12
 end
@@ -1050,7 +1050,7 @@ no_pass 1
 x 13
 y 13
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 13
 y 13
 end
@@ -1068,7 +1068,7 @@ no_pass 1
 x 14
 y 2
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 14
 y 2
 end
@@ -1082,7 +1082,7 @@ no_pass 1
 x 14
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 14
 y 4
 end
@@ -1100,7 +1100,7 @@ no_pass 1
 x 14
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 14
 y 7
 end
@@ -1114,7 +1114,7 @@ no_pass 1
 x 14
 y 9
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 14
 y 9
 end
@@ -1128,7 +1128,7 @@ no_pass 1
 x 14
 y 11
 end
-arch wall_cave1.121
+arch seethrough_wall_cave1.121
 x 14
 y 11
 end
@@ -1137,7 +1137,7 @@ no_pass 1
 x 14
 y 12
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 14
 y 12
 end
@@ -1146,7 +1146,7 @@ no_pass 1
 x 14
 y 13
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 14
 y 13
 end
@@ -1154,7 +1154,7 @@ arch floor_grit4a
 no_pass 1
 x 15
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 15
 end
 arch floor_grit4a
@@ -1167,7 +1167,7 @@ no_pass 1
 x 15
 y 2
 end
-arch wall_cave1.121
+arch seethrough_wall_cave1.121
 x 15
 y 2
 end
@@ -1181,7 +1181,7 @@ no_pass 1
 x 15
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 4
 end
@@ -1210,7 +1210,7 @@ no_pass 1
 x 15
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 7
 end
@@ -1224,7 +1224,7 @@ no_pass 1
 x 15
 y 9
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 9
 end
@@ -1253,7 +1253,7 @@ no_pass 1
 x 15
 y 13
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 13
 end
@@ -1261,7 +1261,7 @@ arch floor_grit4a
 no_pass 1
 x 16
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 end
 arch floor_grit4a
@@ -1284,7 +1284,7 @@ no_pass 1
 x 16
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 y 4
 end
@@ -1303,7 +1303,7 @@ no_pass 1
 x 16
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 y 7
 end
@@ -1317,7 +1317,7 @@ no_pass 1
 x 16
 y 9
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 y 9
 end
@@ -1346,7 +1346,7 @@ no_pass 1
 x 16
 y 13
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 y 13
 end
@@ -1354,7 +1354,7 @@ arch floor_grit4a
 no_pass 1
 x 17
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 17
 end
 arch floor_grit4b
@@ -1377,7 +1377,7 @@ no_pass 1
 x 17
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 17
 y 4
 end
@@ -1391,7 +1391,7 @@ no_pass 1
 x 17
 y 6
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 17
 y 6
 end
@@ -1400,7 +1400,7 @@ no_pass 1
 x 17
 y 7
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 17
 y 7
 end
@@ -1414,7 +1414,7 @@ no_pass 1
 x 17
 y 9
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 17
 y 9
 end
@@ -1443,7 +1443,7 @@ no_pass 1
 x 17
 y 13
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 17
 y 13
 end
@@ -1451,7 +1451,7 @@ arch floor_grit4a
 no_pass 1
 x 18
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 end
 arch floor_grit4b
@@ -1479,7 +1479,7 @@ no_pass 1
 x 18
 y 4
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 4
 end
@@ -1493,7 +1493,7 @@ no_pass 1
 x 18
 y 6
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 6
 end
@@ -1512,7 +1512,7 @@ no_pass 1
 x 18
 y 9
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 9
 end
@@ -1526,7 +1526,7 @@ no_pass 1
 x 18
 y 11
 end
-arch wall_cave1.101
+arch seethrough_wall_cave1.101
 x 18
 y 11
 end
@@ -1540,7 +1540,7 @@ no_pass 1
 x 18
 y 13
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 13
 end
@@ -1548,7 +1548,7 @@ arch floor_grit4a
 no_pass 1
 x 19
 end
-arch wall_cave1b.121
+arch seethrough_wall_cave1b.121
 x 19
 end
 arch floor_grit4a
@@ -1556,7 +1556,7 @@ no_pass 1
 x 19
 y 1
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 19
 y 1
 end
@@ -1575,7 +1575,7 @@ no_pass 1
 x 19
 y 4
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 19
 y 4
 end
@@ -1589,7 +1589,7 @@ no_pass 1
 x 19
 y 6
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 19
 y 6
 end
@@ -1603,7 +1603,7 @@ no_pass 1
 x 19
 y 8
 end
-arch wall_cave1.181
+arch seethrough_wall_cave1.181
 x 19
 y 8
 end
@@ -1612,7 +1612,7 @@ no_pass 1
 x 19
 y 9
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 19
 y 9
 end
@@ -1626,7 +1626,7 @@ no_pass 1
 x 19
 y 11
 end
-arch wall_cave1.121
+arch seethrough_wall_cave1.121
 x 19
 y 11
 end
@@ -1635,7 +1635,7 @@ no_pass 1
 x 19
 y 12
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 19
 y 12
 end
@@ -1644,7 +1644,7 @@ no_pass 1
 x 19
 y 13
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 19
 y 13
 end
@@ -1653,7 +1653,7 @@ no_pass 1
 x 20
 y 1
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 20
 y 1
 end
@@ -1677,7 +1677,7 @@ no_pass 1
 x 20
 y 4
 end
-arch wall_cave1.121
+arch seethrough_wall_cave1.121
 x 20
 y 4
 end
@@ -1691,7 +1691,7 @@ no_pass 1
 x 20
 y 6
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 20
 y 6
 end
@@ -1705,7 +1705,7 @@ no_pass 1
 x 20
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 20
 y 8
 end
@@ -1744,7 +1744,7 @@ no_pass 1
 x 21
 y 1
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 21
 y 1
 end
@@ -1773,7 +1773,7 @@ no_pass 1
 x 21
 y 6
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 21
 y 6
 end
@@ -1787,7 +1787,7 @@ no_pass 1
 x 21
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 21
 y 8
 end
@@ -1821,7 +1821,7 @@ no_pass 1
 x 22
 y 1
 end
-arch wall_cave1b.121
+arch seethrough_wall_cave1b.121
 x 22
 y 1
 end
@@ -1830,7 +1830,7 @@ no_pass 1
 x 22
 y 2
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 22
 y 2
 end
@@ -1854,7 +1854,7 @@ no_pass 1
 x 22
 y 6
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 22
 y 6
 end
@@ -1873,7 +1873,7 @@ no_pass 1
 x 22
 y 8
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 22
 y 8
 end
@@ -1912,7 +1912,7 @@ no_pass 1
 x 23
 y 2
 end
-arch wall_cave1b.121
+arch seethrough_wall_cave1b.121
 x 23
 y 2
 end
@@ -1921,7 +1921,7 @@ no_pass 1
 x 23
 y 3
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 23
 y 3
 end
@@ -1940,7 +1940,7 @@ no_pass 1
 x 23
 y 6
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 23
 y 6
 end

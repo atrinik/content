@@ -4138,7 +4138,7 @@
     },
     {
       "count": 3,
-      "key": "maps/shattered_islands/world_-7_52\twarning\tObject is animated and has speed but its object type does not require speed.&nbsp;<br>Object: <b>fog</b>&nbsp;<br>Arch name: <b>fog</b>"
+      "key": "maps/shattered_islands/world_-7_52\twarning\tObject is animated and has speed but its object type does not require speed.&nbsp;<br>Object: <b>fog</b>&nbsp;<br>Arch name: <b>seethrough_fog</b>"
     },
     {
       "count": 1,

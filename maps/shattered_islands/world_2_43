@@ -2212,7 +2212,7 @@ arch plant7
 x 21
 y 19
 end
-arch wall_fortified_high.181
+arch seethrough_wall_fortified_high.181
 x 21
 y 19
 end
@@ -2224,7 +2224,7 @@ arch plant8
 x 21
 y 20
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 21
 y 20
 end
@@ -2232,7 +2232,7 @@ arch grassd_1
 x 21
 y 21
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 21
 y 21
 end
@@ -2240,7 +2240,7 @@ arch grassd_7
 x 21
 y 22
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 21
 y 22
 end
@@ -2248,7 +2248,7 @@ arch grassd_1
 x 21
 y 23
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 21
 y 23
 end
@@ -2403,7 +2403,7 @@ arch grassd_5
 x 22
 y 19
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 22
 y 19
 end
@@ -2602,7 +2602,7 @@ arch grassd_5
 x 23
 y 19
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 23
 y 19
 end

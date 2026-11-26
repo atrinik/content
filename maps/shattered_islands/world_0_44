@@ -53,17 +53,17 @@ sub_layer 1
 z 50
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -172,19 +172,19 @@ z 50
 x 1
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 1
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 1
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -317,19 +317,19 @@ z 50
 x 2
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 2
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 2
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -465,19 +465,19 @@ z 50
 x 3
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 3
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 3
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -609,19 +609,19 @@ z 50
 x 4
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 4
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 4
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -639,7 +639,7 @@ z 2
 x 4
 y 7
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 4
 y 7
 end
@@ -754,19 +754,19 @@ z 50
 x 5
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 5
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 5
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -784,7 +784,7 @@ z 2
 x 5
 y 7
 end
-arch wall_cave1b.121
+arch seethrough_wall_cave1b.121
 x 5
 y 7
 end
@@ -793,7 +793,7 @@ z 2
 x 5
 y 8
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 5
 y 8
 end
@@ -904,19 +904,19 @@ z 50
 x 6
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 6
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 6
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -934,7 +934,7 @@ z 26
 x 6
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 6
 y 7
 end
@@ -943,7 +943,7 @@ z 2
 x 6
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 6
 y 8
 end
@@ -1058,19 +1058,19 @@ z 50
 x 7
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 7
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 7
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1088,7 +1088,7 @@ z 26
 x 7
 y 7
 end
-arch wall_cave1.141
+arch seethrough_wall_cave1.141
 x 7
 y 7
 end
@@ -1097,7 +1097,7 @@ z 2
 x 7
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 7
 y 8
 end
@@ -1208,19 +1208,19 @@ z 50
 x 8
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 8
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 8
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1238,7 +1238,7 @@ z 26
 x 8
 y 7
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 8
 y 7
 end
@@ -1247,7 +1247,7 @@ z 2
 x 8
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 8
 y 8
 end
@@ -1358,19 +1358,19 @@ z 50
 x 9
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 9
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 9
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1388,7 +1388,7 @@ z 26
 x 9
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 9
 y 7
 end
@@ -1397,7 +1397,7 @@ z 2
 x 9
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 9
 y 8
 end
@@ -1508,19 +1508,19 @@ z 50
 x 10
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 10
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 10
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1538,7 +1538,7 @@ z 26
 x 10
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 10
 y 7
 end
@@ -1547,7 +1547,7 @@ z 2
 x 10
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 10
 y 8
 end
@@ -1658,19 +1658,19 @@ z 50
 x 11
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 11
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 11
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1688,7 +1688,7 @@ z 26
 x 11
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 11
 y 7
 end
@@ -1697,7 +1697,7 @@ z 2
 x 11
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 11
 y 8
 end
@@ -1812,19 +1812,19 @@ z 50
 x 12
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 12
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 12
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1842,7 +1842,7 @@ z 26
 x 12
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 12
 y 7
 end
@@ -1851,7 +1851,7 @@ z 2
 x 12
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 12
 y 8
 end
@@ -1966,19 +1966,19 @@ z 50
 x 13
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 13
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 13
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1996,7 +1996,7 @@ z 26
 x 13
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 13
 y 7
 end
@@ -2005,7 +2005,7 @@ z 2
 x 13
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 13
 y 8
 end
@@ -2116,19 +2116,19 @@ z 50
 x 14
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 14
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 14
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2146,7 +2146,7 @@ z 26
 x 14
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 14
 y 7
 end
@@ -2155,7 +2155,7 @@ z 2
 x 14
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 14
 y 8
 end
@@ -2266,19 +2266,19 @@ z 50
 x 15
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 15
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 15
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2296,7 +2296,7 @@ z 26
 x 15
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 7
 end
@@ -2305,7 +2305,7 @@ z 2
 x 15
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 15
 y 8
 end
@@ -2416,19 +2416,19 @@ z 50
 x 16
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 16
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 16
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2446,7 +2446,7 @@ z 26
 x 16
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 y 7
 end
@@ -2455,7 +2455,7 @@ z 2
 x 16
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 16
 y 8
 end
@@ -2566,19 +2566,19 @@ z 50
 x 17
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 17
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 17
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2596,7 +2596,7 @@ z 36
 x 17
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 17
 y 7
 end
@@ -2605,7 +2605,7 @@ z 26
 x 17
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 17
 y 8
 end
@@ -2614,7 +2614,7 @@ z 2
 x 17
 y 9
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 17
 y 9
 end
@@ -2729,19 +2729,19 @@ z 50
 x 18
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 18
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 18
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2759,7 +2759,7 @@ z 36
 x 18
 y 7
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 7
 end
@@ -2768,7 +2768,7 @@ z 26
 x 18
 y 8
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 8
 end
@@ -2777,7 +2777,7 @@ z 26
 x 18
 y 9
 end
-arch wall_cave1.111
+arch seethrough_wall_cave1.111
 x 18
 y 9
 end
@@ -2786,7 +2786,7 @@ z 2
 x 18
 y 10
 end
-arch wall_cave1.161
+arch seethrough_wall_cave1.161
 x 18
 y 10
 end
@@ -2889,19 +2889,19 @@ z 50
 x 19
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 19
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 19
 y 6
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2918,7 +2918,7 @@ arch grassd_8
 x 19
 y 7
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 19
 y 7
 end
@@ -2926,7 +2926,7 @@ arch grassd_8
 x 19
 y 8
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 19
 y 8
 end
@@ -2934,7 +2934,7 @@ arch grassd_8
 x 19
 y 9
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 19
 y 9
 end
@@ -2942,7 +2942,7 @@ arch grassd_8
 x 19
 y 10
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 19
 y 10
 end
@@ -2950,7 +2950,7 @@ arch grassd_8
 x 19
 y 11
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 19
 y 11
 end
@@ -3086,19 +3086,19 @@ z 50
 x 20
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 20
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 20
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3235,19 +3235,19 @@ z 50
 x 21
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 21
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 21
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3387,19 +3387,19 @@ z 50
 x 22
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 22
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 22
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3535,19 +3535,19 @@ z 50
 x 23
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 23
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 23
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34

@@ -3857,7 +3857,7 @@ arch floor_grit3c
 x 46
 y 22
 end
-arch rock5
+arch opaque_rock5
 x 46
 y 22
 end

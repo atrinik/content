@@ -9,6 +9,16 @@ no_pass 1
 draw_double 1
 name_pl walls
 end
+Object seethrough_fwall_grit1a
+name wall
+face fwall_grit1a.d.101
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
 Object fwall_grit1b
 name wall
 face fwall_grit1b.d.101
@@ -20,10 +30,30 @@ no_pass 1
 draw_double 1
 name_pl walls
 end
+Object seethrough_fwall_grit1b
+name wall
+face fwall_grit1b.d.101
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
 Object fwall_grit1c
 name wall
 face fwall_grit1c.d.101
 blocksview 1
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
+Object seethrough_fwall_grit1c
+name wall
+face fwall_grit1c.d.101
 layer 5
 type 77
 no_pick 1

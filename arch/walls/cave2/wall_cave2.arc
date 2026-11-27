@@ -184,6 +184,15 @@ blocksview 1
 no_pick 1
 name_pl cave walls
 end
+Object seethrough_wall_cave2_m
+name cave wall
+face wall_cave2_m.101
+type 77
+layer 5
+no_pass 1
+no_pick 1
+name_pl cave walls
+end
 
 Object wall_cave2_m1
 name cave wall
@@ -206,6 +215,15 @@ blocksview 1
 no_pick 1
 name_pl cave walls
 end
+Object seethrough_wall_cave2_md1
+name cave wall
+face wall_cave2_md1.101
+type 77
+layer 5
+no_pass 1
+no_pick 1
+name_pl cave walls
+end
 
 Object wall_cave2_mu1
 name cave wall
@@ -214,6 +232,15 @@ type 77
 layer 5
 no_pass 1
 blocksview 1
+no_pick 1
+name_pl cave walls
+end
+Object seethrough_wall_cave2_mu1
+name cave wall
+face wall_cave2_mu1.101
+type 77
+layer 5
+no_pass 1
 no_pick 1
 name_pl cave walls
 end

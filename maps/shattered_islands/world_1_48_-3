@@ -1541,7 +1541,7 @@ arch floor_cave2
 x 17
 y 18
 end
-arch cave_deco_f3.101
+arch opaque_cave_deco_f3.101
 no_pass 1
 x 17
 y 18
@@ -1550,7 +1550,7 @@ arch floor_cave5
 x 17
 y 19
 end
-arch cave_deco_f2.101
+arch opaque_cave_deco_f2.101
 no_pass 1
 x 17
 y 19
@@ -1603,7 +1603,7 @@ arch floor_cave5
 x 18
 y 17
 end
-arch cave_deco_f3.101
+arch opaque_cave_deco_f3.101
 no_pass 1
 x 18
 y 17
@@ -1612,7 +1612,7 @@ arch floor_cave5
 x 18
 y 18
 end
-arch cave_deco_f2.101
+arch opaque_cave_deco_f2.101
 no_pass 1
 x 18
 y 18
@@ -1621,7 +1621,7 @@ arch floor_cave6
 x 18
 y 19
 end
-arch cave_deco_f3.101
+arch opaque_cave_deco_f3.101
 no_pass 1
 x 18
 y 19
@@ -1670,7 +1670,7 @@ arch floor_cave1
 x 19
 y 18
 end
-arch cave_deco_f3.101
+arch opaque_cave_deco_f3.101
 no_pass 1
 x 19
 y 18

@@ -116,7 +116,7 @@ sub_layer 1
 z 48
 y 11
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 y 11
 end
 arch floor_fs_grey1b
@@ -124,7 +124,7 @@ sub_layer 1
 z 48
 y 12
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 y 12
 end
 arch floor_fs_grey1b
@@ -132,7 +132,7 @@ sub_layer 1
 z 48
 y 13
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 y 13
 end
 arch floor_fs_grey1b
@@ -144,7 +144,7 @@ arch lantern_black
 sub_layer 1
 y 14
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 sub_layer 2
 y 14
 end
@@ -153,7 +153,7 @@ sub_layer 1
 z 32
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 y 15
 end
 arch floor_fs_grey1b
@@ -161,7 +161,7 @@ sub_layer 1
 z 24
 y 16
 end
-arch wall_fortified_high_4.151
+arch seethrough_wall_fortified_high_4.151
 y 16
 end
 arch floor_fs_grey1b
@@ -169,7 +169,7 @@ sub_layer 1
 z 16
 y 17
 end
-arch wall_fortified_high_3.151
+arch seethrough_wall_fortified_high_3.151
 y 17
 end
 arch floor_fs_grey1b
@@ -177,7 +177,7 @@ sub_layer 1
 z 8
 y 18
 end
-arch wall_fortified_high_2.151
+arch seethrough_wall_fortified_high_2.151
 y 18
 end
 arch grassd_3

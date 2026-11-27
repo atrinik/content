@@ -20,11 +20,11 @@ end
 arch trans
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -269,12 +269,12 @@ arch trans
 x 4
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 4
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -356,12 +356,12 @@ arch trans
 x 5
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 5
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -525,12 +525,12 @@ arch trans
 x 9
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 9
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -569,12 +569,12 @@ arch trans
 x 10
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 10
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -729,12 +729,12 @@ arch trans
 x 14
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 14
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -773,12 +773,12 @@ arch trans
 x 15
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 15
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -1082,12 +1082,12 @@ arch trans
 x 20
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 20
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0
@@ -1149,12 +1149,12 @@ arch trans
 x 21
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 draw_double 0
 x 21
 y 14
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.111
 layer 7
 draw_double 0

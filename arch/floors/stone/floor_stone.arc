@@ -64,6 +64,18 @@ no_pick 1
 is_floor 1
 name_pl floors
 end
+Object opaque_floor_sblack3b
+name floor
+face floor_sblack3b.101
+layer 1
+no_teleport 1
+terrain_type 1
+type 71
+no_pick 1
+is_floor 1
+name_pl floors
+blocksview 1
+end
 Object floor_stone_b1
 name floor
 face floor_stone_b1.101

@@ -19,6 +19,15 @@ face cardinal_giant.151
 no_pick 1
 name_pl cardinal statues
 end
+Object seethrough_cardinal_giant_b
+name cardinal statue
+no_pass 1
+layer 5
+type 79
+face cardinal_giant.151
+no_pick 1
+name_pl cardinal statues
+end
 
 Object cardinal_giant_c
 name cardinal statue

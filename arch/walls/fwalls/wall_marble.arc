@@ -42,6 +42,16 @@ no_pass 1
 draw_double 1
 name_pl walls
 end
+Object seethrough_fwall_marble2a
+name wall
+face fwall_marble2a.d.101
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
 Object fwall_marble2b
 name wall
 face fwall_marble2b.d.101
@@ -53,10 +63,30 @@ no_pass 1
 draw_double 1
 name_pl walls
 end
+Object seethrough_fwall_marble2b
+name wall
+face fwall_marble2b.d.101
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
 Object fwall_marble2c
 name wall
 face fwall_marble2c.d.101
 blocksview 1
+layer 5
+type 77
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl walls
+end
+Object seethrough_fwall_marble2c
+name wall
+face fwall_marble2c.d.101
 layer 5
 type 77
 no_pick 1

@@ -13,6 +13,20 @@ glow_radius 5
 light_color ff6030
 name_pl statues
 end
+Object seethrough_statue_fire
+name statue
+face statue_fire.111
+animation statue_fire
+is_animated 1
+anim_speed 4
+no_pass 1
+layer 5
+type 79
+no_pick 1
+glow_radius 5
+light_color ff6030
+name_pl statues
+end
 
 Object statue_fire_black1
 name statue

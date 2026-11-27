@@ -960,7 +960,7 @@ arch grassd_8
 x 8
 y 5
 end
-arch wall_fortified_high_2.111
+arch seethrough_wall_fortified_high_2.111
 x 8
 y 5
 end
@@ -968,7 +968,7 @@ arch grassd_3
 x 8
 y 6
 end
-arch wall_fortified_high_3.111
+arch seethrough_wall_fortified_high_3.111
 x 8
 y 6
 end
@@ -976,7 +976,7 @@ arch grassd_3
 x 8
 y 7
 end
-arch wall_fortified_high_4.111
+arch seethrough_wall_fortified_high_4.111
 x 8
 y 7
 end
@@ -984,7 +984,7 @@ arch grassd_8
 x 8
 y 8
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 8
 y 8
 end
@@ -992,7 +992,7 @@ arch grassd_8
 x 8
 y 9
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 8
 y 9
 end
@@ -1048,7 +1048,7 @@ arch grassd_1
 x 8
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 8
 y 15
 end
@@ -1056,7 +1056,7 @@ arch grassd_1
 x 8
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 8
 y 16
 end
@@ -1064,7 +1064,7 @@ arch grassd_8
 x 8
 y 17
 end
-arch wall_fortified_high_4.151
+arch seethrough_wall_fortified_high_4.151
 x 8
 y 17
 end
@@ -1072,7 +1072,7 @@ arch grassd_6
 x 8
 y 18
 end
-arch wall_fortified_high_3.151
+arch seethrough_wall_fortified_high_3.151
 x 8
 y 18
 end
@@ -1080,7 +1080,7 @@ arch grassd_3
 x 8
 y 19
 end
-arch wall_fortified_high_2.151
+arch seethrough_wall_fortified_high_2.151
 x 8
 y 19
 end
@@ -1809,7 +1809,7 @@ z 8
 x 12
 y 5
 end
-arch wall_fortified_high_2.111
+arch seethrough_wall_fortified_high_2.111
 x 12
 y 5
 end
@@ -1823,7 +1823,7 @@ z 16
 x 12
 y 6
 end
-arch wall_fortified_high_3.111
+arch seethrough_wall_fortified_high_3.111
 x 12
 y 6
 end
@@ -1837,7 +1837,7 @@ z 24
 x 12
 y 7
 end
-arch wall_fortified_high_4.111
+arch seethrough_wall_fortified_high_4.111
 x 12
 y 7
 end
@@ -1851,7 +1851,7 @@ z 32
 x 12
 y 8
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 12
 y 8
 end
@@ -1865,7 +1865,7 @@ z 40
 x 12
 y 9
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 12
 y 9
 end
@@ -1957,7 +1957,7 @@ z 40
 x 12
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 12
 y 15
 end
@@ -1971,7 +1971,7 @@ z 32
 x 12
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 12
 y 16
 end
@@ -1985,7 +1985,7 @@ z 24
 x 12
 y 17
 end
-arch wall_fortified_high_4.151
+arch seethrough_wall_fortified_high_4.151
 x 12
 y 17
 end
@@ -1999,7 +1999,7 @@ z 16
 x 12
 y 18
 end
-arch wall_fortified_high_3.151
+arch seethrough_wall_fortified_high_3.151
 x 12
 y 18
 end
@@ -2013,7 +2013,7 @@ z 8
 x 12
 y 19
 end
-arch wall_fortified_high_2.151
+arch seethrough_wall_fortified_high_2.151
 x 12
 y 19
 end

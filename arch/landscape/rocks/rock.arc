@@ -18,6 +18,17 @@ no_pick 1
 no_pass 1
 name_pl rocks
 end
+Object opaque_rock2
+name rocks
+face rock2.101
+type 79
+material 64
+layer 5
+no_pick 1
+no_pass 1
+name_pl rocks
+blocksview 1
+end
 Object rock3
 name rocks
 face rock3.101
@@ -48,6 +59,17 @@ no_pick 1
 no_pass 1
 name_pl rocks
 end
+Object opaque_rock5
+name rocks
+face rock5.101
+type 79
+material 64
+layer 5
+no_pick 1
+no_pass 1
+name_pl rocks
+blocksview 1
+end
 Object rock6
 name rocks
 face rock6.101
@@ -57,4 +79,15 @@ layer 5
 no_pick 1
 no_pass 1
 name_pl rocks
+end
+Object opaque_rock6
+name rocks
+face rock6.101
+type 79
+material 64
+layer 5
+no_pick 1
+no_pass 1
+name_pl rocks
+blocksview 1
 end

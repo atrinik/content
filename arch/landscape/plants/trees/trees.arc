@@ -29,6 +29,15 @@ no_pass 1
 blocksview 1
 name_pl trees
 end
+Object seethrough_tree_big
+layer 5
+name tree
+type 79
+face tree_big.101
+no_pick 1
+no_pass 1
+name_pl trees
+end
 
 Object tree_big2
 layer 5
@@ -40,6 +49,15 @@ no_pass 1
 blocksview 1
 name_pl trees
 end
+Object seethrough_tree_big2
+layer 5
+type 79
+name tree
+face tree_big2.101
+no_pick 1
+no_pass 1
+name_pl trees
+end
 
 Object tree_big3
 layer 5
@@ -49,6 +67,15 @@ face tree_big3.101
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
+end
+Object seethrough_tree_big3
+layer 5
+type 79
+name tree
+face tree_big3.101
+no_pick 1
+no_pass 1
 name_pl trees
 end
 
@@ -84,6 +111,15 @@ no_pass 1
 blocksview 1
 name_pl trees
 end
+Object seethrough_tree_big4b
+layer 5
+name tree
+type 79
+face tree_big4b.101
+no_pick 1
+no_pass 1
+name_pl trees
+end
 
 Object tree_big5b
 layer 5
@@ -93,6 +129,15 @@ type 79
 no_pick 1
 no_pass 1
 blocksview 1
+name_pl trees
+end
+Object seethrough_tree_big5b
+layer 5
+name tree
+face tree_big5b.101
+type 79
+no_pick 1
+no_pass 1
 name_pl trees
 end
 

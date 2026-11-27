@@ -859,7 +859,7 @@ arch floor_ostone4
 x 6
 y 4
 end
-arch fwall_flagstone1a
+arch seethrough_fwall_flagstone1a
 draw_double 0
 x 6
 y 4

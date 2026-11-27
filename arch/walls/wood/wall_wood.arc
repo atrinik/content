@@ -31,6 +31,16 @@ no_pass 1
 draw_double 1
 name_pl wood walls
 end
+Object seethrough_wall_wood_1
+name wood wall
+face wall_wood.d.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl wood walls
+end
 Object wall_wood_3
 name wood wall
 face wall_wood.d.131

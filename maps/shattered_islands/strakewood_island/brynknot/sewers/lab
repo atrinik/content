@@ -1864,7 +1864,7 @@ arch dirt_floor2
 x 10
 y 10
 end
-arch wall_black1_d1.111
+arch seethrough_wall_black1_d1.111
 no_pass 0
 x 10
 y 10

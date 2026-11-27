@@ -9,6 +9,16 @@ no_pass 1
 draw_double 1
 name_pl stone walls
 end
+Object seethrough_wall_flagstone1.111
+name stone wall
+face wall_flagstone1.d.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl stone walls
+end
 Object wall_flagstone1.131
 name stone wall
 face wall_flagstone1.d.131
@@ -199,6 +209,16 @@ Object wall_fstone_half.101
 name stone wall
 face wall_fstone_half.101
 blocksview 1
+type 77
+layer 5
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl stone walls
+end
+Object seethrough_wall_fstone_half.101
+name stone wall
+face wall_fstone_half.101
 type 77
 layer 5
 no_pick 1

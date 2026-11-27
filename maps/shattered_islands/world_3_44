@@ -39,7 +39,7 @@ sub_layer 1
 z 50
 y 2
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 y 2
 end
 arch grassd_3
@@ -63,7 +63,7 @@ end
 arch grassd_5
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 y 7
 end
 arch floor_fs_grey1b
@@ -86,17 +86,17 @@ sub_layer 1
 z 50
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -196,7 +196,7 @@ z 50
 x 1
 y 2
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 1
 y 2
 end
@@ -220,7 +220,7 @@ arch grassd_4
 x 1
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 1
 y 7
 end
@@ -248,19 +248,19 @@ z 50
 x 1
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 1
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 1
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -382,7 +382,7 @@ z 50
 x 2
 y 2
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 2
 y 2
 end
@@ -410,7 +410,7 @@ arch grassd_5
 x 2
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 2
 y 7
 end
@@ -438,19 +438,19 @@ z 50
 x 2
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 2
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 2
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -548,7 +548,7 @@ sub_layer 1
 z 50
 x 3
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 3
 end
 arch floor_fs_grey1b
@@ -557,7 +557,7 @@ z 50
 x 3
 y 1
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 3
 y 1
 end
@@ -567,7 +567,7 @@ z 50
 x 3
 y 2
 end
-arch wall_fortified_high.141
+arch seethrough_wall_fortified_high.141
 x 3
 y 2
 end
@@ -595,7 +595,7 @@ arch grassd_6
 x 3
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 3
 y 7
 end
@@ -623,19 +623,19 @@ z 50
 x 3
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 3
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 3
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -739,7 +739,7 @@ arch grassd_4
 x 4
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 4
 y 7
 end
@@ -767,19 +767,19 @@ z 50
 x 4
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 4
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 4
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -800,7 +800,7 @@ arch grassd_7
 x 4
 y 13
 end
-arch wall_fortified_high.181
+arch seethrough_wall_fortified_high.181
 x 4
 y 13
 end
@@ -808,7 +808,7 @@ arch grassd_8
 x 4
 y 14
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 14
 end
@@ -816,7 +816,7 @@ arch grassd_8
 x 4
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 15
 end
@@ -824,7 +824,7 @@ arch grassd_7
 x 4
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 16
 end
@@ -832,7 +832,7 @@ arch grassd_3
 x 4
 y 17
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 17
 end
@@ -840,7 +840,7 @@ arch grassd_7
 x 4
 y 18
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 18
 end
@@ -848,7 +848,7 @@ arch grassd_5
 x 4
 y 19
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 19
 end
@@ -856,7 +856,7 @@ arch grassd_8
 x 4
 y 20
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 20
 end
@@ -864,7 +864,7 @@ arch grassd_8
 x 4
 y 21
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 21
 end
@@ -872,7 +872,7 @@ arch grassd_4
 x 4
 y 22
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 22
 end
@@ -880,7 +880,7 @@ arch grassd_6
 x 4
 y 23
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 4
 y 23
 end
@@ -919,7 +919,7 @@ arch grassd_8
 x 5
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 5
 y 7
 end
@@ -947,19 +947,19 @@ z 50
 x 5
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 5
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 5
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -980,7 +980,7 @@ arch grassd_7
 x 5
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 5
 y 13
 end
@@ -1206,7 +1206,7 @@ arch grassd_1
 x 6
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 6
 y 7
 end
@@ -1234,19 +1234,19 @@ z 50
 x 6
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 6
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 6
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1267,7 +1267,7 @@ arch grassd_7
 x 6
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 6
 y 13
 end
@@ -1418,7 +1418,7 @@ arch grassd_8
 x 7
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 7
 y 7
 end
@@ -1446,19 +1446,19 @@ z 50
 x 7
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 7
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 7
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1479,7 +1479,7 @@ arch grassd_5
 x 7
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 7
 y 13
 end
@@ -1602,7 +1602,7 @@ arch grassd_8
 x 8
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 8
 y 7
 end
@@ -1630,19 +1630,19 @@ z 50
 x 8
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 8
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 8
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1663,7 +1663,7 @@ arch grassd_3
 x 8
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 8
 y 13
 end
@@ -1807,7 +1807,7 @@ arch grassd_8
 x 9
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 9
 y 7
 end
@@ -1835,19 +1835,19 @@ z 50
 x 9
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 9
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 9
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -1868,7 +1868,7 @@ arch grassd_8
 x 9
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 9
 y 13
 end
@@ -2012,7 +2012,7 @@ arch grassd_8
 x 10
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 10
 y 7
 end
@@ -2040,19 +2040,19 @@ z 50
 x 10
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 10
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 10
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2073,7 +2073,7 @@ arch grassd_8
 x 10
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 10
 y 13
 end
@@ -2231,7 +2231,7 @@ arch grassd_8
 x 11
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 11
 y 7
 end
@@ -2259,19 +2259,19 @@ z 50
 x 11
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 11
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 11
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2292,7 +2292,7 @@ arch grassd_5
 x 11
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 11
 y 13
 end
@@ -2459,7 +2459,7 @@ arch grassd_8
 x 12
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 12
 y 7
 end
@@ -2487,19 +2487,19 @@ z 50
 x 12
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 12
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 12
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2520,7 +2520,7 @@ arch grassd_6
 x 12
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 12
 y 13
 end
@@ -2679,7 +2679,7 @@ arch grassd_5
 x 13
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 13
 y 7
 end
@@ -2707,19 +2707,19 @@ z 50
 x 13
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 13
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 13
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2744,7 +2744,7 @@ arch grassd_3
 x 13
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 13
 y 13
 end
@@ -2900,7 +2900,7 @@ arch grassd_3
 x 14
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 14
 y 7
 end
@@ -2928,19 +2928,19 @@ z 50
 x 14
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 14
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 14
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -2961,7 +2961,7 @@ arch grassd_1
 x 14
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 14
 y 13
 end
@@ -3190,7 +3190,7 @@ arch grassd_4
 x 15
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 15
 y 7
 end
@@ -3218,19 +3218,19 @@ z 50
 x 15
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 15
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 15
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3251,7 +3251,7 @@ arch grassd_4
 x 15
 y 13
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 15
 y 13
 end
@@ -3261,7 +3261,7 @@ z 50
 x 15
 y 14
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 14
 end
@@ -3271,7 +3271,7 @@ z 50
 x 15
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 15
 end
@@ -3281,7 +3281,7 @@ z 50
 x 15
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 16
 end
@@ -3291,7 +3291,7 @@ z 50
 x 15
 y 17
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 17
 end
@@ -3321,7 +3321,7 @@ z 50
 x 15
 y 20
 end
-arch wall_fortified_high.181
+arch seethrough_wall_fortified_high.181
 x 15
 y 20
 end
@@ -3338,7 +3338,7 @@ z 50
 x 15
 y 21
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 21
 end
@@ -3348,7 +3348,7 @@ z 50
 x 15
 y 22
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 22
 end
@@ -3358,7 +3358,7 @@ z 50
 x 15
 y 23
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 x 15
 y 23
 end
@@ -3397,7 +3397,7 @@ arch grassd_6
 x 16
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 16
 y 7
 end
@@ -3425,19 +3425,19 @@ z 50
 x 16
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 16
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 16
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3480,7 +3480,7 @@ arch grassd_8
 x 16
 y 17
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 16
 y 17
 end
@@ -3502,7 +3502,7 @@ z 50
 x 16
 y 20
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 16
 y 20
 end
@@ -3562,7 +3562,7 @@ z 6
 x 17
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 z -6
 x 17
 y 7
@@ -3591,19 +3591,19 @@ z 50
 x 17
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 17
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 17
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3656,7 +3656,7 @@ z 6
 x 17
 y 17
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 z -6
 x 17
 y 17
@@ -3679,7 +3679,7 @@ z 50
 x 17
 y 20
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 17
 y 20
 end
@@ -3745,7 +3745,7 @@ z 12
 x 18
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 z -12
 x 18
 y 7
@@ -3774,19 +3774,19 @@ z 50
 x 18
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 18
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 18
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -3835,7 +3835,7 @@ z 12
 x 18
 y 17
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 z -12
 x 18
 y 17
@@ -3858,7 +3858,7 @@ z 50
 x 18
 y 20
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 18
 y 20
 end
@@ -3929,7 +3929,7 @@ z 18
 x 19
 y 7
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 z -18
 x 19
 y 7
@@ -3958,19 +3958,19 @@ z 50
 x 19
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 19
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 19
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -4015,7 +4015,7 @@ z 18
 x 19
 y 17
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 z -18
 x 19
 y 17
@@ -4038,7 +4038,7 @@ z 50
 x 19
 y 20
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 19
 y 20
 end
@@ -4066,7 +4066,7 @@ arch grassd_6
 z 24
 x 20
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 end
@@ -4075,7 +4075,7 @@ z 24
 x 20
 y 1
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 1
@@ -4085,7 +4085,7 @@ z 24
 x 20
 y 2
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 2
@@ -4095,7 +4095,7 @@ z 24
 x 20
 y 3
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 3
@@ -4105,7 +4105,7 @@ z 24
 x 20
 y 4
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 4
@@ -4115,7 +4115,7 @@ z 24
 x 20
 y 5
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 5
@@ -4125,7 +4125,7 @@ z 24
 x 20
 y 6
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 6
@@ -4135,7 +4135,7 @@ z 24
 x 20
 y 7
 end
-arch wall_fortified_high.141
+arch seethrough_wall_fortified_high.141
 z -24
 x 20
 y 7
@@ -4164,19 +4164,19 @@ z 50
 x 20
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 x 20
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 1
 z -26
 x 20
 y 11
 end
-arch wall_flagstone1.111
+arch seethrough_wall_flagstone1.111
 draw_double 0
 sub_layer 2
 z 34
@@ -4194,7 +4194,7 @@ z 24
 x 20
 y 12
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 12
@@ -4204,7 +4204,7 @@ z 24
 x 20
 y 13
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 13
@@ -4214,7 +4214,7 @@ z 24
 x 20
 y 14
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 14
@@ -4224,7 +4224,7 @@ z 24
 x 20
 y 15
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 15
@@ -4234,7 +4234,7 @@ z 24
 x 20
 y 16
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 16
@@ -4244,7 +4244,7 @@ z 24
 x 20
 y 17
 end
-arch wall_fortified_high.141
+arch seethrough_wall_fortified_high.141
 z -24
 x 20
 y 17
@@ -4267,7 +4267,7 @@ z 50
 x 20
 y 20
 end
-arch wall_fortified_high.131
+arch seethrough_wall_fortified_high.131
 x 20
 y 20
 end
@@ -4276,7 +4276,7 @@ z 24
 x 20
 y 21
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 21
@@ -4286,7 +4286,7 @@ z 24
 x 20
 y 22
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 22
@@ -4296,7 +4296,7 @@ z 24
 x 20
 y 23
 end
-arch wall_fortified_high.111
+arch seethrough_wall_fortified_high.111
 z -24
 x 20
 y 23

@@ -7,6 +7,16 @@ no_pass 1
 no_pick 1
 name_pl rocks
 end
+Object opaque_rock_wall1
+name rocks
+layer 5
+type 79
+face rock_wall1.101
+no_pass 1
+no_pick 1
+name_pl rocks
+blocksview 1
+end
 Object rock_wall2
 name rocks
 layer 5

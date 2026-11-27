@@ -525,7 +525,7 @@ z 24
 x 14
 y 2
 end
-arch rock2
+arch opaque_rock2
 x 14
 y 2
 end
@@ -1476,7 +1476,7 @@ z 24
 x 19
 y 2
 end
-arch rock2
+arch opaque_rock2
 x 19
 y 2
 end

@@ -161,12 +161,12 @@ arch floor_fs_grey1b
 x 2
 y 17
 end
-arch wall_dungeon_3
+arch seethrough_wall_dungeon_3
 draw_double 0
 x 2
 y 17
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
@@ -177,12 +177,12 @@ arch floor_fs_grey1b
 x 2
 y 18
 end
-arch wall_dungeon_3
+arch seethrough_wall_dungeon_3
 draw_double 0
 x 2
 y 18
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
@@ -221,12 +221,12 @@ arch floor_fs_grey1b
 x 2
 y 22
 end
-arch wall_dungeon_3
+arch seethrough_wall_dungeon_3
 draw_double 0
 x 2
 y 22
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0
@@ -237,12 +237,12 @@ arch floor_fs_grey1b
 x 2
 y 23
 end
-arch wall_dungeon_3
+arch seethrough_wall_dungeon_3
 draw_double 0
 x 2
 y 23
 end
-arch wall_dungeon_1
+arch seethrough_wall_dungeon_1
 face wall_window.131
 layer 7
 draw_double 0

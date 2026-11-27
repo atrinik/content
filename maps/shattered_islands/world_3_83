@@ -2380,7 +2380,7 @@ z 3
 x 14
 y 2
 end
-arch rock2
+arch opaque_rock2
 layer 2
 x 14
 y 2
@@ -2947,7 +2947,7 @@ arch floor_sblack2b
 x 17
 y 8
 end
-arch floor_sblack3b
+arch opaque_floor_sblack3b
 x 17
 y 9
 end
@@ -3243,7 +3243,7 @@ z 3
 x 19
 y 2
 end
-arch rock2
+arch opaque_rock2
 layer 2
 x 19
 y 2

@@ -9,11 +9,31 @@ no_pass 1
 draw_double 1
 name_pl dungeon walls
 end
+Object seethrough_wall_dungeon_1
+name dungeon wall
+face wall_dungeon.d.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl dungeon walls
+end
 
 Object wall_dungeon_3
 name dungeon wall
 face wall_dungeon.d.131
 blocksview 1
+type 77
+layer 5
+no_pick 1
+no_pass 1
+draw_double 1
+name_pl dungeon walls
+end
+Object seethrough_wall_dungeon_3
+name dungeon wall
+face wall_dungeon.d.131
 type 77
 layer 5
 no_pick 1

@@ -116,6 +116,15 @@ no_pick 1
 no_pass 1
 name_pl stone walls
 end
+Object seethrough_wall_black1_d1.111
+name stone wall
+face wall_black1_d1.111
+type 77
+layer 5
+no_pick 1
+no_pass 1
+name_pl stone walls
+end
 Object wall_black1_d1.131
 name stone wall
 face wall_black1_d1.131

@@ -14,6 +14,15 @@ no_pick 1
 layer 5
 name_pl rocks
 end
+Object opaque_cave_deco_f2.101
+name rocks
+face cave_deco_f2.101
+type 77
+no_pick 1
+layer 5
+name_pl rocks
+blocksview 1
+end
 Object cave_deco_f3.101
 name rocks
 face cave_deco_f3.101
@@ -21,6 +30,15 @@ type 77
 no_pick 1
 layer 5
 name_pl rocks
+end
+Object opaque_cave_deco_f3.101
+name rocks
+face cave_deco_f3.101
+type 77
+no_pick 1
+layer 5
+name_pl rocks
+blocksview 1
 end
 Object cave_deco_f4.101
 name rocks

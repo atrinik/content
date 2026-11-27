@@ -1022,7 +1022,7 @@ arch grassd_1
 x 6
 y 20
 end
-arch tree_big4b
+arch seethrough_tree_big4b
 x 6
 y 20
 end
@@ -1097,7 +1097,7 @@ arch grassd_2
 x 7
 y 11
 end
-arch tree_big
+arch seethrough_tree_big
 x 7
 y 11
 end
@@ -1653,7 +1653,7 @@ arch grassd_7
 x 10
 y 20
 end
-arch wall_ruin_c3a
+arch seethrough_wall_ruin_c3a
 x 10
 y 20
 end
@@ -1772,7 +1772,7 @@ arch grassd_4
 x 11
 y 20
 end
-arch wall_ruin_c1a
+arch seethrough_wall_ruin_c1a
 x 11
 y 20
 end
@@ -1944,7 +1944,7 @@ arch grassd_2
 x 12
 y 20
 end
-arch wall_ruin_c2a
+arch seethrough_wall_ruin_c2a
 x 12
 y 20
 end
@@ -2003,7 +2003,7 @@ arch grassd_8
 x 13
 y 8
 end
-arch tree_big2
+arch seethrough_tree_big2
 x 13
 y 8
 end
@@ -2193,7 +2193,7 @@ arch grassd_6
 x 14
 y 17
 end
-arch wall_ruin_c3a
+arch seethrough_wall_ruin_c3a
 x 14
 y 17
 end
@@ -2312,7 +2312,7 @@ arch grassd_8
 x 15
 y 17
 end
-arch wall_ruin_c1a
+arch seethrough_wall_ruin_c1a
 x 15
 y 17
 end
@@ -2439,7 +2439,7 @@ arch grassd_7
 x 16
 y 17
 end
-arch wall_ruin_c2a
+arch seethrough_wall_ruin_c2a
 x 16
 y 17
 end
@@ -2525,7 +2525,7 @@ arch grassd_5
 x 17
 y 8
 end
-arch tree_big3
+arch seethrough_tree_big3
 x 17
 y 8
 end
@@ -2545,7 +2545,7 @@ arch grassd_3
 x 17
 y 12
 end
-arch wall_ruin_c3a
+arch seethrough_wall_ruin_c3a
 x 17
 y 12
 end
@@ -2607,7 +2607,7 @@ arch grassd_7
 x 17
 y 17
 end
-arch wall_ruin_c3a
+arch seethrough_wall_ruin_c3a
 x 17
 y 17
 end
@@ -2728,7 +2728,7 @@ arch grassd_5
 x 18
 y 12
 end
-arch wall_ruin_c1a
+arch seethrough_wall_ruin_c1a
 x 18
 y 12
 end
@@ -2756,7 +2756,7 @@ arch grassd_7
 x 18
 y 17
 end
-arch wall_ruin_c2a
+arch seethrough_wall_ruin_c2a
 x 18
 y 17
 end
@@ -2863,7 +2863,7 @@ arch grassd_8
 x 19
 y 12
 end
-arch wall_ruin_c2a
+arch seethrough_wall_ruin_c2a
 x 19
 y 12
 end
@@ -3296,7 +3296,7 @@ arch grassd_2
 x 22
 y 9
 end
-arch tree_big5b
+arch seethrough_tree_big5b
 x 22
 y 9
 end

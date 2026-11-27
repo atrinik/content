@@ -189,7 +189,7 @@ arch floor_marble1a
 x 7
 y 16
 end
-arch fwall_marble2c
+arch seethrough_fwall_marble2c
 draw_double 0
 layer 3
 x 7
@@ -211,7 +211,7 @@ z 2
 x 7
 y 16
 end
-arch statue_fire
+arch seethrough_statue_fire
 z 24
 layer 7
 x 7
@@ -238,7 +238,7 @@ arch floor_marble1a
 x 7
 y 21
 end
-arch fwall_marble2c
+arch seethrough_fwall_marble2c
 draw_double 0
 layer 3
 x 7
@@ -260,7 +260,7 @@ z 2
 x 7
 y 21
 end
-arch statue_fire
+arch seethrough_statue_fire
 z 24
 layer 7
 x 7
@@ -1029,7 +1029,7 @@ arch floor_marble1a
 x 16
 y 16
 end
-arch fwall_marble2c
+arch seethrough_fwall_marble2c
 draw_double 0
 layer 3
 x 16
@@ -1051,7 +1051,7 @@ z 2
 x 16
 y 16
 end
-arch statue_fire
+arch seethrough_statue_fire
 z 24
 layer 7
 x 16
@@ -1078,7 +1078,7 @@ arch floor_marble1a
 x 16
 y 21
 end
-arch fwall_marble2c
+arch seethrough_fwall_marble2c
 draw_double 0
 layer 3
 x 16
@@ -1100,7 +1100,7 @@ z 2
 x 16
 y 21
 end
-arch statue_fire
+arch seethrough_statue_fire
 z 24
 layer 7
 x 16

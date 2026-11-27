@@ -1417,7 +1417,7 @@ z 2
 x 21
 y 3
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 21
 y 3
 end
@@ -1426,7 +1426,7 @@ z 10
 x 21
 y 4
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 21
 y 4
 end
@@ -1435,7 +1435,7 @@ z 18
 x 21
 y 5
 end
-arch wall_cave1.171
+arch seethrough_wall_cave1.171
 x 21
 y 5
 end
@@ -1704,7 +1704,7 @@ z 10
 x 23
 y 4
 end
-arch wall_cave1.101
+arch seethrough_wall_cave1.101
 no_pass 0
 x 23
 y 4
@@ -1719,7 +1719,7 @@ z 18
 x 23
 y 5
 end
-arch wall_cave1.131
+arch seethrough_wall_cave1.131
 no_pass 0
 x 23
 y 5

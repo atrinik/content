@@ -1173,7 +1173,7 @@ arch floor_ruin1
 x 9
 y 12
 end
-arch wall_ruin_c1a
+arch seethrough_wall_ruin_c1a
 x 9
 y 12
 end
@@ -1564,7 +1564,7 @@ arch floor_ruin2
 x 12
 y 14
 end
-arch wall_ruin_c3a
+arch seethrough_wall_ruin_c3a
 x 12
 y 14
 end
@@ -1686,7 +1686,7 @@ arch floor_ruin4
 x 13
 y 14
 end
-arch wall_ruin1a_141
+arch seethrough_wall_ruin1a_141
 x 13
 y 14
 end
